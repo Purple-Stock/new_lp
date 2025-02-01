@@ -78,12 +78,12 @@ export function FaqCta() {
           <h2 className="text-4xl font-bold">
             Gestão de Inventário Simplificada{" "}
             <span className="block">
-              Começa Com <span className="text-[#9333E9]">Purple Stock</span>
+              Começa Com <span className="text-[#9333E9]">BoxHero</span>
             </span>
           </h2>
 
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Rastreie e gerencie seu inventário em uma única plataforma. Use Purple Stock em seu celular, desktop ou tablet
+            Rastreie e gerencie seu inventário em uma única plataforma. Use BoxHero em seu celular, desktop ou tablet
             para sincronização automática e use todos os nossos recursos premium.
           </p>
         </div>

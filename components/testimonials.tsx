@@ -35,8 +35,8 @@ export function Testimonials() {
                 <Image
                   src={companyLogos[testimonial.companyName] || "/placeholder.svg"}
                   alt={testimonial.companyName}
-                  width={160}
-                  height={64}
+                  width={200}
+                  height={100}
                   className="h-full w-auto object-contain"
                 />
               </div>

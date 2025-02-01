@@ -34,13 +34,23 @@ export function Navbar() {
             <Link href="/precos" className="text-gray-700 hover:text-gray-900">
               {t.pricing}
             </Link>
-            <Link href="/industrias" className="text-gray-700 hover:text-gray-900">
+            <Link href="/coming-soon" className="text-gray-700 hover:text-gray-900">
               {t.industries}
             </Link>
-            <Link href="/codigo-barras" className="text-[#9333E9] hover:text-[#7928CA]">
+            <a
+              href="https://blog.purplestock.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-700 hover:text-gray-900"
+            >
+              {t.blog}
+            </a>
+            <Link href="/coming-soon" className="text-[#9333E9] hover:text-[#7928CA]">
               {t.freeBarcode}
             </Link>
-            <Button className="bg-[#9333E9] hover:bg-[#7928CA]">{t.login}</Button>
+            <Link href="/coming-soon">
+              <Button className="bg-[#9333E9] hover:bg-[#7928CA]">{t.login}</Button>
+            </Link>
           </div>
         </div>
       </div>

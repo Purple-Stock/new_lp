@@ -50,35 +50,35 @@ export function Features() {
     {
       ...t.orderManagement,
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-29%20at%2018.18.06-Mw0y1zNjFN906VoFrZhSPQ05cHFo0G.png",
+        "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       bgColor: "bg-pink-50",
       textColor: "text-pink-500",
     },
     {
       ...t.barcode,
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-29%20at%2018.17.51-S2hr1iQqkvudGlztyZQoo1ufDXje7a.png",
+        "https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       bgColor: "bg-blue-50",
       textColor: "text-blue-500",
     },
     {
       ...t.security,
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-29%20at%2018.17.58-QgsyMFqtzl4cX34LxMCdBX4I4Ucv1b.png",
+        "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       bgColor: "bg-cyan-50",
       textColor: "text-cyan-500",
     },
     {
       ...t.realTime,
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-29%20at%2018.17.41-lsYGFUVab0xwQbYm1dcxPniou7TQU9.png",
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-photo-8201187-8iKVuHhzsa1DVRcGhlDOEKYzbLF3ee.webp",
       bgColor: "bg-violet-50",
       textColor: "text-violet-500",
     },
     {
       ...t.inventoryLink,
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-29%20at%2018.18.18-SVFndQfRKjXqlOrTqNoNItaYRhQ9bV.png",
+        "https://images.pexels.com/photos/7654989/pexels-photo-7654989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       bgColor: "bg-green-50",
       textColor: "text-green-500",
     },

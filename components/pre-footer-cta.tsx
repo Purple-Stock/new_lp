@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 export function PreFooterCTA() {
   const { language } = useLanguage()
   const title = language === "pt" ? "Simplifique sua Gestão de Inventário" : "Simplify your Inventory Management"
-  const buttonText = language === "pt" ? "Teste gratuito de 30 dias" : "30-day free trial"
+  const buttonText = language === "pt" ? "Teste gratuito de 7 dias" : "7-day free trial"
 
   return (
     <section className="relative overflow-hidden">
@@ -21,7 +21,7 @@ export function PreFooterCTA() {
         </Button>
         <div className="mt-16 max-w-5xl mx-auto">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-29%20at%2018.45.39-QOcz1eLjePMrnHiTVGMS6jKAX6S4b0.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/407828270-3bda02a5-ba54-4428-b1bd-ee5b39ee4375%20(1)-bPjHQX2c79993Bn3fHwD52xOrq81VL.png"
             alt="Purple Stock Platform Interface"
             width={1200}
             height={600}

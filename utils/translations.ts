@@ -2,81 +2,82 @@ export const translations = {
   pt: {
     nav: {
       resources: "Recursos",
-      pricing: "Preços",
-      industries: "Indústrias",
+      pricing: "Planos",
+      industries: "Setores",
       freeBarcode: "Código de Barras Grátis",
       login: "Entrar",
+      blog: "Blog",
     },
     hero: {
-      title: "Revolucione Seu Controle de Estoque",
+      title: "Controle de Estoque Inteligente",
       description:
-        "Transforme sua gestão de inventário com Purple Stock. Desenvolvido para empresas inovadoras que buscam eficiência e precisão em suas operações.",
-      cta: "Inicie sua revolução agora",
+        "Transforme sua gestão de inventário com o Purple Stock. Projetado para empresas inovadoras que buscam eficiência e precisão em suas operações.",
+      cta: "Comece Gratuitamente",
     },
     trustedBy: {
-      title: "Empresas que Confiam no Purple Stock",
+      title: "Confiado por Líderes do Mercado",
       description:
-        "De lojas de moda a fabricantes de portas premium, ajudamos empresas a otimizar seu controle de estoque.",
+        "De varejistas a fabricantes, ajudamos empresas a otimizar seu controle de estoque e impulsionar o crescimento.",
     },
     footer: {
       purpleStock: "Purple Stock",
-      blog: "Blog Purple Stock",
+      blog: "Blog",
       glossary: "Glossário",
     },
     features: {
       orderManagement: {
-        title: "Gestão de Pedidos",
-        subtitle: "Otimize Processos de Compras ou Vendas em Uma Plataforma",
+        title: "Gestão de Pedidos Simplificada",
+        subtitle: "Otimize Seus Processos de Compra e Venda",
         description: [
-          "Crie um Pedido de Compras, Pedido de Vendas e Fatura diretamente do aplicativo",
-          "Planejamento empresarial inteligente por meio de informações de estoque em trânsito em tempo real",
-          "Atualizar imediatamente o status do inventário agora está a um clique de distância",
+          "Crie pedidos de compra, vendas e faturas diretamente no aplicativo",
+          "Planejamento inteligente com informações de estoque em tempo real",
+          "Atualize o status do inventário com apenas um clique",
         ],
       },
       barcode: {
-        title: "Código de Barras",
-        subtitle: "Clique para Digitalizar",
+        title: "Escaneamento de Código de Barras",
+        subtitle: "Agilize Suas Operações",
         description: [
-          "A Entrada e Saída de Estoque está a um beep de distância! A digitalização do código de barras torna o inventário muito mais simples",
-          "Sem código de barras? Gere e imprima códigos de barras no Purple Stock",
+          "Entrada e saída de estoque com um simples 'beep'!",
+          "Gere e imprima códigos de barras personalizados no Purple Stock",
         ],
       },
       security: {
-        title: "Configurações de Segurança para Eliminar Erros",
-        subtitle: "Controle de Acesso Escalonado",
+        title: "Segurança Avançada",
+        subtitle: "Controle de Acesso Personalizado",
         description: [
-          "Atribua funções com acesso escalonado aos dados de inventário para cada membro",
-          "Controle de acesso protege informações sensíveis e previne erros",
+          "Atribua funções com acesso escalonado aos dados de inventário",
+          "Proteja informações sensíveis e previna erros com controle de acesso",
         ],
       },
       realTime: {
-        title: "Verifique Instantly o Inventário Disponível",
-        subtitle: "Colaboração em Tempo Real",
+        title: "Visibilidade em Tempo Real",
+        subtitle: "Colaboração Instantânea",
         description: [
-          "Informações de inventário a um clique do seu PC ou dispositivo móvel",
-          "Dados de inventário em tempo real atualizados a cada segundo",
-          "Fonte única de verdade para todos os seus dados de inventário",
+          "Acesse informações de inventário de qualquer dispositivo",
+          "Dados atualizados em tempo real para decisões precisas",
+          "Uma única fonte de verdade para todos os seus dados de estoque",
         ],
       },
       inventoryLink: {
-        title: "Divulgue Informações de Inventário com Segurança para Parceiros",
-        subtitle: "Link de Inventário",
+        title: "Compartilhamento Seguro",
+        subtitle: "Conecte-se com Parceiros",
         description: [
-          "Compartilhe informações de inventário selecionadas enquanto protege dados sensíveis",
-          "Melhore a eficiência ao compartilhar o status de inventário em tempo real com parceiros e equipes de vendas",
-          "Acesse o status de inventário em tempo real a qualquer momento, em qualquer lugar, usando dispositivos PC e móveis",
+          "Compartilhe informações selecionadas de inventário com segurança",
+          "Melhore a eficiência compartilhando dados em tempo real",
+          "Acesse o status do inventário de qualquer lugar, a qualquer momento",
         ],
       },
     },
     testimonials: [
       {
         quote:
-          "O Purple Stock revolucionou nossa gestão de estoque. Agora conseguimos controlar todas as peças de roupa com facilidade.",
+          "O Purple Stock revolucionou nossa gestão de estoque. Agora temos controle total sobre nosso inventário.",
         company: "Loja de Moda Feminina",
         companyName: "Purchase Store",
       },
       {
-        quote: "Com o Purple Stock, nossa produção de portas premium ficou muito mais organizada e eficiente.",
+        quote: "Com o Purple Stock, nossa produção ficou muito mais organizada e eficiente. Um game-changer!",
         company: "Fabricante de Portas Premium",
         companyName: "Concrem Portas",
       },
@@ -85,80 +86,78 @@ export const translations = {
   en: {
     nav: {
       resources: "Resources",
-      pricing: "Pricing",
+      pricing: "Plans",
       industries: "Industries",
       freeBarcode: "Free Barcode",
       login: "Login",
+      blog: "Blog",
     },
     hero: {
-      title: "Revolutionize Your Inventory Control",
+      title: "Smart Inventory Control",
       description:
         "Transform your inventory management with Purple Stock. Designed for innovative companies seeking efficiency and precision in their operations.",
-      cta: "Start your revolution now",
+      cta: "Start for Free",
     },
     trustedBy: {
-      title: "Companies that Trust Purple Stock",
+      title: "Trusted by Market Leaders",
       description:
-        "From fashion stores to premium door manufacturers, we help businesses optimize their inventory control.",
+        "From retailers to manufacturers, we help businesses optimize their inventory control and drive growth.",
     },
     footer: {
       purpleStock: "Purple Stock",
-      blog: "Purple Stock Blog",
+      blog: "Blog",
       glossary: "Glossary",
     },
     features: {
       orderManagement: {
-        title: "Order Management",
-        subtitle: "Optimize Purchase or Sales Processes on One Platform",
+        title: "Streamlined Order Management",
+        subtitle: "Optimize Your Purchase and Sales Processes",
         description: [
-          "Create Purchase Orders, Sales Orders, and Invoices directly from the app",
-          "Intelligent business planning through real-time transit inventory information",
-          "Instantly update inventory status with just one click",
+          "Create purchase orders, sales orders, and invoices directly in the app",
+          "Intelligent planning with real-time inventory information",
+          "Update inventory status with just one click",
         ],
       },
       barcode: {
-        title: "Barcode",
-        subtitle: "Click to Scan",
-        description: [
-          "Stock In and Out is just a beep away! Barcode scanning makes inventory much simpler",
-          "No barcode? Generate and print barcodes in Purple Stock",
-        ],
+        title: "Barcode Scanning",
+        subtitle: "Speed Up Your Operations",
+        description: ["Stock in and out with just a beep!", "Generate and print custom barcodes in Purple Stock"],
       },
       security: {
-        title: "Security Settings to Eliminate Errors",
-        subtitle: "Tiered Access Control",
+        title: "Advanced Security",
+        subtitle: "Custom Access Control",
         description: [
-          "Assign roles with tiered access to inventory data for each member",
-          "Access control protects sensitive information and prevents errors",
+          "Assign roles with tiered access to inventory data",
+          "Protect sensitive information and prevent errors with access control",
         ],
       },
       realTime: {
-        title: "Instantly Check Available Inventory",
-        subtitle: "Real-Time Collaboration",
+        title: "Real-Time Visibility",
+        subtitle: "Instant Collaboration",
         description: [
-          "Inventory information at a click from your PC or mobile device",
-          "Real-time inventory data updated every second",
+          "Access inventory information from any device",
+          "Real-time updated data for accurate decision making",
           "Single source of truth for all your inventory data",
         ],
       },
       inventoryLink: {
-        title: "Securely Share Inventory Information with Partners",
-        subtitle: "Inventory Link",
+        title: "Secure Sharing",
+        subtitle: "Connect with Partners",
         description: [
-          "Share selected inventory information while protecting sensitive data",
-          "Improve efficiency by sharing real-time inventory status with partners and sales teams",
-          "Access real-time inventory status anytime, anywhere, using PC and mobile devices",
+          "Securely share selected inventory information",
+          "Improve efficiency by sharing real-time data",
+          "Access inventory status anywhere, anytime",
         ],
       },
     },
     testimonials: [
       {
-        quote: "Purple Stock revolutionized our inventory management. Now we can control all clothing items with ease.",
+        quote: "Purple Stock revolutionized our inventory management. We now have total control over our stock.",
         company: "Women's Fashion Store",
         companyName: "Purchase Store",
       },
       {
-        quote: "With Purple Stock, our premium door production became much more organized and efficient.",
+        quote: "With Purple Stock, our production became much more organized and efficient. A real game-changer!",
         company: "Premium Door Manufacturer",
         companyName: "Concrem Portas",
       },

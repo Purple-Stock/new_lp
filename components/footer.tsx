@@ -16,10 +16,12 @@ export function Footer() {
       { name: t.purpleStock, href: "#" },
       { name: t.industries, href: "#" },
       { name: t.status, href: "#" },
+      { name: t.blog, href: "https://blog.purplestock.com.br/" },
+      { name: t.glossary, href: "/glossario" },
     ],
     resources: [
       { name: t.blog, href: "#" },
-      { name: t.glossary, href: "#" },
+      { name: t.glossary, href: "/glossario" },
     ],
     social: [
       { name: "Facebook", icon: Facebook, href: "#" },
@@ -61,7 +63,11 @@ export function Footer() {
             <ul className="space-y-4">
               {navigation.purplestock.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-base text-gray-500 hover:text-gray-900">
+                  <Link
+                    href={item.href}
+                    className="text-base text-gray-500 hover:text-gray-900"
+                    {...(item.name === t.blog ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  >
                     {item.name}
                   </Link>
                 </li>

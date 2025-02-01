@@ -1,5 +1,8 @@
 import { LanguageProvider } from "@/contexts/LanguageContext"
+import { WhatsAppButton } from "@/components/whatsapp-button"
+import { ScheduleButton } from "@/components/schedule-button"
 import type React from "react"
+import "@/styles/globals.css"
 
 export const metadata = {
   title: "Purple Stock - Inventory Management System",
@@ -24,7 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          {children}
+          <ScheduleButton />
+          <WhatsAppButton />
+        </LanguageProvider>
       </body>
     </html>
   )

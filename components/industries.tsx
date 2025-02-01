@@ -65,11 +65,11 @@ export function Industries() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center mb-4">Software de Inventário para Sua Indústria</h2>
         <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
-          A solução de gestão de inventário da BoxHero ajuda pequenas empresas de todos os setores a economizar tempo e
+          A solução de gestão de inventário da Purple Stock ajuda pequenas empresas de todos os setores a economizar tempo e
           dinheiro valiosos quando se trata de organizar inventário e ativos físicos.
         </p>
         <p className="text-center mb-12">
-          Selecione seu setor para saber como a BoxHero pode ajudá-lo a controlar suas operações.
+          Selecione seu setor para saber como a Purple Stock pode ajudá-lo a controlar suas operações.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

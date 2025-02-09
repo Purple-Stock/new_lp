@@ -92,6 +92,17 @@ export function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-200">
           <p className="text-base text-gray-400">Purple Stock, Inc.</p>
           <p className="text-sm text-gray-400 mt-2">made with ♥️ in São Paulo Brazil</p>
+          <p className="mt-2 text-sm">
+            Desenvolvido por{' '}
+            <Link 
+              href="https://www.clickasso.com.br" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-rose-700 hover:text-rose-800 transition-colors"
+            >
+              clickasso
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

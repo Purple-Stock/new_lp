@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Facebook, Instagram, Youtube, Twitter, Linkedin, Globe } from "lucide-react"
+import { Instagram, Youtube, Linkedin, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
@@ -24,11 +24,9 @@ export function Footer() {
       { name: t.glossary, href: "/glossario" },
     ],
     social: [
-      { name: "Facebook", icon: Facebook, href: "#" },
-      { name: "Instagram", icon: Instagram, href: "#" },
-      { name: "Youtube", icon: Youtube, href: "#" },
-      { name: "Twitter", icon: Twitter, href: "#" },
-      { name: "LinkedIn", icon: Linkedin, href: "#" },
+      { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/purplestockapp/" },
+      { name: "Youtube", icon: Youtube, href: "https://www.youtube.com/@PurpleStock_" },
+      { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/purple-stock" },
     ],
   }
 
@@ -92,17 +90,6 @@ export function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-200">
           <p className="text-base text-gray-400">Purple Stock, Inc.</p>
           <p className="text-sm text-gray-400 mt-2">made with ♥️ in São Paulo Brazil</p>
-          <p className="mt-2 text-sm">
-            Desenvolvido por{' '}
-            <Link 
-              href="https://www.clickasso.com.br" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-rose-700 hover:text-rose-800 transition-colors"
-            >
-              clickasso
-            </Link>
-          </p>
         </div>
       </div>
     </footer>

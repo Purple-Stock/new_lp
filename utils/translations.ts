@@ -7,6 +7,13 @@ export const translations = {
       freeBarcode: "Código de Barras Grátis",
       login: "Entrar",
       blog: "Blog",
+      features: {
+        title: "Recursos",
+        inventoryControl: "Controle de Inventário",
+        barcoding: "Código de Barras",
+        purchaseSales: "Compras & Vendas",
+        analyticsReporting: "Análises & Relatórios",
+      },
     },
     hero: {
       title: "Controle de Estoque Inteligente",
@@ -23,6 +30,9 @@ export const translations = {
       purpleStock: "Purple Stock",
       blog: "Blog",
       glossary: "Glossário",
+      industries: "Setores",
+      resources: "Recursos",
+      status: "Status",
     },
     features: {
       orderManagement: {
@@ -82,6 +92,229 @@ export const translations = {
         companyName: "Concrem Portas",
       },
     ],
+    featurePages: {
+      inventoryControl: {
+        title: "Controle de Inventário",
+        description:
+          "Assuma o controle total do seu inventário com o poderoso sistema de gestão de estoque do Purple Stock. Acompanhe níveis de estoque, monitore movimentações e elimine erros com nossa plataforma intuitiva.",
+        startTrial: "Iniciar Teste Gratuito",
+        features: {
+          title: "Gestão Abrangente de Inventário",
+          description:
+            "Nosso sistema de controle de inventário fornece todas as ferramentas necessárias para gerenciar seu estoque de forma eficiente e precisa.",
+          centralizedInventory: {
+            title: "Inventário Centralizado",
+            description:
+              "Gerencie todo o seu inventário em um só lugar, com atualizações em tempo real em todas as suas localizações e dispositivos.",
+          },
+          stockTracking: {
+            title: "Rastreamento de Níveis de Estoque",
+            description:
+              "Monitore níveis de estoque com precisão e receba alertas quando o inventário atingir limites mínimos.",
+          },
+          inventoryMovements: {
+            title: "Movimentações de Inventário",
+            description:
+              "Acompanhe todas as movimentações de inventário com registros detalhados de quem fez o quê, quando e onde.",
+          },
+          lossPrevention: {
+            title: "Prevenção de Perdas",
+            description: "Reduza a perda de inventário com recursos precisos de rastreamento e responsabilização.",
+          },
+        },
+        benefits: {
+          title: "Benefícios do Nosso Controle de Inventário",
+          reduceStockouts: {
+            title: "Reduza Faltas de Estoque",
+            description:
+              "Nunca perca uma venda devido a faltas de estoque com pontos de reabastecimento automatizados e alertas de inventário.",
+          },
+          optimizeStock: {
+            title: "Otimize Níveis de Estoque",
+            description:
+              "Mantenha níveis ideais de inventário para reduzir custos de armazenamento enquanto atende à demanda dos clientes.",
+          },
+          improveAccuracy: {
+            title: "Melhore a Precisão",
+            description:
+              "Elimine erros de contagem manual e mantenha registros precisos de inventário em todos os momentos.",
+          },
+          saveTime: {
+            title: "Economize Tempo",
+            description:
+              "Automatize tarefas rotineiras de inventário e libere sua equipe para se concentrar no crescimento do seu negócio.",
+          },
+        },
+        cta: {
+          title: "Pronto para Assumir o Controle do Seu Inventário?",
+          description: "Junte-se a milhares de empresas que otimizaram sua gestão de inventário com o Purple Stock.",
+          scheduleDemo: "Agendar Demonstração",
+          startTrial: "Iniciar Teste Gratuito",
+        },
+      },
+      barcoding: {
+        title: "Código de Barras",
+        description:
+          "Otimize suas operações de inventário com o poderoso sistema de leitura de código de barras do Purple Stock. Gere, imprima e escaneie códigos de barras para rastrear inventário com velocidade e precisão.",
+        startTrial: "Iniciar Teste Gratuito",
+        features: {
+          title: "Soluções Abrangentes de Código de Barras",
+          description:
+            "Nosso sistema de código de barras fornece todas as ferramentas necessárias para rastrear seu inventário com velocidade e precisão.",
+          barcodeScanning: {
+            title: "Leitura de Código de Barras",
+            description:
+              "Escaneie códigos de barras rapidamente para atualizar inventário, processar vendas e rastrear movimentações em tempo real.",
+          },
+          qrCodeSupport: {
+            title: "Suporte a QR Code",
+            description:
+              "Gere e escaneie QR codes para capacidades aprimoradas de armazenamento e rastreamento de dados.",
+          },
+          mobileScanning: {
+            title: "Escaneamento Móvel",
+            description: "Use seu smartphone ou tablet como um leitor de código de barras com nosso aplicativo móvel.",
+          },
+          labelPrinting: {
+            title: "Impressão de Etiquetas",
+            description: "Gere e imprima etiquetas de código de barras personalizadas diretamente da plataforma.",
+          },
+        },
+        benefits: {
+          title: "Benefícios do Nosso Sistema de Código de Barras",
+          increasedSpeed: {
+            title: "Maior Velocidade",
+            description: "Processe movimentações de inventário até 10x mais rápido que métodos manuais.",
+          },
+          reducedErrors: {
+            title: "Redução de Erros",
+            description: "Elimine erros de entrada manual de dados com escaneamento preciso de código de barras.",
+          },
+          realTimeUpdates: {
+            title: "Atualizações em Tempo Real",
+            description:
+              "Atualize registros de inventário instantaneamente com cada escaneamento para níveis precisos de estoque.",
+          },
+          enhancedTraceability: {
+            title: "Rastreabilidade Aprimorada",
+            description: "Acompanhe o histórico completo de cada item com registros detalhados de escaneamento.",
+          },
+        },
+        cta: {
+          title: "Pronto para Otimizar Suas Operações de Inventário?",
+          description:
+            "Junte-se a milhares de empresas que melhoraram a eficiência com o sistema de código de barras do Purple Stock.",
+          scheduleDemo: "Agendar Demonstração",
+          startTrial: "Iniciar Teste Gratuito",
+        },
+      },
+      purchaseSales: {
+        title: "Compras & Vendas",
+        description:
+          "Otimize seus processos de compra e venda com a solução integrada do Purple Stock. Crie ordens de compra, gerencie vendas e acompanhe o desempenho, tudo em um só lugar.",
+        startTrial: "Iniciar Teste Gratuito",
+        features: {
+          title: "Gestão Abrangente de Compras & Vendas",
+          description:
+            "Nossa plataforma fornece todas as ferramentas necessárias para gerenciar suas operações de compra e venda de forma eficiente.",
+          purchaseOrders: {
+            title: "Ordens de Compra",
+            description: "Crie, gerencie e acompanhe ordens de compra com fornecedores em poucos cliques.",
+          },
+          salesManagement: {
+            title: "Gestão de Vendas",
+            description: "Processe pedidos de venda e acompanhe o desempenho com análises detalhadas.",
+          },
+          invoicing: {
+            title: "Faturamento",
+            description: "Gere faturas profissionais e gerencie pagamentos de clientes.",
+          },
+          paymentProcessing: {
+            title: "Processamento de Pagamentos",
+            description: "Acompanhe pagamentos e gerencie contas a receber e a pagar.",
+          },
+        },
+        benefits: {
+          title: "Benefícios do Nosso Sistema de Compras & Vendas",
+          streamlinedWorkflows: {
+            title: "Fluxos de Trabalho Otimizados",
+            description: "Automatize processos de compra e venda para economizar tempo e reduzir erros.",
+          },
+          improvedCashFlow: {
+            title: "Fluxo de Caixa Melhorado",
+            description: "Gerencie melhor contas a receber e a pagar para um fluxo de caixa aprimorado.",
+          },
+          enhancedCustomerService: {
+            title: "Serviço ao Cliente Aprimorado",
+            description: "Forneça informações precisas sobre pedidos e estimativas de entrega aos clientes.",
+          },
+          dataDecisions: {
+            title: "Decisões Baseadas em Dados",
+            description: "Use dados de vendas para tomar decisões informadas de compra e otimizar o inventário.",
+          },
+        },
+        cta: {
+          title: "Pronto para Otimizar Suas Operações de Compra & Venda?",
+          description: "Junte-se a milhares de empresas que otimizaram suas operações com o Purple Stock.",
+          scheduleDemo: "Agendar Demonstração",
+          startTrial: "Iniciar Teste Gratuito",
+        },
+      },
+      analyticsReporting: {
+        title: "Análises & Relatórios",
+        description:
+          "Obtenha insights valiosos sobre o desempenho do seu inventário e negócio com as poderosas ferramentas de análise e relatórios do Purple Stock. Tome decisões baseadas em dados para otimizar suas operações.",
+        startTrial: "Iniciar Teste Gratuito",
+        features: {
+          title: "Análises & Relatórios Abrangentes",
+          description:
+            "Nossa plataforma fornece ferramentas poderosas para analisar seus dados e gerar relatórios perspicazes.",
+          inventoryAnalytics: {
+            title: "Análises de Inventário",
+            description:
+              "Acompanhe o desempenho do inventário com análises detalhadas sobre níveis de estoque, rotatividade e mais.",
+          },
+          salesReports: {
+            title: "Relatórios de Vendas",
+            description: "Analise dados de vendas por produto, categoria, cliente e período.",
+          },
+          performanceMetrics: {
+            title: "Métricas de Desempenho",
+            description: "Monitore indicadores-chave de desempenho (KPIs) para acompanhar a saúde do negócio.",
+          },
+          customReports: {
+            title: "Relatórios Personalizados",
+            description:
+              "Crie e exporte relatórios personalizados adaptados às necessidades específicas do seu negócio.",
+          },
+        },
+        benefits: {
+          title: "Benefícios das Nossas Análises & Relatórios",
+          dataDecisions: {
+            title: "Decisões Baseadas em Dados",
+            description: "Tome decisões de negócios informadas com base em dados e insights precisos.",
+          },
+          identifyTrends: {
+            title: "Identifique Tendências",
+            description: "Detecte tendências e padrões em seus dados para antecipar mudanças no mercado.",
+          },
+          optimizeInventory: {
+            title: "Otimize o Inventário",
+            description: "Use análises para otimizar níveis de estoque e reduzir custos de armazenamento.",
+          },
+          improveProfitability: {
+            title: "Melhore a Lucratividade",
+            description: "Identifique produtos de alto desempenho e áreas para melhoria para aumentar os lucros.",
+          },
+        },
+        cta: {
+          title: "Pronto para Obter Insights Valiosos para o Seu Negócio?",
+          description: "Junte-se a milhares de empresas que otimizaram suas operações com as análises do Purple Stock.",
+          scheduleDemo: "Agendar Demonstração",
+          startTrial: "Iniciar Teste Gratuito",
+        },
+      },
+    },
   },
   en: {
     nav: {
@@ -91,6 +324,13 @@ export const translations = {
       freeBarcode: "Free Barcode",
       login: "Login",
       blog: "Blog",
+      features: {
+        title: "Features",
+        inventoryControl: "Inventory Control",
+        barcoding: "Barcoding",
+        purchaseSales: "Purchase & Sales",
+        analyticsReporting: "Analytics & Reporting",
+      },
     },
     hero: {
       title: "Smart Inventory Control",
@@ -107,6 +347,9 @@ export const translations = {
       purpleStock: "Purple Stock",
       blog: "Blog",
       glossary: "Glossary",
+      industries: "Industries",
+      resources: "Resources",
+      status: "Status",
     },
     features: {
       orderManagement: {
@@ -162,6 +405,219 @@ export const translations = {
         companyName: "Concrem Portas",
       },
     ],
+    featurePages: {
+      inventoryControl: {
+        title: "Inventory Control",
+        description:
+          "Take complete control of your inventory with Purple Stock's powerful inventory management system. Track stock levels, monitor movements, and eliminate errors with our intuitive platform.",
+        startTrial: "Start Free Trial",
+        features: {
+          title: "Comprehensive Inventory Management",
+          description:
+            "Our inventory control system provides all the tools you need to manage your stock efficiently and accurately.",
+          centralizedInventory: {
+            title: "Centralized Inventory",
+            description:
+              "Manage all your inventory in one place, with real-time updates across all your locations and devices.",
+          },
+          stockTracking: {
+            title: "Stock Level Tracking",
+            description:
+              "Monitor stock levels with precision and receive alerts when inventory reaches minimum thresholds.",
+          },
+          inventoryMovements: {
+            title: "Inventory Movements",
+            description: "Track all inventory movements with detailed logs of who did what, when, and where.",
+          },
+          lossPrevention: {
+            title: "Loss Prevention",
+            description: "Reduce inventory shrinkage with accurate tracking and accountability features.",
+          },
+        },
+        benefits: {
+          title: "Benefits of Our Inventory Control",
+          reduceStockouts: {
+            title: "Reduce Stockouts",
+            description: "Never miss a sale due to stockouts with automated reorder points and inventory alerts.",
+          },
+          optimizeStock: {
+            title: "Optimize Stock Levels",
+            description: "Maintain optimal inventory levels to reduce carrying costs while meeting customer demand.",
+          },
+          improveAccuracy: {
+            title: "Improve Accuracy",
+            description: "Eliminate manual counting errors and maintain accurate inventory records at all times.",
+          },
+          saveTime: {
+            title: "Save Time",
+            description: "Automate routine inventory tasks and free up your team to focus on growing your business.",
+          },
+        },
+        cta: {
+          title: "Ready to Take Control of Your Inventory?",
+          description: "Join thousands of businesses that have optimized their inventory management with Purple Stock.",
+          scheduleDemo: "Schedule Demo",
+          startTrial: "Start Free Trial",
+        },
+      },
+      barcoding: {
+        title: "Barcoding",
+        description:
+          "Streamline your inventory operations with Purple Stock's powerful barcode scanning system. Generate, print, and scan barcodes to track inventory with speed and accuracy.",
+        startTrial: "Start Free Trial",
+        features: {
+          title: "Comprehensive Barcoding Solutions",
+          description:
+            "Our barcoding system provides all the tools you need to track your inventory with speed and precision.",
+          barcodeScanning: {
+            title: "Barcode Scanning",
+            description: "Quickly scan barcodes to update inventory, process sales, and track movements in real-time.",
+          },
+          qrCodeSupport: {
+            title: "QR Code Support",
+            description: "Generate and scan QR codes for enhanced data storage and tracking capabilities.",
+          },
+          mobileScanning: {
+            title: "Mobile Scanning",
+            description: "Use your smartphone or tablet as a barcode scanner with our mobile app.",
+          },
+          labelPrinting: {
+            title: "Label Printing",
+            description: "Generate and print custom barcode labels directly from the platform.",
+          },
+        },
+        benefits: {
+          title: "Benefits of Our Barcoding System",
+          increasedSpeed: {
+            title: "Increased Speed",
+            description: "Process inventory movements up to 10x faster than manual methods.",
+          },
+          reducedErrors: {
+            title: "Reduced Errors",
+            description: "Eliminate manual data entry errors with accurate barcode scanning.",
+          },
+          realTimeUpdates: {
+            title: "Real-time Updates",
+            description: "Update inventory records instantly with each scan for accurate stock levels.",
+          },
+          enhancedTraceability: {
+            title: "Enhanced Traceability",
+            description: "Track the complete history of each item with detailed scan records.",
+          },
+        },
+        cta: {
+          title: "Ready to Streamline Your Inventory Operations?",
+          description:
+            "Join thousands of businesses that have improved efficiency with Purple Stock's barcoding system.",
+          scheduleDemo: "Schedule Demo",
+          startTrial: "Start Free Trial",
+        },
+      },
+      purchaseSales: {
+        title: "Purchase & Sales",
+        description:
+          "Streamline your purchasing and sales processes with Purple Stock's integrated solution. Create purchase orders, manage sales, and track performance all in one place.",
+        startTrial: "Start Free Trial",
+        features: {
+          title: "Comprehensive Purchase & Sales Management",
+          description:
+            "Our platform provides all the tools you need to manage your purchasing and sales operations efficiently.",
+          purchaseOrders: {
+            title: "Purchase Orders",
+            description: "Create, manage, and track purchase orders with suppliers in a few clicks.",
+          },
+          salesManagement: {
+            title: "Sales Management",
+            description: "Process sales orders and track performance with detailed analytics.",
+          },
+          invoicing: {
+            title: "Invoicing",
+            description: "Generate professional invoices and manage customer payments.",
+          },
+          paymentProcessing: {
+            title: "Payment Processing",
+            description: "Track payments and manage accounts receivable and payable.",
+          },
+        },
+        benefits: {
+          title: "Benefits of Our Purchase & Sales System",
+          streamlinedWorkflows: {
+            title: "Streamlined Workflows",
+            description: "Automate purchase and sales processes to save time and reduce errors.",
+          },
+          improvedCashFlow: {
+            title: "Improved Cash Flow",
+            description: "Better manage accounts receivable and payable for improved cash flow.",
+          },
+          enhancedCustomerService: {
+            title: "Enhanced Customer Service",
+            description: "Provide accurate order information and delivery estimates to customers.",
+          },
+          dataDecisions: {
+            title: "Data-Driven Decisions",
+            description: "Use sales data to make informed purchasing decisions and optimize inventory.",
+          },
+        },
+        cta: {
+          title: "Ready to Optimize Your Purchase & Sales Operations?",
+          description: "Join thousands of businesses that have streamlined their operations with Purple Stock.",
+          scheduleDemo: "Schedule Demo",
+          startTrial: "Start Free Trial",
+        },
+      },
+      analyticsReporting: {
+        title: "Analytics & Reporting",
+        description:
+          "Gain valuable insights into your inventory and business performance with Purple Stock's powerful analytics and reporting tools. Make data-driven decisions to optimize your operations.",
+        startTrial: "Start Free Trial",
+        features: {
+          title: "Comprehensive Analytics & Reporting",
+          description: "Our platform provides powerful tools to analyze your data and generate insightful reports.",
+          inventoryAnalytics: {
+            title: "Inventory Analytics",
+            description: "Track inventory performance with detailed analytics on stock levels, turnover, and more.",
+          },
+          salesReports: {
+            title: "Sales Reports",
+            description: "Analyze sales data by product, category, customer, and time period.",
+          },
+          performanceMetrics: {
+            title: "Performance Metrics",
+            description: "Monitor key performance indicators (KPIs) to track business health.",
+          },
+          customReports: {
+            title: "Custom Reports",
+            description: "Create and export custom reports tailored to your specific business needs.",
+          },
+        },
+        benefits: {
+          title: "Benefits of Our Analytics & Reporting",
+          dataDecisions: {
+            title: "Data-Driven Decisions",
+            description: "Make informed business decisions based on accurate data and insights.",
+          },
+          identifyTrends: {
+            title: "Identify Trends",
+            description: "Spot trends and patterns in your data to anticipate market changes.",
+          },
+          optimizeInventory: {
+            title: "Optimize Inventory",
+            description: "Use analytics to optimize stock levels and reduce carrying costs.",
+          },
+          improveProfitability: {
+            title: "Improve Profitability",
+            description: "Identify high-performing products and areas for improvement to boost profits.",
+          },
+        },
+        cta: {
+          title: "Ready to Gain Valuable Business Insights?",
+          description:
+            "Join thousands of businesses that have optimized their operations with Purple Stock's analytics.",
+          scheduleDemo: "Schedule Demo",
+          startTrial: "Start Free Trial",
+        },
+      },
+    },
   },
 }
 

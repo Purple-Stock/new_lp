@@ -74,7 +74,11 @@ export function Industries() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {industries.map((industry, index) => (
-            <Link key={index} href="#" className="group relative aspect-square overflow-hidden rounded-2xl bg-gray-200">
+            <Link
+              key={index}
+              href={`/industrias/${industry.name.toLowerCase().replace(/\s+/g, "-")}`}
+              className="group relative aspect-square overflow-hidden rounded-2xl bg-gray-200"
+            >
               <Image
                 src={industry.image || "/placeholder.svg"}
                 alt={industry.name}

@@ -6,10 +6,27 @@ import { ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
+import { useState, useRef, useEffect } from "react"
 
 export function Navbar() {
   const { language } = useLanguage()
   const t = translations[language].nav
+  const [featuresOpen, setFeaturesOpen] = useState(false)
+  const featuresRef = useRef<HTMLDivElement>(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (featuresRef.current && !featuresRef.current.contains(event.target as Node)) {
+        setFeaturesOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [featuresRef])
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md">
@@ -27,14 +44,55 @@ export function Navbar() {
             </Link>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <button className="text-gray-700 hover:text-gray-900 flex items-center gap-1">
-              {t.resources}
-              <ChevronDown className="h-4 w-4" />
-            </button>
+            <div className="relative" ref={featuresRef}>
+              <button
+                className="text-gray-700 hover:text-gray-900 flex items-center gap-1"
+                onClick={() => setFeaturesOpen(!featuresOpen)}
+              >
+                {t.features.title}
+                <ChevronDown className="h-4 w-4" />
+              </button>
+
+              {featuresOpen && (
+                <div className="absolute left-0 mt-2 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="py-1">
+                    <Link
+                      href="/features/inventory-control"
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setFeaturesOpen(false)}
+                    >
+                      {t.features.inventoryControl}
+                    </Link>
+                    <Link
+                      href="/features/barcoding"
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setFeaturesOpen(false)}
+                    >
+                      {t.features.barcoding}
+                    </Link>
+                    <Link
+                      href="/features/purchase-sales"
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setFeaturesOpen(false)}
+                    >
+                      {t.features.purchaseSales}
+                    </Link>
+                    <Link
+                      href="/features/analytics-reporting"
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setFeaturesOpen(false)}
+                    >
+                      {t.features.analyticsReporting}
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <Link href="/precos" className="text-gray-700 hover:text-gray-900">
               {t.pricing}
             </Link>
-            <Link href="/coming-soon" className="text-gray-700 hover:text-gray-900">
+            <Link href="/industrias" className="text-gray-700 hover:text-gray-900">
               {t.industries}
             </Link>
             <a

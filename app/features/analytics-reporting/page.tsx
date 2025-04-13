@@ -32,7 +32,7 @@ export default function AnalyticsReportingPage() {
             </div>
             <div className="relative h-[300px] md:h-[400px]">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-photo-8201187-8iKVuHhzsa1DVRcGhlDOEKYzbLF3ee.webp"
+                src="/images/graphics.png"
                 alt="Analytics and Reporting"
                 fill
                 className="object-cover rounded-lg shadow-lg"
@@ -84,7 +84,7 @@ export default function AnalyticsReportingPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <Image
-                src="/images/pexels-photo-7947541.jpeg"
+                src="/images/analytics.png"
                 alt="Analytics Benefits"
                 width={600}
                 height={400}

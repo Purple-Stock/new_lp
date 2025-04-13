@@ -84,6 +84,13 @@ export function Navbar() {
                     >
                       {t.features.analyticsReporting}
                     </Link>
+                    <Link
+                      href="/features/warehouse-control"
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setFeaturesOpen(false)}
+                    >
+                      {t.features.warehouseControl}
+                    </Link>
                   </div>
                 </div>
               )}

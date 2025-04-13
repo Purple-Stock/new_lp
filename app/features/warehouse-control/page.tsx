@@ -35,7 +35,7 @@ export default function WarehouseControlPage() {
             </div>
             <div className="relative h-[300px] md:h-[400px]">
               <Image
-                src="https://images.pexels.com/photos/7348711/pexels-photo-7348711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/images/warehouse-control.png"
                 alt="Warehouse Control"
                 fill
                 className="object-cover rounded-lg shadow-lg"
@@ -138,7 +138,7 @@ export default function WarehouseControlPage() {
             </div>
             <div className="order-1 md:order-2">
               <Image
-                src="https://images.pexels.com/photos/7348763/pexels-photo-7348763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/images/technology-warehouse.png"
                 alt="Warehouse Benefits"
                 width={600}
                 height={400}

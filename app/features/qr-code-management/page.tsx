@@ -32,7 +32,7 @@ export default function QRCodeManagementPage() {
             </div>
             <div className="relative h-[300px] md:h-[400px]">
               <Image
-                src="https://images.pexels.com/photos/4482900/pexels-photo-4482900.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/images/qrcode-cellphone.png"
                 alt="QR Code Management"
                 fill
                 className="object-cover rounded-lg shadow-lg"
@@ -117,7 +117,7 @@ export default function QRCodeManagementPage() {
             </div>
             <div className="order-1 md:order-2">
               <Image
-                src="https://images.pexels.com/photos/4482899/pexels-photo-4482899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/images/machine-qrcode.png"
                 alt="QR Code Benefits"
                 width={600}
                 height={400}

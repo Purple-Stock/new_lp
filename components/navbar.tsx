@@ -34,18 +34,23 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="200" height="40" viewBox="0 0 350 70">
-                <defs>
-                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: "#8E44AD", stopOpacity: 1 }}></stop>
-                    <stop offset="100%" style={{ stopColor: "#5B2C6F", stopOpacity: 1 }}></stop>
-                  </linearGradient>
-                </defs>
-                <g fill="none" fillRule="evenodd">
-                  <path fill="url(#grad1)" d="M35 10l23 14v28L35 66 12 52V24z"></path>
-                  <path fill="#FFF" d="M33 22l-9 16h12l-5 14 14-18H33z"></path>
-                  <text fontFamily="Arial, sans-serif" fontSize="24" fontWeight="bold" fill="#5B2C6F" x="85" y="45">Purple Stock</text>
+              <svg xmlns="http://www.w3.org/2000/svg" width="300" height="60" viewBox="0 0 1200 400">
+                {/* Background */}
+                <rect width="1200" height="400" fill="#FFFFFF" rx="50" ry="50"/>
+
+                {/* Logo (Hexagon + Lightning bolt) */}
+                <g transform="translate(200, 200) scale(1.2)">
+                  {/* Purple hexagon */}
+                  <path fill="#7D3C98" d="M0,-100 L86,-50 L86,50 L0,100 L-86,50 L-86,-50 Z"/>
+
+                  {/* White lightning bolt */}
+                  <path fill="#FFFFFF" d="M30,-50 L-15,10 H15 L-10,55 L40,0 H15 Z"/>
                 </g>
+
+                {/* Text "PURPLE STOCK" in purple */}
+                <text x="450" y="230" fontFamily="Arial, sans-serif" fontSize="120" fontWeight="bold" fill="#7D3C98">
+                  PURPLE STOCK
+                </text>
               </svg>
             </Link>
           </div>

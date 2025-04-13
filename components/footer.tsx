@@ -13,14 +13,10 @@ export function Footer() {
 
   const navigation = {
     purplestock: [
-      { name: t.purpleStock, href: "#" },
-      { name: t.industries, href: "#" },
-      { name: t.status, href: "#" },
-      { name: t.blog, href: "https://blog.purplestock.com.br/" },
-      { name: t.glossary, href: "/glossario" },
+      { name: t.industries, href: "/industrias" },
     ],
     resources: [
-      { name: t.blog, href: "#" },
+      { name: t.blog, href: "https://blog.purplestock.com.br/" },
       { name: t.glossary, href: "/glossario" },
     ],
     social: [
@@ -31,51 +27,60 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-white">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div>
-            <Link href="/" className="flex items-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" width="200" height="40" viewBox="0 0 350 70">
-                <defs>
-                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: "#8E44AD", stopOpacity: 1 }}></stop>
-                    <stop offset="100%" style={{ stopColor: "#5B2C6F", stopOpacity: 1 }}></stop>
-                  </linearGradient>
-                </defs>
-                <g fill="none" fillRule="evenodd">
-                  <path fill="url(#grad1)" d="M35 10l23 14v28L35 66 12 52V24z"></path>
-                  <path fill="#FFF" d="M33 22l-9 16h12l-5 14 14-18H33z"></path>
-                  <text fontFamily="Arial, sans-serif" fontSize="24" fontWeight="bold" fill="#5B2C6F" x="85" y="45">Purple Stock</text>
+    <footer className="bg-gradient-to-r from-purple-50 to-white">
+      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="space-y-8">
+            <Link href="/" className="block">
+              <svg xmlns="http://www.w3.org/2000/svg" width="180" height="36" viewBox="0 0 1200 400">
+                {/* Background */}
+                <rect width="1200" height="400" fill="#FFFFFF" rx="50" ry="50"/>
+
+                {/* Logo (Hexagon + Lightning bolt) */}
+                <g transform="translate(200, 200) scale(1.2)">
+                  {/* Purple hexagon */}
+                  <path fill="#7D3C98" d="M0,-100 L86,-50 L86,50 L0,100 L-86,50 L-86,-50 Z"/>
+
+                  {/* White lightning bolt */}
+                  <path fill="#FFFFFF" d="M30,-50 L-15,10 H15 L-10,55 L40,0 H15 Z"/>
                 </g>
+
+                {/* Text "PURPLE STOCK" in purple */}
+                <text x="450" y="230" fontFamily="Arial, sans-serif" fontSize="90" fontWeight="bold" fill="#7D3C98">
+                  PURPLE STOCK
+                </text>
               </svg>
             </Link>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
-                <Link key={item.name} href={item.href} className="text-gray-400 hover:text-purple-600">
+                <Link 
+                  key={item.name} 
+                  href={item.href} 
+                  className="text-purple-500 hover:text-purple-700 transition-colors duration-200"
+                >
                   <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-8 w-8" />
+                  <item.icon className="h-6 w-6" />
                 </Link>
               ))}
             </div>
             <Button 
               variant="outline" 
-              className="mt-6 border-2 rounded-full px-6"
+              className="border-purple-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 rounded-full px-6"
               onClick={() => setLanguage(language === "pt" ? "en" : "pt")}
             >
-              <Globe className="h-5 w-5 mr-2" />
+              <Globe className="h-5 w-5 mr-2 text-purple-500" />
               {language === "pt" ? "Português" : "English"}
             </Button>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">{t.purpleStock}</h3>
+            <h3 className="text-sm font-bold text-purple-900 tracking-wider uppercase mb-6">{t.purpleStock}</h3>
             <ul className="space-y-4">
               {navigation.purplestock.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-base text-gray-500 hover:text-gray-900"
+                    className="text-gray-600 hover:text-purple-700 transition-colors duration-200"
                     {...(item.name === t.blog ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   >
                     {item.name}
@@ -86,11 +91,14 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">{t.resources}</h3>
+            <h3 className="text-sm font-bold text-purple-900 tracking-wider uppercase mb-6">{t.resources}</h3>
             <ul className="space-y-4">
               {navigation.resources.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-base text-gray-500 hover:text-gray-900">
+                  <Link 
+                    href={item.href} 
+                    className="text-gray-600 hover:text-purple-700 transition-colors duration-200"
+                  >
                     {item.name}
                   </Link>
                 </li>
@@ -99,9 +107,13 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-base text-gray-400">Purple Stock</p>
-          <p className="text-sm text-gray-400 mt-2">Made with ♥️ in São Paulo, Brazil</p>
+        <div className="mt-12 pt-8 border-t border-purple-100">
+          <div className="flex flex-col md:flex-row md:justify-between items-center">
+            <p className="text-base font-medium text-purple-900">Purple Stock</p>
+            <p className="text-sm text-purple-600 mt-2 md:mt-0">
+              Made with <span className="text-red-500">♥️</span> in São Paulo, Brazil
+            </p>
+          </div>
         </div>
       </div>
     </footer>

@@ -14,6 +14,7 @@ export const translations = {
         purchaseSales: "Compras & Vendas",
         analyticsReporting: "Análises & Relatórios",
         warehouseControl: "Controle de Almoxarifado",
+        qrCodeManagement: "Gestão QR Code",
       },
     },
     hero: {
@@ -363,6 +364,56 @@ export const translations = {
           description: "Junte-se a milhares de empresas que otimizaram suas operações de almoxarifado com o Purple Stock.",
           scheduleDemo: "Agendar Demonstração",
           startTrial: "Iniciar Teste Gratuito"
+        },
+      },
+      qrCodeManagement: {
+        title: "Gestão QR Code",
+        description: "Gerencie e rastreie seus produtos com QR Codes personalizados. Crie, imprima e monitore QR codes para melhorar a eficiência e precisão do seu negócio.",
+        startTrial: "Iniciar Teste Gratuito",
+        features: {
+          title: "Recursos Completos de QR Code",
+          description: "Nossa solução de QR Code oferece todas as ferramentas necessárias para gerenciar seus produtos de forma eficiente.",
+          generation: {
+            title: "Geração de QR Code",
+            description: "Crie QR codes personalizados com informações detalhadas do produto e rastreamento."
+          },
+          scanning: {
+            title: "Leitura Rápida",
+            description: "Escaneie QR codes instantaneamente para acessar informações do produto e atualizar registros."
+          },
+          tracking: {
+            title: "Rastreamento Avançado",
+            description: "Acompanhe o histórico completo de cada produto através do QR code associado."
+          },
+          integration: {
+            title: "Integração Completa",
+            description: "Integre QR codes com seu sistema de inventário para atualizações automáticas."
+          }
+        },
+        benefits: {
+          title: "Benefícios da Gestão QR Code",
+          efficiency: {
+            title: "Maior Eficiência",
+            description: "Agilize processos de identificação e rastreamento com QR codes de fácil leitura."
+          },
+          accuracy: {
+            title: "Precisão Aprimorada",
+            description: "Elimine erros de identificação com QR codes únicos para cada produto."
+          },
+          accessibility: {
+            title: "Fácil Acesso",
+            description: "Acesse informações detalhadas do produto instantaneamente com um simples escaneamento."
+          },
+          management: {
+            title: "Gestão Simplificada",
+            description: "Gerencie seu inventário de forma mais eficiente com QR codes integrados."
+          }
+        },
+        cta: {
+          title: "Pronto para Revolucionar seu Rastreamento de Produtos?",
+          description: "Junte-se a milhares de empresas que melhoraram suas operações com a gestão QR Code do Purple Stock.",
+          scheduleDemo: "Agendar Demonstração",
+          startTrial: "Iniciar Teste Gratuito"
         }
       },
     },
@@ -382,6 +433,7 @@ export const translations = {
         purchaseSales: "Purchase & Sales",
         analyticsReporting: "Analytics & Reporting",
         warehouseControl: "Warehouse Control",
+        qrCodeManagement: "QR Code Management",
       },
     },
     hero: {
@@ -699,6 +751,56 @@ export const translations = {
         cta: {
           title: "Ready to Transform Your Warehouse Management?",
           description: "Join thousands of businesses that have optimized their warehouse operations with Purple Stock.",
+          scheduleDemo: "Schedule Demo",
+          startTrial: "Start Free Trial"
+        }
+      },
+      qrCodeManagement: {
+        title: "QR Code Management",
+        description: "Manage and track your products with custom QR Codes. Create, print, and monitor QR codes to improve your business efficiency and accuracy.",
+        startTrial: "Start Free Trial",
+        features: {
+          title: "Complete QR Code Features",
+          description: "Our QR Code solution provides all the tools you need to manage your products efficiently.",
+          generation: {
+            title: "QR Code Generation",
+            description: "Create custom QR codes with detailed product information and tracking."
+          },
+          scanning: {
+            title: "Quick Scanning",
+            description: "Instantly scan QR codes to access product information and update records."
+          },
+          tracking: {
+            title: "Advanced Tracking",
+            description: "Track the complete history of each product through its associated QR code."
+          },
+          integration: {
+            title: "Complete Integration",
+            description: "Integrate QR codes with your inventory system for automatic updates."
+          }
+        },
+        benefits: {
+          title: "Benefits of QR Code Management",
+          efficiency: {
+            title: "Increased Efficiency",
+            description: "Streamline identification and tracking processes with easy-to-read QR codes."
+          },
+          accuracy: {
+            title: "Enhanced Accuracy",
+            description: "Eliminate identification errors with unique QR codes for each product."
+          },
+          accessibility: {
+            title: "Easy Access",
+            description: "Access detailed product information instantly with a simple scan."
+          },
+          management: {
+            title: "Simplified Management",
+            description: "Manage your inventory more efficiently with integrated QR codes."
+          }
+        },
+        cta: {
+          title: "Ready to Revolutionize Your Product Tracking?",
+          description: "Join thousands of businesses that have improved their operations with Purple Stock's QR Code management.",
           scheduleDemo: "Schedule Demo",
           startTrial: "Start Free Trial"
         }

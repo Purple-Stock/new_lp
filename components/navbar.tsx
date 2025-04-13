@@ -35,9 +35,6 @@ export function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="300" height="60" viewBox="0 0 1200 400">
-                {/* Background */}
-                <rect width="1200" height="400" fill="#FFFFFF" rx="50" ry="50"/>
-
                 {/* Logo (Hexagon + Lightning bolt) */}
                 <g transform="translate(200, 200) scale(1.2)">
                   {/* Purple hexagon */}

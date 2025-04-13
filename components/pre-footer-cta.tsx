@@ -21,7 +21,7 @@ export function PreFooterCTA() {
         </Button>
         <div className="mt-16 max-w-5xl mx-auto">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/407828270-3bda02a5-ba54-4428-b1bd-ee5b39ee4375%20(1)-bPjHQX2c79993Bn3fHwD52xOrq81VL.png"
+            src="images/app-items-list.png"
             alt="Purple Stock Platform Interface"
             width={1200}
             height={600}

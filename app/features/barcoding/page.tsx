@@ -84,7 +84,7 @@ export default function BarcodingPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <Image
-                src="https://images.pexels.com/photos/5025512/pexels-photo-5025512.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/images/pexels-photo-5025512.webp"
                 alt="Barcode Benefits"
                 width={600}
                 height={400}

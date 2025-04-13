@@ -14,19 +14,19 @@ const industries = [
     name: "Varejo",
     slug: "varejo",
     image:
-      "/images/pexels-photo-264507.webp",
+      "/images/pexels-photo-264507.jpeg",
   },
   {
     name: "Manufatura",
     slug: "manufatura",
     image:
-      "/images/pexels-photo-1145434.webp",
+      "/images/pexels-photo-1145434.jpeg",
   },
   {
     name: "Logística",
     slug: "logistica",
     image:
-      "/images/pexels-photo-1267338.webp",
+      "/images/pexels-photo-1267338.jpeg",
   },
   {
     name: "Moda",
@@ -38,19 +38,19 @@ const industries = [
     name: "Alimentos & Bebidas",
     slug: "alimentos-bebidas",
     image:
-      "/images/pexels-photo-1640777.webp",
+      "/images/pexels-photo-1640777.jpeg",
   },
   {
     name: "Construção",
     slug: "construcao",
     image:
-      "/images/pexels-photo-159358.webp",
+      "/images/building.png",
   },
   {
     name: "Médico",
     slug: "medico",
     image:
-      "/images/pexels-photo-40568.webp",
+      "/images/medical-appointment-doctor-healthcare-40568.webp",
   },
   {
     name: "Beleza",
@@ -62,7 +62,7 @@ const industries = [
     name: "Comércio",
     slug: "comercio",
     image:
-      "/images/pexels-photo-1058959.webp",
+      "/images/commerce.png",
   },
   {
     name: "Educação",

@@ -84,7 +84,7 @@ export default function AnalyticsReportingPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <Image
-                src="https://images.pexels.com/photos/7947541/pexels-photo-7947541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/images/pexels-photo-7947541.jpeg"
                 alt="Analytics Benefits"
                 width={600}
                 height={400}

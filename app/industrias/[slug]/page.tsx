@@ -33,7 +33,7 @@ const industriesData = [
     name: "Varejo",
     slug: "varejo",
     image:
-      "https://images.pexels.com/photos/264507/pexels-photo-264507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "/images/pexels-photo-264507.jpeg",
     description:
       "Transforme sua operação de varejo com o Purple Stock. Nossa plataforma oferece as ferramentas necessárias para gerenciar seu estoque com precisão e atender seus clientes com eficiência.",
     benefits: [
@@ -55,7 +55,7 @@ const industriesData = [
     name: "Manufatura",
     slug: "manufatura",
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-photo-1145434-nZlG4ZXNDfsvJBsMU0BlbkiSB9RiMB.jpeg",
+      "/images/pexels-photo-1145434.webp",
     description:
       "Otimize sua produção e controle de materiais com o Purple Stock. Nossa solução é projetada para atender às necessidades específicas da indústria de manufatura.",
     benefits: [
@@ -77,7 +77,7 @@ const industriesData = [
     name: "Logística",
     slug: "logistica",
     image:
-      "https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "/images/pexels-photo-1267338.webp",
     description:
       "Simplifique suas operações logísticas com o Purple Stock. Nossa plataforma oferece visibilidade completa e controle sobre toda a cadeia de suprimentos.",
     benefits: [
@@ -99,7 +99,7 @@ const industriesData = [
     name: "Moda",
     slug: "moda",
     image:
-      "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "/images/pexels-photo-994523.webp",
     description:
       "Gerencie coleções, tamanhos, cores e estilos com facilidade usando o Purple Stock. Nossa solução é ideal para o setor de moda e vestuário.",
     benefits: [
@@ -121,7 +121,7 @@ const industriesData = [
     name: "Alimentos & Bebidas",
     slug: "alimentos-bebidas",
     image:
-      "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "/images/pexels-photo-1640777.webp",
     description:
       "Controle seu estoque de alimentos e bebidas com eficiência usando o Purple Stock. Nossa plataforma ajuda a gerenciar datas de validade, lotes e rastreabilidade.",
     benefits: [
@@ -143,7 +143,7 @@ const industriesData = [
     name: "Construção",
     slug: "construcao",
     image:
-      "https://images.pexels.com/photos/159358/construction-site-build-construction-work-159358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "/images/building.png",
     description:
       "Gerencie materiais de construção, ferramentas e equipamentos com o Purple Stock. Nossa solução é ideal para construtoras e empresas do setor.",
     benefits: [
@@ -165,7 +165,7 @@ const industriesData = [
     name: "Médico",
     slug: "medico",
     image:
-      "https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "/images/pexels-photo-40568.webp",
     description:
       "Controle medicamentos, equipamentos e suprimentos médicos com precisão usando o Purple Stock. Nossa plataforma atende às necessidades específicas do setor de saúde.",
     benefits: [
@@ -187,7 +187,7 @@ const industriesData = [
     name: "Beleza",
     slug: "beleza",
     image:
-      "https://images.pexels.com/photos/3985298/pexels-photo-3985298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "/images/pexels-photo-3985298.webp",
     description:
       "Gerencie produtos de beleza, cosméticos e equipamentos com o Purple Stock. Nossa solução é ideal para salões, spas e lojas de cosméticos.",
     benefits: [
@@ -209,7 +209,7 @@ const industriesData = [
     name: "Comércio",
     slug: "comercio",
     image:
-      "https://images.pexels.com/photos/1058959/pexels-photo-1058959.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "/images/pexels-photo-1058959.webp",
     description:
       "Otimize suas operações comerciais com o Purple Stock. Nossa plataforma oferece as ferramentas necessárias para gerenciar seu estoque com eficiência.",
     benefits: [
@@ -231,7 +231,7 @@ const industriesData = [
     name: "Educação",
     slug: "educacao",
     image:
-      "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "/images/pexels-photo-256541.webp",
     description:
       "Gerencie materiais didáticos, equipamentos e suprimentos escolares com o Purple Stock. Nossa solução é ideal para escolas, universidades e instituições de ensino.",
     benefits: [

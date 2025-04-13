@@ -28,7 +28,7 @@ export function Hero() {
 
           <div className="relative h-[400px] lg:h-[500px]">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-tiger-lily-4484075.jpg-50DbPOb3Uk5Y9mgg3qFLkITc3W5VNp.jpeg"
+              src="/images/hero-photo.jpeg"
               alt="Warehouse worker using Purple Stock on a tablet"
               fill
               className="object-cover rounded-lg"

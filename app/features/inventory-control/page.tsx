@@ -32,7 +32,7 @@ export default function InventoryControlPage() {
             </div>
             <div className="relative h-[300px] md:h-[400px]">
               <Image
-                src="https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/images/pexels-photo-4481259.webp"
                 alt="Inventory Control"
                 fill
                 className="object-cover rounded-lg shadow-lg"
@@ -117,7 +117,7 @@ export default function InventoryControlPage() {
             </div>
             <div className="order-1 md:order-2">
               <Image
-                src="https://images.pexels.com/photos/7654989/pexels-photo-7654989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/images/pexels-photo-7654989.webp"
                 alt="Inventory Benefits"
                 width={600}
                 height={400}

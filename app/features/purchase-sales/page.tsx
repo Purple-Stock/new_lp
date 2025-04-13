@@ -32,7 +32,7 @@ export default function PurchaseSalesPage() {
             </div>
             <div className="relative h-[300px] md:h-[400px]">
               <Image
-                src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/images/pexels-photo-4483610.webp" 
                 alt="Purchase and Sales"
                 fill
                 className="object-cover rounded-lg shadow-lg"
@@ -117,7 +117,7 @@ export default function PurchaseSalesPage() {
             </div>
             <div className="order-1 md:order-2">
               <Image
-                src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/images/pexels-photo-3183150.webp"
                 alt="Purchase and Sales Benefits"
                 width={600}
                 height={400}

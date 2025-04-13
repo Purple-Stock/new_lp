@@ -11,7 +11,7 @@ const industriesData = [
     name: "Atacado",
     slug: "atacado",
     image:
-      "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "/images/pexels-photo-4483610.webp",
     description:
       "Otimize a gestão de estoque para operações de atacado com o Purple Stock. Nossa solução é ideal para empresas que lidam com grandes volumes de produtos e precisam de controle preciso do inventário.",
     benefits: [

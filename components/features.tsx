@@ -50,35 +50,35 @@ export function Features() {
     {
       ...t.orderManagement,
       image:
-        "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "/images/pexels-photo-4483610.webp",
       bgColor: "bg-pink-50",
       textColor: "text-pink-500",
     },
     {
       ...t.barcode,
       image:
-        "https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "/images/pexels-photo-4481259.webp",
       bgColor: "bg-blue-50",
       textColor: "text-blue-500",
     },
     {
       ...t.security,
       image:
-        "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "/images/security-protection-anti-virus-software-60504.webp",
       bgColor: "bg-cyan-50",
       textColor: "text-cyan-500",
     },
     {
       ...t.realTime,
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-photo-8201187-8iKVuHhzsa1DVRcGhlDOEKYzbLF3ee.webp",
+        "/images/pexels-photo-8201187.webp",
       bgColor: "bg-violet-50",
       textColor: "text-violet-500",
     },
     {
       ...t.inventoryLink,
       image:
-        "https://images.pexels.com/photos/7654989/pexels-photo-7654989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "/images/pexels-photo-7654989.webp",
       bgColor: "bg-green-50",
       textColor: "text-green-500",
     },

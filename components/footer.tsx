@@ -88,8 +88,8 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-base text-gray-400">Purple Stock, Inc.</p>
-          <p className="text-sm text-gray-400 mt-2">made with ♥️ in São Paulo Brazil</p>
+          <p className="text-base text-gray-400">Purple Stock</p>
+          <p className="text-sm text-gray-400 mt-2">Made with ♥️ in São Paulo, Brazil</p>
         </div>
       </div>
     </footer>

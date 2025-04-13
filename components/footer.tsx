@@ -35,24 +35,36 @@ export function Footer() {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/purple_stock_logo-PMYaISOsL4kgzKkTILDzTOp3M5TK7A.jpeg"
-              alt="Purple Stock"
-              width={40}
-              height={40}
-              className="h-10 w-10 mb-4"
-            />
-            <div className="flex space-x-4">
+            <Link href="/" className="flex items-center mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" width="200" height="40" viewBox="0 0 350 70">
+                <defs>
+                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: "#8E44AD", stopOpacity: 1 }}></stop>
+                    <stop offset="100%" style={{ stopColor: "#5B2C6F", stopOpacity: 1 }}></stop>
+                  </linearGradient>
+                </defs>
+                <g fill="none" fillRule="evenodd">
+                  <path fill="url(#grad1)" d="M35 10l23 14v28L35 66 12 52V24z"></path>
+                  <path fill="#FFF" d="M33 22l-9 16h12l-5 14 14-18H33z"></path>
+                  <text fontFamily="Arial, sans-serif" fontSize="24" fontWeight="bold" fill="#5B2C6F" x="85" y="45">Purple Stock</text>
+                </g>
+              </svg>
+            </Link>
+            <div className="flex space-x-6">
               {navigation.social.map((item) => (
-                <Link key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
+                <Link key={item.name} href={item.href} className="text-gray-400 hover:text-purple-600">
                   <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" />
+                  <item.icon className="h-8 w-8" />
                 </Link>
               ))}
             </div>
-            <Button variant="outline" className="mt-4" onClick={() => setLanguage(language === "pt" ? "en" : "pt")}>
-              <Globe className="h-4 w-4 mr-2" />
-              {language === "pt" ? "English" : "Português"}
+            <Button 
+              variant="outline" 
+              className="mt-6 border-2 rounded-full px-6"
+              onClick={() => setLanguage(language === "pt" ? "en" : "pt")}
+            >
+              <Globe className="h-5 w-5 mr-2" />
+              {language === "pt" ? "Português" : "English"}
             </Button>
           </div>
 

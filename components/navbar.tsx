@@ -34,13 +34,19 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/purple_stock_logo-PMYaISOsL4kgzKkTILDzTOp3M5TK7A.jpeg"
-                alt="Purple Stock"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
+              <svg xmlns="http://www.w3.org/2000/svg" width="200" height="40" viewBox="0 0 350 70">
+                <defs>
+                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: "#8E44AD", stopOpacity: 1 }}></stop>
+                    <stop offset="100%" style={{ stopColor: "#5B2C6F", stopOpacity: 1 }}></stop>
+                  </linearGradient>
+                </defs>
+                <g fill="none" fillRule="evenodd">
+                  <path fill="url(#grad1)" d="M35 10l23 14v28L35 66 12 52V24z"></path>
+                  <path fill="#FFF" d="M33 22l-9 16h12l-5 14 14-18H33z"></path>
+                  <text fontFamily="Arial, sans-serif" fontSize="24" fontWeight="bold" fill="#5B2C6F" x="85" y="45">Purple Stock</text>
+                </g>
+              </svg>
             </Link>
           </div>
           <div className="hidden md:flex items-center gap-8">

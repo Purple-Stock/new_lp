@@ -55,7 +55,7 @@ const industriesData = [
     name: "Manufatura",
     slug: "manufatura",
     image:
-      "/images/pexels-photo-1145434.webp",
+      "/images/pexels-photo-1145434.jpeg",
     description:
       "Otimize sua produção e controle de materiais com o Purple Stock. Nossa solução é projetada para atender às necessidades específicas da indústria de manufatura.",
     benefits: [
@@ -77,7 +77,7 @@ const industriesData = [
     name: "Logística",
     slug: "logistica",
     image:
-      "/images/pexels-photo-1267338.webp",
+      "/images/pexels-photo-1267338.jpeg",
     description:
       "Simplifique suas operações logísticas com o Purple Stock. Nossa plataforma oferece visibilidade completa e controle sobre toda a cadeia de suprimentos.",
     benefits: [
@@ -121,7 +121,7 @@ const industriesData = [
     name: "Alimentos & Bebidas",
     slug: "alimentos-bebidas",
     image:
-      "/images/pexels-photo-1640777.webp",
+      "/images/pexels-photo-1640777.jpeg",
     description:
       "Controle seu estoque de alimentos e bebidas com eficiência usando o Purple Stock. Nossa plataforma ajuda a gerenciar datas de validade, lotes e rastreabilidade.",
     benefits: [
@@ -165,7 +165,7 @@ const industriesData = [
     name: "Médico",
     slug: "medico",
     image:
-      "/images/pexels-photo-40568.webp",
+      "/images/medical-appointment-doctor-healthcare-40568.webp",
     description:
       "Controle medicamentos, equipamentos e suprimentos médicos com precisão usando o Purple Stock. Nossa plataforma atende às necessidades específicas do setor de saúde.",
     benefits: [
@@ -209,7 +209,7 @@ const industriesData = [
     name: "Comércio",
     slug: "comercio",
     image:
-      "/images/pexels-photo-1058959.webp",
+      "/images/commerce.png",
     description:
       "Otimize suas operações comerciais com o Purple Stock. Nossa plataforma oferece as ferramentas necessárias para gerenciar seu estoque com eficiência.",
     benefits: [

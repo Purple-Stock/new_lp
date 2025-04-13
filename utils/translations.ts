@@ -15,6 +15,7 @@ export const translations = {
         analyticsReporting: "Análises & Relatórios",
         warehouseControl: "Controle de Almoxarifado",
         qrCodeManagement: "Gestão QR Code",
+        clothingManufacturing: "Sistemas para Confecção",
       },
     },
     hero: {
@@ -416,6 +417,56 @@ export const translations = {
           startTrial: "Iniciar Teste Gratuito"
         }
       },
+      clothingManufacturing: {
+        title: "Sistemas para Confecção",
+        description: "Sistema completo para gestão de confecções. Controle produção, estoque de matéria-prima, custos e vendas em uma única plataforma integrada.",
+        startTrial: "Iniciar Teste Gratuito",
+        features: {
+          title: "Recursos Especializados para Confecção",
+          description: "Nossa solução oferece todas as ferramentas necessárias para gerenciar sua confecção de forma eficiente.",
+          production: {
+            title: "Controle de Produção",
+            description: "Acompanhe todas as etapas da produção, desde o corte até o acabamento, com controle de qualidade integrado."
+          },
+          materials: {
+            title: "Gestão de Matéria-Prima",
+            description: "Controle seu estoque de tecidos, aviamentos e outros materiais com precisão e evite desperdícios."
+          },
+          costs: {
+            title: "Controle de Custos",
+            description: "Calcule custos de produção, defina preços e acompanhe a rentabilidade de cada peça ou coleção."
+          },
+          orders: {
+            title: "Gestão de Pedidos",
+            description: "Gerencie pedidos de clientes, programação de produção e entregas em um só lugar."
+          }
+        },
+        benefits: {
+          title: "Benefícios do Sistema para Confecção",
+          efficiency: {
+            title: "Maior Produtividade",
+            description: "Otimize processos de produção e reduza tempo de ciclo com controles automatizados."
+          },
+          quality: {
+            title: "Controle de Qualidade",
+            description: "Garanta a qualidade das peças com acompanhamento em todas as etapas da produção."
+          },
+          costs: {
+            title: "Redução de Custos",
+            description: "Minimize desperdícios e otimize o uso de recursos com controles precisos."
+          },
+          management: {
+            title: "Gestão Simplificada",
+            description: "Centralize todas as informações da sua confecção em uma única plataforma."
+          }
+        },
+        cta: {
+          title: "Pronto para Transformar sua Confecção?",
+          description: "Junte-se a milhares de confecções que melhoraram suas operações com o Purple Stock.",
+          scheduleDemo: "Agendar Demonstração",
+          startTrial: "Iniciar Teste Gratuito"
+        }
+      },
     },
   },
   en: {
@@ -434,6 +485,7 @@ export const translations = {
         analyticsReporting: "Analytics & Reporting",
         warehouseControl: "Warehouse Control",
         qrCodeManagement: "QR Code Management",
+        clothingManufacturing: "Clothing Manufacturing",
       },
     },
     hero: {
@@ -801,6 +853,56 @@ export const translations = {
         cta: {
           title: "Ready to Revolutionize Your Product Tracking?",
           description: "Join thousands of businesses that have improved their operations with Purple Stock's QR Code management.",
+          scheduleDemo: "Schedule Demo",
+          startTrial: "Start Free Trial"
+        }
+      },
+      clothingManufacturing: {
+        title: "Clothing Manufacturing System",
+        description: "Complete system for clothing manufacturing management. Control production, raw material inventory, costs, and sales in a single integrated platform.",
+        startTrial: "Start Free Trial",
+        features: {
+          title: "Specialized Features for Manufacturing",
+          description: "Our solution provides all the tools needed to manage your clothing manufacturing efficiently.",
+          production: {
+            title: "Production Control",
+            description: "Track all production stages, from cutting to finishing, with integrated quality control."
+          },
+          materials: {
+            title: "Raw Material Management",
+            description: "Control your inventory of fabrics, notions, and other materials with precision and avoid waste."
+          },
+          costs: {
+            title: "Cost Control",
+            description: "Calculate production costs, set prices, and track profitability for each piece or collection."
+          },
+          orders: {
+            title: "Order Management",
+            description: "Manage customer orders, production scheduling, and deliveries in one place."
+          }
+        },
+        benefits: {
+          title: "Benefits of the Manufacturing System",
+          efficiency: {
+            title: "Increased Productivity",
+            description: "Optimize production processes and reduce cycle time with automated controls."
+          },
+          quality: {
+            title: "Quality Control",
+            description: "Ensure piece quality with monitoring at all production stages."
+          },
+          costs: {
+            title: "Cost Reduction",
+            description: "Minimize waste and optimize resource usage with precise controls."
+          },
+          management: {
+            title: "Simplified Management",
+            description: "Centralize all your manufacturing information in a single platform."
+          }
+        },
+        cta: {
+          title: "Ready to Transform Your Manufacturing?",
+          description: "Join thousands of manufacturers that have improved their operations with Purple Stock.",
           scheduleDemo: "Schedule Demo",
           startTrial: "Start Free Trial"
         }

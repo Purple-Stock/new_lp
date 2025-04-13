@@ -98,6 +98,13 @@ export function Navbar() {
                     >
                       {t.features.qrCodeManagement}
                     </Link>
+                    <Link
+                      href="/features/clothing-manufacturing"
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setFeaturesOpen(false)}
+                    >
+                      {t.features.clothingManufacturing}
+                    </Link>
                   </div>
                 </div>
               )}

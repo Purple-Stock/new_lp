@@ -2,14 +2,14 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronDown, Menu, X } from "lucide-react"
+import { ChevronDown, Menu, X, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 import { useState, useRef, useEffect } from "react"
 
 export function Navbar() {
-  const { language } = useLanguage()
+  const { language, setLanguage } = useLanguage()
   const t = translations[language].nav
   const [featuresOpen, setFeaturesOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -172,6 +172,14 @@ export function Navbar() {
             <Link href="https://app.purplestock.com.br/">
               <Button className="bg-[#9333E9] hover:bg-[#7928CA]">{t.login}</Button>
             </Link>
+            <Button 
+              variant="outline" 
+              className="border-purple-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 rounded-full px-6"
+              onClick={() => setLanguage(language === "pt" ? "en" : "pt")}
+            >
+              <Globe className="h-5 w-5 mr-2 text-purple-500" />
+              {language === "pt" ? "Português" : "English"}
+            </Button>
           </div>
         </div>
 
@@ -303,6 +311,17 @@ export function Navbar() {
               >
                 {t.login}
               </Link>
+              <Button 
+                variant="outline" 
+                className="w-full border-purple-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 rounded-full px-6"
+                onClick={() => {
+                  setLanguage(language === "pt" ? "en" : "pt")
+                  setMobileMenuOpen(false)
+                }}
+              >
+                <Globe className="h-5 w-5 mr-2 text-purple-500" />
+                {language === "pt" ? "Português" : "English"}
+              </Button>
             </div>
           </div>
         )}

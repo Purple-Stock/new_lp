@@ -159,9 +159,11 @@ export default function WarehouseControlPage() {
             {t.cta.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-100 text-[#9333E9]">
-              {t.cta.scheduleDemo}
-            </Button>
+            <Link href="https://calendly.com/matheus-puppe">
+              <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-100 text-[#9333E9]">
+                {t.cta.scheduleDemo}
+              </Button>
+            </Link>
             <Link href="https://app.purplestock.com.br/">
               <Button size="lg" className="bg-transparent border-2 border-white hover:bg-white/10">
                 {t.cta.startTrial}

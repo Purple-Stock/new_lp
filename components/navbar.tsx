@@ -113,6 +113,13 @@ export function Navbar() {
                     >
                       {t.features.clothingManufacturing}
                     </Link>
+                    <Link
+                      href="/features/equipment-management"
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setFeaturesOpen(false)}
+                    >
+                      {t.features.equipmentManagement}
+                    </Link>
                   </div>
                 </div>
               )}

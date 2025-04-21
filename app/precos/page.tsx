@@ -68,7 +68,7 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/coming-soon">
+              <Link href="https://app.purplestock.com.br/">
                 <Button className="w-full bg-[#9333E9] hover:bg-[#7928CA]">Começar Agora</Button>
               </Link>
             </div>

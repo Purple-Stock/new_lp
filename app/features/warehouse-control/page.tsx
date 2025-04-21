@@ -27,7 +27,7 @@ export default function WarehouseControlPage() {
                 {t?.description ||
                   "Streamline your warehouse operations with Purple Stock's comprehensive warehouse management system. Optimize storage, track materials, and improve efficiency across your facility."}
               </p>
-              <Link href="/coming-soon">
+              <Link href="https://app.purplestock.com.br/">
                 <Button size="lg" className="bg-[#9333E9] hover:bg-[#7928CA]">
                   {t?.startTrial || "Start Free Trial"}
                 </Button>
@@ -162,7 +162,7 @@ export default function WarehouseControlPage() {
             <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-100 text-[#9333E9]">
               {t.cta.scheduleDemo}
             </Button>
-            <Link href="/coming-soon">
+            <Link href="https://app.purplestock.com.br/">
               <Button size="lg" className="bg-transparent border-2 border-white hover:bg-white/10">
                 {t.cta.startTrial}
               </Button>

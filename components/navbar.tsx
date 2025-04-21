@@ -132,10 +132,10 @@ export function Navbar() {
             >
               {t.blog}
             </a>
-            <Link href="/coming-soon" className="text-[#9333E9] hover:text-[#7928CA]">
+            <Link href="https://app.purplestock.com.br/" className="text-[#9333E9] hover:text-[#7928CA]">
               {t.freeBarcode}
             </Link>
-            <Link href="/coming-soon">
+            <Link href="https://app.purplestock.com.br/">
               <Button className="bg-[#9333E9] hover:bg-[#7928CA]">{t.login}</Button>
             </Link>
           </div>

@@ -18,7 +18,7 @@ export function Hero() {
           <div className="text-center lg:text-left">
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-6">{t.title}</h1>
             <p className="text-xl text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0">{t.description}</p>
-            <Link href="/coming-soon">
+            <Link href="https://app.purplestock.com.br/">
               <Button size="lg" className="bg-[#9333E9] hover:bg-[#7928CA]">
                 <Sparkles className="w-5 h-5 mr-2" />
                 {t.cta}

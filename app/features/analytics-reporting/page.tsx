@@ -24,7 +24,7 @@ export default function AnalyticsReportingPage() {
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">{t.title}</h1>
               <p className="text-lg text-gray-700 mb-8">{t.description}</p>
-              <Link href="/coming-soon">
+              <Link href="https://app.purplestock.com.br/">
                 <Button size="lg" className="bg-[#9333E9] hover:bg-[#7928CA]">
                   {t.startTrial}
                 </Button>
@@ -137,7 +137,7 @@ export default function AnalyticsReportingPage() {
             <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-100 text-[#9333E9]">
               {t.cta.scheduleDemo}
             </Button>
-            <Link href="/coming-soon">
+            <Link href="https://app.purplestock.com.br/">
               <Button size="lg" className="bg-transparent border-2 border-white hover:bg-white/10">
                 {t.cta.startTrial}
               </Button>

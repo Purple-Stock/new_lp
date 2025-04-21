@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
@@ -12,6 +12,7 @@ export function Navbar() {
   const { language } = useLanguage()
   const t = translations[language].nav
   const [featuresOpen, setFeaturesOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const featuresRef = useRef<HTMLDivElement>(null)
 
   // Close dropdown when clicking outside
@@ -51,6 +52,18 @@ export function Navbar() {
               </svg>
             </Link>
           </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-gray-700 hover:text-gray-900"
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+
+          {/* Desktop menu */}
           <div className="hidden md:flex items-center gap-8">
             <div className="relative" ref={featuresRef}>
               <button
@@ -161,6 +174,138 @@ export function Navbar() {
             </Link>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <div className="relative" ref={featuresRef}>
+                <button
+                  className="w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                  onClick={() => setFeaturesOpen(!featuresOpen)}
+                >
+                  <div className="flex items-center justify-between">
+                    {t.features.title}
+                    <ChevronDown className={`h-4 w-4 transition-transform ${featuresOpen ? 'rotate-180' : ''}`} />
+                  </div>
+                </button>
+
+                {featuresOpen && (
+                  <div className="pl-4 space-y-1">
+                    <Link
+                      href="/features/inventory-control"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t.features.inventoryControl}
+                    </Link>
+                    <Link
+                      href="/features/barcoding"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t.features.barcoding}
+                    </Link>
+                    <Link
+                      href="/features/purchase-sales"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t.features.purchaseSales}
+                    </Link>
+                    <Link
+                      href="/features/analytics-reporting"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t.features.analyticsReporting}
+                    </Link>
+                    <Link
+                      href="/features/warehouse-control"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t.features.warehouseControl}
+                    </Link>
+                    <Link
+                      href="/features/qr-code-management"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t.features.qrCodeManagement}
+                    </Link>
+                    <Link
+                      href="/features/clothing-manufacturing"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t.features.clothingManufacturing}
+                    </Link>
+                    <Link
+                      href="/features/equipment-management"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t.features.equipmentManagement}
+                    </Link>
+                    <Link
+                      href="/features/factory-management"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t.features.factoryManagement}
+                    </Link>
+                    <Link
+                      href="/features/inventory-app"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t.features.inventoryApp}
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href="/precos"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.pricing}
+              </Link>
+              <Link
+                href="/industrias"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.industries}
+              </Link>
+              <a
+                href="https://blog.purplestock.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.blog}
+              </a>
+              <Link
+                href="https://app.purplestock.com.br/"
+                className="block px-3 py-2 text-base font-medium text-[#9333E9] hover:text-[#7928CA] hover:bg-gray-50 rounded-md"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.freeBarcode}
+              </Link>
+              <Link
+                href="https://app.purplestock.com.br/"
+                className="block px-3 py-2 text-base font-medium text-white bg-[#9333E9] hover:bg-[#7928CA] rounded-md text-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.login}
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   )

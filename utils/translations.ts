@@ -17,6 +17,7 @@ export const translations = {
         qrCodeManagement: "Gestão QR Code",
         clothingManufacturing: "Sistemas para Confecção",
         equipmentManagement: "Sistema de Gerenciamento de Equipamentos por QR Code",
+        factoryManagement: "Gestão de Facção",
       },
     },
     hero: {
@@ -518,6 +519,56 @@ export const translations = {
           startTrial: "Iniciar Teste Gratuito"
         }
       },
+      factoryManagement: {
+        title: "Gestão de Facção",
+        description: "Sistema completo para gestão de facções. Controle produção, prazos, qualidade e custos em uma única plataforma integrada.",
+        startTrial: "Iniciar Teste Gratuito",
+        features: {
+          title: "Recursos Especializados para Facção",
+          description: "Nossa solução oferece todas as ferramentas necessárias para gerenciar sua facção de forma eficiente.",
+          production: {
+            title: "Controle de Produção",
+            description: "Acompanhe todas as etapas da produção, desde o recebimento até a expedição, com controle de qualidade."
+          },
+          deadlines: {
+            title: "Gestão de Prazos",
+            description: "Controle prazos de entrega, prioridades e capacidade produtiva de forma eficiente."
+          },
+          quality: {
+            title: "Controle de Qualidade",
+            description: "Registre inspeções, defeitos e ações corretivas para garantir a qualidade das peças."
+          },
+          costs: {
+            title: "Gestão Financeira",
+            description: "Calcule custos, margens e acompanhe pagamentos por produção."
+          }
+        },
+        benefits: {
+          title: "Benefícios da Gestão de Facção",
+          efficiency: {
+            title: "Maior Produtividade",
+            description: "Otimize processos e aumente a produtividade com controles automatizados."
+          },
+          quality: {
+            title: "Garantia de Qualidade",
+            description: "Mantenha padrões de qualidade consistentes em toda a produção."
+          },
+          deadlines: {
+            title: "Cumprimento de Prazos",
+            description: "Entregue no prazo com melhor planejamento e controle da produção."
+          },
+          costs: {
+            title: "Controle Financeiro",
+            description: "Tenha visibilidade completa sobre custos e rentabilidade por cliente e peça."
+          }
+        },
+        cta: {
+          title: "Pronto para Transformar sua Facção?",
+          description: "Junte-se a milhares de facções que melhoraram suas operações com o Purple Stock.",
+          scheduleDemo: "Agendar Demonstração",
+          startTrial: "Iniciar Teste Gratuito"
+        }
+      },
     },
   },
   en: {
@@ -538,6 +589,7 @@ export const translations = {
         qrCodeManagement: "QR Code Management",
         clothingManufacturing: "Clothing Manufacturing",
         equipmentManagement: "Equipment Management System with QR Code",
+        factoryManagement: "Clothing Factory Management",
       },
     },
     hero: {
@@ -1005,6 +1057,56 @@ export const translations = {
         cta: {
           title: "Ready to Revolutionize Your Equipment Management?",
           description: "Join thousands of companies that have optimized their equipment management with Purple Stock.",
+          scheduleDemo: "Schedule Demo",
+          startTrial: "Start Free Trial"
+        }
+      },
+      factoryManagement: {
+        title: "Clothing Factory Management",
+        description: "Complete system for clothing factory management. Control production, deadlines, quality, and costs in a single integrated platform.",
+        startTrial: "Start Free Trial",
+        features: {
+          title: "Specialized Factory Features",
+          description: "Our solution provides all the tools needed to manage your clothing factory efficiently.",
+          production: {
+            title: "Production Control",
+            description: "Track all production stages, from receiving to shipping, with quality control."
+          },
+          deadlines: {
+            title: "Deadline Management",
+            description: "Control delivery deadlines, priorities, and production capacity efficiently."
+          },
+          quality: {
+            title: "Quality Control",
+            description: "Record inspections, defects, and corrective actions to ensure piece quality."
+          },
+          costs: {
+            title: "Financial Management",
+            description: "Calculate costs, margins, and track production payments."
+          }
+        },
+        benefits: {
+          title: "Benefits of Factory Management",
+          efficiency: {
+            title: "Increased Productivity",
+            description: "Optimize processes and increase productivity with automated controls."
+          },
+          quality: {
+            title: "Quality Assurance",
+            description: "Maintain consistent quality standards throughout production."
+          },
+          deadlines: {
+            title: "Meeting Deadlines",
+            description: "Deliver on time with better production planning and control."
+          },
+          costs: {
+            title: "Financial Control",
+            description: "Have complete visibility over costs and profitability by client and piece."
+          }
+        },
+        cta: {
+          title: "Ready to Transform Your Factory?",
+          description: "Join thousands of factories that have improved their operations with Purple Stock.",
           scheduleDemo: "Schedule Demo",
           startTrial: "Start Free Trial"
         }

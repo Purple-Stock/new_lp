@@ -175,10 +175,14 @@ export function Navbar() {
             <Button 
               variant="outline" 
               className="border-purple-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 rounded-full px-6"
-              onClick={() => setLanguage(language === "pt" ? "en" : "pt")}
+              onClick={() => {
+                if (language === "pt") setLanguage("en");
+                else if (language === "en") setLanguage("fr");
+                else setLanguage("pt");
+              }}
             >
               <Globe className="h-5 w-5 mr-2 text-purple-500" />
-              {language === "pt" ? "Português" : "English"}
+              {language === "pt" ? "Português" : language === "en" ? "English" : "Français"}
             </Button>
           </div>
         </div>
@@ -315,12 +319,14 @@ export function Navbar() {
                 variant="outline" 
                 className="w-full border-purple-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 rounded-full px-6"
                 onClick={() => {
-                  setLanguage(language === "pt" ? "en" : "pt")
+                  if (language === "pt") setLanguage("en");
+                  else if (language === "en") setLanguage("fr");
+                  else setLanguage("pt");
                   setMobileMenuOpen(false)
                 }}
               >
                 <Globe className="h-5 w-5 mr-2 text-purple-500" />
-                {language === "pt" ? "Português" : "English"}
+                {language === "pt" ? "Português" : language === "en" ? "English" : "Français"}
               </Button>
             </div>
           </div>

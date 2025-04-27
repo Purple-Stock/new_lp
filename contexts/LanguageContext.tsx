@@ -3,7 +3,7 @@
 import type React from "react"
 import { createContext, useState, useContext, type ReactNode } from "react"
 
-type Language = "pt" | "en"
+type Language = "pt" | "en" | "fr"
 
 type LanguageContextType = {
   language: Language

@@ -22,10 +22,27 @@ export const translations = {
       },
     },
     hero: {
-      title: "Controle de Estoque Inteligente",
+      title: "Contrôle de Estoque Inteligente",
       description:
         "Transforme sua gestão de inventário com o Purple Stock. Projetado para empresas inovadoras que buscam eficiência e precisão em suas operações.",
       cta: "Comece Gratuitamente",
+      subtitle: "Começa Com",
+      subtitleHighlight: "Purple Stock",
+      description2: "Centralize seu inventário em uma plataforma poderosa e intuitiva. Com Purple Stock, tenha visibilidade total e controle preciso do seu estoque em qualquer dispositivo, a qualquer momento."
+    },
+    industries: {
+      title: "Software de Inventário para Sua Indústria",
+      description: "A solução de gestão de inventário da Purple Stock ajuda pequenas empresas de todos os setores a economizar tempo e dinheiro valiosos quando se trata de organizar inventário e ativos físicos.",
+      industries: {
+        retail: "Varejo",
+        manufacturing: "Manufatura",
+        logistics: "Logística",
+        food: "Alimentício",
+        pharmaceutical: "Farmacêutico",
+        automotive: "Automotivo",
+        construction: "Construção",
+        technology: "Tecnologia"
+      }
     },
     trustedBy: {
       title: "Confiado por Líderes do Mercado",
@@ -649,6 +666,23 @@ export const translations = {
       description:
         "Transform your inventory management with Purple Stock. Designed for innovative companies seeking efficiency and precision in their operations.",
       cta: "Start for Free",
+      subtitle: "Starts With",
+      subtitleHighlight: "Purple Stock",
+      description2: "Centralize your inventory on a powerful and intuitive platform. With Purple Stock, have total visibility and precise control of your stock on any device, at any time."
+    },
+    industries: {
+      title: "Inventory Software for Your Industry",
+      description: "Purple Stock's inventory management solution helps small businesses across all sectors save valuable time and money when it comes to organizing inventory and physical assets.",
+      industries: {
+        retail: "Retail",
+        manufacturing: "Manufacturing",
+        logistics: "Logistics",
+        food: "Food",
+        pharmaceutical: "Pharmaceutical",
+        automotive: "Automotive",
+        construction: "Construction",
+        technology: "Technology"
+      }
     },
     trustedBy: {
       title: "Trusted by Market Leaders",
@@ -1242,6 +1276,23 @@ export const translations = {
       description:
         "Transformez votre gestion des stocks avec Purple Stock. Conçu pour les entreprises innovantes recherchant efficacité et précision dans leurs opérations.",
       cta: "Commencer Gratuitement",
+      subtitle: "Commence Avec",
+      subtitleHighlight: "Purple Stock",
+      description2: "Centralisez votre inventaire sur une plateforme puissante et intuitive. Avec Purple Stock, ayez une visibilité totale et un contrôle précis de votre stock sur n'importe quel appareil, à tout moment."
+    },
+    industries: {
+      title: "Logiciel d'Inventaire pour Votre Industrie",
+      description: "La solution de gestion d'inventaire de Purple Stock aide les petites entreprises de tous les secteurs à économiser du temps et de l'argent précieux lorsqu'il s'agit d'organiser l'inventaire et les actifs physiques.",
+      industries: {
+        retail: "Commerce",
+        manufacturing: "Fabrication",
+        logistics: "Logistique",
+        food: "Alimentaire",
+        pharmaceutical: "Pharmaceutique",
+        automotive: "Automobile",
+        construction: "Construction",
+        technology: "Technologie"
+      }
     },
     trustedBy: {
       title: "Fiable par les Leaders du Marché",

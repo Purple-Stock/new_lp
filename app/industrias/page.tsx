@@ -1,78 +1,58 @@
+"use client"
+
+import { useLanguage } from "@/contexts/LanguageContext"
+import { translations } from "@/utils/translations"
+import Link from "next/link"
+import Image from "next/image"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import Image from "next/image"
-import Link from "next/link"
 
-const industries = [
+type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology"
+
+interface Industry {
+  id: IndustryId
+  image: string
+}
+
+const industries: Industry[] = [
   {
-    name: "Atacado",
-    slug: "atacado",
-    image:
-      "/images/pexels-photo-4483610.webp",
+    id: "retail",
+    image: "/industries/retail.jpg",
   },
   {
-    name: "Varejo",
-    slug: "varejo",
-    image:
-      "/images/pexels-photo-264507.jpeg",
+    id: "manufacturing",
+    image: "/industries/manufacturing.jpg",
   },
   {
-    name: "Manufatura",
-    slug: "manufatura",
-    image:
-      "/images/pexels-photo-1145434.jpeg",
+    id: "logistics",
+    image: "/industries/logistics.jpg",
   },
   {
-    name: "Logística",
-    slug: "logistica",
-    image:
-      "/images/pexels-photo-1267338.jpeg",
+    id: "food",
+    image: "/industries/food.jpg",
   },
   {
-    name: "Moda",
-    slug: "moda",
-    image:
-      "/images/pexels-photo-994523.webp",
+    id: "pharmaceutical",
+    image: "/industries/pharmaceutical.jpg",
   },
   {
-    name: "Alimentos & Bebidas",
-    slug: "alimentos-bebidas",
-    image:
-      "/images/pexels-photo-1640777.jpeg",
+    id: "automotive",
+    image: "/industries/automotive.jpg",
   },
   {
-    name: "Construção",
-    slug: "construcao",
-    image:
-      "/images/building.png",
+    id: "construction",
+    image: "/industries/construction.jpg",
   },
   {
-    name: "Médico",
-    slug: "medico",
-    image:
-      "/images/medical-appointment-doctor-healthcare-40568.webp",
-  },
-  {
-    name: "Beleza",
-    slug: "beleza",
-    image:
-      "/images/pexels-photo-3985298.webp",
-  },
-  {
-    name: "Comércio",
-    slug: "comercio",
-    image:
-      "/images/commerce.png",
-  },
-  {
-    name: "Educação",
-    slug: "educacao",
-    image:
-      "/images/pexels-photo-256541.webp",
+    id: "technology",
+    image: "/industries/technology.jpg",
   },
 ]
 
 export default function IndustriasPage() {
+  const { language } = useLanguage()
+  const t = translations[language]
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
@@ -80,10 +60,9 @@ export default function IndustriasPage() {
       <div className="pt-20 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Software de Inventário para Sua Indústria</h1>
+            <h1 className="text-4xl font-bold mb-4">{t.industries.title}</h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              A solução de gestão de inventário da Purple Stock ajuda pequenas empresas de todos os setores a economizar
-              tempo e dinheiro valiosos quando se trata de organizar inventário e ativos físicos.
+              {t.industries.description}
             </p>
           </div>
 
@@ -91,17 +70,17 @@ export default function IndustriasPage() {
             {industries.map((industry, index) => (
               <Link
                 key={index}
-                href={`/industrias/${industry.slug}`}
+                href={`/industrias/${industry.id}`}
                 className="group relative aspect-square overflow-hidden rounded-2xl bg-gray-200"
               >
                 <Image
                   src={industry.image || "/placeholder.svg"}
-                  alt={industry.name}
+                  alt={t.industries.industries[industry.id]}
                   fill
                   className="object-cover transition-transform group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-end p-4">
-                  <h3 className="text-white font-medium">{industry.name}</h3>
+                  <h3 className="text-white font-medium">{t.industries.industries[industry.id]}</h3>
                 </div>
               </Link>
             ))}

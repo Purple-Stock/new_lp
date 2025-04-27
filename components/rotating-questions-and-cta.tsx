@@ -1,14 +1,31 @@
 "use client"
 
 import { useState, useEffect } from "react"
-
-const questions = [
-  "Cansado de perder vendas por falta de estoque?",
-  "Quer ter controle total do seu inventário em tempo real?",
-  "Pronto para eliminar erros de contagem manual?",
-]
+import { useLanguage } from "@/contexts/LanguageContext"
+import { translations } from "@/utils/translations"
 
 export function RotatingQuestionsAndCTA() {
+  const { language } = useLanguage()
+  const t = translations[language]
+  
+  const questions = {
+    pt: [
+      "Cansado de perder vendas por falta de estoque?",
+      "Quer ter controle total do seu inventário em tempo real?",
+      "Pronto para eliminar erros de contagem manual?",
+    ],
+    en: [
+      "Tired of losing sales due to stockouts?",
+      "Want total control of your inventory in real-time?",
+      "Ready to eliminate manual counting errors?",
+    ],
+    fr: [
+      "Fatigué de perdre des ventes par manque de stock ?",
+      "Vous voulez un contrôle total de votre inventaire en temps réel ?",
+      "Prêt à éliminer les erreurs de comptage manuel ?",
+    ],
+  }
+
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
@@ -16,19 +33,19 @@ export function RotatingQuestionsAndCTA() {
     const interval = setInterval(() => {
       setIsAnimating(true)
       setTimeout(() => {
-        setCurrentQuestion((prev) => (prev + 1) % questions.length)
+        setCurrentQuestion((prev) => (prev + 1) % questions[language].length)
         setIsAnimating(false)
       }, 500)
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [language])
 
   return (
     <section className="py-24 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-16 h-32 relative">
-          {questions.map((question, index) => (
+          {questions[language].map((question, index) => (
             <h3
               key={index}
               className={`text-2xl transition-all duration-500 absolute left-0 right-0 ${
@@ -43,14 +60,13 @@ export function RotatingQuestionsAndCTA() {
         </div>
 
         <h2 className="text-4xl font-bold mb-6">
-          Controle de Estoque Inteligente
+          {t.hero.title}
           <br />
-          Começa Com <span className="text-[#9333E9]">Purple Stock</span>
+          {t.hero.subtitle} <span className="text-[#9333E9]">{t.hero.subtitleHighlight}</span>
         </h2>
 
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          Centralize seu inventário em uma plataforma poderosa e intuitiva. Com Purple Stock, tenha visibilidade total e
-          controle preciso do seu estoque em qualquer dispositivo, a qualquer momento.
+          {t.hero.description2}
         </p>
       </div>
     </section>

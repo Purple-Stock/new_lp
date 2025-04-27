@@ -22,7 +22,7 @@ export const translations = {
       },
     },
     hero: {
-      title: "Contrôle de Estoque Inteligente",
+      title: "Controle de Estoque Inteligente",
       description:
         "Transforme sua gestão de inventário com o Purple Stock. Projetado para empresas inovadoras que buscam eficiência e precisão em suas operações.",
       cta: "Comece Gratuitamente",

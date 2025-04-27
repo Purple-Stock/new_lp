@@ -17,35 +17,35 @@ interface Industry {
 const industries: Industry[] = [
   {
     id: "retail",
-    image: "/industries/retail.jpg",
+    image: "/images/pexels-photo-264507.jpeg",
   },
   {
     id: "manufacturing",
-    image: "/industries/manufacturing.jpg",
+    image: "/images/pexels-photo-1145434.jpeg",
   },
   {
     id: "logistics",
-    image: "/industries/logistics.jpg",
+    image: "/images/pexels-photo-1267338.jpeg",
   },
   {
     id: "food",
-    image: "/industries/food.jpg",
+    image: "/images/pexels-photo-1640777.jpeg",
   },
   {
     id: "pharmaceutical",
-    image: "/industries/pharmaceutical.jpg",
+    image: "/images/medical-appointment-doctor-healthcare-40568.webp",
   },
   {
     id: "automotive",
-    image: "/industries/automotive.jpg",
+    image: "/images/pexels-photo-4483610.webp",
   },
   {
     id: "construction",
-    image: "/industries/construction.jpg",
+    image: "/images/construction-site-build-construction-work-159358.jpeg",
   },
   {
     id: "technology",
-    image: "/industries/technology.jpg",
+    image: "/images/pexels-photo-256541.webp",
   },
 ]
 

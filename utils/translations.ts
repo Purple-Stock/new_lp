@@ -638,6 +638,15 @@ export const translations = {
         }
       },
     },
+    glossary: {
+      title: "Glossário de Termos para Pequenas Empresas",
+      description: "Nosso glossário explica termos e siglas importantes de gestão de estoque e contabilidade, fornecendo às pequenas empresas o conhecimento necessário para otimizar processos de inventário, controlar custos e aprimorar suas finanças.",
+      learnMore: {
+        title: "Quer aprender mais sobre estratégias de crescimento e melhores práticas de gestão de estoque?",
+        description: "Confira o Blog do Purple Stock abaixo:",
+        link: "Blog Purple Stock"
+      }
+    }
   },
   en: {
     nav: {
@@ -1248,6 +1257,15 @@ export const translations = {
         }
       },
     },
+    glossary: {
+      title: "Glossary of Terms for Small Businesses",
+      description: "Our glossary explains important inventory management and accounting terms and acronyms, providing small businesses with the knowledge needed to optimize inventory processes, control costs, and enhance their finances.",
+      learnMore: {
+        title: "Want to learn more about growth strategies and best practices in inventory management?",
+        description: "Check out the Purple Stock Blog below:",
+        link: "Purple Stock Blog"
+      }
+    }
   },
   fr: {
     nav: {
@@ -1865,6 +1883,15 @@ export const translations = {
         },
       },
     },
+    glossary: {
+      title: "Glossaire des Termes pour les Petites Entreprises",
+      description: "Notre glossaire explique les termes et acronymes importants de la gestion des stocks et de la comptabilité, fournissant aux petites entreprises les connaissances nécessaires pour optimiser les processus d'inventaire, contrôler les coûts et améliorer leurs finances.",
+      learnMore: {
+        title: "Vous souhaitez en savoir plus sur les stratégies de croissance et les meilleures pratiques de gestion des stocks ?",
+        description: "Consultez le Blog Purple Stock ci-dessous :",
+        link: "Blog Purple Stock"
+      }
+    }
   },
 }
 

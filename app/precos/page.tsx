@@ -5,42 +5,44 @@ import { Navbar } from "@/components/navbar"
 
 const plans = [
   {
-    name: "Básico",
-    price: "R$99",
-    description: "Ideal para pequenas empresas",
+    name: "Gratuito",
+    price: "R$ 0,00",
+    description: "Plano Atual",
     features: [
-      "Até 500 itens",
-      "1 usuário",
-      "Suporte por email",
-      "Atualizações de estoque em tempo real",
-      "Relatórios básicos",
+      "Até 10 itens",
+      "Análises básicas",
     ],
+    buttonText: "Plano Atual",
+    buttonLink: "#",
   },
   {
-    name: "Profissional",
-    price: "R$199",
-    description: "Perfeito para empresas em crescimento",
+    name: "Pro",
+    price: "R$ 149,00",
+    description: "Popular",
     features: [
-      "Até 5.000 itens",
-      "5 usuários",
+      "Até 100 itens",
+      "Análises avançadas",
       "Suporte prioritário",
-      "Integração com e-commerce",
-      "Relatórios avançados",
-      "Previsão de demanda",
+      "Relatórios personalizados",
+      "Suporte por email",
     ],
+    buttonText: "Atualizar Agora",
+    buttonLink: "https://app.purplestock.com.br/",
   },
   {
     name: "Empresarial",
-    price: "R$399",
+    price: "Preço Personalizado",
     description: "Para grandes operações",
     features: [
+      "Tudo do Pro",
       "Itens ilimitados",
-      "Usuários ilimitados",
-      "Suporte 24/7",
-      "API completa",
-      "Personalização avançada",
-      "Treinamento dedicado",
+      "Suporte dedicado",
+      "Integração personalizada",
+      "Garantia de SLA",
+      "Acesso à API",
     ],
+    buttonText: "Fale com Vendas",
+    buttonLink: "https://api.whatsapp.com/send/?phone=5511995597242&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+o+plano+empresarial.&type=phone_number&app_absent=0",
   },
 ]
 
@@ -57,7 +59,7 @@ export default function PricingPage() {
               <h2 className="text-2xl font-bold mb-4">{plan.name}</h2>
               <p className="text-4xl font-bold mb-4">
                 {plan.price}
-                <span className="text-lg font-normal text-gray-500">/mês</span>
+                {plan.price !== "Preço Personalizado" && <span className="text-lg font-normal text-gray-500">/mês</span>}
               </p>
               <p className="text-gray-600 mb-6">{plan.description}</p>
               <ul className="mb-8 space-y-4">
@@ -68,8 +70,8 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <Link href="https://app.purplestock.com.br/">
-                <Button className="w-full bg-[#9333E9] hover:bg-[#7928CA]">Começar Agora</Button>
+              <Link href={plan.buttonLink}>
+                <Button className="w-full bg-[#9333E9] hover:bg-[#7928CA]">{plan.buttonText}</Button>
               </Link>
             </div>
           ))}

@@ -38,7 +38,7 @@ export default function PricingPage() {
               <h2 className="text-2xl font-bold mb-4">{plan.name}</h2>
               <p className="text-4xl font-bold mb-4">
                 {plan.price}
-                {plan.price !== "Preço Personalizado" && plan.price !== "Custom Price" && plan.price !== "Prix Personnalisé" && <span className="text-lg font-normal text-gray-500">/mês</span>}
+                {plan.price !== "Preço Personalizado" && plan.price !== "Custom Price" && plan.price !== "Prix Personnalisé" && <span className="text-lg font-normal text-gray-500">/{language === 'pt' ? 'mês' : language === 'en' ? 'month' : 'mois'}</span>}
               </p>
               <p className="text-gray-600 mb-6">{plan.description}</p>
               <ul className="mb-8 space-y-4">

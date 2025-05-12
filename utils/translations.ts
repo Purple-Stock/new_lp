@@ -646,7 +646,56 @@ export const translations = {
         description: "Confira o Blog do Purple Stock abaixo:",
         link: "Blog Purple Stock"
       }
-    }
+    },
+    pricing: {
+      title: "Planos e Preços",
+      subtitle: "Escolha o plano perfeito para o seu negócio",
+      plans: [
+        {
+          name: "Gratuito",
+          price: "R$ 0,00",
+          description: "Para começar",
+          features: [
+            "Até 10 itens",
+            "Análises básicas",
+            "Suporte por email",
+          ],
+          buttonText: "Começar Agora",
+          buttonLink: "https://app.purplestock.com.br/",
+        },
+        {
+          name: "Pro",
+          price: "R$ 150,00",
+          description: "Popular",
+          features: [
+            "Até 100 itens",
+            "Análises avançadas",
+            "Suporte prioritário",
+            "Relatórios personalizados",
+            "Suporte por email",
+          ],
+          buttonText: "Atualizar Agora",
+          buttonLink: "https://app.purplestock.com.br/",
+        },
+        {
+          name: "Empresarial",
+          price: "Preço Personalizado",
+          description: "Para grandes empresas",
+          features: [
+            "Itens ilimitados",
+            "Análises avançadas",
+            "Suporte prioritário 24/7",
+            "Relatórios personalizados",
+            "API disponível",
+            "Suporte por email e telefone",
+            "Treinamento da equipe",
+            "SLA garantido",
+          ],
+          buttonText: "Fale com Vendas",
+          buttonLink: "https://wa.me/5541999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20plano%20Empresarial%20do%20Purple%20Stock",
+        },
+      ],
+    },
   },
   en: {
     nav: {
@@ -1265,7 +1314,54 @@ export const translations = {
         description: "Check out the Purple Stock Blog below:",
         link: "Purple Stock Blog"
       }
-    }
+    },
+    pricing: {
+      title: "Plans and Pricing",
+      subtitle: "Choose the perfect plan for your business",
+      plans: [
+        {
+          name: "Free",
+          price: "$0.00",
+          description: "To get started",
+          features: [
+            "Up to 10 items",
+            "Basic analytics",
+            "Email support",
+          ],
+          buttonText: "Get Started",
+          buttonLink: "https://app.purplestock.com.br/",
+        },
+        {
+          name: "Pro",
+          price: "$25.00",
+          description: "Popular",
+          features: [
+            "Up to 100 items",
+            "Advanced analytics",
+            "Priority support",
+            "Custom reports",
+            "Email support",
+          ],
+          buttonText: "Upgrade Now",
+          buttonLink: "https://app.purplestock.com.br/",
+        },
+        {
+          name: "Enterprise",
+          price: "Custom Price",
+          description: "For large operations",
+          features: [
+            "Everything in Pro",
+            "Unlimited items",
+            "Dedicated support",
+            "Custom integration",
+            "SLA guarantee",
+            "API access",
+          ],
+          buttonText: "Talk to Sales",
+          buttonLink: "https://api.whatsapp.com/send/?phone=5511995597242&text=Hello!+I%27d+like+to+know+more+about+the+enterprise+plan.&type=phone_number&app_absent=0",
+        },
+      ],
+    },
   },
   fr: {
     nav: {
@@ -1891,7 +1987,54 @@ export const translations = {
         description: "Consultez le Blog Purple Stock ci-dessous :",
         link: "Blog Purple Stock"
       }
-    }
+    },
+    pricing: {
+      title: "Plans et Tarifs",
+      subtitle: "Choisissez le plan parfait pour votre entreprise",
+      plans: [
+        {
+          name: "Gratuit",
+          price: "0,00 €",
+          description: "Pour commencer",
+          features: [
+            "Jusqu'à 10 articles",
+            "Analyses de base",
+            "Support par email",
+          ],
+          buttonText: "Commencer",
+          buttonLink: "https://app.purplestock.com.br/",
+        },
+        {
+          name: "Pro",
+          price: "$25.00",
+          description: "Populaire",
+          features: [
+            "Jusqu'à 100 articles",
+            "Analyses avancées",
+            "Support prioritaire",
+            "Rapports personnalisés",
+            "Support par email",
+          ],
+          buttonText: "Mettre à Niveau",
+          buttonLink: "https://app.purplestock.com.br/",
+        },
+        {
+          name: "Entreprise",
+          price: "Prix Personnalisé",
+          description: "Pour les grandes opérations",
+          features: [
+            "Tout du Pro",
+            "Articles illimités",
+            "Support dédié",
+            "Intégration personnalisée",
+            "Garantie SLA",
+            "Accès API",
+          ],
+          buttonText: "Parler aux Ventes",
+          buttonLink: "https://api.whatsapp.com/send/?phone=5511995597242&text=Bonjour%21+Je+souhaiterais+en+savoir+plus+sur+le+plan+entreprise.&type=phone_number&app_absent=0",
+        },
+      ],
+    },
   },
 }
 

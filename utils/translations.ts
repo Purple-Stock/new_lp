@@ -7,6 +7,7 @@ export const translations = {
       freeBarcode: "Código de Barras Grátis",
       login: "Entrar",
       blog: "Blog",
+      articles: "Artigos",
       features: {
         title: "Recursos",
         inventoryControl: "Controle de Inventário",
@@ -700,11 +701,12 @@ export const translations = {
   en: {
     nav: {
       resources: "Resources",
-      pricing: "Plans",
+      pricing: "Pricing",
       industries: "Industries",
       freeBarcode: "Free Barcode",
       login: "Login",
       blog: "Blog",
+      articles: "Articles",
       features: {
         title: "Features",
         inventoryControl: "Inventory Control",
@@ -1366,11 +1368,12 @@ export const translations = {
   fr: {
     nav: {
       resources: "Ressources",
-      pricing: "Tarifs",
-      industries: "Secteurs",
+      pricing: "Tarification",
+      industries: "Industries",
       freeBarcode: "Code-barres Gratuit",
       login: "Connexion",
       blog: "Blog",
+      articles: "Articles",
       features: {
         title: "Fonctionnalités",
         inventoryControl: "Contrôle des Stocks",

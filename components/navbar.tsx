@@ -158,6 +158,9 @@ export function Navbar() {
             <Link href="/industrias" className="text-gray-700 hover:text-gray-900">
               {t.industries}
             </Link>
+            <Link href="/artigos" className="text-gray-700 hover:text-gray-900">
+              {t.articles}
+            </Link>
             <a
               href="https://blog.purplestock.com.br/"
               target="_blank"
@@ -291,6 +294,13 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.industries}
+              </Link>
+              <Link
+                href="/artigos"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.articles}
               </Link>
               <a
                 href="https://blog.purplestock.com.br/"

@@ -30,7 +30,7 @@ export default function CodigoDeBarrasGratis() {
   const [fontSize, setFontSize] = useState(20)
   
   // QR Code specific options
-  const [qrData, setQrData] = useState("https://purplestock.com")
+  const [qrData, setQrData] = useState("https://www.purplestock.com.br")
   const [qrSize, setQrSize] = useState(256)
   const [qrErrorCorrection, setQrErrorCorrection] = useState("M")
   const [qrMargin, setQrMargin] = useState(4)

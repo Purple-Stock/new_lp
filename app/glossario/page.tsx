@@ -1,14 +1,41 @@
 "use client"
 
+import { useState, useMemo } from "react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { Search, BookOpen, TrendingUp, Building2, Truck, Calculator, Database, Globe, Filter } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 export default function Glossario() {
   const { language } = useLanguage()
   const t = translations[language]
+  const [searchTerm, setSearchTerm] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("all")
+
+  // Define categories for terms
+  const categories = [
+    { id: "all", label: "Todos", icon: Globe, color: "bg-gray-100 text-gray-700" },
+    { id: "inventory", label: "Inventário", icon: Database, color: "bg-blue-100 text-blue-700" },
+    { id: "logistics", label: "Logística", icon: Truck, color: "bg-green-100 text-green-700" },
+    { id: "finance", label: "Finanças", icon: Calculator, color: "bg-purple-100 text-purple-700" },
+    { id: "management", label: "Gestão", icon: Building2, color: "bg-orange-100 text-orange-700" },
+    { id: "technology", label: "Tecnologia", icon: TrendingUp, color: "bg-red-100 text-red-700" }
+  ]
+
+  // Categorize terms
+  const categorizedTerms = {
+    inventory: ["inventory-management", "inventory-count", "inventory-turnover", "inventory-financing", "sku", "stockout", "overstock", "safety-stock"],
+    logistics: ["logistics", "supply-chain", "lead-time", "reverse-logistics", "picking-error", "wms", "3pl", "vmi"],
+    finance: ["accounts-payable", "accounts-receivable", "current-assets", "current-liabilities", "cogs", "working-capital", "ccc", "inflation"],
+    management: ["5s", "80-20", "demand-forecasting", "jit", "moq", "eoq", "recommerce", "bullwhip"],
+    technology: ["barcode", "rfid", "erp", "itam", "dropshipping"]
+  }
 
   const terms = [
     {
@@ -643,30 +670,168 @@ export default function Glossario() {
     }
   ]
 
+  // Filter terms based on search and category
+  const filteredTerms = useMemo(() => {
+    let filtered = terms
+
+    // Filter by category
+    if (selectedCategory !== "all") {
+      const categoryTermIds = categorizedTerms[selectedCategory as keyof typeof categorizedTerms] || []
+      filtered = filtered.filter(term => categoryTermIds.includes(term.id))
+    }
+
+    // Filter by search term
+    if (searchTerm) {
+      filtered = filtered.filter(term => 
+        term[language].term.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        term[language].definition.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    }
+
+    return filtered
+  }, [terms, language, searchTerm, selectedCategory])
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">{t.glossary.title}</h1>
-          <p className="text-xl text-gray-600">{t.glossary.description}</p>
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-6">
+            <BookOpen className="w-8 h-8 text-purple-600" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
+            {t.glossary.title}
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            {t.glossary.description}
+          </p>
         </div>
 
-        <div className="grid gap-8">
-          {terms.map((term) => (
-            <div key={term.id} className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-2">{term[language].term}</h2>
-              <p className="text-gray-600">{term[language].definition}</p>
+        {/* Search and Filters */}
+        <div className="mb-8">
+          <div className="flex flex-col md:flex-row gap-4 mb-6">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Input
+                type="text"
+                placeholder="Buscar termos..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 pr-4 py-3 text-lg border-purple-200 focus:border-purple-500 focus:ring-purple-500"
+              />
             </div>
-          ))}
+            <Button
+              variant="outline"
+              className="border-purple-200 hover:border-purple-300 hover:bg-purple-50"
+            >
+              <Filter className="w-4 h-4 mr-2" />
+              Filtros
+            </Button>
+          </div>
+
+          {/* Category Filters */}
+          <div className="flex flex-wrap gap-3 justify-center">
+            {categories.map((category) => {
+              const Icon = category.icon
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-200 ${
+                    selectedCategory === category.id
+                      ? "bg-purple-600 text-white shadow-lg scale-105"
+                      : `${category.color} hover:scale-105 hover:shadow-md`
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {category.label}
+                </button>
+              )
+            })}
+          </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.glossary.learnMore.title}</h2>
-          <p className="text-gray-600 mb-4">{t.glossary.learnMore.description}</p>
-          <Link href="/blog" className="text-purple-600 hover:text-purple-800 font-medium">
-            {t.glossary.learnMore.link}
-          </Link>
+        {/* Results Count */}
+        <div className="mb-6 text-center">
+          <p className="text-gray-600">
+            {filteredTerms.length} {filteredTerms.length === 1 ? "termo encontrado" : "termos encontrados"}
+          </p>
+        </div>
+
+        {/* Terms Grid */}
+        <div className="grid gap-6 mb-12">
+          {filteredTerms.map((term) => {
+            // Find which category this term belongs to
+            const termCategory = Object.entries(categorizedTerms).find(([_, termIds]) => 
+              termIds.includes(term.id)
+            )?.[0]
+            const categoryInfo = categories.find(cat => cat.id === termCategory)
+            
+            return (
+              <Card key={term.id} className="hover:shadow-lg transition-all duration-300 border-purple-100 hover:border-purple-200">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <CardTitle className="text-xl text-gray-900 mb-2">
+                        {term[language].term}
+                      </CardTitle>
+                      {categoryInfo && (
+                        <Badge className={`${categoryInfo.color} border-0`}>
+                          {categoryInfo.label}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-700 text-base leading-relaxed">
+                    {term[language].definition}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+
+        {/* No Results */}
+        {filteredTerms.length === 0 && (
+          <div className="text-center py-12">
+            <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <h3 className="text-xl font-medium text-gray-900 mb-2">Nenhum termo encontrado</h3>
+            <p className="text-gray-600 mb-4">
+              Tente ajustar sua busca ou selecionar uma categoria diferente
+            </p>
+            <Button
+              onClick={() => {
+                setSearchTerm("")
+                setSelectedCategory("all")
+              }}
+              variant="outline"
+              className="border-purple-200 hover:border-purple-300 hover:bg-purple-50"
+            >
+              Limpar filtros
+            </Button>
+          </div>
+        )}
+
+        {/* Learn More Section */}
+        <div className="mt-16 text-center">
+          <Card className="bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
+            <CardContent className="py-8">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                {t.glossary.learnMore.title}
+              </h2>
+              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                {t.glossary.learnMore.description}
+              </p>
+              <Link href="/blog">
+                <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
+                  {t.glossary.learnMore.link}
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
         </div>
       </div>
       <Footer />

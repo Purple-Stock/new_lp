@@ -249,6 +249,38 @@ const industriesData = [
       "Relatórios de consumo por período letivo",
     ],
   },
+  {
+    name: "Produção Audiovisual",
+    slug: "audiovisual",
+    image:
+      "/images/pexels-photo-8201187.webp",
+    description:
+      "Transforme sua gestão de equipamentos audiovisuais com o Purple Stock. Nossa solução é projetada especificamente para produtoras, estúdios de filmagem, empresas de eventos e profissionais do setor audiovisual que precisam de controle total sobre câmeras, iluminação, áudio e acessórios.",
+    benefits: [
+      "Controle completo de equipamentos de filmagem e fotografia",
+      "Gestão eficiente de locações e projetos",
+      "Rastreamento de acessórios e consumíveis",
+      "Redução de perdas e danos em equipamentos",
+      "Otimização do uso de recursos por projeto",
+      "Controle de manutenção preventiva e corretiva",
+      "Gestão de seguros e garantias de equipamentos",
+      "Integração com sistemas de agendamento e produção",
+    ],
+    features: [
+      "Controle de equipamentos por categoria (câmeras, lentes, iluminação, áudio)",
+      "Sistema de check-in/check-out para locações e projetos",
+      "Rastreamento de acessórios com códigos QR personalizados",
+      "Gestão de baterias, cartões de memória e consumíveis",
+      "Controle de temperatura e condições de armazenamento",
+      "Alertas para manutenção preventiva de equipamentos",
+      "Relatórios de utilização por equipamento e projeto",
+      "Gestão de fornecedores e serviços técnicos",
+      "Controle de versões e atualizações de firmware",
+      "Integração com sistemas de orçamento e faturamento",
+      "Dashboard específico para equipamentos críticos",
+      "Sistema de backup para dados de equipamentos",
+    ],
+  },
 ]
 
 export default function IndustryPage({ params }: { params: { slug: string } }) {

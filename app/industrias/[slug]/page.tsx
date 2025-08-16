@@ -253,7 +253,7 @@ const industriesData = [
     name: "Produção Audiovisual",
     slug: "audiovisual",
     image:
-      "/images/pexels-photo-8201187.webp",
+      "/images/audio-visual-1.jpg",
     description:
       "Transforme sua gestão de equipamentos audiovisuais com o Purple Stock. Nossa solução é projetada especificamente para produtoras, estúdios de filmagem, empresas de eventos e profissionais do setor audiovisual que precisam de controle total sobre câmeras, iluminação, áudio e acessórios.",
     benefits: [

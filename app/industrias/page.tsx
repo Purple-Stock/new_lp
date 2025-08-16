@@ -126,7 +126,7 @@ const industries: Industry[] = [
   },
   {
     id: "audiovisual",
-    image: "/images/pexels-photo-8201187.webp",
+    image: "/images/audio-visual-2.jpg",
     icon: Video,
     color: "text-pink-600",
     gradient: "from-pink-500 to-pink-600",

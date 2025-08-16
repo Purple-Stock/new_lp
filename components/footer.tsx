@@ -29,12 +29,12 @@ export function Footer() {
   const contactInfo = [
     {
       icon: Mail,
-      text: language === "pt" ? "contato@purplestock.com.br" : language === "en" ? "contact@purplestock.com.br" : "contact@purplestock.com.br",
-      href: "mailto:contato@purplestock.com.br"
+      text: language === "pt" ? "matheus.puppe@purplestock.com.br" : language === "en" ? "contact@purplestock.com.br" : "contact@purplestock.com.br",
+      href: "mailto:matheus.puppe@purplestock.com.br"
     },
     {
       icon: Phone,
-      text: language === "pt" ? "+55 (11) 99999-9999" : language === "en" ? "+55 (11) 99999-9999" : "+55 (11) 99999-9999",
+      text: language === "pt" ? "+55 (11) 99559-7242" : language === "en" ? "+55 (11) 99559-7242" : "+55 (11) 99559-7242",
       href: "tel:+5511999999999"
     },
     {

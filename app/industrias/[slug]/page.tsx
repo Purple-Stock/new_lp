@@ -2,7 +2,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, Check } from "lucide-react"
+import { ArrowLeft, Check, Star, Users, TrendingUp, Shield, Clock, Zap, ArrowRight, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 // This would typically come from a database or API
@@ -288,102 +288,231 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
   const industry = industriesData.find((ind) => ind.slug === params.slug) || industriesData[0]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/30">
       <Navbar />
 
       <div className="pt-20">
-        {/* Hero Section */}
-        <div className="relative h-[400px]">
+        {/* Enhanced Hero Section */}
+        <div className="relative h-[500px] overflow-hidden">
           <Image src={industry.image || "/placeholder.svg"} alt={industry.name} fill className="object-cover" />
-          <div className="absolute inset-0 bg-black/50 flex items-center">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+          
+          {/* Navigation and Content */}
+          <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <Link href="/industrias" className="inline-flex items-center text-white mb-4 hover:underline">
-                <ArrowLeft className="h-4 w-4 mr-2" />
+              <Link href="/industrias" className="inline-flex items-center text-white mb-6 hover:text-purple-200 transition-colors duration-200 group">
+                <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
                 Voltar para Indústrias
               </Link>
-              <h1 className="text-4xl md:text-5xl font-bold text-white">{industry.name}</h1>
-            </div>
-          </div>
-        </div>
-
-        {/* Content Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Solução Purple Stock para {industry.name}</h2>
-              <p className="text-lg text-gray-700 mb-8">{industry.description}</p>
-
-              <h3 className="text-xl font-semibold mb-4">Benefícios</h3>
-              <ul className="space-y-3 mb-8">
-                {industry.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <Check className="h-5 w-5 text-[#9333E9] mr-2 flex-shrink-0 mt-1" />
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Recursos</h3>
-              <ul className="space-y-3 mb-8">
-                {industry.features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <Check className="h-5 w-5 text-[#9333E9] mr-2 flex-shrink-0 mt-1" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 mt-8">
-                <h3 className="text-xl font-semibold mb-4">Pronto para transformar sua gestão de estoque?</h3>
-                <p className="mb-6">
-                  Experimente o Purple Stock gratuitamente por 7 dias e descubra como podemos ajudar sua empresa a
-                  otimizar processos e reduzir custos.
+              
+              <div className="max-w-4xl">
+                <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-medium mb-6 border border-white/30">
+                  <Star className="w-4 h-4 mr-2" />
+                  Solução Especializada
+                </div>
+                
+                <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                  {industry.name}
+                </h1>
+                
+                <p className="text-xl lg:text-2xl text-white/90 max-w-3xl leading-relaxed">
+                  {industry.description}
                 </p>
-                <Button className="w-full bg-[#9333E9] hover:bg-[#7928CA]">Começar teste gratuito</Button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Case Studies Section */}
-        <div className="bg-white py-12">
+        {/* Enhanced Content Section */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Benefits Section */}
+            <div className="space-y-8">
+              <div className="text-center lg:text-left">
+                <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                  Benefícios para {industry.name}
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Descubra como o Purple Stock pode transformar suas operações e impulsionar o crescimento do seu negócio.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {industry.benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-start group">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0 mr-4 group-hover:scale-110 transition-transform duration-200">
+                      <Check className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-200">
+                        {benefit}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Features Section */}
+            <div className="space-y-8">
+              <div className="text-center lg:text-left">
+                <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                  Recursos Principais
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Funcionalidades avançadas projetadas especificamente para atender às necessidades do seu setor.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {industry.features.map((feature, index) => (
+                  <div key={index} className="flex items-start group">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0 mr-4 group-hover:scale-110 transition-transform duration-200">
+                      <Star className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-lg text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors duration-200">
+                        {feature}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Enhanced Stats Section */}
+        <div className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-8 text-center">Casos de Sucesso</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <blockquote className="text-lg font-medium mb-4">
-                  "O Purple Stock revolucionou nossa gestão de estoque. Conseguimos reduzir perdas em 30% e aumentar a
-                  eficiência operacional."
-                </blockquote>
-                <p className="text-gray-600">Empresa de {industry.name}</p>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Resultados Comprovados
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Empresas do setor de {industry.name} já estão transformando suas operações com o Purple Stock.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-8">
+              <div className="text-center group">
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <TrendingUp className="w-10 h-10 text-purple-600" />
+                </div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">40%</div>
+                <div className="text-gray-600">Aumento na Eficiência</div>
               </div>
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <blockquote className="text-lg font-medium mb-4">
-                  "A implementação do Purple Stock foi rápida e os resultados foram imediatos. Nossa equipe adorou a
-                  facilidade de uso."
-                </blockquote>
-                <p className="text-gray-600">Empresa de {industry.name}</p>
+              
+              <div className="text-center group">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Shield className="w-10 h-10 text-blue-600" />
+                </div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">99.9%</div>
+                <div className="text-gray-600">Precisão no Controle</div>
+              </div>
+              
+              <div className="text-center group">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Clock className="w-10 h-10 text-green-600" />
+                </div>
+                <div className="text-3xl font-bold text-green-600 mb-2">24/7</div>
+                <div className="text-gray-600">Disponibilidade</div>
+              </div>
+              
+              <div className="text-center group">
+                <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-10 h-10 text-orange-600" />
+                </div>
+                <div className="text-3xl font-bold text-orange-600 mb-2">500+</div>
+                <div className="text-gray-600">Empresas Atendidas</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="bg-[#9333E9] py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-white mb-6">Transforme sua gestão de estoque hoje</h2>
+        {/* Enhanced Case Studies Section */}
+        <div className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Casos de Sucesso
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Empresas do setor de {industry.name} que transformaram suas operações com o Purple Stock.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mr-4">
+                    <Star className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">Empresa de {industry.name}</h3>
+                    <p className="text-gray-600">Setor: {industry.name}</p>
+                  </div>
+                </div>
+                <blockquote className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  "O Purple Stock revolucionou nossa gestão de estoque. Conseguimos reduzir perdas em 30% e aumentar a eficiência operacional significativamente."
+                </blockquote>
+                <div className="flex items-center text-sm text-gray-500">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                  Cliente desde 2023
+                </div>
+              </div>
+              
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center mr-4">
+                    <TrendingUp className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">Empresa de {industry.name}</h3>
+                    <p className="text-gray-600">Setor: {industry.name}</p>
+                  </div>
+                </div>
+                <blockquote className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  "A implementação do Purple Stock foi rápida e os resultados foram imediatos. Nossa equipe adorou a facilidade de uso e a interface intuitiva."
+                </blockquote>
+                <div className="flex items-center text-sm text-gray-500">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                  Cliente desde 2023
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Enhanced CTA Section */}
+        <div className="py-20 bg-gradient-to-br from-purple-600 to-blue-600 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute top-20 left-20 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
+            <div className="absolute bottom-20 right-20 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          </div>
+          
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+              Transforme sua gestão de estoque hoje
+            </h2>
             <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Junte-se a milhares de empresas que já otimizaram suas operações com o Purple Stock.
+              Junte-se a milhares de empresas que já otimizaram suas operações com o Purple Stock e descubra como podemos ajudar sua empresa do setor de {industry.name}.
             </p>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-100 text-[#9333E9]">
-                Agendar demonstração
-              </Button>
-              <Button size="lg" className="bg-transparent border-2 border-white hover:bg-white/10">
-                Falar com consultor
-              </Button>
+              <Link href="/coming-soon">
+                <Button size="lg" className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
+                  <Zap className="w-5 h-5 mr-2" />
+                  Começar Teste Gratuito
+                </Button>
+              </Link>
+              
+              <Link href="/coming-soon">
+                <Button variant="outline" size="lg" className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold transition-all duration-300 rounded-xl backdrop-blur-sm">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Agendar Demonstração
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

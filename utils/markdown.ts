@@ -50,6 +50,19 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
     .process(content)
   const contentHtml = processedContent.toString()
 
+  // Add IDs to headings for table of contents
+  const contentWithIds = contentHtml.replace(
+    /<h([2-3])([^>]*)>(.*?)<\/h[2-3]>/g,
+    (match, level, attrs, text) => {
+      const id = text.toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim()
+      return `<h${level}${attrs} id="${id}">${text}</h${level}>`
+    }
+  )
+
   return {
     slug,
     title: data.title,
@@ -57,6 +70,6 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
     date: data.date,
     author: data.author,
     tags: data.tags,
-    content: contentHtml,
+    content: contentWithIds,
   }
 } 

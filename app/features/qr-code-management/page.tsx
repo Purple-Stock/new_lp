@@ -24,7 +24,7 @@ export default function QRCodeManagementPage() {
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">{t.title}</h1>
               <p className="text-lg text-gray-700 mb-8">{t.description}</p>
-              <Link href="https://app.purplestock.com.br/">
+              <Link href="/coming-soon">
                 <Button size="lg" className="bg-[#9333E9] hover:bg-[#7928CA]">
                   {t.startTrial}
                 </Button>
@@ -139,7 +139,7 @@ export default function QRCodeManagementPage() {
                 {t.cta.scheduleDemo}
               </Button>
             </Link>
-            <Link href="https://app.purplestock.com.br/">
+            <Link href="/coming-soon">
               <Button size="lg" className="bg-transparent border-2 border-white hover:bg-white/10">
                 {t.cta.startTrial}
               </Button>

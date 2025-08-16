@@ -169,10 +169,10 @@ export function Navbar() {
             >
               {t.blog}
             </a>
-            <Link href="https://app.purplestock.com.br/" className="text-[#9333E9] hover:text-[#7928CA]">
+            <Link href="/coming-soon" className="text-[#9333E9] hover:text-[#7928CA]">
               {t.freeBarcode}
             </Link>
-            <Link href="https://app.purplestock.com.br/">
+            <Link href="/coming-soon">
               <Button className="bg-[#9333E9] hover:bg-[#7928CA]">{t.login}</Button>
             </Link>
             <Button 
@@ -312,14 +312,14 @@ export function Navbar() {
                 {t.blog}
               </a>
               <Link
-                href="https://app.purplestock.com.br/"
+                href="/coming-soon"
                 className="block px-3 py-2 text-base font-medium text-[#9333E9] hover:text-[#7928CA] hover:bg-gray-50 rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.freeBarcode}
               </Link>
               <Link
-                href="https://app.purplestock.com.br/"
+                href="/coming-soon"
                 className="block px-3 py-2 text-base font-medium text-white bg-[#9333E9] hover:bg-[#7928CA] rounded-md text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >

@@ -662,7 +662,7 @@ export const translations = {
             "Suporte por email",
           ],
           buttonText: "Começar Agora",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: "/coming-soon",
         },
         {
           name: "Pro",
@@ -676,7 +676,7 @@ export const translations = {
             "Suporte por email",
           ],
           buttonText: "Atualizar Agora",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: "/coming-soon",
         },
         {
           name: "Empresarial",
@@ -1331,7 +1331,7 @@ export const translations = {
             "Email support",
           ],
           buttonText: "Get Started",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: "/coming-soon",
         },
         {
           name: "Pro",
@@ -1345,7 +1345,7 @@ export const translations = {
             "Email support",
           ],
           buttonText: "Upgrade Now",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: "/coming-soon",
         },
         {
           name: "Enterprise",
@@ -2005,7 +2005,7 @@ export const translations = {
             "Support par email",
           ],
           buttonText: "Commencer",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: "/coming-soon",
         },
         {
           name: "Pro",
@@ -2019,7 +2019,7 @@ export const translations = {
             "Support par email",
           ],
           buttonText: "Mettre à Niveau",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: "/coming-soon",
         },
         {
           name: "Entreprise",

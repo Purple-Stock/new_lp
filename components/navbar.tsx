@@ -172,7 +172,7 @@ export function Navbar() {
             >
               {t.blog}
             </a>
-            <Link href="/coming-soon" className="text-purple-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium">
+            <Link href="/codigo-de-barras-gratis" className="text-purple-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium">
               {t.freeBarcode}
             </Link>
             <Link href="/coming-soon">
@@ -317,7 +317,7 @@ export function Navbar() {
                 {t.blog}
               </a>
               <Link
-                href="/coming-soon"
+                href="/codigo-de-barras-gratis"
                 className="block px-3 py-2 text-base font-medium text-purple-600 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-colors duration-200"
                 onClick={() => setMobileMenuOpen(false)}
               >

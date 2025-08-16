@@ -15,6 +15,7 @@ import {
   Car, 
   Building2, 
   Cpu, 
+  Video,
   Star, 
   CheckCircle, 
   ArrowRight, 
@@ -26,7 +27,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology"
+type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology" | "audiovisual"
 
 interface Industry {
   id: IndustryId
@@ -123,6 +124,16 @@ const industries: Industry[] = [
     benefits: ["Controle de equipamentos", "Gestão de licenças", "Rastreamento de ativos", "Controle de manutenção"],
     stats: { value: "40%", label: "Aumento de produtividade" }
   },
+  {
+    id: "audiovisual",
+    image: "/images/pexels-photo-8201187.webp",
+    icon: Video,
+    color: "text-pink-600",
+    gradient: "from-pink-500 to-pink-600",
+    description: "Controle de equipamentos de filmagem, iluminação, áudio e acessórios para produção audiovisual.",
+    benefits: ["Controle de equipamentos", "Gestão de locações", "Rastreamento de acessórios", "Controle de manutenção"],
+    stats: { value: "45%", label: "Redução de perdas" }
+  },
 ]
 
 const globalBenefits = [
@@ -187,7 +198,7 @@ export default function IndustriasPage() {
               <div className="text-sm text-gray-600">{language === "pt" ? "Empresas Atendidas" : language === "en" ? "Companies Served" : "Entreprises Servies"}</div>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
-              <div className="text-3xl font-bold text-blue-600 mb-2">8</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">9</div>
               <div className="text-sm text-gray-600">{language === "pt" ? "Setores Principais" : language === "en" ? "Main Industries" : "Secteurs Principaux"}</div>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">

@@ -42,7 +42,8 @@ export const translations = {
         pharmaceutical: "Farmacêutico",
         automotive: "Automotivo",
         construction: "Construção",
-        technology: "Tecnologia"
+        technology: "Tecnologia",
+        audiovisual: "Produção Audiovisual"
       }
     },
     trustedBy: {
@@ -741,7 +742,8 @@ export const translations = {
         pharmaceutical: "Pharmaceutical",
         automotive: "Automotive",
         construction: "Construction",
-        technology: "Technology"
+        technology: "Technology",
+        audiovisual: "Audiovisual Production"
       }
     },
     trustedBy: {
@@ -1408,7 +1410,8 @@ export const translations = {
         pharmaceutical: "Pharmaceutique",
         automotive: "Automobile",
         construction: "Construction",
-        technology: "Technologie"
+        technology: "Technologie",
+        audiovisual: "Production Audiovisuelle"
       }
     },
     trustedBy: {

@@ -143,7 +143,7 @@ const industriesData = [
     name: "Construção",
     slug: "construcao",
     image:
-      "/images/building.png",
+      "/images/building-800x600.webp",
     description:
       "Gerencie materiais de construção, ferramentas e equipamentos com o Purple Stock. Nossa solução é ideal para construtoras e empresas do setor.",
     benefits: [
@@ -209,7 +209,7 @@ const industriesData = [
     name: "Comércio",
     slug: "comercio",
     image:
-      "/images/commerce.png",
+      "/images/commerce-800x600.webp",
     description:
       "Otimize suas operações comerciais com o Purple Stock. Nossa plataforma oferece as ferramentas necessárias para gerenciar seu estoque com eficiência.",
     benefits: [

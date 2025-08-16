@@ -185,10 +185,11 @@ export default function AnalyticsReportingPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
                 <div className="relative h-full w-full">
                   <Image
-                    src="/images/analytics.png"
+                    src="/images/analytics-800x600.webp"
                     alt="Analytics Benefits"
                     fill
                     className="object-cover rounded-3xl shadow-2xl"
+                    sizes="(max-width: 768px) 100vw, 800px"
                   />
                 </div>
               </div>

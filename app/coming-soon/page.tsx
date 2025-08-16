@@ -11,13 +11,13 @@ export default function ComingSoon() {
           Voltar para página inicial
         </Link>
 
-        <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/purple_stock_logo-PMYaISOsL4kgzKkTILDzTOp3M5TK7A.jpeg"
-          alt="Purple Stock"
-          width={80}
-          height={80}
-          className="mx-auto rounded-full"
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="300" height="60" viewBox="0 0 1200 400" className="mx-auto">
+          <g transform="translate(200, 200) scale(1.2)">
+            <path fill="#7D3C98" d="M0,-100 L86,-50 L86,50 L0,100 L-86,50 L-86,-50 Z"></path>
+            <path fill="#FFFFFF" d="M30,-50 L-15,10 H15 L-10,55 L40,0 H15 Z"></path>
+          </g>
+          <text x="450" y="230" fontFamily="Arial, sans-serif" fontSize="120" fontWeight="bold" fill="#7D3C98">PURPLE STOCK</text>
+        </svg>
 
         <div className="space-y-4">
           <h1 className="text-4xl font-bold text-gray-900">Em breve</h1>

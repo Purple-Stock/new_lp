@@ -79,7 +79,10 @@ function Feature({ title, subtitle, description, image, bgColor, textColor, icon
                   src={image || "/placeholder.svg"} 
                   alt={title} 
                   fill 
-                  className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  quality={85}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 500px"
                 />
                 
                 {/* Overlay gradient */}

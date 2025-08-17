@@ -1,6 +1,7 @@
 import { LanguageProvider } from "@/contexts/LanguageContext"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ScheduleButton } from "@/components/schedule-button"
+import { PerformanceOptimizer } from "@/components/performance-optimizer"
 import type React from "react"
 import "@/styles/globals.css"
 
@@ -17,7 +18,7 @@ export const metadata = {
       },
     ],
   },
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -28,6 +29,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preconnect to Google Fonts for better performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+          media="print"
+          onLoad="this.media='all'"
+        />
+        {/* Fallback font loading */}
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
@@ -35,15 +46,17 @@ export default function RootLayout({
       </head>
       <body>
         <LanguageProvider>
-          {children}
-          <ScheduleButton />
-          <WhatsAppButton />
+          <PerformanceOptimizer
+            disableAnimationsOnMobile={true}
+            reduceShadowsOnMobile={true}
+            optimizeImagesOnMobile={true}
+          >
+            {children}
+            <ScheduleButton />
+            <WhatsAppButton />
+          </PerformanceOptimizer>
         </LanguageProvider>
       </body>
     </html>
   )
 }
-
-
-
-import './globals.css'

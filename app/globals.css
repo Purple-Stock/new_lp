@@ -11,7 +11,7 @@ body {
     text-wrap: balance;
   }
   
-  /* Custom animations for enhanced design */
+  /* Optimized animations for mobile performance */
   @keyframes blob {
     0% {
       transform: translate(0px, 0px) scale(1);
@@ -27,8 +27,30 @@ body {
     }
   }
   
+  /* Reduced animation complexity on mobile */
+  @media (max-width: 768px) {
+    @keyframes blob {
+      0%, 100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+      50% {
+        transform: translate(15px, -25px) scale(1.05);
+      }
+    }
+  }
+  
   .animate-blob {
     animation: blob 7s infinite;
+    /* Reduce motion for users who prefer it */
+    animation-play-state: running;
+  }
+  
+  /* Pause animations on mobile for better performance */
+  @media (max-width: 768px) {
+    .animate-blob {
+      animation-duration: 10s;
+      animation-timing-function: ease-in-out;
+    }
   }
   
   .animation-delay-2000 {
@@ -39,7 +61,7 @@ body {
     animation-delay: 4s;
   }
   
-  /* Enhanced slide-in animations */
+  /* Enhanced slide-in animations - optimized for mobile */
   @keyframes slide-in-from-top-2 {
     0% {
       opacity: 0;
@@ -59,19 +81,37 @@ body {
     animation: slide-in-from-top-2 0.2s ease-out;
   }
   
-  /* Smooth hover transitions */
+  /* Optimized transitions for mobile */
   .transition-all {
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  /* Enhanced shadow utilities */
+  /* Reduce transition complexity on mobile */
+  @media (max-width: 768px) {
+    .transition-all {
+      transition-duration: 0.2s;
+    }
+  }
+  
+  /* Enhanced shadow utilities - lighter on mobile */
   .shadow-soft {
     box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
   }
   
   .shadow-medium {
     box-shadow: 0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Lighter shadows on mobile for better performance */
+  @media (max-width: 768px) {
+    .shadow-soft {
+      box-shadow: 0 1px 8px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .shadow-medium {
+      box-shadow: 0 2px 12px -3px rgba(0, 0, 0, 0.08);
+    }
   }
   
   /* Gradient text utilities */
@@ -104,236 +144,100 @@ body {
     -webkit-line-clamp: 3;
   }
   
-  /* Enhanced article typography */
-  .article-content {
-    font-feature-settings: "liga" 1, "kern" 1;
-    text-rendering: optimizeLegibility;
+  /* Mobile-specific performance optimizations */
+  @media (max-width: 768px) {
+    /* Reduce blur effects on mobile */
+    .filter.blur-xl {
+      filter: blur(8px);
+    }
+    
+    /* Optimize transforms for mobile */
+    .transform {
+      will-change: transform;
+    }
+    
+    /* Reduce animation complexity */
+    .group-hover\:scale-105 {
+      transition: transform 0.2s ease-out;
+    }
+    
+    .group-hover\:rotate-6,
+    .group-hover\:-rotate-6 {
+      transition: transform 0.3s ease-out;
+    }
   }
   
-  /* Smooth scrolling for anchor links */
-  html {
-    scroll-behavior: smooth;
+  /* Performance optimizations for all devices */
+  .will-change-transform {
+    will-change: transform;
   }
   
-  /* Custom scrollbar for webkit browsers */
-  ::-webkit-scrollbar {
-    width: 8px;
+  .will-change-opacity {
+    will-change: opacity;
   }
   
-  ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-blob,
+    .animate-pulse,
+    .group-hover\:scale-105,
+    .group-hover\:rotate-6,
+    .group-hover\:-rotate-6 {
+      animation: none;
+      transition: none;
+    }
   }
   
-  ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    /* Reduce font rendering complexity */
+    * {
+      text-rendering: optimizeSpeed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Optimize gradients for mobile */
+    .bg-gradient-to-br {
+      background: linear-gradient(135deg, #faf5ff 0%, #ffffff 50%, #eff6ff 100%);
+    }
+    
+    /* Reduce complex shadows */
+    .shadow-2xl {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Optimize transforms */
+    .group-hover\:scale-105:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Reduce animation frame rate on mobile */
+    .animate-pulse {
+      animation-duration: 3s;
+    }
   }
   
-  ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-  }
-  
-  /* Enhanced article spacing utilities */
-  .article-spacing {
-    --article-spacing-xs: 0.5rem;
-    --article-spacing-sm: 1rem;
-    --article-spacing-md: 1.5rem;
-    --article-spacing-lg: 2rem;
-    --article-spacing-xl: 3rem;
-    --article-spacing-2xl: 4rem;
-  }
-  
-  /* Better paragraph spacing */
-  .prose p + p {
-    margin-top: 1.5rem;
-  }
-  
-  /* Enhanced list spacing */
-  .prose ul > li + li,
-  .prose ol > li + li {
-    margin-top: 0.75rem;
-  }
-  
-  /* Better blockquote spacing */
-  .prose blockquote {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  
-  /* Enhanced code block spacing */
-  .prose pre {
-    margin-left: -1rem;
-    margin-right: -1rem;
-  }
-  
-  /* Better table spacing */
-  .prose table {
-    border-collapse: separate;
-    border-spacing: 0;
-  }
-  
-  .prose th:first-child,
-  .prose td:first-child {
-    border-left: 1px solid #e5e7eb;
-  }
-  
-  .prose th:last-child,
-  .prose td:last-child {
-    border-right: 1px solid #e5e7eb;
-  }
-  
-  /* Enhanced image spacing */
-  .prose img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* Better heading spacing */
-  .prose h1:first-child,
-  .prose h2:first-child,
-  .prose h3:first-child,
-  .prose h4:first-child {
-    margin-top: 0;
-  }
-  
-  /* Enhanced link styling */
-  .prose a {
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .prose a:hover {
-    border-bottom-color: currentColor;
-  }
-  
-  /* Better list marker styling */
-  .prose ul > li::marker,
-  .prose ol > li::marker {
-    color: #8b5cf6;
-    font-weight: 600;
-  }
-  
-  /* Enhanced blockquote styling */
-  .prose blockquote {
-    position: relative;
-    background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
-    border-left: 4px solid #8b5cf6;
-    border-radius: 0 0.5rem 0.5rem 0;
-  }
-  
-  /* Better code styling */
-  .prose code {
-    background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
-    border: 1px solid #e9d5ff;
-    border-radius: 0.375rem;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
-  
-  /* Enhanced pre styling */
-  .prose pre {
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-    border: 1px solid #374151;
-    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Better table styling */
-  .prose table {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  }
-  
-  .prose th {
-    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.875rem;
-  }
-  
-  /* Enhanced horizontal rule */
-  .prose hr {
-    background: linear-gradient(90deg, transparent 0%, #d1d5db 50%, transparent 100%);
-    height: 2px;
-    border: none;
-    border-radius: 1px;
-  }
-  
-  /* Better figure styling */
-  .prose figure {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-    margin: 2rem 0;
-  }
-  
-  .prose figcaption {
-    font-style: italic;
-    color: #6b7280;
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
-  /* Enhanced definition list */
-  .prose dl {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-  }
-  
-  .prose dt {
-    font-weight: 600;
-    color: #374151;
-    margin-bottom: 0.5rem;
-  }
-  
-  .prose dd {
-    color: #6b7280;
-    margin-bottom: 1.5rem;
-    padding-left: 1rem;
-    border-left: 3px solid #e5e7eb;
-  }
-  
-  /* Better form styling */
-  .prose input,
-  .prose textarea,
-  .prose select {
-    border: 2px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .prose input:focus,
-  .prose textarea:focus,
-  .prose select:focus {
-    outline: none;
-    border-color: #8b5cf6;
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-  }
-  
-  .prose button {
-    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .prose button:hover {
-    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  /* High-performance mobile optimizations */
+  @media (max-width: 480px) {
+    /* Further reduce animations on small screens */
+    .animate-blob {
+      animation: none;
+    }
+    
+    /* Simplify gradients */
+    .bg-gradient-to-r {
+      background: linear-gradient(90deg, #1f2937 0%, #7c3aed 100%);
+    }
+    
+    /* Reduce shadow complexity */
+    .shadow-lg {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .shadow-xl {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
   }
 }
 

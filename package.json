@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build",
+    "build:analyze": "ANALYZE=true next build",
+    "performance:check": "next build && lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-report.json",
+    "bundle:size": "next build && npx @next/bundle-analyzer"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -66,6 +70,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.4.6",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",

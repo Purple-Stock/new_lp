@@ -1,22 +1,40 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 export function ReadingProgress() {
   const [progress, setProgress] = useState(0)
+  const rafId = useRef<number>()
 
   useEffect(() => {
+    let ticking = false
+
     const updateProgress = () => {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const scrollPercent = (scrollTop / docHeight) * 100
-      setProgress(Math.min(scrollPercent, 100))
+      if (!ticking) {
+        rafId.current = requestAnimationFrame(() => {
+          const scrollTop = window.scrollY
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight
+          const scrollPercent = (scrollTop / docHeight) * 100
+          setProgress(Math.min(scrollPercent, 100))
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    window.addEventListener('scroll', updateProgress)
+    const handleScroll = () => {
+      updateProgress()
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
     updateProgress() // Initial calculation
 
-    return () => window.removeEventListener('scroll', updateProgress)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current)
+      }
+    }
   }, [])
 
   return (

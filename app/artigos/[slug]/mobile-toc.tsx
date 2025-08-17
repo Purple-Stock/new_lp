@@ -24,7 +24,13 @@ export function MobileTOC({ toc }: MobileTOCProps) {
     setTimeout(() => {
       const element = document.getElementById(id)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        // Use requestAnimationFrame to avoid forced reflows
+        requestAnimationFrame(() => {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          })
+        })
       }
     }, 100)
   }

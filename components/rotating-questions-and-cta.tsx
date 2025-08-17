@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback, useMemo } from "react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 import { ArrowRight, CheckCircle, Star } from "lucide-react"
@@ -11,7 +11,7 @@ export function RotatingQuestionsAndCTA() {
   const { language } = useLanguage()
   const t = translations[language]
   
-  const questions = {
+  const questions = useMemo(() => ({
     pt: [
       "Cansado de perder vendas por falta de estoque?",
       "Quer ter controle total do seu inventário em tempo real?",
@@ -27,22 +27,23 @@ export function RotatingQuestionsAndCTA() {
       "Vous voulez un contrôle total de votre inventaire en temps réel ?",
       "Prêt à éliminer les erreurs de comptage manuel ?",
     ],
-  }
+  }), [])
 
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(true)
-      setTimeout(() => {
-        setCurrentQuestion((prev) => (prev + 1) % questions[language].length)
-        setIsAnimating(false)
-      }, 500)
-    }, 5000)
+  const nextQuestion = useCallback(() => {
+    setIsAnimating(true)
+    setTimeout(() => {
+      setCurrentQuestion((prev) => (prev + 1) % questions[language].length)
+      setIsAnimating(false)
+    }, 500)
+  }, [questions, language])
 
+  useEffect(() => {
+    const interval = setInterval(nextQuestion, 5000)
     return () => clearInterval(interval)
-  }, [language])
+  }, [nextQuestion])
 
   return (
     <section className="py-24 bg-gradient-to-br from-purple-50 via-white to-blue-50 relative overflow-hidden">

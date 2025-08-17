@@ -19,7 +19,7 @@ export function TrustedBy() {
     },
     {
       name: "Concrem Portas Premium",
-      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/concrem-portas-gqljvaTnLb78lC9A5T72Z2Fg6xJJ9l.webp",
+      logo: "/images/concrem-logo-64x16.webp",
       width: 64,
       height: 16,
       industry: language === "pt" ? "Construção" : language === "en" ? "Construction" : "Construction"

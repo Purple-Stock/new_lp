@@ -2,6 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Optimize animations for performance */
+.animate-blob {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Optimize backdrop blur for performance */
+.backdrop-blur-xl {
+  will-change: backdrop-filter;
+  transform: translateZ(0);
+}
+
+/* Optimize transitions */
+.transition-all {
+  will-change: transform, opacity;
+}
+
+/* Optimize hover effects */
+.hover\:scale-105:hover {
+  will-change: transform;
+}
+
+/* Optimize shadow transitions */
+.hover\:shadow-xl:hover {
+  will-change: box-shadow;
+}
+
+/* Optimize gradient text rendering */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  will-change: background-position;
+}
+
+/* Optimize scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Optimize font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Optimize focus outlines for accessibility */
+*:focus {
+  outline: 2px solid #9333E9;
+  outline-offset: 2px;
+}
+
+/* Optimize button interactions */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Optimize mobile performance */
+@media (max-width: 768px) {
+  .animate-blob {
+    animation-duration: 8s;
+  }
+  
+  .backdrop-blur-xl {
+    backdrop-filter: blur(16px);
+  }
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }

@@ -9,7 +9,7 @@ export function Testimonials() {
   const { language } = useLanguage()
   const testimonials = translations[language].testimonials
 
-  const companyLogos = {
+  const companyLogos: Record<string, string> = {
     "Purchase Store":
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/purchase-store-NQGRoDh4DB7dqjID69qG15TOHLcR3M.png",
     "Concrem Portas":

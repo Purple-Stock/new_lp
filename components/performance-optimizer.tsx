@@ -18,9 +18,19 @@ export function PerformanceOptimizer({
 }: PerformanceOptimizerProps) {
   const isMobile = useIsMobile()
   const [isOptimized, setIsOptimized] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+
+  // Ensure we're on the client side
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
-    if (isMobile) {
+    if (!isClient || !isMobile) {
+      return
+    }
+
+    try {
       // Apply mobile-specific optimizations
       if (disableAnimationsOnMobile) {
         document.documentElement.style.setProperty('--animation-duration', '0s')
@@ -43,18 +53,18 @@ export function PerformanceOptimizer({
       }
       
       setIsOptimized(true)
-    } else {
-      // Reset to desktop settings
-      document.documentElement.style.removeProperty('--animation-duration')
-      document.documentElement.style.removeProperty('--transition-duration')
-      document.documentElement.style.removeProperty('--shadow-intensity')
-      setIsOptimized(false)
+    } catch (error) {
+      console.warn('Performance optimization failed:', error)
     }
-  }, [isMobile, disableAnimationsOnMobile, reduceShadowsOnMobile, optimizeImagesOnMobile])
+  }, [isClient, isMobile, disableAnimationsOnMobile, reduceShadowsOnMobile, optimizeImagesOnMobile])
 
   // Add CSS variables for dynamic optimization
   useEffect(() => {
-    if (isMobile) {
+    if (!isClient || !isMobile) {
+      return
+    }
+
+    try {
       const style = document.createElement('style')
       style.textContent = `
         :root {
@@ -83,10 +93,16 @@ export function PerformanceOptimizer({
       document.head.appendChild(style)
       
       return () => {
-        document.head.removeChild(style)
+        try {
+          document.head.removeChild(style)
+        } catch (error) {
+          console.warn('Failed to remove style:', error)
+        }
       }
+    } catch (error) {
+      console.warn('Failed to add performance styles:', error)
     }
-  }, [isMobile, disableAnimationsOnMobile, reduceShadowsOnMobile])
+  }, [isClient, isMobile, disableAnimationsOnMobile, reduceShadowsOnMobile])
 
   return <>{children}</>
 }
@@ -99,9 +115,18 @@ export function usePerformanceMonitor() {
     fid: 0,
     cls: 0,
   })
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'PerformanceObserver' in window) {
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isClient || typeof window === 'undefined' || !('PerformanceObserver' in window)) {
+      return
+    }
+
+    try {
       // First Contentful Paint
       const fcpObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries()
@@ -121,8 +146,10 @@ export function usePerformanceMonitor() {
       // First Input Delay
       const fidObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries()
-        const fid = entries[0] as PerformanceEntry
-        setMetrics(prev => ({ ...prev, fid: fid.processingStart - fid.startTime }))
+        const fid = entries[0] as any // Using any for FirstInputEntry
+        if (fid.processingStart && fid.startTime) {
+          setMetrics(prev => ({ ...prev, fid: fid.processingStart - fid.startTime }))
+        }
       })
       fidObserver.observe({ entryTypes: ['first-input'] })
 
@@ -130,8 +157,9 @@ export function usePerformanceMonitor() {
       const clsObserver = new PerformanceObserver((list) => {
         let clsValue = 0
         for (const entry of list.getEntries()) {
-          if (!entry.hadRecentInput) {
-            clsValue += (entry as any).value
+          const layoutShiftEntry = entry as any // Using any for LayoutShiftEntry
+          if (!layoutShiftEntry.hadRecentInput) {
+            clsValue += layoutShiftEntry.value || 0
           }
         }
         setMetrics(prev => ({ ...prev, cls: clsValue }))
@@ -139,13 +167,19 @@ export function usePerformanceMonitor() {
       clsObserver.observe({ entryTypes: ['layout-shift'] })
 
       return () => {
-        fcpObserver.disconnect()
-        lcpObserver.disconnect()
-        fidObserver.disconnect()
-        clsObserver.disconnect()
+        try {
+          fcpObserver.disconnect()
+          lcpObserver.disconnect()
+          fidObserver.disconnect()
+          clsObserver.disconnect()
+        } catch (error) {
+          console.warn('Failed to disconnect observers:', error)
+        }
       }
+    } catch (error) {
+      console.warn('Performance monitoring failed:', error)
     }
-  }, [])
+  }, [isClient])
 
   return metrics
 }

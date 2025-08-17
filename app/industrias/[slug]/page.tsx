@@ -283,9 +283,12 @@ const industriesData = [
   },
 ]
 
-export default function IndustryPage({ params }: { params: { slug: string } }) {
+export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {
+  // Await the params since it's now a Promise in Next.js 15
+  const { slug } = await params
+  
   // Find the industry data based on the slug
-  const industry = industriesData.find((ind) => ind.slug === params.slug) || industriesData[0]
+  const industry = industriesData.find((ind) => ind.slug === slug) || industriesData[0]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/30">

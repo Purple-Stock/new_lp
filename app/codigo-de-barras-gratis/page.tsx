@@ -32,7 +32,7 @@ export default function CodigoDeBarrasGratis() {
   // QR Code specific options
   const [qrData, setQrData] = useState("https://www.purplestock.com.br")
   const [qrSize, setQrSize] = useState(256)
-  const [qrErrorCorrection, setQrErrorCorrection] = useState("M")
+  const [qrErrorCorrection, setQrErrorCorrection] = useState<"L" | "M" | "Q" | "H">("M")
   const [qrMargin, setQrMargin] = useState(4)
   const [qrColor, setQrColor] = useState("#000000")
   const [qrBackgroundColor, setQrBackgroundColor] = useState("#FFFFFF")
@@ -338,7 +338,7 @@ export default function CodigoDeBarrasGratis() {
                   {generatorType === "qr" && (
                     <div className="space-y-2">
                       <Label htmlFor="qrErrorCorrection">Correção de Erro</Label>
-                      <Select value={qrErrorCorrection} onValueChange={setQrErrorCorrection}>
+                      <Select value={qrErrorCorrection} onValueChange={(value: "L" | "M" | "Q" | "H") => setQrErrorCorrection(value)}>
                         <SelectTrigger className="border-purple-200 focus:border-purple-500">
                           <SelectValue />
                         </SelectTrigger>

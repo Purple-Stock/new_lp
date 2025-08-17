@@ -7,25 +7,11 @@ import { translations } from "@/utils/translations"
 import Image from "next/image"
 import Link from "next/link"
 import { useIsMobile } from "@/hooks/use-mobile"
-import { useState, useEffect } from "react"
 
 export function Hero() {
   const { language } = useLanguage()
   const t = translations[language].hero
   const isMobile = useIsMobile()
-  const [imageLoaded, setImageLoaded] = useState(false)
-
-  // Optimize image loading for mobile
-  useEffect(() => {
-    if (isMobile) {
-      // Preload mobile image
-      const img = new window.Image()
-      img.src = "/images/hero-photo-450x300.webp"
-      img.onload = () => setImageLoaded(true)
-    } else {
-      setImageLoaded(true)
-    }
-  }, [isMobile])
 
   return (
     <div className="relative overflow-hidden">
@@ -33,7 +19,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-white to-blue-50"></div>
       
       {/* Decorative Elements - Reduced on mobile for performance */}
-      {!isMobile && (
+      {isMobile === false && (
         <>
           <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
           <div className="absolute top-40 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -119,23 +105,16 @@ export function Hero() {
                 </>
               )}
               <div className="relative h-full w-full">
-                {imageLoaded ? (
-                  <Image
-                    src={isMobile ? "/images/hero-photo-450x300.webp" : "/images/hero-photo-900x600.webp"}
-                    alt="Warehouse worker using Purple Stock on a tablet"
-                    fill
-                    className="object-cover rounded-2xl shadow-2xl"
-                    sizes={isMobile ? "450px" : "(max-width: 768px) 450px, (max-width: 1024px) 900px, 1800px"}
-                    priority
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                  />
-                ) : (
-                  // Loading skeleton for mobile
-                  <div className="w-full h-full bg-gray-200 rounded-2xl animate-pulse flex items-center justify-center">
-                    <div className="text-gray-400 text-sm">Carregando...</div>
-                  </div>
-                )}
+                <Image
+                  src={isMobile === true ? "/images/hero-photo-450x300.webp" : "/images/hero-photo-900x600.webp"}
+                  alt="Warehouse worker using Purple Stock on a tablet"
+                  fill
+                  className="object-cover rounded-2xl shadow-2xl"
+                  sizes={isMobile === true ? "450px" : "(max-width: 768px) 450px, (max-width: 1024px) 900px, 1800px"}
+                  priority
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                />
               </div>
               
               {/* Floating Stats Card - Simplified for mobile */}

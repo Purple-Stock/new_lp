@@ -1,13 +1,17 @@
 import { LanguageProvider } from "@/contexts/LanguageContext"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ScheduleButton } from "@/components/schedule-button"
+import { PerformanceOptimizer } from "@/components/performance-optimizer"
 import type React from "react"
-import "@/styles/globals.css"
+import "./globals.css"
 
 export const metadata = {
   title: "Purple Stock - Inventory Management System",
   description:
     "Transform your inventory management with Purple Stock. Designed for innovative companies seeking efficiency and precision in their operations.",
+  keywords: ["inventory management", "stock control", "warehouse management", "QR code", "barcode", "business management"],
+  authors: [{ name: "Purple Stock" }],
+  robots: "index, follow",
   icons: {
     icon: [
       {
@@ -17,7 +21,12 @@ export const metadata = {
       },
     ],
   },
-    generator: 'v0.dev'
+  generator: 'v0.dev'
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -28,13 +37,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" />
+        
+        {/* Optimize font loading with display=swap */}
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
+          media="print"
+          onLoad="this.media='all'"
         />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+          />
+        </noscript>
       </head>
       <body>
         <LanguageProvider>
+          <PerformanceOptimizer />
           {children}
           <ScheduleButton />
           <WhatsAppButton />

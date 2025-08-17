@@ -112,7 +112,9 @@ export function PreFooterCTA() {
                 width={1200}
                 height={600}
                 className="w-full h-auto rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-700"
-                priority
+                loading="lazy"
+                quality={85}
+                sizes="(max-width: 640px) 300px, (max-width: 768px) 600px, (max-width: 1024px) 900px, 1200px"
               />
               
               {/* Floating stats overlay */}

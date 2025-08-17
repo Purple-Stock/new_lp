@@ -38,6 +38,9 @@ export function Testimonials() {
                   width={200}
                   height={100}
                   className="h-full w-auto object-contain"
+                  loading="lazy"
+                  quality={85}
+                  sizes="200px"
                 />
               </div>
               <blockquote className="text-xl font-medium mb-4">"{testimonial.quote}"</blockquote>

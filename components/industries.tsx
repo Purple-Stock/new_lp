@@ -14,47 +14,35 @@ interface Industry {
 
 const industries: Industry[] = [
   {
-    id: "atacado",
-    image: "/images/pexels-photo-4483610.webp",
-  },
-  {
-    id: "varejo",
+    id: "retail",
     image: "/images/pexels-photo-264507.jpeg",
   },
   {
-    id: "manufatura",
+    id: "manufacturing",
     image: "/images/pexels-photo-1145434.jpeg",
   },
   {
-    id: "logistica",
+    id: "logistics",
     image: "/images/pexels-photo-1267338.jpeg",
   },
   {
-    id: "moda",
-    image: "/images/pexels-photo-994523.webp",
-  },
-  {
-    id: "alimentos-bebidas",
+    id: "food",
     image: "/images/pexels-photo-1640777.jpeg",
   },
   {
-    id: "construcao",
-    image: "/images/construction-site-build-construction-work-159358.jpeg",
-  },
-  {
-    id: "medico",
+    id: "pharmaceutical",
     image: "/images/medical-appointment-doctor-healthcare-40568.webp",
   },
   {
-    id: "beleza",
-    image: "/images/pexels-photo-3985298.webp",
+    id: "automotive",
+    image: "/images/pexels-photo-4483610.webp",
   },
   {
-    id: "comercio",
-    image: "/images/commerce-800x600.webp",
+    id: "construction",
+    image: "/images/construction-site-build-construction-work-159358.jpeg",
   },
   {
-    id: "educacao",
+    id: "technology",
     image: "/images/pexels-photo-256541.webp",
   },
   {
@@ -107,7 +95,7 @@ export function Industries() {
         </div>
 
         <div className="text-center mt-8">
-          <Link href="#" className="text-[#9333E9] hover:underline">
+          <Link href="/industrias" className="text-[#9333E9] hover:underline">
             {language === "pt" && "Ver Todos >"}
             {language === "en" && "View All >"}
             {language === "fr" && "Voir Tout >"}

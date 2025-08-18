@@ -28,12 +28,6 @@ export function TrustedBy() {
 
   const stats = [
     {
-      icon: Users,
-      value: "500+",
-      label: language === "pt" ? "Empresas Atendidas" : language === "en" ? "Companies Served" : "Entreprises Servies",
-      color: "text-blue-600"
-    },
-    {
       icon: Shield,
       value: "99.9%",
       label: language === "pt" ? "Taxa de Sucesso" : language === "en" ? "Success Rate" : "Taux de Réussite",

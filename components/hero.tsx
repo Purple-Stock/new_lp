@@ -76,12 +76,10 @@ export function Hero() {
             <div className="pt-4">
               <p className="text-sm text-gray-500 mb-3">{language === "pt" ? "Já confiado por empresas líderes:" : language === "en" ? "Already trusted by leading companies:" : "Déjà approuvé par des entreprises leaders:"}</p>
               <div className="flex items-center justify-center lg:justify-start space-x-6">
-                <div className="text-2xl font-bold text-purple-600">500+</div>
                 <div className="text-2xl font-bold text-blue-600">99.9%</div>
                 <div className="text-2xl font-bold text-green-600">24/7</div>
               </div>
               <div className="flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-500">
-                <span>{language === "pt" ? "Clientes" : language === "en" ? "Clients" : "Clients"}</span>
                 <span>{language === "pt" ? "Uptime" : language === "en" ? "Uptime" : "Disponibilité"}</span>
                 <span>{language === "pt" ? "Suporte" : language === "en" ? "Support" : "Support"}</span>
               </div>

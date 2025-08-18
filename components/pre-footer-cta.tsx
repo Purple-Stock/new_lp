@@ -123,12 +123,7 @@ export function PreFooterCTA() {
                 </div>
               </div>
               
-              <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-gray-100/50 transform -translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">500+</div>
-                  <div className="text-xs text-gray-600">{language === "pt" ? "Clientes" : language === "en" ? "Clients" : "Clients"}</div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

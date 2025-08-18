@@ -182,11 +182,6 @@ export function RotatingQuestionsAndCTA() {
             </p>
             <div className="flex items-center justify-center space-x-8 text-center">
               <div>
-                <div className="text-2xl font-bold text-purple-600">500+</div>
-                <div className="text-xs text-gray-500">{language === "pt" ? "Clientes" : language === "en" ? "Clients" : "Clients"}</div>
-              </div>
-              <div className="w-px h-8 bg-gray-300"></div>
-              <div>
                 <div className="text-2xl font-bold text-blue-600">99.9%</div>
                 <div className="text-xs text-gray-500">{language === "pt" ? "Uptime" : language === "en" ? "Uptime" : "Disponibilité"}</div>
               </div>

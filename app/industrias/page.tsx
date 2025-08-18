@@ -192,11 +192,7 @@ export default function IndustriasPage() {
           </p>
 
           {/* Stats Overview */}
-          <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
-              <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
-              <div className="text-sm text-gray-600">{language === "pt" ? "Empresas Atendidas" : language === "en" ? "Companies Served" : "Entreprises Servies"}</div>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
               <div className="text-3xl font-bold text-blue-600 mb-2">9</div>
               <div className="text-sm text-gray-600">{language === "pt" ? "Setores Principais" : language === "en" ? "Main Industries" : "Secteurs Principaux"}</div>

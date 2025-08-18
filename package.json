@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "validate-sitemap": "node scripts/validate-sitemap.js"
+    "validate-sitemap": "node scripts/validate-sitemap.js",
+    "validate-llm": "node scripts/validate-llm-txt.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

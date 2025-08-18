@@ -17,5 +17,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    // Note: llm.txt is available at ${baseUrl}/llm.txt for AI/LLM discovery
   }
 }

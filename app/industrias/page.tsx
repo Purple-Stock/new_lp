@@ -23,7 +23,8 @@ import {
   Users,
   Shield,
   Clock,
-  Zap
+  Zap,
+  Play
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -351,7 +352,8 @@ export default function IndustriasPage() {
             </Link>
             
             <Link href="/coming-soon">
-              <Button variant="outline" size="lg" className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold transition-all duration-300 rounded-xl backdrop-blur-sm">
+              <Button size="lg" className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
+                <Play className="w-5 h-5 mr-2" />
                 {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch Demo" : "Voir la Démo"}
               </Button>
             </Link>

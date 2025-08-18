@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
-import { ArrowRight, CheckCircle, Star } from "lucide-react"
+import { ArrowRight, CheckCircle, Star, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -169,7 +169,8 @@ export function RotatingQuestionsAndCTA() {
             </Link>
             
             <Link href="/coming-soon">
-              <Button variant="outline" size="lg" className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-10 py-6 text-xl font-semibold transition-all duration-300 rounded-xl">
+              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-6 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
+                <Play className="w-6 h-6 mr-3" />
                 {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch Demo" : "Voir la Démo"}
               </Button>
             </Link>

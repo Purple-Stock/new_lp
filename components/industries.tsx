@@ -5,7 +5,7 @@ import { translations } from "@/utils/translations"
 import Link from "next/link"
 import Image from "next/image"
 
-type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology"
+type IndustryId = "atacado" | "varejo" | "manufatura" | "logistica" | "moda" | "alimentos-bebidas" | "construcao" | "medico" | "beleza" | "comercio" | "educacao" | "audiovisual"
 
 interface Industry {
   id: IndustryId
@@ -14,36 +14,52 @@ interface Industry {
 
 const industries: Industry[] = [
   {
-    id: "retail",
-    image: "/images/pexels-photo-264507.jpeg",
-  },
-  {
-    id: "manufacturing",
-    image: "/images/pexels-photo-1145434.jpeg",
-  },
-  {
-    id: "logistics",
-    image: "/images/pexels-photo-1267338.jpeg",
-  },
-  {
-    id: "food",
-    image: "/images/pexels-photo-1640777.jpeg",
-  },
-  {
-    id: "pharmaceutical",
-    image: "/images/medical-appointment-doctor-healthcare-40568.webp",
-  },
-  {
-    id: "automotive",
+    id: "atacado",
     image: "/images/pexels-photo-4483610.webp",
   },
   {
-    id: "construction",
+    id: "varejo",
+    image: "/images/pexels-photo-264507.jpeg",
+  },
+  {
+    id: "manufatura",
+    image: "/images/pexels-photo-1145434.jpeg",
+  },
+  {
+    id: "logistica",
+    image: "/images/pexels-photo-1267338.jpeg",
+  },
+  {
+    id: "moda",
+    image: "/images/pexels-photo-994523.webp",
+  },
+  {
+    id: "alimentos-bebidas",
+    image: "/images/pexels-photo-1640777.jpeg",
+  },
+  {
+    id: "construcao",
     image: "/images/construction-site-build-construction-work-159358.jpeg",
   },
   {
-    id: "technology",
+    id: "medico",
+    image: "/images/medical-appointment-doctor-healthcare-40568.webp",
+  },
+  {
+    id: "beleza",
+    image: "/images/pexels-photo-3985298.webp",
+  },
+  {
+    id: "comercio",
+    image: "/images/commerce-800x600.webp",
+  },
+  {
+    id: "educacao",
     image: "/images/pexels-photo-256541.webp",
+  },
+  {
+    id: "audiovisual",
+    image: "/images/audio-visual-2.jpg",
   },
 ]
 

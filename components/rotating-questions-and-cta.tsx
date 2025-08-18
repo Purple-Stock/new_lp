@@ -93,7 +93,7 @@ export function RotatingQuestionsAndCTA() {
             </span>
             <br />
             <span className="text-gray-900">
-              {t.hero.subtitle}
+              {t.hero.subtitle}{" "}
             </span> 
             <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
               {t.hero.subtitleHighlight}

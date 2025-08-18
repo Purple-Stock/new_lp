@@ -78,7 +78,7 @@ export function FaqCta() {
           <h2 className="text-4xl font-bold">
             Gestão de Inventário Simplificada{" "}
             <span className="block">
-              Começa Com <span className="text-[#9333E9]">Purple Stock</span>
+              Começa Com{" "}<span className="text-[#9333E9]">Purple Stock</span>
             </span>
           </h2>
 

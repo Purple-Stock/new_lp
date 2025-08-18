@@ -164,20 +164,7 @@ export function Footer() {
               ))}
             </div>
             
-            <div className="pt-4">
-              <Button 
-                variant="outline" 
-                className="w-full border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-200 rounded-lg px-4 py-2 text-white"
-                onClick={() => {
-                  if (language === "pt") setLanguage("en");
-                  else if (language === "en") setLanguage("fr");
-                  else setLanguage("pt");
-                }}
-              >
-                <Globe className="h-4 w-4 mr-2" />
-                {language === "pt" ? "Português" : language === "en" ? "English" : "Français"}
-              </Button>
-            </div>
+
           </div>
         </div>
 

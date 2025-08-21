@@ -1,10 +1,10 @@
-# 🤖 LLM.txt Implementation Guide
+# 🤖 LLMs.txt Implementation Guide
 
-This document explains the `llm.txt` file implementation for the PurpleStock application, designed to help AI systems and Large Language Models (LLMs) understand your website structure and content.
+This document explains the `llms.txt` file implementation for the PurpleStock application, designed to help AI systems and Large Language Models (LLMs) understand your website structure and content.
 
-## 📋 What is LLM.txt?
+## 📋 What is LLMs.txt?
 
-`llm.txt` is an emerging standard for AI-friendly website documentation, similar to `robots.txt` but specifically designed for AI systems, LLMs, and machine learning models to better understand and interact with your website.
+`llms.txt` is an emerging standard for AI-friendly website documentation, similar to `robots.txt` but specifically designed for AI systems, LLMs, and machine learning models to better understand and interact with your website.
 
 ## 🎯 Purpose and Benefits
 
@@ -23,8 +23,8 @@ This document explains the `llm.txt` file implementation for the PurpleStock app
 ## 🏗️ Implementation Details
 
 ### File Location
-- **Route**: `app/llm.txt/route.ts`
-- **URL**: `https://yourdomain.com/llm.txt`
+- **Route**: `app/llms.txt/route.ts`
+- **URL**: `https://yourdomain.com/llms.txt`
 - **Content-Type**: `text/plain; charset=utf-8`
 
 ### Technical Implementation
@@ -74,7 +74,7 @@ export async function GET() {
 ## 🔗 Link Structure
 
 ### Internal Links
-All links in the `llm.txt` file use relative paths that work seamlessly:
+All links in the `llms.txt` file use relative paths that work seamlessly:
 - `/features/inventory-control` → Feature pages
 - `/industrias/retail` → Industry-specific pages
 - `/recursos/codigo-de-barras` → Resource pages
@@ -113,7 +113,7 @@ AI-powered search can:
 ## 🔧 Customization
 
 ### Adding New Features
-When adding new features, update the `llm.txt` content:
+When adding new features, update the `llms.txt` content:
 
 ```typescript
 // Add to appropriate section
@@ -168,23 +168,23 @@ The content is stored as a template string, making it easy to:
 
 ### Local Testing
 ```bash
-# Test the llm.txt file
-curl http://localhost:3001/llm.txt
+# Test the llms.txt file
+curl http://localhost:3001/llms.txt
 
 # Check content length
-curl -s http://localhost:3001/llm.txt | wc -l
+curl -s http://localhost:3001/llms.txt | wc -l
 
 # Validate content structure
-curl -s http://localhost:3001/llm.txt | grep -E "^#|^##|^-"
+curl -s http://localhost:3001/llms.txt | grep -E "^#|^##|^-"
 ```
 
 ### Production Testing
 ```bash
 # Test production URL
-curl https://yourdomain.com/llm.txt
+curl https://yourdomain.com/llms.txt
 
 # Validate content type
-curl -I https://yourdomain.com/llm.txt | grep "Content-Type"
+curl -I https://yourdomain.com/llms.txt | grep "Content-Type"
 ```
 
 ## 📈 Future Enhancements
@@ -230,6 +230,6 @@ curl -I https://yourdomain.com/llm.txt | grep "Content-Type"
 
 ---
 
-**🎉 Your PurpleStock application now has a comprehensive, AI-friendly `llm.txt` file that will help AI systems better understand and interact with your platform!**
+**🎉 Your PurpleStock application now has a comprehensive, AI-friendly `llms.txt` file that will help AI systems better understand and interact with your platform!**
 
 This implementation follows current best practices and provides a solid foundation for AI-powered interactions and improved discoverability.

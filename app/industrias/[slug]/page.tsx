@@ -96,6 +96,38 @@ const industriesData = [
     ],
   },
   {
+    name: "Automotivo",
+    slug: "automotive",
+    image:
+      "/images/pexels-photo-4483610.webp",
+    description:
+      "Transforme sua gestão de peças automotivas com o Purple Stock. Nossa solução é projetada especificamente para concessionárias, oficinas mecânicas, distribuidoras de peças e empresas do setor automotivo que precisam de controle total sobre peças, componentes e equipamentos.",
+    benefits: [
+      "Controle completo de peças e componentes automotivos",
+      "Gestão eficiente de fornecedores e distribuidores",
+      "Rastreamento de peças por marca e modelo",
+      "Redução de perdas e danos em peças",
+      "Otimização do uso de recursos automotivos",
+      "Controle de manutenção preventiva e corretiva",
+      "Gestão de garantias e seguros de peças",
+      "Integração com sistemas de gestão automotiva",
+    ],
+    features: [
+      "Controle de peças por categoria (motor, transmissão, freios, suspensão)",
+      "Sistema de check-in/check-out para peças",
+      "Rastreamento de componentes com códigos QR personalizados",
+      "Gestão de fornecedores e distribuidores",
+      "Controle de condições de armazenamento",
+      "Alertas para reposição de peças populares",
+      "Relatórios de utilização por peça e veículo",
+      "Gestão de fornecedores e serviços técnicos",
+      "Controle de versões e atualizações de peças",
+      "Integração com sistemas de orçamento e faturamento",
+      "Dashboard específico para peças críticas",
+      "Sistema de backup para dados de peças",
+    ],
+  },
+  {
     name: "Moda",
     slug: "fashion",
     image:

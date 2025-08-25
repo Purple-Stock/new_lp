@@ -172,6 +172,38 @@ const industriesData = [
     ],
   },
   {
+    name: "Restaurantes",
+    slug: "restaurantes",
+    image:
+      "/images/pexels-photo-1640777.jpeg",
+    description:
+      "Transforme a gestão do seu restaurante com o Purple Stock. Nossa plataforma oferece controle completo de ingredientes, estoque de alimentos e gestão de fornecedores para otimizar suas operações culinárias.",
+    benefits: [
+      "Controle preciso de ingredientes e estoque de alimentos",
+      "Gestão eficiente de fornecedores e entregas",
+      "Controle rigoroso de datas de validade e frescor",
+      "Rastreabilidade FIFO para ingredientes perecíveis",
+      "Redução significativa de desperdícios alimentares",
+      "Otimização do planejamento de cardápios",
+      "Controle de custos por prato e ingrediente",
+      "Integração com sistemas de pedidos e delivery",
+    ],
+    features: [
+      "Gestão de receitas com lista de ingredientes detalhada",
+      "Controle de estoque por tipo de ingrediente (frescos, congelados, secos)",
+      "Alertas automáticos para produtos próximos ao vencimento",
+      "Sistema de check-in/check-out para ingredientes",
+      "Controle de temperatura e condições de armazenamento",
+      "Gestão de fornecedores e horários de entrega",
+      "Relatórios de consumo por prato e período",
+      "Controle de alérgenos e restrições alimentares",
+      "Dashboard específico para chefes e gerentes",
+      "Integração com sistemas de faturamento e contabilidade",
+      "Controle de múltiplas unidades e franquias",
+      "Sistema de backup para dados críticos de receitas",
+    ],
+  },
+  {
     name: "Construção",
     slug: "construction",
     image:

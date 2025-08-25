@@ -32,7 +32,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology" | "audiovisual" | "events"
+type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology" | "audiovisual" | "events" | "restaurantes"
 
 interface Industry {
   id: IndustryId
@@ -148,6 +148,16 @@ const industries: Industry[] = [
     description: "Gestão completa de equipamentos, materiais e recursos para eventos, festas e cerimônias.",
     benefits: ["Controle de equipamentos", "Gestão de materiais", "Rastreamento de recursos", "Controle de locações"],
     stats: { value: "50%", label: "Aumento de eficiência" }
+  },
+  {
+    id: "restaurantes",
+    image: "/images/pexels-photo-1640777.jpeg",
+    icon: Utensils,
+    color: "text-emerald-600",
+    gradient: "from-emerald-500 to-emerald-600",
+    description: "Controle completo de ingredientes, estoque de alimentos e gestão de fornecedores para restaurantes.",
+    benefits: ["Controle de ingredientes", "Gestão de fornecedores", "Controle de validade", "Rastreabilidade FIFO"],
+    stats: { value: "55%", label: "Redução de desperdícios" }
   }
 ]
 
@@ -209,7 +219,7 @@ export default function IndustriasPage() {
           {/* Stats Overview */}
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
-              <div className="text-3xl font-bold text-blue-600 mb-2">10</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">11</div>
               <div className="text-sm text-gray-600">{language === "pt" ? "Setores Principais" : language === "en" ? "Main Industries" : "Secteurs Principaux"}</div>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">

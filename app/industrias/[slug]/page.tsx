@@ -250,6 +250,38 @@ const industriesData = [
     ],
   },
   {
+    name: "Tecnologia",
+    slug: "technology",
+    image:
+      "/images/pexels-photo-256541.webp",
+    description:
+      "Transforme sua gestão de equipamentos tecnológicos com o Purple Stock. Nossa solução é projetada especificamente para empresas de tecnologia, startups, e departamentos de TI que precisam de controle total sobre equipamentos, componentes e ativos tecnológicos.",
+    benefits: [
+      "Controle completo de equipamentos de TI e componentes",
+      "Gestão eficiente de licenças de software",
+      "Rastreamento de ativos tecnológicos",
+      "Redução de perdas e danos em equipamentos",
+      "Otimização do uso de recursos tecnológicos",
+      "Controle de manutenção preventiva e corretiva",
+      "Gestão de garantias e seguros de equipamentos",
+      "Integração com sistemas de gestão de ativos",
+    ],
+    features: [
+      "Controle de equipamentos por categoria (servidores, desktops, laptops, periféricos)",
+      "Sistema de check-in/check-out para equipamentos",
+      "Rastreamento de componentes com códigos QR personalizados",
+      "Gestão de licenças de software e assinaturas",
+      "Controle de condições de armazenamento",
+      "Alertas para manutenção preventiva de equipamentos",
+      "Relatórios de utilização por equipamento e usuário",
+      "Gestão de fornecedores e serviços técnicos",
+      "Controle de versões e atualizações de firmware",
+      "Integração com sistemas de orçamento e faturamento",
+      "Dashboard específico para equipamentos críticos",
+      "Sistema de backup para dados de equipamentos",
+    ],
+  },
+  {
     name: "Produção Audiovisual",
     slug: "audiovisual",
     image:

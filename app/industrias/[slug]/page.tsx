@@ -31,7 +31,7 @@ const industriesData = [
   },
   {
     name: "Varejo",
-    slug: "varejo",
+    slug: "retail",
     image:
       "/images/pexels-photo-264507.jpeg",
     description:
@@ -53,7 +53,7 @@ const industriesData = [
   },
   {
     name: "Manufatura",
-    slug: "manufatura",
+    slug: "manufacturing",
     image:
       "/images/pexels-photo-1145434.jpeg",
     description:
@@ -75,7 +75,7 @@ const industriesData = [
   },
   {
     name: "Logística",
-    slug: "logistica",
+    slug: "logistics",
     image:
       "/images/pexels-photo-1267338.jpeg",
     description:
@@ -97,7 +97,7 @@ const industriesData = [
   },
   {
     name: "Moda",
-    slug: "moda",
+    slug: "fashion",
     image:
       "/images/pexels-photo-994523.webp",
     description:
@@ -119,7 +119,7 @@ const industriesData = [
   },
   {
     name: "Alimentos & Bebidas",
-    slug: "alimentos-bebidas",
+    slug: "food",
     image:
       "/images/pexels-photo-1640777.jpeg",
     description:
@@ -141,7 +141,7 @@ const industriesData = [
   },
   {
     name: "Construção",
-    slug: "construcao",
+    slug: "construction",
     image:
       "/images/building-800x600.webp",
     description:
@@ -163,7 +163,7 @@ const industriesData = [
   },
   {
     name: "Médico",
-    slug: "medico",
+    slug: "pharmaceutical",
     image:
       "/images/medical-appointment-doctor-healthcare-40568.webp",
     description:
@@ -185,7 +185,7 @@ const industriesData = [
   },
   {
     name: "Beleza",
-    slug: "beleza",
+    slug: "beauty",
     image:
       "/images/pexels-photo-3985298.webp",
     description:
@@ -207,7 +207,7 @@ const industriesData = [
   },
   {
     name: "Comércio",
-    slug: "comercio",
+    slug: "commerce",
     image:
       "/images/commerce-800x600.webp",
     description:
@@ -229,7 +229,7 @@ const industriesData = [
   },
   {
     name: "Educação",
-    slug: "educacao",
+    slug: "education",
     image:
       "/images/pexels-photo-256541.webp",
     description:
@@ -313,11 +313,100 @@ const industriesData = [
       "Sistema de backup para dados de equipamentos",
     ],
   },
+  {
+    name: "Moda",
+    slug: "fashion",
+    image:
+      "/images/pexels-photo-994523.webp",
+    description:
+      "Gerencie coleções, tamanhos, cores e estilos com facilidade usando o Purple Stock. Nossa solução é ideal para o setor de moda e vestuário.",
+    benefits: [
+      "Controle de estoque por atributos (tamanho, cor, estilo)",
+      "Gestão de coleções sazonais",
+      "Rastreamento de tendências de vendas",
+      "Redução de sobras de estoque",
+      "Integração com e-commerce de moda",
+    ],
+    features: [
+      "Matriz de tamanhos e cores",
+      "Gestão de etiquetas e códigos de barras",
+      "Controle de estoque em lojas físicas e online",
+      "Alertas para reposição de itens populares",
+      "Relatórios de desempenho por coleção",
+    ],
+  },
+  {
+    name: "Beleza",
+    slug: "beauty",
+    image:
+      "/images/pexels-photo-3985298.webp",
+    description:
+      "Gerencie produtos de beleza, cosméticos e equipamentos com o Purple Stock. Nossa solução é ideal para salões, spas e lojas de cosméticos.",
+    benefits: [
+      "Controle de produtos por linha e marca",
+      "Gestão de datas de validade",
+      "Rastreamento de uso de produtos em serviços",
+      "Análise de produtos mais vendidos",
+      "Integração com sistemas de agendamento",
+    ],
+    features: [
+      "Controle de estoque por categoria",
+      "Gestão de produtos para revenda",
+      "Controle de produtos usados em serviços",
+      "Alertas para reposição automática",
+      "Relatórios de desempenho por linha",
+    ],
+  },
+  {
+    name: "Comércio",
+    slug: "commerce",
+    image:
+      "/images/commerce-800x600.webp",
+    description:
+      "Otimize suas operações comerciais com o Purple Stock. Nossa plataforma oferece as ferramentas necessárias para gerenciar seu estoque com eficiência.",
+    benefits: [
+      "Controle de estoque em tempo real",
+      "Gestão de múltiplos fornecedores",
+      "Análise de giro de estoque",
+      "Redução de custos operacionais",
+      "Melhoria na experiência do cliente",
+    ],
+    features: [
+      "Interface intuitiva para operações diárias",
+      "Escaneamento rápido de produtos",
+      "Gestão de preços e promoções",
+      "Relatórios de vendas e estoque",
+      "Integração com sistemas de PDV",
+    ],
+  },
+  {
+    name: "Educação",
+    slug: "education",
+    image:
+      "/images/pexels-photo-256541.webp",
+    description:
+      "Gerencie materiais didáticos, equipamentos e suprimentos escolares com o Purple Stock. Nossa solução é ideal para escolas, universidades e instituições de ensino.",
+    benefits: [
+      "Controle de materiais didáticos",
+      "Gestão de equipamentos e laboratórios",
+      "Rastreamento de empréstimos de livros e materiais",
+      "Redução de perdas e desperdícios",
+      "Planejamento eficiente de compras",
+    ],
+    features: [
+      "Controle de estoque por departamento",
+      "Gestão de empréstimos de equipamentos",
+      "Rastreamento de livros e materiais",
+      "Alertas para reposição de materiais",
+      "Relatórios de consumo por período letivo",
+    ],
+  },
 ]
 
-export default function IndustryPage({ params }: { params: { slug: string } }) {
+export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {
   // Find the industry data based on the slug
-  const industry = industriesData.find((ind) => ind.slug === params.slug) || industriesData[0]
+  const { slug } = await params
+  const industry = industriesData.find((ind) => ind.slug === slug) || industriesData[0]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/30">

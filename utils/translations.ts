@@ -44,7 +44,11 @@ export const translations = {
         construction: "Construção",
         technology: "Tecnologia",
         audiovisual: "Produção Audiovisual",
-        events: "Eventos"
+        events: "Eventos",
+        fashion: "Moda",
+        beauty: "Beleza",
+        commerce: "Comércio",
+        education: "Educação"
       }
     },
     trustedBy: {
@@ -828,7 +832,11 @@ export const translations = {
         construction: "Construction",
         technology: "Technology",
         audiovisual: "Audiovisual Production",
-        events: "Events"
+        events: "Events",
+        fashion: "Fashion",
+        beauty: "Beauty",
+        commerce: "Commerce",
+        education: "Education"
       }
     },
     trustedBy: {
@@ -1580,7 +1588,11 @@ export const translations = {
         construction: "Construction",
         technology: "Technologie",
         audiovisual: "Production Audiovisuelle",
-        events: "Événements"
+        events: "Événements",
+        fashion: "Mode",
+        beauty: "Beauté",
+        commerce: "Commerce",
+        education: "Éducation"
       }
     },
     trustedBy: {

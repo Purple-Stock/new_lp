@@ -24,7 +24,11 @@ import {
   Shield,
   Clock,
   Zap,
-  Play
+  Play,
+  Palette,
+  Scissors,
+  ShoppingBag,
+  GraduationCap
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -144,7 +148,7 @@ const industries: Industry[] = [
     description: "Gestão completa de equipamentos, materiais e recursos para eventos, festas e cerimônias.",
     benefits: ["Controle de equipamentos", "Gestão de materiais", "Rastreamento de recursos", "Controle de locações"],
     stats: { value: "50%", label: "Aumento de eficiência" }
-  },
+  }
 ]
 
 const globalBenefits = [

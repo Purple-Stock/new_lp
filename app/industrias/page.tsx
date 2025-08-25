@@ -28,7 +28,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology" | "audiovisual"
+type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology" | "audiovisual" | "events"
 
 interface Industry {
   id: IndustryId
@@ -135,6 +135,16 @@ const industries: Industry[] = [
     benefits: ["Controle de equipamentos", "Gestão de locações", "Rastreamento de acessórios", "Controle de manutenção"],
     stats: { value: "45%", label: "Redução de perdas" }
   },
+  {
+    id: "events",
+    image: "/images/pexels-photo-3985298.webp",
+    icon: Star,
+    color: "text-yellow-600",
+    gradient: "from-yellow-500 to-yellow-600",
+    description: "Gestão completa de equipamentos, materiais e recursos para eventos, festas e cerimônias.",
+    benefits: ["Controle de equipamentos", "Gestão de materiais", "Rastreamento de recursos", "Controle de locações"],
+    stats: { value: "50%", label: "Aumento de eficiência" }
+  },
 ]
 
 const globalBenefits = [
@@ -195,7 +205,7 @@ export default function IndustriasPage() {
           {/* Stats Overview */}
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
-              <div className="text-3xl font-bold text-blue-600 mb-2">9</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">10</div>
               <div className="text-sm text-gray-600">{language === "pt" ? "Setores Principais" : language === "en" ? "Main Industries" : "Secteurs Principaux"}</div>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">

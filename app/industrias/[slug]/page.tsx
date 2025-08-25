@@ -281,6 +281,38 @@ const industriesData = [
       "Sistema de backup para dados de equipamentos",
     ],
   },
+  {
+    name: "Eventos",
+    slug: "events",
+    image:
+      "/images/pexels-photo-3985298.webp",
+    description:
+      "Transforme sua gestão de eventos com o Purple Stock. Nossa solução é projetada especificamente para empresas de eventos, organizadores de festas, casamentos, conferências e profissionais do setor que precisam de controle total sobre equipamentos, materiais e recursos.",
+    benefits: [
+      "Controle completo de equipamentos de eventos (som, iluminação, mobiliário)",
+      "Gestão eficiente de materiais e decorações",
+      "Rastreamento de recursos por evento e projeto",
+      "Redução de perdas e danos em equipamentos",
+      "Otimização do uso de recursos por evento",
+      "Controle de manutenção preventiva e corretiva",
+      "Gestão de seguros e garantias de equipamentos",
+      "Integração com sistemas de agendamento e eventos",
+    ],
+    features: [
+      "Controle de equipamentos por categoria (som, iluminação, mobiliário, decorações)",
+      "Sistema de check-in/check-out para eventos e projetos",
+      "Rastreamento de materiais com códigos QR personalizados",
+      "Gestão de consumíveis e acessórios",
+      "Controle de condições de armazenamento",
+      "Alertas para manutenção preventiva de equipamentos",
+      "Relatórios de utilização por equipamento e evento",
+      "Gestão de fornecedores e serviços técnicos",
+      "Controle de versões e atualizações de equipamentos",
+      "Integração com sistemas de orçamento e faturamento",
+      "Dashboard específico para equipamentos críticos",
+      "Sistema de backup para dados de equipamentos",
+    ],
+  },
 ]
 
 export default function IndustryPage({ params }: { params: { slug: string } }) {

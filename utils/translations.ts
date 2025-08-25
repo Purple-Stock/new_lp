@@ -43,7 +43,8 @@ export const translations = {
         automotive: "Automotivo",
         construction: "Construção",
         technology: "Tecnologia",
-        audiovisual: "Produção Audiovisual"
+        audiovisual: "Produção Audiovisual",
+        events: "Eventos"
       }
     },
     trustedBy: {
@@ -826,7 +827,8 @@ export const translations = {
         automotive: "Automotive",
         construction: "Construction",
         technology: "Technology",
-        audiovisual: "Audiovisual Production"
+        audiovisual: "Audiovisual Production",
+        events: "Events"
       }
     },
     trustedBy: {
@@ -1577,7 +1579,8 @@ export const translations = {
         automotive: "Automobile",
         construction: "Construction",
         technology: "Technologie",
-        audiovisual: "Production Audiovisuelle"
+        audiovisual: "Production Audiovisuelle",
+        events: "Événements"
       }
     },
     trustedBy: {

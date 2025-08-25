@@ -580,31 +580,37 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             </div>
 
             <div className="grid md:grid-cols-4 gap-8">
-              <div className="text-center group">
-                <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-center group flex flex-col items-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <TrendingUp className="w-10 h-10 text-purple-600" />
                 </div>
                 <div className="text-3xl font-bold text-purple-600 mb-2">40%</div>
                 <div className="text-gray-600">Aumento na Eficiência</div>
               </div>
               
-              <div className="text-center group">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-center group flex flex-col items-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Shield className="w-10 h-10 text-blue-600" />
                 </div>
                 <div className="text-3xl font-bold text-blue-600 mb-2">99.9%</div>
                 <div className="text-gray-600">Precisão no Controle</div>
               </div>
               
-              <div className="text-center group">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-center group flex flex-col items-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Clock className="w-10 h-10 text-green-600" />
                 </div>
                 <div className="text-3xl font-bold text-green-600 mb-2">24/7</div>
                 <div className="text-gray-600">Disponibilidade</div>
               </div>
               
-
+              <div className="text-center group flex flex-col items-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-10 h-10 text-orange-600" />
+                </div>
+                <div className="text-3xl font-bold text-orange-600 mb-2">100%</div>
+                <div className="text-gray-600">Satisfação</div>
+              </div>
             </div>
           </div>
         </div>

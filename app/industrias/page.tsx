@@ -137,7 +137,7 @@ const industries: Industry[] = [
   },
   {
     id: "events",
-    image: "/images/pexels-photo-3985298.webp",
+    image: "/images/events-1.jpg",
     icon: Star,
     color: "text-yellow-600",
     gradient: "from-yellow-500 to-yellow-600",

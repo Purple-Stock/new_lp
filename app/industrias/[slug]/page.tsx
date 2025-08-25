@@ -285,7 +285,7 @@ const industriesData = [
     name: "Eventos",
     slug: "events",
     image:
-      "/images/pexels-photo-3985298.webp",
+      "/images/events-2.jpg",
     description:
       "Transforme sua gestão de eventos com o Purple Stock. Nossa solução é projetada especificamente para empresas de eventos, organizadores de festas, casamentos, conferências e profissionais do setor que precisam de controle total sobre equipamentos, materiais e recursos.",
     benefits: [

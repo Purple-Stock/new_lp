@@ -24,8 +24,7 @@ import {
   Smartphone,
   Building2,
   Star,
-  Cpu,
-  Tool
+  Cpu
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -41,7 +40,7 @@ export default function ElectricalPage() {
       description: "Controle preciso de equipamentos elétricos, transformadores, painéis e componentes técnicos"
     },
     {
-      icon: Tool,
+      icon: Wrench,
       title: "Controle de Ferramentas",
       description: "Gestão eficiente de ferramentas, instrumentos de medição e equipamentos de teste"
     },

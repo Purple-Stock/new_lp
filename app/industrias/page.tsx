@@ -32,7 +32,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology" | "audiovisual" | "events" | "restaurantes"
+type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology" | "audiovisual" | "events" | "restaurantes" | "electrical"
 
 interface Industry {
   id: IndustryId
@@ -158,6 +158,16 @@ const industries: Industry[] = [
     description: "Controle completo de ingredientes, estoque de alimentos e gestão de fornecedores para restaurantes.",
     benefits: ["Controle de ingredientes", "Gestão de fornecedores", "Controle de validade", "Rastreabilidade FIFO"],
     stats: { value: "55%", label: "Redução de desperdícios" }
+  },
+  {
+    id: "electrical",
+    image: "/images/pexels-photo-4481259.webp",
+    icon: Zap,
+    color: "text-yellow-600",
+    gradient: "from-yellow-500 to-yellow-600",
+    description: "Gestão eficiente de equipamentos elétricos, componentes e ferramentas para o setor elétrico.",
+    benefits: ["Controle de equipamentos", "Gestão de componentes", "Rastreamento de ferramentas", "Controle de manutenção"],
+    stats: { value: "45%", label: "Aumento de produtividade" }
   }
 ]
 
@@ -219,7 +229,7 @@ export default function IndustriasPage() {
           {/* Stats Overview */}
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
-              <div className="text-3xl font-bold text-blue-600 mb-2">11</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">12</div>
               <div className="text-sm text-gray-600">{language === "pt" ? "Setores Principais" : language === "en" ? "Main Industries" : "Secteurs Principaux"}</div>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
@@ -368,14 +378,16 @@ export default function IndustriasPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/coming-soon">
+            {/* <Link href="/coming-soon"> */}
+            <Link href="https://app.purplestock.com.br/">
               <Button size="lg" className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
                 <Zap className="w-5 h-5 mr-2" />
                 {language === "pt" ? "Começar Teste Gratuito" : language === "en" ? "Start Free Trial" : "Commencer l'Essai Gratuit"}
               </Button>
             </Link>
             
-            <Link href="/coming-soon">
+            {/* <Link href="/coming-soon"> */}
+            <Link href="https://app.purplestock.com.br/">
               <Button size="lg" className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
                 <Play className="w-5 h-5 mr-2" />
                 {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch Demo" : "Voir la Démo"}

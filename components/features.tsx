@@ -58,7 +58,8 @@ function Feature({ title, subtitle, description, image, bgColor, textColor, icon
             
             {/* CTA Button */}
             <div className="pt-4">
-              <Link href="/coming-soon">
+              {/* <Link href="/coming-soon"> */}
+              <Link href="https://app.purplestock.com.br/">
                 <Button size="lg" className={`bg-gradient-to-r ${gradient} hover:shadow-xl text-white px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-1 rounded-xl`}>
                   {language === "pt" ? "Saiba Mais" : language === "en" ? "Learn More" : "En Savoir Plus"}
                   <ArrowRight className="w-5 h-5 ml-2" />

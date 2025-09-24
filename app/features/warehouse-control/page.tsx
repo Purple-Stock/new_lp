@@ -43,7 +43,8 @@ export default function WarehouseControlPage() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/coming-soon">
+                {/* <Link href="/coming-soon"> */}
+                <Link href="https://app.purplestock.com.br/">
                   <Button size="lg" className="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                     <Zap className="w-5 h-5 mr-2" />
                     {t.startTrial}
@@ -243,7 +244,8 @@ export default function WarehouseControlPage() {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <Link href="/coming-soon">
+              {/* <Link href="/coming-soon"> */}
+              <Link href="https://app.purplestock.com.br/">
                 <Button size="lg" className="bg-transparent border-2 border-white hover:bg-white/10 text-white px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-1">
                   <Zap className="w-5 h-5 mr-2" />
                   {t.cta.startTrial}

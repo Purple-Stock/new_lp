@@ -40,7 +40,7 @@ The sitemap includes **32 URLs** total:
 - Pricing page (`/precos`) - Priority: 0.7, Change Frequency: Monthly
 - Glossary page (`/glossario`) - Priority: 0.6, Change Frequency: Monthly
 - Free barcode page (`/codigo-de-barras-gratis`) - Priority: 0.7, Change Frequency: Monthly
-- Coming soon page (`/coming-soon`) - Priority: 0.5, Change Frequency: Monthly
+<!-- - Coming soon page (`/coming-soon`) - Priority: 0.5, Change Frequency: Monthly -->
 
 ### Feature Routes (10 URLs)
 All feature pages under `/features/` with Priority: 0.7, Change Frequency: Monthly:

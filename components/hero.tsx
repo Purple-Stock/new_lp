@@ -58,14 +58,16 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link href="/coming-soon">
+              {/* <Link href="/coming-soon"> */}
+              <Link href="https://app.purplestock.com.br/">
                 <Button size="lg" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                   <Sparkles className="w-5 h-5 mr-2" />
                   {t.cta}
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <Link href="/coming-soon">
+              {/* <Link href="/coming-soon"> */}
+              <Link href="https://app.purplestock.com.br/">
                 <Button variant="outline" size="lg" className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-8 py-4 text-lg font-semibold transition-all duration-300">
                   {language === "pt" ? "Ver Demo" : language === "en" ? "Watch Demo" : "Voir la Démo"}
                 </Button>

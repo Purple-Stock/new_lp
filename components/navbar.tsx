@@ -175,7 +175,8 @@ export function Navbar() {
             <Link href="/codigo-de-barras-gratis" className="text-purple-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium">
               {t.freeBarcode}
             </Link>
-            <Link href="/coming-soon">
+            {/* <Link href="/coming-soon"> */}
+            <Link href="https://app.purplestock.com.br/">
               <Button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
                 {t.login}
               </Button>
@@ -323,8 +324,15 @@ export function Navbar() {
               >
                 {t.freeBarcode}
               </Link>
-              <Link
+              {/* <Link
                 href="/coming-soon"
+                className="block px-3 py-2 text-base font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg text-center shadow-lg"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.login}
+              </Link> */}
+              <Link
+                href="https://app.purplestock.com.br/"
                 className="block px-3 py-2 text-base font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg text-center shadow-lg"
                 onClick={() => setMobileMenuOpen(false)}
               >

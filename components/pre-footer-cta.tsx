@@ -72,7 +72,8 @@ export function PreFooterCTA() {
         {/* CTA Section */}
         <div className="mb-16">
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link href="/coming-soon">
+            {/* <Link href="/coming-soon"> */}
+            <Link href="https://app.purplestock.com.br/">
               <Button size="lg" className="bg-white hover:bg-gray-100 text-purple-700 px-10 py-6 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
                 <Zap className="w-6 h-6 mr-3" />
                 {buttonText}
@@ -80,7 +81,8 @@ export function PreFooterCTA() {
               </Button>
             </Link>
             
-            <Link href="/coming-soon">
+            {/* <Link href="/coming-soon"> */}
+            <Link href="https://app.purplestock.com.br/">
               <Button size="lg" className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-10 py-6 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
                 <Play className="w-6 h-6 mr-3" />
                 {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch Demo" : "Voir la Démo"}

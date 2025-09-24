@@ -6,127 +6,127 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { 
-  Utensils, 
+  Zap, 
   CheckCircle, 
   ArrowRight, 
   TrendingUp, 
   Shield, 
   Clock, 
   Users, 
-  Zap, 
   Play, 
-  ChefHat, 
-  ShoppingCart, 
-  Calendar,
-  Thermometer,
+  Wrench, 
+  Settings, 
+  Gauge,
   AlertTriangle,
   BarChart3,
   Truck,
   FileText,
   Smartphone,
   Building2,
-  Star
+  Star,
+  Cpu,
+  Tool
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
-export default function RestaurantesPage() {
+export default function ElectricalPage() {
   const { language } = useLanguage()
   const t = translations[language]
 
   const benefits = [
     {
-      icon: ChefHat,
-      title: "Gestão de Receitas",
-      description: "Controle preciso de ingredientes por prato com listas detalhadas e custos calculados automaticamente"
+      icon: Cpu,
+      title: "Gestão de Equipamentos",
+      description: "Controle preciso de equipamentos elétricos, transformadores, painéis e componentes técnicos"
     },
     {
-      icon: ShoppingCart,
-      title: "Controle de Fornecedores",
-      description: "Gestão eficiente de fornecedores, horários de entrega e qualidade dos ingredientes"
+      icon: Tool,
+      title: "Controle de Ferramentas",
+      description: "Gestão eficiente de ferramentas, instrumentos de medição e equipamentos de teste"
     },
     {
-      icon: Calendar,
-      title: "Controle de Validade",
-      description: "Alertas automáticos para produtos próximos ao vencimento e gestão FIFO rigorosa"
+      icon: Settings,
+      title: "Manutenção Preventiva",
+      description: "Alertas automáticos para manutenção preventiva e controle de garantias"
     },
     {
-      icon: Thermometer,
-      title: "Controle de Temperatura",
-      description: "Monitoramento de condições de armazenamento para ingredientes frescos e congelados"
+      icon: Gauge,
+      title: "Especificações Técnicas",
+      description: "Controle rigoroso de especificações técnicas, certificações e padrões de qualidade"
     },
     {
       icon: AlertTriangle,
-      title: "Gestão de Alérgenos",
-      description: "Controle rigoroso de alérgenos e restrições alimentares para segurança dos clientes"
+      title: "Controle de Qualidade",
+      description: "Rastreamento de componentes por especificação técnica e conformidade"
     },
     {
       icon: BarChart3,
-      title: "Análise de Consumo",
-      description: "Relatórios detalhados de consumo por prato, período e sazonalidade"
+      title: "Análise de Performance",
+      description: "Relatórios detalhados de utilização por equipamento, projeto e período"
     }
   ]
 
   const features = [
     {
       icon: Truck,
-      title: "Gestão de Entregas",
-      description: "Controle de horários de entrega, qualidade dos produtos e gestão de fornecedores"
+      title: "Gestão de Fornecedores",
+      description: "Controle de fornecedores, serviços técnicos e qualidade dos componentes"
     },
     {
       icon: FileText,
-      title: "Relatórios Detalhados",
-      description: "Análise de custos por prato, consumo de ingredientes e performance do estoque"
+      title: "Relatórios Técnicos",
+      description: "Análise de custos por projeto, utilização de equipamentos e performance técnica"
     },
     {
       icon: Smartphone,
       title: "App Mobile",
-      description: "Controle de estoque em tempo real diretamente na cozinha e no depósito"
+      description: "Controle de estoque em tempo real diretamente no campo e nas instalações"
     },
     {
       icon: Building2,
-      title: "Múltiplas Unidades",
-      description: "Gestão centralizada para restaurantes com múltiplas filiais ou franquias"
+      title: "Múltiplas Instalações",
+      description: "Gestão centralizada para empresas com múltiplas instalações ou projetos"
     }
   ]
 
   const stats = [
-    { value: "55%", label: "Redução de Desperdícios" },
-    { value: "40%", label: "Economia em Compras" },
-    { value: "30%", label: "Melhoria na Eficiência" },
+    { value: "45%", label: "Aumento de Produtividade" },
+    { value: "60%", label: "Redução de Tempo de Inatividade" },
+    { value: "35%", label: "Melhoria na Eficiência" },
     { value: "99.9%", label: "Controle de Qualidade" }
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-emerald-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-yellow-50/30">
       <Navbar />
 
       {/* Hero Section */}
       <div className="relative overflow-hidden pt-24 pb-16">
         {/* Background decorative elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+          <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium mb-8">
-            <Utensils className="w-4 h-4 mr-2" />
-            {language === "pt" ? "Soluções para Restaurantes" : language === "en" ? "Restaurant Solutions" : "Solutions pour Restaurants"}
+          <div className="inline-flex items-center px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium mb-8">
+            <Zap className="w-4 h-4 mr-2" />
+            {language === "pt" ? "Soluções para Setor Elétrico" : language === "en" ? "Electrical Industry Solutions" : "Solutions pour l'Industrie Électrique"}
           </div>
           
           <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-gray-900 via-emerald-800 to-gray-900 bg-clip-text text-transparent">
-              {language === "pt" ? "Gestão de Estoque para Restaurantes" : language === "en" ? "Inventory Management for Restaurants" : "Gestion des Stocks pour Restaurants"}
+            <span className="bg-gradient-to-r from-gray-900 via-yellow-800 to-gray-900 bg-clip-text text-transparent">
+              {language === "pt" ? "Gestão de Estoque para Setor Elétrico" : language === "en" ? "Inventory Management for Electrical Industry" : "Gestion des Stocks pour l'Industrie Électrique"}
             </span>
           </h1>
           
           <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
             {language === "pt" 
-              ? "Transforme a gestão do seu restaurante com controle preciso de ingredientes, estoque de alimentos e gestão de fornecedores. Reduza desperdícios e otimize seus custos."
+              ? "Otimize a gestão do seu negócio elétrico com controle preciso de equipamentos, componentes e ferramentas. Maximize a eficiência operacional e reduza o tempo de inatividade."
               : language === "en"
-              ? "Transform your restaurant management with precise control of ingredients, food inventory, and supplier management. Reduce waste and optimize your costs."
-              : "Transformez la gestion de votre restaurant avec un contrôle précis des ingrédients, des stocks alimentaires et de la gestion des fournisseurs. Réduisez les déchets et optimisez vos coûts."
+              ? "Optimize your electrical business management with precise control of equipment, components, and tools. Maximize operational efficiency and reduce downtime."
+              : "Optimisez la gestion de votre entreprise électrique avec un contrôle précis des équipements, composants et outils. Maximisez l'efficacité opérationnelle et réduisez les temps d'arrêt."
             }
           </p>
 
@@ -134,7 +134,7 @@ export default function RestaurantesPage() {
           <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {stats.map((stat, index) => (
               <div key={index} className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
-                <div className="text-3xl font-bold text-emerald-600 mb-2">{stat.value}</div>
+                <div className="text-3xl font-bold text-yellow-600 mb-2">{stat.value}</div>
                 <div className="text-sm text-gray-600">{stat.label}</div>
               </div>
             ))}
@@ -147,14 +147,14 @@ export default function RestaurantesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              {language === "pt" ? "Benefícios para Restaurantes" : language === "en" ? "Benefits for Restaurants" : "Avantages pour les Restaurants"}
+              {language === "pt" ? "Benefícios para o Setor Elétrico" : language === "en" ? "Benefits for the Electrical Industry" : "Avantages pour l'Industrie Électrique"}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               {language === "pt" 
-                ? "Soluções específicas para as necessidades únicas da indústria de restaurantes e alimentação."
+                ? "Soluções específicas para as necessidades únicas da indústria elétrica e de automação."
                 : language === "en"
-                ? "Specific solutions for the unique needs of the restaurant and food service industry."
-                : "Solutions spécifiques aux besoins uniques de l'industrie de la restauration et des services alimentaires."
+                ? "Specific solutions for the unique needs of the electrical and automation industry."
+                : "Solutions spécifiques aux besoins uniques de l'industrie électrique et d'automatisation."
               }
             </p>
           </div>
@@ -162,8 +162,8 @@ export default function RestaurantesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center group">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-100 to-green-100 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <benefit.icon className="w-8 h-8 text-emerald-600" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <benefit.icon className="w-8 h-8 text-yellow-600" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{benefit.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
@@ -182,10 +182,10 @@ export default function RestaurantesPage() {
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               {language === "pt" 
-                ? "Ferramentas essenciais para otimizar a gestão do seu restaurante."
+                ? "Ferramentas essenciais para otimizar a gestão do seu negócio elétrico."
                 : language === "en"
-                ? "Essential tools to optimize your restaurant management."
-                : "Outils essentiels pour optimiser la gestion de votre restaurant."
+                ? "Essential tools to optimize your electrical business management."
+                : "Outils essentiels pour optimiser la gestion de votre entreprise électrique."
               }
             </p>
           </div>
@@ -195,7 +195,7 @@ export default function RestaurantesPage() {
               <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center">
                       <feature.icon className="w-6 h-6 text-white" />
                     </div>
                   </div>
@@ -211,7 +211,7 @@ export default function RestaurantesPage() {
       </div>
 
       {/* CTA Section */}
-      <div className="py-20 bg-gradient-to-br from-emerald-600 to-green-600 relative overflow-hidden">
+      <div className="py-20 bg-gradient-to-br from-yellow-600 to-orange-600 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -219,21 +219,21 @@ export default function RestaurantesPage() {
         
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            {language === "pt" ? "Pronto para otimizar seu restaurante?" : language === "en" ? "Ready to optimize your restaurant?" : "Prêt à optimiser votre restaurant ?"}
+            {language === "pt" ? "Pronto para otimizar seu negócio elétrico?" : language === "en" ? "Ready to optimize your electrical business?" : "Prêt à optimiser votre entreprise électrique ?"}
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             {language === "pt" 
-              ? "Junte-se a centenas de restaurantes que já transformaram suas operações com o Purple Stock."
+              ? "Junte-se a centenas de empresas elétricas que já transformaram suas operações com o Purple Stock."
               : language === "en"
-              ? "Join hundreds of restaurants that have already transformed their operations with Purple Stock."
-              : "Rejoignez des centaines de restaurants qui ont déjà transformé leurs opérations avec Purple Stock."
+              ? "Join hundreds of electrical companies that have already transformed their operations with Purple Stock."
+              : "Rejoignez des centaines d'entreprises électriques qui ont déjà transformé leurs opérations avec Purple Stock."
             }
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {/* <Link href="/coming-soon"> */}
             <Link href="https://app.purplestock.com.br/">
-              <Button size="lg" className="bg-white hover:bg-gray-100 text-emerald-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
+              <Button size="lg" className="bg-white hover:bg-gray-100 text-yellow-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
                 <Zap className="w-5 h-5 mr-2" />
                 {language === "pt" ? "Começar Teste Gratuito" : language === "en" ? "Start Free Trial" : "Commencer l'Essai Gratuit"}
               </Button>
@@ -241,7 +241,7 @@ export default function RestaurantesPage() {
             
             {/* <Link href="/coming-soon"> */}
             <Link href="https://app.purplestock.com.br/">
-              <Button size="lg" className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
+              <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
                 <Play className="w-5 h-5 mr-2" />
                 {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch Demo" : "Voir la Démo"}
               </Button>

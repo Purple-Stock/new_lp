@@ -204,6 +204,38 @@ const industriesData = [
     ],
   },
   {
+    name: "Elétrico",
+    slug: "electrical",
+    image:
+      "/images/pexels-photo-4481259.webp",
+    description:
+      "Otimize a gestão do seu negócio elétrico com o Purple Stock. Nossa plataforma oferece controle completo de equipamentos elétricos, componentes, ferramentas e materiais para maximizar a eficiência operacional.",
+    benefits: [
+      "Controle preciso de equipamentos elétricos e componentes",
+      "Gestão eficiente de ferramentas e instrumentos de medição",
+      "Rastreamento de componentes por especificação técnica",
+      "Controle de manutenção preventiva e corretiva",
+      "Redução de tempo de inatividade em equipamentos",
+      "Otimização do uso de recursos elétricos",
+      "Controle de garantias e certificações de equipamentos",
+      "Integração com sistemas de gestão técnica",
+    ],
+    features: [
+      "Gestão de equipamentos por categoria (transformadores, painéis, cabos)",
+      "Sistema de check-in/check-out para ferramentas e equipamentos",
+      "Rastreamento de componentes com códigos QR personalizados",
+      "Controle de especificações técnicas e certificações",
+      "Alertas para manutenção preventiva de equipamentos",
+      "Relatórios de utilização por equipamento e projeto",
+      "Gestão de fornecedores e serviços técnicos",
+      "Controle de versões e atualizações de equipamentos",
+      "Dashboard específico para técnicos e engenheiros",
+      "Integração com sistemas de orçamento e faturamento",
+      "Controle de múltiplas instalações e projetos",
+      "Sistema de backup para dados críticos de equipamentos",
+    ],
+  },
+  {
     name: "Construção",
     slug: "construction",
     image:
@@ -717,7 +749,8 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/coming-soon">
+              {/* <Link href="/coming-soon"> */}
+              <Link href="https://app.purplestock.com.br/">
                 <Button size="lg" className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
                   <Zap className="w-5 h-5 mr-2" />
                   Começar Teste Gratuito

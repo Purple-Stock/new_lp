@@ -46,6 +46,7 @@ export const translations = {
         audiovisual: "Produção Audiovisual",
         events: "Eventos",
         restaurantes: "Restaurantes",
+        electrical: "Elétrico",
         fashion: "Moda",
         beauty: "Beleza",
         commerce: "Comércio",
@@ -669,7 +670,7 @@ export const translations = {
             "Suporte por email",
           ],
           buttonText: "Começar Agora",
-          buttonLink: "/coming-soon",
+          buttonLink: "https://app.purplestock.com.br/",
         },
         {
           name: "Pro",
@@ -683,7 +684,7 @@ export const translations = {
             "Suporte por email",
           ],
           buttonText: "Atualizar Agora",
-          buttonLink: "/coming-soon",
+          buttonLink: "https://app.purplestock.com.br/",
         },
         {
           name: "Empresarial",
@@ -835,6 +836,7 @@ export const translations = {
         audiovisual: "Audiovisual Production",
         events: "Events",
         restaurantes: "Restaurants",
+        electrical: "Electrical",
         fashion: "Fashion",
         beauty: "Beauty",
         commerce: "Commerce",
@@ -1428,7 +1430,7 @@ export const translations = {
             "Email support",
           ],
           buttonText: "Get Started",
-          buttonLink: "/coming-soon",
+          buttonLink: "https://app.purplestock.com.br/",
         },
         {
           name: "Pro",
@@ -1442,7 +1444,7 @@ export const translations = {
             "Email support",
           ],
           buttonText: "Upgrade Now",
-          buttonLink: "/coming-soon",
+          buttonLink: "https://app.purplestock.com.br/",
         },
         {
           name: "Enterprise",
@@ -1592,6 +1594,7 @@ export const translations = {
         audiovisual: "Production Audiovisuelle",
         events: "Événements",
         restaurantes: "Restaurants",
+        electrical: "Électrique",
         fashion: "Mode",
         beauty: "Beauté",
         commerce: "Commerce",
@@ -2192,7 +2195,7 @@ export const translations = {
             "Support par email",
           ],
           buttonText: "Commencer",
-          buttonLink: "/coming-soon",
+          buttonLink: "https://app.purplestock.com.br/",
         },
         {
           name: "Pro",
@@ -2206,7 +2209,7 @@ export const translations = {
             "Support par email",
           ],
           buttonText: "Mettre à Niveau",
-          buttonLink: "/coming-soon",
+          buttonLink: "https://app.purplestock.com.br/",
         },
         {
           name: "Entreprise",

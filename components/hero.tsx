@@ -54,6 +54,10 @@ export function Hero() {
                 <CheckCircle className="w-5 h-5 mr-3 text-green-500 flex-shrink-0" />
                 <span className="text-lg">{language === "pt" ? "Integração com QR Code" : language === "en" ? "QR Code integration" : "Intégration QR Code"}</span>
               </div>
+              <div className="flex items-center text-gray-700">
+                <CheckCircle className="w-5 h-5 mr-3 text-green-500 flex-shrink-0" />
+                <span className="text-lg">{language === "pt" ? "Controle de inventário pelo celular" : language === "en" ? "Inventory control by mobile" : "Contrôle de l'inventaire par mobile"}</span>
+              </div>
             </div>
 
             {/* CTA Buttons */}

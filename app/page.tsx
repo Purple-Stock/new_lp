@@ -5,7 +5,7 @@ import { RotatingQuestionsAndCTA } from "@/components/rotating-questions-and-cta
 import { Features } from "@/components/features"
 import { Testimonials } from "@/components/testimonials"
 import { Industries } from "@/components/industries"
-import { PreFooterCTA } from "@/components/pre-footer-cta"
+import { PreFooterCTA } from "@/components/hero-cta"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -13,12 +13,12 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <PreFooterCTA />
       <TrustedBy />
       <RotatingQuestionsAndCTA />
       <Features />
       <Testimonials />
       <Industries />
-      <PreFooterCTA />
       <Footer />
     </main>
   )

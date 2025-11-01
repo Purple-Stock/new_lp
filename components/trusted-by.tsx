@@ -27,7 +27,7 @@ export function TrustedBy() {
     },
     {
       name: "St. Nicholas School",
-      logo: "/images/logos/st-nicholas-school.png",
+      logo: "/images/logos/st-nicholas-school.webp",
       width: 240,
       height: 55,
     },
@@ -51,7 +51,7 @@ export function TrustedBy() {
           {companies.map((company) => (
             <div 
               key={company.name} 
-              className="flex items-center justify-center h-16 opacity-70 hover:opacity-100 transition-opacity duration-300"
+              className="flex items-center justify-center h-16"
             >
               <Image
                 src={company.logo || "/placeholder-logo.svg"}

@@ -678,7 +678,7 @@ export function DesktopLanding() {
             {/* Right: Actions */}
             <div className="flex items-center gap-2.5">
               <Link href="https://app.purplestock.com.br/">
-                <Button className="h-7 px-4 text-[12px] font-medium bg-[#007aff] hover:bg-[#0051d5] text-white rounded-md transition-colors duration-150 shadow-sm hover:shadow">
+                <Button className="h-7 px-4 text-[12px] font-medium bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-colors duration-150 shadow-sm hover:shadow">
                   {t.nav.login}
                 </Button>
               </Link>

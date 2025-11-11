@@ -34,7 +34,7 @@ export function DesktopLanding() {
   const { language, setLanguage } = useLanguage()
   const t = translations[language]
   const [activeStage, setActiveStage] = useState<StageKey>("growth")
-  const [openWindows, setOpenWindows] = useState<WindowKey[]>(["inventory", "analytics"])
+  const [openWindows, setOpenWindows] = useState<WindowKey[]>([])
   const [selectedFolder, setSelectedFolder] = useState<string | null>(null)
   const [featuresOpen, setFeaturesOpen] = useState(false)
   const featuresRef = useRef<HTMLDivElement>(null)

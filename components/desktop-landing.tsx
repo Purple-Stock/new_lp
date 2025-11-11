@@ -19,6 +19,11 @@ import {
   ShieldCheck,
   Sparkles,
   UsersRound,
+  ScanLine,
+  BarChart3,
+  MapPin,
+  Box,
+  RefreshCw,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
@@ -768,223 +773,74 @@ export function DesktopLanding() {
             </div>
 
             <div className="space-y-8 px-4 py-8 sm:px-10 sm:py-10 flex-1 overflow-y-auto overflow-x-hidden scrollbar-purple min-h-0">
-              <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-                <div className="space-y-6">
-                  <div className="inline-flex items-center gap-3 rounded-full border border-purple-200/70 bg-purple-50/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-purple-700 shadow-sm">
-                    <Sparkles className="h-4 w-4 text-purple-500" />
-                    <span>
-                      {osText.stageTag} <span className="text-purple-900">{osText.stageHighlight}</span>
-                    </span>
-                  </div>
-
-                  <div className="space-y-4">
-                    <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
-                      {t.hero.title}
-                    </h1>
-                    <p className="max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                      {t.hero.description2 ?? t.hero.description}
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap gap-3">
-                    <Button
-                      asChild
-                      size="lg"
-                      className="rounded-full bg-gradient-to-r from-purple-600 to-purple-700 px-8 py-6 text-base font-semibold shadow-lg shadow-purple-500/30 hover:shadow-xl"
-                    >
-                      <Link href="https://app.purplestock.com.br/">
-                        <Sparkles className="mr-2 h-5 w-5" />
-                        {t.hero.cta}
-                      </Link>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="rounded-full border-purple-200/80 bg-white/80 px-6 py-6 text-base font-semibold text-purple-700 shadow-sm hover:bg-white"
-                    >
-                      <PlayCircle className="mr-2 h-5 w-5" />
-                      {osText.demo}
-                    </Button>
-                    <Button
-                      asChild
-                      variant="ghost"
-                      size="lg"
-                      className="rounded-full bg-white/60 px-6 py-6 text-base font-semibold text-purple-700 shadow-sm hover:bg-white"
-                    >
-                      <Link href="https://app.purplestock.com.br/">
-                        <Laptop className="mr-2 h-5 w-5" />
-                        {osText.install}
-                      </Link>
-                    </Button>
-                  </div>
-
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {heroBenefits.map((benefit) => (
-                      <div key={benefit} className="flex items-start gap-3 rounded-2xl border border-white/70 bg-white/80 p-4 shadow-sm">
-                        <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-emerald-500" />
-                        <span className="text-sm font-medium text-slate-600">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-4 rounded-2xl bg-gradient-to-r from-purple-600/10 via-purple-500/10 to-purple-400/10 p-5 ring-1 ring-purple-200/50">
-                    <ShieldCheck className="h-10 w-10 text-purple-500" />
-                    <div className="space-y-1">
-                      <p className="text-sm font-semibold text-purple-900">{osText.installHint}</p>
-                      <div className="flex items-center gap-6 text-xs uppercase tracking-wide text-purple-700">
-                        <span>{osText.uptime}: <span className="font-semibold text-purple-900">99.9%</span></span>
-                        <span>{osText.support}: <span className="font-semibold text-purple-900">24/7</span></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-200/50 via-purple-100/40 to-white/30 shadow-inner" />
-                  <div className="relative rounded-3xl border border-white/50 bg-white/80 p-6 shadow-2xl backdrop-blur-lg">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-purple-900">{osText.spotlight}</span>
-                      <span className="text-xs text-slate-400">Live</span>
-                    </div>
-                    <p className="mt-2 text-sm text-slate-600">{osText.spotlightCopy}</p>
-
-                    <div className="mt-6 rounded-2xl bg-gradient-to-br from-purple-700 to-purple-500 p-5 text-white shadow-lg">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <p className="text-xs uppercase tracking-wide text-purple-100">Inventário disponível</p>
-                          <p className="mt-1 text-3xl font-bold">7.482 itens</p>
-                        </div>
-                        <div className="rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-purple-50">
-                          +18% vs último mês
-                        </div>
-                      </div>
-                      <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                        <div className="rounded-xl bg-white/10 p-3">
-                          <p className="text-xs text-purple-100">Custo médio</p>
-                          <p className="text-lg font-semibold">R$ 58,20</p>
-                        </div>
-                        <div className="rounded-xl bg-white/10 p-3">
-                          <p className="text-xs text-purple-100">Pedidos em trânsito</p>
-                          <p className="text-lg font-semibold">42</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-6 overflow-hidden rounded-2xl border border-purple-100/60 bg-white/90 shadow-inner">
-                      <div className="flex items-center justify-between border-b border-purple-100/60 bg-purple-50/80 px-4 py-3">
-                        <div>
-                          <p className="text-sm font-semibold text-purple-900">{stageMap[activeStage][0].title}</p>
-                          <p className="text-xs text-purple-500">{activeStage === "startup" ? osText.startup : activeStage === "growth" ? osText.growth : osText.scale}</p>
-                        </div>
-                        <Button
-                          asChild
-                          size="sm"
-                          className="rounded-full bg-gradient-to-r from-purple-600 to-purple-700 px-4 text-xs font-semibold shadow-purple-500/20 hover:shadow-lg"
-                        >
-                          <Link href="https://app.purplestock.com.br/">{t.hero.cta}</Link>
-                        </Button>
-                      </div>
-                      <div className="relative h-56 w-full overflow-hidden rounded-b-2xl">
-                        <Image
-                          src="/images/app-benefits.png"
-                          alt="Purple Stock dashboard preview"
-                          fill
-                          className="object-cover"
-                          priority
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr]">
-                <div className="rounded-3xl border border-white/70 bg-white/80 p-6 shadow-sm">
-                  <p className="text-sm font-semibold uppercase tracking-wide text-purple-600">{osText.explore}</p>
-                  <div className="mt-6 flex gap-3">
-                    {(["startup", "growth", "scale"] as StageKey[]).map((stage) => (
-                      <button
-                        key={stage}
-                        onClick={() => setActiveStage(stage)}
-                        className={cn(
-                          "flex-1 rounded-2xl border px-4 py-3 text-sm font-semibold transition-all duration-200",
-                          activeStage === stage
-                            ? "border-purple-200 bg-purple-600/90 text-white shadow-lg shadow-purple-400/40"
-                            : "border-purple-100 bg-white/70 text-purple-600 hover:border-purple-200 hover:bg-white",
-                        )}
-                      >
-                        {stage === "startup" ? osText.startup : stage === "growth" ? osText.growth : osText.scale}
-                      </button>
-                    ))}
-                  </div>
-                  <Link
-                    href="/features/inventory-control"
-                    className="mt-5 inline-flex items-center text-sm font-semibold text-purple-600 hover:text-purple-700"
+              {/* Top Section - Title and Description */}
+              <div className="text-center space-y-6 mb-12">
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight">
+                  {language === "pt" 
+                    ? "Gestão de Estoque Simplificada" 
+                    : language === "en" 
+                      ? "Inventory Management Made Simple" 
+                      : "Gestion de Stock Simplifiée"}
+                </h1>
+                <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                  {language === "pt"
+                    ? "Purple Stock: a solução mais simples de software de inventário para pequenas empresas rastrearem, gerenciarem e organizarem seu estoque."
+                    : language === "en"
+                      ? "Purple Stock: the simplest inventory software solution for small businesses to track, manage, and organize inventory."
+                      : "Purple Stock: la solution de logiciel d'inventaire la plus simple pour que les petites entreprises suivent, gèrent et organisent leur stock."}
+                </p>
+                
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                   >
-                    {osText.library}
-                  </Link>
+                    <Link href="https://app.purplestock.com.br/">
+                      {language === "pt" ? "Experimente o Purple Stock grátis" : language === "en" ? "Try Purple Stock for free" : "Essayez Purple Stock gratuitement"}
+                    </Link>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-2 border-purple-600 text-purple-700 hover:bg-purple-50 px-8 py-6 text-base font-semibold transition-all duration-300 rounded-lg bg-white"
+                  >
+                    {language === "pt" ? "Solicitar demonstração" : language === "en" ? "Get a demo" : "Obtenir une démo"}
+                  </Button>
                 </div>
-
-                <div className="grid gap-4">
-                  {stageMap[activeStage].map((item) => (
-                    <div
-                      key={item.title}
-                      className="flex items-start gap-4 rounded-3xl border border-white/70 bg-white/80 p-5 shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
-                    >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600/10 to-purple-500/20 text-purple-600">
-                        <item.icon className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <p className="text-base font-semibold text-slate-800">{item.title}</p>
-                        <p className="mt-1 text-sm text-slate-500">{item.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                
+                {/* Free Trial Text */}
+                <p className="text-sm text-slate-500 pt-2">
+                  {language === "pt" 
+                    ? "Teste grátis de 30 dias. Não é necessário cartão de crédito." 
+                    : language === "en" 
+                      ? "Free 30-day trial. No credit card needed." 
+                      : "Essai gratuit de 30 jours. Aucune carte de crédit requise."}
+                </p>
               </div>
 
-              <div className="grid gap-6 rounded-3xl border border-white/70 bg-white/80 p-6 shadow-sm sm:grid-cols-[1.1fr_0.9fr]">
-                <div className="space-y-4">
-                  <p className="text-sm font-semibold uppercase tracking-wide text-purple-600">{osText.customersLove}</p>
-                  <p className="text-2xl font-bold text-slate-900">{testimonial?.quote ?? osText.testimonial}</p>
-                  <div className="flex items-center gap-3">
-                    <div className="h-12 w-12 overflow-hidden rounded-full border border-purple-100">
+              {/* Main Content Area - App Screenshot */}
+              <div className="relative py-12">
+                <div className="relative mx-auto max-w-6xl">
+                  <div className="relative rounded-3xl shadow-2xl overflow-hidden border-4 border-white bg-white p-2">
+                    <div className="relative w-full h-auto">
                       <Image
-                        src="/images/logos/purchase-store.png"
-                        alt="Purchase Store"
-                        width={48}
-                        height={48}
-                        className="object-cover"
+                        src="/images/app-items-list.png"
+                        alt={language === "pt" ? "Interface do Purple Stock - Lista de Itens" : language === "en" ? "Purple Stock Interface - Items List" : "Interface Purple Stock - Liste des Articles"}
+                        width={1200}
+                        height={800}
+                        className="w-full h-auto object-contain rounded-2xl"
+                        priority
                       />
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold text-slate-700">{osText.testimonialCompany}</p>
-                      <p className="text-xs uppercase tracking-wide text-slate-400">
-                        Retail · Purple Stock customer since 2021
-                      </p>
-                    </div>
                   </div>
-                </div>
-                <div className="flex flex-col justify-between rounded-2xl bg-gradient-to-br from-purple-700 via-purple-600 to-purple-500 p-6 text-white shadow-lg">
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-purple-200">{osText.spotlight}</p>
-                    <p className="mt-2 text-3xl font-bold">+32%</p>
-                    <p className="text-sm text-purple-100">
-                      {language === "pt"
-                        ? "Redução média em perdas de estoque após 90 dias."
-                        : language === "fr"
-                          ? "Réduction moyenne des ruptures après 90 jours."
-                          : "Average stock loss reduction after 90 days."}
-                    </p>
-                  </div>
-                  <div className="mt-6 rounded-2xl bg-white/15 p-4">
-                    <p className="text-xs uppercase tracking-wide text-purple-100">Integrations</p>
-                    <div className="mt-3 grid grid-cols-2 gap-3 text-sm font-semibold text-purple-50">
-                      <span>ERP</span>
-                      <span>eCommerce</span>
-                      <span>WMS</span>
-                      <span>API</span>
-                    </div>
+                  
+                  {/* Floating Help Button */}
+                  <div className="absolute -bottom-4 -right-4 z-20">
+                    <button className="w-16 h-16 bg-purple-600 hover:bg-purple-700 rounded-full shadow-2xl flex items-center justify-center text-white transition-all duration-300 hover:scale-110 border-4 border-white">
+                      <HelpCircle className="w-8 h-8" />
+                    </button>
                   </div>
                 </div>
               </div>

@@ -552,10 +552,10 @@ export function DesktopLanding() {
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff1a%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
       <header className="fixed top-0 left-0 right-0 z-[80] bg-[rgba(255,255,255,0.65)] backdrop-blur-[20px] border-b border-[rgba(0,0,0,0.08)] supports-[backdrop-filter]:bg-[rgba(255,255,255,0.5)]">
         <div className="max-w-[1920px] mx-auto px-6">
-          <div className="flex items-center justify-between h-[28px]">
+          <div className="flex items-center justify-between h-[40px]">
             {/* Left: App Name */}
             <div className="flex items-center">
-              <span className="text-[11px] font-medium text-[#1d1d1f] tracking-tight">
+              <span className="text-[13px] font-medium text-[#1d1d1f] tracking-tight">
                 Purple Stock
               </span>
             </div>
@@ -564,86 +564,86 @@ export function DesktopLanding() {
             <div className="hidden md:flex items-center gap-0 absolute left-1/2 -translate-x-1/2">
               <div className="relative" ref={featuresRef}>
                 <button
-                  className="text-[13px] text-[#1d1d1f] hover:text-[#000000] px-2 py-1 rounded transition-colors duration-150 font-normal"
+                  className="text-[14px] text-[#1d1d1f] hover:text-[#000000] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal"
                   onClick={() => setFeaturesOpen(!featuresOpen)}
                 >
                   {t.nav.resources}
-                  <ChevronDown className={`inline-block w-3 h-3 ml-0.5 transition-transform duration-200 ${featuresOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`inline-block w-3.5 h-3.5 ml-0.5 transition-transform duration-200 ${featuresOpen ? 'rotate-180' : ''}`} />
                 </button>
 
                 {featuresOpen && (
                   <div className="absolute left-0 mt-1 w-72 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-[rgba(255,255,255,0.95)] backdrop-blur-[20px] border border-[rgba(0,0,0,0.1)] animate-in slide-in-from-top-2 duration-200">
                     <div className="py-1">
                       <div className="px-3 py-2 border-b border-[rgba(0,0,0,0.08)]">
-                        <div className="text-[13px] font-semibold text-[#1d1d1f]">{t.nav.features.title}</div>
-                        <div className="text-[11px] text-[#86868b] mt-0.5">{language === "pt" ? "Descubra todas as funcionalidades" : language === "en" ? "Discover all features" : "Découvrez toutes les fonctionnalités"}</div>
+                        <div className="text-[14px] font-semibold text-[#1d1d1f]">{t.nav.features.title}</div>
+                        <div className="text-[12px] text-[#86868b] mt-0.5">{language === "pt" ? "Descubra todas as funcionalidades" : language === "en" ? "Discover all features" : "Découvrez toutes les fonctionnalités"}</div>
                       </div>
                       <Link
                         href="/features/inventory-control"
-                        className="block px-3 py-2 text-[13px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
+                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
                         onClick={() => setFeaturesOpen(false)}
                       >
                         {t.nav.features.inventoryControl}
                       </Link>
                       <Link
                         href="/features/barcoding"
-                        className="block px-3 py-2 text-[13px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
+                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
                         onClick={() => setFeaturesOpen(false)}
                       >
                         {t.nav.features.barcoding}
                       </Link>
                       <Link
                         href="/features/purchase-sales"
-                        className="block px-3 py-2 text-[13px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
+                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
                         onClick={() => setFeaturesOpen(false)}
                       >
                         {t.nav.features.purchaseSales}
                       </Link>
                       <Link
                         href="/features/analytics-reporting"
-                        className="block px-3 py-2 text-[13px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
+                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
                         onClick={() => setFeaturesOpen(false)}
                       >
                         {t.nav.features.analyticsReporting}
                       </Link>
                       <Link
                         href="/features/warehouse-control"
-                        className="block px-3 py-2 text-[13px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
+                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
                         onClick={() => setFeaturesOpen(false)}
                       >
                         {t.nav.features.warehouseControl}
                       </Link>
                       <Link
                         href="/features/qr-code-management"
-                        className="block px-3 py-2 text-[13px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
+                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
                         onClick={() => setFeaturesOpen(false)}
                       >
                         {t.nav.features.qrCodeManagement}
                       </Link>
                       <Link
                         href="/features/clothing-manufacturing"
-                        className="block px-3 py-2 text-[13px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
+                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
                         onClick={() => setFeaturesOpen(false)}
                       >
                         {t.nav.features.clothingManufacturing}
                       </Link>
                       <Link
                         href="/features/equipment-management"
-                        className="block px-3 py-2 text-[13px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
+                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
                         onClick={() => setFeaturesOpen(false)}
                       >
                         {t.nav.features.equipmentManagement}
                       </Link>
                       <Link
                         href="/features/factory-management"
-                        className="block px-3 py-2 text-[13px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
+                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
                         onClick={() => setFeaturesOpen(false)}
                       >
                         {t.nav.features.factoryManagement}
                       </Link>
                       <Link
                         href="/features/inventory-app"
-                        className="block px-3 py-2 text-[13px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
+                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
                         onClick={() => setFeaturesOpen(false)}
                       >
                         {t.nav.features.inventoryApp}
@@ -653,52 +653,52 @@ export function DesktopLanding() {
                 )}
               </div>
 
-              <Link href="/precos" className="text-[13px] text-[#1d1d1f] hover:text-[#000000] px-2 py-1 rounded transition-colors duration-150 font-normal">
+              <Link href="/precos" className="text-[14px] text-[#1d1d1f] hover:text-[#000000] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal">
                 {t.nav.pricing}
               </Link>
-              <Link href="/industrias" className="text-[13px] text-[#1d1d1f] hover:text-[#000000] px-2 py-1 rounded transition-colors duration-150 font-normal">
+              <Link href="/industrias" className="text-[14px] text-[#1d1d1f] hover:text-[#000000] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal">
                 {t.nav.industries}
               </Link>
-              <Link href="/artigos" className="text-[13px] text-[#1d1d1f] hover:text-[#000000] px-2 py-1 rounded transition-colors duration-150 font-normal">
+              <Link href="/artigos" className="text-[14px] text-[#1d1d1f] hover:text-[#000000] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal">
                 {t.nav.articles}
               </Link>
               <a
                 href="https://blog.purplestock.com.br/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] text-[#1d1d1f] hover:text-[#000000] px-2 py-1 rounded transition-colors duration-150 font-normal"
+                className="text-[14px] text-[#1d1d1f] hover:text-[#000000] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal"
               >
                 {t.nav.blog}
               </a>
-              <Link href="/codigo-de-barras-gratis" className="text-[13px] text-[#6e41e2] hover:text-[#5a2fc7] px-2 py-1 rounded transition-colors duration-150 font-normal">
+              <Link href="/codigo-de-barras-gratis" className="text-[14px] text-[#6e41e2] hover:text-[#5a2fc7] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal">
                 {t.nav.freeBarcode}
               </Link>
             </div>
 
             {/* Right: Actions */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <Link href="https://app.purplestock.com.br/">
-                <Button className="h-6 px-3 text-[11px] font-medium bg-[#007aff] hover:bg-[#0051d5] text-white rounded-md transition-colors duration-150 shadow-sm hover:shadow">
+                <Button className="h-7 px-4 text-[12px] font-medium bg-[#007aff] hover:bg-[#0051d5] text-white rounded-md transition-colors duration-150 shadow-sm hover:shadow">
                   {t.nav.login}
                 </Button>
               </Link>
               <Button 
                 variant="ghost"
-                className="h-6 px-2 text-[11px] font-normal text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-all duration-150 rounded-md"
+                className="h-7 px-2.5 text-[12px] font-normal text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-all duration-150 rounded-md"
                 onClick={() => {
                   if (language === "pt") setLanguage("en");
                   else if (language === "en") setLanguage("fr");
                   else setLanguage("pt");
                 }}
               >
-                <Globe className="h-3 w-3 mr-1 text-[#86868b]" />
+                <Globe className="h-3.5 w-3.5 mr-1 text-[#86868b]" />
                 {language === "pt" ? "PT" : language === "en" ? "EN" : "FR"}
               </Button>
             </div>
           </div>
         </div>
       </header>
-      <div className="relative mx-auto flex h-full w-full max-w-[1320px] flex-col gap-8 px-4 pt-[36px] pb-4 md:flex-row md:gap-6 md:px-10 md:pt-[40px]">
+      <div className="relative mx-auto flex h-full w-full max-w-[1320px] flex-col gap-8 px-4 pt-[48px] pb-4 md:flex-row md:gap-6 md:px-10 md:pt-[52px]">
         {/* Icons Left Side - Vertical */}
         <div className="relative z-[100] hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
           {windowApps.slice(0, 2).map((app, index) => (

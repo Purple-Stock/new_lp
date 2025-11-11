@@ -270,6 +270,18 @@ export function DesktopLanding() {
     [osText],
   )
 
+  const topNavItems = useMemo(
+    () => [
+      { label: osText.topProduct, href: "/features/inventory-control" },
+      { label: osText.topPricing, href: "/precos" },
+      { label: osText.topDocs, href: "/recursos/gestao-de-estoque" },
+      { label: osText.topCommunity, href: "/artigos" },
+      { label: osText.topCompany, href: "/industrias" },
+      { label: osText.topMore, href: "/recursos" },
+    ],
+    [osText],
+  )
+
   const windowsConfig = useMemo(
     () =>
       ({
@@ -434,7 +446,37 @@ export function DesktopLanding() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.18),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff1a%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 py-10 md:flex-row md:gap-10 md:px-10">
+      <header className="fixed top-4 left-0 right-0 z-[80] flex justify-center px-3 sm:px-6">
+        <div className="flex w-full max-w-[1180px] items-center gap-4 rounded-full border border-white/50 bg-white/80 px-4 py-3 shadow-[0_30px_90px_-45px_rgba(79,29,135,0.45)] backdrop-blur-xl md:px-6">
+          <div className="hidden items-center gap-6 text-sm font-semibold text-slate-500 md:flex">
+            {topNavItems.map((item) => (
+              <Link key={item.label} href={item.href}>
+                <span className="transition-colors hover:text-purple-600">{item.label}</span>
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-1 items-center gap-3 md:justify-end">
+            <Button
+              variant="outline"
+              className="rounded-full border-purple-100/60 bg-white/70 px-4 text-xs font-semibold text-purple-600 shadow-sm transition-colors hover:bg-white hover:text-purple-700"
+              onClick={() => {
+                if (language === "pt") setLanguage("en")
+                else if (language === "en") setLanguage("fr")
+                else setLanguage("pt")
+              }}
+            >
+              {language === "pt" ? "PT" : language === "en" ? "EN" : "FR"}
+            </Button>
+            <Button
+              asChild
+              className="rounded-full bg-gradient-to-r from-purple-600 to-purple-700 px-6 text-sm font-semibold shadow-lg shadow-purple-500/30 hover:shadow-xl"
+            >
+              <Link href="https://app.purplestock.com.br/">{t.hero.cta}</Link>
+            </Button>
+          </div>
+        </div>
+      </header>
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-36 pb-10 md:flex-row md:gap-10 md:px-10">
         <aside className="hidden shrink-0 flex-col justify-between pt-4 text-sm font-medium text-slate-700 md:flex md:w-32 lg:w-40">
           <div className="space-y-3">
             {windowApps.map((app) => {
@@ -473,40 +515,16 @@ export function DesktopLanding() {
 
         <div className="flex flex-1 flex-col gap-8 pb-20">
           <div className="overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_28px_120px_-60px_rgba(59,7,100,0.7)] backdrop-blur-xl">
-            <div className="border-b border-white/70 bg-gradient-to-r from-white via-white/80 to-purple-50/60 px-4 py-3 sm:px-6">
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2">
-                  <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
-                  <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
-                  <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
-                </div>
-                <div className="hidden items-center gap-5 text-sm font-semibold text-slate-500 sm:flex">
-                  {[osText.topProduct, osText.topPricing, osText.topDocs, osText.topCommunity, osText.topCompany, osText.topMore].map((label) => (
-                    <Link key={label} href="#">
-                      <span className="transition-colors hover:text-purple-600">{label}</span>
-                    </Link>
-                  ))}
-                </div>
-                <div className="ml-auto flex items-center gap-2">
-                  <Button
-                    variant="outline"
-                    className="hidden rounded-full border-white/60 bg-white/40 px-4 text-xs font-medium text-purple-600 transition-colors hover:bg-white hover:text-purple-700 sm:inline-flex"
-                    onClick={() => {
-                      if (language === "pt") setLanguage("en")
-                      else if (language === "en") setLanguage("fr")
-                      else setLanguage("pt")
-                    }}
-                  >
-                    {language === "pt" ? "PT" : language === "en" ? "EN" : "FR"}
-                  </Button>
-                  <Button
-                    asChild
-                    className="hidden rounded-full bg-gradient-to-r from-purple-600 to-purple-700 px-5 text-xs font-semibold shadow-lg shadow-purple-500/30 hover:shadow-xl sm:inline-flex"
-                  >
-                    <Link href="https://app.purplestock.com.br/">{t.hero.cta}</Link>
-                  </Button>
-                </div>
+            <div className="flex items-center justify-between border-b border-white/70 bg-gradient-to-r from-white via-white/80 to-purple-50/60 px-4 py-3 sm:px-6">
+              <div className="flex items-center gap-2">
+                <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
+                <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
+                <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
+                <span className="ml-3 text-xs font-semibold uppercase tracking-wide text-purple-500">
+                  Purple Stock OS
+                </span>
               </div>
+              <span className="text-xs text-slate-400">{language === "pt" ? "Workspace de Crescimento" : language === "fr" ? "Espace de Croissance" : "Growth workspace"}</span>
             </div>
 
             <div className="space-y-8 px-4 py-8 sm:px-10 sm:py-10">

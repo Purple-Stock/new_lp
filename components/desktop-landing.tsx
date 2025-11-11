@@ -548,7 +548,7 @@ export function DesktopLanding() {
   const testimonial = translations[language].testimonials?.[0]
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.18),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
+    <div className="relative h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.18),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff1a%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
       <header className="fixed top-0 left-0 right-0 z-[80] bg-white/90 backdrop-blur-xl border-b border-gray-100/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -688,7 +688,7 @@ export function DesktopLanding() {
           </div>
         </div>
       </header>
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-28 pb-10 md:flex-row md:gap-6 md:px-10 md:pt-32">
+      <div className="relative mx-auto flex h-full w-full max-w-[1320px] flex-col gap-8 px-4 pt-28 pb-4 md:flex-row md:gap-6 md:px-10 md:pt-32">
         {/* Icons Left Side - Vertical */}
         <div className="relative z-[100] hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
           {windowApps.slice(0, 2).map((app, index) => (
@@ -733,10 +733,10 @@ export function DesktopLanding() {
           ))}
         </div>
 
-        <div className="flex flex-1 flex-col gap-8 pb-20 relative z-0">
+        <div className="flex flex-1 flex-col gap-8 relative z-0 overflow-hidden min-h-0">
           <div 
             ref={mainBoxRef}
-            className="relative z-0 overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_28px_120px_-60px_rgba(59,7,100,0.7)] backdrop-blur-xl transition-transform cursor-move"
+            className="relative z-0 flex flex-col overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_28px_120px_-60px_rgba(59,7,100,0.7)] backdrop-blur-xl transition-transform cursor-move h-full min-h-0"
             style={{
               transform: `translate(${mainBoxPosition.x}px, ${mainBoxPosition.y}px)`,
               userSelect: "none",
@@ -745,7 +745,7 @@ export function DesktopLanding() {
             onMouseDown={handleMainBoxMouseDown}
             onDragStart={(e) => e.preventDefault()}
           >
-            <div className="main-box-header flex items-center justify-center border-b border-white/70 bg-gradient-to-r from-white via-white/80 to-purple-50/60 px-4 py-3 sm:px-6 relative cursor-grab active:cursor-grabbing">
+            <div className="main-box-header flex items-center justify-center border-b border-white/70 bg-gradient-to-r from-white via-white/80 to-purple-50/60 px-4 py-3 sm:px-6 relative cursor-grab active:cursor-grabbing flex-shrink-0">
               <div className="flex items-center gap-2">
                 <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
                 <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
@@ -757,7 +757,7 @@ export function DesktopLanding() {
               <span className="absolute right-4 text-xs text-slate-400">{language === "pt" ? "Workspace de Crescimento" : language === "fr" ? "Espace de Croissance" : "Growth workspace"}</span>
             </div>
 
-            <div className="space-y-8 px-4 py-8 sm:px-10 sm:py-10 max-h-[calc(100vh-12rem)] overflow-y-auto overflow-x-hidden scrollbar-purple">
+            <div className="space-y-8 px-4 py-8 sm:px-10 sm:py-10 flex-1 overflow-y-auto overflow-x-hidden scrollbar-purple min-h-0">
               <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
                 <div className="space-y-6">
                   <div className="inline-flex items-center gap-3 rounded-full border border-purple-200/70 bg-purple-50/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-purple-700 shadow-sm">

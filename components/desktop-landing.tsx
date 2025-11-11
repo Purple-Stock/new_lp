@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useMemo, useState, type ComponentType } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -8,7 +8,9 @@ import {
   BadgePercent,
   CheckCircle2,
   CircleDollarSign,
+  ChevronDown,
   FileCode,
+  Globe,
   HelpCircle,
   Laptop,
   MessageCircleQuestion,
@@ -34,6 +36,22 @@ export function DesktopLanding() {
   const [activeStage, setActiveStage] = useState<StageKey>("growth")
   const [openWindows, setOpenWindows] = useState<WindowKey[]>(["inventory", "analytics"])
   const [selectedFolder, setSelectedFolder] = useState<string | null>(null)
+  const [featuresOpen, setFeaturesOpen] = useState(false)
+  const featuresRef = useRef<HTMLDivElement>(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (featuresRef.current && !featuresRef.current.contains(event.target as Node)) {
+        setFeaturesOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [featuresRef])
 
   const osText = useMemo(() => {
     return {
@@ -462,37 +480,145 @@ export function DesktopLanding() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.18),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff1a%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
-      <header className="fixed top-4 left-0 right-0 z-[80] flex justify-center px-3 sm:px-6">
-        <div className="flex w-full max-w-[1180px] items-center gap-4 rounded-full border border-white/50 bg-white/80 px-4 py-3 shadow-[0_30px_90px_-45px_rgba(79,29,135,0.45)] backdrop-blur-xl md:px-6">
-          <div className="hidden items-center gap-6 text-sm font-semibold text-slate-500 md:flex">
-            {topNavItems.map((item) => (
-              <Link key={item.label} href={item.href}>
-                <span className="transition-colors hover:text-purple-600">{item.label}</span>
+      <header className="fixed top-0 left-0 right-0 z-[80] bg-white/90 backdrop-blur-xl border-b border-gray-100/50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            <div className="hidden md:flex items-center gap-6">
+              <div className="relative" ref={featuresRef}>
+                <button
+                  className="text-gray-700 hover:text-purple-600 flex items-center gap-1 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium"
+                  onClick={() => setFeaturesOpen(!featuresOpen)}
+                >
+                  {t.nav.resources}
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${featuresOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {featuresOpen && (
+                  <div className="absolute left-0 mt-2 w-72 rounded-xl shadow-xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none border border-gray-100 animate-in slide-in-from-top-2 duration-200">
+                    <div className="py-2">
+                      <div className="px-4 py-3 border-b border-gray-100">
+                        <div className="text-sm font-semibold text-gray-900">{t.nav.features.title}</div>
+                        <div className="text-xs text-gray-500">{language === "pt" ? "Descubra todas as funcionalidades" : language === "en" ? "Discover all features" : "Découvrez toutes les fonctionnalités"}</div>
+                      </div>
+                      <Link
+                        href="/features/inventory-control"
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors duration-200"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {t.nav.features.inventoryControl}
+                      </Link>
+                      <Link
+                        href="/features/barcoding"
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors duration-200"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {t.nav.features.barcoding}
+                      </Link>
+                      <Link
+                        href="/features/purchase-sales"
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors duration-200"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {t.nav.features.purchaseSales}
+                      </Link>
+                      <Link
+                        href="/features/analytics-reporting"
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors duration-200"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {t.nav.features.analyticsReporting}
+                      </Link>
+                      <Link
+                        href="/features/warehouse-control"
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors duration-200"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {t.nav.features.warehouseControl}
+                      </Link>
+                      <Link
+                        href="/features/qr-code-management"
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors duration-200"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {t.nav.features.qrCodeManagement}
+                      </Link>
+                      <Link
+                        href="/features/clothing-manufacturing"
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors duration-200"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {t.nav.features.clothingManufacturing}
+                      </Link>
+                      <Link
+                        href="/features/equipment-management"
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors duration-200"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {t.nav.features.equipmentManagement}
+                      </Link>
+                      <Link
+                        href="/features/factory-management"
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors duration-200"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {t.nav.features.factoryManagement}
+                      </Link>
+                      <Link
+                        href="/features/inventory-app"
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors duration-200"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {t.nav.features.inventoryApp}
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <Link href="/precos" className="text-gray-700 hover:text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium">
+                {t.nav.pricing}
               </Link>
-            ))}
-          </div>
-          <div className="flex flex-1 items-center gap-3 md:justify-end">
-            <Button
-              variant="outline"
-              className="rounded-full border-purple-100/60 bg-white/70 px-4 text-xs font-semibold text-purple-600 shadow-sm transition-colors hover:bg-white hover:text-purple-700"
-              onClick={() => {
-                if (language === "pt") setLanguage("en")
-                else if (language === "en") setLanguage("fr")
-                else setLanguage("pt")
-              }}
-            >
-              {language === "pt" ? "PT" : language === "en" ? "EN" : "FR"}
-            </Button>
-            <Button
-              asChild
-              className="rounded-full bg-gradient-to-r from-purple-600 to-purple-700 px-6 text-sm font-semibold shadow-lg shadow-purple-500/30 hover:shadow-xl"
-            >
-              <Link href="https://app.purplestock.com.br/">{t.hero.cta}</Link>
-            </Button>
+              <Link href="/industrias" className="text-gray-700 hover:text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium">
+                {t.nav.industries}
+              </Link>
+              <Link href="/artigos" className="text-gray-700 hover:text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium">
+                {t.nav.articles}
+              </Link>
+              <a
+                href="https://blog.purplestock.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-700 hover:text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium"
+              >
+                {t.nav.blog}
+              </a>
+              <Link href="/codigo-de-barras-gratis" className="text-purple-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium">
+                {t.nav.freeBarcode}
+              </Link>
+            </div>
+            <div className="flex items-center gap-3">
+              <Link href="https://app.purplestock.com.br/">
+                <Button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                  {t.nav.login}
+                </Button>
+              </Link>
+              <Button 
+                variant="outline" 
+                className="border-purple-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 rounded-full px-6 hover:shadow-md"
+                onClick={() => {
+                  if (language === "pt") setLanguage("en");
+                  else if (language === "en") setLanguage("fr");
+                  else setLanguage("pt");
+                }}
+              >
+                <Globe className="h-5 w-5 mr-2 text-purple-500" />
+                {language === "pt" ? "Português" : language === "en" ? "English" : "Français"}
+              </Button>
+            </div>
           </div>
         </div>
       </header>
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-36 pb-10 md:flex-row md:gap-6 md:px-10">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-28 pb-10 md:flex-row md:gap-6 md:px-10 md:pt-32">
         {/* Icons Left Side - Vertical */}
         <div className="relative hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
           {windowApps.slice(0, 2).map((app, index) => (
@@ -538,7 +664,11 @@ export function DesktopLanding() {
         </div>
 
         <div className="flex flex-1 flex-col gap-8 pb-20">
-          <div className="overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_28px_120px_-60px_rgba(59,7,100,0.7)] backdrop-blur-xl">
+          <div 
+            className="overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_28px_120px_-60px_rgba(59,7,100,0.7)] backdrop-blur-xl"
+            onDragStart={(e) => e.preventDefault()}
+            draggable={false}
+          >
             <div className="flex items-center justify-between border-b border-white/70 bg-gradient-to-r from-white via-white/80 to-purple-50/60 px-4 py-3 sm:px-6">
               <div className="flex items-center gap-2">
                 <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />

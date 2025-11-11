@@ -54,6 +54,7 @@ export function MacOSFolderIcon({ className, color = "blue" }: MacOSFolderIconPr
       className={cn("h-full w-full", className)}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      shapeRendering="geometricPrecision"
     >
       {/* Drop shadow */}
       <ellipse

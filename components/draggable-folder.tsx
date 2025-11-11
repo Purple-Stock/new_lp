@@ -184,9 +184,12 @@ export function DraggableFolder({
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
-        transform: isDragging ? "scale(1.1)" : isSelected ? "scale(1.05)" : "scale(1)",
+        transform: `${isDragging ? "scale(1.1)" : isSelected ? "scale(1.05)" : "scale(1)"} translateZ(0)`,
         userSelect: "none",
         WebkitUserSelect: "none",
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
+        willChange: "transform",
       }}
       onMouseDown={handleMouseDown}
       onDragStart={(e) => e.preventDefault()}
@@ -194,7 +197,7 @@ export function DraggableFolder({
       <div
         className={cn(
           "flex flex-col items-center gap-1 p-2 rounded-lg transition-all",
-          isSelected && !isDragging && "bg-blue-500/20 backdrop-blur-sm ring-2 ring-blue-400/50",
+          isSelected && !isDragging && "bg-blue-500/20 ring-2 ring-blue-400/50",
           isDragging && "shadow-2xl",
         )}
       >
@@ -205,12 +208,12 @@ export function DraggableFolder({
             isSelected && !isDragging && "scale-105",
           )}
         >
-          <Icon color={folderColor} className="h-16 w-16 drop-shadow-lg" />
+          <Icon color={folderColor} className="h-16 w-16" style={{ shapeRendering: "geometricPrecision" }} />
         </div>
         <span
           className={cn(
             "text-xs font-medium text-white text-center px-2 py-0.5 rounded transition-all max-w-[80px] truncate",
-            isSelected && !isDragging && "bg-blue-500/40 backdrop-blur-sm shadow-lg ring-1 ring-blue-300/30",
+            isSelected && !isDragging && "bg-blue-500/40 shadow-lg ring-1 ring-blue-300/30",
             "text-shadow-sm",
           )}
           style={{

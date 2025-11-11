@@ -22,6 +22,8 @@ import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 import { cn } from "@/lib/utils"
+import { MacOSFolderIcon } from "@/components/macos-folder-icon"
+import { DraggableFolder } from "@/components/draggable-folder"
 
 type StageKey = "startup" | "growth" | "scale"
 type WindowKey = "inventory" | "analytics" | "qr" | "support"
@@ -31,6 +33,7 @@ export function DesktopLanding() {
   const t = translations[language]
   const [activeStage, setActiveStage] = useState<StageKey>("growth")
   const [openWindows, setOpenWindows] = useState<WindowKey[]>(["inventory", "analytics"])
+  const [selectedFolder, setSelectedFolder] = useState<string | null>(null)
 
   const osText = useMemo(() => {
     return {
@@ -223,22 +226,26 @@ export function DesktopLanding() {
       {
         key: "inventory" as const,
         label: language === "pt" ? "Inventário" : language === "fr" ? "Inventaire" : "Inventory",
-        icon: Sparkles,
+        icon: MacOSFolderIcon,
+        folderColor: "blue" as const,
       },
       {
         key: "analytics" as const,
         label: language === "pt" ? "Relatórios" : language === "fr" ? "Rapports" : "Analytics",
-        icon: AppWindow,
+        icon: MacOSFolderIcon,
+        folderColor: "purple" as const,
       },
       {
         key: "qr" as const,
         label: language === "pt" ? "QR Codes" : language === "fr" ? "QR Codes" : "QR Codes",
-        icon: Package,
+        icon: MacOSFolderIcon,
+        folderColor: "green" as const,
       },
       {
         key: "support" as const,
         label: language === "pt" ? "Suporte" : language === "fr" ? "Support" : "Support",
-        icon: HelpCircle,
+        icon: MacOSFolderIcon,
+        folderColor: "yellow" as const,
       },
     ],
     [language],
@@ -249,22 +256,26 @@ export function DesktopLanding() {
       {
         label: osText.pricing,
         href: "/precos",
-        icon: CircleDollarSign,
+        icon: MacOSFolderIcon,
+        folderColor: "orange" as const,
       },
       {
         label: osText.docs,
         href: "/recursos/gestao-de-estoque",
-        icon: FileCode,
+        icon: MacOSFolderIcon,
+        folderColor: "blue" as const,
       },
       {
         label: osText.ask,
         href: "/artigos",
-        icon: MessageCircleQuestion,
+        icon: MacOSFolderIcon,
+        folderColor: "purple" as const,
       },
       {
         label: osText.signup,
         href: "https://app.purplestock.com.br/",
-        icon: UsersRound,
+        icon: MacOSFolderIcon,
+        folderColor: "green" as const,
       },
     ],
     [osText],
@@ -309,7 +320,8 @@ export function DesktopLanding() {
             { label: language === "pt" ? "Itens com rastreio" : language === "fr" ? "Articles suivis" : "Tracked items", value: "3.248" },
             { label: language === "pt" ? "Reposições pendentes" : language === "fr" ? "Réapprovisionnements" : "Replenishments", value: "12" },
           ],
-          icon: Sparkles,
+          icon: MacOSFolderIcon,
+          folderColor: "blue" as const,
           action: {
             label: language === "pt" ? "Abrir painel completo" : language === "fr" ? "Ouvrir le tableau" : "Open full dashboard",
             href: "https://app.purplestock.com.br/",
@@ -339,7 +351,8 @@ export function DesktopLanding() {
             { label: "Fill rate", value: "97%" },
             { label: language === "pt" ? "Redução de perdas" : language === "fr" ? "Réduction des pertes" : "Loss reduction", value: "−32%" },
           ],
-          icon: AppWindow,
+          icon: MacOSFolderIcon,
+          folderColor: "purple" as const,
           action: {
             label: language === "pt" ? "Ver relatórios" : language === "fr" ? "Voir les rapports" : "See reports",
             href: "/features/analytics-reporting",
@@ -369,7 +382,8 @@ export function DesktopLanding() {
             { label: language === "pt" ? "Etiquetas ativas" : language === "fr" ? "Étiquettes actives" : "Active labels", value: "1.094" },
             { label: language === "pt" ? "Auditorias concluídas" : language === "fr" ? "Audits terminés" : "Audits completed", value: "54" },
           ],
-          icon: Package,
+          icon: MacOSFolderIcon,
+          folderColor: "green" as const,
           action: {
             label: language === "pt" ? "Configurar etiquetas" : language === "fr" ? "Configurer les étiquettes" : "Configure labels",
             href: "/features/qr-code-management",
@@ -399,7 +413,8 @@ export function DesktopLanding() {
             { label: language === "pt" ? "Tempo médio de resposta" : language === "fr" ? "Temps de réponse" : "Avg. response time", value: "3 min" },
             { label: language === "pt" ? "Satisfação" : language === "fr" ? "Satisfaction" : "CSAT", value: "98%" },
           ],
-          icon: HelpCircle,
+          icon: MacOSFolderIcon,
+          folderColor: "yellow" as const,
           action: {
             label: language === "pt" ? "Falar com humano" : language === "fr" ? "Parler à un humain" : "Talk to a human",
             href: "https://wa.me/554891120022",
@@ -410,7 +425,8 @@ export function DesktopLanding() {
         subtitle: string
         highlights: string[]
         stats: Array<{ label: string; value: string }>
-        icon: ComponentType<{ className?: string }>
+        icon: ComponentType<{ className?: string; color?: string }>
+        folderColor?: "blue" | "purple" | "green" | "yellow" | "red" | "orange"
         action: { label: string; href: string }
       }>,
     [language, osText.ask, t.hero.subtitle, t.hero.subtitleHighlight],
@@ -477,41 +493,67 @@ export function DesktopLanding() {
         </div>
       </header>
       <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-36 pb-10 md:flex-row md:gap-10 md:px-10">
-        <aside className="hidden shrink-0 flex-col justify-between pt-4 text-sm font-medium text-slate-700 md:flex md:w-32 lg:w-40">
-          <div className="space-y-3">
-            {windowApps.map((app) => {
-              const Icon = app.icon
-              const active = isWindowOpen(app.key)
-              return (
-                <button
-                  key={app.key}
-                  onClick={() => openWindow(app.key)}
-                  className={cn(
-                    "group flex w-full flex-col items-center gap-2 rounded-2xl border text-center shadow-sm transition-all",
-                    active
-                      ? "border-purple-400/70 bg-white/90 shadow-lg ring-2 ring-purple-300"
-                      : "border-transparent bg-white/60 ring-1 ring-purple-200/40 hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:ring-purple-300",
-                  )}
-                >
-                  <Icon className={cn("h-6 w-6 transition-colors", active ? "text-purple-600" : "text-purple-500 group-hover:text-purple-600")} />
-                  <span className="pb-2 text-xs font-semibold leading-tight text-slate-600">{app.label}</span>
-                </button>
-              )
-            })}
-          </div>
-          <div className="space-y-3">
-            {shortcutLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="group flex flex-col items-center gap-2 rounded-2xl bg-white/50 p-4 text-center shadow-sm ring-1 ring-purple-200/30 transition-all hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:ring-purple-300"
-              >
-                <item.icon className="h-6 w-6 text-purple-400 transition-colors group-hover:text-purple-600" />
-                <span className="text-xs font-semibold leading-tight text-slate-600">{item.label}</span>
-              </Link>
-            ))}
-          </div>
-        </aside>
+        {/* Desktop Area with Draggable Folders */}
+        <div 
+          className="relative hidden md:block shrink-0 w-72 lg:w-96 h-[calc(100vh-12rem)] min-h-[600px] rounded-3xl border border-white/70 bg-gradient-to-br from-purple-50/40 via-white/30 to-purple-100/40 backdrop-blur-sm shadow-2xl overflow-hidden"
+          onClick={(e) => {
+            // Deselect when clicking on desktop background
+            if (e.target === e.currentTarget || (e.target as HTMLElement).classList.contains("desktop-bg")) {
+              setSelectedFolder(null)
+            }
+          }}
+        >
+          {/* Desktop Background Pattern */}
+          <div className="absolute inset-0 opacity-20 desktop-bg" style={{
+            backgroundImage: `url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"%3E%3Cpath d="M0 19h20M19 0v20" stroke="%239c88ff1a" stroke-width="1"/%3E%3C/svg%3E')`,
+          }} />
+          
+          {/* Subtle radial gradient overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.1),transparent_50%)] pointer-events-none desktop-bg" />
+          
+          {/* Draggable Folders */}
+          {windowApps.map((app, index) => (
+            <DraggableFolder
+              key={app.key}
+              label={app.label}
+              folderColor={app.folderColor}
+              icon={app.icon}
+              initialPosition={{
+                x: 30 + (index % 2) * 110,
+                y: 50 + Math.floor(index / 2) * 130,
+              }}
+              storageKey={`window-app-${app.key}`}
+              isSelected={selectedFolder === app.key}
+              onDoubleClick={() => openWindow(app.key)}
+              onClick={() => {
+                setSelectedFolder(app.key)
+              }}
+            />
+          ))}
+          
+          {shortcutLinks.map((item, index) => (
+            <DraggableFolder
+              key={item.label}
+              label={item.label}
+              folderColor={item.folderColor}
+              icon={item.icon}
+              initialPosition={{
+                x: 30 + (index % 2) * 110,
+                y: 350 + Math.floor(index / 2) * 130,
+              }}
+              storageKey={`shortcut-${item.label}`}
+              isSelected={selectedFolder === `shortcut-${item.label}`}
+              onDoubleClick={() => {
+                if (typeof window !== "undefined") {
+                  window.open(item.href, item.href.startsWith("http") ? "_blank" : "_self")
+                }
+              }}
+              onClick={() => {
+                setSelectedFolder(`shortcut-${item.label}`)
+              }}
+            />
+          ))}
+        </div>
 
         <div className="flex flex-1 flex-col gap-8 pb-20">
           <div className="overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_28px_120px_-60px_rgba(59,7,100,0.7)] backdrop-blur-xl">
@@ -751,42 +793,6 @@ export function DesktopLanding() {
             </div>
           </div>
 
-          <div className="hidden h-24 items-end justify-center rounded-3xl border border-white/60 bg-white/70 px-6 py-4 shadow-lg backdrop-blur md:flex">
-            <div className="flex items-end gap-4">
-              {windowApps.map((app) => {
-                const Icon = app.icon
-                const active = isWindowOpen(app.key)
-                return (
-                  <button
-                    key={app.key}
-                    onClick={() => openWindow(app.key)}
-                    className={cn(
-                      "group flex flex-col items-center gap-2 rounded-2xl px-4 pb-2 pt-3 text-xs font-semibold text-slate-600 shadow-sm transition-all",
-                      active ? "bg-white shadow-lg ring-2 ring-purple-300" : "bg-white/60 hover:-translate-y-2 hover:bg-white hover:shadow-lg",
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        "flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-purple-600 shadow-inner transition-shadow",
-                        active
-                          ? "from-purple-600/25 to-purple-500/30 shadow-[0_10px_25px_-12px_rgba(109,40,217,0.6)]"
-                          : "from-purple-600/15 to-purple-500/20 group-hover:shadow-[0_10px_25px_-12px_rgba(109,40,217,0.6)]",
-                      )}
-                    >
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <span>{app.label}</span>
-                    <span
-                      className={cn(
-                        "mt-1 h-1 w-6 rounded-full transition-colors",
-                        active ? "bg-purple-500" : "bg-slate-200 group-hover:bg-purple-300",
-                      )}
-                    />
-                  </button>
-                )
-              })}
-            </div>
-          </div>
         </div>
 
         {openWindows.map((key, index) => {
@@ -821,7 +827,7 @@ export function DesktopLanding() {
                     />
                     <span className="h-3.5 w-3.5 rounded-full border border-[#63c472]/40 bg-[#27c93f]" />
                   </div>
-                  <Icon className="h-4 w-4 text-purple-500" />
+                  <Icon color={config.folderColor || "blue"} className="h-4 w-4" />
                   <span className="text-sm font-semibold text-slate-600">{config.title}</span>
                 </div>
                 <span className="text-xs uppercase tracking-wide text-purple-400">{language === "pt" ? "Ao vivo" : language === "fr" ? "En direct" : "Live"}</span>

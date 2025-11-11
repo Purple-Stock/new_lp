@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState, type ComponentType } from "react"
+import { useCallback, useMemo, useState, type ComponentType } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -24,11 +24,13 @@ import { translations } from "@/utils/translations"
 import { cn } from "@/lib/utils"
 
 type StageKey = "startup" | "growth" | "scale"
+type WindowKey = "inventory" | "analytics" | "qr" | "support"
 
 export function DesktopLanding() {
   const { language, setLanguage } = useLanguage()
   const t = translations[language]
   const [activeStage, setActiveStage] = useState<StageKey>("growth")
+  const [openWindows, setOpenWindows] = useState<WindowKey[]>(["inventory", "analytics"])
 
   const osText = useMemo(() => {
     return {
@@ -216,42 +218,43 @@ export function DesktopLanding() {
     ],
   }
 
-  const sideIcons = useMemo(
+  const windowApps = useMemo(
     () => [
       {
-        label: osText.home,
-        href: "/",
+        key: "inventory" as const,
+        label: language === "pt" ? "Inventário" : language === "fr" ? "Inventaire" : "Inventory",
         icon: Sparkles,
       },
       {
-        label: osText.product,
-        href: "/features/inventory-control",
+        key: "analytics" as const,
+        label: language === "pt" ? "Relatórios" : language === "fr" ? "Rapports" : "Analytics",
         icon: AppWindow,
       },
+      {
+        key: "qr" as const,
+        label: language === "pt" ? "QR Codes" : language === "fr" ? "QR Codes" : "QR Codes",
+        icon: Package,
+      },
+      {
+        key: "support" as const,
+        label: language === "pt" ? "Suporte" : language === "fr" ? "Support" : "Support",
+        icon: HelpCircle,
+      },
+    ],
+    [language],
+  )
+
+  const shortcutLinks = useMemo(
+    () => [
       {
         label: osText.pricing,
         href: "/precos",
         icon: CircleDollarSign,
       },
       {
-        label: osText.customers,
-        href: "/artigos",
-        icon: UsersRound,
-      },
-      {
         label: osText.docs,
         href: "/recursos/gestao-de-estoque",
         icon: FileCode,
-      },
-      {
-        label: osText.demo,
-        href: "https://app.purplestock.com.br/",
-        icon: PlayCircle,
-      },
-      {
-        label: osText.talk,
-        href: "https://wa.me/554891120022",
-        icon: HelpCircle,
       },
       {
         label: osText.ask,
@@ -267,36 +270,164 @@ export function DesktopLanding() {
     [osText],
   )
 
-  const dockIcons = useMemo(
-    () => [
-      {
-        label: osText.product,
-        href: "/features/inventory-control",
-        icon: AppWindow,
-      },
-      {
-        label: t.nav.pricing,
-        href: "/precos",
-        icon: CircleDollarSign,
-      },
-      {
-        label: "QR Code",
-        href: "/features/qr-code-management",
-        icon: Package,
-      },
-      {
-        label: "Controle",
-        href: "/features/inventory-control",
-        icon: ShieldCheck,
-      },
-      {
-        label: "App Mobile",
-        href: "/features/inventory-app",
-        icon: Laptop,
-      },
-    ],
-    [osText.product, t.nav.pricing],
+  const windowsConfig = useMemo(
+    () =>
+      ({
+        inventory: {
+          title: language === "pt" ? "Visão do Estoque" : language === "fr" ? "Vue de Stock" : "Inventory Overview",
+          subtitle:
+            language === "pt"
+              ? "Controle em tempo real de cada item do seu almoxarifado."
+              : language === "fr"
+                ? "Contrôle en temps réel de chaque article."
+                : "Real-time tracking for every SKU.",
+          highlights: [
+            language === "pt"
+              ? "Sincronização automática entre pontos físicos e canais digitais."
+              : language === "fr"
+                ? "Synchronisation automatique entre sites physiques et canaux digitaux."
+                : "Automatic sync between warehouses and digital channels.",
+            language === "pt"
+              ? "Alertas inteligentes quando o estoque mínimo é atingido."
+              : language === "fr"
+                ? "Alertes intelligents lorsque le stock minimum est atteint."
+                : "Smart alerts when safety stock is reached.",
+          ],
+          stats: [
+            { label: language === "pt" ? "Itens com rastreio" : language === "fr" ? "Articles suivis" : "Tracked items", value: "3.248" },
+            { label: language === "pt" ? "Reposições pendentes" : language === "fr" ? "Réapprovisionnements" : "Replenishments", value: "12" },
+          ],
+          icon: Sparkles,
+          action: {
+            label: language === "pt" ? "Abrir painel completo" : language === "fr" ? "Ouvrir le tableau" : "Open full dashboard",
+            href: "https://app.purplestock.com.br/",
+          },
+        },
+        analytics: {
+          title: language === "pt" ? "Relatórios de Performance" : language === "fr" ? "Rapports de Performance" : "Performance Analytics",
+          subtitle:
+            language === "pt"
+              ? "Entenda custos, perdas e giro em segundos."
+              : language === "fr"
+                ? "Comprenez coûts, ruptures et rotation en secondes."
+                : "Understand costs, shrinkage, and turnover instantly.",
+          highlights: [
+            language === "pt"
+              ? "Indicadores prontos: giro, margem e curva ABC."
+              : language === "fr"
+                ? "Indicateurs prêts : rotation, marge et courbe ABC."
+                : "Out-of-the-box KPIs: turnover, margin, ABC curve.",
+            language === "pt"
+              ? "Exportação em PDF e integração com BI."
+              : language === "fr"
+                ? "Export PDF et intégration BI."
+                : "Export to PDF and connect to BI tools.",
+          ],
+          stats: [
+            { label: "Fill rate", value: "97%" },
+            { label: language === "pt" ? "Redução de perdas" : language === "fr" ? "Réduction des pertes" : "Loss reduction", value: "−32%" },
+          ],
+          icon: AppWindow,
+          action: {
+            label: language === "pt" ? "Ver relatórios" : language === "fr" ? "Voir les rapports" : "See reports",
+            href: "/features/analytics-reporting",
+          },
+        },
+        qr: {
+          title: language === "pt" ? "Gestão por QR Code" : language === "fr" ? "Gestion par QR Code" : "QR Code Management",
+          subtitle:
+            language === "pt"
+              ? "Escaneie, mova e audite ativos com o celular."
+              : language === "fr"
+                ? "Scannez, déplacez et auditez avec le mobile."
+                : "Scan, move, and audit assets from your phone.",
+          highlights: [
+            language === "pt"
+              ? "Geração ilimitada de etiquetas com o padrão Purple Stock."
+              : language === "fr"
+                ? "Génération illimitée d'étiquettes au format Purple Stock."
+                : "Unlimited label generation with Purple Stock templates.",
+            language === "pt"
+              ? "Histórico completo de movimentações por QR Code."
+              : language === "fr"
+                ? "Historique complet des mouvements via QR Code."
+                : "Full movement history for each QR code.",
+          ],
+          stats: [
+            { label: language === "pt" ? "Etiquetas ativas" : language === "fr" ? "Étiquettes actives" : "Active labels", value: "1.094" },
+            { label: language === "pt" ? "Auditorias concluídas" : language === "fr" ? "Audits terminés" : "Audits completed", value: "54" },
+          ],
+          icon: Package,
+          action: {
+            label: language === "pt" ? "Configurar etiquetas" : language === "fr" ? "Configurer les étiquettes" : "Configure labels",
+            href: "/features/qr-code-management",
+          },
+        },
+        support: {
+          title: language === "pt" ? "Central de Suporte" : language === "fr" ? "Centre de Support" : "Support Center",
+          subtitle:
+            language === "pt"
+              ? "Conte com especialistas Purple Stock quando precisar."
+              : language === "fr"
+                ? "Faites appel aux spécialistes Purple Stock à tout moment."
+                : "Count on Purple Stock experts any time.",
+          highlights: [
+            language === "pt"
+              ? "Atendimento 24/7 via chat, WhatsApp e e-mail."
+              : language === "fr"
+                ? "Support 24/7 par chat, WhatsApp et email."
+                : "24/7 support by chat, WhatsApp, and email.",
+            language === "pt"
+              ? "Base de conhecimento com guias rápidos e vídeos."
+              : language === "fr"
+                ? "Base de connaissances avec guides et vidéos."
+                : "Knowledge base packed with guides and videos.",
+          ],
+          stats: [
+            { label: language === "pt" ? "Tempo médio de resposta" : language === "fr" ? "Temps de réponse" : "Avg. response time", value: "3 min" },
+            { label: language === "pt" ? "Satisfação" : language === "fr" ? "Satisfaction" : "CSAT", value: "98%" },
+          ],
+          icon: HelpCircle,
+          action: {
+            label: language === "pt" ? "Falar com humano" : language === "fr" ? "Parler à un humain" : "Talk to a human",
+            href: "https://wa.me/554891120022",
+          },
+        },
+      }) satisfies Record<WindowKey, {
+        title: string
+        subtitle: string
+        highlights: string[]
+        stats: Array<{ label: string; value: string }>
+        icon: ComponentType<{ className?: string }>
+        action: { label: string; href: string }
+      }>,
+    [language, osText.ask, t.hero.subtitle, t.hero.subtitleHighlight],
   )
+
+  const windowLayout: Record<WindowKey, { top: string; left: string; width: string }> = {
+    inventory: { top: "8%", left: "8%", width: "420px" },
+    analytics: { top: "16%", left: "36%", width: "430px" },
+    qr: { top: "38%", left: "12%", width: "380px" },
+    support: { top: "45%", left: "46%", width: "360px" },
+  }
+
+  const openWindow = useCallback(
+    (key: WindowKey) => {
+      setOpenWindows((prev) => {
+        if (prev.includes(key)) {
+          return [...prev.filter((item) => item !== key), key]
+        }
+        return [...prev, key]
+      })
+    },
+    [],
+  )
+
+  const closeWindow = useCallback((key: WindowKey) => {
+    setOpenWindows((prev) => prev.filter((item) => item !== key))
+  }, [])
+
+  const isWindowOpen = useCallback((key: WindowKey) => openWindows.includes(key), [openWindows])
 
   const testimonial = translations[language].testimonials?.[0]
 
@@ -306,19 +437,28 @@ export function DesktopLanding() {
       <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 py-10 md:flex-row md:gap-10 md:px-10">
         <aside className="hidden shrink-0 flex-col justify-between pt-4 text-sm font-medium text-slate-700 md:flex md:w-32 lg:w-40">
           <div className="space-y-3">
-            {sideIcons.slice(0, 5).map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="group flex flex-col items-center gap-2 rounded-2xl bg-white/60 p-4 text-center shadow-sm ring-1 ring-purple-200/40 transition-all hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:ring-purple-300"
-              >
-                <item.icon className="h-6 w-6 text-purple-500 transition-colors group-hover:text-purple-600" />
-                <span className="text-xs font-semibold leading-tight text-slate-600">{item.label}</span>
-              </Link>
-            ))}
+            {windowApps.map((app) => {
+              const Icon = app.icon
+              const active = isWindowOpen(app.key)
+              return (
+                <button
+                  key={app.key}
+                  onClick={() => openWindow(app.key)}
+                  className={cn(
+                    "group flex w-full flex-col items-center gap-2 rounded-2xl border text-center shadow-sm transition-all",
+                    active
+                      ? "border-purple-400/70 bg-white/90 shadow-lg ring-2 ring-purple-300"
+                      : "border-transparent bg-white/60 ring-1 ring-purple-200/40 hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:ring-purple-300",
+                  )}
+                >
+                  <Icon className={cn("h-6 w-6 transition-colors", active ? "text-purple-600" : "text-purple-500 group-hover:text-purple-600")} />
+                  <span className="pb-2 text-xs font-semibold leading-tight text-slate-600">{app.label}</span>
+                </button>
+              )
+            })}
           </div>
           <div className="space-y-3">
-            {sideIcons.slice(5).map((item) => (
+            {shortcutLinks.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
@@ -595,21 +735,107 @@ export function DesktopLanding() {
 
           <div className="hidden h-24 items-end justify-center rounded-3xl border border-white/60 bg-white/70 px-6 py-4 shadow-lg backdrop-blur md:flex">
             <div className="flex items-end gap-4">
-              {dockIcons.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="group flex flex-col items-center gap-2 rounded-2xl bg-white/60 px-4 pb-2 pt-3 text-xs font-semibold text-slate-600 shadow-sm transition-all hover:-translate-y-2 hover:bg-white hover:shadow-lg"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600/15 to-purple-500/20 text-purple-600 shadow-inner transition-shadow group-hover:shadow-[0_10px_25px_-12px_rgba(109,40,217,0.6)]">
-                    <item.icon className="h-6 w-6" />
-                  </div>
-                  {item.label}
-                </Link>
-              ))}
+              {windowApps.map((app) => {
+                const Icon = app.icon
+                const active = isWindowOpen(app.key)
+                return (
+                  <button
+                    key={app.key}
+                    onClick={() => openWindow(app.key)}
+                    className={cn(
+                      "group flex flex-col items-center gap-2 rounded-2xl px-4 pb-2 pt-3 text-xs font-semibold text-slate-600 shadow-sm transition-all",
+                      active ? "bg-white shadow-lg ring-2 ring-purple-300" : "bg-white/60 hover:-translate-y-2 hover:bg-white hover:shadow-lg",
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        "flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-purple-600 shadow-inner transition-shadow",
+                        active
+                          ? "from-purple-600/25 to-purple-500/30 shadow-[0_10px_25px_-12px_rgba(109,40,217,0.6)]"
+                          : "from-purple-600/15 to-purple-500/20 group-hover:shadow-[0_10px_25px_-12px_rgba(109,40,217,0.6)]",
+                      )}
+                    >
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <span>{app.label}</span>
+                    <span
+                      className={cn(
+                        "mt-1 h-1 w-6 rounded-full transition-colors",
+                        active ? "bg-purple-500" : "bg-slate-200 group-hover:bg-purple-300",
+                      )}
+                    />
+                  </button>
+                )
+              })}
             </div>
           </div>
         </div>
+
+        {openWindows.map((key, index) => {
+          const config = windowsConfig[key]
+          const Icon = config.icon
+          const layout = windowLayout[key]
+          return (
+            <div
+              key={key}
+              style={{ top: layout.top, left: layout.left, width: layout.width, zIndex: 60 + index }}
+              className="pointer-events-auto hidden rounded-3xl border border-white/70 bg-white/85 shadow-[0_30px_120px_-70px_rgba(59,7,100,0.8)] backdrop-blur-xl transition-all animate-in fade-in slide-in-from-top-4 md:absolute md:block"
+              onMouseDown={() => openWindow(key)}
+            >
+              <div className="flex items-center justify-between rounded-t-3xl border-b border-white/70 bg-gradient-to-r from-white to-purple-50/70 px-5 py-3">
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      onClick={(event) => {
+                        event.stopPropagation()
+                        closeWindow(key)
+                      }}
+                      className="h-3.5 w-3.5 rounded-full border border-[#e06c67]/50 bg-[#ff5f56] transition-transform hover:scale-110"
+                      aria-label="Close window"
+                    />
+                    <button
+                      onClick={(event) => {
+                        event.stopPropagation()
+                        closeWindow(key)
+                      }}
+                      className="h-3.5 w-3.5 rounded-full border border-[#e6b95c]/50 bg-[#ffbd2e] transition-transform hover:scale-110"
+                      aria-label="Minimize window"
+                    />
+                    <span className="h-3.5 w-3.5 rounded-full border border-[#63c472]/40 bg-[#27c93f]" />
+                  </div>
+                  <Icon className="h-4 w-4 text-purple-500" />
+                  <span className="text-sm font-semibold text-slate-600">{config.title}</span>
+                </div>
+                <span className="text-xs uppercase tracking-wide text-purple-400">{language === "pt" ? "Ao vivo" : language === "fr" ? "En direct" : "Live"}</span>
+              </div>
+              <div className="space-y-4 px-5 py-5">
+                <p className="text-sm text-slate-500">{config.subtitle}</p>
+                <ul className="space-y-2">
+                  {config.highlights.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="grid grid-cols-2 gap-3 rounded-2xl border border-purple-100 bg-purple-50/60 p-4">
+                  {config.stats.map((stat) => (
+                    <div key={stat.label}>
+                      <p className="text-xs uppercase tracking-wide text-purple-400">{stat.label}</p>
+                      <p className="text-xl font-semibold text-purple-900">{stat.value}</p>
+                    </div>
+                  ))}
+                </div>
+                <Button
+                  asChild
+                  className="w-full rounded-2xl bg-gradient-to-r from-purple-600 to-purple-700 text-sm font-semibold shadow-purple-500/30 hover:shadow-lg"
+                >
+                  <Link href={config.action.href}>{config.action.label}</Link>
+                </Button>
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

@@ -577,7 +577,7 @@ export function DesktopLanding() {
                   onClick={() => setFeaturesOpen(!featuresOpen)}
                 >
                   {t.nav.resources}
-                  <ChevronDown className={`inline-block w-3.5 h-3.5 ml-0.5 transition-transform duration-200 ${featuresOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`inline-block w-3.5 h-3.5 ml-0.5 transition-transform duration-200 ${featuresOpen ? 'rotate-180' : ''}`} strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                 </button>
 
                 {featuresOpen && (
@@ -700,7 +700,7 @@ export function DesktopLanding() {
                   else setLanguage("pt");
                 }}
               >
-                <Globe className="h-3.5 w-3.5 mr-1 text-[#86868b]" />
+                <Globe className="h-3.5 w-3.5 mr-1 text-[#86868b]" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                 {language === "pt" ? "PT" : language === "en" ? "EN" : "FR"}
               </Button>
             </div>
@@ -812,7 +812,7 @@ export function DesktopLanding() {
                     className="border-2 border-purple-600 text-purple-700 hover:bg-purple-50 px-8 py-6 text-base font-semibold transition-all duration-300 rounded-lg bg-white"
                   >
                     <Link href="https://calendly.com/matheus-puppe" target="_blank" rel="noopener noreferrer">
-                      <Calendar className="w-5 h-5 mr-2" />
+                      <Calendar className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                       {language === "pt" ? "Solicitar demonstração" : language === "en" ? "Get a demo" : "Obtenir une démo"}
                     </Link>
                   </Button>
@@ -847,7 +847,7 @@ export function DesktopLanding() {
                   {/* Floating Help Button */}
                   <div className="absolute -bottom-4 -right-4 z-20">
                     <button className="w-16 h-16 bg-purple-600 hover:bg-purple-700 rounded-full shadow-2xl flex items-center justify-center text-white transition-all duration-300 hover:scale-110 border-4 border-white">
-                      <HelpCircle className="w-8 h-8" />
+                      <HelpCircle className="w-8 h-8" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </button>
                   </div>
                 </div>
@@ -908,7 +908,7 @@ export function DesktopLanding() {
               {/* FAQ Button */}
               <div className="flex justify-center mb-6 pt-8">
                 <button className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
-                  <Sparkles className="w-4 h-4 mr-2" />
+                  <Sparkles className="w-4 h-4 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                   {language === "pt" ? "Perguntas Frequentes" : language === "en" ? "Frequently Asked Questions" : "Questions Fréquentes"}
                 </button>
               </div>
@@ -963,7 +963,7 @@ export function DesktopLanding() {
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
                   <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
                     <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                      <CheckCircle2 className="w-7 h-7 text-white" />
+                      <CheckCircle2 className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
@@ -986,7 +986,7 @@ export function DesktopLanding() {
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-blue-100">
                   <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
                     <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                      <Zap className="w-7 h-7 text-white" />
+                      <Zap className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
@@ -1009,7 +1009,7 @@ export function DesktopLanding() {
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-emerald-100">
                   <div className="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
                     <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
-                      <BarChart3 className="w-7 h-7 text-white" />
+                      <BarChart3 className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
@@ -1037,16 +1037,16 @@ export function DesktopLanding() {
                   className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                 >
                   <Link href="https://app.purplestock.com.br/">
-                    <Sparkles className="w-5 h-5 mr-2" />
+                    <Sparkles className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     {language === "pt" ? "Começar Agora" : language === "en" ? "Start Now" : "Commencer Maintenant"}
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    <ArrowRight className="w-5 h-5 ml-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                   </Link>
                 </Button>
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                 >
-                  <PlayCircle className="w-5 h-5 mr-2" />
+                  <PlayCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                   {language === "pt" ? "Ver Demonstração" : language === "en" ? "View Demo" : "Voir la Démo"}
                 </Button>
               </div>
@@ -1147,7 +1147,7 @@ export function DesktopLanding() {
                 <ul className="space-y-2">
                   {config.highlights.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                       <span>{item}</span>
                     </li>
                   ))}

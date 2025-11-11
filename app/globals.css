@@ -428,4 +428,33 @@ body {
     @apply bg-background text-foreground;
     overflow: hidden;
   }
+  
+  /* Enhanced SVG and icon rendering */
+  svg {
+    shape-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Improve icon crispness */
+  .lucide,
+  [class*="lucide-"] {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  /* Optimize image rendering */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Ensure icons scale properly without blur */
+  svg,
+  img,
+  .icon {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
 }

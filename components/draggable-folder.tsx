@@ -208,17 +208,22 @@ export function DraggableFolder({
             isSelected && !isDragging && "scale-105",
           )}
         >
-          <Icon color={folderColor} className="h-16 w-16" style={{ shapeRendering: "geometricPrecision" }} />
+          <Icon 
+            color={folderColor} 
+            className="h-16 w-16" 
+            style={{ 
+              shapeRendering: "geometricPrecision",
+              imageRendering: '-webkit-optimize-contrast',
+              WebkitFontSmoothing: 'antialiased',
+              MozOsxFontSmoothing: 'grayscale',
+            }} 
+          />
         </div>
         <span
           className={cn(
-            "text-xs font-medium text-white text-center px-2 py-0.5 rounded transition-all max-w-[80px] truncate",
+            "text-xs font-medium text-slate-900 text-center px-2 py-0.5 rounded transition-all max-w-[80px] truncate",
             isSelected && !isDragging && "bg-blue-500/40 shadow-lg ring-1 ring-blue-300/30",
-            "text-shadow-sm",
           )}
-          style={{
-            textShadow: "0 1px 2px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.5)",
-          }}
         >
           {label}
         </span>

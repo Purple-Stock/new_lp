@@ -24,6 +24,10 @@ import {
   MapPin,
   Box,
   RefreshCw,
+  ArrowRight,
+  Zap,
+  Calendar,
+  MessageCircle,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
@@ -895,6 +899,152 @@ export function DesktopLanding() {
                     />
                   </div>
                 </div>
+              </div>
+
+              {/* FAQ Button */}
+              <div className="flex justify-center mb-6 pt-8">
+                <button className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  {language === "pt" ? "Perguntas Frequentes" : language === "en" ? "Frequently Asked Questions" : "Questions Fréquentes"}
+                </button>
+              </div>
+
+              {/* Question Section */}
+              <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 text-center">
+                <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4">
+                  {language === "pt" 
+                    ? "Quer ter controle total do seu inventário em tempo real?" 
+                    : language === "en" 
+                      ? "Do you want to have total control of your inventory in real time?" 
+                      : "Voulez-vous avoir un contrôle total de votre inventaire en temps réel?"}
+                </h2>
+                <div className="flex justify-center gap-2 mt-4">
+                  <span className="h-2 w-2 rounded-full bg-purple-600"></span>
+                  <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
+                  <span className="h-2 w-2 rounded-full bg-purple-600"></span>
+                </div>
+              </div>
+
+              {/* Main Title Section */}
+              <div className="text-center space-y-6 mb-12">
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+                  <span className="text-slate-700">
+                    {language === "pt" 
+                      ? "Controle de Estoque Inteligente Começa Com" 
+                      : language === "en" 
+                        ? "Intelligent Inventory Control Starts With" 
+                        : "Le Contrôle Intelligent des Stocks Commence Par"}
+                  </span>
+                  <br />
+                  <span className="text-purple-600">
+                    {language === "pt" 
+                      ? "Purple Stock" 
+                      : language === "en" 
+                        ? "Purple Stock" 
+                        : "Purple Stock"}
+                  </span>
+                </h1>
+                <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                  {language === "pt"
+                    ? "Centralize seu inventário em uma plataforma poderosa e intuitiva. Com Purple Stock, tenha visibilidade total e controle preciso do seu estoque em qualquer dispositivo, a qualquer momento."
+                    : language === "en"
+                      ? "Centralize your inventory on a powerful and intuitive platform. With Purple Stock, have total visibility and precise control of your stock on any device, at any time."
+                      : "Centralisez votre inventaire sur une plateforme puissante et intuitive. Avec Purple Stock, ayez une visibilité totale et un contrôle précis de votre stock sur n'importe quel appareil, à tout moment."}
+                </p>
+              </div>
+
+              {/* Feature Cards */}
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
+                {/* Card 1 - Controle Total */}
+                <div className="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
+                  <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                      <CheckCircle2 className="w-7 h-7 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {language === "pt" 
+                      ? "Controle Total" 
+                      : language === "en" 
+                        ? "Total Control" 
+                        : "Contrôle Total"}
+                  </h3>
+                  <p className="text-slate-600">
+                    {language === "pt"
+                      ? "Visibilidade completa do seu inventário em tempo real"
+                      : language === "en"
+                        ? "Complete visibility of your inventory in real time"
+                        : "Visibilité complète de votre inventaire en temps réel"}
+                  </p>
+                </div>
+
+                {/* Card 2 - Automação Inteligente */}
+                <div className="bg-white rounded-2xl shadow-lg p-6 border border-blue-100">
+                  <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                      <Zap className="w-7 h-7 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {language === "pt" 
+                      ? "Automação Inteligente" 
+                      : language === "en" 
+                        ? "Intelligent Automation" 
+                        : "Automatisation Intelligente"}
+                  </h3>
+                  <p className="text-slate-600">
+                    {language === "pt"
+                      ? "Processos automatizados que economizam tempo e reduzem erros"
+                      : language === "en"
+                        ? "Automated processes that save time and reduce errors"
+                        : "Processus automatisés qui font gagner du temps et réduisent les erreurs"}
+                  </p>
+                </div>
+
+                {/* Card 3 - Relatórios Avançados */}
+                <div className="bg-white rounded-2xl shadow-lg p-6 border border-emerald-100">
+                  <div className="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
+                      <BarChart3 className="w-7 h-7 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {language === "pt" 
+                      ? "Relatórios Avançados" 
+                      : language === "en" 
+                        ? "Advanced Reports" 
+                        : "Rapports Avancés"}
+                  </h3>
+                  <p className="text-slate-600">
+                    {language === "pt"
+                      ? "Insights valiosos para tomada de decisões estratégicas"
+                      : language === "en"
+                        ? "Valuable insights for strategic decision-making"
+                        : "Informations précieuses pour la prise de décisions stratégiques"}
+                  </p>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
+                >
+                  <Link href="https://app.purplestock.com.br/">
+                    <Sparkles className="w-5 h-5 mr-2" />
+                    {language === "pt" ? "Começar Agora" : language === "en" ? "Start Now" : "Commencer Maintenant"}
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
+                >
+                  <PlayCircle className="w-5 h-5 mr-2" />
+                  {language === "pt" ? "Ver Demonstração" : language === "en" ? "View Demo" : "Voir la Démo"}
+                </Button>
               </div>
             </div>
           </div>

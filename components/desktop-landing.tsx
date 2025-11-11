@@ -806,11 +806,15 @@ export function DesktopLanding() {
                     </Link>
                   </Button>
                   <Button
+                    asChild
                     variant="outline"
                     size="lg"
                     className="border-2 border-purple-600 text-purple-700 hover:bg-purple-50 px-8 py-6 text-base font-semibold transition-all duration-300 rounded-lg bg-white"
                   >
-                    {language === "pt" ? "Solicitar demonstração" : language === "en" ? "Get a demo" : "Obtenir une démo"}
+                    <Link href="https://calendly.com/matheus-puppe" target="_blank" rel="noopener noreferrer">
+                      <Calendar className="w-5 h-5 mr-2" />
+                      {language === "pt" ? "Solicitar demonstração" : language === "en" ? "Get a demo" : "Obtenir une démo"}
+                    </Link>
                   </Button>
                 </div>
                 

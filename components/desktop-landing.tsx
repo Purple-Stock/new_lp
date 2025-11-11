@@ -451,10 +451,10 @@ export function DesktopLanding() {
   )
 
   const windowLayout: Record<WindowKey, { top: string; left: string; width: string }> = {
-    inventory: { top: "8%", left: "8%", width: "420px" },
-    analytics: { top: "16%", left: "36%", width: "430px" },
-    qr: { top: "38%", left: "12%", width: "380px" },
-    support: { top: "45%", left: "46%", width: "360px" },
+    inventory: { top: "15%", left: "50%", width: "420px" },
+    analytics: { top: "15%", left: "50%", width: "430px" },
+    qr: { top: "15%", left: "50%", width: "380px" },
+    support: { top: "15%", left: "50%", width: "360px" },
   }
 
   const openWindow = useCallback(
@@ -958,7 +958,13 @@ export function DesktopLanding() {
           return (
             <div
               key={key}
-              style={{ top: layout.top, left: layout.left, width: layout.width, zIndex: 60 + index }}
+              style={{ 
+                top: layout.top, 
+                left: layout.left, 
+                width: layout.width, 
+                zIndex: 60 + index,
+                transform: "translateX(-50%)"
+              }}
               className="pointer-events-auto hidden rounded-3xl border border-white/70 bg-white/85 shadow-[0_30px_120px_-70px_rgba(59,7,100,0.8)] backdrop-blur-xl transition-all animate-in fade-in slide-in-from-top-4 md:absolute md:block"
               onMouseDown={() => openWindow(key)}
             >

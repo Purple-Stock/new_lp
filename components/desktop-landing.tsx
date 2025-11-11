@@ -38,6 +38,10 @@ export function DesktopLanding() {
   const [selectedFolder, setSelectedFolder] = useState<string | null>(null)
   const [featuresOpen, setFeaturesOpen] = useState(false)
   const featuresRef = useRef<HTMLDivElement>(null)
+  const [mainBoxPosition, setMainBoxPosition] = useState({ x: 0, y: 0 })
+  const [isDraggingMainBox, setIsDraggingMainBox] = useState(false)
+  const [mainBoxDragStart, setMainBoxDragStart] = useState<{ x: number; y: number } | null>(null)
+  const mainBoxRef = useRef<HTMLDivElement>(null)
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -52,6 +56,72 @@ export function DesktopLanding() {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [featuresRef])
+
+  // Handle main box dragging
+  const handleMainBoxMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    // Only allow dragging from the header area
+    const target = e.target as HTMLElement
+    if (!target.closest('.main-box-header')) return
+    
+    if (e.button !== 0) return
+    const rect = mainBoxRef.current?.getBoundingClientRect()
+    if (rect) {
+      setMainBoxDragStart({
+        x: e.clientX,
+        y: e.clientY,
+      })
+    }
+  }, [])
+
+  const handleMainBoxMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (!mainBoxDragStart) return
+
+      const deltaX = e.clientX - mainBoxDragStart.x
+      const deltaY = e.clientY - mainBoxDragStart.y
+
+      const threshold = 5
+      const hasMoved = Math.abs(deltaX) > threshold || Math.abs(deltaY) > threshold
+
+      if (!isDraggingMainBox && hasMoved) {
+        setIsDraggingMainBox(true)
+        e.preventDefault()
+      }
+
+      if (isDraggingMainBox || hasMoved) {
+        setMainBoxPosition((prev) => ({
+          x: prev.x + deltaX,
+          y: prev.y + deltaY,
+        }))
+
+        setMainBoxDragStart({
+          x: e.clientX,
+          y: e.clientY,
+        })
+      }
+    },
+    [mainBoxDragStart, isDraggingMainBox],
+  )
+
+  const handleMainBoxMouseUp = useCallback(() => {
+    setIsDraggingMainBox(false)
+    setMainBoxDragStart(null)
+  }, [])
+
+  useEffect(() => {
+    if (mainBoxDragStart !== null) {
+      const handleGlobalMouseMove = (e: MouseEvent) => handleMainBoxMouseMove(e)
+      const handleGlobalMouseUp = () => handleMainBoxMouseUp()
+
+      window.addEventListener("mousemove", handleGlobalMouseMove)
+      window.addEventListener("mouseup", handleGlobalMouseUp)
+
+      return () => {
+        window.removeEventListener("mousemove", handleGlobalMouseMove)
+        window.removeEventListener("mouseup", handleGlobalMouseUp)
+      }
+    }
+  }, [mainBoxDragStart, handleMainBoxMouseMove, handleMainBoxMouseUp])
 
   const osText = useMemo(() => {
     return {
@@ -620,7 +690,7 @@ export function DesktopLanding() {
       </header>
       <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-28 pb-10 md:flex-row md:gap-6 md:px-10 md:pt-32">
         {/* Icons Left Side - Vertical */}
-        <div className="relative hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
+        <div className="relative z-[100] hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
           {windowApps.slice(0, 2).map((app, index) => (
             <DraggableFolder
               key={app.key}
@@ -663,13 +733,19 @@ export function DesktopLanding() {
           ))}
         </div>
 
-        <div className="flex flex-1 flex-col gap-8 pb-20">
+        <div className="flex flex-1 flex-col gap-8 pb-20 relative z-0">
           <div 
-            className="overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_28px_120px_-60px_rgba(59,7,100,0.7)] backdrop-blur-xl"
+            ref={mainBoxRef}
+            className="relative z-0 overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_28px_120px_-60px_rgba(59,7,100,0.7)] backdrop-blur-xl transition-transform cursor-move"
+            style={{
+              transform: `translate(${mainBoxPosition.x}px, ${mainBoxPosition.y}px)`,
+              userSelect: "none",
+              WebkitUserSelect: "none",
+            }}
+            onMouseDown={handleMainBoxMouseDown}
             onDragStart={(e) => e.preventDefault()}
-            draggable={false}
           >
-            <div className="flex items-center justify-between border-b border-white/70 bg-gradient-to-r from-white via-white/80 to-purple-50/60 px-4 py-3 sm:px-6">
+            <div className="main-box-header flex items-center justify-center border-b border-white/70 bg-gradient-to-r from-white via-white/80 to-purple-50/60 px-4 py-3 sm:px-6 relative cursor-grab active:cursor-grabbing">
               <div className="flex items-center gap-2">
                 <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
                 <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
@@ -678,10 +754,10 @@ export function DesktopLanding() {
                   Purple Stock OS
                 </span>
               </div>
-              <span className="text-xs text-slate-400">{language === "pt" ? "Workspace de Crescimento" : language === "fr" ? "Espace de Croissance" : "Growth workspace"}</span>
+              <span className="absolute right-4 text-xs text-slate-400">{language === "pt" ? "Workspace de Crescimento" : language === "fr" ? "Espace de Croissance" : "Growth workspace"}</span>
             </div>
 
-            <div className="space-y-8 px-4 py-8 sm:px-10 sm:py-10">
+            <div className="space-y-8 px-4 py-8 sm:px-10 sm:py-10 max-h-[calc(100vh-12rem)] overflow-y-auto overflow-x-hidden scrollbar-purple">
               <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
                 <div className="space-y-6">
                   <div className="inline-flex items-center gap-3 rounded-full border border-purple-200/70 bg-purple-50/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-purple-700 shadow-sm">
@@ -908,7 +984,7 @@ export function DesktopLanding() {
         </div>
 
         {/* Icons Right Side - Vertical */}
-        <div className="relative hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
+        <div className="relative z-[100] hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
           {windowApps.slice(2).map((app, index) => (
             <DraggableFolder
               key={app.key}

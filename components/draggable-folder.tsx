@@ -177,9 +177,9 @@ export function DraggableFolder({
       ref={folderRef}
       className={cn(
         "absolute cursor-move select-none transition-all",
-        isDragging && "z-50 cursor-grabbing",
-        isSelected && !isDragging && "z-40 cursor-grab",
-        !isSelected && "z-30",
+        isDragging && "z-[110] cursor-grabbing",
+        isSelected && !isDragging && "z-[105] cursor-grab",
+        !isSelected && "z-[100]",
       )}
       style={{
         left: `${position.x}px`,

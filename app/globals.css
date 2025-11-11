@@ -110,27 +110,38 @@ body {
     text-rendering: optimizeLegibility;
   }
   
-  /* Smooth scrolling for anchor links */
+  /* Smooth scrolling for anchor links and hide global scrollbar */
   html {
     scroll-behavior: smooth;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   
-  /* Custom scrollbar for webkit browsers */
-  ::-webkit-scrollbar {
-    width: 8px;
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 0;
+    display: none;
   }
   
-  ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+  /* Purple-themed scrollbar for desktop landing */
+  .scrollbar-purple::-webkit-scrollbar {
+    width: 10px;
   }
   
-  ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
+  .scrollbar-purple::-webkit-scrollbar-track {
+    background: rgba(243, 232, 255, 0.5);
+    border-radius: 10px;
   }
   
-  ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+  .scrollbar-purple::-webkit-scrollbar-thumb {
+    background: rgba(196, 181, 253, 0.6);
+    border-radius: 10px;
+    border: 2px solid rgba(243, 232, 255, 0.5);
+  }
+  
+  .scrollbar-purple::-webkit-scrollbar-thumb:hover {
+    background: rgba(167, 139, 250, 0.8);
   }
   
   /* Enhanced article spacing utilities */
@@ -415,5 +426,35 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    overflow: hidden;
+  }
+  
+  /* Enhanced SVG and icon rendering */
+  svg {
+    shape-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Improve icon crispness */
+  .lucide,
+  [class*="lucide-"] {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  /* Optimize image rendering */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Ensure icons scale properly without blur */
+  svg,
+  img,
+  .icon {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 }

@@ -11,7 +11,6 @@ import {
   ChevronDown,
   FileCode,
   Globe,
-  HelpCircle,
   Laptop,
   MessageCircleQuestion,
   Package,
@@ -879,13 +878,6 @@ export function DesktopLanding() {
                       </div>
                     </DialogContent>
                   </Dialog>
-                  
-                  {/* Floating Help Button */}
-                  <div className="absolute -bottom-4 -right-4 z-20">
-                    <button className="w-16 h-16 bg-purple-600 hover:bg-purple-700 rounded-full shadow-2xl flex items-center justify-center text-white transition-all duration-300 hover:scale-110 border-4 border-white">
-                      <HelpCircle className="w-8 h-8" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                    </button>
-                  </div>
                 </div>
               </div>
 

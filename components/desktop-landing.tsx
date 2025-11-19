@@ -57,6 +57,7 @@ export function DesktopLanding() {
   const [mainBoxDragStart, setMainBoxDragStart] = useState<{ x: number; y: number } | null>(null)
   const mainBoxRef = useRef<HTMLDivElement>(null)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -562,6 +563,39 @@ export function DesktopLanding() {
 
   const testimonial = translations[language].testimonials?.[0]
 
+  // Dynamic questions array
+  const questions = useMemo(() => {
+    return {
+      pt: [
+        "Quer ter controle total do seu inventário em tempo real?",
+        "Precisa de relatórios inteligentes para tomar decisões?",
+        "Quer automatizar seu controle de estoque?",
+        "Procura uma solução simples e eficiente?",
+      ],
+      en: [
+        "Do you want to have total control of your inventory in real time?",
+        "Do you need smart reports to make decisions?",
+        "Want to automate your stock control?",
+        "Looking for a simple and efficient solution?",
+      ],
+      fr: [
+        "Voulez-vous avoir un contrôle total de votre inventaire en temps réel?",
+        "Avez-vous besoin de rapports intelligents pour prendre des décisions?",
+        "Voulez-vous automatiser votre contrôle des stocks?",
+        "Vous cherchez une solution simple et efficace?",
+      ],
+    }[language]
+  }, [language])
+
+  // Auto-rotate questions
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentQuestionIndex((prev) => (prev + 1) % questions.length)
+    }, 4000) // Change question every 4 seconds
+
+    return () => clearInterval(interval)
+  }, [questions.length])
+
   return (
     <div className="relative h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.18),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff1a%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
@@ -943,17 +977,27 @@ export function DesktopLanding() {
 
               {/* Question Section */}
               <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 text-center">
-                <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4">
-                  {language === "pt" 
-                    ? "Quer ter controle total do seu inventário em tempo real?" 
-                    : language === "en" 
-                      ? "Do you want to have total control of your inventory in real time?" 
-                      : "Voulez-vous avoir un contrôle total de votre inventaire en temps réel?"}
-                </h2>
+                <div className="min-h-[80px] flex items-center justify-center overflow-hidden">
+                  <h2 
+                    key={currentQuestionIndex}
+                    className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 animate-in fade-in slide-in-from-top-2 duration-500"
+                  >
+                    {questions[currentQuestionIndex]}
+                  </h2>
+                </div>
                 <div className="flex justify-center gap-2 mt-4">
-                  <span className="h-2 w-2 rounded-full bg-purple-600"></span>
-                  <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
-                  <span className="h-2 w-2 rounded-full bg-purple-600"></span>
+                  {questions.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentQuestionIndex(index)}
+                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                        index === currentQuestionIndex
+                          ? "bg-purple-600 w-8"
+                          : "bg-purple-300 w-2 hover:bg-purple-400"
+                      }`}
+                      aria-label={`Go to question ${index + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
 

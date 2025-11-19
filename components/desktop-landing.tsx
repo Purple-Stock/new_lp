@@ -39,6 +39,7 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
+  DialogTitle,
 } from "@/components/ui/dialog"
 
 type StageKey = "startup" | "growth" | "scale"
@@ -837,41 +838,53 @@ export function DesktopLanding() {
               {/* Main Content Area - App Screenshot */}
               <div className="relative py-12">
                 <div className="relative mx-auto max-w-6xl">
-                  <div className="relative rounded-3xl shadow-2xl overflow-hidden border-4 border-white bg-white p-2">
-                    <div className="relative w-full h-auto">
-                      <Image
-                        src="/images/app-items-list.png"
-                        alt={language === "pt" ? "Interface do Purple Stock - Lista de Itens" : language === "en" ? "Purple Stock Interface - Items List" : "Interface Purple Stock - Liste des Articles"}
-                        width={1200}
-                        height={800}
-                        className="w-full h-auto object-contain rounded-2xl"
-                        priority
-                      />
+                  <Dialog open={isVideoModalOpen} onOpenChange={setIsVideoModalOpen}>
+                    <div className="relative rounded-3xl shadow-2xl overflow-visible border-4 border-white bg-white p-2">
+                      <div className="relative w-full h-auto">
+                        <Image
+                          src="/images/app-items-list.png"
+                          alt={language === "pt" ? "Interface do Purple Stock - Lista de Itens" : language === "en" ? "Purple Stock Interface - Items List" : "Interface Purple Stock - Liste des Articles"}
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto object-contain rounded-2xl"
+                          priority
+                        />
+                        {/* Elegant Play Button */}
+                        <DialogTrigger asChild>
+                          <button className="absolute inset-0 flex items-center justify-center group cursor-pointer rounded-2xl focus:outline-none focus:ring-4 focus:ring-purple-500/50 transition-all duration-300">
+                            <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-purple-600 transition-all duration-300 group-hover:bg-white group-hover:scale-110 group-hover:shadow-purple-500/50">
+                              <div className="w-0 h-0 border-l-[20px] border-l-purple-600 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
+                            </div>
+                          </button>
+                        </DialogTrigger>
+                      </div>
                     </div>
-                  </div>
-                  
-                  {/* YouTube Video Link */}
-                  <div className="mt-6 flex justify-center">
-                    <Dialog open={isVideoModalOpen} onOpenChange={setIsVideoModalOpen}>
+                    
+                    {/* YouTube Video Link */}
+                    <div className="mt-6 flex justify-center">
                       <DialogTrigger asChild>
                         <button className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
                           <PlayCircle className="w-5 h-5" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                           {language === "pt" ? "Ver Demonstração" : language === "en" ? "View Demo" : "Voir la Démo"}
                         </button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-4xl w-full p-0 bg-black">
-                        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                          <iframe
-                            className="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube.com/embed/fD4amz78t8c?autoplay=1"
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
+                    </div>
+                    
+                    <DialogContent className="max-w-4xl w-full p-0 bg-black">
+                      <DialogTitle className="sr-only">
+                        {language === "pt" ? "Demonstração do Purple Stock" : language === "en" ? "Purple Stock Demo" : "Démo Purple Stock"}
+                      </DialogTitle>
+                      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                        <iframe
+                          className="absolute top-0 left-0 w-full h-full"
+                          src="https://www.youtube.com/embed/fD4amz78t8c?autoplay=1"
+                          title="YouTube video player"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                   
                   {/* Floating Help Button */}
                   <div className="absolute -bottom-4 -right-4 z-20">

@@ -35,6 +35,11 @@ import { translations } from "@/utils/translations"
 import { cn } from "@/lib/utils"
 import { MacOSFolderIcon } from "@/components/macos-folder-icon"
 import { DraggableFolder } from "@/components/draggable-folder"
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 type StageKey = "startup" | "growth" | "scale"
 type WindowKey = "inventory" | "analytics" | "qr" | "support"
@@ -51,6 +56,7 @@ export function DesktopLanding() {
   const [isDraggingMainBox, setIsDraggingMainBox] = useState(false)
   const [mainBoxDragStart, setMainBoxDragStart] = useState<{ x: number; y: number } | null>(null)
   const mainBoxRef = useRef<HTMLDivElement>(null)
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -842,6 +848,29 @@ export function DesktopLanding() {
                         priority
                       />
                     </div>
+                  </div>
+                  
+                  {/* YouTube Video Link */}
+                  <div className="mt-6 flex justify-center">
+                    <Dialog open={isVideoModalOpen} onOpenChange={setIsVideoModalOpen}>
+                      <DialogTrigger asChild>
+                        <button className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
+                          <PlayCircle className="w-5 h-5" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                          {language === "pt" ? "Ver Demonstração" : language === "en" ? "View Demo" : "Voir la Démo"}
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl w-full p-0 bg-black">
+                        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                          <iframe
+                            className="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/fD4amz78t8c?autoplay=1"
+                            title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                   
                   {/* Floating Help Button */}

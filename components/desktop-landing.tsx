@@ -824,15 +824,6 @@ export function DesktopLanding() {
                     </Link>
                   </Button>
                 </div>
-                
-                {/* Free Trial Text */}
-                <p className="text-sm text-slate-500 pt-2">
-                  {language === "pt" 
-                    ? "Teste grátis de 30 dias. Não é necessário cartão de crédito." 
-                    : language === "en" 
-                      ? "Free 30-day trial. No credit card needed." 
-                      : "Essai gratuit de 30 jours. Aucune carte de crédit requise."}
-                </p>
               </div>
 
               {/* Main Content Area - App Screenshot */}

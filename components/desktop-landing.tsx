@@ -854,10 +854,13 @@ export function DesktopLanding() {
                     {/* YouTube Video Link */}
                     <div className="mt-6 flex justify-center">
                       <DialogTrigger asChild>
-                        <button className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                          <PlayCircle className="w-5 h-5" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                        <Button
+                          size="lg"
+                          className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
+                        >
+                          <PlayCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                           {language === "pt" ? "Ver Demonstração" : language === "en" ? "View Demo" : "Voir la Démo"}
-                        </button>
+                        </Button>
                       </DialogTrigger>
                     </div>
                     

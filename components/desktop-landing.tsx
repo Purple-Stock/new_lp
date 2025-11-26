@@ -842,7 +842,7 @@ export function DesktopLanding() {
                     className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                   >
                     <Link href="https://app.purplestock.com.br/">
-                      {language === "pt" ? "Experimente o Purple Stock grátis" : language === "en" ? "Try Purple Stock for free" : "Essayez Purple Stock gratuitement"}
+                      {language === "pt" ? "Teste por 7 dias" : language === "en" ? "Test for 7 days" : "Testez pendant 7 jours"}
                     </Link>
                   </Button>
                   <Button
@@ -1110,7 +1110,7 @@ export function DesktopLanding() {
                 >
                   <Link href="https://app.purplestock.com.br/">
                     <Sparkles className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                    {language === "pt" ? "Começar Agora" : language === "en" ? "Start Now" : "Commencer Maintenant"}
+                    {language === "pt" ? "Teste por 7 dias" : language === "en" ? "Test for 7 days" : "Testez pendant 7 jours"}
                     <ArrowRight className="w-5 h-5 ml-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                   </Link>
                 </Button>

@@ -597,15 +597,28 @@ export function DesktopLanding() {
   }, [questions.length])
 
   return (
-    <div className="relative h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.18),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
-      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff1a%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
-      <header className="fixed top-0 left-0 right-0 z-[80] bg-[rgba(255,255,255,0.65)] backdrop-blur-[20px] border-b border-[rgba(0,0,0,0.08)] supports-[backdrop-filter]:bg-[rgba(255,255,255,0.5)]">
+    <div className="relative h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
+      {/* Animated gradient background */}
+      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-80" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-purple-200/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-200/15 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+      </div>
+      
+      {/* macOS-style Menu Bar */}
+      <header className="fixed top-0 left-0 right-0 z-[80] bg-[rgba(255,255,255,0.72)] backdrop-blur-[24px] border-b border-[rgba(0,0,0,0.06)] supports-[backdrop-filter]:bg-[rgba(255,255,255,0.55)] shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
         <div className="max-w-[1920px] mx-auto px-6">
           <div className="flex items-center justify-between h-[40px]">
-            {/* Left: App Name */}
-            <div className="flex items-center">
-              <span className="text-[13px] font-medium text-[#1d1d1f] tracking-tight">
+            {/* Left: App Name with Apple-style logo */}
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-md bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-sm">
+                <Box className="w-3 h-3 text-white" strokeWidth={2.5} />
+              </div>
+              <span className="text-[13px] font-semibold text-[#1d1d1f] tracking-tight">
                 Purple Stock
+              </span>
+              <span className="hidden sm:inline text-[11px] text-purple-500 font-medium px-1.5 py-0.5 bg-purple-100 rounded-full">
+                OS
               </span>
             </div>
 
@@ -795,7 +808,7 @@ export function DesktopLanding() {
         <div className="flex flex-1 flex-col gap-8 relative z-0 overflow-hidden min-h-0">
           <div 
             ref={mainBoxRef}
-            className="relative z-0 flex flex-col overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_28px_120px_-60px_rgba(59,7,100,0.7)] backdrop-blur-xl transition-transform cursor-move h-full min-h-0"
+            className="relative z-0 flex flex-col overflow-hidden rounded-xl border border-slate-200/60 bg-white/95 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl transition-transform cursor-move h-full min-h-0"
             style={{
               transform: `translate(${mainBoxPosition.x}px, ${mainBoxPosition.y}px)`,
               userSelect: "none",
@@ -804,16 +817,79 @@ export function DesktopLanding() {
             onMouseDown={handleMainBoxMouseDown}
             onDragStart={(e) => e.preventDefault()}
           >
-            <div className="main-box-header flex items-center justify-center border-b border-white/70 bg-gradient-to-r from-white via-white/80 to-purple-50/60 px-4 py-3 sm:px-6 relative cursor-grab active:cursor-grabbing flex-shrink-0">
+            <div className="main-box-header flex items-center justify-between border-b border-white/60 bg-gradient-to-r from-slate-50/95 via-white/90 to-purple-50/80 px-4 py-2.5 sm:px-5 relative cursor-grab active:cursor-grabbing flex-shrink-0 shadow-[inset_0_-1px_0_rgba(255,255,255,0.8)]">
+              {/* Traffic Lights */}
               <div className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
-                <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
-                <span className="ml-3 text-xs font-semibold uppercase tracking-wide text-purple-500">
+                <div className="flex items-center gap-[6px] group">
+                  <button className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#ff6058] to-[#e4473c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:from-[#ff7066] hover:to-[#e4554a] group-hover:scale-105">
+                    <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[8px] text-[#4d0000] font-bold">×</span>
+                  </button>
+                  <button className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#ffbd2e] to-[#e5a319] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:from-[#ffc940] hover:to-[#e5ae25] group-hover:scale-105">
+                    <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[8px] text-[#4d3800] font-bold">−</span>
+                  </button>
+                  <button className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#28c840] to-[#1aab2c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:from-[#34d44c] hover:to-[#26b738] group-hover:scale-105">
+                    <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[6px] text-[#003d00]">⤢</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Center Title */}
+              <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+                <div className="w-4 h-4 rounded bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-sm">
+                  <Box className="w-2.5 h-2.5 text-white" strokeWidth={3} />
+                </div>
+                <span className="text-[12px] font-semibold text-slate-600 tracking-wide">
                   Purple Stock OS
                 </span>
+                <span className="text-[10px] text-slate-400 font-medium">v2.0</span>
               </div>
-              <span className="absolute right-4 text-xs text-slate-400">{language === "pt" ? "Workspace de Crescimento" : language === "fr" ? "Espace de Croissance" : "Growth workspace"}</span>
+
+              {/* Right Side - Status */}
+              <div className="flex items-center gap-3">
+                <div className="hidden sm:flex items-center gap-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_4px_rgba(16,185,129,0.5)]" />
+                  <span className="text-[10px] text-emerald-600 font-medium">{language === "pt" ? "Online" : language === "fr" ? "En ligne" : "Online"}</span>
+                </div>
+                <span className="text-[11px] text-slate-400 font-medium hidden md:block">{language === "pt" ? "Workspace de Crescimento" : language === "fr" ? "Espace de Croissance" : "Growth Workspace"}</span>
+              </div>
+            </div>
+
+            {/* Toolbar */}
+            <div className="flex items-center justify-between px-4 sm:px-5 py-2 bg-gradient-to-b from-slate-50/80 to-white/60 border-b border-slate-200/50 flex-shrink-0">
+              <div className="flex items-center gap-1">
+                <button className="p-1.5 rounded-md hover:bg-slate-100/80 transition-colors text-slate-400 hover:text-slate-600">
+                  <ArrowRight className="w-3.5 h-3.5 rotate-180" strokeWidth={2.5} />
+                </button>
+                <button className="p-1.5 rounded-md hover:bg-slate-100/80 transition-colors text-slate-400 hover:text-slate-600">
+                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
+                </button>
+                <div className="w-px h-4 bg-slate-200 mx-1" />
+                <button className="p-1.5 rounded-md hover:bg-slate-100/80 transition-colors text-slate-400 hover:text-slate-600">
+                  <RefreshCw className="w-3.5 h-3.5" strokeWidth={2.5} />
+                </button>
+              </div>
+              
+              {/* Search Bar */}
+              <div className="hidden sm:flex items-center gap-2 bg-slate-100/80 rounded-lg px-3 py-1.5 flex-1 max-w-md mx-4 border border-slate-200/60">
+                <svg className="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <span className="text-[11px] text-slate-400">{language === "pt" ? "Buscar recursos, docs, produtos..." : language === "fr" ? "Rechercher ressources, docs..." : "Search resources, docs, products..."}</span>
+                <div className="ml-auto flex items-center gap-0.5">
+                  <span className="text-[9px] text-slate-400 bg-white/80 px-1 py-0.5 rounded border border-slate-200/80 shadow-sm">⌘</span>
+                  <span className="text-[9px] text-slate-400 bg-white/80 px-1 py-0.5 rounded border border-slate-200/80 shadow-sm">K</span>
+                </div>
+              </div>
+
+              {/* Right actions */}
+              <div className="flex items-center gap-1">
+                <button className="p-1.5 rounded-md hover:bg-slate-100/80 transition-colors text-slate-400 hover:text-slate-600">
+                  <Globe className="w-3.5 h-3.5" strokeWidth={2.5} />
+                </button>
+                <button className="p-1.5 rounded-md hover:bg-slate-100/80 transition-colors text-slate-400 hover:text-slate-600">
+                  <Sparkles className="w-3.5 h-3.5" strokeWidth={2.5} />
+                </button>
+              </div>
             </div>
 
             <div className="space-y-8 px-4 py-8 sm:px-10 sm:py-10 flex-1 overflow-y-auto overflow-x-hidden scrollbar-purple min-h-0">
@@ -1123,6 +1199,33 @@ export function DesktopLanding() {
                 </Button>
               </div>
             </div>
+
+            {/* Status Bar */}
+            <div className="flex items-center justify-between px-4 sm:px-5 py-2 bg-gradient-to-t from-slate-50/90 to-white/70 border-t border-slate-100 flex-shrink-0">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[10px] text-slate-500">
+                    {language === "pt" ? "Sincronizado" : language === "fr" ? "Synchronisé" : "Synced"}
+                  </span>
+                </div>
+                <div className="hidden sm:flex items-center gap-1.5">
+                  <Zap className="w-3 h-3 text-amber-500" strokeWidth={2.5} />
+                  <span className="text-[10px] text-slate-500">
+                    {language === "pt" ? "99.9% uptime" : language === "fr" ? "99.9% disponibilité" : "99.9% uptime"}
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] text-slate-400">
+                  {language === "pt" ? "Última atualização: agora" : language === "fr" ? "Dernière maj: maintenant" : "Last update: now"}
+                </span>
+                <div className="flex items-center gap-1">
+                  <span className="text-[10px] text-purple-500 font-medium">Purple Stock</span>
+                  <span className="text-[9px] text-slate-400">v2.0.0</span>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -1171,10 +1274,130 @@ export function DesktopLanding() {
           ))}
         </div>
 
+        {/* macOS-style Dock */}
+        <div className="fixed bottom-3 left-1/2 -translate-x-1/2 z-[90] hidden md:block">
+          <div className="flex items-end gap-1 px-3 py-2 bg-white/60 backdrop-blur-xl rounded-2xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_0_0_1px_rgba(255,255,255,0.2)]">
+            {/* Dock Apps */}
+            <Link 
+              href="https://app.purplestock.com.br/" 
+              className="group relative flex flex-col items-center"
+            >
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-lg group-hover:shadow-purple-500/40 transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110">
+                <Box className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt" ? "Abrir App" : language === "fr" ? "Ouvrir App" : "Open App"}
+              </span>
+              <div className="w-1 h-1 rounded-full bg-slate-400 mt-1.5 opacity-100" />
+            </Link>
+
+            <button 
+              onClick={() => openWindow("inventory")}
+              className="group relative flex flex-col items-center"
+            >
+              <div className={cn(
+                "w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110",
+                isWindowOpen("inventory") ? "shadow-blue-500/40" : "group-hover:shadow-blue-500/40"
+              )}>
+                <Package className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt" ? "Inventário" : language === "fr" ? "Inventaire" : "Inventory"}
+              </span>
+              {isWindowOpen("inventory") && <div className="w-1 h-1 rounded-full bg-blue-500 mt-1.5" />}
+            </button>
+
+            <button 
+              onClick={() => openWindow("analytics")}
+              className="group relative flex flex-col items-center"
+            >
+              <div className={cn(
+                "w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center shadow-lg transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110",
+                isWindowOpen("analytics") ? "shadow-violet-500/40" : "group-hover:shadow-violet-500/40"
+              )}>
+                <BarChart3 className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt" ? "Relatórios" : language === "fr" ? "Rapports" : "Analytics"}
+              </span>
+              {isWindowOpen("analytics") && <div className="w-1 h-1 rounded-full bg-violet-500 mt-1.5" />}
+            </button>
+
+            <div className="w-px h-10 bg-slate-300/50 mx-1 self-center" />
+
+            <button 
+              onClick={() => openWindow("qr")}
+              className="group relative flex flex-col items-center"
+            >
+              <div className={cn(
+                "w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110",
+                isWindowOpen("qr") ? "shadow-emerald-500/40" : "group-hover:shadow-emerald-500/40"
+              )}>
+                <ScanLine className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                QR Codes
+              </span>
+              {isWindowOpen("qr") && <div className="w-1 h-1 rounded-full bg-emerald-500 mt-1.5" />}
+            </button>
+
+            <button 
+              onClick={() => openWindow("support")}
+              className="group relative flex flex-col items-center"
+            >
+              <div className={cn(
+                "w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110",
+                isWindowOpen("support") ? "shadow-amber-500/40" : "group-hover:shadow-amber-500/40"
+              )}>
+                <MessageCircle className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt" ? "Suporte" : language === "fr" ? "Support" : "Support"}
+              </span>
+              {isWindowOpen("support") && <div className="w-1 h-1 rounded-full bg-amber-500 mt-1.5" />}
+            </button>
+
+            <div className="w-px h-10 bg-slate-300/50 mx-1 self-center" />
+
+            <Link 
+              href="/precos" 
+              className="group relative flex flex-col items-center"
+            >
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg group-hover:shadow-orange-500/40 transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110">
+                <CircleDollarSign className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt" ? "Preços" : language === "fr" ? "Prix" : "Pricing"}
+              </span>
+            </Link>
+
+            <Link 
+              href="/recursos/gestao-de-estoque" 
+              className="group relative flex flex-col items-center"
+            >
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-500 to-slate-700 flex items-center justify-center shadow-lg group-hover:shadow-slate-500/40 transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110">
+                <FileCode className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt" ? "Documentação" : language === "fr" ? "Documentation" : "Docs"}
+              </span>
+            </Link>
+          </div>
+        </div>
+
         {openWindows.map((key, index) => {
           const config = windowsConfig[key]
           const Icon = config.icon
           const layout = windowLayout[key]
+          const colorMap = {
+            blue: "from-blue-500 to-blue-600",
+            purple: "from-violet-500 to-violet-600",
+            green: "from-emerald-500 to-emerald-600",
+            yellow: "from-amber-500 to-amber-600",
+            red: "from-red-500 to-red-600",
+            orange: "from-orange-500 to-orange-600",
+          }
+          const iconGradient = colorMap[config.folderColor || "blue"]
           return (
             <div
               key={key}
@@ -1185,58 +1408,99 @@ export function DesktopLanding() {
                 zIndex: 60 + index,
                 transform: "translateX(-50%)"
               }}
-              className="pointer-events-auto hidden rounded-3xl border border-white/70 bg-white/85 shadow-[0_30px_120px_-70px_rgba(59,7,100,0.8)] backdrop-blur-xl transition-all animate-in fade-in slide-in-from-top-4 md:absolute md:block"
+              className="pointer-events-auto hidden rounded-xl border border-slate-200/80 bg-white/95 shadow-[0_25px_80px_-20px_rgba(0,0,0,0.25),0_10px_30px_-15px_rgba(0,0,0,0.15)] backdrop-blur-2xl transition-all animate-in fade-in zoom-in-95 slide-in-from-top-2 duration-300 md:absolute md:block overflow-hidden"
               onMouseDown={() => openWindow(key)}
             >
-              <div className="flex items-center justify-between rounded-t-3xl border-b border-white/70 bg-gradient-to-r from-white to-purple-50/70 px-5 py-3">
+              {/* Window Header */}
+              <div className="flex items-center justify-between border-b border-slate-100 bg-gradient-to-b from-slate-50 to-white/80 px-4 py-2.5">
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-1.5">
+                  {/* Traffic Lights */}
+                  <div className="flex items-center gap-[6px] group">
                     <button
                       onClick={(event) => {
                         event.stopPropagation()
                         closeWindow(key)
                       }}
-                      className="h-3.5 w-3.5 rounded-full border border-[#e06c67]/50 bg-[#ff5f56] transition-transform hover:scale-110"
+                      className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#ff6058] to-[#e4473c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:scale-110"
                       aria-label="Close window"
-                    />
+                    >
+                      <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[8px] text-[#4d0000] font-bold">×</span>
+                    </button>
                     <button
                       onClick={(event) => {
                         event.stopPropagation()
                         closeWindow(key)
                       }}
-                      className="h-3.5 w-3.5 rounded-full border border-[#e6b95c]/50 bg-[#ffbd2e] transition-transform hover:scale-110"
+                      className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#ffbd2e] to-[#e5a319] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:scale-110"
                       aria-label="Minimize window"
-                    />
-                    <span className="h-3.5 w-3.5 rounded-full border border-[#63c472]/40 bg-[#27c93f]" />
+                    >
+                      <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[8px] text-[#4d3800] font-bold">−</span>
+                    </button>
+                    <span className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#28c840] to-[#1aab2c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)]">
+                      <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[6px] text-[#003d00]">⤢</span>
+                    </span>
                   </div>
-                  <Icon color={config.folderColor || "blue"} className="h-4 w-4" />
-                  <span className="text-sm font-semibold text-slate-600">{config.title}</span>
+                  
+                  {/* App Icon & Title */}
+                  <div className="flex items-center gap-2">
+                    <div className={cn("w-5 h-5 rounded-md bg-gradient-to-br flex items-center justify-center shadow-sm", iconGradient)}>
+                      {key === "inventory" && <Package className="w-3 h-3 text-white" strokeWidth={2.5} />}
+                      {key === "analytics" && <BarChart3 className="w-3 h-3 text-white" strokeWidth={2.5} />}
+                      {key === "qr" && <ScanLine className="w-3 h-3 text-white" strokeWidth={2.5} />}
+                      {key === "support" && <MessageCircle className="w-3 h-3 text-white" strokeWidth={2.5} />}
+                    </div>
+                    <span className="text-[13px] font-semibold text-slate-700">{config.title}</span>
+                  </div>
                 </div>
-                <span className="text-xs uppercase tracking-wide text-purple-400">{language === "pt" ? "Ao vivo" : language === "fr" ? "En direct" : "Live"}</span>
+                
+                {/* Live Badge */}
+                <div className="flex items-center gap-1.5 bg-emerald-50 px-2 py-0.5 rounded-full">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[10px] font-medium text-emerald-600 uppercase tracking-wide">
+                    {language === "pt" ? "Ao vivo" : language === "fr" ? "En direct" : "Live"}
+                  </span>
+                </div>
               </div>
+
+              {/* Window Content */}
               <div className="space-y-4 px-5 py-5">
-                <p className="text-sm text-slate-500">{config.subtitle}</p>
-                <ul className="space-y-2">
+                <p className="text-sm text-slate-500 leading-relaxed">{config.subtitle}</p>
+                
+                {/* Highlights */}
+                <ul className="space-y-2.5">
                   {config.highlights.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-slate-600">
+                      <div className="mt-0.5 h-4 w-4 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                        <CheckCircle2 className="h-3 w-3 text-emerald-600" strokeWidth={3} />
+                      </div>
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="grid grid-cols-2 gap-3 rounded-2xl border border-purple-100 bg-purple-50/60 p-4">
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-2 gap-3 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100/50 p-4 border border-slate-100">
                   {config.stats.map((stat) => (
-                    <div key={stat.label}>
-                      <p className="text-xs uppercase tracking-wide text-purple-400">{stat.label}</p>
-                      <p className="text-xl font-semibold text-purple-900">{stat.value}</p>
+                    <div key={stat.label} className="text-center">
+                      <p className="text-2xl font-bold text-slate-800">{stat.value}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">{stat.label}</p>
                     </div>
                   ))}
                 </div>
+
+                {/* Action Button */}
                 <Button
                   asChild
-                  className="w-full rounded-2xl bg-gradient-to-r from-purple-600 to-purple-700 text-sm font-semibold shadow-purple-500/30 hover:shadow-lg"
+                  className={cn(
+                    "w-full rounded-lg text-sm font-semibold shadow-lg hover:shadow-xl transition-all",
+                    "bg-gradient-to-r text-white",
+                    iconGradient
+                  )}
                 >
-                  <Link href={config.action.href}>{config.action.label}</Link>
+                  <Link href={config.action.href}>
+                    {config.action.label}
+                    <ArrowRight className="w-4 h-4 ml-2" strokeWidth={2.5} />
+                  </Link>
                 </Button>
               </div>
             </div>

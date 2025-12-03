@@ -26,19 +26,8 @@ export function DraggableFolder({
   storageKey,
   isSelected: externalSelected,
 }: DraggableFolderProps) {
-  const [position, setPosition] = useState(() => {
-    if (storageKey && typeof window !== "undefined") {
-      const saved = localStorage.getItem(`folder-${storageKey}`)
-      if (saved) {
-        try {
-          return JSON.parse(saved)
-        } catch {
-          // Fallback to initial position
-        }
-      }
-    }
-    return initialPosition || { x: 100, y: 100 }
-  })
+  // Always start with initial position to avoid hydration mismatch
+  const [position, setPosition] = useState(initialPosition || { x: 100, y: 100 })
 
   const [isDragging, setIsDragging] = useState(false)
   const [internalSelected, setInternalSelected] = useState(false)
@@ -47,6 +36,21 @@ export function DraggableFolder({
   const folderRef = useRef<HTMLDivElement>(null)
   const clickTimeoutRef = useRef<NodeJS.Timeout>()
   const actuallyDraggedRef = useRef(false)
+
+  // Load saved position from localStorage after mount (client-side only)
+  useEffect(() => {
+    if (storageKey) {
+      const saved = localStorage.getItem(`folder-${storageKey}`)
+      if (saved) {
+        try {
+          const savedPosition = JSON.parse(saved)
+          setPosition(savedPosition)
+        } catch {
+          // Fallback to initial position - already set
+        }
+      }
+    }
+  }, [storageKey])
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -184,12 +188,7 @@ export function DraggableFolder({
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
-        transform: `${isDragging ? "scale(1.1)" : isSelected ? "scale(1.05)" : "scale(1)"} translateZ(0)`,
-        userSelect: "none",
-        WebkitUserSelect: "none",
-        WebkitFontSmoothing: "antialiased",
-        MozOsxFontSmoothing: "grayscale",
-        willChange: "transform",
+        transform: `${isDragging ? "scale(1.1)" : isSelected ? "scale(1.05)" : "scale(1)"} translateZ(0px)`,
       }}
       onMouseDown={handleMouseDown}
       onDragStart={(e) => e.preventDefault()}

@@ -58,6 +58,22 @@ export function DesktopLanding() {
   const mainBoxRef = useRef<HTMLDivElement>(null)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [currentTime, setCurrentTime] = useState<string | null>(null)
+
+  // Update time on client side only
+  useEffect(() => {
+    const updateTime = () => {
+      setCurrentTime(
+        new Date().toLocaleTimeString(language === "pt" ? "pt-BR" : language === "fr" ? "fr-FR" : "en-US", { 
+          hour: '2-digit', 
+          minute: '2-digit' 
+        })
+      )
+    }
+    updateTime()
+    const interval = setInterval(updateTime, 60000) // Update every minute
+    return () => clearInterval(interval)
+  }, [language])
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -605,173 +621,145 @@ export function DesktopLanding() {
         <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-200/15 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
       </div>
       
-      {/* Premium macOS-style Menu Bar */}
-      <header className="fixed top-0 left-0 right-0 z-[80]">
-        {/* Glassmorphism background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/70 backdrop-blur-2xl border-b border-white/50 shadow-[0_1px_3px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.6)]" />
-        
-        <div className="relative max-w-[1920px] mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between h-[52px]">
-            {/* Left: Logo & Brand */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700 flex items-center justify-center shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 transition-all duration-300 group-hover:scale-105">
-                  <Box className="w-4 h-4 text-white" strokeWidth={2.5} />
-                </div>
-                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-500 border-2 border-white shadow-sm flex items-center justify-center">
-                  <div className="w-1 h-1 rounded-full bg-white animate-pulse" />
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[15px] font-bold text-slate-900 tracking-tight leading-none">
-                  Purple Stock
-                </span>
-                <span className="text-[10px] text-slate-500 font-medium tracking-wide">
-                  INVENTORY OS
-                </span>
-              </div>
+      {/* macOS Menu Bar */}
+      <header className="fixed top-0 left-0 right-0 z-[80] h-[25px] bg-gradient-to-b from-[#3d3d3d] to-[#2a2a2a] shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
+        <div className="flex items-center justify-between h-full px-3 text-[13px] font-medium text-white/90">
+          {/* Left: Apple-style Logo + App Menu */}
+          <div className="flex items-center gap-0">
+            {/* Purple Stock Logo (like Apple logo) */}
+            <Link href="/" className="flex items-center justify-center w-8 h-full hover:bg-white/10 transition-colors">
+              <Box className="w-[14px] h-[14px] text-white" strokeWidth={2.5} />
             </Link>
 
-            {/* Center: Navigation Pills */}
-            <nav className="hidden lg:flex items-center">
-              <div className="flex items-center bg-slate-100/80 rounded-full p-1 shadow-inner">
-                {/* Resources Dropdown */}
-                <div className="relative" ref={featuresRef}>
-                  <button
-                    className={cn(
-                      "flex items-center gap-1 text-[13px] font-medium px-4 py-2 rounded-full transition-all duration-200",
-                      featuresOpen 
-                        ? "bg-white text-slate-900 shadow-sm" 
-                        : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
-                    )}
-                    onClick={() => setFeaturesOpen(!featuresOpen)}
-                  >
-                    <Sparkles className="w-3.5 h-3.5" strokeWidth={2.5} />
-                    {t.nav.resources}
-                    <ChevronDown className={cn(
-                      "w-3.5 h-3.5 transition-transform duration-200",
-                      featuresOpen && "rotate-180"
-                    )} strokeWidth={2.5} />
-                  </button>
+            {/* App Name - Bold */}
+            <span className="px-3 py-0.5 font-semibold text-white hover:bg-white/10 rounded-[3px] cursor-default transition-colors">
+              Purple Stock
+            </span>
 
-                  {featuresOpen && (
-                    <div className="absolute left-0 mt-3 w-80 rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] bg-white/95 backdrop-blur-xl border border-slate-200/50 animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden">
-                      {/* Header */}
-                      <div className="px-4 py-3 bg-gradient-to-r from-purple-50 to-violet-50 border-b border-slate-100">
-                        <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
-                            <AppWindow className="w-4 h-4 text-white" strokeWidth={2.5} />
-                          </div>
-                          <div>
-                            <div className="text-[14px] font-semibold text-slate-900">{t.nav.features.title}</div>
-                            <div className="text-[11px] text-slate-500">{language === "pt" ? "Descubra todas as funcionalidades" : language === "en" ? "Discover all features" : "Découvrez toutes les fonctionnalités"}</div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Links Grid */}
-                      <div className="p-2 max-h-[400px] overflow-y-auto">
-                        {[
-                          { href: "/features/inventory-control", label: t.nav.features.inventoryControl, icon: Package },
-                          { href: "/features/barcoding", label: t.nav.features.barcoding, icon: ScanLine },
-                          { href: "/features/purchase-sales", label: t.nav.features.purchaseSales, icon: CircleDollarSign },
-                          { href: "/features/analytics-reporting", label: t.nav.features.analyticsReporting, icon: BarChart3 },
-                          { href: "/features/warehouse-control", label: t.nav.features.warehouseControl, icon: MapPin },
-                          { href: "/features/qr-code-management", label: t.nav.features.qrCodeManagement, icon: ScanLine },
-                          { href: "/features/clothing-manufacturing", label: t.nav.features.clothingManufacturing, icon: Box },
-                          { href: "/features/equipment-management", label: t.nav.features.equipmentManagement, icon: AppWindow },
-                          { href: "/features/factory-management", label: t.nav.features.factoryManagement, icon: Laptop },
-                          { href: "/features/inventory-app", label: t.nav.features.inventoryApp, icon: Globe },
-                        ].map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] text-slate-600 hover:bg-purple-50 hover:text-purple-700 transition-all duration-150 group"
-                            onClick={() => setFeaturesOpen(false)}
-                          >
-                            <div className="w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-purple-100 flex items-center justify-center transition-colors">
-                              <item.icon className="w-3.5 h-3.5 text-slate-500 group-hover:text-purple-600" strokeWidth={2.5} />
-                            </div>
-                            <span className="font-medium">{item.label}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
+            {/* Menu Items */}
+            <div className="hidden md:flex items-center">
+              <div className="relative" ref={featuresRef}>
+                <button
+                  className={cn(
+                    "px-3 py-0.5 rounded-[3px] transition-colors",
+                    featuresOpen ? "bg-[#0058d0] text-white" : "hover:bg-white/10"
                   )}
-                </div>
-
-                <Link 
-                  href="/precos" 
-                  className="flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white/50 px-4 py-2 rounded-full transition-all duration-200"
+                  onClick={() => setFeaturesOpen(!featuresOpen)}
                 >
-                  <CircleDollarSign className="w-3.5 h-3.5" strokeWidth={2.5} />
-                  {t.nav.pricing}
-                </Link>
+                  {t.nav.resources}
+                </button>
 
-                <Link 
-                  href="/industrias" 
-                  className="flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white/50 px-4 py-2 rounded-full transition-all duration-200"
-                >
-                  <MapPin className="w-3.5 h-3.5" strokeWidth={2.5} />
-                  {t.nav.industries}
-                </Link>
-
-                <Link 
-                  href="/artigos" 
-                  className="flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white/50 px-4 py-2 rounded-full transition-all duration-200"
-                >
-                  <FileCode className="w-3.5 h-3.5" strokeWidth={2.5} />
-                  {t.nav.articles}
-                </Link>
-
-                <a
-                  href="https://blog.purplestock.com.br/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white/50 px-4 py-2 rounded-full transition-all duration-200"
-                >
-                  <MessageCircle className="w-3.5 h-3.5" strokeWidth={2.5} />
-                  {t.nav.blog}
-                </a>
+                {featuresOpen && (
+                  <div className="absolute left-0 mt-[3px] w-64 rounded-md shadow-[0_10px_40px_rgba(0,0,0,0.4)] bg-[#2d2d2d]/95 backdrop-blur-xl border border-white/10 animate-in fade-in slide-in-from-top-1 duration-150 overflow-hidden py-1">
+                    {[
+                      { href: "/features/inventory-control", label: t.nav.features.inventoryControl, shortcut: "⌘I" },
+                      { href: "/features/barcoding", label: t.nav.features.barcoding, shortcut: "⌘B" },
+                      { href: "/features/purchase-sales", label: t.nav.features.purchaseSales, shortcut: "⌘P" },
+                      { href: "/features/analytics-reporting", label: t.nav.features.analyticsReporting, shortcut: "⌘R" },
+                      { href: "/features/warehouse-control", label: t.nav.features.warehouseControl, shortcut: "⌘W" },
+                      { href: "/features/qr-code-management", label: t.nav.features.qrCodeManagement, shortcut: "⌘Q" },
+                    ].map((item, index) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="flex items-center justify-between px-3 py-1 text-[13px] text-white/90 hover:bg-[#0058d0] hover:text-white transition-colors mx-1 rounded-[3px]"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        <span>{item.label}</span>
+                        <span className="text-[11px] text-white/40">{item.shortcut}</span>
+                      </Link>
+                    ))}
+                    <div className="h-px bg-white/10 my-1 mx-3" />
+                    {[
+                      { href: "/features/clothing-manufacturing", label: t.nav.features.clothingManufacturing },
+                      { href: "/features/equipment-management", label: t.nav.features.equipmentManagement },
+                      { href: "/features/factory-management", label: t.nav.features.factoryManagement },
+                      { href: "/features/inventory-app", label: t.nav.features.inventoryApp },
+                    ].map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="flex items-center px-3 py-1 text-[13px] text-white/90 hover:bg-[#0058d0] hover:text-white transition-colors mx-1 rounded-[3px]"
+                        onClick={() => setFeaturesOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
-              {/* Special CTA - Barcode */}
-              <Link 
-                href="/codigo-de-barras-gratis" 
-                className="ml-3 flex items-center gap-1.5 text-[13px] font-semibold text-purple-600 hover:text-purple-700 px-3 py-1.5 rounded-full bg-purple-50 hover:bg-purple-100 border border-purple-200 transition-all duration-200"
-              >
-                <Zap className="w-3.5 h-3.5" strokeWidth={2.5} />
-                {t.nav.freeBarcode}
+              <Link href="/precos" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
+                {t.nav.pricing}
               </Link>
-            </nav>
-
-            {/* Right: Actions */}
-            <div className="flex items-center gap-3">
-              {/* Language Switcher */}
-              <button 
-                className="hidden sm:flex items-center gap-1.5 text-[12px] font-medium text-slate-500 hover:text-slate-700 px-2.5 py-1.5 rounded-lg hover:bg-slate-100 transition-all duration-200"
-                onClick={() => {
-                  if (language === "pt") setLanguage("en");
-                  else if (language === "en") setLanguage("fr");
-                  else setLanguage("pt");
-                }}
+              <Link href="/industrias" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
+                {t.nav.industries}
+              </Link>
+              <Link href="/artigos" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
+                {t.nav.articles}
+              </Link>
+              <a
+                href="https://blog.purplestock.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
               >
-                <Globe className="h-4 w-4" strokeWidth={2} />
-                <span className="uppercase font-semibold">{language}</span>
-              </button>
-
-              {/* Login Button */}
-              <Link href="https://app.purplestock.com.br/">
-                <Button className="h-9 px-5 text-[13px] font-semibold bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white rounded-full transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105">
-                  <span>{t.nav.login}</span>
-                  <ArrowRight className="w-4 h-4 ml-1.5" strokeWidth={2.5} />
-                </Button>
+                {t.nav.blog}
+              </a>
+              <Link href="/codigo-de-barras-gratis" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors text-purple-300">
+                {t.nav.freeBarcode}
               </Link>
             </div>
           </div>
+
+          {/* Right: Status Icons (macOS style) */}
+          <div className="flex items-center gap-1">
+            {/* Status Indicator */}
+            <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] hover:bg-white/10 transition-colors cursor-default">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[11px] text-white/70">Online</span>
+            </div>
+
+            {/* Divider */}
+            <div className="w-px h-3 bg-white/20 mx-1 hidden sm:block" />
+
+            {/* Language */}
+            <button 
+              className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
+              onClick={() => {
+                if (language === "pt") setLanguage("en");
+                else if (language === "en") setLanguage("fr");
+                else setLanguage("pt");
+              }}
+            >
+              <Globe className="w-3.5 h-3.5 text-white/70" strokeWidth={2} />
+              <span className="text-[11px] uppercase">{language}</span>
+            </button>
+
+            {/* Time */}
+            {currentTime && (
+              <div className="hidden sm:flex items-center px-2 py-0.5 rounded-[3px] hover:bg-white/10 transition-colors cursor-default">
+                <span className="text-[11px] text-white/90 font-medium tabular-nums">
+                  {currentTime}
+                </span>
+              </div>
+            )}
+
+            {/* Divider */}
+            <div className="w-px h-3 bg-white/20 mx-1" />
+
+            {/* Login */}
+            <Link 
+              href="https://app.purplestock.com.br/"
+              className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
+            >
+              <span className="text-[11px]">{t.nav.login}</span>
+              <ArrowRight className="w-3 h-3" strokeWidth={2.5} />
+            </Link>
+          </div>
         </div>
       </header>
-      <div className="relative mx-auto flex h-full w-full max-w-[1320px] flex-col gap-8 px-4 pt-[60px] pb-4 md:flex-row md:gap-6 md:px-10 md:pt-[64px]">
+      <div className="relative mx-auto flex h-full w-full max-w-[1320px] flex-col gap-8 px-4 pt-[32px] pb-4 md:flex-row md:gap-6 md:px-10 md:pt-[32px]">
         {/* Icons Left Side - Vertical */}
         <div className="relative z-[100] hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
           {windowApps.slice(0, 2).map((app, index) => (

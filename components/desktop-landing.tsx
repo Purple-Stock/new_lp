@@ -605,162 +605,173 @@ export function DesktopLanding() {
         <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-200/15 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
       </div>
       
-      {/* macOS-style Menu Bar */}
-      <header className="fixed top-0 left-0 right-0 z-[80] bg-[rgba(255,255,255,0.72)] backdrop-blur-[24px] border-b border-[rgba(0,0,0,0.06)] supports-[backdrop-filter]:bg-[rgba(255,255,255,0.55)] shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-        <div className="max-w-[1920px] mx-auto px-6">
-          <div className="flex items-center justify-between h-[40px]">
-            {/* Left: App Name with Apple-style logo */}
-            <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-md bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-sm">
-                <Box className="w-3 h-3 text-white" strokeWidth={2.5} />
+      {/* Premium macOS-style Menu Bar */}
+      <header className="fixed top-0 left-0 right-0 z-[80]">
+        {/* Glassmorphism background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/70 backdrop-blur-2xl border-b border-white/50 shadow-[0_1px_3px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.6)]" />
+        
+        <div className="relative max-w-[1920px] mx-auto px-4 lg:px-8">
+          <div className="flex items-center justify-between h-[52px]">
+            {/* Left: Logo & Brand */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700 flex items-center justify-center shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 transition-all duration-300 group-hover:scale-105">
+                  <Box className="w-4 h-4 text-white" strokeWidth={2.5} />
+                </div>
+                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-500 border-2 border-white shadow-sm flex items-center justify-center">
+                  <div className="w-1 h-1 rounded-full bg-white animate-pulse" />
+                </div>
               </div>
-              <span className="text-[13px] font-semibold text-[#1d1d1f] tracking-tight">
-                Purple Stock
-              </span>
-              <span className="hidden sm:inline text-[11px] text-purple-500 font-medium px-1.5 py-0.5 bg-purple-100 rounded-full">
-                OS
-              </span>
-            </div>
+              <div className="flex flex-col">
+                <span className="text-[15px] font-bold text-slate-900 tracking-tight leading-none">
+                  Purple Stock
+                </span>
+                <span className="text-[10px] text-slate-500 font-medium tracking-wide">
+                  INVENTORY OS
+                </span>
+              </div>
+            </Link>
 
-            {/* Center: Menu Items (macOS style) */}
-            <div className="hidden md:flex items-center gap-0 absolute left-1/2 -translate-x-1/2">
-              <div className="relative" ref={featuresRef}>
-                <button
-                  className="text-[14px] text-[#1d1d1f] hover:text-[#000000] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal"
-                  onClick={() => setFeaturesOpen(!featuresOpen)}
-                >
-                  {t.nav.resources}
-                  <ChevronDown className={`inline-block w-3.5 h-3.5 ml-0.5 transition-transform duration-200 ${featuresOpen ? 'rotate-180' : ''}`} strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                </button>
+            {/* Center: Navigation Pills */}
+            <nav className="hidden lg:flex items-center">
+              <div className="flex items-center bg-slate-100/80 rounded-full p-1 shadow-inner">
+                {/* Resources Dropdown */}
+                <div className="relative" ref={featuresRef}>
+                  <button
+                    className={cn(
+                      "flex items-center gap-1 text-[13px] font-medium px-4 py-2 rounded-full transition-all duration-200",
+                      featuresOpen 
+                        ? "bg-white text-slate-900 shadow-sm" 
+                        : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
+                    )}
+                    onClick={() => setFeaturesOpen(!featuresOpen)}
+                  >
+                    <Sparkles className="w-3.5 h-3.5" strokeWidth={2.5} />
+                    {t.nav.resources}
+                    <ChevronDown className={cn(
+                      "w-3.5 h-3.5 transition-transform duration-200",
+                      featuresOpen && "rotate-180"
+                    )} strokeWidth={2.5} />
+                  </button>
 
-                {featuresOpen && (
-                  <div className="absolute left-0 mt-1 w-72 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-[rgba(255,255,255,0.95)] backdrop-blur-[20px] border border-[rgba(0,0,0,0.1)] animate-in slide-in-from-top-2 duration-200">
-                    <div className="py-1">
-                      <div className="px-3 py-2 border-b border-[rgba(0,0,0,0.08)]">
-                        <div className="text-[14px] font-semibold text-[#1d1d1f]">{t.nav.features.title}</div>
-                        <div className="text-[12px] text-[#86868b] mt-0.5">{language === "pt" ? "Descubra todas as funcionalidades" : language === "en" ? "Discover all features" : "Découvrez toutes les fonctionnalités"}</div>
+                  {featuresOpen && (
+                    <div className="absolute left-0 mt-3 w-80 rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] bg-white/95 backdrop-blur-xl border border-slate-200/50 animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden">
+                      {/* Header */}
+                      <div className="px-4 py-3 bg-gradient-to-r from-purple-50 to-violet-50 border-b border-slate-100">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                            <AppWindow className="w-4 h-4 text-white" strokeWidth={2.5} />
+                          </div>
+                          <div>
+                            <div className="text-[14px] font-semibold text-slate-900">{t.nav.features.title}</div>
+                            <div className="text-[11px] text-slate-500">{language === "pt" ? "Descubra todas as funcionalidades" : language === "en" ? "Discover all features" : "Découvrez toutes les fonctionnalités"}</div>
+                          </div>
+                        </div>
                       </div>
-                      <Link
-                        href="/features/inventory-control"
-                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {t.nav.features.inventoryControl}
-                      </Link>
-                      <Link
-                        href="/features/barcoding"
-                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {t.nav.features.barcoding}
-                      </Link>
-                      <Link
-                        href="/features/purchase-sales"
-                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {t.nav.features.purchaseSales}
-                      </Link>
-                      <Link
-                        href="/features/analytics-reporting"
-                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {t.nav.features.analyticsReporting}
-                      </Link>
-                      <Link
-                        href="/features/warehouse-control"
-                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {t.nav.features.warehouseControl}
-                      </Link>
-                      <Link
-                        href="/features/qr-code-management"
-                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {t.nav.features.qrCodeManagement}
-                      </Link>
-                      <Link
-                        href="/features/clothing-manufacturing"
-                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {t.nav.features.clothingManufacturing}
-                      </Link>
-                      <Link
-                        href="/features/equipment-management"
-                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {t.nav.features.equipmentManagement}
-                      </Link>
-                      <Link
-                        href="/features/factory-management"
-                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {t.nav.features.factoryManagement}
-                      </Link>
-                      <Link
-                        href="/features/inventory-app"
-                        className="block px-3 py-2 text-[14px] text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-150"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {t.nav.features.inventoryApp}
-                      </Link>
+                      
+                      {/* Links Grid */}
+                      <div className="p-2 max-h-[400px] overflow-y-auto">
+                        {[
+                          { href: "/features/inventory-control", label: t.nav.features.inventoryControl, icon: Package },
+                          { href: "/features/barcoding", label: t.nav.features.barcoding, icon: ScanLine },
+                          { href: "/features/purchase-sales", label: t.nav.features.purchaseSales, icon: CircleDollarSign },
+                          { href: "/features/analytics-reporting", label: t.nav.features.analyticsReporting, icon: BarChart3 },
+                          { href: "/features/warehouse-control", label: t.nav.features.warehouseControl, icon: MapPin },
+                          { href: "/features/qr-code-management", label: t.nav.features.qrCodeManagement, icon: ScanLine },
+                          { href: "/features/clothing-manufacturing", label: t.nav.features.clothingManufacturing, icon: Box },
+                          { href: "/features/equipment-management", label: t.nav.features.equipmentManagement, icon: AppWindow },
+                          { href: "/features/factory-management", label: t.nav.features.factoryManagement, icon: Laptop },
+                          { href: "/features/inventory-app", label: t.nav.features.inventoryApp, icon: Globe },
+                        ].map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] text-slate-600 hover:bg-purple-50 hover:text-purple-700 transition-all duration-150 group"
+                            onClick={() => setFeaturesOpen(false)}
+                          >
+                            <div className="w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-purple-100 flex items-center justify-center transition-colors">
+                              <item.icon className="w-3.5 h-3.5 text-slate-500 group-hover:text-purple-600" strokeWidth={2.5} />
+                            </div>
+                            <span className="font-medium">{item.label}</span>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
+
+                <Link 
+                  href="/precos" 
+                  className="flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white/50 px-4 py-2 rounded-full transition-all duration-200"
+                >
+                  <CircleDollarSign className="w-3.5 h-3.5" strokeWidth={2.5} />
+                  {t.nav.pricing}
+                </Link>
+
+                <Link 
+                  href="/industrias" 
+                  className="flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white/50 px-4 py-2 rounded-full transition-all duration-200"
+                >
+                  <MapPin className="w-3.5 h-3.5" strokeWidth={2.5} />
+                  {t.nav.industries}
+                </Link>
+
+                <Link 
+                  href="/artigos" 
+                  className="flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white/50 px-4 py-2 rounded-full transition-all duration-200"
+                >
+                  <FileCode className="w-3.5 h-3.5" strokeWidth={2.5} />
+                  {t.nav.articles}
+                </Link>
+
+                <a
+                  href="https://blog.purplestock.com.br/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white/50 px-4 py-2 rounded-full transition-all duration-200"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" strokeWidth={2.5} />
+                  {t.nav.blog}
+                </a>
               </div>
 
-              <Link href="/precos" className="text-[14px] text-[#1d1d1f] hover:text-[#000000] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal">
-                {t.nav.pricing}
-              </Link>
-              <Link href="/industrias" className="text-[14px] text-[#1d1d1f] hover:text-[#000000] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal">
-                {t.nav.industries}
-              </Link>
-              <Link href="/artigos" className="text-[14px] text-[#1d1d1f] hover:text-[#000000] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal">
-                {t.nav.articles}
-              </Link>
-              <a
-                href="https://blog.purplestock.com.br/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[14px] text-[#1d1d1f] hover:text-[#000000] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal"
+              {/* Special CTA - Barcode */}
+              <Link 
+                href="/codigo-de-barras-gratis" 
+                className="ml-3 flex items-center gap-1.5 text-[13px] font-semibold text-purple-600 hover:text-purple-700 px-3 py-1.5 rounded-full bg-purple-50 hover:bg-purple-100 border border-purple-200 transition-all duration-200"
               >
-                {t.nav.blog}
-              </a>
-              <Link href="/codigo-de-barras-gratis" className="text-[14px] text-[#6e41e2] hover:text-[#5a2fc7] px-2.5 py-1.5 rounded transition-colors duration-150 font-normal">
+                <Zap className="w-3.5 h-3.5" strokeWidth={2.5} />
                 {t.nav.freeBarcode}
               </Link>
-            </div>
+            </nav>
 
             {/* Right: Actions */}
-            <div className="flex items-center gap-2.5">
-              <Link href="https://app.purplestock.com.br/">
-                <Button className="h-7 px-4 text-[12px] font-medium bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-colors duration-150 shadow-sm hover:shadow">
-                  {t.nav.login}
-                </Button>
-              </Link>
-              <Button 
-                variant="ghost"
-                className="h-7 px-2.5 text-[12px] font-normal text-[#1d1d1f] hover:bg-[rgba(0,0,0,0.05)] transition-all duration-150 rounded-md"
+            <div className="flex items-center gap-3">
+              {/* Language Switcher */}
+              <button 
+                className="hidden sm:flex items-center gap-1.5 text-[12px] font-medium text-slate-500 hover:text-slate-700 px-2.5 py-1.5 rounded-lg hover:bg-slate-100 transition-all duration-200"
                 onClick={() => {
                   if (language === "pt") setLanguage("en");
                   else if (language === "en") setLanguage("fr");
                   else setLanguage("pt");
                 }}
               >
-                <Globe className="h-3.5 w-3.5 mr-1 text-[#86868b]" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                {language === "pt" ? "PT" : language === "en" ? "EN" : "FR"}
-              </Button>
+                <Globe className="h-4 w-4" strokeWidth={2} />
+                <span className="uppercase font-semibold">{language}</span>
+              </button>
+
+              {/* Login Button */}
+              <Link href="https://app.purplestock.com.br/">
+                <Button className="h-9 px-5 text-[13px] font-semibold bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white rounded-full transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105">
+                  <span>{t.nav.login}</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5" strokeWidth={2.5} />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </header>
-      <div className="relative mx-auto flex h-full w-full max-w-[1320px] flex-col gap-8 px-4 pt-[48px] pb-4 md:flex-row md:gap-6 md:px-10 md:pt-[52px]">
+      <div className="relative mx-auto flex h-full w-full max-w-[1320px] flex-col gap-8 px-4 pt-[60px] pb-4 md:flex-row md:gap-6 md:px-10 md:pt-[64px]">
         {/* Icons Left Side - Vertical */}
         <div className="relative z-[100] hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
           {windowApps.slice(0, 2).map((app, index) => (

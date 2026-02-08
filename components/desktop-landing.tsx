@@ -880,13 +880,47 @@ export function DesktopLanding() {
                       ? "Purple Stock: the simplest inventory software solution for small businesses to track, manage, and organize inventory."
                       : "Purple Stock: la solution de logiciel d'inventaire la plus simple pour que les petites entreprises suivent, gèrent et organisent leur stock."}
                 </p>
-                <div className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-sm font-semibold text-purple-700">
-                  <BadgePercent className="h-4 w-4" />
-                  {language === "pt"
-                    ? "R$29,9 para os primeiros clientes"
-                    : language === "en"
-                      ? "R$29.9 for the first customers"
-                      : "R$29,9 pour les premiers clients"}
+                <div className="mx-auto w-full max-w-2xl rounded-2xl border border-purple-200 bg-gradient-to-r from-purple-50 via-white to-purple-50 px-5 py-4 shadow-sm">
+                  <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:text-left">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+                      <BadgePercent className="h-3.5 w-3.5" />
+                      {language === "pt"
+                        ? "Oferta de lançamento"
+                        : language === "en"
+                          ? "Launch offer"
+                          : "Offre de lancement"}
+                    </div>
+                    <div className="flex items-end gap-1">
+                      <span className="text-3xl font-extrabold leading-none text-purple-700 sm:text-4xl">
+                        R$29,90
+                      </span>
+                      <span className="pb-1 text-xs font-semibold text-purple-600 sm:text-sm">
+                        /{language === "pt" ? "mês" : language === "en" ? "month" : "mois"}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="mt-2 text-sm font-medium text-slate-700">
+                    {language === "pt"
+                      ? "Valor exclusivo para os primeiros clientes."
+                      : language === "en"
+                        ? "Exclusive pricing for the first customers."
+                        : "Tarif exclusif pour les premiers clients."}
+                  </p>
+                  <div className="mt-3">
+                    <Button
+                      asChild
+                      size="sm"
+                      className="bg-purple-700 text-white hover:bg-purple-800"
+                    >
+                      <Link href="https://app.purplestock.com.br/">
+                        {language === "pt"
+                          ? "Quero garantir R$29,90"
+                          : language === "en"
+                            ? "I want to secure R$29.90"
+                            : "Je veux garantir R$29,90"}
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
                 
                 {/* CTA Buttons */}
@@ -1475,4 +1509,3 @@ export function DesktopLanding() {
     </div>
   )
 }
-

@@ -155,9 +155,6 @@ export function Navbar() {
               )}
             </div>
 
-            <Link href="/precos" className="text-gray-700 hover:text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium">
-              {t.pricing}
-            </Link>
             <Link href="/industrias" className="text-gray-700 hover:text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200 font-medium">
               {t.industries}
             </Link>
@@ -288,13 +285,6 @@ export function Navbar() {
               </div>
 
               <Link
-                href="/precos"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors duration-200"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t.pricing}
-              </Link>
-              <Link
                 href="/industrias"
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors duration-200"
                 onClick={() => setMobileMenuOpen(false)}
@@ -358,4 +348,3 @@ export function Navbar() {
     </nav>
   )
 }
-

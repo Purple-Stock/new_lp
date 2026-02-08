@@ -7,7 +7,6 @@ import {
   AppWindow,
   BadgePercent,
   CheckCircle2,
-  CircleDollarSign,
   ChevronDown,
   FileCode,
   Globe,
@@ -160,7 +159,6 @@ export function DesktopLanding() {
       pt: {
         home: "Início",
         product: "Plataforma",
-        pricing: "Planos",
         customers: "Clientes",
         docs: "Documentação",
         demo: "Ver demo",
@@ -168,7 +166,6 @@ export function DesktopLanding() {
         ask: "Perguntar algo",
         signup: "Criar conta",
         topProduct: "Produto",
-        topPricing: t.nav.pricing,
         topDocs: "Documentação",
         topCommunity: "Comunidade",
         topCompany: "Empresa",
@@ -194,7 +191,6 @@ export function DesktopLanding() {
       en: {
         home: "Home",
         product: "Product OS",
-        pricing: t.nav.pricing,
         customers: "Customers",
         docs: "Documentation",
         demo: "Watch demo",
@@ -202,7 +198,6 @@ export function DesktopLanding() {
         ask: "Ask a question",
         signup: "Sign up",
         topProduct: "Product",
-        topPricing: t.nav.pricing,
         topDocs: "Docs",
         topCommunity: "Community",
         topCompany: "Company",
@@ -228,7 +223,6 @@ export function DesktopLanding() {
       fr: {
         home: "Accueil",
         product: "Plateforme",
-        pricing: t.nav.pricing,
         customers: "Clients",
         docs: "Documentation",
         demo: "Voir la démo",
@@ -236,7 +230,6 @@ export function DesktopLanding() {
         ask: "Poser une question",
         signup: "Créer un compte",
         topProduct: "Produit",
-        topPricing: t.nav.pricing,
         topDocs: "Docs",
         topCommunity: "Communauté",
         topCompany: "Entreprise",
@@ -260,7 +253,7 @@ export function DesktopLanding() {
         installHint: "Connectez vos données via API et automatisez en quelques minutes.",
       },
     }[language]
-  }, [language, t.nav.pricing, t.hero.subtitle, t.hero.subtitleHighlight])
+  }, [language, t.hero.subtitle, t.hero.subtitleHighlight])
 
   const heroBenefits = useMemo(() => {
     return [
@@ -374,12 +367,6 @@ export function DesktopLanding() {
   const shortcutLinks = useMemo(
     () => [
       {
-        label: osText.pricing,
-        href: "/precos",
-        icon: MacOSFolderIcon,
-        folderColor: "orange" as const,
-      },
-      {
         label: osText.docs,
         href: "/recursos/gestao-de-estoque",
         icon: MacOSFolderIcon,
@@ -397,18 +384,6 @@ export function DesktopLanding() {
         icon: MacOSFolderIcon,
         folderColor: "green" as const,
       },
-    ],
-    [osText],
-  )
-
-  const topNavItems = useMemo(
-    () => [
-      { label: osText.topProduct, href: "/features/inventory-control" },
-      { label: osText.topPricing, href: "/precos" },
-      { label: osText.topDocs, href: "/recursos/gestao-de-estoque" },
-      { label: osText.topCommunity, href: "/artigos" },
-      { label: osText.topCompany, href: "/industrias" },
-      { label: osText.topMore, href: "/recursos" },
     ],
     [osText],
   )
@@ -689,9 +664,6 @@ export function DesktopLanding() {
                 )}
               </div>
 
-              <Link href="/precos" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
-                {t.nav.pricing}
-              </Link>
               <Link href="/industrias" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
                 {t.nav.industries}
               </Link>
@@ -908,6 +880,14 @@ export function DesktopLanding() {
                       ? "Purple Stock: the simplest inventory software solution for small businesses to track, manage, and organize inventory."
                       : "Purple Stock: la solution de logiciel d'inventaire la plus simple pour que les petites entreprises suivent, gèrent et organisent leur stock."}
                 </p>
+                <div className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-sm font-semibold text-purple-700">
+                  <BadgePercent className="h-4 w-4" />
+                  {language === "pt"
+                    ? "R$29,9 para os primeiros clientes"
+                    : language === "en"
+                      ? "R$29.9 for the first customers"
+                      : "R$29,9 pour les premiers clients"}
+                </div>
                 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -1356,20 +1336,6 @@ export function DesktopLanding() {
               {isWindowOpen("support") && <div className="w-1 h-1 rounded-full bg-amber-500 mt-1.5" />}
             </button>
 
-            <div className="w-px h-10 bg-slate-300/50 mx-1 self-center" />
-
-            <Link 
-              href="/precos" 
-              className="group relative flex flex-col items-center"
-            >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg group-hover:shadow-orange-500/40 transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110">
-                <CircleDollarSign className="w-6 h-6 text-white" strokeWidth={2} />
-              </div>
-              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
-                {language === "pt" ? "Preços" : language === "fr" ? "Prix" : "Pricing"}
-              </span>
-            </Link>
-
             <Link 
               href="/recursos/gestao-de-estoque" 
               className="group relative flex flex-col items-center"
@@ -1509,5 +1475,4 @@ export function DesktopLanding() {
     </div>
   )
 }
-
 

@@ -45,26 +45,30 @@ export default function ArticlesPage() {
   const regularArticles = filteredArticles.filter(article => article.slug !== featuredArticle?.slug)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)]">
+      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-1/2 -left-1/2 h-full w-full rounded-full bg-gradient-to-br from-purple-200/20 to-transparent blur-3xl" />
+        <div className="absolute -bottom-1/2 -right-1/2 h-full w-full rounded-full bg-gradient-to-tl from-pink-200/15 to-transparent blur-3xl" />
+      </div>
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <BookOpen className="w-5 h-5 text-white" />
-              <span className="text-white/90 text-sm font-medium">
+      <div className="relative pt-24 pb-10">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl rounded-3xl border border-white/60 bg-white/80 p-8 text-center shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl md:p-12">
+            <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-2 mb-6">
+              <BookOpen className="w-5 h-5 text-purple-700" />
+              <span className="text-purple-800 text-sm font-medium">
                 {language === "pt" && "Conhecimento em Gestão"}
                 {language === "en" && "Management Knowledge"}
                 {language === "fr" && "Connaissances en Gestion"}
               </span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
               {t.articles}
             </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               {language === "pt" && "Aprenda sobre gestão de estoque, logística e melhores práticas para seu negócio"}
               {language === "en" && "Learn about inventory management, logistics, and best practices for your business"}
               {language === "fr" && "Apprenez la gestion des stocks, la logistique et les meilleures pratiques pour votre entreprise"}
@@ -132,7 +136,7 @@ export default function ArticlesPage() {
             </div>
             <Link
               href={`/artigos/${featuredArticle.slug}`}
-              className="group block bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl hover:border-purple-200 transition-all duration-300 transform hover:-translate-y-1"
+              className="group block rounded-2xl border border-white/70 bg-white/90 shadow-lg backdrop-blur-xl overflow-hidden hover:shadow-xl hover:border-purple-200 transition-all duration-300 transform hover:-translate-y-1"
             >
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="h-64 lg:h-full bg-gradient-to-br from-purple-100 to-indigo-100 flex items-center justify-center">
@@ -205,7 +209,7 @@ export default function ArticlesPage() {
               <Link
                 key={article.slug}
                 href={`/artigos/${article.slug}`}
-                className="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:border-purple-200 transition-all duration-300 transform hover:-translate-y-1"
+                className="group rounded-xl border border-white/70 bg-white/90 shadow-sm backdrop-blur-md overflow-hidden hover:shadow-lg hover:border-purple-200 transition-all duration-300 transform hover:-translate-y-1"
               >
                 {/* Article Image Placeholder */}
                 <div className="h-48 bg-gradient-to-br from-purple-100 to-indigo-100 flex items-center justify-center">

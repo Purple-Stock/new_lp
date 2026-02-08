@@ -7,7 +7,6 @@ import {
   AppWindow,
   BadgePercent,
   CheckCircle2,
-  ChevronDown,
   FileCode,
   Globe,
   Laptop,
@@ -33,6 +32,7 @@ import { translations } from "@/utils/translations"
 import { cn } from "@/lib/utils"
 import { MacOSFolderIcon } from "@/components/macos-folder-icon"
 import { DraggableFolder } from "@/components/draggable-folder"
+import { Navbar } from "@/components/navbar"
 import {
   Dialog,
   DialogContent,
@@ -44,49 +44,17 @@ type StageKey = "startup" | "growth" | "scale"
 type WindowKey = "inventory" | "analytics" | "qr" | "support"
 
 export function DesktopLanding() {
-  const { language, setLanguage } = useLanguage()
+  const { language } = useLanguage()
   const t = translations[language]
   const [activeStage, setActiveStage] = useState<StageKey>("growth")
   const [openWindows, setOpenWindows] = useState<WindowKey[]>([])
   const [selectedFolder, setSelectedFolder] = useState<string | null>(null)
-  const [featuresOpen, setFeaturesOpen] = useState(false)
-  const featuresRef = useRef<HTMLDivElement>(null)
   const [mainBoxPosition, setMainBoxPosition] = useState({ x: 0, y: 0 })
   const [isDraggingMainBox, setIsDraggingMainBox] = useState(false)
   const [mainBoxDragStart, setMainBoxDragStart] = useState<{ x: number; y: number } | null>(null)
   const mainBoxRef = useRef<HTMLDivElement>(null)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [currentTime, setCurrentTime] = useState<string | null>(null)
-
-  // Update time on client side only
-  useEffect(() => {
-    const updateTime = () => {
-      setCurrentTime(
-        new Date().toLocaleTimeString(language === "pt" ? "pt-BR" : language === "fr" ? "fr-FR" : "en-US", { 
-          hour: '2-digit', 
-          minute: '2-digit' 
-        })
-      )
-    }
-    updateTime()
-    const interval = setInterval(updateTime, 60000) // Update every minute
-    return () => clearInterval(interval)
-  }, [language])
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (featuresRef.current && !featuresRef.current.contains(event.target as Node)) {
-        setFeaturesOpen(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [featuresRef])
 
   // Handle main box dragging
   const handleMainBoxMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -588,150 +556,15 @@ export function DesktopLanding() {
   }, [questions.length])
 
   return (
-    <div className="relative h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
+    <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
       {/* Animated gradient background */}
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-80" />
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-purple-200/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
         <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-200/15 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
       </div>
-      
-      {/* macOS Menu Bar */}
-      <header className="fixed top-0 left-0 right-0 z-[80] h-[25px] bg-gradient-to-b from-[#3d3d3d] to-[#2a2a2a] shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
-        <div className="flex items-center justify-between h-full px-3 text-[13px] font-medium text-white/90">
-          {/* Left: Apple-style Logo + App Menu */}
-          <div className="flex items-center gap-0">
-            {/* Purple Stock Logo (like Apple logo) */}
-            <Link href="/" className="flex items-center justify-center w-8 h-full hover:bg-white/10 transition-colors">
-              <Box className="w-[14px] h-[14px] text-white" strokeWidth={2.5} />
-            </Link>
-
-            {/* App Name - Bold */}
-            <span className="px-3 py-0.5 font-semibold text-white hover:bg-white/10 rounded-[3px] cursor-default transition-colors">
-              Purple Stock
-            </span>
-
-            {/* Menu Items */}
-            <div className="hidden md:flex items-center">
-              <div className="relative" ref={featuresRef}>
-                <button
-                  className={cn(
-                    "px-3 py-0.5 rounded-[3px] transition-colors",
-                    featuresOpen ? "bg-[#0058d0] text-white" : "hover:bg-white/10"
-                  )}
-                  onClick={() => setFeaturesOpen(!featuresOpen)}
-                >
-                  {t.nav.resources}
-                </button>
-
-                {featuresOpen && (
-                  <div className="absolute left-0 mt-[3px] w-64 rounded-md shadow-[0_10px_40px_rgba(0,0,0,0.4)] bg-[#2d2d2d]/95 backdrop-blur-xl border border-white/10 animate-in fade-in slide-in-from-top-1 duration-150 overflow-hidden py-1">
-                    {[
-                      { href: "/features/inventory-control", label: t.nav.features.inventoryControl, shortcut: "⌘I" },
-                      { href: "/features/barcoding", label: t.nav.features.barcoding, shortcut: "⌘B" },
-                      { href: "/features/purchase-sales", label: t.nav.features.purchaseSales, shortcut: "⌘P" },
-                      { href: "/features/analytics-reporting", label: t.nav.features.analyticsReporting, shortcut: "⌘R" },
-                      { href: "/features/warehouse-control", label: t.nav.features.warehouseControl, shortcut: "⌘W" },
-                      { href: "/features/qr-code-management", label: t.nav.features.qrCodeManagement, shortcut: "⌘Q" },
-                    ].map((item, index) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="flex items-center justify-between px-3 py-1 text-[13px] text-white/90 hover:bg-[#0058d0] hover:text-white transition-colors mx-1 rounded-[3px]"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        <span>{item.label}</span>
-                        <span className="text-[11px] text-white/40">{item.shortcut}</span>
-                      </Link>
-                    ))}
-                    <div className="h-px bg-white/10 my-1 mx-3" />
-                    {[
-                      { href: "/features/clothing-manufacturing", label: t.nav.features.clothingManufacturing },
-                      { href: "/features/equipment-management", label: t.nav.features.equipmentManagement },
-                      { href: "/features/factory-management", label: t.nav.features.factoryManagement },
-                      { href: "/features/inventory-app", label: t.nav.features.inventoryApp },
-                    ].map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="flex items-center px-3 py-1 text-[13px] text-white/90 hover:bg-[#0058d0] hover:text-white transition-colors mx-1 rounded-[3px]"
-                        onClick={() => setFeaturesOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <Link href="/industrias" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
-                {t.nav.industries}
-              </Link>
-              <Link href="/artigos" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
-                {t.nav.articles}
-              </Link>
-              <a
-                href="https://blog.purplestock.com.br/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
-              >
-                {t.nav.blog}
-              </a>
-              <Link href="/codigo-de-barras-gratis" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors text-purple-300">
-                {t.nav.freeBarcode}
-              </Link>
-            </div>
-          </div>
-
-          {/* Right: Status Icons (macOS style) */}
-          <div className="flex items-center gap-1">
-            {/* Status Indicator */}
-            <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] hover:bg-white/10 transition-colors cursor-default">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[11px] text-white/70">Online</span>
-            </div>
-
-            {/* Divider */}
-            <div className="w-px h-3 bg-white/20 mx-1 hidden sm:block" />
-
-            {/* Language */}
-            <button 
-              className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
-              onClick={() => {
-                if (language === "pt") setLanguage("en");
-                else if (language === "en") setLanguage("fr");
-                else setLanguage("pt");
-              }}
-            >
-              <Globe className="w-3.5 h-3.5 text-white/70" strokeWidth={2} />
-              <span className="text-[11px] uppercase">{language}</span>
-            </button>
-
-            {/* Time */}
-            {currentTime && (
-              <div className="hidden sm:flex items-center px-2 py-0.5 rounded-[3px] hover:bg-white/10 transition-colors cursor-default">
-                <span className="text-[11px] text-white/90 font-medium tabular-nums">
-                  {currentTime}
-                </span>
-              </div>
-            )}
-
-            {/* Divider */}
-            <div className="w-px h-3 bg-white/20 mx-1" />
-
-            {/* Login */}
-            <Link 
-              href="https://app.purplestock.com.br/"
-              className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
-            >
-              <span className="text-[11px]">{t.nav.login}</span>
-              <ArrowRight className="w-3 h-3" strokeWidth={2.5} />
-            </Link>
-          </div>
-        </div>
-      </header>
-      <div className="relative mx-auto flex h-full w-full max-w-[1320px] flex-col gap-8 px-4 pt-[32px] pb-4 md:flex-row md:gap-6 md:px-10 md:pt-[32px]">
+      <Navbar />
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-24 pb-4 md:flex-row md:gap-6 md:px-10 md:pt-24">
         {/* Icons Left Side - Vertical */}
         <div className="relative z-[100] hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
           {windowApps.slice(0, 2).map((app, index) => (
@@ -776,10 +609,10 @@ export function DesktopLanding() {
           ))}
         </div>
 
-        <div className="flex flex-1 flex-col gap-8 relative z-0 overflow-hidden min-h-0">
+        <div className="relative z-0 flex flex-1 flex-col gap-8">
           <div 
             ref={mainBoxRef}
-            className="relative z-0 flex flex-col overflow-hidden rounded-xl border border-slate-200/60 bg-white/95 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl transition-transform cursor-move h-full min-h-0"
+            className="relative z-0 flex min-h-[calc(100vh-7.5rem)] flex-col overflow-hidden rounded-xl border border-slate-200/60 bg-white/95 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl transition-transform cursor-move"
             style={{
               transform: `translate(${mainBoxPosition.x}px, ${mainBoxPosition.y}px)`,
               userSelect: "none",
@@ -863,7 +696,7 @@ export function DesktopLanding() {
               </div>
             </div>
 
-            <div className="space-y-8 px-4 py-8 sm:px-10 sm:py-10 flex-1 overflow-y-auto overflow-x-hidden scrollbar-purple min-h-0">
+            <div className="flex-1 space-y-8 overflow-visible px-4 py-8 sm:px-10 sm:py-10">
               {/* Top Section - Title and Description */}
               <div className="text-center space-y-6 mb-12">
                 <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight">

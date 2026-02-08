@@ -9,6 +9,11 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  overflow-y: auto;
+}
+
+html {
+  overflow-y: auto;
 }
 
 h1,
@@ -19,4 +24,3 @@ h5,
 h6 {
   font-weight: 600;
 }
-

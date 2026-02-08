@@ -96,58 +96,59 @@ export default function PricingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/30">
+    <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)]">
+      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-1/2 -left-1/2 h-full w-full rounded-full bg-gradient-to-br from-purple-200/20 to-transparent blur-3xl" />
+        <div className="absolute -bottom-1/2 -right-1/2 h-full w-full rounded-full bg-gradient-to-tl from-pink-200/15 to-transparent blur-3xl" />
+      </div>
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden pt-24 pb-16">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        </div>
-        
+      <div className="relative pt-24 pb-16">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-8">
-            <Star className="w-4 h-4 mr-2" />
-            {language === "pt" ? "Planos e Preços" : language === "en" ? "Plans & Pricing" : "Plans et Tarifs"}
-          </div>
-          
-          <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent">
-              {t.title}
-            </span>
-          </h1>
-          
-          <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12">
-            {t.subtitle}
-          </p>
-
-          {/* Billing Toggle */}
-          <div className="inline-flex items-center bg-white rounded-full p-1 shadow-lg border border-gray-200 mb-12">
-            <button
-              onClick={() => setBillingCycle('monthly')}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                billingCycle === 'monthly'
-                  ? 'bg-purple-600 text-white shadow-md'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              {language === "pt" ? "Mensal" : language === "en" ? "Monthly" : "Mensuel"}
-            </button>
-            <button
-              onClick={() => setBillingCycle('yearly')}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                billingCycle === 'yearly'
-                  ? 'bg-purple-600 text-white shadow-md'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              {language === "pt" ? "Anual" : language === "en" ? "Yearly" : "Annuel"}
-              <span className="ml-2 px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">
-                {language === "pt" ? "-20%" : language === "en" ? "-20%" : "-20%"}
+          <div className="mx-auto max-w-5xl rounded-3xl border border-white/60 bg-white/80 p-8 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl md:p-12">
+            <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-8">
+              <Star className="w-4 h-4 mr-2" />
+              {language === "pt" ? "Planos e Preços" : language === "en" ? "Plans & Pricing" : "Plans et Tarifs"}
+            </div>
+            
+            <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent">
+                {t.title}
               </span>
-            </button>
+            </h1>
+            
+            <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12">
+              {t.subtitle}
+            </p>
+
+            {/* Billing Toggle */}
+            <div className="inline-flex items-center bg-white rounded-full p-1 shadow-lg border border-gray-200 mb-2">
+              <button
+                onClick={() => setBillingCycle('monthly')}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  billingCycle === 'monthly'
+                    ? 'bg-purple-600 text-white shadow-md'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                {language === "pt" ? "Mensal" : language === "en" ? "Monthly" : "Mensuel"}
+              </button>
+              <button
+                onClick={() => setBillingCycle('yearly')}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  billingCycle === 'yearly'
+                    ? 'bg-purple-600 text-white shadow-md'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                {language === "pt" ? "Anual" : language === "en" ? "Yearly" : "Annuel"}
+                <span className="ml-2 px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">
+                  {language === "pt" ? "-20%" : language === "en" ? "-20%" : "-20%"}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -165,7 +166,7 @@ export default function PricingPage() {
                 </div>
               )}
               
-              <div className={`bg-white rounded-2xl shadow-xl border-2 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2 ${
+              <div className={`rounded-2xl bg-white/90 shadow-xl backdrop-blur-xl border-2 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2 ${
                 plan.popular ? 'border-purple-200 shadow-2xl' : 'border-gray-100 hover:border-purple-100'
               }`}>
                 <div className="p-8">
@@ -224,7 +225,7 @@ export default function PricingPage() {
       </div>
 
       {/* Benefits Section */}
-      <div className="py-20 bg-white">
+      <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
@@ -242,7 +243,7 @@ export default function PricingPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <div key={index} className="text-center group">
+              <div key={index} className="group rounded-2xl border border-white/60 bg-white/80 p-6 text-center shadow-sm backdrop-blur-md">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
                   <benefit.icon className="w-8 h-8 text-purple-600" />
                 </div>
@@ -255,7 +256,7 @@ export default function PricingPage() {
       </div>
 
       {/* FAQ Section */}
-      <div className="py-20 bg-gray-50">
+      <div className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
@@ -273,7 +274,7 @@ export default function PricingPage() {
 
           <div className="space-y-6">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div key={index} className="rounded-xl border border-white/60 bg-white/85 p-6 shadow-sm backdrop-blur-md">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>
               </div>
@@ -324,4 +325,3 @@ export default function PricingPage() {
     </div>
   )
 }
-

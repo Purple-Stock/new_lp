@@ -8,12 +8,39 @@ import { Badge } from "@/components/ui/badge"
 import { ShareButton } from "./share-button"
 import { ReadingProgress } from "./reading-progress"
 import { MobileTOC } from "./mobile-toc"
+import type { Metadata } from "next"
 
 export async function generateStaticParams() {
   const articles = await getAllArticles()
   return articles.map((article) => ({
     slug: article.slug,
   }))
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const article = await getArticleBySlug(slug)
+  const siteUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://purplestock.com.br"
+  const canonicalUrl = `${siteUrl}/artigos/${slug}`
+
+  return {
+    title: `${article.title} | Purple Stock`,
+    description: article.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      type: "article",
+      url: canonicalUrl,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description,
+    },
+  }
 }
 
 interface PageProps {

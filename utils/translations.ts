@@ -701,7 +701,7 @@ export const translations = {
             "SLA garantido",
           ],
           buttonText: "Fale com Vendas",
-          buttonLink: "https://wa.me/5541999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20plano%20Empresarial%20do%20Purple%20Stock",
+          buttonLink: "https://api.whatsapp.com/send/?phone=5511995597242&text=Olá!+Gostaria+de+saber+mais+sobre+o+plano+Empresarial+do+Purple+Stock.&type=phone_number&app_absent=0",
         },
       ],
     },
@@ -2313,4 +2313,3 @@ export const translations = {
     },
   },
 }
-

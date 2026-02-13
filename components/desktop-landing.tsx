@@ -480,7 +480,7 @@ export function DesktopLanding() {
           folderColor: "yellow" as const,
           action: {
             label: language === "pt" ? "Falar com humano" : language === "fr" ? "Parler à un humain" : "Talk to a human",
-            href: "https://wa.me/554891120022",
+            href: "https://api.whatsapp.com/send/?phone=5511995597242&text=Hello!+I%27d+like+to+speak+with+someone+about+Purple+Stock.&type=phone_number&app_absent=0",
           },
         },
       }) satisfies Record<WindowKey, {

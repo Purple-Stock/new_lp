@@ -825,6 +825,38 @@ export default function Glossario() {
                   {t.glossary.learnMore.link}
                 </Button>
               </Link>
+              <Link href="/precos" className="ml-3 inline-block">
+                <Button variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-100">
+                  Ver planos e precos
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-12">
+          <Card className="border-purple-200">
+            <CardContent className="py-8">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">FAQ</h2>
+              <div className="space-y-5 text-gray-700">
+                <div>
+                  <h3 className="font-semibold text-gray-900">Para quem este glossario foi criado?</h3>
+                  <p className="mt-1">Para donos, gestores e equipes operacionais de PMEs que lidam com estoque e almoxarifado.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Posso usar este glossario para treinar equipe?</h3>
+                  <p className="mt-1">Sim. Ele funciona bem como base de onboarding para novos colaboradores da operacao.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Quais termos devo priorizar primeiro?</h3>
+                  <p className="mt-1">Comece por SKU, ruptura, giro, acuracidade e lead time, que impactam decisoes diarias.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Onde aplicar esse conhecimento na pratica?</h3>
+                  <p className="mt-1">Na rotina de inventario, reposicao, compras e auditoria de movimentacoes no estoque.</p>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>

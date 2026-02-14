@@ -24,3 +24,115 @@ h5,
 h6 {
   font-weight: 600;
 }
+
+.blog-content {
+  color: #3b3f45;
+  font-family: "Merriweather", Georgia, serif;
+  font-size: 1.12rem;
+  line-height: 1.86;
+}
+
+.blog-content > * {
+  max-width: 64ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-content > * + * {
+  margin-top: 1.6rem;
+}
+
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4 {
+  color: #222428;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-family: "Poppins", sans-serif;
+}
+
+.blog-content h2 {
+  margin-top: 2.2rem;
+  margin-bottom: 1.2rem;
+  font-size: clamp(1.7rem, 2.3vw, 2.05rem);
+  font-weight: 700;
+}
+
+.blog-content h3 {
+  margin-top: 2.4rem;
+  margin-bottom: 0.95rem;
+  font-size: clamp(1.5rem, 2.05vw, 1.82rem);
+  font-weight: 700;
+}
+
+.blog-content h4 {
+  margin-top: 1.8rem;
+  margin-bottom: 0.7rem;
+  font-size: clamp(1.15rem, 1.4vw, 1.3rem);
+  font-weight: 700;
+}
+
+.blog-content p {
+  margin: 1.1rem 0 1.45rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin: 1.2rem 0 1.7rem;
+  padding-left: 1.55rem;
+  list-style-position: outside;
+}
+
+.blog-content ul {
+  list-style: disc;
+}
+
+.blog-content ol {
+  list-style: decimal;
+}
+
+.blog-content li {
+  margin: 0.65rem 0;
+  padding-left: 0.28rem;
+}
+
+.blog-content a {
+  color: #1f5c99;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-content blockquote {
+  margin: 2rem 0;
+  padding: 1.05rem 1.2rem;
+  border-left: 4px solid #7aa4ca;
+  background: #f5f8fc;
+  border-radius: 0 10px 10px 0;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .blog-content {
+    font-size: 1.03rem;
+    line-height: 1.78;
+  }
+
+  .blog-content h2 {
+    margin-top: 2.7rem;
+    margin-bottom: 1rem;
+    font-size: 1.85rem;
+  }
+
+  .blog-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.42rem;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    margin: 1rem 0 1.4rem;
+    padding-left: 1.35rem;
+  }
+}

@@ -1,12 +1,15 @@
 "use client"
 
 import { FileCode } from "lucide-react"
-import { useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import Image from "next/image"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 
 export function ProductDocumentation() {
   const { language } = useLanguage()
+  const [selectedTopicIndex, setSelectedTopicIndex] = useState(0)
+  const [previewOpen, setPreviewOpen] = useState(false)
 
   const documentationSection = useMemo(
     () =>
@@ -22,96 +25,96 @@ export function ProductDocumentation() {
               id: "doc-acesso",
               title: "1. Fazer login e iniciar",
               description:
-                "Primeiro acesso para você e sua equipe começarem a operar no mesmo dia.",
+                "Este é o ponto de partida: entrar no sistema e abrir o ambiente correto da sua operação.",
               highlights: [
-                "Entrar na plataforma",
-                "Acessar seu ambiente de trabalho",
-                "Começar sem configuração complexa",
+                "Entrada rápida e sem fricção",
+                "Time no mesmo ambiente de trabalho",
+                "Início de operação no mesmo dia",
               ],
               steps: [
-                "Abra a plataforma e faça login com seu e-mail.",
-                "Selecione sua equipe de trabalho.",
-                "Confira o painel inicial e siga para o módulo de estoque.",
+                "Acesse a plataforma e faça login com seu e-mail e senha.",
+                "Escolha a equipe que você vai operar naquele momento.",
+                "No painel inicial, confirme os atalhos principais e siga para Estoque.",
               ],
             },
             {
               id: "doc-equipes",
               title: "2. Organizar equipes",
               description:
-                "Separe sua operação por equipes para manter tudo organizado.",
+                "Organizar equipes evita mistura de informações e deixa cada pessoa responsável pelo que realmente precisa acompanhar.",
               highlights: [
-                "Menos confusão de dados",
-                "Mais clareza de responsabilidade",
-                "Operação mais controlada",
+                "Separação clara por operação",
+                "Responsabilidades bem definidas",
+                "Menos erro por acesso indevido",
               ],
               steps: [
-                "Acesse a área de equipes.",
-                "Cadastre ou edite as equipes da empresa.",
-                "Adicione as pessoas em cada equipe correta.",
+                "Entre em Equipes e revise as equipes já existentes.",
+                "Crie novas equipes quando necessário (filial, setor ou operação).",
+                "Adicione os usuários em cada equipe para manter o contexto correto.",
               ],
             },
             {
               id: "doc-itens",
               title: "3. Cadastrar itens e locais",
               description:
-                "Monte sua base de estoque para começar a controlar entradas e saídas.",
+                "Com itens e locais bem cadastrados, o controle do estoque fica confiável e fácil de consultar.",
               highlights: [
-                "Cadastro centralizado",
-                "Saldo por item",
-                "Localização dos materiais",
+                "Base única de inventário",
+                "Visibilidade de saldo por item",
+                "Localização rápida dos materiais",
               ],
               steps: [
-                "Vá em Itens e clique em Novo item.",
-                "Preencha nome, categoria e informações principais.",
-                "Cadastre os locais de estoque e vincule os itens aos locais.",
+                "Abra Itens e clique em Novo item para cadastrar o material.",
+                "Preencha nome, categoria e dados essenciais para identificação.",
+                "Depois, cadastre os locais de estoque e organize onde cada item fica.",
               ],
             },
             {
               id: "doc-movimentos",
               title: "4. Registrar movimentações",
               description:
-                "Registre tudo o que acontece no estoque sem depender de planilha.",
+                "Toda entrada, saída e ajuste deve ser registrada aqui para manter saldo e histórico sempre corretos.",
               highlights: [
-                "Histórico confiável",
-                "Atualização rápida do saldo",
-                "Menos erro manual",
+                "Histórico completo da operação",
+                "Saldo atualizado em tempo real",
+                "Rastreabilidade para conferência",
               ],
               steps: [
-                "Abra o módulo de movimentações.",
-                "Escolha o tipo: entrada, saída, transferência, ajuste ou contagem.",
-                "Informe item, quantidade e confirme para salvar no histórico.",
+                "Acesse o módulo de Movimentações.",
+                "Escolha o tipo da ação: entrada, saída, transferência, ajuste ou contagem.",
+                "Selecione item, informe quantidade, revise e confirme para salvar no histórico.",
               ],
             },
             {
               id: "doc-relatorios",
               title: "5. Tomar decisão com relatórios",
               description:
-                "Use os relatórios para saber onde agir primeiro.",
+                "Os relatórios mostram onde agir primeiro: o que repor, onde há perda e quais itens exigem atenção imediata.",
               highlights: [
-                "Reposição mais inteligente",
-                "Visão de perdas",
-                "Apoio à decisão",
+                "Prioridade de reposição",
+                "Leitura rápida de perdas",
+                "Decisão baseada em dados reais",
               ],
               steps: [
-                "Acesse a seção de relatórios.",
-                "Filtre por equipe e período.",
-                "Analise perdas, itens críticos e necessidades de reposição.",
+                "Abra a área de Relatórios no menu principal.",
+                "Filtre por equipe e período para analisar o cenário correto.",
+                "Use os indicadores para decidir reposição, ajustes e próximos passos.",
               ],
             },
             {
               id: "doc-qr",
               title: "6. Usar QR Code e etiquetas",
               description:
-                "Acelere inventário e conferência com leitura pelo celular.",
+                "Com etiquetas e leitura por celular, sua conferência fica mais rápida e com menos digitação manual.",
               highlights: [
-                "Conferência mais rápida",
-                "Inventário mais preciso",
-                "Menos digitação manual",
+                "Inventário ágil em campo",
+                "Maior precisão na conferência",
+                "Menos retrabalho operacional",
               ],
               steps: [
-                "Gere e imprima as etiquetas dos itens.",
-                "Use o celular para escanear durante a conferência.",
-                "Confirme os lançamentos para atualizar o estoque na hora.",
+                "Gere e imprima as etiquetas dos itens no módulo de etiquetas.",
+                "Durante a conferência, escaneie os códigos com o celular.",
+                "Confirme os lançamentos para atualizar o estoque imediatamente.",
               ],
             },
           ],
@@ -209,6 +212,26 @@ export function ProductDocumentation() {
     [language],
   )
 
+  useEffect(() => {
+    setSelectedTopicIndex(0)
+  }, [language])
+
+  const selectedTopic = documentationSection.topics[selectedTopicIndex]
+  const topicImage =
+    selectedTopic.id === "doc-acesso" || selectedTopic.id === "doc-access"
+      ? "/images/docs/app-home.png"
+      : selectedTopic.id === "doc-equipes" || selectedTopic.id === "doc-teams"
+        ? "/images/docs/app-team-selection.png"
+        : selectedTopic.id === "doc-itens" || selectedTopic.id === "doc-items"
+          ? "/images/docs/app-items.png"
+          : selectedTopic.id === "doc-movimentos" || selectedTopic.id === "doc-movements"
+            ? "/images/docs/app-movements.png"
+            : selectedTopic.id === "doc-relatorios" || selectedTopic.id === "doc-reports"
+              ? "/images/docs/app-reports.png"
+              : selectedTopic.id === "doc-qr"
+                ? "/images/docs/app-labels.png"
+                : null
+
   return (
     <section className="rounded-3xl border border-violet-100 bg-violet-50/40 p-6 sm:p-8">
       <div className="mb-6">
@@ -219,105 +242,87 @@ export function ProductDocumentation() {
         <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">{documentationSection.title}</h1>
         <p className="mt-2 text-slate-600">{documentationSection.subtitle}</p>
       </div>
-      <div className="grid gap-6 lg:grid-cols-[260px,1fr]">
+      <div className="grid gap-6 lg:grid-cols-[220px,minmax(0,1fr)]">
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <nav className="rounded-2xl border border-violet-200 bg-white p-3">
             <ul className="space-y-1">
-              {documentationSection.topics.map((topic) => (
+              {documentationSection.topics.map((topic, index) => (
                 <li key={topic.id}>
-                  <a
-                    href={`#${topic.id}`}
-                    className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-violet-50 hover:text-violet-700"
+                  <button
+                    type="button"
+                    onClick={() => setSelectedTopicIndex(index)}
+                    className={`block w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${
+                      selectedTopicIndex === index
+                        ? "bg-violet-100 text-violet-800"
+                        : "text-slate-700 hover:bg-violet-50 hover:text-violet-700"
+                    }`}
                   >
                     {topic.title}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
           </nav>
         </aside>
         <div className="space-y-4">
-          {documentationSection.topics.map((topic) => (
-            <article id={topic.id} key={topic.id} className="rounded-2xl border border-violet-200 bg-white p-5 scroll-mt-28">
-              <h2 className="text-lg font-semibold text-slate-900">{topic.title}</h2>
-              <div className="mt-3 grid gap-4 md:grid-cols-[1fr,320px] md:items-start">
-                <div>
-                  <p className="text-sm leading-relaxed text-slate-600">{topic.description}</p>
-                </div>
-                {topic.id === "doc-acesso" || topic.id === "doc-access" ? (
-                  <Image
-                    src="/images/docs/app-home.png"
-                    alt={topic.title}
-                    width={640}
-                    height={360}
-                    className="w-full rounded-xl border border-slate-200"
-                  />
-                ) : topic.id === "doc-equipes" || topic.id === "doc-teams" ? (
-                  <Image
-                    src="/images/docs/app-team-selection.png"
-                    alt={topic.title}
-                    width={640}
-                    height={360}
-                    className="w-full rounded-xl border border-slate-200"
-                  />
-                ) : topic.id === "doc-itens" || topic.id === "doc-items" ? (
-                  <Image
-                    src="/images/docs/app-items.png"
-                    alt={topic.title}
-                    width={640}
-                    height={360}
-                    className="w-full rounded-xl border border-slate-200"
-                  />
-                ) : topic.id === "doc-movimentos" || topic.id === "doc-movements" ? (
-                  <Image
-                    src="/images/docs/app-movements.png"
-                    alt={topic.title}
-                    width={640}
-                    height={360}
-                    className="w-full rounded-xl border border-slate-200"
-                  />
-                ) : topic.id === "doc-relatorios" || topic.id === "doc-reports" ? (
-                  <Image
-                    src="/images/docs/app-reports.png"
-                    alt={topic.title}
-                    width={640}
-                    height={360}
-                    className="w-full rounded-xl border border-slate-200"
-                  />
-                ) : topic.id === "doc-qr" ? (
-                  <Image
-                    src="/images/docs/app-labels.png"
-                    alt={topic.title}
-                    width={640}
-                    height={360}
-                    className="w-full rounded-xl border border-slate-200"
-                  />
-                ) : null}
+          <article id={selectedTopic.id} key={selectedTopic.id} className="rounded-2xl border border-violet-200 bg-white p-6 lg:p-7 scroll-mt-28">
+            <h2 className="text-lg font-semibold text-slate-900">{selectedTopic.title}</h2>
+            <div className="mt-3 grid gap-5 md:grid-cols-[minmax(0,1fr),440px] md:items-start">
+              <div>
+                <p className="text-sm leading-relaxed text-slate-600">{selectedTopic.description}</p>
               </div>
-              <div className="mt-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-violet-700">{documentationSection.highlightsLabel}</p>
-                {"steps" in topic ? (
-                  <ol className="mt-2 space-y-1">
-                    {(topic.steps as string[]).map((step) => (
-                      <li key={step} className="text-sm text-slate-600">
-                        - {step}
-                      </li>
-                    ))}
-                  </ol>
-                ) : (
-                  <ul className="mt-2 space-y-1">
-                    {topic.highlights.map((highlight) => (
-                      <li key={highlight} className="text-sm text-slate-600">
-                        - {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </article>
-          ))}
+              {topicImage ? (
+                <button type="button" onClick={() => setPreviewOpen(true)} className="block text-left">
+                  <Image
+                    src={topicImage}
+                    alt={selectedTopic.title}
+                    width={640}
+                    height={360}
+                    className="w-full rounded-xl border border-slate-200 transition-transform hover:scale-[1.01]"
+                  />
+                  <span className="mt-2 block text-xs text-slate-500">
+                    {language === "pt" ? "Clique para ampliar" : language === "en" ? "Click to enlarge" : "Cliquez pour agrandir"}
+                  </span>
+                </button>
+              ) : null}
+            </div>
+            <div className="mt-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-violet-700">{documentationSection.highlightsLabel}</p>
+              {"steps" in selectedTopic ? (
+                <ol className="mt-2 space-y-1">
+                  {(selectedTopic.steps as string[]).map((step) => (
+                    <li key={step} className="text-sm text-slate-600">
+                      - {step}
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <ul className="mt-2 space-y-1">
+                  {selectedTopic.highlights.map((highlight) => (
+                    <li key={highlight} className="text-sm text-slate-600">
+                      - {highlight}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </article>
         </div>
       </div>
+      <Dialog open={previewOpen} onOpenChange={setPreviewOpen}>
+        <DialogContent className="max-w-6xl w-[95vw] p-2 bg-white">
+          <DialogTitle className="sr-only">{selectedTopic.title}</DialogTitle>
+          {topicImage ? (
+            <Image
+              src={topicImage}
+              alt={selectedTopic.title}
+              width={1920}
+              height={1080}
+              className="w-full h-auto rounded-md"
+            />
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }

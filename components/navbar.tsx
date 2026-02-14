@@ -108,6 +108,9 @@ export function Navbar() {
             <Link href="/blog" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
               {t.blog}
             </Link>
+            <Link href="/documentacao" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
+              {language === "pt" ? "Documentação" : language === "en" ? "Documentation" : "Documentation"}
+            </Link>
             <Link href="/codigo-de-barras-gratis" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors text-purple-300">
               {t.freeBarcode}
             </Link>

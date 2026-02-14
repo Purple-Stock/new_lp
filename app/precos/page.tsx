@@ -14,12 +14,14 @@ export default function PricingPage() {
     pt: {
       badge: "Plano único",
       title: "Preço simples para todo o time",
-      subtitle: "Sem complicação de planos. Um valor único para você começar rápido e operar com consistência.",
+      subtitle: "R$ 29,90 por time para sair da planilha e padronizar o estoque sem implantação longa.",
       priceLabel: "por time / mês",
-      ctaPrimary: "Começar por R$ 29,90",
-      ctaSecondary: "Falar com especialista",
+      ctaPrimary: "Quero ativar meu time por R$ 29,90",
+      ctaSecondary: "Tirar dúvidas no WhatsApp",
       cardTitle: "Purple Stock",
       cardDescription: "Tudo que sua operação precisa para controlar estoque sem retrabalho.",
+      guaranteeTitle: "Sem risco para começar",
+      guarantees: ["7 dias grátis", "Sem fidelidade", "Cancele quando quiser", "Suporte na ativação"],
       includedTitle: "O que está incluso",
       included: [
         "Controle de entrada, saída e ajustes",
@@ -51,12 +53,16 @@ export default function PricingPage() {
           a: "Não. O valor é por time: R$ 29,90 por mês para sua equipe operar no Purple Stock.",
         },
         {
+          q: "Preciso trocar meu ERP para usar?",
+          a: "Não. Você pode começar no estoque e manter seu ERP atual.",
+        },
+        {
           q: "Tem fidelidade?",
           a: "Não. Você pode cancelar quando quiser, sem multa.",
         },
         {
-          q: "Posso começar sem implantação longa?",
-          a: "Sim. A proposta é ativar rápido com fluxo mínimo e evoluir por etapas.",
+          q: "Vou parar a operação para implantar?",
+          a: "Não. A implantação começa com um fluxo mínimo e evolução por etapas.",
         },
       ],
       finalTitle: "Pronto para padronizar seu estoque?",
@@ -67,12 +73,14 @@ export default function PricingPage() {
     en: {
       badge: "Single plan",
       title: "Simple pricing for your whole team",
-      subtitle: "No complex tiers. One clear price to start fast and run operations consistently.",
+      subtitle: "R$ 29.90 per team to leave spreadsheets behind and standardize inventory quickly.",
       priceLabel: "per team / month",
-      ctaPrimary: "Start at R$ 29.90",
-      ctaSecondary: "Talk to a specialist",
+      ctaPrimary: "Activate my team for R$ 29.90",
+      ctaSecondary: "Talk on WhatsApp",
       cardTitle: "Purple Stock",
       cardDescription: "Everything your operation needs to control inventory without rework.",
+      guaranteeTitle: "Low-risk start",
+      guarantees: ["7-day free trial", "No lock-in", "Cancel anytime", "Onboarding support"],
       includedTitle: "What is included",
       included: [
         "Inbound, outbound, and adjustment control",
@@ -104,12 +112,16 @@ export default function PricingPage() {
           a: "No. The price is per team: R$ 29.90 per month for your team.",
         },
         {
+          q: "Do I need to replace my ERP?",
+          a: "No. You can start with stock operations and keep your current ERP.",
+        },
+        {
           q: "Is there a lock-in period?",
           a: "No. You can cancel any time with no penalty.",
         },
         {
-          q: "Can I start without a long implementation?",
-          a: "Yes. The goal is quick activation with a minimum viable workflow.",
+          q: "Will implementation stop operations?",
+          a: "No. It starts with a minimum workflow and scales in phases.",
         },
       ],
       finalTitle: "Ready to standardize your inventory?",
@@ -120,12 +132,14 @@ export default function PricingPage() {
     fr: {
       badge: "Plan unique",
       title: "Tarification simple pour toute votre équipe",
-      subtitle: "Pas de plans complexes. Un prix unique pour démarrer vite et exécuter avec constance.",
+      subtitle: "R$ 29,90 par équipe pour quitter les tableurs et standardiser le stock rapidement.",
       priceLabel: "par équipe / mois",
-      ctaPrimary: "Commencer à R$ 29,90",
-      ctaSecondary: "Parler à un spécialiste",
+      ctaPrimary: "Activer mon équipe pour R$ 29,90",
+      ctaSecondary: "Parler sur WhatsApp",
       cardTitle: "Purple Stock",
       cardDescription: "Tout ce dont votre opération a besoin pour gérer le stock sans reprise.",
+      guaranteeTitle: "Démarrage sans risque",
+      guarantees: ["Essai gratuit 7 jours", "Sans engagement", "Annulation à tout moment", "Support d'activation"],
       includedTitle: "Ce qui est inclus",
       included: [
         "Contrôle des entrées, sorties et ajustements",
@@ -157,12 +171,16 @@ export default function PricingPage() {
           a: "Non. Le prix est par équipe: R$ 29,90 par mois pour votre équipe.",
         },
         {
+          q: "Dois-je remplacer mon ERP ?",
+          a: "Non. Vous pouvez commencer par le stock et garder votre ERP actuel.",
+        },
+        {
           q: "Y a-t-il un engagement ?",
           a: "Non. Vous pouvez annuler à tout moment, sans pénalité.",
         },
         {
-          q: "Puis-je démarrer sans projet long ?",
-          a: "Oui. L'objectif est une activation rapide avec un flux minimum.",
+          q: "La mise en place bloque-t-elle l'opération ?",
+          a: "Non. Elle commence avec un flux minimum puis évolue par étapes.",
         },
       ],
       finalTitle: "Prêt à standardiser votre stock ?",
@@ -206,6 +224,17 @@ export default function PricingPage() {
               <div className="flex items-baseline justify-center gap-2">
                 <span className="text-6xl font-bold text-gray-900">R$ 29,90</span>
                 <span className="text-lg text-gray-500">{copy.priceLabel}</span>
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-green-200 bg-green-50/80 p-4">
+              <h3 className="text-sm font-semibold text-green-800">{copy.guaranteeTitle}</h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {copy.guarantees.map((item) => (
+                  <span key={item} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-green-700 border border-green-200">
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -356,4 +385,3 @@ export default function PricingPage() {
     </div>
   )
 }
-

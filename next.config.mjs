@@ -52,18 +52,19 @@ const nextConfig = {
 
     return [
       ...legacyBlogSlugRedirects.map((redirect) => ({
-        ...redirect,
-        permanent: true,
-      })),
-      ...legacyBlogSlugRedirects.map((redirect) => ({
-        ...redirect,
+        source: redirect.source,
+        destination: `https://www.purplestock.com.br${redirect.destination}`,
         has: [{ type: "host", value: "blog.purplestock.com.br" }],
         permanent: true,
       })),
       ...legacyBlogSlugRedirects.map((redirect) => ({
         source: redirect.source.replace("/blog/", "/"),
-        destination: redirect.destination,
+        destination: `https://www.purplestock.com.br${redirect.destination}`,
         has: [{ type: "host", value: "blog.purplestock.com.br" }],
+        permanent: true,
+      })),
+      ...legacyBlogSlugRedirects.map((redirect) => ({
+        ...redirect,
         permanent: true,
       })),
       {

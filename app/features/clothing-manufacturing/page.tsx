@@ -221,6 +221,43 @@ export default function ClothingManufacturingPage() {
         </div>
       </div>
 
+      {/* FAQ + Internal Links */}
+      <div className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-pink-100 bg-pink-50/40 p-8 md:p-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+              FAQ: Controle de Faccao
+            </h2>
+            <div className="space-y-6 text-gray-700">
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900">Qual o principal erro no controle de faccao?</h3>
+                <p className="mt-2">Falta de rastreabilidade por etapa, que gera atrasos, retrabalho e perda de previsibilidade de entrega.</p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900">Quais indicadores devo acompanhar?</h3>
+                <p className="mt-2">Lead time por etapa, taxa de retrabalho, pecas em atraso e produtividade por faccao.</p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900">Planilha ainda resolve para confeccao?</h3>
+                <p className="mt-2">No inicio pode ajudar, mas perde eficiencia quando aumenta volume, equipe e parceiros externos.</p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900">Quanto tempo para ver resultado?</h3>
+                <p className="mt-2">Com fluxo minimo definido, em 2 a 4 semanas ja e comum reduzir gargalos visiveis.</p>
+              </div>
+            </div>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <Link href="/precos">
+                <Button variant="outline" className="border-pink-300 text-pink-700 hover:bg-pink-100">Ver planos e precos</Button>
+              </Link>
+              <Link href="/blog">
+                <Button variant="outline" className="border-pink-300 text-pink-700 hover:bg-pink-100">Ler guias no blog</Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* CTA Section */}
       <div className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-pink-600 via-pink-700 to-pink-800"></div>

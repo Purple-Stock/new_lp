@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 import { useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
+import { trackCtaClick } from "@/lib/analytics"
 
 export function Navbar() {
   const { language, setLanguage } = useLanguage()
@@ -142,7 +143,17 @@ export function Navbar() {
 
           <div className="w-px h-3 bg-white/20 mx-1" />
 
-          <Link href="https://app.purplestock.com.br/" className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
+          <Link
+            href="https://app.purplestock.com.br/"
+            className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
+            onClick={() =>
+              trackCtaClick({
+                cta_name: "navbar_login",
+                cta_target: "app",
+                page_section: "navbar",
+              })
+            }
+          >
             <span className="text-[11px]">{t.login}</span>
             <ArrowRight className="w-3 h-3" strokeWidth={2.5} />
           </Link>

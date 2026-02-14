@@ -447,8 +447,8 @@ export const translations = {
         }
       },
       clothingManufacturing: {
-        title: "Sistemas para Confecção",
-        description: "Sistema completo para gestão de confecções. Controle produção, estoque de matéria-prima, custos e vendas em uma única plataforma integrada.",
+        title: "Como Implementar um Controle de Facção Eficiente",
+        description: "Estruture seu controle de facção com rastreabilidade por etapa, menos retrabalho e mais previsibilidade de entrega na confecção.",
         startTrial: "Iniciar Teste Gratuito",
         features: {
           title: "Recursos Especializados para Confecção",
@@ -648,8 +648,8 @@ export const translations = {
       },
     },
     glossary: {
-      title: "Glossário de Termos para Pequenas Empresas",
-      description: "Nosso glossário explica termos e siglas importantes de gestão de estoque e contabilidade, fornecendo às pequenas empresas o conhecimento necessário para otimizar processos de inventário, controlar custos e aprimorar suas finanças.",
+      title: "Glossario de Gestao de Estoque para PMEs",
+      description: "Este glossario reune os termos mais usados em estoque, almoxarifado e operacao para ajudar sua equipe a falar a mesma lingua e decidir mais rapido.",
       learnMore: {
         title: "Quer aprender mais sobre estratégias de crescimento e melhores práticas de gestão de estoque?",
         description: "Confira o Blog do Purple Stock abaixo:",

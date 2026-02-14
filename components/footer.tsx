@@ -16,7 +16,7 @@ export function Footer() {
       { name: t.industries, href: "/industrias" },
     ],
     resources: [
-      { name: t.blog, href: "https://blog.purplestock.com.br/" },
+      { name: t.blog, href: "/blog" },
       { name: t.glossary, href: "/glossario" },
     ],
     social: [
@@ -132,7 +132,6 @@ export function Footer() {
                   <Link 
                     href={item.href} 
                     className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
-                    {...(item.name === t.blog ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   >
                     <div className="w-1 h-1 bg-blue-400 rounded-full mr-3 group-hover:w-2 transition-all duration-200"></div>
                     {item.name}
@@ -213,4 +212,3 @@ export function Footer() {
     </footer>
   )
 }
-

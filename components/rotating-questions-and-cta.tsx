@@ -7,27 +7,28 @@ import { ArrowRight, CheckCircle, Star, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
+const ROTATING_QUESTIONS = {
+  pt: [
+    "Cansado de perder vendas por falta de estoque?",
+    "Quer ter controle total do seu inventário em tempo real?",
+    "Pronto para eliminar erros de contagem manual?",
+  ],
+  en: [
+    "Tired of losing sales due to stockouts?",
+    "Want total control of your inventory in real-time?",
+    "Ready to eliminate manual counting errors?",
+  ],
+  fr: [
+    "Fatigué de perdre des ventes par manque de stock ?",
+    "Vous voulez un contrôle total de votre inventaire en temps réel ?",
+    "Prêt à éliminer les erreurs de comptage manuel ?",
+  ],
+}
+
 export function RotatingQuestionsAndCTA() {
   const { language } = useLanguage()
   const t = translations[language]
-  
-  const questions = {
-    pt: [
-      "Cansado de perder vendas por falta de estoque?",
-      "Quer ter controle total do seu inventário em tempo real?",
-      "Pronto para eliminar erros de contagem manual?",
-    ],
-    en: [
-      "Tired of losing sales due to stockouts?",
-      "Want total control of your inventory in real-time?",
-      "Ready to eliminate manual counting errors?",
-    ],
-    fr: [
-      "Fatigué de perdre des ventes par manque de stock ?",
-      "Vous voulez un contrôle total de votre inventaire en temps réel ?",
-      "Prêt à éliminer les erreurs de comptage manuel ?",
-    ],
-  }
+  const questions = ROTATING_QUESTIONS[language]
 
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
@@ -36,13 +37,13 @@ export function RotatingQuestionsAndCTA() {
     const interval = setInterval(() => {
       setIsAnimating(true)
       setTimeout(() => {
-        setCurrentQuestion((prev) => (prev + 1) % questions[language].length)
+        setCurrentQuestion((prev) => (prev + 1) % questions.length)
         setIsAnimating(false)
       }, 500)
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [language])
+  }, [questions, language])
 
   return (
     <section className="py-24 bg-gradient-to-br from-purple-50 via-white to-blue-50 relative overflow-hidden">
@@ -61,7 +62,7 @@ export function RotatingQuestionsAndCTA() {
           </div>
           
           <div className="mb-16 h-40 relative">
-            {questions[language].map((question, index) => (
+            {questions.map((question, index) => (
               <div
                 key={index}
                 className={`transition-all duration-700 absolute left-0 right-0 ${
@@ -200,4 +201,3 @@ export function RotatingQuestionsAndCTA() {
     </section>
   )
 }
-

@@ -40,7 +40,9 @@ export function Testimonials() {
                   className="h-full w-auto object-contain"
                 />
               </div>
-              <blockquote className="text-xl font-medium mb-4">"{testimonial.quote}"</blockquote>
+              <blockquote className="text-xl font-medium mb-4">
+                &ldquo;{testimonial.quote}&rdquo;
+              </blockquote>
               <p className="text-gray-600 mb-2">{testimonial.company}</p>
               <p className="text-sm text-gray-500">{testimonial.companyName}</p>
             </div>
@@ -50,4 +52,3 @@ export function Testimonials() {
     </section>
   )
 }
-

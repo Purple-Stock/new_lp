@@ -1,8 +1,15 @@
 import { LanguageProvider } from "@/contexts/LanguageContext"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ScheduleButton } from "@/components/schedule-button"
+import { Poppins } from "next/font/google"
 import type React from "react"
 import "@/styles/globals.css"
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+})
 
 export const metadata = {
   title: "Purple Stock - Inventory Management System",
@@ -27,13 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className={poppins.className}>
         <LanguageProvider>
           {children}
           <ScheduleButton />

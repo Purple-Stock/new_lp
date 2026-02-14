@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -13,6 +13,31 @@ import { translations } from "@/utils/translations"
 import JsBarcode from "jsbarcode"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+
+const BARCODE_TYPES = [
+  { value: "CODE128", label: "Code 128", description: "Alfanumérico, compacto" },
+  { value: "CODE39", label: "Code 39", description: "Alfanumérico, industrial" },
+  { value: "EAN13", label: "EAN-13", description: "Produtos comerciais" },
+  { value: "EAN8", label: "EAN-8", description: "Produtos pequenos" },
+  { value: "UPC", label: "UPC-A", description: "Varejo norte-americano" },
+  { value: "ITF14", label: "ITF-14", description: "Logística e transporte" },
+  { value: "CODABAR", label: "Codabar", description: "Bibliotecas e saúde" },
+  { value: "ITF", label: "ITF", description: "Interleaved 2 of 5" },
+]
+
+const SIZE_OPTIONS = [
+  { value: "small", label: "Pequeno", dimensions: "200x100" },
+  { value: "medium", label: "Médio", dimensions: "300x150" },
+  { value: "large", label: "Grande", dimensions: "400x200" },
+  { value: "xlarge", label: "Extra Grande", dimensions: "500x250" },
+]
+
+const QR_ERROR_CORRECTION_LEVELS = [
+  { value: "L", label: "Baixo (7%)", description: "Recupera até 7% dos dados" },
+  { value: "M", label: "Médio (15%)", description: "Recupera até 15% dos dados" },
+  { value: "Q", label: "Alto (25%)", description: "Recupera até 25% dos dados" },
+  { value: "H", label: "Máximo (30%)", description: "Recupera até 30% dos dados" },
+]
 
 export default function CodigoDeBarrasGratis() {
   const { language } = useLanguage()
@@ -40,32 +65,7 @@ export default function CodigoDeBarrasGratis() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isGenerating, setIsGenerating] = useState(false)
 
-  const barcodeTypes = [
-    { value: "CODE128", label: "Code 128", description: "Alfanumérico, compacto" },
-    { value: "CODE39", label: "Code 39", description: "Alfanumérico, industrial" },
-    { value: "EAN13", label: "EAN-13", description: "Produtos comerciais" },
-    { value: "EAN8", label: "EAN-8", description: "Produtos pequenos" },
-    { value: "UPC", label: "UPC-A", description: "Varejo norte-americano" },
-    { value: "ITF14", label: "ITF-14", description: "Logística e transporte" },
-    { value: "CODABAR", label: "Codabar", description: "Bibliotecas e saúde" },
-    { value: "ITF", label: "ITF", description: "Interleaved 2 of 5" }
-  ]
-
-  const sizeOptions = [
-    { value: "small", label: "Pequeno", dimensions: "200x100" },
-    { value: "medium", label: "Médio", dimensions: "300x150" },
-    { value: "large", label: "Grande", dimensions: "400x200" },
-    { value: "xlarge", label: "Extra Grande", dimensions: "500x250" }
-  ]
-
-  const qrErrorCorrectionLevels = [
-    { value: "L", label: "Baixo (7%)", description: "Recupera até 7% dos dados" },
-    { value: "M", label: "Médio (15%)", description: "Recupera até 15% dos dados" },
-    { value: "Q", label: "Alto (25%)", description: "Recupera até 25% dos dados" },
-    { value: "H", label: "Máximo (30%)", description: "Recupera até 30% dos dados" }
-  ]
-
-  const generateBarcode = () => {
+  const generateBarcode = useCallback(() => {
     if (!canvasRef.current || !barcodeData) return
     
     setIsGenerating(true)
@@ -102,9 +102,9 @@ export default function CodigoDeBarrasGratis() {
     } finally {
       setIsGenerating(false)
     }
-  }
+  }, [backgroundColor, barcodeColor, barcodeData, barcodeType, fontSize, height, lineWidth, showText])
 
-  const generateQRCode = async () => {
+  const generateQRCode = useCallback(async () => {
     if (!canvasRef.current || !qrData) return
     
     setIsGenerating(true)
@@ -161,15 +161,15 @@ export default function CodigoDeBarrasGratis() {
     } finally {
       setIsGenerating(false)
     }
-  }
+  }, [qrBackgroundColor, qrColor, qrData, qrErrorCorrection, qrMargin, qrSize])
 
-  const generateCode = () => {
+  const generateCode = useCallback(() => {
     if (generatorType === "barcode") {
       generateBarcode()
     } else {
       generateQRCode()
     }
-  }
+  }, [generateBarcode, generateQRCode, generatorType])
 
   const downloadCode = () => {
     if (!canvasRef.current) return
@@ -210,7 +210,7 @@ export default function CodigoDeBarrasGratis() {
   useEffect(() => {
     if (canvasRef.current) {
       if (generatorType === "barcode") {
-        const size = sizeOptions.find(s => s.value === barcodeSize)
+        const size = SIZE_OPTIONS.find((s) => s.value === barcodeSize)
         if (size) {
           const [width, height] = size.dimensions.split("x").map(Number)
           canvasRef.current.width = width
@@ -223,14 +223,14 @@ export default function CodigoDeBarrasGratis() {
       }
       generateCode()
     }
-  }, [barcodeSize, qrSize, generatorType])
+  }, [barcodeSize, generateCode, generatorType, qrSize])
 
   // Generate code when parameters change
   useEffect(() => {
     if ((generatorType === "barcode" && barcodeData) || (generatorType === "qr" && qrData)) {
       generateCode()
     }
-  }, [generatorType, barcodeData, barcodeType, showText, barcodeColor, backgroundColor, lineWidth, height, fontSize, qrData, qrErrorCorrection, qrMargin, qrColor, qrBackgroundColor])
+  }, [generateCode, generatorType, barcodeData, qrData])
 
   return (
     <main>
@@ -321,7 +321,7 @@ export default function CodigoDeBarrasGratis() {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          {barcodeTypes.map((type) => (
+                          {BARCODE_TYPES.map((type) => (
                             <SelectItem key={type.value} value={type.value}>
                               <div>
                                 <div className="font-medium">{type.label}</div>
@@ -343,7 +343,7 @@ export default function CodigoDeBarrasGratis() {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          {qrErrorCorrectionLevels.map((level) => (
+                          {QR_ERROR_CORRECTION_LEVELS.map((level) => (
                             <SelectItem key={level.value} value={level.value}>
                               <div>
                                 <div className="font-medium">{level.label}</div>
@@ -367,7 +367,7 @@ export default function CodigoDeBarrasGratis() {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          {sizeOptions.map((size) => (
+                          {SIZE_OPTIONS.map((size) => (
                             <SelectItem key={size.value} value={size.value}>
                               <div>
                                 <div className="font-medium">{size.label}</div>
@@ -620,7 +620,7 @@ export default function CodigoDeBarrasGratis() {
                         </p>
                         {generatorType === "barcode" ? (
                           <p className="text-sm text-gray-600">
-                            <strong>Formato:</strong> {barcodeTypes.find(t => t.value === barcodeType)?.label}
+                            <strong>Formato:</strong> {BARCODE_TYPES.find((t) => t.value === barcodeType)?.label}
                           </p>
                         ) : (
                           <p className="text-sm text-gray-600">
@@ -629,7 +629,7 @@ export default function CodigoDeBarrasGratis() {
                         )}
                         {generatorType === "barcode" && (
                           <p className="text-sm text-gray-600">
-                            <strong>Dimensões:</strong> {sizeOptions.find(s => s.value === barcodeSize)?.dimensions}
+                            <strong>Dimensões:</strong> {SIZE_OPTIONS.find((s) => s.value === barcodeSize)?.dimensions}
                           </p>
                         )}
                       </div>
@@ -661,7 +661,7 @@ export default function CodigoDeBarrasGratis() {
                       <div className="space-y-4">
                         {generatorType === "barcode" ? (
                           // Barcode formats
-                          barcodeTypes.map((type) => (
+                          BARCODE_TYPES.map((type) => (
                             <div key={type.value} className="flex items-start gap-3 p-3 rounded-lg border border-gray-100">
                               <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
@@ -779,4 +779,3 @@ export default function CodigoDeBarrasGratis() {
     </main>
   )
 }
-

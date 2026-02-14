@@ -703,7 +703,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                   </div>
                 </div>
                 <blockquote className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  "O Purple Stock revolucionou nossa gestão de estoque. Conseguimos reduzir perdas em 30% e aumentar a eficiência operacional significativamente."
+                  &ldquo;O Purple Stock revolucionou nossa gestão de estoque. Conseguimos reduzir perdas em 30% e aumentar a eficiência operacional significativamente.&rdquo;
                 </blockquote>
                 <div className="flex items-center text-sm text-gray-500">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
@@ -722,7 +722,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                   </div>
                 </div>
                 <blockquote className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  "A implementação do Purple Stock foi rápida e os resultados foram imediatos. Nossa equipe adorou a facilidade de uso e a interface intuitiva."
+                  &ldquo;A implementação do Purple Stock foi rápida e os resultados foram imediatos. Nossa equipe adorou a facilidade de uso e a interface intuitiva.&rdquo;
                 </blockquote>
                 <div className="flex items-center text-sm text-gray-500">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
@@ -773,4 +773,3 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
     </div>
   )
 }
-

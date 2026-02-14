@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState } from "react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 import Link from "next/link"
@@ -671,25 +671,20 @@ export default function Glossario() {
   ]
 
   // Filter terms based on search and category
-  const filteredTerms = useMemo(() => {
-    let filtered = terms
+  let filteredTerms = terms
 
-    // Filter by category
-    if (selectedCategory !== "all") {
-      const categoryTermIds = categorizedTerms[selectedCategory as keyof typeof categorizedTerms] || []
-      filtered = filtered.filter(term => categoryTermIds.includes(term.id))
-    }
+  if (selectedCategory !== "all") {
+    const categoryTermIds = categorizedTerms[selectedCategory as keyof typeof categorizedTerms] || []
+    filteredTerms = filteredTerms.filter((term) => categoryTermIds.includes(term.id))
+  }
 
-    // Filter by search term
-    if (searchTerm) {
-      filtered = filtered.filter(term => 
+  if (searchTerm) {
+    filteredTerms = filteredTerms.filter(
+      (term) =>
         term[language].term.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        term[language].definition.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    }
-
-    return filtered
-  }, [terms, language, searchTerm, selectedCategory])
+        term[language].definition.toLowerCase().includes(searchTerm.toLowerCase()),
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
@@ -838,4 +833,3 @@ export default function Glossario() {
     </div>
   )
 }
-

@@ -33,7 +33,7 @@ export function FaqCta() {
     }, 5000)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [phrases.length, questions.length])
 
   return (
     <section className="py-24 px-4">
@@ -91,4 +91,3 @@ export function FaqCta() {
     </section>
   )
 }
-

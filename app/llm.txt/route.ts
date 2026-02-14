@@ -49,11 +49,6 @@ PurpleStock é uma solução completa de gestão de estoque que oferece controle
 - [Gestão de Equipamentos com QR Code](/recursos/gerenciamento-equipamentos-qr-code): Sistema integrado
 - [Gestão de Estoque](/recursos/gestao-de-estoque): Estratégias e melhores práticas
 
-## Artigos e Conteúdo
-
-- [Como Usar QR Code no Controle de Estoque](/artigos/como-usar-qr-code-controle-estoque): Guia completo de implementação
-- [Organizar Almoxarifado com QR Code](/artigos/organizar-almoxarifado-qr-code): Dicas e estratégias práticas
-
 ## Informações Técnicas
 
 - [Preços](/precos): Planos e valores dos serviços

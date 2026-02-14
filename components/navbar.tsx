@@ -104,17 +104,9 @@ export function Navbar() {
             <Link href="/industrias" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
               {t.industries}
             </Link>
-            <Link href="/artigos" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
-              {t.articles}
-            </Link>
-            <a
-              href="https://blog.purplestock.com.br/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
-            >
+            <Link href="/blog" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
               {t.blog}
-            </a>
+            </Link>
             <Link href="/codigo-de-barras-gratis" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors text-purple-300">
               {t.freeBarcode}
             </Link>

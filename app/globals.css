@@ -3,7 +3,193 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+.blog-content {
+  color: #2a3338;
+  font-family: "Manrope", "Poppins", sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.blog-content > * {
+  max-width: 72ch;
+}
+
+.blog-content > * + * {
+  margin-top: 1.2rem;
+}
+
+.blog-content h1,
+.blog-content h2,
+.blog-content h3 {
+  max-width: 28ch;
+  color: #152127;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  font-family: "Merriweather", Georgia, serif;
+}
+
+.blog-content h1 {
+  margin-top: 0.6rem;
+  margin-bottom: 1rem;
+  font-size: clamp(2.2rem, 3.2vw, 2.8rem);
+  font-weight: 900;
+}
+
+.blog-content h2 {
+  margin-top: 3.2rem;
+  margin-bottom: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e4e8e3;
+  font-size: clamp(2.1rem, 3vw, 2.6rem);
+  font-weight: 900;
+}
+
+.blog-content h3 {
+  margin-top: 2.35rem;
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.55rem, 2.2vw, 1.95rem);
+  font-weight: 700;
+  color: #223741;
+}
+
+.blog-content h4 {
+  margin-top: 1.8rem;
+  margin-bottom: 0.6rem;
+  font-size: clamp(1.18rem, 1.4vw, 1.35rem);
+  font-weight: 700;
+  color: #2b4652;
+}
+
+.blog-content p {
+  margin: 0.9rem 0 1.2rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin: 0.9rem 0 1.35rem;
+  padding-left: 1.5rem;
+}
+
+.blog-content ul {
+  list-style: disc;
+}
+
+.blog-content ol {
+  list-style: decimal;
+}
+
+.blog-content li {
+  margin: 0.6rem 0;
+  padding-left: 0.2rem;
+}
+
+.blog-content li::marker {
+  color: #345765;
+  font-weight: 900;
+}
+
+.blog-content a {
+  color: #2e5b6b;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.blog-content strong {
+  color: #10181c;
+  font-weight: 800;
+}
+
+.blog-content blockquote {
+  margin: 1.6rem 0;
+  padding: 0.95rem 1.1rem;
+  border-left: 4px solid #2e5b6b;
+  background: #eef4f6;
+  border-radius: 0 8px 8px 0;
+}
+
+.blog-content hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid #dfe4de;
+}
+
+.blog-content code {
+  padding: 0.12rem 0.38rem;
+  border-radius: 0.32rem;
+  background: #edf1ee;
+  font-family: "JetBrains Mono", "Menlo", monospace;
+  font-size: 0.9em;
+}
+
+.blog-content pre {
+  margin: 1.4rem 0;
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  background: #132028;
+  padding: 1rem;
+  color: #e5ecef;
+}
+
+.blog-content pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.blog-content table {
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+}
+
+.blog-content th,
+.blog-content td {
+  border: 1px solid #d8dfd8;
+  padding: 0.6rem 0.7rem;
+  text-align: left;
+}
+
+.blog-content th {
+  background: #f0f4f0;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .blog-content {
+    font-size: 0.98rem;
+    line-height: 1.78;
+  }
+
+  .blog-content > * {
+    max-width: 100%;
+  }
+
+  .blog-content h2 {
+    margin-top: 2.5rem;
+    font-size: 1.8rem;
+  }
+
+  .blog-content h3 {
+    margin-top: 1.8rem;
+    font-size: 1.4rem;
+  }
+
+  .blog-content h4 {
+    margin-top: 1.4rem;
+    font-size: 1.12rem;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    padding-left: 1.25rem;
+  }
 }
 
 @layer utilities {

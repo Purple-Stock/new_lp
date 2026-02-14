@@ -1,11 +1,10 @@
 import { MetadataRoute } from 'next'
-import { getAllArticles } from '@/utils/markdown'
+import { getAllPosts, getAllTagSlugs } from '@/lib/blog'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://purplestock.com.br'
-  
-  // Get all articles for dynamic routes
-  const articles = await getAllArticles()
+  const posts = await getAllPosts()
+  const tagSlugs = await getAllTagSlugs()
   
   // Static routes
   const staticRoutes = [
@@ -14,12 +13,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
       priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/artigos`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
     },
     {
       url: `${baseUrl}/industrias`,
@@ -103,19 +96,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  // Article routes (dynamic from markdown files)
-  const articleRoutes = articles.map(article => ({
-    url: `${baseUrl}/artigos/${article.slug}`,
-    lastModified: new Date(article.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
+  const blogRoutes = [
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    ...posts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    ...tagSlugs.map((tag) => ({
+      url: `${baseUrl}/blog/tag/${tag}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    })),
+  ]
 
   return [
     ...staticRoutes,
     ...featureRoutes,
     ...resourceRoutes,
     ...industryRoutes,
-    ...articleRoutes,
+    ...blogRoutes,
   ]
 }

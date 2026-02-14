@@ -342,7 +342,7 @@ export function DesktopLanding() {
       },
       {
         label: osText.ask,
-        href: "/artigos",
+        href: "/glossario",
         icon: MacOSFolderIcon,
         folderColor: "purple" as const,
       },
@@ -492,7 +492,7 @@ export function DesktopLanding() {
         folderColor?: "blue" | "purple" | "green" | "yellow" | "red" | "orange"
         action: { label: string; href: string }
       }>,
-    [language, osText.ask, t.hero.subtitle, t.hero.subtitleHighlight],
+    [language],
   )
 
   const windowLayout: Record<WindowKey, { top: string; left: string; width: string }> = {

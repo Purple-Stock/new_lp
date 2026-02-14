@@ -212,6 +212,46 @@ export function ProductDocumentation() {
     [language],
   )
 
+  const actionsByTopic = useMemo(
+    () =>
+      ({
+        pt: {
+          title: "O que você consegue fazer nesta tela",
+          items: {
+            "doc-acesso": ["Entrar na conta da empresa.", "Escolher a equipe para começar o trabalho.", "Acessar rapidamente os módulos principais."],
+            "doc-equipes": ["Criar uma nova equipe.", "Ver equipes já existentes.", "Atualizar ou remover equipes quando necessário."],
+            "doc-itens": ["Cadastrar novos itens.", "Consultar itens e saldos.", "Editar ou excluir itens e locais cadastrados."],
+            "doc-movimentos": ["Registrar entrada, saída, transferência, ajuste e contagem.", "Consultar o que acabou de ser lançado.", "Corrigir lançamentos com novo ajuste quando preciso."],
+            "doc-relatorios": ["Ver indicadores de perdas e reposição.", "Filtrar por período e equipe.", "Definir prioridades de compra e ação."],
+            "doc-qr": ["Gerar e imprimir etiquetas.", "Escanear itens no celular.", "Atualizar conferências de inventário com mais rapidez."],
+          } as Record<string, string[]>,
+        },
+        en: {
+          title: "What you can do on this screen",
+          items: {
+            "doc-access": ["Log into your company account.", "Choose the team to operate.", "Open key modules quickly."],
+            "doc-teams": ["Create a new team.", "View existing teams.", "Update or remove teams when needed."],
+            "doc-items": ["Create new items.", "Check items and balances.", "Edit or delete existing items and locations."],
+            "doc-movements": ["Register inbound, outbound, transfer, adjustment, and count.", "Review the latest movement.", "Correct data with a follow-up adjustment."],
+            "doc-reports": ["View loss and replenishment indicators.", "Filter by team and period.", "Set buying and action priorities."],
+            "doc-qr": ["Generate and print labels.", "Scan items with mobile.", "Update inventory checks faster."],
+          } as Record<string, string[]>,
+        },
+        fr: {
+          title: "Ce que vous pouvez faire sur cet écran",
+          items: {
+            "doc-access": ["Se connecter au compte de l'entreprise.", "Choisir l'équipe active.", "Accéder rapidement aux modules clés."],
+            "doc-teams": ["Créer une équipe.", "Voir les équipes existantes.", "Mettre à jour ou supprimer une équipe."],
+            "doc-items": ["Créer des articles.", "Consulter articles et soldes.", "Modifier ou supprimer articles et emplacements."],
+            "doc-movements": ["Enregistrer entrée, sortie, transfert, ajustement et comptage.", "Vérifier le dernier mouvement.", "Corriger avec un nouvel ajustement si nécessaire."],
+            "doc-reports": ["Voir les indicateurs de perte et réassort.", "Filtrer par période et équipe.", "Définir les priorités d'action."],
+            "doc-qr": ["Générer et imprimer des étiquettes.", "Scanner les articles sur mobile.", "Accélérer la mise à jour d'inventaire."],
+          } as Record<string, string[]>,
+        },
+      })[language],
+    [language],
+  )
+
   useEffect(() => {
     setSelectedTopicIndex(0)
   }, [language])
@@ -307,6 +347,16 @@ export function ProductDocumentation() {
               )}
             </div>
           </article>
+          <section className="rounded-2xl border border-violet-200 bg-white p-6 lg:p-7">
+            <h2 className="text-lg font-semibold text-slate-900">{actionsByTopic.title}</h2>
+            <ul className="mt-3 space-y-2">
+              {(actionsByTopic.items[selectedTopic.id] ?? []).map((item) => (
+                <li key={item} className="text-sm text-slate-600">
+                  - {item}
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
       </div>
       <Dialog open={previewOpen} onOpenChange={setPreviewOpen}>

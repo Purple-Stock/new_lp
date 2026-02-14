@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { ArrowLeft, Hash, Clock3 } from "lucide-react"
 import { getAllTagSlugs, getPostsByTagSlug, slugifyTag } from "@/lib/blog"
+import { getSiteUrl } from "@/lib/site"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
@@ -27,6 +28,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { tag } = await params
   const { posts, label } = await getPostsByTagSlug(tag)
+  const baseUrl = getSiteUrl()
 
   if (!posts.length) {
     return { title: "Tag não encontrada | Purple Stock" }
@@ -35,6 +37,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `Blog: ${label} | Purple Stock`,
     description: `Artigos sobre ${label} no blog da Purple Stock.`,
+    alternates: {
+      canonical: `${baseUrl}/blog/tag/${tag}`,
+    },
   }
 }
 

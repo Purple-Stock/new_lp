@@ -1,7 +1,9 @@
 import { LanguageProvider } from "@/contexts/LanguageContext"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ScheduleButton } from "@/components/schedule-button"
+import { getSiteUrl, SITE_NAME } from "@/lib/site"
 import { Poppins } from "next/font/google"
+import type { Metadata } from "next"
 import type React from "react"
 import "@/styles/globals.css"
 
@@ -11,10 +13,34 @@ const poppins = Poppins({
   display: "swap",
 })
 
-export const metadata = {
-  title: "Purple Stock - Inventory Management System",
+const siteUrl = getSiteUrl()
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${SITE_NAME} | Controle De Estoque Com QR Code`,
+    template: `%s | ${SITE_NAME}`,
+  },
   description:
-    "Transform your inventory management with Purple Stock. Designed for innovative companies seeking efficiency and precision in their operations.",
+    "Sistema de controle de estoque em nuvem para PMEs com QR Code, rastreabilidade e operacao em tempo real.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: siteUrl,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | Controle De Estoque Com QR Code`,
+    description:
+      "Sistema de controle de estoque em nuvem para PMEs com QR Code, rastreabilidade e operacao em tempo real.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} | Controle De Estoque Com QR Code`,
+    description:
+      "Sistema de controle de estoque em nuvem para PMEs com QR Code, rastreabilidade e operacao em tempo real.",
+  },
   icons: {
     icon: [
       {
@@ -24,7 +50,7 @@ export const metadata = {
       },
     ],
   },
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -33,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <body suppressHydrationWarning className={poppins.className}>
         <LanguageProvider>
           {children}

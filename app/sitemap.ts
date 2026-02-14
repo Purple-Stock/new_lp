@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts, getAllTagSlugs } from '@/lib/blog'
+import { getSiteUrl } from '@/lib/site'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://purplestock.com.br'
+  const baseUrl = getSiteUrl()
   const posts = await getAllPosts()
   const tagSlugs = await getAllTagSlugs()
   

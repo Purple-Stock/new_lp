@@ -1316,6 +1316,34 @@ export function DesktopLanding() {
                 </div>
               </section>
 
+              <section className="mb-12 rounded-3xl border border-violet-100 bg-violet-50/40 p-6 sm:p-8 text-center">
+                <div className="inline-flex items-center gap-2 rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700">
+                  <FileCode className="h-3.5 w-3.5" />
+                  {language === "pt" ? "Documentação técnica" : language === "en" ? "Technical docs" : "Documentation technique"}
+                </div>
+                <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl">
+                  {language === "pt"
+                    ? "Veja as funcionalidades do app por tópico"
+                    : language === "en"
+                      ? "See app features by topic"
+                      : "Voir les fonctionnalités de l'app par thème"}
+                </h2>
+                <p className="mt-2 text-slate-600">
+                  {language === "pt"
+                    ? "Abrimos uma rota dedicada com módulos, fluxos e endpoints do Purple Stock."
+                    : language === "en"
+                      ? "We added a dedicated route with Purple Stock modules, flows, and endpoints."
+                      : "Nous avons ajouté une route dédiée avec modules, flux et endpoints Purple Stock."}
+                </p>
+                <div className="mt-5">
+                  <Button asChild className="bg-violet-700 text-white hover:bg-violet-800">
+                    <Link href="/documentacao">
+                      {language === "pt" ? "Abrir documentação" : language === "en" ? "Open documentation" : "Ouvrir la documentation"}
+                    </Link>
+                  </Button>
+                </div>
+              </section>
+
               <section className="mb-12 rounded-3xl border border-indigo-100 bg-indigo-50/40 p-6 sm:p-8">
                 <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
                   {language === "pt"

@@ -56,6 +56,7 @@ export function DesktopLanding() {
   const mainBoxRef = useRef<HTMLDivElement>(null)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [sectorIndex, setSectorIndex] = useState(0)
 
   useEffect(() => {
     trackEvent("view_landing", {
@@ -371,25 +372,25 @@ export function DesktopLanding() {
           title: language === "pt" ? "Visão do Estoque" : language === "fr" ? "Vue de Stock" : "Inventory Overview",
           subtitle:
             language === "pt"
-              ? "Controle em tempo real de cada item do seu almoxarifado."
+              ? "Acompanhe itens por localização e status, com atualização imediata."
               : language === "fr"
-                ? "Contrôle en temps réel de chaque article."
-                : "Real-time tracking for every SKU.",
+                ? "Suivez chaque article par emplacement et statut en temps reel."
+                : "Track every item by location and status in real time.",
           highlights: [
             language === "pt"
-              ? "Sincronização automática entre pontos físicos e canais digitais."
+              ? "Cadastro central de itens, categorias e localizações."
               : language === "fr"
-                ? "Synchronisation automatique entre sites physiques et canaux digitaux."
-                : "Automatic sync between warehouses and digital channels.",
+                ? "Catalogue centralise des articles, categories et emplacements."
+                : "Central catalog for items, categories, and locations.",
             language === "pt"
-              ? "Alertas inteligentes quando o estoque mínimo é atingido."
+              ? "Histórico de movimentações com rastreabilidade por item."
               : language === "fr"
-                ? "Alertes intelligents lorsque le stock minimum est atteint."
-                : "Smart alerts when safety stock is reached.",
+                ? "Historique des mouvements avec tracabilite par article."
+                : "Movement history with traceability per item.",
           ],
           stats: [
-            { label: language === "pt" ? "Itens com rastreio" : language === "fr" ? "Articles suivis" : "Tracked items", value: "3.248" },
-            { label: language === "pt" ? "Reposições pendentes" : language === "fr" ? "Réapprovisionnements" : "Replenishments", value: "12" },
+            { label: language === "pt" ? "Times" : language === "fr" ? "Equipes" : "Teams", value: "Multi" },
+            { label: language === "pt" ? "Atualização" : language === "fr" ? "Mise a jour" : "Updates", value: "Em tempo real" },
           ],
           icon: MacOSFolderIcon,
           folderColor: "blue" as const,
@@ -402,25 +403,25 @@ export function DesktopLanding() {
           title: language === "pt" ? "Relatórios de Performance" : language === "fr" ? "Rapports de Performance" : "Performance Analytics",
           subtitle:
             language === "pt"
-              ? "Entenda custos, perdas e giro em segundos."
+              ? "Consolide o que entrou, saiu e foi ajustado no estoque."
               : language === "fr"
-                ? "Comprenez coûts, ruptures et rotation en secondes."
-                : "Understand costs, shrinkage, and turnover instantly.",
+                ? "Consolidez les entrees, sorties et ajustements de stock."
+                : "Consolidate inbound, outbound, and adjustment activity.",
           highlights: [
             language === "pt"
-              ? "Indicadores prontos: giro, margem e curva ABC."
+              ? "Relatórios por time para operação e gestão."
               : language === "fr"
-                ? "Indicateurs prêts : rotation, marge et courbe ABC."
-                : "Out-of-the-box KPIs: turnover, margin, ABC curve.",
+                ? "Rapports par equipe pour l'operation et la gestion."
+                : "Team-level reports for operations and management.",
             language === "pt"
-              ? "Exportação em PDF e integração com BI."
+              ? "Visão clara para reposição, perdas e desempenho."
               : language === "fr"
-                ? "Export PDF et intégration BI."
-                : "Export to PDF and connect to BI tools.",
+                ? "Vue claire sur le reassort, les pertes et la performance."
+                : "Clear view of replenishment, losses, and performance.",
           ],
           stats: [
-            { label: "Fill rate", value: "97%" },
-            { label: language === "pt" ? "Redução de perdas" : language === "fr" ? "Réduction des pertes" : "Loss reduction", value: "−32%" },
+            { label: language === "pt" ? "Movimentos" : language === "fr" ? "Mouvements" : "Movements", value: "5 tipos" },
+            { label: language === "pt" ? "Histórico" : language === "fr" ? "Historique" : "History", value: "Auditável" },
           ],
           icon: MacOSFolderIcon,
           folderColor: "purple" as const,
@@ -433,25 +434,25 @@ export function DesktopLanding() {
           title: language === "pt" ? "Gestão por QR Code" : language === "fr" ? "Gestion par QR Code" : "QR Code Management",
           subtitle:
             language === "pt"
-              ? "Escaneie, mova e audite ativos com o celular."
+              ? "Identifique itens com QR Code e execute operações no celular."
               : language === "fr"
-                ? "Scannez, déplacez et auditez avec le mobile."
-                : "Scan, move, and audit assets from your phone.",
+                ? "Identifiez les articles via QR code et operez sur mobile."
+                : "Identify items with QR codes and execute actions on mobile.",
           highlights: [
             language === "pt"
-              ? "Geração ilimitada de etiquetas com o padrão Purple Stock."
+              ? "Fluxo rápido para inventário cíclico e conferência."
               : language === "fr"
-                ? "Génération illimitée d'étiquettes au format Purple Stock."
-                : "Unlimited label generation with Purple Stock templates.",
+                ? "Flux rapide pour inventaire cyclique et verification."
+                : "Fast workflow for cycle counts and verification.",
             language === "pt"
-              ? "Histórico completo de movimentações por QR Code."
+              ? "Menos erro manual em entrada, saída e transferência."
               : language === "fr"
-                ? "Historique complet des mouvements via QR Code."
-                : "Full movement history for each QR code.",
+                ? "Moins d'erreurs manuelles sur entree, sortie et transfert."
+                : "Fewer manual errors on inbound, outbound, and transfers.",
           ],
           stats: [
-            { label: language === "pt" ? "Etiquetas ativas" : language === "fr" ? "Étiquettes actives" : "Active labels", value: "1.094" },
-            { label: language === "pt" ? "Auditorias concluídas" : language === "fr" ? "Audits terminés" : "Audits completed", value: "54" },
+            { label: language === "pt" ? "Operacao" : language === "fr" ? "Operation" : "Operation", value: "Mobile" },
+            { label: language === "pt" ? "Leitura" : language === "fr" ? "Lecture" : "Scanning", value: "QR Code" },
           ],
           icon: MacOSFolderIcon,
           folderColor: "green" as const,
@@ -530,26 +531,220 @@ export function DesktopLanding() {
 
   const testimonial = translations[language].testimonials?.[0]
 
+  const playbookContent = useMemo(
+    () =>
+      ({
+        pt: {
+          uvpBadge: "Para equipes que precisam operar com estoque confiável",
+          uvpText:
+            "Purple Stock é um sistema de controle de estoque e gestão de almoxarifado para empresas em crescimento que precisam registrar entradas, saídas e transferências sem retrabalho.",
+          howItWorksTitle: "Como funciona o sistema de controle de estoque na prática",
+          howItWorksSubtitle: "Do cadastro ao relatório, em um fluxo único e rastreável.",
+          steps: [
+            {
+              title: "1. Estruture seu time e seus locais",
+              body: "Crie o time, convide usuários e organize localizações para separar operação e responsabilidade.",
+            },
+            {
+              title: "2. Cadastre itens com rastreabilidade",
+              body: "Registre itens e categorias uma vez e acompanhe saldo, movimentações e histórico por contexto.",
+            },
+            {
+              title: "3. Execute movimentos operacionais",
+              body: "Lance entradas, saídas, transferências, ajustes e contagens com consistência e atualização em tempo real.",
+            },
+            {
+              title: "4. Decida com relatórios consolidados",
+              body: "Acompanhe perdas, reposição e desempenho para agir rápido sem consolidação manual.",
+            },
+          ],
+          proofTitle: "Resultados para controle de estoque e gestão de almoxarifado",
+          proofItems: [
+            {
+              metric: "5 tipos de movimentação",
+              detail: "Cobertura completa para rotina real de estoque.",
+            },
+            {
+              metric: "Controle por time",
+              detail: "Dados segregados por operação com permissão por usuário.",
+            },
+            {
+              metric: "Operação no celular com QR Code",
+              detail: "Menos erro manual na conferência e no inventário.",
+            },
+          ],
+          objectionsTitle: "Perguntas frequentes: dúvidas antes de contratar",
+          objections: [
+            {
+              q: "Dá para começar sem migração complexa?",
+              a: "Sim. Você pode iniciar com o cadastro essencial e evoluir por etapas, sem parar a operação.",
+            },
+            {
+              q: "Como evitamos mistura de dados entre equipes?",
+              a: "O sistema opera por times com contexto ativo e permissões, mantendo cada operação isolada.",
+            },
+            {
+              q: "O time de almoxarifado consegue usar no dia a dia?",
+              a: "Sim. Os fluxos de entrada, saída, transferência e contagem são diretos e podem ser feitos no celular.",
+            },
+            {
+              q: "E se a gente quiser sair no futuro?",
+              a: "Você mantém controle dos dados operacionais e pode exportar informações para continuidade interna.",
+            },
+          ],
+        },
+        en: {
+          uvpBadge: "For teams that need reliable inventory operations",
+          uvpText:
+            "Purple Stock is an inventory control system for growing companies that need inbound, outbound, and transfer flows without spreadsheet chaos.",
+          howItWorksTitle: "How the inventory control system works in practice",
+          howItWorksSubtitle: "From setup to reporting in one traceable flow.",
+          steps: [
+            {
+              title: "1. Set up teams and locations",
+              body: "Create teams, invite users, and organize locations to structure responsibility.",
+            },
+            {
+              title: "2. Register items with traceability",
+              body: "Set up items and categories once, then track balance and movement history.",
+            },
+            {
+              title: "3. Execute operational movements",
+              body: "Run stock in, stock out, move, adjust, and count with real-time updates.",
+            },
+            {
+              title: "4. Decide with consolidated reports",
+              body: "Track losses, replenishment, and team performance without manual consolidation.",
+            },
+          ],
+          proofTitle: "Proof for operations and management",
+          proofItems: [
+            {
+              metric: "5 movement types",
+              detail: "Complete coverage for real inventory routines.",
+            },
+            {
+              metric: "Team-based control",
+              detail: "Separated operation data with user-level permissions.",
+            },
+            {
+              metric: "Mobile QR code workflow",
+              detail: "Fewer manual errors during checks and counting.",
+            },
+          ],
+          objectionsTitle: "Questions teams ask before buying",
+          objections: [
+            {
+              q: "Can we start without a heavy migration?",
+              a: "Yes. You can begin with core setup and expand in phases without stopping operations.",
+            },
+            {
+              q: "How do we avoid data overlap between teams?",
+              a: "The system runs with active team context and permissions, keeping operations separated.",
+            },
+            {
+              q: "Can warehouse staff use it daily?",
+              a: "Yes. Inbound, outbound, transfer, and counting flows are direct and mobile-friendly.",
+            },
+            {
+              q: "What if we decide to leave in the future?",
+              a: "You keep control of your operational data and can export information for continuity.",
+            },
+          ],
+        },
+        fr: {
+          uvpBadge: "Pour les equipes qui ont besoin d'un stock fiable",
+          uvpText:
+            "Purple Stock est un systeme de gestion de stock pour les entreprises en croissance qui doivent gerer entrees, sorties et transferts sans tableurs disperses.",
+          howItWorksTitle: "Comment fonctionne le systeme de gestion de stock",
+          howItWorksSubtitle: "Du parametrage au rapport dans un flux unique et tracable.",
+          steps: [
+            {
+              title: "1. Structurez equipes et emplacements",
+              body: "Creez les equipes, invitez les utilisateurs et organisez les emplacements operationnels.",
+            },
+            {
+              title: "2. Enregistrez les articles avec tracabilite",
+              body: "Configurez articles et categories puis suivez soldes et historique des mouvements.",
+            },
+            {
+              title: "3. Executez les mouvements quotidiens",
+              body: "Gerez stock in, stock out, move, adjust et count avec mise a jour en temps reel.",
+            },
+            {
+              title: "4. Pilotez avec des rapports consolides",
+              body: "Suivez pertes, reassort et performance sans consolidation manuelle.",
+            },
+          ],
+          proofTitle: "Preuves pour l'operation et la gestion",
+          proofItems: [
+            {
+              metric: "5 types de mouvements",
+              detail: "Couverture complete pour la routine reelle de stock.",
+            },
+            {
+              metric: "Controle par equipe",
+              detail: "Donnees segmentees avec permissions par utilisateur.",
+            },
+            {
+              metric: "Flux mobile avec QR code",
+              detail: "Moins d'erreurs manuelles sur inventaire et verification.",
+            },
+          ],
+          objectionsTitle: "Questions avant de choisir la plateforme",
+          objections: [
+            {
+              q: "Peut-on commencer sans migration lourde?",
+              a: "Oui. Vous pouvez debuter avec le socle et evoluer par etapes sans arreter l'operation.",
+            },
+            {
+              q: "Comment eviter le melange des donnees entre equipes?",
+              a: "Le systeme fonctionne par equipes avec contexte actif et permissions dediees.",
+            },
+            {
+              q: "Le personnel magasin peut l'utiliser au quotidien?",
+              a: "Oui. Les flux entree, sortie, transfert et comptage sont simples et mobiles.",
+            },
+            {
+              q: "Et si nous souhaitons sortir plus tard?",
+              a: "Vous conservez vos donnees operationnelles et pouvez exporter les informations.",
+            },
+          ],
+        },
+      })[language],
+    [language],
+  )
+
+  const rotatingSectors = useMemo(
+    () =>
+      ({
+        pt: ["almoxarifado", "eventos", "varejo", "indústria", "escolas", "clínicas"],
+        en: ["warehouses", "events", "retail", "manufacturing", "schools", "clinics"],
+        fr: ["entrepôts", "événements", "commerce", "industrie", "écoles", "cliniques"],
+      })[language],
+    [language],
+  )
+
   // Dynamic questions array
   const questions = useMemo(() => {
     return {
       pt: [
-        "Quer ter controle total do seu inventário em tempo real?",
-        "Precisa de relatórios inteligentes para tomar decisões?",
-        "Quer automatizar seu controle de estoque?",
-        "Procura uma solução simples e eficiente?",
+        "Seu time precisa controlar estoque por localização sem planilhas?",
+        "Você quer registrar entrada, saída, ajuste e transferência no mesmo fluxo?",
+        "Precisa rastrear itens com QR Code direto pelo celular?",
+        "Quer relatórios consolidados por time para decidir reposição?",
       ],
       en: [
-        "Do you want to have total control of your inventory in real time?",
-        "Do you need smart reports to make decisions?",
-        "Want to automate your stock control?",
-        "Looking for a simple and efficient solution?",
+        "Does your team need location-based stock control without spreadsheets?",
+        "Do you want inbound, outbound, transfer, and adjustment in one flow?",
+        "Need to track items with QR code directly from mobile devices?",
+        "Want consolidated team reports to improve replenishment decisions?",
       ],
       fr: [
-        "Voulez-vous avoir un contrôle total de votre inventaire en temps réel?",
-        "Avez-vous besoin de rapports intelligents pour prendre des décisions?",
-        "Voulez-vous automatiser votre contrôle des stocks?",
-        "Vous cherchez une solution simple et efficace?",
+        "Votre equipe doit controler le stock par emplacement sans tableurs?",
+        "Voulez-vous gerer entree, sortie, transfert et ajustement dans un seul flux?",
+        "Besoin de suivre les articles par QR code depuis le mobile?",
+        "Voulez-vous des rapports consolides par equipe pour le reassort?",
       ],
     }[language]
   }, [language])
@@ -562,6 +757,18 @@ export function DesktopLanding() {
 
     return () => clearInterval(interval)
   }, [questions.length])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSectorIndex((prev) => (prev + 1) % rotatingSectors.length)
+    }, 2200)
+
+    return () => clearInterval(interval)
+  }, [rotatingSectors.length])
+
+  useEffect(() => {
+    setSectorIndex(0)
+  }, [language])
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
@@ -709,18 +916,52 @@ export function DesktopLanding() {
               <div className="text-center space-y-6 mb-12">
                 <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight">
                   {language === "pt" 
-                    ? "Gestão de Estoque Simplificada" 
+                    ? (
+                      <>
+                        {"Sistema de Controle de Estoque para "}
+                        <span
+                          key={`sector-${language}-${sectorIndex}`}
+                          className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                        >
+                          {rotatingSectors[sectorIndex]}
+                        </span>
+                      </>
+                    )
                     : language === "en" 
-                      ? "Inventory Management Made Simple" 
-                      : "Gestion de Stock Simplifiée"}
+                      ? (
+                        <>
+                          {"Inventory Control System for "}
+                          <span
+                            key={`sector-${language}-${sectorIndex}`}
+                            className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                          >
+                            {rotatingSectors[sectorIndex]}
+                          </span>
+                        </>
+                      )
+                      : (
+                        <>
+                          {"Système de Gestion de Stock pour "}
+                          <span
+                            key={`sector-${language}-${sectorIndex}`}
+                            className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                          >
+                            {rotatingSectors[sectorIndex]}
+                          </span>
+                        </>
+                      )}
                 </h1>
                 <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                   {language === "pt"
-                    ? "Purple Stock: a solução mais simples de software de inventário para pequenas empresas rastrearem, gerenciarem e organizarem seu estoque."
+                    ? "Gerencie times, itens, localizações e inventário com QR Code em uma única plataforma, com rastreabilidade e atualização em tempo real."
                     : language === "en"
-                      ? "Purple Stock: the simplest inventory software solution for small businesses to track, manage, and organize inventory."
-                      : "Purple Stock: la solution de logiciel d'inventaire la plus simple pour que les petites entreprises suivent, gèrent et organisent leur stock."}
+                      ? "Manage teams, items, locations, and QR code inventory in one platform with traceability and real-time updates."
+                      : "Gerez equipes, articles, emplacements et inventaire QR code sur une seule plateforme, avec tracabilite et mise a jour en temps reel."}
                 </p>
+                <div className="mx-auto max-w-3xl rounded-2xl border border-blue-100 bg-blue-50/80 px-5 py-4 text-left">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">{playbookContent.uvpBadge}</p>
+                  <p className="mt-2 text-sm text-slate-700 sm:text-base">{playbookContent.uvpText}</p>
+                </div>
                 <div className="mx-auto w-full max-w-2xl rounded-2xl border border-purple-200 bg-gradient-to-r from-purple-50 via-white to-purple-50 px-5 py-4 shadow-sm">
                   <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:text-left">
                     <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
@@ -962,13 +1203,13 @@ export function DesktopLanding() {
 
               {/* Main Title Section */}
               <div className="text-center space-y-6 mb-12">
-                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+                <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                   <span className="text-slate-700">
                     {language === "pt" 
-                      ? "Controle de Estoque Inteligente Começa Com" 
+                      ? "Gestão de Almoxarifado e Inventário com QR Code" 
                       : language === "en" 
-                        ? "Intelligent Inventory Control Starts With" 
-                        : "Le Contrôle Intelligent des Stocks Commence Par"}
+                        ? "Warehouse Management and QR Code Inventory" 
+                        : "Gestion d'Entrepot et Inventaire QR Code"}
                   </span>
                   <br />
                   <span className="text-purple-600">
@@ -978,13 +1219,13 @@ export function DesktopLanding() {
                         ? "Purple Stock" 
                         : "Purple Stock"}
                   </span>
-                </h1>
+                </h2>
                 <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                   {language === "pt"
-                    ? "Centralize seu inventário em uma plataforma poderosa e intuitiva. Com Purple Stock, tenha visibilidade total e controle preciso do seu estoque em qualquer dispositivo, a qualquer momento."
+                    ? "Do cadastro ao relatório: registre entradas, saídas, ajustes, contagens e transferências com histórico auditável por time e por localização."
                     : language === "en"
-                      ? "Centralize your inventory on a powerful and intuitive platform. With Purple Stock, have total visibility and precise control of your stock on any device, at any time."
-                      : "Centralisez votre inventaire sur une plateforme puissante et intuitive. Avec Purple Stock, ayez une visibilité totale et un contrôle précis de votre stock sur n'importe quel appareil, à tout moment."}
+                      ? "From setup to reporting: record inbound, outbound, adjustments, counts, and transfers with auditable history by team and location."
+                      : "Du parametrage au rapport: enregistrez entrees, sorties, ajustements, comptages et transferts avec un historique auditable par equipe et emplacement."}
                 </p>
               </div>
 
@@ -1006,10 +1247,10 @@ export function DesktopLanding() {
                   </h3>
                   <p className="text-slate-600">
                     {language === "pt"
-                      ? "Visibilidade completa do seu inventário em tempo real"
+                      ? "Visualize saldo e localização de cada item em tempo real."
                       : language === "en"
-                        ? "Complete visibility of your inventory in real time"
-                        : "Visibilité complète de votre inventaire en temps réel"}
+                        ? "See item balance and location in real time."
+                        : "Visualisez le solde et l'emplacement de chaque article en temps reel."}
                   </p>
                 </div>
 
@@ -1029,10 +1270,10 @@ export function DesktopLanding() {
                   </h3>
                   <p className="text-slate-600">
                     {language === "pt"
-                      ? "Processos automatizados que economizam tempo e reduzem erros"
+                      ? "Padronize operações com tipos claros: entrada, saída, transferência, ajuste e contagem."
                       : language === "en"
-                        ? "Automated processes that save time and reduce errors"
-                        : "Processus automatisés qui font gagner du temps et réduisent les erreurs"}
+                        ? "Standardize operations with clear types: stock in, stock out, move, adjust, and count."
+                        : "Standardisez les operations avec des types clairs: stock in, stock out, move, adjust et count."}
                   </p>
                 </div>
 
@@ -1052,13 +1293,77 @@ export function DesktopLanding() {
                   </h3>
                   <p className="text-slate-600">
                     {language === "pt"
-                      ? "Insights valiosos para tomada de decisões estratégicas"
+                      ? "Relatórios consolidados para reposição, perdas e desempenho por time."
                       : language === "en"
-                        ? "Valuable insights for strategic decision-making"
-                        : "Informations précieuses pour la prise de décisions stratégiques"}
+                        ? "Consolidated reports for replenishment, losses, and team performance."
+                        : "Rapports consolides pour le reassort, les pertes et la performance par equipe."}
                   </p>
                 </div>
               </div>
+
+              <section className="mb-12 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">{playbookContent.howItWorksTitle}</h2>
+                  <p className="mt-2 text-slate-600">{playbookContent.howItWorksSubtitle}</p>
+                </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {playbookContent.steps.map((step) => (
+                    <div key={step.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                      <h3 className="font-semibold text-slate-900">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.body}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="mb-12 rounded-3xl border border-indigo-100 bg-indigo-50/40 p-6 sm:p-8">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+                  {language === "pt"
+                    ? "Sistema de estoque para pequenas e médias empresas"
+                    : language === "en"
+                      ? "Inventory system for small and mid-sized businesses"
+                      : "Systeme de stock pour petites et moyennes entreprises"}
+                </h2>
+                <p className="mt-3 text-slate-600">
+                  {language === "pt"
+                    ? "Se você busca software para controle de estoque, gestão de almoxarifado e inventário com QR Code, o Purple Stock centraliza operação e decisão em um único fluxo."
+                    : language === "en"
+                      ? "If you need inventory software for warehouse control and QR code inventory, Purple Stock centralizes operations and decision-making in one flow."
+                      : "Si vous cherchez un logiciel de gestion de stock, d'entrepot et d'inventaire QR code, Purple Stock centralise operation et pilotage dans un seul flux."}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3 text-sm">
+                  <Link className="text-indigo-700 underline underline-offset-2" href="/recursos/controle-de-almoxarifado">
+                    {language === "pt" ? "Guia de controle de almoxarifado" : language === "en" ? "Warehouse control guide" : "Guide de controle d'entrepot"}
+                  </Link>
+                  <Link className="text-indigo-700 underline underline-offset-2" href="/features/qr-code-management">
+                    {language === "pt" ? "Funcionalidade de inventário com QR Code" : language === "en" ? "QR code inventory feature" : "Fonction inventaire QR code"}
+                  </Link>
+                </div>
+              </section>
+
+              <section className="mb-12 rounded-3xl border border-emerald-100 bg-emerald-50/40 p-6 sm:p-8">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">{playbookContent.proofTitle}</h2>
+                <div className="mt-5 grid gap-4 md:grid-cols-3">
+                  {playbookContent.proofItems.map((item) => (
+                    <div key={item.metric} className="rounded-2xl border border-emerald-100 bg-white p-4">
+                      <p className="text-lg font-bold text-emerald-700">{item.metric}</p>
+                      <p className="mt-2 text-sm text-slate-600">{item.detail}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="mb-12 rounded-3xl border border-amber-100 bg-amber-50/50 p-6 sm:p-8">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">{playbookContent.objectionsTitle}</h2>
+                <div className="mt-5 space-y-4">
+                  {playbookContent.objections.map((item) => (
+                    <div key={item.q} className="rounded-2xl border border-amber-100 bg-white p-4">
+                      <p className="font-semibold text-slate-900">{item.q}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.a}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">

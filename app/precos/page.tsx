@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar"
 import { translations } from "@/utils/translations"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { useState } from "react"
+import { trackCtaClick } from "@/lib/analytics"
 
 interface Plan {
   name: string
@@ -211,7 +212,17 @@ export default function PricingPage() {
                   </ul>
 
                   {/* CTA Button */}
-                  <Link href={plan.buttonLink}>
+                  <Link
+                    href={plan.buttonLink}
+                    onClick={() =>
+                      trackCtaClick({
+                        cta_name: `pricing_plan_${plan.name.toLowerCase()}`,
+                        cta_target: plan.buttonLink.includes("app.purplestock.com.br") ? "app" : "contact",
+                        page_section: "pricing_card",
+                        plan_name: plan.name,
+                      })
+                    }
+                  >
                     <Button className={`w-full bg-gradient-to-r ${plan.gradient} hover:shadow-xl text-white py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-1 rounded-xl`}>
                       {plan.buttonText}
                       <ArrowRight className="w-5 h-5 ml-2" />
@@ -305,7 +316,16 @@ export default function PricingPage() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {/* <Link href="/coming-soon"> */}
-            <Link href="https://app.purplestock.com.br/">
+            <Link
+              href="https://app.purplestock.com.br/"
+              onClick={() =>
+                trackCtaClick({
+                  cta_name: "pricing_bottom_start_trial",
+                  cta_target: "app",
+                  page_section: "pricing_bottom_cta",
+                })
+              }
+            >
               <Button size="lg" className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
                 <Zap className="w-5 h-5 mr-2" />
                 {language === "pt" ? "Começar Teste Gratuito" : language === "en" ? "Start Free Trial" : "Commencer l'Essai Gratuit"}
@@ -313,7 +333,16 @@ export default function PricingPage() {
             </Link>
             
             {/* <Link href="/coming-soon"> */}
-            <Link href="https://app.purplestock.com.br/">
+            <Link
+              href="https://app.purplestock.com.br/"
+              onClick={() =>
+                trackCtaClick({
+                  cta_name: "pricing_bottom_talk_expert",
+                  cta_target: "app",
+                  page_section: "pricing_bottom_cta",
+                })
+              }
+            >
               <Button variant="outline" size="lg" className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold transition-all duration-300 rounded-xl backdrop-blur-sm">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 {language === "pt" ? "Falar com Especialista" : language === "en" ? "Talk to Expert" : "Parler à un Expert"}

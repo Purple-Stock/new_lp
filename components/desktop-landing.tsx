@@ -30,6 +30,7 @@ import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 import { cn } from "@/lib/utils"
+import { trackCtaClick, trackEvent } from "@/lib/analytics"
 import { MacOSFolderIcon } from "@/components/macos-folder-icon"
 import { DraggableFolder } from "@/components/draggable-folder"
 import { Navbar } from "@/components/navbar"
@@ -55,6 +56,13 @@ export function DesktopLanding() {
   const mainBoxRef = useRef<HTMLDivElement>(null)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+
+  useEffect(() => {
+    trackEvent("view_landing", {
+      page_path: "/",
+      landing_name: "desktop_landing",
+    })
+  }, [])
 
   // Handle main box dragging
   const handleMainBoxMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -745,7 +753,16 @@ export function DesktopLanding() {
                       size="sm"
                       className="bg-purple-700 text-white hover:bg-purple-800"
                     >
-                      <Link href="https://app.purplestock.com.br/">
+                      <Link
+                        href="https://app.purplestock.com.br/"
+                        onClick={() =>
+                          trackCtaClick({
+                            cta_name: "desktop_launch_offer",
+                            cta_target: "app",
+                            page_section: "hero_offer",
+                          })
+                        }
+                      >
                         {language === "pt"
                           ? "Quero garantir R$29,90"
                           : language === "en"
@@ -763,7 +780,16 @@ export function DesktopLanding() {
                     size="lg"
                     className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                   >
-                    <Link href="https://app.purplestock.com.br/">
+                    <Link
+                      href="https://app.purplestock.com.br/"
+                      onClick={() =>
+                        trackCtaClick({
+                          cta_name: "desktop_trial_primary",
+                          cta_target: "app",
+                          page_section: "hero_cta",
+                        })
+                      }
+                    >
                       {language === "pt" ? "Teste por 7 dias" : language === "en" ? "Test for 7 days" : "Testez pendant 7 jours"}
                     </Link>
                   </Button>
@@ -773,7 +799,18 @@ export function DesktopLanding() {
                     size="lg"
                     className="border-2 border-purple-600 text-purple-700 hover:bg-purple-50 px-8 py-6 text-base font-semibold transition-all duration-300 rounded-lg bg-white"
                   >
-                    <Link href="https://calendly.com/matheus-puppe" target="_blank" rel="noopener noreferrer">
+                    <Link
+                      href="https://calendly.com/matheus-puppe"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackCtaClick({
+                          cta_name: "desktop_schedule_demo",
+                          cta_target: "calendly",
+                          page_section: "hero_cta",
+                        })
+                      }
+                    >
                       <Calendar className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                       {language === "pt" ? "Solicitar demonstração" : language === "en" ? "Get a demo" : "Obtenir une démo"}
                     </Link>
@@ -1030,7 +1067,16 @@ export function DesktopLanding() {
                   size="lg"
                   className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                 >
-                  <Link href="https://app.purplestock.com.br/">
+                  <Link
+                    href="https://app.purplestock.com.br/"
+                    onClick={() =>
+                      trackCtaClick({
+                        cta_name: "desktop_trial_secondary",
+                        cta_target: "app",
+                        page_section: "secondary_cta",
+                      })
+                    }
+                  >
                     <Sparkles className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     {language === "pt" ? "Teste por 7 dias" : language === "en" ? "Test for 7 days" : "Testez pendant 7 jours"}
                     <ArrowRight className="w-5 h-5 ml-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
@@ -1039,6 +1085,13 @@ export function DesktopLanding() {
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
+                  onClick={() =>
+                    trackCtaClick({
+                      cta_name: "desktop_view_demo_modal",
+                      cta_target: "video_modal",
+                      page_section: "secondary_cta",
+                    })
+                  }
                 >
                   <PlayCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                   {language === "pt" ? "Ver Demonstração" : language === "en" ? "View Demo" : "Voir la Démo"}
@@ -1124,9 +1177,16 @@ export function DesktopLanding() {
         <div className="fixed bottom-3 left-1/2 -translate-x-1/2 z-[90] hidden md:block">
           <div className="flex items-end gap-1 px-3 py-2 bg-white/60 backdrop-blur-xl rounded-2xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_0_0_1px_rgba(255,255,255,0.2)]">
             {/* Dock Apps */}
-            <Link 
-              href="https://app.purplestock.com.br/" 
+            <Link
+              href="https://app.purplestock.com.br/"
               className="group relative flex flex-col items-center"
+              onClick={() =>
+                trackCtaClick({
+                  cta_name: "desktop_dock_open_app",
+                  cta_target: "app",
+                  page_section: "dock",
+                })
+              }
             >
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-lg group-hover:shadow-purple-500/40 transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110">
                 <Box className="w-6 h-6 text-white" strokeWidth={2} />

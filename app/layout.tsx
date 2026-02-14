@@ -1,6 +1,7 @@
 import { LanguageProvider } from "@/contexts/LanguageContext"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ScheduleButton } from "@/components/schedule-button"
+import { RouteViewTracker } from "@/components/route-view-tracker"
 import { getSiteUrl, SITE_NAME } from "@/lib/site"
 import { Poppins } from "next/font/google"
 import type { Metadata } from "next"
@@ -62,6 +63,7 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <body suppressHydrationWarning className={poppins.className}>
         <LanguageProvider>
+          <RouteViewTracker />
           {children}
           <ScheduleButton />
           <WhatsAppButton />

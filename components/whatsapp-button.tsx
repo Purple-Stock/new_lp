@@ -2,6 +2,7 @@
 
 import { MessageCircle } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { trackCtaClick } from "@/lib/analytics"
 
 export function WhatsAppButton() {
   const phoneNumber = "5511995597242" // Format: country code (55) + phone number
@@ -16,6 +17,13 @@ export function WhatsAppButton() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              trackCtaClick({
+                cta_name: "floating_whatsapp_button",
+                cta_target: "whatsapp",
+                page_section: "floating_buttons",
+              })
+            }
             className="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#20BA5C] text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110 z-50 flex items-center gap-2"
             aria-label="Contate-nos no WhatsApp"
           >
@@ -29,4 +37,3 @@ export function WhatsAppButton() {
     </TooltipProvider>
   )
 }
-

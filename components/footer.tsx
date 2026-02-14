@@ -1,14 +1,13 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
-import { Instagram, Youtube, Linkedin, Globe, Sparkles, Mail, Phone, MapPin } from "lucide-react"
+import { Instagram, Youtube, Linkedin, Sparkles, Mail, Phone, MapPin, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 
 export function Footer() {
-  const { language, setLanguage } = useLanguage()
+  const { language } = useLanguage()
   const t = translations[language].footer
 
   const navigation = {
@@ -35,7 +34,7 @@ export function Footer() {
     {
       icon: Phone,
       text: language === "pt" ? "+55 (11) 99559-7242" : language === "en" ? "+55 (11) 99559-7242" : "+55 (11) 99559-7242",
-      href: "tel:+5511999999999"
+      href: "tel:+5511995597242",
     },
     {
       icon: MapPin,
@@ -45,38 +44,37 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
+    <footer className="relative overflow-hidden border-t border-purple-200/60 bg-[radial-gradient(circle_at_20%_0%,rgba(129,117,224,0.18),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(189,147,249,0.14),transparent_45%),linear-gradient(180deg,#f8f6ff,#f4f0ff)] text-slate-800">
+      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff14%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-20 left-0 h-72 w-72 rounded-full bg-purple-300/25 blur-3xl" />
+        <div className="absolute -bottom-20 right-0 h-72 w-72 rounded-full bg-indigo-300/25 blur-3xl" />
       </div>
-      
-      <div className="relative max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Company Info */}
-          <div className="space-y-8">
+
+      <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
+          <div className="rounded-2xl border border-white/70 bg-white/70 p-7 shadow-[0_24px_60px_-35px_rgba(76,29,149,0.35)] backdrop-blur-xl">
+            <div className="space-y-6">
             <Link href="/" className="block group">
               <div className="flex items-center space-x-3">
                 <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
                     <Sparkles className="w-6 h-6 text-white" />
                   </div>
-                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-gray-900 animate-pulse"></div>
+                  <div className="absolute -right-1 -top-1 h-4 w-4 rounded-full border-2 border-white bg-emerald-500 animate-pulse" />
                 </div>
                 <div>
-                  <div className="text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                  <div className="bg-gradient-to-r from-purple-700 to-indigo-700 bg-clip-text text-xl font-bold text-transparent">
                     Purple Stock
                   </div>
-                  <div className="text-xs text-gray-400 font-medium">
+                  <div className="text-xs font-medium text-slate-500">
                     {language === "pt" ? "Gestão Inteligente" : language === "en" ? "Smart Management" : "Gestion Intelligente"}
                   </div>
                 </div>
               </div>
             </Link>
-            
-            <p className="text-gray-300 leading-relaxed max-w-xs">
+
+            <p className="max-w-xs leading-relaxed text-slate-600">
               {language === "pt" 
                 ? "Transforme sua gestão de inventário com a solução mais inteligente e eficiente do mercado."
                 : language === "en"
@@ -85,34 +83,34 @@ export function Footer() {
               }
             </p>
             
-            <div className="flex space-x-4">
+            <div className="flex gap-3">
               {navigation.social.map((item) => (
                 <Link 
                   key={item.name} 
                   href={item.href} 
-                  className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 backdrop-blur-sm"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-purple-200/80 bg-white/90 text-slate-600 transition-all duration-200 hover:scale-110 hover:border-purple-300 hover:text-purple-700"
                 >
                   <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-5 w-5 text-white" />
+                  <item.icon className="h-5 w-5" />
                 </Link>
               ))}
             </div>
+            </div>
           </div>
 
-          {/* Purple Stock Links */}
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center">
-              <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+          <div className="rounded-2xl border border-white/70 bg-white/60 p-7 shadow-[0_20px_50px_-35px_rgba(76,29,149,0.35)] backdrop-blur-xl">
+            <h3 className="mb-6 flex items-center text-base font-semibold text-slate-900">
+              <div className="mr-3 h-2 w-2 rounded-full bg-purple-500" />
               {t.purpleStock}
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {navigation.purplestock.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
+                    className="group flex items-center text-slate-600 transition-colors duration-200 hover:text-purple-700"
                   >
-                    <div className="w-1 h-1 bg-purple-400 rounded-full mr-3 group-hover:w-2 transition-all duration-200"></div>
+                    <ArrowRight className="mr-2 h-4 w-4 text-purple-400 transition-transform duration-200 group-hover:translate-x-1" />
                     {item.name}
                   </Link>
                 </li>
@@ -120,20 +118,19 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center">
-              <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+          <div className="rounded-2xl border border-white/70 bg-white/60 p-7 shadow-[0_20px_50px_-35px_rgba(76,29,149,0.35)] backdrop-blur-xl">
+            <h3 className="mb-6 flex items-center text-base font-semibold text-slate-900">
+              <div className="mr-3 h-2 w-2 rounded-full bg-indigo-500" />
               {t.resources}
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {navigation.resources.map((item) => (
                 <li key={item.name}>
                   <Link 
                     href={item.href} 
-                    className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
+                    className="group flex items-center text-slate-600 transition-colors duration-200 hover:text-indigo-700"
                   >
-                    <div className="w-1 h-1 bg-blue-400 rounded-full mr-3 group-hover:w-2 transition-all duration-200"></div>
+                    <ArrowRight className="mr-2 h-4 w-4 text-indigo-400 transition-transform duration-200 group-hover:translate-x-1" />
                     {item.name}
                   </Link>
                 </li>
@@ -141,39 +138,35 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact & Language */}
-          <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center">
-              <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+          <div className="rounded-2xl border border-white/70 bg-white/65 p-7 shadow-[0_20px_50px_-35px_rgba(76,29,149,0.35)] backdrop-blur-xl">
+            <h3 className="mb-6 flex items-center text-base font-semibold text-slate-900">
+              <div className="mr-3 h-2 w-2 rounded-full bg-emerald-500" />
               {language === "pt" ? "Contato" : language === "en" ? "Contact" : "Contact"}
             </h3>
-            
-            <div className="space-y-4">
+
+            <div className="space-y-3">
               {contactInfo.map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
-                  className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors duration-200 group"
+                  className="group flex items-center space-x-3 text-slate-600 transition-colors duration-200 hover:text-slate-900"
                 >
-                  <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20 transition-colors duration-200">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-purple-200/80 bg-white/85 transition-colors duration-200 group-hover:bg-purple-50">
                     <item.icon className="w-4 h-4" />
                   </div>
                   <span className="text-sm">{item.text}</span>
                 </Link>
               ))}
             </div>
-            
-
           </div>
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 mb-16 border border-white/10">
+        <div className="mb-14 mt-10 rounded-2xl border border-purple-200/70 bg-white/75 p-8 backdrop-blur-xl">
           <div className="text-center max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="mb-4 text-2xl font-bold text-slate-900">
               {language === "pt" ? "Fique por dentro das novidades" : language === "en" ? "Stay up to date" : "Restez à jour"}
             </h3>
-            <p className="text-gray-300 mb-6">
+            <p className="mb-6 text-slate-600">
               {language === "pt" 
                 ? "Receba as últimas atualizações e dicas sobre gestão de inventário"
                 : language === "en"
@@ -185,25 +178,24 @@ export function Footer() {
               <input
                 type="email"
                 placeholder={language === "pt" ? "Seu e-mail" : language === "en" ? "Your email" : "Votre email"}
-                className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm"
+                className="flex-1 rounded-lg border border-purple-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-400"
               />
-              <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-3 rounded-lg transition-all duration-300 transform hover:-translate-y-1">
+              <Button className="transform rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-3 text-white transition-all duration-300 hover:-translate-y-1 hover:from-purple-700 hover:to-indigo-700">
                 {language === "pt" ? "Inscrever" : language === "en" ? "Subscribe" : "S'abonner"}
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Bottom Footer */}
-        <div className="pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row md:justify-between items-center">
-            <div className="flex items-center space-x-2 text-gray-400">
-              <Sparkles className="w-4 h-4 text-purple-400" />
+        <div className="border-t border-purple-200/70 pt-8">
+          <div className="flex flex-col items-center md:flex-row md:justify-between">
+            <div className="flex items-center space-x-2 text-slate-500">
+              <Sparkles className="w-4 h-4 text-purple-500" />
               <p className="text-sm font-medium">Purple Stock</p>
             </div>
-            <p className="text-sm text-gray-400 mt-4 md:mt-0 flex items-center">
+            <p className="mt-4 flex items-center text-sm text-slate-500 md:mt-0">
               {language === "pt" ? "Feito com" : language === "en" ? "Made with" : "Fait avec"} 
-              <span className="text-red-400 mx-2">♥️</span> 
+              <span className="mx-2 text-rose-500">♥</span>
               {language === "pt" ? "em São Paulo, Brasil" : language === "en" ? "in São Paulo, Brazil" : "à São Paulo, Brésil"}
             </p>
           </div>

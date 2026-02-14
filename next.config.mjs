@@ -22,6 +22,28 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "purplestock.com.br" }],
+        destination: "https://www.purplestock.com.br/:path*",
+        permanent: true,
+      },
+      {
+        source: "/blog/:path*",
+        has: [{ type: "host", value: "blog.purplestock.com.br" }],
+        destination: "https://www.purplestock.com.br/blog/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "blog.purplestock.com.br" }],
+        destination: "https://www.purplestock.com.br/blog/:path*",
+        permanent: true,
+      },
+    ]
+  },
 }
 
 mergeConfig(nextConfig, userConfig)

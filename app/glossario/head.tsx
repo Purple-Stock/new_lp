@@ -1,8 +1,10 @@
+import { getSiteUrl } from "@/lib/site";
+
 export default function Head() {
   const title = "Glossário de Gestão de Estoque para PMEs | Purple Stock";
   const description =
     "Entenda os principais termos de estoque, almoxarifado, logística e operação. Glossário prático para pequenas e médias empresas.";
-  const canonicalUrl = "https://www.purplestock.com.br/glossario";
+  const canonicalUrl = `${getSiteUrl()}/glossario`;
 
   return (
     <>

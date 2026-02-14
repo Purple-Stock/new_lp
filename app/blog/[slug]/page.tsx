@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { ArrowLeft, Clock3 } from "lucide-react"
 import { getAllPosts, getPostBySlug, slugifyTag } from "@/lib/blog"
+import { getSiteUrl } from "@/lib/site"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
@@ -27,7 +28,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
   const post = await getPostBySlug(slug)
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://purplestock.com.br"
+  const baseUrl = getSiteUrl()
 
   if (!post) {
     return { title: "Artigo não encontrado | Purple Stock" }
@@ -73,7 +74,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound()
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://purplestock.com.br"
+  const baseUrl = getSiteUrl()
   const articleUrl = `${baseUrl}/blog/${post.meta.slug}`
   const image = post.meta.coverImage ?? "/images/hero-photo-900x600.webp"
   const imageUrl = image.startsWith("http") ? image : `${baseUrl}${image}`

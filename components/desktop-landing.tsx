@@ -889,20 +889,20 @@ export function DesktopLanding() {
                 <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
                   <div className="flex items-center justify-center h-16">
                     <Image
-                      src="/images/logos/purchase-store.png"
-                      alt="Purchase Moda Feminina"
+                      src="/images/logos/vhs.jpg"
+                      alt="VHS"
                       width={180}
-                      height={50}
+                      height={60}
                       className="h-full w-auto object-contain max-w-[180px]"
                     />
                   </div>
                   <div className="flex items-center justify-center h-16">
                     <Image
-                      src="/images/logos/concrem-portas.webp"
-                      alt="Concrem Portas Premium"
-                      width={200}
-                      height={60}
-                      className="h-full w-auto object-contain max-w-[200px]"
+                      src="/images/logos/st-nicholas-school.webp"
+                      alt="St. Nicholas School"
+                      width={240}
+                      height={55}
+                      className="h-full w-auto object-contain max-w-[240px]"
                     />
                   </div>
                   <div className="flex items-center justify-center h-16">
@@ -916,11 +916,11 @@ export function DesktopLanding() {
                   </div>
                   <div className="flex items-center justify-center h-16">
                     <Image
-                      src="/images/logos/st-nicholas-school.webp"
-                      alt="St. Nicholas School"
-                      width={240}
-                      height={55}
-                      className="h-full w-auto object-contain max-w-[240px]"
+                      src="/images/logos/concrem-portas.webp"
+                      alt="Concrem Portas Premium"
+                      width={200}
+                      height={60}
+                      className="h-full w-auto object-contain max-w-[200px]"
                     />
                   </div>
                 </div>

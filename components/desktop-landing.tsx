@@ -1338,11 +1338,11 @@ export function DesktopLanding() {
                   </div>
                   <div className="flex items-center justify-center h-16">
                     <Image
-                      src="/images/logos/concrem-portas.webp"
-                      alt="Concrem Portas Premium"
-                      width={200}
+                      src="/images/logos/dps-brasil-preto.png"
+                      alt="DPS Brasil"
+                      width={180}
                       height={60}
-                      className="h-full w-auto object-contain max-w-[200px]"
+                      className="h-full w-auto object-contain max-w-[180px]"
                     />
                   </div>
                 </div>

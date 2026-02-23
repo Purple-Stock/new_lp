@@ -41,12 +41,24 @@ const nextConfig = {
         destination: "/blog/open-erp-o-que-e-e-quando-usar",
       },
       {
+        source: "/blog/open-erp-o-que-e-e-como-ele-pode-ajudar-sua-empresa",
+        destination: "/blog/open-erp-o-que-e-e-quando-usar",
+      },
+      {
         source: "/blog/sistema-de-controle-de-almoxarifado",
+        destination: "/recursos/controle-de-almoxarifado",
+      },
+      {
+        source: "/blog/sistema-de-controle-de-almoxarifado-a-solucao-para-a-eficiencia-e-reducao-de-custos-na-gestao-de-estoques",
         destination: "/recursos/controle-de-almoxarifado",
       },
       {
         source: "/blog/como-implementar-um-controle-de-faccao-eficiente-estrategias-para-otimizar-a-producao-na-confeccao",
         destination: "/features/clothing-manufacturing",
+      },
+      {
+        source: "/blog/maximizando-a-eficiencia-do-controle-de-inventario-com-tecnologia-qr-code",
+        destination: "/blog/como-usar-qr-code-controle-estoque",
       },
     ]
 

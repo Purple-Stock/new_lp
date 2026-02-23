@@ -9,8 +9,11 @@ import { Footer } from "@/components/footer"
 const POSTS_PER_PAGE = 10
 
 export const metadata: Metadata = {
-  title: "Blog | Purple Stock",
+  title: "Blog",
   description: "Artigos práticos sobre controle de estoque, rastreabilidade e eficiência operacional.",
+  alternates: {
+    canonical: "/blog",
+  },
 }
 
 function formatDate(date: string) {

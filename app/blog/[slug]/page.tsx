@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const articleUrl = `${baseUrl}/blog/${post.meta.slug}`
 
   return {
-    title: `${post.meta.title} | Purple Stock`,
+    title: post.meta.title,
     description: post.meta.excerpt,
     alternates: {
       canonical: articleUrl,

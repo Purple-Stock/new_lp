@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `Blog: ${label} | Purple Stock`,
+    title: `Blog: ${label}`,
     description: `Artigos sobre ${label} no blog da Purple Stock.`,
     alternates: {
       canonical: `${baseUrl}/blog/tag/${tag}`,

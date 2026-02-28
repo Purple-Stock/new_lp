@@ -23,7 +23,6 @@ import {
   RefreshCw,
   ArrowRight,
   Zap,
-  Calendar,
   MessageCircle,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -172,8 +171,7 @@ export function DesktopLanding() {
         uptime: "Disponibilidade",
         support: "Suporte",
         customersLove: "Empresas que aceleram com Purple Stock",
-        testimonial:
-          "“O Purple Stock revolucionou nossa gestão de estoque. Agora temos controle total do inventário.”",
+        testimonial: "“Com Purple Stock, nosso controle de estoque ficou padronizado e rastreável.”",
         testimonialCompany: "Purchase Store",
         stageTag: "Começa com",
         stageHighlight: "Purple Stock",
@@ -204,13 +202,12 @@ export function DesktopLanding() {
         uptime: "Uptime",
         support: "Support",
         customersLove: "Companies scaling with Purple Stock",
-        testimonial:
-          "“Purple Stock transformed our inventory processes. Total control, without spreadsheets.”",
+        testimonial: "“Purple Stock helped us standardize inventory routines without spreadsheets.”",
         testimonialCompany: "Purchase Store",
         stageTag: t.hero.subtitle,
         stageHighlight: t.hero.subtitleHighlight,
-        install: "Install with AI",
-        installHint: "Connect APIs and automate updates in minutes.",
+        install: "Connect integrations",
+        installHint: "Connect your data sources and keep updates in one flow.",
       },
       fr: {
         home: "Accueil",
@@ -236,13 +233,12 @@ export function DesktopLanding() {
         uptime: "Disponibilité",
         support: "Support",
         customersLove: "Entreprises qui accélèrent avec Purple Stock",
-        testimonial:
-          "« Purple Stock a révolutionné notre gestion des stocks. Contrôle total, sans feuilles de calcul. »",
+        testimonial: "« Purple Stock a aidé notre equipe a standardiser la gestion de stock sans tableurs. »",
         testimonialCompany: "Purchase Store",
         stageTag: "Commence avec",
         stageHighlight: "Purple Stock",
-        install: "Installer avec IA",
-        installHint: "Connectez vos données via API et automatisez en quelques minutes.",
+        install: "Connecter les integrations",
+        installHint: "Connectez vos sources de donnees et centralisez les mises a jour.",
       },
     }[language]
   }, [language, t.hero.subtitle, t.hero.subtitleHighlight])
@@ -671,9 +667,9 @@ export function DesktopLanding() {
     () =>
       ({
         pt: {
-          uvpBadge: "Para equipes que precisam operar com estoque confiável",
+          uvpBadge: "Para PMEs que não podem perder venda por estoque impreciso",
           uvpText:
-            "Purple Stock é um sistema de controle de estoque e gestão de almoxarifado para empresas em crescimento que precisam registrar entradas, saídas e transferências sem retrabalho.",
+            "Purple Stock organiza entrada, saída, transferência, ajuste e inventário em um único fluxo rastreável. Times em operação conseguem sair da planilha e padronizar rotina em poucos dias.",
           howItWorksTitle: "Como funciona o sistema de controle de estoque na prática",
           howItWorksSubtitle: "Do cadastro ao relatório, em um fluxo único e rastreável.",
           steps: [
@@ -694,20 +690,28 @@ export function DesktopLanding() {
               body: "Acompanhe perdas, reposição e desempenho para agir rápido sem consolidação manual.",
             },
           ],
-          proofTitle: "Resultados para controle de estoque e gestão de almoxarifado",
+          proofTitle: "Provas de operação para controle de estoque e almoxarifado",
           proofItems: [
             {
-              metric: "5 tipos de movimentação",
-              detail: "Cobertura completa para rotina real de estoque.",
+              metric: "Setup guiado e onboarding assistido",
+              detail: "Time e localizações prontos para começar sem projeto complexo.",
             },
             {
-              metric: "Controle por time",
-              detail: "Dados segregados por operação com permissão por usuário.",
+              metric: "5 tipos de movimentação no mesmo fluxo",
+              detail: "Entrada, saída, transferência, ajuste e contagem com histórico único.",
             },
             {
-              metric: "Operação no celular com QR Code",
-              detail: "Menos erro manual na conferência e no inventário.",
+              metric: "Operação móvel com QR Code",
+              detail: "Conferência e inventário direto no celular com menos retrabalho.",
             },
+          ],
+          compareTitle: "Purple Stock vs ERP tradicional",
+          compareSubtitle: "Quando o foco é operação de estoque rápida, o modelo de implantação faz diferença.",
+          compareRows: [
+            { label: "Implantação", purple: "Setup leve e progressivo", erp: "Projeto mais extenso em média" },
+            { label: "Curva de uso para operação", purple: "Fluxo direto para almoxarifado", erp: "Treinamento mais extenso em média" },
+            { label: "Operação no celular + QR", purple: "Nativo no fluxo diário", erp: "Geralmente depende de módulo extra" },
+            { label: "Foco inicial", purple: "Controle de estoque e rastreabilidade", erp: "Suite ampla com escopo maior" },
           ],
           objectionsTitle: "Perguntas frequentes: dúvidas antes de contratar",
           objections: [
@@ -727,12 +731,16 @@ export function DesktopLanding() {
               q: "E se a gente quiser sair no futuro?",
               a: "Você mantém controle dos dados operacionais e pode exportar informações para continuidade interna.",
             },
+            {
+              q: "Precisa cartão de crédito para testar?",
+              a: "Não. Você pode iniciar o teste grátis sem cartão e cancelar quando quiser.",
+            },
           ],
         },
         en: {
-          uvpBadge: "For teams that need reliable inventory operations",
+          uvpBadge: "For SMB teams that cannot lose sales due to stock mistakes",
           uvpText:
-            "Purple Stock is an inventory control system for growing companies that need inbound, outbound, and transfer flows without spreadsheet chaos.",
+            "Purple Stock keeps inbound, outbound, transfer, adjustment, and count workflows in one traceable system. Teams can leave spreadsheets and standardize operations in days.",
           howItWorksTitle: "How the inventory control system works in practice",
           howItWorksSubtitle: "From setup to reporting in one traceable flow.",
           steps: [
@@ -753,20 +761,28 @@ export function DesktopLanding() {
               body: "Track losses, replenishment, and team performance without manual consolidation.",
             },
           ],
-          proofTitle: "Proof for operations and management",
+          proofTitle: "Operational proof for inventory teams",
           proofItems: [
             {
-              metric: "5 movement types",
-              detail: "Complete coverage for real inventory routines.",
+              metric: "Guided setup with assisted onboarding",
+              detail: "Team and locations ready without a complex rollout project.",
             },
             {
-              metric: "Team-based control",
-              detail: "Separated operation data with user-level permissions.",
+              metric: "5 movement types in one workflow",
+              detail: "Inbound, outbound, transfer, adjustment, and count in one history.",
             },
             {
               metric: "Mobile QR code workflow",
-              detail: "Fewer manual errors during checks and counting.",
+              detail: "Run checks and inventory on mobile with less rework.",
             },
+          ],
+          compareTitle: "Purple Stock vs traditional ERP",
+          compareSubtitle: "For fast inventory operations, implementation model matters.",
+          compareRows: [
+            { label: "Implementation", purple: "Light, progressive setup", erp: "Usually a longer rollout project" },
+            { label: "Operational learning curve", purple: "Direct warehouse workflows", erp: "Usually longer training period" },
+            { label: "Mobile + QR daily usage", purple: "Native in core flow", erp: "Often depends on add-on modules" },
+            { label: "Initial focus", purple: "Inventory control and traceability", erp: "Broader suite with larger scope" },
           ],
           objectionsTitle: "Questions teams ask before buying",
           objections: [
@@ -786,12 +802,16 @@ export function DesktopLanding() {
               q: "What if we decide to leave in the future?",
               a: "You keep control of your operational data and can export information for continuity.",
             },
+            {
+              q: "Do we need a credit card to start?",
+              a: "No. You can start the free trial without a card and cancel anytime.",
+            },
           ],
         },
         fr: {
-          uvpBadge: "Pour les equipes qui ont besoin d'un stock fiable",
+          uvpBadge: "Pour les PME qui ne peuvent pas perdre des ventes a cause du stock",
           uvpText:
-            "Purple Stock est un systeme de gestion de stock pour les entreprises en croissance qui doivent gerer entrees, sorties et transferts sans tableurs disperses.",
+            "Purple Stock regroupe entrees, sorties, transferts, ajustements et inventaires dans un flux tracable. Les equipes quittent les tableurs et standardisent l'operation en quelques jours.",
           howItWorksTitle: "Comment fonctionne le systeme de gestion de stock",
           howItWorksSubtitle: "Du parametrage au rapport dans un flux unique et tracable.",
           steps: [
@@ -812,20 +832,28 @@ export function DesktopLanding() {
               body: "Suivez pertes, reassort et performance sans consolidation manuelle.",
             },
           ],
-          proofTitle: "Preuves pour l'operation et la gestion",
+          proofTitle: "Preuves operationnelles pour les equipes stock",
           proofItems: [
             {
-              metric: "5 types de mouvements",
-              detail: "Couverture complete pour la routine reelle de stock.",
+              metric: "Mise en route guidee avec onboarding assiste",
+              detail: "Equipe et emplacements prets sans projet complexe.",
             },
             {
-              metric: "Controle par equipe",
-              detail: "Donnees segmentees avec permissions par utilisateur.",
+              metric: "5 types de mouvements dans un seul flux",
+              detail: "Entree, sortie, transfert, ajustement et comptage dans le meme historique.",
             },
             {
               metric: "Flux mobile avec QR code",
-              detail: "Moins d'erreurs manuelles sur inventaire et verification.",
+              detail: "Verification et inventaire sur mobile avec moins de reprises.",
             },
+          ],
+          compareTitle: "Purple Stock vs ERP traditionnel",
+          compareSubtitle: "Pour une operation stock rapide, le modele de deploiement compte.",
+          compareRows: [
+            { label: "Deploiement", purple: "Setup leger et progressif", erp: "Projet de deploiement plus long en moyenne" },
+            { label: "Courbe d'apprentissage", purple: "Flux direct pour magasin", erp: "Formation plus longue en moyenne" },
+            { label: "Mobile + QR au quotidien", purple: "Natif dans le flux principal", erp: "Souvent via module additionnel" },
+            { label: "Focus initial", purple: "Controle stock et tracabilite", erp: "Suite large avec scope plus vaste" },
           ],
           objectionsTitle: "Questions avant de choisir la plateforme",
           objections: [
@@ -844,6 +872,10 @@ export function DesktopLanding() {
             {
               q: "Et si nous souhaitons sortir plus tard?",
               a: "Vous conservez vos donnees operationnelles et pouvez exporter les informations.",
+            },
+            {
+              q: "Faut-il une carte bancaire pour commencer?",
+              a: "Non. Vous pouvez demarrer l'essai gratuit sans carte et annuler a tout moment.",
             },
           ],
         },
@@ -1025,7 +1057,7 @@ export function DesktopLanding() {
                   <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_4px_rgba(16,185,129,0.5)]" />
                   <span className="text-[10px] text-emerald-600 font-medium">{language === "pt" ? "Online" : language === "fr" ? "En ligne" : "Online"}</span>
                 </div>
-                <span className="text-[11px] text-slate-400 font-medium hidden md:block">{language === "pt" ? "Workspace de Crescimento" : language === "fr" ? "Espace de Croissance" : "Growth Workspace"}</span>
+                <span className="text-[11px] text-slate-400 font-medium hidden md:block">{language === "pt" ? "Workspace de Operacao" : language === "fr" ? "Espace des Operations" : "Operations Workspace"}</span>
               </div>
             </div>
 
@@ -1099,7 +1131,7 @@ export function DesktopLanding() {
                   {language === "pt" 
                     ? (
                       <>
-                        {"Sistema de Controle de Estoque para "}
+                        {"Pare de perder venda por estoque errado em "}
                         <span
                           key={`sector-${language}-${sectorIndex}`}
                           className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
@@ -1111,7 +1143,7 @@ export function DesktopLanding() {
                     : language === "en" 
                       ? (
                         <>
-                          {"Inventory Control System for "}
+                          {"Stop losing sales from wrong stock in "}
                           <span
                             key={`sector-${language}-${sectorIndex}`}
                             className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
@@ -1122,7 +1154,7 @@ export function DesktopLanding() {
                       )
                       : (
                         <>
-                          {"Système de Gestion de Stock pour "}
+                          {"Arretez de perdre des ventes a cause du stock en "}
                           <span
                             key={`sector-${language}-${sectorIndex}`}
                             className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
@@ -1134,14 +1166,35 @@ export function DesktopLanding() {
                 </h1>
                 <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                   {language === "pt"
-                    ? "Gerencie times, itens, localizações e inventário com QR Code em uma única plataforma, com rastreabilidade e atualização em tempo real."
+                    ? "Implante um fluxo de estoque confiável com QR Code, histórico auditável e operação no celular em poucos dias."
                     : language === "en"
-                      ? "Manage teams, items, locations, and QR code inventory in one platform with traceability and real-time updates."
-                      : "Gerez equipes, articles, emplacements et inventaire QR code sur une seule plateforme, avec tracabilite et mise a jour en temps reel."}
+                      ? "Deploy a reliable inventory workflow with QR code, auditable history, and mobile execution in days."
+                      : "Deployez un flux stock fiable avec QR code, historique auditable et operation mobile en quelques jours."}
                 </p>
                 <div className="mx-auto max-w-3xl rounded-2xl border border-blue-100 bg-blue-50/80 px-5 py-4 text-left">
                   <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">{playbookContent.uvpBadge}</p>
                   <p className="mt-2 text-sm text-slate-700 sm:text-base">{playbookContent.uvpText}</p>
+                </div>
+                <div className="mx-auto grid w-full max-w-3xl gap-3 text-left sm:grid-cols-3">
+                  {[
+                    {
+                      title: language === "pt" ? "Setup guiado" : language === "en" ? "Guided setup" : "Mise en route guidee",
+                      value: language === "pt" ? "Onboarding assistido" : language === "en" ? "Assisted onboarding" : "Onboarding assiste",
+                    },
+                    {
+                      title: language === "pt" ? "Fluxo operacional" : language === "en" ? "Operations flow" : "Flux operationnel",
+                      value: language === "pt" ? "5 movimentos" : language === "en" ? "5 movements" : "5 mouvements",
+                    },
+                    {
+                      title: language === "pt" ? "Execucao diaria" : language === "en" ? "Daily execution" : "Execution quotidienne",
+                      value: language === "pt" ? "Mobile + QR" : language === "en" ? "Mobile + QR" : "Mobile + QR",
+                    },
+                  ].map((proof) => (
+                    <div key={proof.title} className="rounded-xl border border-slate-200 bg-white px-4 py-3">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{proof.title}</p>
+                      <p className="mt-1 text-base font-bold text-slate-900">{proof.value}</p>
+                    </div>
+                  ))}
                 </div>
                 <div className="mx-auto w-full max-w-2xl rounded-2xl border border-purple-200 bg-gradient-to-r from-purple-50 via-white to-purple-50 px-5 py-4 shadow-sm">
                   <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:text-left">
@@ -1164,10 +1217,17 @@ export function DesktopLanding() {
                   </div>
                   <p className="mt-2 text-sm font-medium text-slate-700">
                     {language === "pt"
-                      ? "Valor exclusivo para os primeiros clientes."
+                      ? "Valor promocional de lançamento para novos clientes."
                       : language === "en"
-                        ? "Exclusive pricing for the first customers."
-                        : "Tarif exclusif pour les premiers clients."}
+                        ? "Launch promotional pricing for new customers."
+                        : "Tarif promotionnel de lancement pour les nouveaux clients."}
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {language === "pt"
+                      ? "Sem cartão no teste, cancele quando quiser."
+                      : language === "en"
+                        ? "No card required for trial, cancel anytime."
+                        : "Pas de carte pour l'essai, annulez a tout moment."}
                   </p>
                   <div className="mt-3">
                     <Button
@@ -1179,17 +1239,17 @@ export function DesktopLanding() {
                         href="https://app.purplestock.com.br/"
                         onClick={() =>
                           trackCtaClick({
-                            cta_name: "desktop_launch_offer",
-                            cta_target: "app",
-                            page_section: "hero_offer",
-                          })
-                        }
-                      >
-                        {language === "pt"
-                          ? "Quero garantir R$29,90"
-                          : language === "en"
-                            ? "I want to secure R$29.90"
-                            : "Je veux garantir R$29,90"}
+                          cta_name: "desktop_launch_offer",
+                          cta_target: "app",
+                          page_section: "hero_offer",
+                        })
+                      }
+                    >
+                      {language === "pt"
+                        ? "Assinar por R$29,90"
+                        : language === "en"
+                          ? "Subscribe for R$29.90"
+                          : "Souscrire pour R$29,90"}
                       </Link>
                     </Button>
                   </div>
@@ -1201,9 +1261,9 @@ export function DesktopLanding() {
                     asChild
                     size="lg"
                     className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
-                  >
-                    <Link
-                      href="https://app.purplestock.com.br/"
+                    >
+                      <Link
+                        href="https://app.purplestock.com.br/"
                       onClick={() =>
                         trackCtaClick({
                           cta_name: "desktop_trial_primary",
@@ -1212,32 +1272,33 @@ export function DesktopLanding() {
                         })
                       }
                     >
-                      {language === "pt" ? "Teste por 7 dias" : language === "en" ? "Test for 7 days" : "Testez pendant 7 jours"}
+                      {language === "pt" ? "Começar teste gratis de 7 dias" : language === "en" ? "Start 7-day free trial" : "Commencer l'essai gratuit de 7 jours"}
                     </Link>
                   </Button>
                   <Button
-                    asChild
                     variant="outline"
                     size="lg"
                     className="border-2 border-purple-600 text-purple-700 hover:bg-purple-50 px-8 py-6 text-base font-semibold transition-all duration-300 rounded-lg bg-white"
+                    onClick={() => {
+                      setIsVideoModalOpen(true)
+                      trackCtaClick({
+                        cta_name: "desktop_view_demo_primary",
+                        cta_target: "video_modal",
+                        page_section: "hero_cta",
+                      })
+                    }}
                   >
-                    <Link
-                      href="https://calendly.com/matheus-puppe"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() =>
-                        trackCtaClick({
-                          cta_name: "desktop_schedule_demo",
-                          cta_target: "calendly",
-                          page_section: "hero_cta",
-                        })
-                      }
-                    >
-                      <Calendar className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                      {language === "pt" ? "Solicitar demonstração" : language === "en" ? "Get a demo" : "Obtenir une démo"}
-                    </Link>
+                    <PlayCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                    {language === "pt" ? "Ver demonstracao" : language === "en" ? "Watch demo" : "Voir la demonstration"}
                   </Button>
                 </div>
+                <p className="text-sm text-slate-500">
+                  {language === "pt"
+                    ? "Sem cartao de credito no teste • Cancele quando quiser • Setup guiado"
+                    : language === "en"
+                      ? "No credit card for trial • Cancel anytime • Guided setup"
+                      : "Sans carte bancaire • Annulation a tout moment • Setup guide"}
+                </p>
               </div>
 
               {/* Main Content Area - App Screenshot */}
@@ -1273,7 +1334,7 @@ export function DesktopLanding() {
                           className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                         >
                           <PlayCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                          {language === "pt" ? "Ver Demonstração" : language === "en" ? "View Demo" : "Voir la Démo"}
+                          {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch demo" : "Voir la demonstration"}
                         </Button>
                       </DialogTrigger>
                     </div>
@@ -1301,10 +1362,10 @@ export function DesktopLanding() {
                 <div className="text-center mb-8">
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
                     {language === "pt" 
-                      ? "Confiado por empresas em crescimento"
+                      ? "Empresas que usam Purple Stock na operacao"
                       : language === "en"
-                      ? "Trusted by growing businesses"
-                      : "Fiable par les entreprises en croissance"}
+                      ? "Teams running operations with Purple Stock"
+                      : "Equipes qui operent avec Purple Stock"}
                   </h2>
                 </div>
                 
@@ -1352,7 +1413,7 @@ export function DesktopLanding() {
               <div className="flex justify-center mb-6 pt-8">
                 <button className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
                   <Sparkles className="w-4 h-4 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                  {language === "pt" ? "Perguntas Frequentes" : language === "en" ? "Frequently Asked Questions" : "Questions Fréquentes"}
+                  {language === "pt" ? "Dúvidas comuns antes de contratar" : language === "en" ? "Frequently Asked Questions" : "Questions Fréquentes"}
                 </button>
               </div>
 
@@ -1421,7 +1482,7 @@ export function DesktopLanding() {
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
-                      ? "Controle Total" 
+                      ? "Visao de estoque" 
                       : language === "en" 
                         ? "Total Control" 
                         : "Contrôle Total"}
@@ -1444,10 +1505,10 @@ export function DesktopLanding() {
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
-                      ? "Automação Inteligente" 
+                      ? "Fluxo operacional padronizado" 
                       : language === "en" 
-                        ? "Intelligent Automation" 
-                        : "Automatisation Intelligente"}
+                        ? "Standardized operations flow" 
+                        : "Flux operationnel standardise"}
                   </h3>
                   <p className="text-slate-600">
                     {language === "pt"
@@ -1467,10 +1528,10 @@ export function DesktopLanding() {
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
-                      ? "Relatórios Avançados" 
+                      ? "Relatorios por time" 
                       : language === "en" 
-                        ? "Advanced Reports" 
-                        : "Rapports Avancés"}
+                        ? "Reports by team" 
+                        : "Rapports par equipe"}
                   </h3>
                   <p className="text-slate-600">
                     {language === "pt"
@@ -1528,14 +1589,14 @@ export function DesktopLanding() {
               <section className="mb-12 rounded-3xl border border-indigo-100 bg-indigo-50/40 p-6 sm:p-8">
                 <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
                   {language === "pt"
-                    ? "Sistema de estoque para pequenas e médias empresas"
+                    ? "Software de estoque para pequenas e medias empresas"
                     : language === "en"
                       ? "Inventory system for small and mid-sized businesses"
                       : "Systeme de stock pour petites et moyennes entreprises"}
                 </h2>
                 <p className="mt-3 text-slate-600">
                   {language === "pt"
-                    ? "Se você busca software para controle de estoque, gestão de almoxarifado e inventário com QR Code, o Purple Stock centraliza operação e decisão em um único fluxo."
+                    ? "Se voce precisa controlar estoque, almoxarifado e inventario com QR Code, o Purple Stock organiza a operacao em um fluxo unico."
                     : language === "en"
                       ? "If you need inventory software for warehouse control and QR code inventory, Purple Stock centralizes operations and decision-making in one flow."
                       : "Si vous cherchez un logiciel de gestion de stock, d'entrepot et d'inventaire QR code, Purple Stock centralise operation et pilotage dans un seul flux."}
@@ -1559,6 +1620,35 @@ export function DesktopLanding() {
                       <p className="mt-2 text-sm text-slate-600">{item.detail}</p>
                     </div>
                   ))}
+                </div>
+              </section>
+
+              <section className="mb-12 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">{playbookContent.compareTitle}</h2>
+                <p className="mt-2 text-slate-600">{playbookContent.compareSubtitle}</p>
+                <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200">
+                  <table className="min-w-full bg-white text-left text-sm">
+                    <thead className="bg-slate-50">
+                      <tr>
+                        <th className="px-4 py-3 font-semibold text-slate-600">
+                          {language === "pt" ? "Criterio" : language === "en" ? "Criteria" : "Critere"}
+                        </th>
+                        <th className="px-4 py-3 font-semibold text-purple-700">Purple Stock</th>
+                        <th className="px-4 py-3 font-semibold text-slate-600">
+                          {language === "pt" ? "ERP tradicional" : language === "en" ? "Traditional ERP" : "ERP traditionnel"}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {playbookContent.compareRows.map((row) => (
+                        <tr key={row.label} className="border-t border-slate-100">
+                          <td className="px-4 py-3 font-medium text-slate-900">{row.label}</td>
+                          <td className="px-4 py-3 text-slate-700">{row.purple}</td>
+                          <td className="px-4 py-3 text-slate-600">{row.erp}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </section>
 
@@ -1592,23 +1682,30 @@ export function DesktopLanding() {
                     }
                   >
                     <Sparkles className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                    {language === "pt" ? "Teste por 7 dias" : language === "en" ? "Test for 7 days" : "Testez pendant 7 jours"}
+                    {language === "pt" ? "Começar teste gratis de 7 dias" : language === "en" ? "Start 7-day free trial" : "Commencer l'essai gratuit de 7 jours"}
                     <ArrowRight className="w-5 h-5 ml-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                   </Link>
                 </Button>
                 <Button
+                  asChild
                   size="lg"
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
-                  onClick={() =>
-                    trackCtaClick({
-                      cta_name: "desktop_view_demo_modal",
-                      cta_target: "video_modal",
-                      page_section: "secondary_cta",
-                    })
-                  }
                 >
-                  <PlayCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                  {language === "pt" ? "Ver Demonstração" : language === "en" ? "View Demo" : "Voir la Démo"}
+                  <Link
+                    href="https://calendly.com/matheus-puppe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      trackCtaClick({
+                        cta_name: "desktop_talk_specialist_secondary",
+                        cta_target: "calendly",
+                        page_section: "secondary_cta",
+                      })
+                    }
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                    {language === "pt" ? "Falar com especialista" : language === "en" ? "Talk to a specialist" : "Parler a un specialiste"}
+                  </Link>
                 </Button>
               </div>
             </div>

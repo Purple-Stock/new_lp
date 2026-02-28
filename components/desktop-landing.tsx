@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type MouseEvent as ReactMouseEvent } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import {
   AppWindow,
   BadgePercent,
@@ -52,6 +53,7 @@ const WINDOW_LAYOUT: Record<WindowKey, { top: string; left: string; width: strin
 
 export function DesktopLanding() {
   const { language, setLanguage } = useLanguage()
+  const searchParams = useSearchParams()
   const t = translations[language]
   const [activeStage, setActiveStage] = useState<StageKey>("growth")
   const [openWindows, setOpenWindows] = useState<WindowKey[]>([])
@@ -894,6 +896,128 @@ export function DesktopLanding() {
     [language],
   )
 
+  const ctaMode = searchParams.get("cta")
+  const usePainCta = ctaMode === "pain"
+
+  const primaryHeroCta = useMemo(() => {
+    if (language === "pt") {
+      return usePainCta ? "Quero parar de perder vendas agora" : "Começar teste gratis de 7 dias"
+    }
+    if (language === "fr") {
+      return usePainCta ? "Je veux arreter de perdre des ventes maintenant" : "Commencer l'essai gratuit de 7 jours"
+    }
+    return usePainCta ? "I want to stop losing sales now" : "Start 7-day free trial"
+  }, [language, usePainCta])
+
+  const logoCases = useMemo(
+    () =>
+      ({
+        pt: [
+          {
+            name: "VHS",
+            logo: "/images/logos/vhs.jpg",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "Padronizou entrada, saida e transferencia com rastreabilidade por item.",
+          },
+          {
+            name: "St. Nicholas School",
+            logo: "/images/logos/st-nicholas-school.webp",
+            width: 240,
+            height: 55,
+            maxWidth: "max-w-[240px]",
+            result: "Organizou estoque por localizacao e melhorou conferencias recorrentes.",
+          },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result: "Centralizou operacao de estoque sem depender de planilhas paralelas.",
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "Deu visibilidade de saldo e movimentacoes para a equipe operacional.",
+          },
+        ],
+        en: [
+          {
+            name: "VHS",
+            logo: "/images/logos/vhs.jpg",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "Standardized inbound, outbound, and transfer workflows with item traceability.",
+          },
+          {
+            name: "St. Nicholas School",
+            logo: "/images/logos/st-nicholas-school.webp",
+            width: 240,
+            height: 55,
+            maxWidth: "max-w-[240px]",
+            result: "Organized stock by location and improved recurring inventory checks.",
+          },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result: "Centralized stock operations without parallel spreadsheets.",
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "Improved stock and movement visibility for daily operations.",
+          },
+        ],
+        fr: [
+          {
+            name: "VHS",
+            logo: "/images/logos/vhs.jpg",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "A standardise entree, sortie et transfert avec tracabilite par article.",
+          },
+          {
+            name: "St. Nicholas School",
+            logo: "/images/logos/st-nicholas-school.webp",
+            width: 240,
+            height: 55,
+            maxWidth: "max-w-[240px]",
+            result: "A organise le stock par emplacement et facilite les controles recurrents.",
+          },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result: "A centralise l'operation stock sans tableurs paralleles.",
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "A apporte plus de visibilite sur soldes et mouvements quotidiens.",
+          },
+        ],
+      })[language],
+    [language],
+  )
+
   // Dynamic questions array
   const questions = useMemo(() => {
     return {
@@ -1210,6 +1334,13 @@ export function DesktopLanding() {
                       </span>
                     </div>
                   </div>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-purple-700">
+                    {language === "pt"
+                      ? "Lote de lançamento com revisão semanal de preço"
+                      : language === "en"
+                        ? "Launch lot with weekly price review"
+                        : "Lot de lancement avec revision hebdomadaire du prix"}
+                  </p>
                   <p className="mt-2 text-sm font-medium text-slate-700">
                     {language === "pt"
                       ? "Pensado para uma operação começar pequena e testar na prática antes de qualquer projeto grande."
@@ -1264,10 +1395,11 @@ export function DesktopLanding() {
                           cta_name: "desktop_trial_primary",
                           cta_target: "app",
                           page_section: "hero_cta",
+                          cta_variant: usePainCta ? "pain" : "default",
                         })
                       }
                     >
-                      {language === "pt" ? "Começar teste gratis de 7 dias" : language === "en" ? "Start 7-day free trial" : "Commencer l'essai gratuit de 7 jours"}
+                      {primaryHeroCta}
                     </Link>
                   </Button>
                 </div>
@@ -1366,43 +1498,29 @@ export function DesktopLanding() {
                   </h2>
                 </div>
                 
-                <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/vhs.jpg"
-                      alt="VHS"
-                      width={180}
-                      height={60}
-                      className="h-full w-auto object-contain max-w-[180px]"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/st-nicholas-school.webp"
-                      alt="St. Nicholas School"
-                      width={240}
-                      height={55}
-                      className="h-full w-auto object-contain max-w-[240px]"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/da-rua.png"
-                      alt="Da Rua"
-                      width={120}
-                      height={40}
-                      className="h-full w-auto object-contain max-w-[120px]"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/dps-brasil-preto.png"
-                      alt="DPS Brasil"
-                      width={180}
-                      height={60}
-                      className="h-full w-auto object-contain max-w-[180px]"
-                    />
-                  </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {logoCases.map((logoCase) => (
+                    <div
+                      key={logoCase.name}
+                      className="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-200 hover:border-purple-200 hover:shadow-md"
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center justify-center h-14">
+                          <Image
+                            src={logoCase.logo}
+                            alt={logoCase.name}
+                            width={logoCase.width}
+                            height={logoCase.height}
+                            className={`h-full w-auto object-contain ${logoCase.maxWidth}`}
+                          />
+                        </div>
+                        <span className="rounded-full bg-purple-50 px-2 py-1 text-[11px] font-semibold text-purple-700">
+                          {language === "pt" ? "Caso rápido" : language === "en" ? "Quick case" : "Cas rapide"}
+                        </span>
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{logoCase.result}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -1472,10 +1590,13 @@ export function DesktopLanding() {
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {/* Card 1 - Controle Total */}
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
-                  <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                      <CheckCircle2 className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-purple-200 bg-purple-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-purple-600/90 p-1.5 shadow-sm">
+                      <CheckCircle2 className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">
+                      {language === "pt" ? "Operacao" : language === "en" ? "Operations" : "Operation"}
+                    </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
@@ -1495,10 +1616,13 @@ export function DesktopLanding() {
 
                 {/* Card 2 - Automação Inteligente */}
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-blue-100">
-                  <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                      <Zap className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-blue-600/90 p-1.5 shadow-sm">
+                      <Zap className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-blue-700">
+                      {language === "pt" ? "Padrao" : language === "en" ? "Standard" : "Standard"}
+                    </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
@@ -1518,10 +1642,13 @@ export function DesktopLanding() {
 
                 {/* Card 3 - Relatórios Avançados */}
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-emerald-100">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
-                      <BarChart3 className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-emerald-600/90 p-1.5 shadow-sm">
+                      <BarChart3 className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
+                      {language === "pt" ? "Gestao" : language === "en" ? "Management" : "Gestion"}
+                    </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 

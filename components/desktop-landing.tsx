@@ -733,7 +733,7 @@ export function DesktopLanding() {
             },
             {
               q: "Precisa cartão de crédito para testar?",
-              a: "Não. Você pode iniciar o teste grátis sem cartão e cancelar quando quiser.",
+              a: "Sim. O teste utiliza cartão de crédito e você pode cancelar quando quiser dentro do período de avaliação.",
             },
           ],
         },
@@ -804,7 +804,7 @@ export function DesktopLanding() {
             },
             {
               q: "Do we need a credit card to start?",
-              a: "No. You can start the free trial without a card and cancel anytime.",
+              a: "Yes. The trial requires a credit card, and you can cancel anytime during the trial period.",
             },
           ],
         },
@@ -875,7 +875,7 @@ export function DesktopLanding() {
             },
             {
               q: "Faut-il une carte bancaire pour commencer?",
-              a: "Non. Vous pouvez demarrer l'essai gratuit sans carte et annuler a tout moment.",
+              a: "Oui. L'essai demande une carte bancaire et vous pouvez annuler a tout moment pendant la periode d'essai.",
             },
           ],
         },
@@ -1224,10 +1224,10 @@ export function DesktopLanding() {
                   </p>
                   <p className="mt-1 text-xs text-slate-500">
                     {language === "pt"
-                      ? "Sem cartão no teste, cancele quando quiser."
+                      ? "Teste com cartao de credito e cancelamento a qualquer momento."
                       : language === "en"
-                        ? "No card required for trial, cancel anytime."
-                        : "Pas de carte pour l'essai, annulez a tout moment."}
+                        ? "Trial with credit card and cancel anytime."
+                        : "Essai avec carte bancaire et annulation a tout moment."}
                   </p>
                   <div className="mt-3">
                     <Button
@@ -1294,10 +1294,10 @@ export function DesktopLanding() {
                 </div>
                 <p className="text-sm text-slate-500">
                   {language === "pt"
-                    ? "Sem cartao de credito no teste • Cancele quando quiser • Setup guiado"
+                    ? "Teste com cartao de credito • Cancele quando quiser • Setup guiado"
                     : language === "en"
-                      ? "No credit card for trial • Cancel anytime • Guided setup"
-                      : "Sans carte bancaire • Annulation a tout moment • Setup guide"}
+                      ? "Trial with credit card • Cancel anytime • Guided setup"
+                      : "Essai avec carte bancaire • Annulation a tout moment • Setup guide"}
                 </p>
               </div>
 

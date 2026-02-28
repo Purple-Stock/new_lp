@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type MouseEvent as ReactMouseEvent } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import {
   AppWindow,
   BadgePercent,
@@ -17,6 +18,7 @@ import {
   Sparkles,
   UsersRound,
   ScanLine,
+  Smartphone,
   BarChart3,
   MapPin,
   Box,
@@ -52,6 +54,7 @@ const WINDOW_LAYOUT: Record<WindowKey, { top: string; left: string; width: strin
 
 export function DesktopLanding() {
   const { language, setLanguage } = useLanguage()
+  const searchParams = useSearchParams()
   const t = translations[language]
   const [activeStage, setActiveStage] = useState<StageKey>("growth")
   const [openWindows, setOpenWindows] = useState<WindowKey[]>([])
@@ -667,9 +670,10 @@ export function DesktopLanding() {
     () =>
       ({
         pt: {
-          uvpBadge: "Para PMEs que não podem perder venda por estoque impreciso",
+          uvpBadge:
+            "Para empresas que já cansaram de perder venda por falta de produto, erro de contagem ou estoque sumido no almoxarifado.",
           uvpText:
-            "Purple Stock organiza entrada, saída, transferência, ajuste e inventário em um único fluxo rastreável. Times em operação conseguem sair da planilha e padronizar rotina em poucos dias.",
+            "Purple Stock organiza entrada, saída, transferência, ajuste e inventário em um único fluxo rastreável, para qualquer pessoa do time saber o que tem, onde está e quem mexeu, sem virar um projeto gigante de sistema.",
           howItWorksTitle: "Como funciona o sistema de controle de estoque na prática",
           howItWorksSubtitle: "Do cadastro ao relatório, em um fluxo único e rastreável.",
           steps: [
@@ -720,20 +724,20 @@ export function DesktopLanding() {
               a: "Sim. Você pode iniciar com o cadastro essencial e evoluir por etapas, sem parar a operação.",
             },
             {
-              q: "Como evitamos mistura de dados entre equipes?",
-              a: "O sistema opera por times com contexto ativo e permissões, mantendo cada operação isolada.",
+              q: "Meus dados ficam seguros e separados por equipe?",
+              a: "Sim. O sistema opera por times com contexto ativo e permissões por usuário, mantendo cada operação isolada.",
             },
             {
-              q: "O time de almoxarifado consegue usar no dia a dia?",
+              q: "Funciona no celular no dia a dia da operação?",
               a: "Sim. Os fluxos de entrada, saída, transferência e contagem são diretos e podem ser feitos no celular.",
             },
             {
-              q: "E se a gente quiser sair no futuro?",
-              a: "Você mantém controle dos dados operacionais e pode exportar informações para continuidade interna.",
+              q: "Posso testar sem ficar preso?",
+              a: "Sim. O teste utiliza cartão de crédito e você pode cancelar quando quiser dentro do período de avaliação.",
             },
             {
-              q: "Precisa cartão de crédito para testar?",
-              a: "Não. Você pode iniciar o teste grátis sem cartão e cancelar quando quiser.",
+              q: "Quanto custa para começar?",
+              a: "O plano de entrada começa em R$29,90/mês na oferta atual, com revisão de preço conforme evolução da operação.",
             },
           ],
         },
@@ -791,20 +795,20 @@ export function DesktopLanding() {
               a: "Yes. You can begin with core setup and expand in phases without stopping operations.",
             },
             {
-              q: "How do we avoid data overlap between teams?",
-              a: "The system runs with active team context and permissions, keeping operations separated.",
+              q: "Are data secure and separated by team?",
+              a: "Yes. The system runs with active team context and user permissions, keeping operations separated.",
             },
             {
-              q: "Can warehouse staff use it daily?",
+              q: "Does it work on mobile for daily operations?",
               a: "Yes. Inbound, outbound, transfer, and counting flows are direct and mobile-friendly.",
             },
             {
-              q: "What if we decide to leave in the future?",
-              a: "You keep control of your operational data and can export information for continuity.",
+              q: "Can we test without long-term lock-in?",
+              a: "Yes. The trial requires a credit card, and you can cancel anytime during the trial period.",
             },
             {
-              q: "Do we need a credit card to start?",
-              a: "No. You can start the free trial without a card and cancel anytime.",
+              q: "What is the starting cost?",
+              a: "Entry pricing currently starts at R$29.90/month, with review as operations grow.",
             },
           ],
         },
@@ -862,20 +866,20 @@ export function DesktopLanding() {
               a: "Oui. Vous pouvez debuter avec le socle et evoluer par etapes sans arreter l'operation.",
             },
             {
-              q: "Comment eviter le melange des donnees entre equipes?",
-              a: "Le systeme fonctionne par equipes avec contexte actif et permissions dediees.",
+              q: "Les donnees sont-elles securisees et separees par equipe?",
+              a: "Oui. Le systeme fonctionne par equipes avec contexte actif et permissions par utilisateur.",
             },
             {
-              q: "Le personnel magasin peut l'utiliser au quotidien?",
+              q: "Est-ce utilisable sur mobile au quotidien?",
               a: "Oui. Les flux entree, sortie, transfert et comptage sont simples et mobiles.",
             },
             {
-              q: "Et si nous souhaitons sortir plus tard?",
-              a: "Vous conservez vos donnees operationnelles et pouvez exporter les informations.",
+              q: "Peut-on tester sans engagement long?",
+              a: "Oui. L'essai demande une carte bancaire et vous pouvez annuler a tout moment pendant la periode d'essai.",
             },
             {
-              q: "Faut-il une carte bancaire pour commencer?",
-              a: "Non. Vous pouvez demarrer l'essai gratuit sans carte et annuler a tout moment.",
+              q: "Quel est le cout de depart?",
+              a: "Le plan d'entree commence actuellement a R$29,90/mois, avec revision selon l'evolution de l'operation.",
             },
           ],
         },
@@ -889,6 +893,128 @@ export function DesktopLanding() {
         pt: ["almoxarifado", "eventos", "varejo", "indústria", "escolas", "clínicas"],
         en: ["warehouses", "events", "retail", "manufacturing", "schools", "clinics"],
         fr: ["entrepôts", "événements", "commerce", "industrie", "écoles", "cliniques"],
+      })[language],
+    [language],
+  )
+
+  const ctaMode = searchParams.get("cta")
+  const usePainCta = ctaMode === "pain"
+
+  const primaryHeroCta = useMemo(() => {
+    if (language === "pt") {
+      return usePainCta ? "Quero parar de perder vendas agora" : "Começar teste grátis de 7 dias"
+    }
+    if (language === "fr") {
+      return usePainCta ? "Je veux arreter de perdre des ventes maintenant" : "Commencer l'essai gratuit de 7 jours"
+    }
+    return usePainCta ? "I want to stop losing sales now" : "Start 7-day free trial"
+  }, [language, usePainCta])
+
+  const logoCases = useMemo(
+    () =>
+      ({
+        pt: [
+          {
+            name: "VHS",
+            logo: "/images/logos/vhs.jpg",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "Uso principal: entrada, saída e transferência com rastreabilidade por item.",
+          },
+          {
+            name: "St. Nicholas School",
+            logo: "/images/logos/st-nicholas-school.webp",
+            width: 240,
+            height: 55,
+            maxWidth: "max-w-[240px]",
+            result: "Uso principal: organização por localização para conferência recorrente.",
+          },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result: "Uso principal: operação centralizada sem planilhas paralelas.",
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "Uso principal: visibilidade de saldo e movimentações na rotina operacional.",
+          },
+        ],
+        en: [
+          {
+            name: "VHS",
+            logo: "/images/logos/vhs.jpg",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "Primary use: inbound, outbound, and transfer workflow with item traceability.",
+          },
+          {
+            name: "St. Nicholas School",
+            logo: "/images/logos/st-nicholas-school.webp",
+            width: 240,
+            height: 55,
+            maxWidth: "max-w-[240px]",
+            result: "Primary use: location-based stock organization for recurring checks.",
+          },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result: "Primary use: centralized stock operations without parallel spreadsheets.",
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "Primary use: stock and movement visibility for daily operations.",
+          },
+        ],
+        fr: [
+          {
+            name: "VHS",
+            logo: "/images/logos/vhs.jpg",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "Usage principal: entree, sortie et transfert avec tracabilite par article.",
+          },
+          {
+            name: "St. Nicholas School",
+            logo: "/images/logos/st-nicholas-school.webp",
+            width: 240,
+            height: 55,
+            maxWidth: "max-w-[240px]",
+            result: "Usage principal: organisation du stock par emplacement pour controles recurrents.",
+          },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result: "Usage principal: operation stock centralisee sans tableurs paralleles.",
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "Usage principal: visibilite des soldes et mouvements au quotidien.",
+          },
+        ],
       })[language],
     [language],
   )
@@ -937,6 +1063,11 @@ export function DesktopLanding() {
   useEffect(() => {
     setSectorIndex(0)
   }, [language])
+
+  const rotatingSectorLabel = useMemo(() => {
+    const sector = rotatingSectors[sectorIndex] ?? ""
+    return sector.charAt(0).toUpperCase() + sector.slice(1)
+  }, [rotatingSectors, sectorIndex])
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
@@ -1057,7 +1188,7 @@ export function DesktopLanding() {
                   <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_4px_rgba(16,185,129,0.5)]" />
                   <span className="text-[10px] text-emerald-600 font-medium">{language === "pt" ? "Online" : language === "fr" ? "En ligne" : "Online"}</span>
                 </div>
-                <span className="text-[11px] text-slate-400 font-medium hidden md:block">{language === "pt" ? "Workspace de Operacao" : language === "fr" ? "Espace des Operations" : "Operations Workspace"}</span>
+                <span className="text-[11px] text-slate-400 font-medium hidden md:block">{language === "pt" ? "Workspace de Operação" : language === "fr" ? "Espace des Operations" : "Operations Workspace"}</span>
               </div>
             </div>
 
@@ -1131,13 +1262,7 @@ export function DesktopLanding() {
                   {language === "pt" 
                     ? (
                       <>
-                        {"Pare de perder venda por estoque errado em "}
-                        <span
-                          key={`sector-${language}-${sectorIndex}`}
-                          className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
-                        >
-                          {rotatingSectors[sectorIndex]}
-                        </span>
+                        {"Pare de perder venda porque o estoque não bate"}
                       </>
                     )
                     : language === "en" 
@@ -1166,7 +1291,7 @@ export function DesktopLanding() {
                 </h1>
                 <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                   {language === "pt"
-                    ? "Implante um fluxo de estoque confiável com QR Code, histórico auditável e operação no celular em poucos dias."
+                    ? "Em poucos dias, seu time sai da planilha para um controle de estoque simples, no celular, com QR Code e histórico do que entrou, saiu e foi para cada lugar."
                     : language === "en"
                       ? "Deploy a reliable inventory workflow with QR code, auditable history, and mobile execution in days."
                       : "Deployez un flux stock fiable avec QR code, historique auditable et operation mobile en quelques jours."}
@@ -1179,15 +1304,15 @@ export function DesktopLanding() {
                   {[
                     {
                       title: language === "pt" ? "Setup guiado" : language === "en" ? "Guided setup" : "Mise en route guidee",
-                      value: language === "pt" ? "Onboarding assistido" : language === "en" ? "Assisted onboarding" : "Onboarding assiste",
+                      value: language === "pt" ? "Onboarding assistido para começar com o básico sem parar a operação." : language === "en" ? "Assisted onboarding" : "Onboarding assiste",
                     },
                     {
                       title: language === "pt" ? "Fluxo operacional" : language === "en" ? "Operations flow" : "Flux operationnel",
-                      value: language === "pt" ? "5 movimentos" : language === "en" ? "5 movements" : "5 mouvements",
+                      value: language === "pt" ? "5 movimentos padrão: entrada, saída, transferência, ajuste e contagem." : language === "en" ? "5 movements" : "5 mouvements",
                     },
                     {
                       title: language === "pt" ? "Execucao diaria" : language === "en" ? "Daily execution" : "Execution quotidienne",
-                      value: language === "pt" ? "Mobile + QR" : language === "en" ? "Mobile + QR" : "Mobile + QR",
+                      value: language === "pt" ? "Operação no celular com QR Code, sem depender de computador no almoxarifado." : language === "en" ? "Mobile + QR" : "Mobile + QR",
                     },
                   ].map((proof) => (
                     <div key={proof.title} className="rounded-xl border border-slate-200 bg-white px-4 py-3">
@@ -1215,19 +1340,26 @@ export function DesktopLanding() {
                       </span>
                     </div>
                   </div>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-purple-700">
+                    {language === "pt"
+                      ? "Lote de lançamento com revisão semanal de preço"
+                      : language === "en"
+                        ? "Launch lot with weekly price review"
+                        : "Lot de lancement avec revision hebdomadaire du prix"}
+                  </p>
                   <p className="mt-2 text-sm font-medium text-slate-700">
                     {language === "pt"
-                      ? "Valor promocional de lançamento para novos clientes."
+                      ? "Pensado para uma operação começar pequena e testar na prática antes de qualquer projeto grande."
                       : language === "en"
                         ? "Launch promotional pricing for new customers."
                         : "Tarif promotionnel de lancement pour les nouveaux clients."}
                   </p>
                   <p className="mt-1 text-xs text-slate-500">
                     {language === "pt"
-                      ? "Sem cartão no teste, cancele quando quiser."
+                      ? "Teste com cartão de crédito e cancelamento a qualquer momento."
                       : language === "en"
-                        ? "No card required for trial, cancel anytime."
-                        : "Pas de carte pour l'essai, annulez a tout moment."}
+                        ? "Trial with credit card and cancel anytime."
+                        : "Essai avec carte bancaire et annulation a tout moment."}
                   </p>
                   <div className="mt-3">
                     <Button
@@ -1269,36 +1401,49 @@ export function DesktopLanding() {
                           cta_name: "desktop_trial_primary",
                           cta_target: "app",
                           page_section: "hero_cta",
+                          cta_variant: usePainCta ? "pain" : "default",
                         })
                       }
                     >
-                      {language === "pt" ? "Começar teste gratis de 7 dias" : language === "en" ? "Start 7-day free trial" : "Commencer l'essai gratuit de 7 jours"}
+                      {primaryHeroCta}
                     </Link>
                   </Button>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="border-2 border-purple-600 text-purple-700 hover:bg-purple-50 px-8 py-6 text-base font-semibold transition-all duration-300 rounded-lg bg-white"
-                    onClick={() => {
-                      setIsVideoModalOpen(true)
-                      trackCtaClick({
-                        cta_name: "desktop_view_demo_primary",
-                        cta_target: "video_modal",
-                        page_section: "hero_cta",
-                      })
-                    }}
-                  >
-                    <PlayCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                    {language === "pt" ? "Ver demonstracao" : language === "en" ? "Watch demo" : "Voir la demonstration"}
-                  </Button>
                 </div>
+                <button
+                  type="button"
+                  className="mx-auto inline-flex items-center text-sm font-medium text-purple-700 underline underline-offset-2 hover:text-purple-800"
+                  onClick={() => {
+                    setIsVideoModalOpen(true)
+                    trackCtaClick({
+                      cta_name: "desktop_view_demo_primary",
+                      cta_target: "video_modal",
+                      page_section: "hero_cta",
+                    })
+                  }}
+                >
+                  {language === "pt"
+                    ? "Prefere ver primeiro? Ver demonstração em vídeo"
+                    : language === "en"
+                      ? "Prefer to watch first? Watch the video demo"
+                      : "Vous preferez voir d'abord? Voir la demonstration video"}
+                </button>
                 <p className="text-sm text-slate-500">
                   {language === "pt"
-                    ? "Sem cartao de credito no teste • Cancele quando quiser • Setup guiado"
+                    ? "Teste com cartão de crédito • Cancele quando quiser • Setup guiado"
                     : language === "en"
-                      ? "No credit card for trial • Cancel anytime • Guided setup"
-                      : "Sans carte bancaire • Annulation a tout moment • Setup guide"}
+                      ? "Trial with credit card • Cancel anytime • Guided setup"
+                      : "Essai avec carte bancaire • Annulation a tout moment • Setup guide"}
                 </p>
+                <div className="mx-auto mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
+                    <Smartphone className="h-3.5 w-3.5" />
+                    {language === "pt" ? "Compatível com iOS" : language === "en" ? "Compatible with iOS" : "Compatible iOS"}
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
+                    <Smartphone className="h-3.5 w-3.5" />
+                    {language === "pt" ? "Compatível com Android" : language === "en" ? "Compatible with Android" : "Compatible Android"}
+                  </span>
+                </div>
               </div>
 
               {/* Main Content Area - App Screenshot */}
@@ -1362,50 +1507,36 @@ export function DesktopLanding() {
                 <div className="text-center mb-8">
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
                     {language === "pt" 
-                      ? "Empresas que usam Purple Stock na operacao"
+                      ? "Empresas que usam Purple Stock na operação"
                       : language === "en"
                       ? "Teams running operations with Purple Stock"
                       : "Equipes qui operent avec Purple Stock"}
                   </h2>
                 </div>
                 
-                <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/vhs.jpg"
-                      alt="VHS"
-                      width={180}
-                      height={60}
-                      className="h-full w-auto object-contain max-w-[180px]"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/st-nicholas-school.webp"
-                      alt="St. Nicholas School"
-                      width={240}
-                      height={55}
-                      className="h-full w-auto object-contain max-w-[240px]"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/da-rua.png"
-                      alt="Da Rua"
-                      width={120}
-                      height={40}
-                      className="h-full w-auto object-contain max-w-[120px]"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/dps-brasil-preto.png"
-                      alt="DPS Brasil"
-                      width={180}
-                      height={60}
-                      className="h-full w-auto object-contain max-w-[180px]"
-                    />
-                  </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {logoCases.map((logoCase) => (
+                    <div
+                      key={logoCase.name}
+                      className="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-200 hover:border-purple-200 hover:shadow-md"
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center justify-center h-14">
+                          <Image
+                            src={logoCase.logo}
+                            alt={logoCase.name}
+                            width={logoCase.width}
+                            height={logoCase.height}
+                            className={`h-full w-auto object-contain ${logoCase.maxWidth}`}
+                          />
+                        </div>
+                        <span className="rounded-full bg-purple-50 px-2 py-1 text-[11px] font-semibold text-purple-700">
+                          {language === "pt" ? "Caso rápido" : language === "en" ? "Quick case" : "Cas rapide"}
+                        </span>
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{logoCase.result}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -1448,10 +1579,43 @@ export function DesktopLanding() {
                 <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                   <span className="text-slate-700">
                     {language === "pt" 
-                      ? "Gestão de Almoxarifado e Inventário com QR Code" 
+                      ? (
+                        <>
+                          {"Gestão para "}
+                          <span
+                            key={`title-sector-${language}-${sectorIndex}`}
+                            className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                          >
+                            {rotatingSectorLabel}
+                          </span>
+                          {" e Inventário com QR Code"}
+                        </>
+                      )
                       : language === "en" 
-                        ? "Warehouse Management and QR Code Inventory" 
-                        : "Gestion d'Entrepot et Inventaire QR Code"}
+                        ? (
+                          <>
+                            {"Management for "}
+                            <span
+                              key={`title-sector-${language}-${sectorIndex}`}
+                              className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                            >
+                              {rotatingSectorLabel}
+                            </span>
+                            {" and QR Code Inventory"}
+                          </>
+                        )
+                        : (
+                          <>
+                            {"Gestion pour "}
+                            <span
+                              key={`title-sector-${language}-${sectorIndex}`}
+                              className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                            >
+                              {rotatingSectorLabel}
+                            </span>
+                            {" et inventaire QR Code"}
+                          </>
+                        )}
                   </span>
                   <br />
                   <span className="text-purple-600">
@@ -1475,10 +1639,13 @@ export function DesktopLanding() {
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {/* Card 1 - Controle Total */}
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
-                  <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                      <CheckCircle2 className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-purple-200 bg-purple-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-purple-600/90 p-1.5 shadow-sm">
+                      <CheckCircle2 className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">
+                      {language === "pt" ? "Operação" : language === "en" ? "Operations" : "Operation"}
+                    </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
@@ -1498,10 +1665,13 @@ export function DesktopLanding() {
 
                 {/* Card 2 - Automação Inteligente */}
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-blue-100">
-                  <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                      <Zap className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-blue-600/90 p-1.5 shadow-sm">
+                      <Zap className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-blue-700">
+                      {language === "pt" ? "Padrao" : language === "en" ? "Standard" : "Standard"}
+                    </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
@@ -1521,10 +1691,13 @@ export function DesktopLanding() {
 
                 {/* Card 3 - Relatórios Avançados */}
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-emerald-100">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
-                      <BarChart3 className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-emerald-600/90 p-1.5 shadow-sm">
+                      <BarChart3 className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
+                      {language === "pt" ? "Gestão" : language === "en" ? "Management" : "Gestion"}
+                    </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
@@ -1596,7 +1769,7 @@ export function DesktopLanding() {
                 </h2>
                 <p className="mt-3 text-slate-600">
                   {language === "pt"
-                    ? "Se voce precisa controlar estoque, almoxarifado e inventario com QR Code, o Purple Stock organiza a operacao em um fluxo unico."
+                    ? "Se você precisa controlar estoque, almoxarifado e inventário com QR Code, o Purple Stock organiza a operação em um fluxo único."
                     : language === "en"
                       ? "If you need inventory software for warehouse control and QR code inventory, Purple Stock centralizes operations and decision-making in one flow."
                       : "Si vous cherchez un logiciel de gestion de stock, d'entrepot et d'inventaire QR code, Purple Stock centralise operation et pilotage dans un seul flux."}
@@ -1682,7 +1855,7 @@ export function DesktopLanding() {
                     }
                   >
                     <Sparkles className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                    {language === "pt" ? "Começar teste gratis de 7 dias" : language === "en" ? "Start 7-day free trial" : "Commencer l'essai gratuit de 7 jours"}
+                    {language === "pt" ? "Começar teste grátis de 7 dias" : language === "en" ? "Start 7-day free trial" : "Commencer l'essai gratuit de 7 jours"}
                     <ArrowRight className="w-5 h-5 ml-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                   </Link>
                 </Button>

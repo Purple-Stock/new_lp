@@ -667,9 +667,10 @@ export function DesktopLanding() {
     () =>
       ({
         pt: {
-          uvpBadge: "Para PMEs que não podem perder venda por estoque impreciso",
+          uvpBadge:
+            "Para empresas que já cansaram de perder venda por falta de produto, erro de contagem ou estoque sumido no almoxarifado.",
           uvpText:
-            "Purple Stock organiza entrada, saída, transferência, ajuste e inventário em um único fluxo rastreável. Times em operação conseguem sair da planilha e padronizar rotina em poucos dias.",
+            "Purple Stock organiza entrada, saída, transferência, ajuste e inventário em um único fluxo rastreável, para qualquer pessoa do time saber o que tem, onde está e quem mexeu, sem virar um projeto gigante de sistema.",
           howItWorksTitle: "Como funciona o sistema de controle de estoque na prática",
           howItWorksSubtitle: "Do cadastro ao relatório, em um fluxo único e rastreável.",
           steps: [
@@ -1131,13 +1132,7 @@ export function DesktopLanding() {
                   {language === "pt" 
                     ? (
                       <>
-                        {"Pare de perder venda por estoque errado em "}
-                        <span
-                          key={`sector-${language}-${sectorIndex}`}
-                          className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
-                        >
-                          {rotatingSectors[sectorIndex]}
-                        </span>
+                        {"Pare de perder venda porque o estoque nao bate"}
                       </>
                     )
                     : language === "en" 
@@ -1166,7 +1161,7 @@ export function DesktopLanding() {
                 </h1>
                 <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                   {language === "pt"
-                    ? "Implante um fluxo de estoque confiável com QR Code, histórico auditável e operação no celular em poucos dias."
+                    ? "Em poucos dias, seu time sai da planilha para um controle de estoque simples, no celular, com QR Code e histórico do que entrou, saiu e foi para cada lugar."
                     : language === "en"
                       ? "Deploy a reliable inventory workflow with QR code, auditable history, and mobile execution in days."
                       : "Deployez un flux stock fiable avec QR code, historique auditable et operation mobile en quelques jours."}
@@ -1179,15 +1174,15 @@ export function DesktopLanding() {
                   {[
                     {
                       title: language === "pt" ? "Setup guiado" : language === "en" ? "Guided setup" : "Mise en route guidee",
-                      value: language === "pt" ? "Onboarding assistido" : language === "en" ? "Assisted onboarding" : "Onboarding assiste",
+                      value: language === "pt" ? "Onboarding assistido para começar com o básico sem parar a operação." : language === "en" ? "Assisted onboarding" : "Onboarding assiste",
                     },
                     {
                       title: language === "pt" ? "Fluxo operacional" : language === "en" ? "Operations flow" : "Flux operationnel",
-                      value: language === "pt" ? "5 movimentos" : language === "en" ? "5 movements" : "5 mouvements",
+                      value: language === "pt" ? "5 movimentos padrão: entrada, saída, transferência, ajuste e contagem." : language === "en" ? "5 movements" : "5 mouvements",
                     },
                     {
                       title: language === "pt" ? "Execucao diaria" : language === "en" ? "Daily execution" : "Execution quotidienne",
-                      value: language === "pt" ? "Mobile + QR" : language === "en" ? "Mobile + QR" : "Mobile + QR",
+                      value: language === "pt" ? "Operação no celular com QR Code, sem depender de computador no almoxarifado." : language === "en" ? "Mobile + QR" : "Mobile + QR",
                     },
                   ].map((proof) => (
                     <div key={proof.title} className="rounded-xl border border-slate-200 bg-white px-4 py-3">
@@ -1217,7 +1212,7 @@ export function DesktopLanding() {
                   </div>
                   <p className="mt-2 text-sm font-medium text-slate-700">
                     {language === "pt"
-                      ? "Valor promocional de lançamento para novos clientes."
+                      ? "Pensado para uma operação começar pequena e testar na prática antes de qualquer projeto grande."
                       : language === "en"
                         ? "Launch promotional pricing for new customers."
                         : "Tarif promotionnel de lancement pour les nouveaux clients."}
@@ -1275,23 +1270,25 @@ export function DesktopLanding() {
                       {language === "pt" ? "Começar teste gratis de 7 dias" : language === "en" ? "Start 7-day free trial" : "Commencer l'essai gratuit de 7 jours"}
                     </Link>
                   </Button>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="border-2 border-purple-600 text-purple-700 hover:bg-purple-50 px-8 py-6 text-base font-semibold transition-all duration-300 rounded-lg bg-white"
-                    onClick={() => {
-                      setIsVideoModalOpen(true)
-                      trackCtaClick({
-                        cta_name: "desktop_view_demo_primary",
-                        cta_target: "video_modal",
-                        page_section: "hero_cta",
-                      })
-                    }}
-                  >
-                    <PlayCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                    {language === "pt" ? "Ver demonstracao" : language === "en" ? "Watch demo" : "Voir la demonstration"}
-                  </Button>
                 </div>
+                <button
+                  type="button"
+                  className="mx-auto inline-flex items-center text-sm font-medium text-purple-700 underline underline-offset-2 hover:text-purple-800"
+                  onClick={() => {
+                    setIsVideoModalOpen(true)
+                    trackCtaClick({
+                      cta_name: "desktop_view_demo_primary",
+                      cta_target: "video_modal",
+                      page_section: "hero_cta",
+                    })
+                  }}
+                >
+                  {language === "pt"
+                    ? "Prefere ver primeiro? Ver demonstracao em video"
+                    : language === "en"
+                      ? "Prefer to watch first? Watch the video demo"
+                      : "Vous preferez voir d'abord? Voir la demonstration video"}
+                </button>
                 <p className="text-sm text-slate-500">
                   {language === "pt"
                     ? "Teste com cartao de credito • Cancele quando quiser • Setup guiado"

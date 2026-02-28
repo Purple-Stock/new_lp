@@ -901,7 +901,7 @@ export function DesktopLanding() {
 
   const primaryHeroCta = useMemo(() => {
     if (language === "pt") {
-      return usePainCta ? "Quero parar de perder vendas agora" : "Começar teste gratis de 7 dias"
+      return usePainCta ? "Quero parar de perder vendas agora" : "Começar teste grátis de 7 dias"
     }
     if (language === "fr") {
       return usePainCta ? "Je veux arreter de perdre des ventes maintenant" : "Commencer l'essai gratuit de 7 jours"
@@ -919,7 +919,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Padronizou entrada, saida e transferencia com rastreabilidade por item.",
+            result: "Padronizou entrada, saída e transferência com rastreabilidade por item.",
           },
           {
             name: "St. Nicholas School",
@@ -927,7 +927,7 @@ export function DesktopLanding() {
             width: 240,
             height: 55,
             maxWidth: "max-w-[240px]",
-            result: "Organizou estoque por localizacao e melhorou conferencias recorrentes.",
+            result: "Organizou estoque por localização e melhorou conferências recorrentes.",
           },
           {
             name: "Da Rua",
@@ -935,7 +935,7 @@ export function DesktopLanding() {
             width: 120,
             height: 40,
             maxWidth: "max-w-[120px]",
-            result: "Centralizou operacao de estoque sem depender de planilhas paralelas.",
+            result: "Centralizou operação de estoque sem depender de planilhas paralelas.",
           },
           {
             name: "DPS Brasil",
@@ -943,7 +943,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Deu visibilidade de saldo e movimentacoes para a equipe operacional.",
+            result: "Deu visibilidade de saldo e movimentações para a equipe operacional.",
           },
         ],
         en: [
@@ -1062,6 +1062,11 @@ export function DesktopLanding() {
   useEffect(() => {
     setSectorIndex(0)
   }, [language])
+
+  const rotatingSectorLabel = useMemo(() => {
+    const sector = rotatingSectors[sectorIndex] ?? ""
+    return sector.charAt(0).toUpperCase() + sector.slice(1)
+  }, [rotatingSectors, sectorIndex])
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
@@ -1182,7 +1187,7 @@ export function DesktopLanding() {
                   <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_4px_rgba(16,185,129,0.5)]" />
                   <span className="text-[10px] text-emerald-600 font-medium">{language === "pt" ? "Online" : language === "fr" ? "En ligne" : "Online"}</span>
                 </div>
-                <span className="text-[11px] text-slate-400 font-medium hidden md:block">{language === "pt" ? "Workspace de Operacao" : language === "fr" ? "Espace des Operations" : "Operations Workspace"}</span>
+                <span className="text-[11px] text-slate-400 font-medium hidden md:block">{language === "pt" ? "Workspace de Operação" : language === "fr" ? "Espace des Operations" : "Operations Workspace"}</span>
               </div>
             </div>
 
@@ -1350,7 +1355,7 @@ export function DesktopLanding() {
                   </p>
                   <p className="mt-1 text-xs text-slate-500">
                     {language === "pt"
-                      ? "Teste com cartao de credito e cancelamento a qualquer momento."
+                      ? "Teste com cartão de crédito e cancelamento a qualquer momento."
                       : language === "en"
                         ? "Trial with credit card and cancel anytime."
                         : "Essai avec carte bancaire et annulation a tout moment."}
@@ -1416,14 +1421,14 @@ export function DesktopLanding() {
                   }}
                 >
                   {language === "pt"
-                    ? "Prefere ver primeiro? Ver demonstracao em video"
+                    ? "Prefere ver primeiro? Ver demonstração em vídeo"
                     : language === "en"
                       ? "Prefer to watch first? Watch the video demo"
                       : "Vous preferez voir d'abord? Voir la demonstration video"}
                 </button>
                 <p className="text-sm text-slate-500">
                   {language === "pt"
-                    ? "Teste com cartao de credito • Cancele quando quiser • Setup guiado"
+                    ? "Teste com cartão de crédito • Cancele quando quiser • Setup guiado"
                     : language === "en"
                       ? "Trial with credit card • Cancel anytime • Guided setup"
                       : "Essai avec carte bancaire • Annulation a tout moment • Setup guide"}
@@ -1491,7 +1496,7 @@ export function DesktopLanding() {
                 <div className="text-center mb-8">
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
                     {language === "pt" 
-                      ? "Empresas que usam Purple Stock na operacao"
+                      ? "Empresas que usam Purple Stock na operação"
                       : language === "en"
                       ? "Teams running operations with Purple Stock"
                       : "Equipes qui operent avec Purple Stock"}
@@ -1563,10 +1568,43 @@ export function DesktopLanding() {
                 <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                   <span className="text-slate-700">
                     {language === "pt" 
-                      ? "Gestão de Almoxarifado e Inventário com QR Code" 
+                      ? (
+                        <>
+                          {"Gestão para "}
+                          <span
+                            key={`title-sector-${language}-${sectorIndex}`}
+                            className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                          >
+                            {rotatingSectorLabel}
+                          </span>
+                          {" e Inventário com QR Code"}
+                        </>
+                      )
                       : language === "en" 
-                        ? "Warehouse Management and QR Code Inventory" 
-                        : "Gestion d'Entrepot et Inventaire QR Code"}
+                        ? (
+                          <>
+                            {"Management for "}
+                            <span
+                              key={`title-sector-${language}-${sectorIndex}`}
+                              className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                            >
+                              {rotatingSectorLabel}
+                            </span>
+                            {" and QR Code Inventory"}
+                          </>
+                        )
+                        : (
+                          <>
+                            {"Gestion pour "}
+                            <span
+                              key={`title-sector-${language}-${sectorIndex}`}
+                              className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                            >
+                              {rotatingSectorLabel}
+                            </span>
+                            {" et inventaire QR Code"}
+                          </>
+                        )}
                   </span>
                   <br />
                   <span className="text-purple-600">
@@ -1595,7 +1633,7 @@ export function DesktopLanding() {
                       <CheckCircle2 className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
                     <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">
-                      {language === "pt" ? "Operacao" : language === "en" ? "Operations" : "Operation"}
+                      {language === "pt" ? "Operação" : language === "en" ? "Operations" : "Operation"}
                     </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
@@ -1647,7 +1685,7 @@ export function DesktopLanding() {
                       <BarChart3 className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
                     <span className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
-                      {language === "pt" ? "Gestao" : language === "en" ? "Management" : "Gestion"}
+                      {language === "pt" ? "Gestão" : language === "en" ? "Management" : "Gestion"}
                     </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
@@ -1720,7 +1758,7 @@ export function DesktopLanding() {
                 </h2>
                 <p className="mt-3 text-slate-600">
                   {language === "pt"
-                    ? "Se voce precisa controlar estoque, almoxarifado e inventario com QR Code, o Purple Stock organiza a operacao em um fluxo unico."
+                    ? "Se você precisa controlar estoque, almoxarifado e inventário com QR Code, o Purple Stock organiza a operação em um fluxo único."
                     : language === "en"
                       ? "If you need inventory software for warehouse control and QR code inventory, Purple Stock centralizes operations and decision-making in one flow."
                       : "Si vous cherchez un logiciel de gestion de stock, d'entrepot et d'inventaire QR code, Purple Stock centralise operation et pilotage dans un seul flux."}
@@ -1806,7 +1844,7 @@ export function DesktopLanding() {
                     }
                   >
                     <Sparkles className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                    {language === "pt" ? "Começar teste gratis de 7 dias" : language === "en" ? "Start 7-day free trial" : "Commencer l'essai gratuit de 7 jours"}
+                    {language === "pt" ? "Começar teste grátis de 7 dias" : language === "en" ? "Start 7-day free trial" : "Commencer l'essai gratuit de 7 jours"}
                     <ArrowRight className="w-5 h-5 ml-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                   </Link>
                 </Button>

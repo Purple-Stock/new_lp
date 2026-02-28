@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type MouseEvent as ReactMouseEvent } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
 import {
   AppWindow,
   BadgePercent,
@@ -54,7 +53,6 @@ const WINDOW_LAYOUT: Record<WindowKey, { top: string; left: string; width: strin
 
 export function DesktopLanding() {
   const { language, setLanguage } = useLanguage()
-  const searchParams = useSearchParams()
   const t = translations[language]
   const [activeStage, setActiveStage] = useState<StageKey>("growth")
   const [openWindows, setOpenWindows] = useState<WindowKey[]>([])
@@ -74,6 +72,7 @@ export function DesktopLanding() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [sectorIndex, setSectorIndex] = useState(0)
+  const [usePainCta, setUsePainCta] = useState(false)
 
   useEffect(() => {
     trackEvent("view_landing", {
@@ -897,8 +896,11 @@ export function DesktopLanding() {
     [language],
   )
 
-  const ctaMode = searchParams.get("cta")
-  const usePainCta = ctaMode === "pain"
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const mode = new URLSearchParams(window.location.search).get("cta")
+    setUsePainCta(mode === "pain")
+  }, [])
 
   const primaryHeroCta = useMemo(() => {
     if (language === "pt") {

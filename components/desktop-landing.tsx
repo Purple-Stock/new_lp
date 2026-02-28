@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type MouseEvent as ReactMouseEvent } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import {
   AppWindow,
   BadgePercent,
@@ -17,13 +18,13 @@ import {
   Sparkles,
   UsersRound,
   ScanLine,
+  Smartphone,
   BarChart3,
   MapPin,
   Box,
   RefreshCw,
   ArrowRight,
   Zap,
-  Calendar,
   MessageCircle,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -53,6 +54,7 @@ const WINDOW_LAYOUT: Record<WindowKey, { top: string; left: string; width: strin
 
 export function DesktopLanding() {
   const { language, setLanguage } = useLanguage()
+  const searchParams = useSearchParams()
   const t = translations[language]
   const [activeStage, setActiveStage] = useState<StageKey>("growth")
   const [openWindows, setOpenWindows] = useState<WindowKey[]>([])
@@ -172,8 +174,7 @@ export function DesktopLanding() {
         uptime: "Disponibilidade",
         support: "Suporte",
         customersLove: "Empresas que aceleram com Purple Stock",
-        testimonial:
-          "“O Purple Stock revolucionou nossa gestão de estoque. Agora temos controle total do inventário.”",
+        testimonial: "“Com Purple Stock, nosso controle de estoque ficou padronizado e rastreável.”",
         testimonialCompany: "Purchase Store",
         stageTag: "Começa com",
         stageHighlight: "Purple Stock",
@@ -204,13 +205,12 @@ export function DesktopLanding() {
         uptime: "Uptime",
         support: "Support",
         customersLove: "Companies scaling with Purple Stock",
-        testimonial:
-          "“Purple Stock transformed our inventory processes. Total control, without spreadsheets.”",
+        testimonial: "“Purple Stock helped us standardize inventory routines without spreadsheets.”",
         testimonialCompany: "Purchase Store",
         stageTag: t.hero.subtitle,
         stageHighlight: t.hero.subtitleHighlight,
-        install: "Install with AI",
-        installHint: "Connect APIs and automate updates in minutes.",
+        install: "Connect integrations",
+        installHint: "Connect your data sources and keep updates in one flow.",
       },
       fr: {
         home: "Accueil",
@@ -236,13 +236,12 @@ export function DesktopLanding() {
         uptime: "Disponibilité",
         support: "Support",
         customersLove: "Entreprises qui accélèrent avec Purple Stock",
-        testimonial:
-          "« Purple Stock a révolutionné notre gestion des stocks. Contrôle total, sans feuilles de calcul. »",
+        testimonial: "« Purple Stock a aidé notre equipe a standardiser la gestion de stock sans tableurs. »",
         testimonialCompany: "Purchase Store",
         stageTag: "Commence avec",
         stageHighlight: "Purple Stock",
-        install: "Installer avec IA",
-        installHint: "Connectez vos données via API et automatisez en quelques minutes.",
+        install: "Connecter les integrations",
+        installHint: "Connectez vos sources de donnees et centralisez les mises a jour.",
       },
     }[language]
   }, [language, t.hero.subtitle, t.hero.subtitleHighlight])
@@ -671,9 +670,10 @@ export function DesktopLanding() {
     () =>
       ({
         pt: {
-          uvpBadge: "Para equipes que precisam operar com estoque confiável",
+          uvpBadge:
+            "Para empresas que já cansaram de perder venda por falta de produto, erro de contagem ou estoque sumido no almoxarifado.",
           uvpText:
-            "Purple Stock é um sistema de controle de estoque e gestão de almoxarifado para empresas em crescimento que precisam registrar entradas, saídas e transferências sem retrabalho.",
+            "Purple Stock organiza entrada, saída, transferência, ajuste e inventário em um único fluxo rastreável, para qualquer pessoa do time saber o que tem, onde está e quem mexeu, sem virar um projeto gigante de sistema.",
           howItWorksTitle: "Como funciona o sistema de controle de estoque na prática",
           howItWorksSubtitle: "Do cadastro ao relatório, em um fluxo único e rastreável.",
           steps: [
@@ -694,20 +694,28 @@ export function DesktopLanding() {
               body: "Acompanhe perdas, reposição e desempenho para agir rápido sem consolidação manual.",
             },
           ],
-          proofTitle: "Resultados para controle de estoque e gestão de almoxarifado",
+          proofTitle: "O que a equipe consegue auditar no dia a dia",
           proofItems: [
             {
-              metric: "5 tipos de movimentação",
-              detail: "Cobertura completa para rotina real de estoque.",
+              metric: "Rastreabilidade por item",
+              detail: "Quem movimentou, quando movimentou e em qual local a operação aconteceu.",
             },
             {
-              metric: "Controle por time",
-              detail: "Dados segregados por operação com permissão por usuário.",
+              metric: "Histórico único de movimentações",
+              detail: "Entrada, saída, transferência, ajuste e contagem no mesmo fluxo operacional.",
             },
             {
-              metric: "Operação no celular com QR Code",
-              detail: "Menos erro manual na conferência e no inventário.",
+              metric: "Conferência por localização",
+              detail: "Consulta de saldo e inventário por local sem consolidar planilhas manualmente.",
             },
+          ],
+          compareTitle: "Purple Stock vs ERP tradicional",
+          compareSubtitle: "Quando o foco é operação de estoque rápida, o modelo de implantação faz diferença.",
+          compareRows: [
+            { label: "Implantação", purple: "Setup leve e progressivo", erp: "Projeto mais extenso em média" },
+            { label: "Curva de uso para operação", purple: "Fluxo direto para almoxarifado", erp: "Treinamento mais extenso em média" },
+            { label: "Operação no celular + QR", purple: "Nativo no fluxo diário", erp: "Geralmente depende de módulo extra" },
+            { label: "Foco inicial", purple: "Controle de estoque e rastreabilidade", erp: "Suite ampla com escopo maior" },
           ],
           objectionsTitle: "Perguntas frequentes: dúvidas antes de contratar",
           objections: [
@@ -716,23 +724,27 @@ export function DesktopLanding() {
               a: "Sim. Você pode iniciar com o cadastro essencial e evoluir por etapas, sem parar a operação.",
             },
             {
-              q: "Como evitamos mistura de dados entre equipes?",
-              a: "O sistema opera por times com contexto ativo e permissões, mantendo cada operação isolada.",
+              q: "Meus dados ficam seguros e separados por equipe?",
+              a: "Sim. O sistema opera por times com contexto ativo e permissões por usuário, mantendo cada operação isolada.",
             },
             {
-              q: "O time de almoxarifado consegue usar no dia a dia?",
+              q: "Funciona no celular no dia a dia da operação?",
               a: "Sim. Os fluxos de entrada, saída, transferência e contagem são diretos e podem ser feitos no celular.",
             },
             {
-              q: "E se a gente quiser sair no futuro?",
-              a: "Você mantém controle dos dados operacionais e pode exportar informações para continuidade interna.",
+              q: "Posso testar sem ficar preso?",
+              a: "Sim. O teste utiliza cartão de crédito e você pode cancelar quando quiser dentro do período de avaliação.",
+            },
+            {
+              q: "Quanto custa para começar?",
+              a: "O plano de entrada começa em R$29,90/mês na oferta atual, com revisão de preço conforme evolução da operação.",
             },
           ],
         },
         en: {
-          uvpBadge: "For teams that need reliable inventory operations",
+          uvpBadge: "For SMB teams that cannot lose sales due to stock mistakes",
           uvpText:
-            "Purple Stock is an inventory control system for growing companies that need inbound, outbound, and transfer flows without spreadsheet chaos.",
+            "Purple Stock keeps inbound, outbound, transfer, adjustment, and count workflows in one traceable system. Teams can leave spreadsheets and standardize operations in days.",
           howItWorksTitle: "How the inventory control system works in practice",
           howItWorksSubtitle: "From setup to reporting in one traceable flow.",
           steps: [
@@ -753,20 +765,28 @@ export function DesktopLanding() {
               body: "Track losses, replenishment, and team performance without manual consolidation.",
             },
           ],
-          proofTitle: "Proof for operations and management",
+          proofTitle: "What teams can audit in daily operations",
           proofItems: [
             {
-              metric: "5 movement types",
-              detail: "Complete coverage for real inventory routines.",
+              metric: "Item-level traceability",
+              detail: "Who moved stock, when it happened, and where it happened.",
             },
             {
-              metric: "Team-based control",
-              detail: "Separated operation data with user-level permissions.",
+              metric: "Single movement history",
+              detail: "Inbound, outbound, transfer, adjustment, and count in one operational flow.",
             },
             {
-              metric: "Mobile QR code workflow",
-              detail: "Fewer manual errors during checks and counting.",
+              metric: "Location-based checks",
+              detail: "Review stock and inventory by location without manual spreadsheet consolidation.",
             },
+          ],
+          compareTitle: "Purple Stock vs traditional ERP",
+          compareSubtitle: "For fast inventory operations, implementation model matters.",
+          compareRows: [
+            { label: "Implementation", purple: "Light, progressive setup", erp: "Usually a longer rollout project" },
+            { label: "Operational learning curve", purple: "Direct warehouse workflows", erp: "Usually longer training period" },
+            { label: "Mobile + QR daily usage", purple: "Native in core flow", erp: "Often depends on add-on modules" },
+            { label: "Initial focus", purple: "Inventory control and traceability", erp: "Broader suite with larger scope" },
           ],
           objectionsTitle: "Questions teams ask before buying",
           objections: [
@@ -775,23 +795,27 @@ export function DesktopLanding() {
               a: "Yes. You can begin with core setup and expand in phases without stopping operations.",
             },
             {
-              q: "How do we avoid data overlap between teams?",
-              a: "The system runs with active team context and permissions, keeping operations separated.",
+              q: "Are data secure and separated by team?",
+              a: "Yes. The system runs with active team context and user permissions, keeping operations separated.",
             },
             {
-              q: "Can warehouse staff use it daily?",
+              q: "Does it work on mobile for daily operations?",
               a: "Yes. Inbound, outbound, transfer, and counting flows are direct and mobile-friendly.",
             },
             {
-              q: "What if we decide to leave in the future?",
-              a: "You keep control of your operational data and can export information for continuity.",
+              q: "Can we test without long-term lock-in?",
+              a: "Yes. The trial requires a credit card, and you can cancel anytime during the trial period.",
+            },
+            {
+              q: "What is the starting cost?",
+              a: "Entry pricing currently starts at R$29.90/month, with review as operations grow.",
             },
           ],
         },
         fr: {
-          uvpBadge: "Pour les equipes qui ont besoin d'un stock fiable",
+          uvpBadge: "Pour les PME qui ne peuvent pas perdre des ventes a cause du stock",
           uvpText:
-            "Purple Stock est un systeme de gestion de stock pour les entreprises en croissance qui doivent gerer entrees, sorties et transferts sans tableurs disperses.",
+            "Purple Stock regroupe entrees, sorties, transferts, ajustements et inventaires dans un flux tracable. Les equipes quittent les tableurs et standardisent l'operation en quelques jours.",
           howItWorksTitle: "Comment fonctionne le systeme de gestion de stock",
           howItWorksSubtitle: "Du parametrage au rapport dans un flux unique et tracable.",
           steps: [
@@ -812,20 +836,28 @@ export function DesktopLanding() {
               body: "Suivez pertes, reassort et performance sans consolidation manuelle.",
             },
           ],
-          proofTitle: "Preuves pour l'operation et la gestion",
+          proofTitle: "Ce que l'equipe peut auditer au quotidien",
           proofItems: [
             {
-              metric: "5 types de mouvements",
-              detail: "Couverture complete pour la routine reelle de stock.",
+              metric: "Tracabilite par article",
+              detail: "Qui a bouge le stock, quand et dans quel emplacement.",
             },
             {
-              metric: "Controle par equipe",
-              detail: "Donnees segmentees avec permissions par utilisateur.",
+              metric: "Historique unique des mouvements",
+              detail: "Entree, sortie, transfert, ajustement et comptage dans le meme flux operationnel.",
             },
             {
-              metric: "Flux mobile avec QR code",
-              detail: "Moins d'erreurs manuelles sur inventaire et verification.",
+              metric: "Controle par emplacement",
+              detail: "Lecture de stock et inventaire par emplacement sans consolidation manuelle des tableurs.",
             },
+          ],
+          compareTitle: "Purple Stock vs ERP traditionnel",
+          compareSubtitle: "Pour une operation stock rapide, le modele de deploiement compte.",
+          compareRows: [
+            { label: "Deploiement", purple: "Setup leger et progressif", erp: "Projet de deploiement plus long en moyenne" },
+            { label: "Courbe d'apprentissage", purple: "Flux direct pour magasin", erp: "Formation plus longue en moyenne" },
+            { label: "Mobile + QR au quotidien", purple: "Natif dans le flux principal", erp: "Souvent via module additionnel" },
+            { label: "Focus initial", purple: "Controle stock et tracabilite", erp: "Suite large avec scope plus vaste" },
           ],
           objectionsTitle: "Questions avant de choisir la plateforme",
           objections: [
@@ -834,16 +866,20 @@ export function DesktopLanding() {
               a: "Oui. Vous pouvez debuter avec le socle et evoluer par etapes sans arreter l'operation.",
             },
             {
-              q: "Comment eviter le melange des donnees entre equipes?",
-              a: "Le systeme fonctionne par equipes avec contexte actif et permissions dediees.",
+              q: "Les donnees sont-elles securisees et separees par equipe?",
+              a: "Oui. Le systeme fonctionne par equipes avec contexte actif et permissions par utilisateur.",
             },
             {
-              q: "Le personnel magasin peut l'utiliser au quotidien?",
+              q: "Est-ce utilisable sur mobile au quotidien?",
               a: "Oui. Les flux entree, sortie, transfert et comptage sont simples et mobiles.",
             },
             {
-              q: "Et si nous souhaitons sortir plus tard?",
-              a: "Vous conservez vos donnees operationnelles et pouvez exporter les informations.",
+              q: "Peut-on tester sans engagement long?",
+              a: "Oui. L'essai demande une carte bancaire et vous pouvez annuler a tout moment pendant la periode d'essai.",
+            },
+            {
+              q: "Quel est le cout de depart?",
+              a: "Le plan d'entree commence actuellement a R$29,90/mois, avec revision selon l'evolution de l'operation.",
             },
           ],
         },
@@ -857,6 +893,128 @@ export function DesktopLanding() {
         pt: ["almoxarifado", "eventos", "varejo", "indústria", "escolas", "clínicas"],
         en: ["warehouses", "events", "retail", "manufacturing", "schools", "clinics"],
         fr: ["entrepôts", "événements", "commerce", "industrie", "écoles", "cliniques"],
+      })[language],
+    [language],
+  )
+
+  const ctaMode = searchParams.get("cta")
+  const usePainCta = ctaMode === "pain"
+
+  const primaryHeroCta = useMemo(() => {
+    if (language === "pt") {
+      return usePainCta ? "Quero parar de perder vendas agora" : "Começar teste grátis de 7 dias"
+    }
+    if (language === "fr") {
+      return usePainCta ? "Je veux arreter de perdre des ventes maintenant" : "Commencer l'essai gratuit de 7 jours"
+    }
+    return usePainCta ? "I want to stop losing sales now" : "Start 7-day free trial"
+  }, [language, usePainCta])
+
+  const logoCases = useMemo(
+    () =>
+      ({
+        pt: [
+          {
+            name: "VHS",
+            logo: "/images/logos/vhs.jpg",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "\"Antes era difícil rastrear movimentação. Hoje entrada, saída e transferência ficam no mesmo histórico.\"",
+          },
+          {
+            name: "St. Nicholas School",
+            logo: "/images/logos/st-nicholas-school.webp",
+            width: 240,
+            height: 55,
+            maxWidth: "max-w-[240px]",
+            result: "\"A equipe passou a conferir estoque por localização sem perder tempo procurando item.\"",
+          },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result: "\"Parou de existir planilha paralela para controle diário de estoque.\"",
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "\"Hoje o time enxerga saldo e movimentações no mesmo painel operacional.\"",
+          },
+        ],
+        en: [
+          {
+            name: "VHS",
+            logo: "/images/logos/vhs.jpg",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "\"Inbound, outbound, and transfer are now tracked in one single movement history.\"",
+          },
+          {
+            name: "St. Nicholas School",
+            logo: "/images/logos/st-nicholas-school.webp",
+            width: 240,
+            height: 55,
+            maxWidth: "max-w-[240px]",
+            result: "\"The team now runs stock checks by location without wasting time searching items.\"",
+          },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result: "\"Daily stock control no longer depends on parallel spreadsheets.\"",
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "\"Operations now see stock balance and movement history in one place.\"",
+          },
+        ],
+        fr: [
+          {
+            name: "VHS",
+            logo: "/images/logos/vhs.jpg",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "\"Entree, sortie et transfert sont maintenant suivis dans un historique unique.\"",
+          },
+          {
+            name: "St. Nicholas School",
+            logo: "/images/logos/st-nicholas-school.webp",
+            width: 240,
+            height: 55,
+            maxWidth: "max-w-[240px]",
+            result: "\"L'equipe controle le stock par emplacement sans perdre du temps a chercher les articles.\"",
+          },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result: "\"Le controle quotidien ne depend plus de tableurs paralleles.\"",
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result: "\"Les soldes et mouvements sont visibles dans le meme panneau operationnel.\"",
+          },
+        ],
       })[language],
     [language],
   )
@@ -905,6 +1063,11 @@ export function DesktopLanding() {
   useEffect(() => {
     setSectorIndex(0)
   }, [language])
+
+  const rotatingSectorLabel = useMemo(() => {
+    const sector = rotatingSectors[sectorIndex] ?? ""
+    return sector.charAt(0).toUpperCase() + sector.slice(1)
+  }, [rotatingSectors, sectorIndex])
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
@@ -1025,7 +1188,7 @@ export function DesktopLanding() {
                   <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_4px_rgba(16,185,129,0.5)]" />
                   <span className="text-[10px] text-emerald-600 font-medium">{language === "pt" ? "Online" : language === "fr" ? "En ligne" : "Online"}</span>
                 </div>
-                <span className="text-[11px] text-slate-400 font-medium hidden md:block">{language === "pt" ? "Workspace de Crescimento" : language === "fr" ? "Espace de Croissance" : "Growth Workspace"}</span>
+                <span className="text-[11px] text-slate-400 font-medium hidden md:block">{language === "pt" ? "Workspace de Operação" : language === "fr" ? "Espace des Operations" : "Operations Workspace"}</span>
               </div>
             </div>
 
@@ -1099,49 +1262,67 @@ export function DesktopLanding() {
                   {language === "pt" 
                     ? (
                       <>
-                        {"Sistema de Controle de Estoque para "}
-                        <span
-                          key={`sector-${language}-${sectorIndex}`}
-                          className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
-                        >
-                          {rotatingSectors[sectorIndex]}
-                        </span>
+                        {"Pare de perder venda porque o estoque não bate"}
                       </>
                     )
                     : language === "en" 
                       ? (
                         <>
-                          {"Inventory Control System for "}
-                          <span
-                            key={`sector-${language}-${sectorIndex}`}
-                            className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
-                          >
-                            {rotatingSectors[sectorIndex]}
-                          </span>
+                          {"Stop losing sales because stock records do not match"}
                         </>
                       )
                       : (
                         <>
-                          {"Système de Gestion de Stock pour "}
-                          <span
-                            key={`sector-${language}-${sectorIndex}`}
-                            className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
-                          >
-                            {rotatingSectors[sectorIndex]}
-                          </span>
+                          {"Arretez de perdre des ventes parce que le stock ne correspond pas"}
                         </>
                       )}
                 </h1>
                 <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                   {language === "pt"
-                    ? "Gerencie times, itens, localizações e inventário com QR Code em uma única plataforma, com rastreabilidade e atualização em tempo real."
+                    ? "Em poucos dias, seu time sai da planilha para um controle de estoque simples, no celular, com QR Code e histórico do que entrou, saiu e foi para cada lugar."
                     : language === "en"
-                      ? "Manage teams, items, locations, and QR code inventory in one platform with traceability and real-time updates."
-                      : "Gerez equipes, articles, emplacements et inventaire QR code sur une seule plateforme, avec tracabilite et mise a jour en temps reel."}
+                      ? "In a few days, your team moves from spreadsheets to simple stock control on mobile, with QR code and history of what came in, what went out, and where each move happened."
+                      : "En quelques jours, votre equipe passe du tableur a un controle de stock simple sur mobile, avec QR code et historique des entrees, sorties et emplacements."}
                 </p>
                 <div className="mx-auto max-w-3xl rounded-2xl border border-blue-100 bg-blue-50/80 px-5 py-4 text-left">
                   <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">{playbookContent.uvpBadge}</p>
                   <p className="mt-2 text-sm text-slate-700 sm:text-base">{playbookContent.uvpText}</p>
+                </div>
+                <div className="mx-auto grid w-full max-w-3xl gap-3 text-left sm:grid-cols-3">
+                  {[
+                    {
+                      title: language === "pt" ? "Setup guiado" : language === "en" ? "Guided setup" : "Mise en route guidee",
+                      value:
+                        language === "pt"
+                          ? "Onboarding assistido para começar com o básico sem parar a operação."
+                          : language === "en"
+                            ? "Assisted onboarding to start with the essentials without stopping operations."
+                            : "Onboarding assiste pour commencer avec l'essentiel sans arreter l'operation.",
+                    },
+                    {
+                      title: language === "pt" ? "Fluxo operacional" : language === "en" ? "Operations flow" : "Flux operationnel",
+                      value:
+                        language === "pt"
+                          ? "5 movimentos padrão: entrada, saída, transferência, ajuste e contagem."
+                          : language === "en"
+                            ? "5 standard movements: stock in, stock out, transfer, adjustment, and count."
+                            : "5 mouvements standard: entree, sortie, transfert, ajustement et comptage.",
+                    },
+                    {
+                      title: language === "pt" ? "Execucao diaria" : language === "en" ? "Daily execution" : "Execution quotidienne",
+                      value:
+                        language === "pt"
+                          ? "Operação no celular com QR Code, sem depender de computador no almoxarifado."
+                          : language === "en"
+                            ? "Mobile operation with QR code, without depending on a desktop in the warehouse."
+                            : "Operation mobile avec QR code, sans dependre d'un ordinateur dans l'entrepot.",
+                    },
+                  ].map((proof) => (
+                    <div key={proof.title} className="rounded-xl border border-slate-200 bg-white px-4 py-3">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{proof.title}</p>
+                      <p className="mt-1 text-base font-bold text-slate-900">{proof.value}</p>
+                    </div>
+                  ))}
                 </div>
                 <div className="mx-auto w-full max-w-2xl rounded-2xl border border-purple-200 bg-gradient-to-r from-purple-50 via-white to-purple-50 px-5 py-4 shadow-sm">
                   <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:text-left">
@@ -1162,12 +1343,26 @@ export function DesktopLanding() {
                       </span>
                     </div>
                   </div>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-purple-700">
+                    {language === "pt"
+                      ? "Lote de lançamento com revisão semanal de preço"
+                      : language === "en"
+                        ? "Launch lot with weekly price review"
+                        : "Lot de lancement avec revision hebdomadaire du prix"}
+                  </p>
                   <p className="mt-2 text-sm font-medium text-slate-700">
                     {language === "pt"
-                      ? "Valor exclusivo para os primeiros clientes."
+                      ? "Pensado para uma operação começar pequena e testar na prática antes de qualquer projeto grande."
                       : language === "en"
-                        ? "Exclusive pricing for the first customers."
-                        : "Tarif exclusif pour les premiers clients."}
+                        ? "Built for teams that want to start small and validate the operation before any large system project."
+                        : "Concu pour demarrer petit et valider l'operation avant tout grand projet de systeme."}
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {language === "pt"
+                      ? "Teste com cartão de crédito e cancelamento a qualquer momento."
+                      : language === "en"
+                        ? "Trial with credit card and cancel anytime."
+                        : "Essai avec carte bancaire et annulation a tout moment."}
                   </p>
                   <div className="mt-3">
                     <Button
@@ -1179,17 +1374,17 @@ export function DesktopLanding() {
                         href="https://app.purplestock.com.br/"
                         onClick={() =>
                           trackCtaClick({
-                            cta_name: "desktop_launch_offer",
-                            cta_target: "app",
-                            page_section: "hero_offer",
-                          })
-                        }
-                      >
-                        {language === "pt"
-                          ? "Quero garantir R$29,90"
-                          : language === "en"
-                            ? "I want to secure R$29.90"
-                            : "Je veux garantir R$29,90"}
+                          cta_name: "desktop_launch_offer",
+                          cta_target: "app",
+                          page_section: "hero_offer",
+                        })
+                      }
+                    >
+                      {language === "pt"
+                        ? "Assinar por R$29,90"
+                        : language === "en"
+                          ? "Subscribe for R$29.90"
+                          : "Souscrire pour R$29,90"}
                       </Link>
                     </Button>
                   </div>
@@ -1201,42 +1396,56 @@ export function DesktopLanding() {
                     asChild
                     size="lg"
                     className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
-                  >
-                    <Link
-                      href="https://app.purplestock.com.br/"
+                    >
+                      <Link
+                        href="https://app.purplestock.com.br/"
                       onClick={() =>
                         trackCtaClick({
                           cta_name: "desktop_trial_primary",
                           cta_target: "app",
                           page_section: "hero_cta",
+                          cta_variant: usePainCta ? "pain" : "default",
                         })
                       }
                     >
-                      {language === "pt" ? "Teste por 7 dias" : language === "en" ? "Test for 7 days" : "Testez pendant 7 jours"}
+                      {primaryHeroCta}
                     </Link>
                   </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="lg"
-                    className="border-2 border-purple-600 text-purple-700 hover:bg-purple-50 px-8 py-6 text-base font-semibold transition-all duration-300 rounded-lg bg-white"
-                  >
-                    <Link
-                      href="https://calendly.com/matheus-puppe"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() =>
-                        trackCtaClick({
-                          cta_name: "desktop_schedule_demo",
-                          cta_target: "calendly",
-                          page_section: "hero_cta",
-                        })
-                      }
-                    >
-                      <Calendar className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                      {language === "pt" ? "Solicitar demonstração" : language === "en" ? "Get a demo" : "Obtenir une démo"}
-                    </Link>
-                  </Button>
+                </div>
+                <button
+                  type="button"
+                  className="mx-auto inline-flex items-center text-sm font-medium text-purple-700 underline underline-offset-2 hover:text-purple-800"
+                  onClick={() => {
+                    setIsVideoModalOpen(true)
+                    trackCtaClick({
+                      cta_name: "desktop_view_demo_primary",
+                      cta_target: "video_modal",
+                      page_section: "hero_cta",
+                    })
+                  }}
+                >
+                  {language === "pt"
+                    ? "Prefere ver primeiro? Ver demonstração em vídeo"
+                    : language === "en"
+                      ? "Prefer to watch first? Watch the video demo"
+                      : "Vous preferez voir d'abord? Voir la demonstration video"}
+                </button>
+                <p className="text-sm text-slate-500">
+                  {language === "pt"
+                    ? "Teste com cartão de crédito • Cancele quando quiser • Setup guiado"
+                    : language === "en"
+                      ? "Trial with credit card • Cancel anytime • Guided setup"
+                      : "Essai avec carte bancaire • Annulation a tout moment • Setup guide"}
+                </p>
+                <div className="mx-auto mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
+                    <Smartphone className="h-3.5 w-3.5" />
+                    {language === "pt" ? "Compatível com iOS" : language === "en" ? "Compatible with iOS" : "Compatible iOS"}
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
+                    <Smartphone className="h-3.5 w-3.5" />
+                    {language === "pt" ? "Compatível com Android" : language === "en" ? "Compatible with Android" : "Compatible Android"}
+                  </span>
                 </div>
               </div>
 
@@ -1273,7 +1482,7 @@ export function DesktopLanding() {
                           className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                         >
                           <PlayCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                          {language === "pt" ? "Ver Demonstração" : language === "en" ? "View Demo" : "Voir la Démo"}
+                          {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch demo" : "Voir la demonstration"}
                         </Button>
                       </DialogTrigger>
                     </div>
@@ -1301,50 +1510,36 @@ export function DesktopLanding() {
                 <div className="text-center mb-8">
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
                     {language === "pt" 
-                      ? "Confiado por empresas em crescimento"
+                      ? "Empresas que usam Purple Stock na operação"
                       : language === "en"
-                      ? "Trusted by growing businesses"
-                      : "Fiable par les entreprises en croissance"}
+                      ? "Teams running operations with Purple Stock"
+                      : "Equipes qui operent avec Purple Stock"}
                   </h2>
                 </div>
                 
-                <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/vhs.jpg"
-                      alt="VHS"
-                      width={180}
-                      height={60}
-                      className="h-full w-auto object-contain max-w-[180px]"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/st-nicholas-school.webp"
-                      alt="St. Nicholas School"
-                      width={240}
-                      height={55}
-                      className="h-full w-auto object-contain max-w-[240px]"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/da-rua.png"
-                      alt="Da Rua"
-                      width={120}
-                      height={40}
-                      className="h-full w-auto object-contain max-w-[120px]"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-16">
-                    <Image
-                      src="/images/logos/dps-brasil-preto.png"
-                      alt="DPS Brasil"
-                      width={180}
-                      height={60}
-                      className="h-full w-auto object-contain max-w-[180px]"
-                    />
-                  </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {logoCases.map((logoCase) => (
+                    <div
+                      key={logoCase.name}
+                      className="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-200 hover:border-purple-200 hover:shadow-md"
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center justify-center h-14">
+                          <Image
+                            src={logoCase.logo}
+                            alt={logoCase.name}
+                            width={logoCase.width}
+                            height={logoCase.height}
+                            className={`h-full w-auto object-contain ${logoCase.maxWidth}`}
+                          />
+                        </div>
+                        <span className="rounded-full bg-purple-50 px-2 py-1 text-[11px] font-semibold text-purple-700">
+                          {language === "pt" ? "Caso rápido" : language === "en" ? "Quick case" : "Cas rapide"}
+                        </span>
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{logoCase.result}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -1352,7 +1547,7 @@ export function DesktopLanding() {
               <div className="flex justify-center mb-6 pt-8">
                 <button className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
                   <Sparkles className="w-4 h-4 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                  {language === "pt" ? "Perguntas Frequentes" : language === "en" ? "Frequently Asked Questions" : "Questions Fréquentes"}
+                  {language === "pt" ? "Dúvidas comuns antes de contratar" : language === "en" ? "Frequently Asked Questions" : "Questions Fréquentes"}
                 </button>
               </div>
 
@@ -1387,10 +1582,43 @@ export function DesktopLanding() {
                 <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                   <span className="text-slate-700">
                     {language === "pt" 
-                      ? "Gestão de Almoxarifado e Inventário com QR Code" 
+                      ? (
+                        <>
+                          {"Gestão para "}
+                          <span
+                            key={`title-sector-${language}-${sectorIndex}`}
+                            className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                          >
+                            {rotatingSectorLabel}
+                          </span>
+                          {" e Inventário com QR Code"}
+                        </>
+                      )
                       : language === "en" 
-                        ? "Warehouse Management and QR Code Inventory" 
-                        : "Gestion d'Entrepot et Inventaire QR Code"}
+                        ? (
+                          <>
+                            {"Management for "}
+                            <span
+                              key={`title-sector-${language}-${sectorIndex}`}
+                              className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                            >
+                              {rotatingSectorLabel}
+                            </span>
+                            {" and QR Code Inventory"}
+                          </>
+                        )
+                        : (
+                          <>
+                            {"Gestion pour "}
+                            <span
+                              key={`title-sector-${language}-${sectorIndex}`}
+                              className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                            >
+                              {rotatingSectorLabel}
+                            </span>
+                            {" et inventaire QR Code"}
+                          </>
+                        )}
                   </span>
                   <br />
                   <span className="text-purple-600">
@@ -1414,14 +1642,17 @@ export function DesktopLanding() {
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {/* Card 1 - Controle Total */}
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
-                  <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                      <CheckCircle2 className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-purple-200 bg-purple-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-purple-600/90 p-1.5 shadow-sm">
+                      <CheckCircle2 className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">
+                      {language === "pt" ? "Operação" : language === "en" ? "Operations" : "Operation"}
+                    </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
-                      ? "Controle Total" 
+                      ? "Visão de estoque" 
                       : language === "en" 
                         ? "Total Control" 
                         : "Contrôle Total"}
@@ -1437,17 +1668,20 @@ export function DesktopLanding() {
 
                 {/* Card 2 - Automação Inteligente */}
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-blue-100">
-                  <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                      <Zap className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-blue-600/90 p-1.5 shadow-sm">
+                      <Zap className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-blue-700">
+                      {language === "pt" ? "Padrão" : language === "en" ? "Standard" : "Standard"}
+                    </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
-                      ? "Automação Inteligente" 
+                      ? "Fluxo operacional padronizado" 
                       : language === "en" 
-                        ? "Intelligent Automation" 
-                        : "Automatisation Intelligente"}
+                        ? "Standardized operations flow" 
+                        : "Flux operationnel standardise"}
                   </h3>
                   <p className="text-slate-600">
                     {language === "pt"
@@ -1460,17 +1694,20 @@ export function DesktopLanding() {
 
                 {/* Card 3 - Relatórios Avançados */}
                 <div className="bg-white rounded-2xl shadow-lg p-6 border border-emerald-100">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
-                      <BarChart3 className="w-7 h-7 text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-emerald-600/90 p-1.5 shadow-sm">
+                      <BarChart3 className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
+                      {language === "pt" ? "Gestão" : language === "en" ? "Management" : "Gestion"}
+                    </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
-                      ? "Relatórios Avançados" 
+                      ? "Relatórios por time" 
                       : language === "en" 
-                        ? "Advanced Reports" 
-                        : "Rapports Avancés"}
+                        ? "Reports by team" 
+                        : "Rapports par equipe"}
                   </h3>
                   <p className="text-slate-600">
                     {language === "pt"
@@ -1500,14 +1737,14 @@ export function DesktopLanding() {
               <section className="mb-12 rounded-3xl border border-violet-100 bg-violet-50/40 p-6 sm:p-8 text-center">
                 <div className="inline-flex items-center gap-2 rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700">
                   <FileCode className="h-3.5 w-3.5" />
-                  {language === "pt" ? "Documentação técnica" : language === "en" ? "Technical docs" : "Documentation technique"}
+                  {language === "pt" ? "Recursos técnicos (opcional)" : language === "en" ? "Technical resources (optional)" : "Ressources techniques (optionnel)"}
                 </div>
                 <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl">
                   {language === "pt"
-                    ? "Veja as funcionalidades do app por tópico"
+                    ? "Para times técnicos: funcionalidades por tópico"
                     : language === "en"
-                      ? "See app features by topic"
-                      : "Voir les fonctionnalités de l'app par thème"}
+                      ? "For technical teams: features by topic"
+                      : "Pour les equipes techniques: fonctionnalités par thème"}
                 </h2>
                 <p className="mt-2 text-slate-600">
                   {language === "pt"
@@ -1528,14 +1765,14 @@ export function DesktopLanding() {
               <section className="mb-12 rounded-3xl border border-indigo-100 bg-indigo-50/40 p-6 sm:p-8">
                 <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
                   {language === "pt"
-                    ? "Sistema de estoque para pequenas e médias empresas"
+                    ? "Software de estoque para pequenas e médias empresas"
                     : language === "en"
                       ? "Inventory system for small and mid-sized businesses"
                       : "Systeme de stock pour petites et moyennes entreprises"}
                 </h2>
                 <p className="mt-3 text-slate-600">
                   {language === "pt"
-                    ? "Se você busca software para controle de estoque, gestão de almoxarifado e inventário com QR Code, o Purple Stock centraliza operação e decisão em um único fluxo."
+                    ? "Se você precisa controlar estoque, almoxarifado e inventário com QR Code, o Purple Stock organiza a operação em um fluxo único."
                     : language === "en"
                       ? "If you need inventory software for warehouse control and QR code inventory, Purple Stock centralizes operations and decision-making in one flow."
                       : "Si vous cherchez un logiciel de gestion de stock, d'entrepot et d'inventaire QR code, Purple Stock centralise operation et pilotage dans un seul flux."}
@@ -1559,6 +1796,35 @@ export function DesktopLanding() {
                       <p className="mt-2 text-sm text-slate-600">{item.detail}</p>
                     </div>
                   ))}
+                </div>
+              </section>
+
+              <section className="mb-12 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">{playbookContent.compareTitle}</h2>
+                <p className="mt-2 text-slate-600">{playbookContent.compareSubtitle}</p>
+                <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200">
+                  <table className="min-w-full bg-white text-left text-sm">
+                    <thead className="bg-slate-50">
+                      <tr>
+                        <th className="px-4 py-3 font-semibold text-slate-600">
+                          {language === "pt" ? "Criterio" : language === "en" ? "Criteria" : "Critere"}
+                        </th>
+                        <th className="px-4 py-3 font-semibold text-purple-700">Purple Stock</th>
+                        <th className="px-4 py-3 font-semibold text-slate-600">
+                          {language === "pt" ? "ERP tradicional" : language === "en" ? "Traditional ERP" : "ERP traditionnel"}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {playbookContent.compareRows.map((row) => (
+                        <tr key={row.label} className="border-t border-slate-100">
+                          <td className="px-4 py-3 font-medium text-slate-900">{row.label}</td>
+                          <td className="px-4 py-3 text-slate-700">{row.purple}</td>
+                          <td className="px-4 py-3 text-slate-600">{row.erp}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </section>
 
@@ -1592,23 +1858,30 @@ export function DesktopLanding() {
                     }
                   >
                     <Sparkles className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                    {language === "pt" ? "Teste por 7 dias" : language === "en" ? "Test for 7 days" : "Testez pendant 7 jours"}
+                    {language === "pt" ? "Começar teste grátis de 7 dias" : language === "en" ? "Start 7-day free trial" : "Commencer l'essai gratuit de 7 jours"}
                     <ArrowRight className="w-5 h-5 ml-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                   </Link>
                 </Button>
                 <Button
+                  asChild
                   size="lg"
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
-                  onClick={() =>
-                    trackCtaClick({
-                      cta_name: "desktop_view_demo_modal",
-                      cta_target: "video_modal",
-                      page_section: "secondary_cta",
-                    })
-                  }
                 >
-                  <PlayCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
-                  {language === "pt" ? "Ver Demonstração" : language === "en" ? "View Demo" : "Voir la Démo"}
+                  <Link
+                    href="https://calendly.com/matheus-puppe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      trackCtaClick({
+                        cta_name: "desktop_talk_specialist_secondary",
+                        cta_target: "calendly",
+                        page_section: "secondary_cta",
+                      })
+                    }
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
+                    {language === "pt" ? "Falar com especialista" : language === "en" ? "Talk to a specialist" : "Parler a un specialiste"}
+                  </Link>
                 </Button>
               </div>
             </div>

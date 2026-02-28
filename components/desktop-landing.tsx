@@ -1261,7 +1261,7 @@ export function DesktopLanding() {
                   {language === "pt" 
                     ? (
                       <>
-                        {"Pare de perder venda porque o estoque nao bate"}
+                        {"Pare de perder venda porque o estoque não bate"}
                       </>
                     )
                     : language === "en" 

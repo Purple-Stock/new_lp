@@ -694,19 +694,19 @@ export function DesktopLanding() {
               body: "Acompanhe perdas, reposição e desempenho para agir rápido sem consolidação manual.",
             },
           ],
-          proofTitle: "Provas de operação para controle de estoque e almoxarifado",
+          proofTitle: "O que a equipe consegue auditar no dia a dia",
           proofItems: [
             {
-              metric: "Setup guiado e onboarding assistido",
-              detail: "Time e localizações prontos para começar sem projeto complexo.",
+              metric: "Rastreabilidade por item",
+              detail: "Quem movimentou, quando movimentou e em qual local a operação aconteceu.",
             },
             {
-              metric: "5 tipos de movimentação no mesmo fluxo",
-              detail: "Entrada, saída, transferência, ajuste e contagem com histórico único.",
+              metric: "Histórico único de movimentações",
+              detail: "Entrada, saída, transferência, ajuste e contagem no mesmo fluxo operacional.",
             },
             {
-              metric: "Operação móvel com QR Code",
-              detail: "Conferência e inventário direto no celular com menos retrabalho.",
+              metric: "Conferência por localização",
+              detail: "Consulta de saldo e inventário por local sem consolidar planilhas manualmente.",
             },
           ],
           compareTitle: "Purple Stock vs ERP tradicional",
@@ -765,19 +765,19 @@ export function DesktopLanding() {
               body: "Track losses, replenishment, and team performance without manual consolidation.",
             },
           ],
-          proofTitle: "Operational proof for inventory teams",
+          proofTitle: "What teams can audit in daily operations",
           proofItems: [
             {
-              metric: "Guided setup with assisted onboarding",
-              detail: "Team and locations ready without a complex rollout project.",
+              metric: "Item-level traceability",
+              detail: "Who moved stock, when it happened, and where it happened.",
             },
             {
-              metric: "5 movement types in one workflow",
-              detail: "Inbound, outbound, transfer, adjustment, and count in one history.",
+              metric: "Single movement history",
+              detail: "Inbound, outbound, transfer, adjustment, and count in one operational flow.",
             },
             {
-              metric: "Mobile QR code workflow",
-              detail: "Run checks and inventory on mobile with less rework.",
+              metric: "Location-based checks",
+              detail: "Review stock and inventory by location without manual spreadsheet consolidation.",
             },
           ],
           compareTitle: "Purple Stock vs traditional ERP",
@@ -836,19 +836,19 @@ export function DesktopLanding() {
               body: "Suivez pertes, reassort et performance sans consolidation manuelle.",
             },
           ],
-          proofTitle: "Preuves operationnelles pour les equipes stock",
+          proofTitle: "Ce que l'equipe peut auditer au quotidien",
           proofItems: [
             {
-              metric: "Mise en route guidee avec onboarding assiste",
-              detail: "Equipe et emplacements prets sans projet complexe.",
+              metric: "Tracabilite par article",
+              detail: "Qui a bouge le stock, quand et dans quel emplacement.",
             },
             {
-              metric: "5 types de mouvements dans un seul flux",
-              detail: "Entree, sortie, transfert, ajustement et comptage dans le meme historique.",
+              metric: "Historique unique des mouvements",
+              detail: "Entree, sortie, transfert, ajustement et comptage dans le meme flux operationnel.",
             },
             {
-              metric: "Flux mobile avec QR code",
-              detail: "Verification et inventaire sur mobile avec moins de reprises.",
+              metric: "Controle par emplacement",
+              detail: "Lecture de stock et inventaire par emplacement sans consolidation manuelle des tableurs.",
             },
           ],
           compareTitle: "Purple Stock vs ERP traditionnel",
@@ -920,7 +920,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Uso principal: entrada, saída e transferência com rastreabilidade por item.",
+            result: "\"Antes era difícil rastrear movimentação. Hoje entrada, saída e transferência ficam no mesmo histórico.\"",
           },
           {
             name: "St. Nicholas School",
@@ -928,7 +928,7 @@ export function DesktopLanding() {
             width: 240,
             height: 55,
             maxWidth: "max-w-[240px]",
-            result: "Uso principal: organização por localização para conferência recorrente.",
+            result: "\"A equipe passou a conferir estoque por localização sem perder tempo procurando item.\"",
           },
           {
             name: "Da Rua",
@@ -936,7 +936,7 @@ export function DesktopLanding() {
             width: 120,
             height: 40,
             maxWidth: "max-w-[120px]",
-            result: "Uso principal: operação centralizada sem planilhas paralelas.",
+            result: "\"Parou de existir planilha paralela para controle diário de estoque.\"",
           },
           {
             name: "DPS Brasil",
@@ -944,7 +944,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Uso principal: visibilidade de saldo e movimentações na rotina operacional.",
+            result: "\"Hoje o time enxerga saldo e movimentações no mesmo painel operacional.\"",
           },
         ],
         en: [
@@ -954,7 +954,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Primary use: inbound, outbound, and transfer workflow with item traceability.",
+            result: "\"Inbound, outbound, and transfer are now tracked in one single movement history.\"",
           },
           {
             name: "St. Nicholas School",
@@ -962,7 +962,7 @@ export function DesktopLanding() {
             width: 240,
             height: 55,
             maxWidth: "max-w-[240px]",
-            result: "Primary use: location-based stock organization for recurring checks.",
+            result: "\"The team now runs stock checks by location without wasting time searching items.\"",
           },
           {
             name: "Da Rua",
@@ -970,7 +970,7 @@ export function DesktopLanding() {
             width: 120,
             height: 40,
             maxWidth: "max-w-[120px]",
-            result: "Primary use: centralized stock operations without parallel spreadsheets.",
+            result: "\"Daily stock control no longer depends on parallel spreadsheets.\"",
           },
           {
             name: "DPS Brasil",
@@ -978,7 +978,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Primary use: stock and movement visibility for daily operations.",
+            result: "\"Operations now see stock balance and movement history in one place.\"",
           },
         ],
         fr: [
@@ -988,7 +988,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Usage principal: entree, sortie et transfert avec tracabilite par article.",
+            result: "\"Entree, sortie et transfert sont maintenant suivis dans un historique unique.\"",
           },
           {
             name: "St. Nicholas School",
@@ -996,7 +996,7 @@ export function DesktopLanding() {
             width: 240,
             height: 55,
             maxWidth: "max-w-[240px]",
-            result: "Usage principal: organisation du stock par emplacement pour controles recurrents.",
+            result: "\"L'equipe controle le stock par emplacement sans perdre du temps a chercher les articles.\"",
           },
           {
             name: "Da Rua",
@@ -1004,7 +1004,7 @@ export function DesktopLanding() {
             width: 120,
             height: 40,
             maxWidth: "max-w-[120px]",
-            result: "Usage principal: operation stock centralisee sans tableurs paralleles.",
+            result: "\"Le controle quotidien ne depend plus de tableurs paralleles.\"",
           },
           {
             name: "DPS Brasil",
@@ -1012,7 +1012,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Usage principal: visibilite des soldes et mouvements au quotidien.",
+            result: "\"Les soldes et mouvements sont visibles dans le meme panneau operationnel.\"",
           },
         ],
       })[language],
@@ -1268,24 +1268,12 @@ export function DesktopLanding() {
                     : language === "en" 
                       ? (
                         <>
-                          {"Stop losing sales from wrong stock in "}
-                          <span
-                            key={`sector-${language}-${sectorIndex}`}
-                            className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
-                          >
-                            {rotatingSectors[sectorIndex]}
-                          </span>
+                          {"Stop losing sales because stock records do not match"}
                         </>
                       )
                       : (
                         <>
-                          {"Arretez de perdre des ventes a cause du stock en "}
-                          <span
-                            key={`sector-${language}-${sectorIndex}`}
-                            className="inline-block text-purple-700 animate-in fade-in slide-in-from-bottom-1 duration-500"
-                          >
-                            {rotatingSectors[sectorIndex]}
-                          </span>
+                          {"Arretez de perdre des ventes parce que le stock ne correspond pas"}
                         </>
                       )}
                 </h1>
@@ -1293,8 +1281,8 @@ export function DesktopLanding() {
                   {language === "pt"
                     ? "Em poucos dias, seu time sai da planilha para um controle de estoque simples, no celular, com QR Code e histórico do que entrou, saiu e foi para cada lugar."
                     : language === "en"
-                      ? "Deploy a reliable inventory workflow with QR code, auditable history, and mobile execution in days."
-                      : "Deployez un flux stock fiable avec QR code, historique auditable et operation mobile en quelques jours."}
+                      ? "In a few days, your team moves from spreadsheets to simple stock control on mobile, with QR code and history of what came in, what went out, and where each move happened."
+                      : "En quelques jours, votre equipe passe du tableur a un controle de stock simple sur mobile, avec QR code et historique des entrees, sorties et emplacements."}
                 </p>
                 <div className="mx-auto max-w-3xl rounded-2xl border border-blue-100 bg-blue-50/80 px-5 py-4 text-left">
                   <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">{playbookContent.uvpBadge}</p>
@@ -1304,15 +1292,30 @@ export function DesktopLanding() {
                   {[
                     {
                       title: language === "pt" ? "Setup guiado" : language === "en" ? "Guided setup" : "Mise en route guidee",
-                      value: language === "pt" ? "Onboarding assistido para começar com o básico sem parar a operação." : language === "en" ? "Assisted onboarding" : "Onboarding assiste",
+                      value:
+                        language === "pt"
+                          ? "Onboarding assistido para começar com o básico sem parar a operação."
+                          : language === "en"
+                            ? "Assisted onboarding to start with the essentials without stopping operations."
+                            : "Onboarding assiste pour commencer avec l'essentiel sans arreter l'operation.",
                     },
                     {
                       title: language === "pt" ? "Fluxo operacional" : language === "en" ? "Operations flow" : "Flux operationnel",
-                      value: language === "pt" ? "5 movimentos padrão: entrada, saída, transferência, ajuste e contagem." : language === "en" ? "5 movements" : "5 mouvements",
+                      value:
+                        language === "pt"
+                          ? "5 movimentos padrão: entrada, saída, transferência, ajuste e contagem."
+                          : language === "en"
+                            ? "5 standard movements: stock in, stock out, transfer, adjustment, and count."
+                            : "5 mouvements standard: entree, sortie, transfert, ajustement et comptage.",
                     },
                     {
                       title: language === "pt" ? "Execucao diaria" : language === "en" ? "Daily execution" : "Execution quotidienne",
-                      value: language === "pt" ? "Operação no celular com QR Code, sem depender de computador no almoxarifado." : language === "en" ? "Mobile + QR" : "Mobile + QR",
+                      value:
+                        language === "pt"
+                          ? "Operação no celular com QR Code, sem depender de computador no almoxarifado."
+                          : language === "en"
+                            ? "Mobile operation with QR code, without depending on a desktop in the warehouse."
+                            : "Operation mobile avec QR code, sans dependre d'un ordinateur dans l'entrepot.",
                     },
                   ].map((proof) => (
                     <div key={proof.title} className="rounded-xl border border-slate-200 bg-white px-4 py-3">
@@ -1351,8 +1354,8 @@ export function DesktopLanding() {
                     {language === "pt"
                       ? "Pensado para uma operação começar pequena e testar na prática antes de qualquer projeto grande."
                       : language === "en"
-                        ? "Launch promotional pricing for new customers."
-                        : "Tarif promotionnel de lancement pour les nouveaux clients."}
+                        ? "Built for teams that want to start small and validate the operation before any large system project."
+                        : "Concu pour demarrer petit et valider l'operation avant tout grand projet de systeme."}
                   </p>
                   <p className="mt-1 text-xs text-slate-500">
                     {language === "pt"
@@ -1649,7 +1652,7 @@ export function DesktopLanding() {
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
-                      ? "Visao de estoque" 
+                      ? "Visão de estoque" 
                       : language === "en" 
                         ? "Total Control" 
                         : "Contrôle Total"}
@@ -1670,7 +1673,7 @@ export function DesktopLanding() {
                       <Zap className="h-full w-full text-white" strokeWidth={2.5} style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }} />
                     </div>
                     <span className="text-xs font-semibold uppercase tracking-wide text-blue-700">
-                      {language === "pt" ? "Padrao" : language === "en" ? "Standard" : "Standard"}
+                      {language === "pt" ? "Padrão" : language === "en" ? "Standard" : "Standard"}
                     </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
@@ -1701,7 +1704,7 @@ export function DesktopLanding() {
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {language === "pt" 
-                      ? "Relatorios por time" 
+                      ? "Relatórios por time" 
                       : language === "en" 
                         ? "Reports by team" 
                         : "Rapports par equipe"}
@@ -1734,14 +1737,14 @@ export function DesktopLanding() {
               <section className="mb-12 rounded-3xl border border-violet-100 bg-violet-50/40 p-6 sm:p-8 text-center">
                 <div className="inline-flex items-center gap-2 rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700">
                   <FileCode className="h-3.5 w-3.5" />
-                  {language === "pt" ? "Documentação técnica" : language === "en" ? "Technical docs" : "Documentation technique"}
+                  {language === "pt" ? "Recursos técnicos (opcional)" : language === "en" ? "Technical resources (optional)" : "Ressources techniques (optionnel)"}
                 </div>
                 <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl">
                   {language === "pt"
-                    ? "Veja as funcionalidades do app por tópico"
+                    ? "Para times técnicos: funcionalidades por tópico"
                     : language === "en"
-                      ? "See app features by topic"
-                      : "Voir les fonctionnalités de l'app par thème"}
+                      ? "For technical teams: features by topic"
+                      : "Pour les equipes techniques: fonctionnalités par thème"}
                 </h2>
                 <p className="mt-2 text-slate-600">
                   {language === "pt"
@@ -1762,7 +1765,7 @@ export function DesktopLanding() {
               <section className="mb-12 rounded-3xl border border-indigo-100 bg-indigo-50/40 p-6 sm:p-8">
                 <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
                   {language === "pt"
-                    ? "Software de estoque para pequenas e medias empresas"
+                    ? "Software de estoque para pequenas e médias empresas"
                     : language === "en"
                       ? "Inventory system for small and mid-sized businesses"
                       : "Systeme de stock pour petites et moyennes entreprises"}

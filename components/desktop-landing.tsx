@@ -18,6 +18,7 @@ import {
   Sparkles,
   UsersRound,
   ScanLine,
+  Smartphone,
   BarChart3,
   MapPin,
   Box,
@@ -723,20 +724,20 @@ export function DesktopLanding() {
               a: "Sim. Você pode iniciar com o cadastro essencial e evoluir por etapas, sem parar a operação.",
             },
             {
-              q: "Como evitamos mistura de dados entre equipes?",
-              a: "O sistema opera por times com contexto ativo e permissões, mantendo cada operação isolada.",
+              q: "Meus dados ficam seguros e separados por equipe?",
+              a: "Sim. O sistema opera por times com contexto ativo e permissões por usuário, mantendo cada operação isolada.",
             },
             {
-              q: "O time de almoxarifado consegue usar no dia a dia?",
+              q: "Funciona no celular no dia a dia da operação?",
               a: "Sim. Os fluxos de entrada, saída, transferência e contagem são diretos e podem ser feitos no celular.",
             },
             {
-              q: "E se a gente quiser sair no futuro?",
-              a: "Você mantém controle dos dados operacionais e pode exportar informações para continuidade interna.",
+              q: "Posso testar sem ficar preso?",
+              a: "Sim. O teste utiliza cartão de crédito e você pode cancelar quando quiser dentro do período de avaliação.",
             },
             {
-              q: "Precisa cartão de crédito para testar?",
-              a: "Sim. O teste utiliza cartão de crédito e você pode cancelar quando quiser dentro do período de avaliação.",
+              q: "Quanto custa para começar?",
+              a: "O plano de entrada começa em R$29,90/mês na oferta atual, com revisão de preço conforme evolução da operação.",
             },
           ],
         },
@@ -794,20 +795,20 @@ export function DesktopLanding() {
               a: "Yes. You can begin with core setup and expand in phases without stopping operations.",
             },
             {
-              q: "How do we avoid data overlap between teams?",
-              a: "The system runs with active team context and permissions, keeping operations separated.",
+              q: "Are data secure and separated by team?",
+              a: "Yes. The system runs with active team context and user permissions, keeping operations separated.",
             },
             {
-              q: "Can warehouse staff use it daily?",
+              q: "Does it work on mobile for daily operations?",
               a: "Yes. Inbound, outbound, transfer, and counting flows are direct and mobile-friendly.",
             },
             {
-              q: "What if we decide to leave in the future?",
-              a: "You keep control of your operational data and can export information for continuity.",
+              q: "Can we test without long-term lock-in?",
+              a: "Yes. The trial requires a credit card, and you can cancel anytime during the trial period.",
             },
             {
-              q: "Do we need a credit card to start?",
-              a: "Yes. The trial requires a credit card, and you can cancel anytime during the trial period.",
+              q: "What is the starting cost?",
+              a: "Entry pricing currently starts at R$29.90/month, with review as operations grow.",
             },
           ],
         },
@@ -865,20 +866,20 @@ export function DesktopLanding() {
               a: "Oui. Vous pouvez debuter avec le socle et evoluer par etapes sans arreter l'operation.",
             },
             {
-              q: "Comment eviter le melange des donnees entre equipes?",
-              a: "Le systeme fonctionne par equipes avec contexte actif et permissions dediees.",
+              q: "Les donnees sont-elles securisees et separees par equipe?",
+              a: "Oui. Le systeme fonctionne par equipes avec contexte actif et permissions par utilisateur.",
             },
             {
-              q: "Le personnel magasin peut l'utiliser au quotidien?",
+              q: "Est-ce utilisable sur mobile au quotidien?",
               a: "Oui. Les flux entree, sortie, transfert et comptage sont simples et mobiles.",
             },
             {
-              q: "Et si nous souhaitons sortir plus tard?",
-              a: "Vous conservez vos donnees operationnelles et pouvez exporter les informations.",
+              q: "Peut-on tester sans engagement long?",
+              a: "Oui. L'essai demande une carte bancaire et vous pouvez annuler a tout moment pendant la periode d'essai.",
             },
             {
-              q: "Faut-il une carte bancaire pour commencer?",
-              a: "Oui. L'essai demande une carte bancaire et vous pouvez annuler a tout moment pendant la periode d'essai.",
+              q: "Quel est le cout de depart?",
+              a: "Le plan d'entree commence actuellement a R$29,90/mois, avec revision selon l'evolution de l'operation.",
             },
           ],
         },
@@ -919,7 +920,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Padronizou entrada, saída e transferência com rastreabilidade por item.",
+            result: "Uso principal: entrada, saída e transferência com rastreabilidade por item.",
           },
           {
             name: "St. Nicholas School",
@@ -927,7 +928,7 @@ export function DesktopLanding() {
             width: 240,
             height: 55,
             maxWidth: "max-w-[240px]",
-            result: "Organizou estoque por localização e melhorou conferências recorrentes.",
+            result: "Uso principal: organização por localização para conferência recorrente.",
           },
           {
             name: "Da Rua",
@@ -935,7 +936,7 @@ export function DesktopLanding() {
             width: 120,
             height: 40,
             maxWidth: "max-w-[120px]",
-            result: "Centralizou operação de estoque sem depender de planilhas paralelas.",
+            result: "Uso principal: operação centralizada sem planilhas paralelas.",
           },
           {
             name: "DPS Brasil",
@@ -943,7 +944,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Deu visibilidade de saldo e movimentações para a equipe operacional.",
+            result: "Uso principal: visibilidade de saldo e movimentações na rotina operacional.",
           },
         ],
         en: [
@@ -953,7 +954,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Standardized inbound, outbound, and transfer workflows with item traceability.",
+            result: "Primary use: inbound, outbound, and transfer workflow with item traceability.",
           },
           {
             name: "St. Nicholas School",
@@ -961,7 +962,7 @@ export function DesktopLanding() {
             width: 240,
             height: 55,
             maxWidth: "max-w-[240px]",
-            result: "Organized stock by location and improved recurring inventory checks.",
+            result: "Primary use: location-based stock organization for recurring checks.",
           },
           {
             name: "Da Rua",
@@ -969,7 +970,7 @@ export function DesktopLanding() {
             width: 120,
             height: 40,
             maxWidth: "max-w-[120px]",
-            result: "Centralized stock operations without parallel spreadsheets.",
+            result: "Primary use: centralized stock operations without parallel spreadsheets.",
           },
           {
             name: "DPS Brasil",
@@ -977,7 +978,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "Improved stock and movement visibility for daily operations.",
+            result: "Primary use: stock and movement visibility for daily operations.",
           },
         ],
         fr: [
@@ -987,7 +988,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "A standardise entree, sortie et transfert avec tracabilite par article.",
+            result: "Usage principal: entree, sortie et transfert avec tracabilite par article.",
           },
           {
             name: "St. Nicholas School",
@@ -995,7 +996,7 @@ export function DesktopLanding() {
             width: 240,
             height: 55,
             maxWidth: "max-w-[240px]",
-            result: "A organise le stock par emplacement et facilite les controles recurrents.",
+            result: "Usage principal: organisation du stock par emplacement pour controles recurrents.",
           },
           {
             name: "Da Rua",
@@ -1003,7 +1004,7 @@ export function DesktopLanding() {
             width: 120,
             height: 40,
             maxWidth: "max-w-[120px]",
-            result: "A centralise l'operation stock sans tableurs paralleles.",
+            result: "Usage principal: operation stock centralisee sans tableurs paralleles.",
           },
           {
             name: "DPS Brasil",
@@ -1011,7 +1012,7 @@ export function DesktopLanding() {
             width: 180,
             height: 60,
             maxWidth: "max-w-[180px]",
-            result: "A apporte plus de visibilite sur soldes et mouvements quotidiens.",
+            result: "Usage principal: visibilite des soldes et mouvements au quotidien.",
           },
         ],
       })[language],
@@ -1433,6 +1434,16 @@ export function DesktopLanding() {
                       ? "Trial with credit card • Cancel anytime • Guided setup"
                       : "Essai avec carte bancaire • Annulation a tout moment • Setup guide"}
                 </p>
+                <div className="mx-auto mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
+                    <Smartphone className="h-3.5 w-3.5" />
+                    {language === "pt" ? "Compatível com iOS" : language === "en" ? "Compatible with iOS" : "Compatible iOS"}
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
+                    <Smartphone className="h-3.5 w-3.5" />
+                    {language === "pt" ? "Compatível com Android" : language === "en" ? "Compatible with Android" : "Compatible Android"}
+                  </span>
+                </div>
               </div>
 
               {/* Main Content Area - App Screenshot */}

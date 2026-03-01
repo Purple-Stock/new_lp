@@ -7,6 +7,7 @@ import { getAllPosts, getPostBySlug, slugifyTag } from "@/lib/blog"
 import { getSiteUrl } from "@/lib/site"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { BlogPostCta } from "@/components/blog-post-cta"
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -126,6 +127,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{post.meta.title}</h1>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-600">{post.meta.excerpt}</p>
+              <BlogPostCta slug={post.meta.slug} />
 
               {post.meta.tags.length > 0 && (
                 <div className="mt-5 flex flex-wrap gap-2">

@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
 import { useLanguage } from "@/contexts/LanguageContext"
-import { trackCtaClick } from "@/lib/analytics"
+import { trackSeoCtaClick } from "@/lib/analytics"
 
 export default function PricingPage() {
   const { language } = useLanguage()
@@ -208,6 +208,17 @@ export default function PricingPage() {
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-xl text-gray-600">{copy.subtitle}</p>
+            <p className="mx-auto mt-4 max-w-3xl text-sm text-gray-500">
+              Compare também por cenário em{" "}
+              <Link href="/industrias" className="font-semibold text-purple-700 hover:text-purple-800">
+                soluções por setor
+              </Link>{" "}
+              e no guia de{" "}
+              <Link href="/recursos/controle-de-almoxarifado" className="font-semibold text-purple-700 hover:text-purple-800">
+                controle de almoxarifado
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>
@@ -257,7 +268,7 @@ export default function PricingPage() {
                 href="https://app.purplestock.com.br/"
                 className="flex-1"
                 onClick={() =>
-                  trackCtaClick({
+                  trackSeoCtaClick({
                     cta_name: "pricing_single_plan_primary",
                     cta_target: "app",
                     page_section: "pricing_single_card",
@@ -274,7 +285,7 @@ export default function PricingPage() {
                 href="https://wa.me/5511995597242?text=Ol%C3%A1!%20Quero%20entender%20o%20plano%20de%20R%24%2029%2C90%20por%20time."
                 className="flex-1"
                 onClick={() =>
-                  trackCtaClick({
+                  trackSeoCtaClick({
                     cta_name: "pricing_single_plan_secondary",
                     cta_target: "whatsapp",
                     page_section: "pricing_single_card",
@@ -352,7 +363,7 @@ export default function PricingPage() {
             <Link
               href="https://app.purplestock.com.br/"
               onClick={() =>
-                trackCtaClick({
+                trackSeoCtaClick({
                   cta_name: "pricing_single_bottom_primary",
                   cta_target: "app",
                   page_section: "pricing_bottom_cta",
@@ -367,7 +378,7 @@ export default function PricingPage() {
             <Link
               href="https://wa.me/5511995597242?text=Ol%C3%A1!%20Quero%20tirar%20d%C3%BAvidas%20sobre%20o%20plano%20de%20R%24%2029%2C90%20por%20time."
               onClick={() =>
-                trackCtaClick({
+                trackSeoCtaClick({
                   cta_name: "pricing_single_bottom_secondary",
                   cta_target: "whatsapp",
                   page_section: "pricing_bottom_cta",

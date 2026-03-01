@@ -2,7 +2,7 @@
 
 import { MessageCircle } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { trackCtaClick } from "@/lib/analytics"
+import { trackSeoCtaClick } from "@/lib/analytics"
 
 export function WhatsAppButton() {
   const phoneNumber = "5511995597242" // Format: country code (55) + phone number
@@ -18,7 +18,7 @@ export function WhatsAppButton() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              trackCtaClick({
+              trackSeoCtaClick({
                 cta_name: "floating_whatsapp_button",
                 cta_target: "whatsapp",
                 page_section: "floating_buttons",

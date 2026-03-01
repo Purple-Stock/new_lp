@@ -76,7 +76,8 @@ const nextConfig = {
         permanent: true,
       })),
       ...legacyBlogSlugRedirects.map((redirect) => ({
-        ...redirect,
+        source: redirect.source,
+        destination: `https://www.purplestock.com.br${redirect.destination}`,
         permanent: true,
       })),
       {

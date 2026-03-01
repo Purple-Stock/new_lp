@@ -2,7 +2,7 @@
 
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
-import { trackEvent } from "@/lib/analytics"
+import { trackEvent, trackSeoLandingView } from "@/lib/analytics"
 
 const ORGANIC_LANDING_PREFIXES = [
   "/blog",
@@ -27,12 +27,12 @@ export function RouteViewTracker() {
 
     const isLanding = pathname === "/" || ORGANIC_LANDING_PREFIXES.some((prefix) => pathname.startsWith(prefix))
     if (isLanding) {
-      trackEvent("view_landing", {
+      trackSeoLandingView({
         page_path: pathname,
+        page_type: pathname === "/" ? "home" : "content",
       })
     }
   }, [pathname])
 
   return null
 }
-

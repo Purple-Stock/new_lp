@@ -2,7 +2,7 @@
 
 import { Calendar } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { trackCtaClick } from "@/lib/analytics"
+import { trackSeoCtaClick } from "@/lib/analytics"
 
 export function ScheduleButton() {
   const calendlyUrl = "https://calendly.com/matheus-puppe"
@@ -16,7 +16,7 @@ export function ScheduleButton() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              trackCtaClick({
+              trackSeoCtaClick({
                 cta_name: "floating_schedule_button",
                 cta_target: "calendly",
                 page_section: "floating_buttons",

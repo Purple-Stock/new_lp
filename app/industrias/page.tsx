@@ -31,6 +31,7 @@ import {
   GraduationCap
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { trackSeoCtaClick } from "@/lib/analytics"
 
 type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology" | "audiovisual" | "events" | "restaurantes" | "electrical"
 
@@ -225,6 +226,54 @@ export default function IndustriasPage() {
             <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
               {t.industries.description}
             </p>
+
+            <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="https://app.purplestock.com.br/"
+                onClick={() =>
+                  trackSeoCtaClick({
+                    cta_name: "industries_hero_primary",
+                    cta_target: "app",
+                    page_section: "industries_hero",
+                    query_cluster: "controle-de-estoque-por-setor",
+                  })
+                }
+              >
+                <Button className="bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800">
+                  Começar teste de 7 dias
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link
+                href="/precos"
+                onClick={() =>
+                  trackSeoCtaClick({
+                    cta_name: "industries_hero_secondary",
+                    cta_target: "internal_pricing",
+                    page_section: "industries_hero",
+                    query_cluster: "controle-de-estoque-por-setor",
+                  })
+                }
+              >
+                <Button variant="outline" className="border-2 border-purple-300 text-purple-700 hover:bg-purple-50">
+                  Ver preço por time
+                </Button>
+              </Link>
+              <Link
+                href="/recursos/controle-de-almoxarifado"
+                onClick={() =>
+                  trackSeoCtaClick({
+                    cta_name: "industries_hero_supporting_link",
+                    cta_target: "internal_resource",
+                    page_section: "industries_hero",
+                    query_cluster: "controle-de-estoque-por-setor",
+                  })
+                }
+                className="text-sm font-semibold text-purple-700 underline underline-offset-4 hover:text-purple-800"
+              >
+                Ver guia de controle de almoxarifado
+              </Link>
+            </div>
 
             {/* Stats Overview */}
             <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">

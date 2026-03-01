@@ -30,7 +30,7 @@ import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 import { cn } from "@/lib/utils"
-import { trackCtaClick, trackEvent } from "@/lib/analytics"
+import { trackCtaClick, trackSeoLandingView } from "@/lib/analytics"
 import { MacOSFolderIcon } from "@/components/macos-folder-icon"
 import { DraggableFolder } from "@/components/draggable-folder"
 import { Navbar } from "@/components/navbar"
@@ -75,7 +75,7 @@ export function DesktopLanding() {
   const [usePainCta, setUsePainCta] = useState(false)
 
   useEffect(() => {
-    trackEvent("view_landing", {
+    trackSeoLandingView({
       page_path: "/",
       landing_name: "desktop_landing",
     })

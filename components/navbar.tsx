@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 import { useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
-import { trackCtaClick } from "@/lib/analytics"
+import { trackSeoCtaClick } from "@/lib/analytics"
 
 export function Navbar() {
   const { language, setLanguage } = useLanguage()
@@ -150,7 +150,7 @@ export function Navbar() {
             href="https://app.purplestock.com.br/"
             className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
             onClick={() =>
-              trackCtaClick({
+              trackSeoCtaClick({
                 cta_name: "navbar_login",
                 cta_target: "app",
                 page_section: "navbar",

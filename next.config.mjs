@@ -60,6 +60,54 @@ const nextConfig = {
         source: "/blog/maximizando-a-eficiencia-do-controle-de-inventario-com-tecnologia-qr-code",
         destination: "/blog/como-usar-qr-code-controle-estoque",
       },
+      {
+        source: "/blog/purple-stock-bi-bling-a-revolucao-dos-dashboards-sem-power-bi",
+        destination: "/features/analytics-reporting",
+      },
+      {
+        source: "/blog/sistema-para-confeccao-a-solucao-para-otimizar-sua-producao-e-reduzir-custos",
+        destination: "/features/clothing-manufacturing",
+      },
+      {
+        source: "/blog/a-historia-do-qr-code",
+        destination: "/blog/como-usar-qr-code-controle-estoque",
+      },
+      {
+        source: "/blog/codigo-de-barras-vs-rfid-escolhendo-a-tecnologia-ideal-para-otimizar-seu-negocio",
+        destination: "/features/barcoding",
+      },
+      {
+        source: "/blog/digitalize-seu-estoque-a-revolucao-do-controle-de-inventario-com-qr-code",
+        destination: "/blog/como-usar-qr-code-controle-estoque",
+      },
+      {
+        source: "/blog/como-rastrear-inventario-com-qr-code",
+        destination: "/blog/como-usar-qr-code-controle-estoque",
+      },
+      {
+        source: "/blog/controle-de-estoque-por-qr-code",
+        destination: "/blog/como-usar-qr-code-controle-estoque",
+      },
+      {
+        source: "/blog/afine-a-gestao-do-seu-show-qr-codes-no-controle-de-instrumentos-musicais",
+        destination: "/industrias/events",
+      },
+      {
+        source: "/blog/como-escolher-o-melhor-sistema-para-gerenciar-estoque-e-impulsionar-sua-empresa",
+        destination: "/blog/aplicativo-para-controle-de-estoque",
+      },
+      {
+        source: "/blog/sistema-para-pcp-otimize-a-producao-da-sua-empresa",
+        destination: "/blog/sistema-pcp-para-industria-como-implementar",
+      },
+      {
+        source: "/blog/controle-de-estoque-de-codigo-aberto-para-empresas",
+        destination: "/blog/open-erp-o-que-e-e-quando-usar",
+      },
+      {
+        source: "/blog/transforme-sua-gestao-de-inventario-com-aplicativos-de-controle-de-estoque",
+        destination: "/blog/aplicativo-para-controle-de-estoque",
+      },
     ]
 
     const legacyResourceRedirects = [
@@ -77,10 +125,72 @@ const nextConfig = {
       },
     ]
 
+    const legacyUtilityRedirects = [
+      {
+        source: "/archive",
+        destination: "/blog",
+      },
+      {
+        source: "/newsletter",
+        destination: "/blog",
+      },
+      {
+        source: "/tag/inventory-management",
+        destination: "/blog/tag/gestao-de-estoque",
+      },
+      {
+        source: "/index.html",
+        destination: "/",
+      },
+      {
+        source: "/artigos/:slug",
+        destination: "/blog/:slug",
+      },
+    ]
+
+    const legacyBlogRssRedirects = legacyBlogSlugRedirects.map((redirect) => ({
+      source: `${redirect.source}/rss.xml`,
+      destination: redirect.destination,
+    }))
+
     return [
       ...legacyResourceRedirects.map((redirect) => ({
         source: redirect.source,
         destination: redirect.destination,
+        permanent: true,
+      })),
+      ...legacyUtilityRedirects.map((redirect) => ({
+        source: redirect.source,
+        destination: `https://www.purplestock.com.br${redirect.destination}`,
+        has: [{ type: "host", value: "blog.purplestock.com.br" }],
+        permanent: true,
+      })),
+      ...legacyUtilityRedirects.map((redirect) => ({
+        source: redirect.source,
+        destination: `https://www.purplestock.com.br${redirect.destination}`,
+        has: [{ type: "host", value: "purplestock.com.br" }],
+        permanent: true,
+      })),
+      ...legacyUtilityRedirects.map((redirect) => ({
+        source: redirect.source,
+        destination: redirect.destination,
+        permanent: true,
+      })),
+      ...legacyBlogRssRedirects.map((redirect) => ({
+        source: redirect.source,
+        destination: `https://www.purplestock.com.br${redirect.destination}`,
+        has: [{ type: "host", value: "blog.purplestock.com.br" }],
+        permanent: true,
+      })),
+      ...legacyBlogRssRedirects.map((redirect) => ({
+        source: redirect.source.replace("/blog/", "/"),
+        destination: `https://www.purplestock.com.br${redirect.destination}`,
+        has: [{ type: "host", value: "blog.purplestock.com.br" }],
+        permanent: true,
+      })),
+      ...legacyBlogRssRedirects.map((redirect) => ({
+        source: redirect.source,
+        destination: `https://www.purplestock.com.br${redirect.destination}`,
         permanent: true,
       })),
       ...legacyBlogSlugRedirects.map((redirect) => ({

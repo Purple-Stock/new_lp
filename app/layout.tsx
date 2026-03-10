@@ -24,13 +24,9 @@ export const metadata: Metadata = {
   },
   description:
     "Sistema de controle de estoque em nuvem para PMEs com QR Code, rastreabilidade e operacao em tempo real.",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: siteUrl,
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Controle De Estoque Com QR Code`,
     description:

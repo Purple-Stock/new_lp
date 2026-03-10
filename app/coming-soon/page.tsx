@@ -1,6 +1,18 @@
+import { buildPageMetadata } from "@/lib/metadata"
 import { ArrowLeft, Sparkles, Clock, Bell, Calendar, MessageCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+
+export const metadata = buildPageMetadata({
+  title: "Em Breve",
+  description:
+    "Pagina temporaria do Purple Stock para recursos ainda nao lancados.",
+  path: "/coming-soon",
+  robots: {
+    index: false,
+    follow: false,
+  },
+})
 
 export default function ComingSoon() {
   return (
@@ -153,4 +165,3 @@ export default function ComingSoon() {
     </div>
   )
 }
-

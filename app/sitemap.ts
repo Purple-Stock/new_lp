@@ -6,6 +6,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl()
   const posts = await getAllPosts()
   const tagSlugs = await getAllTagSlugs()
+  const industrySlugs = [
+    "atacado",
+    "retail",
+    "manufacturing",
+    "logistics",
+    "automotive",
+    "fashion",
+    "food",
+    "restaurantes",
+    "electrical",
+    "construction",
+    "pharmaceutical",
+    "beauty",
+    "commerce",
+    "education",
+    "technology",
+    "audiovisual",
+    "events",
+  ]
   
   // Static routes
   const staticRoutes = [
@@ -39,6 +58,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/documentacao`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
     // {
     //   url: `${baseUrl}/coming-soon`,
     //   lastModified: new Date(),
@@ -68,10 +93,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Resource routes
   const resourceRoutes = [
-    'codigo-de-barras',
     'controle-de-almoxarifado',
-    'gerenciamento-equipamentos-qr-code',
-    'gestao-de-estoque',
   ].map(resource => ({
     url: `${baseUrl}/recursos/${resource}`,
     lastModified: new Date(),
@@ -80,17 +102,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   // Industry routes (dynamic based on the industries array)
-  const industryRoutes = [
-    'retail',
-    'manufacturing',
-    'logistics',
-    'food',
-    'pharmaceutical',
-    'automotive',
-    'construction',
-    'technology',
-    'audiovisual',
-  ].map(industry => ({
+  const industryRoutes = industrySlugs.map(industry => ({
     url: `${baseUrl}/industrias/${industry}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

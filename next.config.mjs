@@ -62,7 +62,27 @@ const nextConfig = {
       },
     ]
 
+    const legacyResourceRedirects = [
+      {
+        source: "/recursos/codigo-de-barras",
+        destination: "/codigo-de-barras-gratis",
+      },
+      {
+        source: "/recursos/gerenciamento-equipamentos-qr-code",
+        destination: "/features/equipment-management",
+      },
+      {
+        source: "/recursos/gestao-de-estoque",
+        destination: "/features/inventory-control",
+      },
+    ]
+
     return [
+      ...legacyResourceRedirects.map((redirect) => ({
+        source: redirect.source,
+        destination: redirect.destination,
+        permanent: true,
+      })),
       ...legacyBlogSlugRedirects.map((redirect) => ({
         source: redirect.source,
         destination: `https://www.purplestock.com.br${redirect.destination}`,

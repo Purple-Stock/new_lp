@@ -1,3 +1,5 @@
+import type { Metadata } from "next"
+import { buildPageMetadata } from "@/lib/metadata"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
@@ -530,6 +532,30 @@ const industriesData = [
     ],
   },
 ]
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const industry = industriesData.find((ind) => ind.slug === slug)
+
+  if (!industry) {
+    return buildPageMetadata({
+      title: "Solucoes por Setor",
+      description:
+        "Veja como o Purple Stock adapta o controle de estoque para diferentes operacoes e segmentos.",
+      path: "/industrias",
+    })
+  }
+
+  return buildPageMetadata({
+    title: `Gestao de Estoque para ${industry.name}`,
+    description: industry.description,
+    path: `/industrias/${industry.slug}`,
+  })
+}
 
 export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {
   // Find the industry data based on the slug

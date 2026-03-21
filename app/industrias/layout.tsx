@@ -2,24 +2,24 @@ import type { Metadata } from "next"
 import type { ReactNode } from "react"
 
 export const metadata: Metadata = {
-  title: "Sistema de Controle de Estoque por Setor para PMEs",
+  title: "Sistema de Estoque por Setor: Indústria, Varejo e Serviços",
   description:
-    "Veja como indústria, varejo, logística e serviços usam Purple Stock para rastrear estoque em tempo real e reduzir perdas operacionais.",
+    "Veja como cada setor usa a Purple Stock para controlar estoque com QR Code, rastrear itens e reduzir perdas operacionais.",
   alternates: {
     canonical: "https://www.purplestock.com.br/industrias",
   },
   openGraph: {
     type: "website",
-    title: "Sistema de Controle de Estoque por Setor para PMEs | Purple Stock",
+    title: "Sistema de Estoque por Setor: Indústria, Varejo e Serviços | Purple Stock",
     description:
-      "Veja como indústria, varejo, logística e serviços usam Purple Stock para rastrear estoque em tempo real e reduzir perdas operacionais.",
+      "Veja como cada setor usa a Purple Stock para controlar estoque com QR Code, rastrear itens e reduzir perdas operacionais.",
     url: "/industrias",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sistema de Controle de Estoque por Setor para PMEs | Purple Stock",
+    title: "Sistema de Estoque por Setor: Indústria, Varejo e Serviços | Purple Stock",
     description:
-      "Veja como indústria, varejo, logística e serviços usam Purple Stock para rastrear estoque em tempo real e reduzir perdas operacionais.",
+      "Veja como cada setor usa a Purple Stock para controlar estoque com QR Code, rastrear itens e reduzir perdas operacionais.",
   },
 }
 

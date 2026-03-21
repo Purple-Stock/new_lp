@@ -2,24 +2,24 @@ import type { Metadata } from "next"
 import type { ReactNode } from "react"
 
 export const metadata: Metadata = {
-  title: "Preço de Sistema de Estoque para PME: R$ 29,90 por Time",
+  title: "Sistema de Controle de Estoque: Preço, Teste Grátis e Planos",
   description:
-    "Compare o preço da Purple Stock para controle de estoque: R$ 29,90 por time/mês, 7 dias grátis, sem fidelidade e ativação rápida.",
+    "Veja os planos da Purple Stock para PME: a partir de R$ 29,90 por time, 7 dias grátis, sem fidelidade e implantação rápida.",
   alternates: {
     canonical: "https://www.purplestock.com.br/precos",
   },
   openGraph: {
     type: "website",
-    title: "Preço de Sistema de Estoque para PME: R$ 29,90 por Time",
+    title: "Sistema de Controle de Estoque: Preço, Teste Grátis e Planos",
     description:
-      "Compare o preço da Purple Stock para controle de estoque: R$ 29,90 por time/mês, 7 dias grátis, sem fidelidade e ativação rápida.",
+      "Veja os planos da Purple Stock para PME: a partir de R$ 29,90 por time, 7 dias grátis, sem fidelidade e implantação rápida.",
     url: "/precos",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Preço de Sistema de Estoque para PME: R$ 29,90 por Time",
+    title: "Sistema de Controle de Estoque: Preço, Teste Grátis e Planos",
     description:
-      "Compare o preço da Purple Stock para controle de estoque: R$ 29,90 por time/mês, 7 dias grátis, sem fidelidade e ativação rápida.",
+      "Veja os planos da Purple Stock para PME: a partir de R$ 29,90 por time, 7 dias grátis, sem fidelidade e implantação rápida.",
   },
 }
 

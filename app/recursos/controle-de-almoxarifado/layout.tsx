@@ -2,24 +2,24 @@ import type { Metadata } from "next"
 import type { ReactNode } from "react"
 
 export const metadata: Metadata = {
-  title: "Controle de Almoxarifado para PME: Guia Prático com Checklist",
+  title: "Controle de Almoxarifado: Como Organizar Entradas, Saídas e Inventário",
   description:
-    "Aprenda a estruturar controle de almoxarifado com entrada/saída, inventário cíclico e rastreabilidade para reduzir ruptura e custo operacional.",
+    "Aprenda como organizar o almoxarifado com entrada e saída, inventário cíclico e rastreabilidade para reduzir perdas e rupturas.",
   alternates: {
     canonical: "https://www.purplestock.com.br/recursos/controle-de-almoxarifado",
   },
   openGraph: {
     type: "website",
-    title: "Controle de Almoxarifado para PME: Guia Prático com Checklist | Purple Stock",
+    title: "Controle de Almoxarifado: Como Organizar Entradas, Saídas e Inventário | Purple Stock",
     description:
-      "Aprenda a estruturar controle de almoxarifado com entrada/saída, inventário cíclico e rastreabilidade para reduzir ruptura e custo operacional.",
+      "Aprenda como organizar o almoxarifado com entrada e saída, inventário cíclico e rastreabilidade para reduzir perdas e rupturas.",
     url: "/recursos/controle-de-almoxarifado",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Controle de Almoxarifado para PME: Guia Prático com Checklist | Purple Stock",
+    title: "Controle de Almoxarifado: Como Organizar Entradas, Saídas e Inventário | Purple Stock",
     description:
-      "Aprenda a estruturar controle de almoxarifado com entrada/saída, inventário cíclico e rastreabilidade para reduzir ruptura e custo operacional.",
+      "Aprenda como organizar o almoxarifado com entrada e saída, inventário cíclico e rastreabilidade para reduzir perdas e rupturas.",
   },
 }
 

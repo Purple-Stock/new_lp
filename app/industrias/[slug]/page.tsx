@@ -550,6 +550,15 @@ export async function generateMetadata({
     })
   }
 
+  if (industry.slug === "audiovisual") {
+    return buildPageMetadata({
+      title: "Controle de Equipamentos Audiovisuais para Produtoras e Eventos",
+      description:
+        "Controle câmeras, lentes, iluminação e áudio com check-in/check-out, manutenção e rastreabilidade para produtoras e locadoras.",
+      path: `/industrias/${industry.slug}`,
+    })
+  }
+
   return buildPageMetadata({
     title: `Gestao de Estoque para ${industry.name}`,
     description: industry.description,

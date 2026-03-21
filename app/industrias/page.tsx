@@ -399,7 +399,11 @@ export default function IndustriasPage() {
                 {/* CTA */}
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-purple-600 font-medium group-hover:text-purple-700 transition-colors duration-200">
-                    {language === "pt" ? "Saiba Mais" : language === "en" ? "Learn More" : "En Savoir Plus"}
+                    {language === "pt"
+                      ? `Ver solução para ${t.industries.industries[industry.id]}`
+                      : language === "en"
+                        ? `View solution for ${t.industries.industries[industry.id]}`
+                        : `Voir la solution pour ${t.industries.industries[industry.id]}`}
                   </span>
                   <ArrowRight className="w-4 h-4 text-purple-600 group-hover:translate-x-1 transition-transform duration-200" />
                 </div>

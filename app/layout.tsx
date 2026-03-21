@@ -4,6 +4,7 @@ import { ScheduleButton } from "@/components/schedule-button"
 import { RouteViewTracker } from "@/components/route-view-tracker"
 import { getSiteUrl, SITE_NAME } from "@/lib/site"
 import { Poppins } from "next/font/google"
+import Script from "next/script"
 import type { Metadata } from "next"
 import type React from "react"
 import "@/styles/globals.css"
@@ -15,6 +16,7 @@ const poppins = Poppins({
 })
 
 const siteUrl = getSiteUrl()
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -58,6 +60,28 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body suppressHydrationWarning className={poppins.className}>
+        {gaMeasurementId ? (
+          <>
+            <Script
+              id="ga4-init"
+              strategy="beforeInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  window.gtag = gtag;
+                  gtag('js', new Date());
+                  gtag('config', '${gaMeasurementId}', { send_page_view: false });
+                `,
+              }}
+            />
+            <Script
+              id="ga4-src"
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+          </>
+        ) : null}
         <LanguageProvider>
           <RouteViewTracker />
           {children}

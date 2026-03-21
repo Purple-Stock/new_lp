@@ -270,25 +270,6 @@ export function DesktopLanding() {
     ]
   }, [language])
 
-  const heroMetrics = useMemo(
-    () =>
-      [
-        {
-          label: language === "pt" ? "Tempo para começar" : language === "fr" ? "Delai de demarrage" : "Time to launch",
-          value: language === "pt" ? "Poucos dias" : language === "fr" ? "Quelques jours" : "A few days",
-        },
-        {
-          label: language === "pt" ? "Movimentos padrão" : language === "fr" ? "Mouvements standards" : "Standard flows",
-          value: language === "pt" ? "5 rotinas" : language === "fr" ? "5 routines" : "5 routines",
-        },
-        {
-          label: language === "pt" ? "Operação diária" : language === "fr" ? "Usage quotidien" : "Daily usage",
-          value: language === "pt" ? "Celular + QR" : language === "fr" ? "Mobile + QR" : "Mobile + QR",
-        },
-      ],
-    [language],
-  )
-
   const stageMap: Record<StageKey, Array<{ title: string; description: string; icon: ComponentType<{ className?: string }> }>> = {
     startup: [
       {
@@ -923,12 +904,12 @@ export function DesktopLanding() {
 
   const primaryHeroCta = useMemo(() => {
     if (language === "pt") {
-      return usePainCta ? "Quero organizar meu estoque agora" : "Testar Purple Stock por 7 dias"
+      return usePainCta ? "Quero parar de perder vendas agora" : "Começar teste grátis de 7 dias"
     }
     if (language === "fr") {
-      return usePainCta ? "Je veux organiser mon stock maintenant" : "Tester Purple Stock pendant 7 jours"
+      return usePainCta ? "Je veux arreter de perdre des ventes maintenant" : "Commencer l'essai gratuit de 7 jours"
     }
-    return usePainCta ? "I want to organize inventory now" : "Try Purple Stock for 7 days"
+    return usePainCta ? "I want to stop losing sales now" : "Start 7-day free trial"
   }, [language, usePainCta])
 
   const logoCases = useMemo(
@@ -1091,7 +1072,7 @@ export function DesktopLanding() {
   }, [rotatingSectors, sectorIndex])
 
   return (
-    <div className="landing-shell relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
+    <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
       {/* Animated gradient background */}
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-80" />
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -1147,7 +1128,7 @@ export function DesktopLanding() {
         <div className="relative z-0 flex flex-1 flex-col gap-8">
           <div 
             ref={mainBoxRef}
-            className="landing-panel relative z-0 flex min-h-[calc(100vh-7.5rem)] flex-col overflow-hidden rounded-[28px] border border-slate-200/60 bg-white/95 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl transition-transform cursor-move"
+            className="relative z-0 flex min-h-[calc(100vh-7.5rem)] flex-col overflow-hidden rounded-xl border border-slate-200/60 bg-white/95 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl transition-transform cursor-move"
             style={{
               transform: `translate(${mainBoxPosition.x}px, ${mainBoxPosition.y}px)`,
               userSelect: "none",
@@ -1278,248 +1259,196 @@ export function DesktopLanding() {
 
             <div className="flex-1 space-y-8 overflow-visible px-4 py-8 sm:px-10 sm:py-10">
               {/* Top Section - Title and Description */}
-              <div className="mb-12 grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_380px] xl:items-start">
-                <div className="space-y-6 text-center xl:text-left">
-                  <div className="flex flex-wrap items-center justify-center gap-3 xl:justify-start">
-                    <div className="editorial-kicker inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-700">
-                      <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.12)]" />
-                      {language === "pt"
-                        ? "Command center para estoque"
-                        : language === "en"
-                          ? "Inventory command center"
-                          : "Centre de commande du stock"}
+              <div className="text-center space-y-6 mb-12">
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight">
+                  {language === "pt" 
+                    ? (
+                      <>
+                        {"Pare de perder venda porque o estoque não bate"}
+                      </>
+                    )
+                    : language === "en" 
+                      ? (
+                        <>
+                          {"Stop losing sales because stock records do not match"}
+                        </>
+                      )
+                      : (
+                        <>
+                          {"Arretez de perdre des ventes parce que le stock ne correspond pas"}
+                        </>
+                      )}
+                </h1>
+                <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                  {language === "pt"
+                    ? "Em poucos dias, seu time sai da planilha para um controle de estoque simples, no celular, com QR Code e histórico do que entrou, saiu e foi para cada lugar."
+                    : language === "en"
+                      ? "In a few days, your team moves from spreadsheets to simple stock control on mobile, with QR code and history of what came in, what went out, and where each move happened."
+                      : "En quelques jours, votre equipe passe du tableur a un controle de stock simple sur mobile, avec QR code et historique des entrees, sorties et emplacements."}
+                </p>
+                <div className="mx-auto max-w-3xl rounded-2xl border border-blue-100 bg-blue-50/80 px-5 py-4 text-left">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">{playbookContent.uvpBadge}</p>
+                  <p className="mt-2 text-sm text-slate-700 sm:text-base">{playbookContent.uvpText}</p>
+                </div>
+                <div className="mx-auto grid w-full max-w-3xl gap-3 text-left sm:grid-cols-3">
+                  {[
+                    {
+                      title: language === "pt" ? "Setup guiado" : language === "en" ? "Guided setup" : "Mise en route guidee",
+                      value:
+                        language === "pt"
+                          ? "Onboarding assistido para começar com o básico sem parar a operação."
+                          : language === "en"
+                            ? "Assisted onboarding to start with the essentials without stopping operations."
+                            : "Onboarding assiste pour commencer avec l'essentiel sans arreter l'operation.",
+                    },
+                    {
+                      title: language === "pt" ? "Fluxo operacional" : language === "en" ? "Operations flow" : "Flux operationnel",
+                      value:
+                        language === "pt"
+                          ? "5 movimentos padrão: entrada, saída, transferência, ajuste e contagem."
+                          : language === "en"
+                            ? "5 standard movements: stock in, stock out, transfer, adjustment, and count."
+                            : "5 mouvements standard: entree, sortie, transfert, ajustement et comptage.",
+                    },
+                    {
+                      title: language === "pt" ? "Execucao diaria" : language === "en" ? "Daily execution" : "Execution quotidienne",
+                      value:
+                        language === "pt"
+                          ? "Operação no celular com QR Code, sem depender de computador no almoxarifado."
+                          : language === "en"
+                            ? "Mobile operation with QR code, without depending on a desktop in the warehouse."
+                            : "Operation mobile avec QR code, sans dependre d'un ordinateur dans l'entrepot.",
+                    },
+                  ].map((proof) => (
+                    <div key={proof.title} className="rounded-xl border border-slate-200 bg-white px-4 py-3">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{proof.title}</p>
+                      <p className="mt-1 text-base font-bold text-slate-900">{proof.value}</p>
                     </div>
-                    <div className="rounded-full border border-white/70 bg-white/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-purple-700 shadow-[0_16px_30px_-24px_rgba(109,40,217,0.9)]">
-                      {language === "pt" ? "Setup guiado + QR Code" : language === "en" ? "Guided setup + QR code" : "Setup guide + QR code"}
+                  ))}
+                </div>
+                <div className="mx-auto w-full max-w-2xl rounded-2xl border border-purple-200 bg-gradient-to-r from-purple-50 via-white to-purple-50 px-5 py-4 shadow-sm">
+                  <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:text-left">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+                      <BadgePercent className="h-3.5 w-3.5" />
+                      {language === "pt"
+                        ? "Oferta de lançamento"
+                        : language === "en"
+                          ? "Launch offer"
+                          : "Offre de lancement"}
+                    </div>
+                    <div className="flex items-end gap-1">
+                      <span className="text-3xl font-extrabold leading-none text-purple-700 sm:text-4xl">
+                        R$29,90
+                      </span>
+                      <span className="pb-1 text-xs font-semibold text-purple-600 sm:text-sm">
+                        /{language === "pt" ? "mês" : language === "en" ? "month" : "mois"}
+                      </span>
                     </div>
                   </div>
-                  <h1 className="font-display text-4xl font-bold leading-[0.96] tracking-[-0.05em] text-slate-950 sm:text-5xl lg:text-6xl xl:text-[4.35rem]">
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-purple-700">
                     {language === "pt"
-                      ? "Controle estoque, almoxarifado e inventário sem planilha."
+                      ? "Lote de lançamento com revisão semanal de preço"
                       : language === "en"
-                        ? "Control inventory and warehouse operations without spreadsheets."
-                        : "Controlez le stock et l'entrepot sans tableurs."}
-                  </h1>
-                  <p className="max-w-3xl text-lg leading-relaxed text-slate-600 lg:text-xl xl:max-w-2xl">
-                    {language === "pt"
-                      ? "Padronize entrada, saída, transferência, ajuste e inventário no celular, com QR Code, rastreabilidade por item e implantação em poucos dias."
-                      : language === "en"
-                        ? "Standardize inbound, outbound, transfers, adjustments, and counts on mobile with QR code, item traceability, and launch in a few days."
-                        : "Standardisez entrees, sorties, transferts, ajustements et inventaires sur mobile avec QR code, tracabilite par article et lancement en quelques jours."}
+                        ? "Launch lot with weekly price review"
+                        : "Lot de lancement avec revision hebdomadaire du prix"}
                   </p>
-                  <div className="rounded-[28px] border border-sky-100/80 bg-[linear-gradient(135deg,rgba(239,246,255,0.92),rgba(255,255,255,0.78))] px-5 py-5 text-left shadow-[0_24px_60px_-42px_rgba(14,116,144,0.55)]">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">{playbookContent.uvpBadge}</p>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-700 sm:text-base">{playbookContent.uvpText}</p>
-                  </div>
-                  <div className="grid gap-3 text-left sm:grid-cols-3">
-                    {[
-                      {
-                        title: language === "pt" ? "Setup guiado" : language === "en" ? "Guided setup" : "Mise en route guidee",
-                        value:
-                          language === "pt"
-                            ? "Onboarding assistido para começar com o básico sem parar a operação."
-                            : language === "en"
-                              ? "Assisted onboarding to start with the essentials without stopping operations."
-                              : "Onboarding assiste pour commencer avec l'essentiel sans arreter l'operation.",
-                      },
-                      {
-                        title: language === "pt" ? "Fluxo operacional" : language === "en" ? "Operations flow" : "Flux operationnel",
-                        value:
-                          language === "pt"
-                            ? "5 movimentos padrão: entrada, saída, transferência, ajuste e contagem."
-                            : language === "en"
-                              ? "5 standard movements: stock in, stock out, transfer, adjustment, and count."
-                              : "5 mouvements standard: entree, sortie, transfert, ajustement et comptage.",
-                      },
-                      {
-                        title: language === "pt" ? "Execução diária" : language === "en" ? "Daily execution" : "Execution quotidienne",
-                        value:
-                          language === "pt"
-                            ? "Operação no celular com QR Code, sem depender de computador no almoxarifado."
-                            : language === "en"
-                              ? "Mobile operation with QR code, without depending on a desktop in the warehouse."
-                              : "Operation mobile avec QR code, sans dependre d'un ordinateur dans l'entrepot.",
-                      },
-                    ].map((proof) => (
-                      <div key={proof.title} className="hero-metric-card rounded-[24px] px-4 py-4">
-                        <p className="relative z-10 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">{proof.title}</p>
-                        <p className="relative z-10 mt-2 text-base font-semibold leading-snug text-slate-900">{proof.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex flex-col items-center justify-center gap-4 pt-2 xl:items-start xl:justify-start">
-                    <div className="w-full max-w-2xl rounded-[28px] border border-purple-200/80 bg-[linear-gradient(135deg,rgba(245,243,255,0.95),rgba(255,255,255,0.72))] px-5 py-5 shadow-[0_28px_60px_-40px_rgba(109,40,217,0.55)]">
-                      <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
-                        <div>
-                          <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
-                            <BadgePercent className="h-3.5 w-3.5" />
-                            {language === "pt" ? "Oferta de lançamento" : language === "en" ? "Launch offer" : "Offre de lancement"}
-                          </div>
-                          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-purple-700">
-                            {language === "pt"
-                              ? "Lote inicial com revisão semanal de preço"
-                              : language === "en"
-                                ? "Launch batch with weekly price review"
-                                : "Lot de lancement avec revision hebdomadaire du prix"}
-                          </p>
-                        </div>
-                        <div className="flex items-end gap-1">
-                          <span className="font-display text-4xl font-bold leading-none tracking-[-0.05em] text-purple-800 sm:text-5xl">R$29,90</span>
-                          <span className="pb-1 text-xs font-semibold text-purple-600 sm:text-sm">/{language === "pt" ? "mês" : language === "en" ? "month" : "mois"}</span>
-                        </div>
-                      </div>
-                      <p className="mt-3 text-sm font-medium leading-relaxed text-slate-700">
-                        {language === "pt"
-                          ? "Pensado para uma operação começar pequena, validar rotina e ganhar rastreabilidade antes de qualquer projeto grande."
-                          : language === "en"
-                            ? "Built for teams that want to start small, validate routines, and gain traceability before any large system project."
-                            : "Concu pour demarrer petit, valider les routines et gagner en tracabilite avant tout grand projet de systeme."}
-                      </p>
-                      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                        <p className="text-xs text-slate-500">
-                          {language === "pt"
-                            ? "Teste com cartão de crédito e cancelamento a qualquer momento."
-                            : language === "en"
-                              ? "Trial with credit card and cancel anytime."
-                              : "Essai avec carte bancaire et annulation a tout moment."}
-                        </p>
-                        <Button asChild size="sm" className="bg-purple-700 text-white hover:bg-purple-800">
-                          <Link
-                            href="https://app.purplestock.com.br/"
-                            onClick={() =>
-                              trackCtaClick({
-                                cta_name: "desktop_launch_offer",
-                                cta_target: "app",
-                                page_section: "hero_offer",
-                              })
-                            }
-                          >
-                            {language === "pt" ? "Assinar por R$29,90" : language === "en" ? "Subscribe for R$29.90" : "Souscrire pour R$29,90"}
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center gap-4 sm:flex-row xl:justify-start">
-                      <Button
-                        asChild
-                        size="lg"
-                        className="bg-gradient-to-r from-purple-600 to-purple-800 px-8 py-6 text-base font-semibold text-white shadow-[0_24px_60px_-28px_rgba(109,40,217,0.8)] transition-all duration-300 hover:from-purple-700 hover:to-purple-900 hover:shadow-[0_28px_70px_-28px_rgba(109,40,217,0.9)]"
-                      >
-                        <Link
-                          href="https://app.purplestock.com.br/"
-                          onClick={() =>
-                            trackCtaClick({
-                              cta_name: "desktop_trial_primary",
-                              cta_target: "app",
-                              page_section: "hero_cta",
-                              cta_variant: usePainCta ? "pain" : "default",
-                            })
-                          }
-                        >
-                          {primaryHeroCta}
-                        </Link>
-                      </Button>
-                      <button
-                        type="button"
-                        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-5 py-3 text-sm font-medium text-slate-700 shadow-[0_18px_40px_-30px_rgba(15,23,42,0.5)] transition-colors hover:border-purple-200 hover:text-purple-700"
-                        onClick={() => {
-                          setIsVideoModalOpen(true)
+                  <p className="mt-2 text-sm font-medium text-slate-700">
+                    {language === "pt"
+                      ? "Pensado para uma operação começar pequena e testar na prática antes de qualquer projeto grande."
+                      : language === "en"
+                        ? "Built for teams that want to start small and validate the operation before any large system project."
+                        : "Concu pour demarrer petit et valider l'operation avant tout grand projet de systeme."}
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {language === "pt"
+                      ? "Teste com cartão de crédito e cancelamento a qualquer momento."
+                      : language === "en"
+                        ? "Trial with credit card and cancel anytime."
+                        : "Essai avec carte bancaire et annulation a tout moment."}
+                  </p>
+                  <div className="mt-3">
+                    <Button
+                      asChild
+                      size="sm"
+                      className="bg-purple-700 text-white hover:bg-purple-800"
+                    >
+                      <Link
+                        href="https://app.purplestock.com.br/"
+                        onClick={() =>
                           trackCtaClick({
-                            cta_name: "desktop_view_demo_primary",
-                            cta_target: "video_modal",
-                            page_section: "hero_cta",
-                          })
-                        }}
-                      >
-                        <PlayCircle className="h-4 w-4" />
-                        {language === "pt"
-                          ? "Ver demonstração de 2 minutos"
-                          : language === "en"
-                            ? "Watch the 2-minute demo"
-                            : "Voir la demo de 2 minutes"}
-                      </button>
-                    </div>
-                    <p className="text-sm text-slate-500">
+                          cta_name: "desktop_launch_offer",
+                          cta_target: "app",
+                          page_section: "hero_offer",
+                        })
+                      }
+                    >
                       {language === "pt"
-                        ? "Teste de 7 dias • Cancele quando quiser • Setup guiado"
+                        ? "Assinar por R$29,90"
                         : language === "en"
-                          ? "7-day trial • Cancel anytime • Guided setup"
-                          : "Essai de 7 jours • Annulation a tout moment • Setup guide"}
-                    </p>
-                    <div className="flex flex-wrap items-center justify-center gap-2 text-xs xl:justify-start">
-                      <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
-                        <Smartphone className="h-3.5 w-3.5" />
-                        {language === "pt" ? "Compatível com iOS" : language === "en" ? "Compatible with iOS" : "Compatible iOS"}
-                      </span>
-                      <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
-                        <Smartphone className="h-3.5 w-3.5" />
-                        {language === "pt" ? "Compatível com Android" : language === "en" ? "Compatible with Android" : "Compatible Android"}
-                      </span>
-                    </div>
+                          ? "Subscribe for R$29.90"
+                          : "Souscrire pour R$29,90"}
+                      </Link>
+                    </Button>
                   </div>
                 </div>
-
-                <aside className="scan-grid relative overflow-hidden rounded-[32px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(30,41,59,0.9))] p-6 text-white shadow-[0_35px_80px_-40px_rgba(15,23,42,0.8)]">
-                  <div className="float-soft absolute right-6 top-6 h-20 w-20 rounded-full bg-purple-400/20 blur-2xl" />
-                  <div className="relative z-10">
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-sky-200/80">
-                          {language === "pt" ? "Painel da operação" : language === "en" ? "Operations panel" : "Panneau operationnel"}
-                        </p>
-                        <h2 className="font-display mt-2 text-2xl font-bold tracking-[-0.04em] text-white">
-                          {language === "pt" ? "Rastreabilidade no centro da rotina" : language === "en" ? "Traceability in the center of the workflow" : "La tracabilite au coeur de la routine"}
-                        </h2>
-                      </div>
-                      <div className="rounded-2xl border border-white/10 bg-white/10 px-3 py-2 text-right backdrop-blur">
-                        <p className="text-[10px] uppercase tracking-[0.2em] text-slate-300">{osText.spotlight}</p>
-                        <p className="mt-1 text-lg font-semibold text-white">24/7</p>
-                      </div>
-                    </div>
-                    <p className="mt-4 text-sm leading-relaxed text-slate-300">{osText.spotlightCopy}</p>
-
-                    <div className="mt-6 grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
-                      {heroMetrics.map((metric) => (
-                        <div key={metric.label} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 backdrop-blur-sm">
-                          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">{metric.label}</p>
-                          <p className="mt-2 font-display text-2xl font-bold tracking-[-0.04em] text-white">{metric.value}</p>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="mt-6 rounded-[28px] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
-                      <div className="flex items-center gap-2 text-sm font-semibold text-emerald-300">
-                        <ShieldCheck className="h-4 w-4" />
-                        {language === "pt" ? "O que muda no dia a dia" : language === "en" ? "What changes in daily ops" : "Ce qui change au quotidien"}
-                      </div>
-                      <div className="mt-4 space-y-3">
-                        {heroBenefits.map((benefit) => (
-                          <div key={benefit} className="flex items-start gap-3 rounded-2xl border border-white/8 bg-slate-950/20 px-4 py-3">
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
-                            <span className="text-sm leading-relaxed text-slate-100">{benefit}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mt-6 rounded-[28px] border border-purple-400/20 bg-gradient-to-r from-purple-500/20 to-cyan-400/10 p-5">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-purple-200">
-                            {language === "pt" ? "Sinal de confiança" : language === "en" ? "Trust signal" : "Signal de confiance"}
-                          </p>
-                          <p className="mt-2 text-sm leading-relaxed text-slate-100">
-                            {testimonial?.quote ?? playbookContent.proofItems[0]?.detail}
-                          </p>
-                        </div>
-                        <Sparkles className="mt-1 h-4 w-4 shrink-0 text-purple-200" />
-                      </div>
-                      <p className="mt-4 text-xs uppercase tracking-[0.22em] text-slate-300">
-                        {testimonial?.companyName ?? osText.testimonialCompany}
-                      </p>
-                    </div>
-                  </div>
-                </aside>
+                
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
+                    >
+                      <Link
+                        href="https://app.purplestock.com.br/"
+                      onClick={() =>
+                        trackCtaClick({
+                          cta_name: "desktop_trial_primary",
+                          cta_target: "app",
+                          page_section: "hero_cta",
+                          cta_variant: usePainCta ? "pain" : "default",
+                        })
+                      }
+                    >
+                      {primaryHeroCta}
+                    </Link>
+                  </Button>
+                </div>
+                <button
+                  type="button"
+                  className="mx-auto inline-flex items-center text-sm font-medium text-purple-700 underline underline-offset-2 hover:text-purple-800"
+                  onClick={() => {
+                    setIsVideoModalOpen(true)
+                    trackCtaClick({
+                      cta_name: "desktop_view_demo_primary",
+                      cta_target: "video_modal",
+                      page_section: "hero_cta",
+                    })
+                  }}
+                >
+                  {language === "pt"
+                    ? "Prefere ver primeiro? Ver demonstração em vídeo"
+                    : language === "en"
+                      ? "Prefer to watch first? Watch the video demo"
+                      : "Vous preferez voir d'abord? Voir la demonstration video"}
+                </button>
+                <p className="text-sm text-slate-500">
+                  {language === "pt"
+                    ? "Teste com cartão de crédito • Cancele quando quiser • Setup guiado"
+                    : language === "en"
+                      ? "Trial with credit card • Cancel anytime • Guided setup"
+                      : "Essai avec carte bancaire • Annulation a tout moment • Setup guide"}
+                </p>
+                <div className="mx-auto mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
+                    <Smartphone className="h-3.5 w-3.5" />
+                    {language === "pt" ? "Compatível com iOS" : language === "en" ? "Compatible with iOS" : "Compatible iOS"}
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
+                    <Smartphone className="h-3.5 w-3.5" />
+                    {language === "pt" ? "Compatível com Android" : language === "en" ? "Compatible with Android" : "Compatible Android"}
+                  </span>
+                </div>
               </div>
 
               {/* Main Content Area - App Screenshot */}
@@ -1657,49 +1586,44 @@ export function DesktopLanding() {
                     {language === "pt" 
                       ? (
                         <>
-                          {"Gestão para"}
-                          {" "}
+                          {"Gestão para "}
                           <span
                             key={`title-sector-${language}-${sectorIndex}`}
                             className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
                           >
                             {rotatingSectorLabel}
                           </span>
-                          {" "}
-                          {"e Inventário com QR Code"}
+                          {" e Inventário com QR Code"}
                         </>
                       )
                       : language === "en" 
                         ? (
                           <>
-                            {"Management for"}
-                            {" "}
+                            {"Management for "}
                             <span
                               key={`title-sector-${language}-${sectorIndex}`}
                               className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
                             >
                               {rotatingSectorLabel}
                             </span>
-                            {" "}
-                            {"and QR Code Inventory"}
+                            {" and QR Code Inventory"}
                           </>
                         )
                         : (
                           <>
-                            {"Gestion pour"}
-                            {" "}
+                            {"Gestion pour "}
                             <span
                               key={`title-sector-${language}-${sectorIndex}`}
                               className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
                             >
                               {rotatingSectorLabel}
                             </span>
-                            {" "}
-                            {"et inventaire QR Code"}
+                            {" et inventaire QR Code"}
                           </>
                         )}
                   </span>
-                  <span className="block text-purple-600">
+                  <br />
+                  <span className="text-purple-600">
                     {language === "pt" 
                       ? "Purple Stock" 
                       : language === "en" 

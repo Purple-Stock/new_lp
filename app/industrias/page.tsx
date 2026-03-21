@@ -172,6 +172,21 @@ const industries: Industry[] = [
   }
 ]
 
+const industryNames: Record<IndustryId, string> = {
+  retail: "Controle de Estoque para Varejo",
+  manufacturing: "Controle de Estoque para Manufatura",
+  logistics: "Controle de Estoque para Logistica",
+  food: "Controle de Estoque para Alimentos e Bebidas",
+  pharmaceutical: "Controle de Estoque para Farmaceutico",
+  automotive: "Controle de Estoque para Automotivo",
+  construction: "Controle de Estoque para Construcao",
+  technology: "Controle de Estoque para Tecnologia",
+  audiovisual: "Controle de Equipamentos Audiovisuais",
+  events: "Controle de Estoque para Eventos",
+  restaurantes: "Controle de Estoque para Restaurantes",
+  electrical: "Controle de Estoque para Setor Eletrico",
+}
+
 const globalBenefits = [
   {
     icon: TrendingUp,
@@ -198,9 +213,27 @@ const globalBenefits = [
 export default function IndustriasPage() {
   const { language } = useLanguage()
   const t = translations[language]
+  const industriesSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Solucoes por Setor | Purple Stock",
+    description:
+      "Pagina com solucoes de controle de estoque por setor, incluindo industria, varejo, logistica, restaurantes e audiovisual.",
+    url: "https://www.purplestock.com.br/industrias",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: industries.map((industry, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `https://www.purplestock.com.br/industrias/${industry.id}`,
+        name: industryNames[industry.id],
+      })),
+    },
+  }
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(industriesSchema) }} />
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/2 -left-1/2 h-full w-full rounded-full bg-gradient-to-br from-purple-200/20 to-transparent blur-3xl" />

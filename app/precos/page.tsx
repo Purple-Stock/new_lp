@@ -190,8 +190,46 @@ export default function PricingPage() {
     },
   }[language]
 
+  const softwareApplicationSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Purple Stock",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    description:
+      "Sistema de controle de estoque com inventario, rastreabilidade, QR Code e operacao em tempo real para PMEs.",
+    offers: {
+      "@type": "Offer",
+      price: "29.90",
+      priceCurrency: "BRL",
+      availability: "https://schema.org/InStock",
+      url: "https://www.purplestock.com.br/precos",
+      description: "Plano unico por time com 7 dias gratis e sem fidelidade.",
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Purple Stock",
+      url: "https://www.purplestock.com.br",
+    },
+  }
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: copy.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  }
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
       <Navbar />
 

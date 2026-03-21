@@ -13,6 +13,8 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
+    tsconfigPath:
+      process.env.NODE_ENV === 'development' ? 'tsconfig.dev.json' : 'tsconfig.json',
   },
   images: {
     unoptimized: true,

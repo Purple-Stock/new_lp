@@ -11,7 +11,7 @@ import "@/styles/globals.css"
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 })
 
@@ -87,7 +87,7 @@ export default function RootLayout({
             <Script
               id="ga4-src"
               src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             />
           </>
         ) : null}

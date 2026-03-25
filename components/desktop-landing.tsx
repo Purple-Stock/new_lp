@@ -1,5 +1,6 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type MouseEvent as ReactMouseEvent } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -30,17 +31,16 @@ import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
 import { cn } from "@/lib/utils"
-import { trackCtaClick, trackSeoLandingView } from "@/lib/analytics"
+import { trackCtaClick } from "@/lib/analytics"
 import { MacOSFolderIcon } from "@/components/macos-folder-icon"
 import { DraggableFolder } from "@/components/draggable-folder"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-  DialogTitle,
-} from "@/components/ui/dialog"
+
+const HeroVideoModal = dynamic(
+  () => import("@/components/hero-video-modal").then((mod) => mod.HeroVideoModal),
+  { ssr: false },
+)
 
 type StageKey = "startup" | "growth" | "scale"
 type WindowKey = "inventory" | "analytics" | "qr" | "support"
@@ -70,18 +70,12 @@ export function DesktopLanding() {
   const [isDraggingMainBox, setIsDraggingMainBox] = useState(false)
   const [mainBoxDragStart, setMainBoxDragStart] = useState<{ x: number; y: number } | null>(null)
   const mainBoxRef = useRef<HTMLDivElement>(null)
+  const [shouldLoadVideoModal, setShouldLoadVideoModal] = useState(false)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [sectorIndex, setSectorIndex] = useState(0)
   const [usePainCta, setUsePainCta] = useState(false)
   const demoVideoUrl = "https://www.youtube.com/watch?v=fD4amz78t8c"
-
-  useEffect(() => {
-    trackSeoLandingView({
-      page_path: "/",
-      landing_name: "desktop_landing",
-    })
-  }, [])
 
   // Handle main box dragging
   const handleMainBoxMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -271,6 +265,16 @@ export function DesktopLanding() {
           : "Mobile-first inventory",
     ]
   }, [language])
+
+  const openVideoModal = useCallback((ctaName: string) => {
+    setShouldLoadVideoModal(true)
+    setIsVideoModalOpen(true)
+    trackCtaClick({
+      cta_name: ctaName,
+      cta_target: "video_modal",
+      page_section: "hero_media",
+    })
+  }, [])
 
   const stageMap: Record<StageKey, Array<{ title: string; description: string; icon: ComponentType<{ className?: string }> }>> = {
     startup: [
@@ -1488,73 +1492,51 @@ export function DesktopLanding() {
               {/* Main Content Area - App Screenshot */}
               <div className="relative py-12">
                 <div className="relative mx-auto max-w-6xl">
-                  <Dialog open={isVideoModalOpen} onOpenChange={setIsVideoModalOpen}>
-                    <div className="relative rounded-3xl border-4 border-white bg-white p-2 shadow-2xl overflow-visible">
-                      <div className="relative h-auto w-full">
-                        <Image
-                          src="/images/app-items-list-1200.webp"
-                          alt={language === "pt" ? "Interface do Purple Stock - Lista de Itens" : language === "en" ? "Purple Stock Interface - Items List" : "Interface Purple Stock - Liste des Articles"}
-                          width={1200}
-                          height={674}
-                          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 92vw, 1200px"
-                          className="h-auto w-full rounded-2xl object-contain"
-                          priority
+                  <div className="relative rounded-3xl border-4 border-white bg-white p-2 shadow-2xl overflow-visible">
+                    <div className="relative h-auto w-full">
+                      <Image
+                        src="/images/app-items-list-1200.webp"
+                        alt={language === "pt" ? "Interface do Purple Stock - Lista de Itens" : language === "en" ? "Purple Stock Interface - Items List" : "Interface Purple Stock - Liste des Articles"}
+                        width={1200}
+                        height={674}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 92vw, 1200px"
+                        className="h-auto w-full rounded-2xl object-contain"
+                        priority
+                      />
+                      {shouldLoadVideoModal ? (
+                        <HeroVideoModal
+                          language={language}
+                          onOpen={openVideoModal}
+                          open={isVideoModalOpen}
+                          onOpenChange={setIsVideoModalOpen}
                         />
-                        <DialogTrigger asChild>
-                          <button
-                            type="button"
-                            aria-label={language === "pt" ? "Abrir demonstração em vídeo" : language === "en" ? "Open video demo" : "Ouvrir la demonstration video"}
-                            className="absolute inset-0 flex items-center justify-center rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-500/50"
-                            onClick={() =>
-                              trackCtaClick({
-                                cta_name: "desktop_video_overlay",
-                                cta_target: "video_modal",
-                                page_section: "hero_media",
-                              })
-                            }
-                          >
-                            <span className="group flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-purple-600 shadow-2xl backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-white hover:shadow-purple-500/50">
-                              <span className="ml-1 h-0 w-0 border-b-[12px] border-l-[20px] border-t-[12px] border-b-transparent border-l-purple-600 border-t-transparent" />
-                            </span>
-                          </button>
-                        </DialogTrigger>
-                      </div>
-                    </div>
-
-                    <div className="mt-6 flex justify-center">
-                      <DialogTrigger asChild>
-                        <Button
-                          size="lg"
-                          className="rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-8 py-6 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:from-purple-700 hover:to-purple-800"
-                          onClick={() =>
-                            trackCtaClick({
-                              cta_name: "desktop_watch_demo_button",
-                              cta_target: "video_modal",
-                              page_section: "hero_media",
-                            })
-                          }
+                      ) : (
+                        <button
+                          type="button"
+                          aria-label={language === "pt" ? "Abrir demonstração em vídeo" : language === "en" ? "Open video demo" : "Ouvrir la demonstration video"}
+                          className="absolute inset-0 flex items-center justify-center rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-500/50"
+                          onClick={() => openVideoModal("desktop_video_overlay")}
                         >
-                          <PlayCircle className="mr-2 h-5 w-5" strokeWidth={2.5} style={{ strokeLinecap: "round", strokeLinejoin: "round" }} />
-                          {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch demo" : "Voir la demonstration"}
-                        </Button>
-                      </DialogTrigger>
+                          <span className="group flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-purple-600 shadow-2xl backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-white hover:shadow-purple-500/50">
+                            <span className="ml-1 h-0 w-0 border-b-[12px] border-l-[20px] border-t-[12px] border-b-transparent border-l-purple-600 border-t-transparent" />
+                          </span>
+                        </button>
+                      )}
                     </div>
+                  </div>
 
-                    <DialogContent className="max-w-4xl w-full p-0 bg-black">
-                      <DialogTitle className="sr-only">
-                        {language === "pt" ? "Demonstração do Purple Stock" : language === "en" ? "Purple Stock Demo" : "Démo Purple Stock"}
-                      </DialogTitle>
-                      <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                        <iframe
-                          className="absolute top-0 left-0 h-full w-full"
-                          src="https://www.youtube.com/embed/fD4amz78t8c?autoplay=1"
-                          title="YouTube video player"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                  <div className="mt-6 flex justify-center">
+                    {!shouldLoadVideoModal ? (
+                      <Button
+                        size="lg"
+                        className="rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-8 py-6 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:from-purple-700 hover:to-purple-800"
+                        onClick={() => openVideoModal("desktop_watch_demo_button")}
+                      >
+                        <PlayCircle className="mr-2 h-5 w-5" strokeWidth={2.5} style={{ strokeLinecap: "round", strokeLinejoin: "round" }} />
+                        {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch demo" : "Voir la demonstration"}
+                      </Button>
+                    ) : null}
+                  </div>
                 </div>
               </div>
 

@@ -14,6 +14,12 @@ export function Navbar() {
   const [featuresOpen, setFeaturesOpen] = useState(false)
   const [currentTime, setCurrentTime] = useState<string | null>(null)
   const featuresRef = useRef<HTMLDivElement>(null)
+  const navLabel =
+    language === "pt"
+      ? "Navegação principal"
+      : language === "fr"
+        ? "Navigation principale"
+        : "Primary navigation"
 
   useEffect(() => {
     const updateTime = () => {
@@ -45,7 +51,11 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 h-[25px] bg-gradient-to-b from-[#3d3d3d] to-[#2a2a2a] shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
       <div className="flex items-center justify-between h-full px-3 text-[13px] font-medium text-white/90">
         <div className="flex items-center gap-0">
-          <Link href="/" className="flex items-center justify-center w-8 h-full hover:bg-white/10 transition-colors">
+          <Link
+            href="/"
+            aria-label={language === "pt" ? "Ir para a página inicial" : language === "fr" ? "Aller à l'accueil" : "Go to homepage"}
+            className="flex items-center justify-center w-8 h-full hover:bg-white/10 transition-colors"
+          >
             <Box className="w-[14px] h-[14px] text-white" strokeWidth={2.5} />
           </Link>
 
@@ -53,11 +63,14 @@ export function Navbar() {
             Purple Stock
           </span>
 
-          <div className="hidden md:flex items-center">
+          <nav aria-label={navLabel} className="hidden md:flex items-center">
             <div className="relative" ref={featuresRef}>
               <button
+                type="button"
                 className={cn("px-3 py-0.5 rounded-[3px] transition-colors", featuresOpen ? "bg-[#0058d0] text-white" : "hover:bg-white/10")}
                 onClick={() => setFeaturesOpen(!featuresOpen)}
+                aria-expanded={featuresOpen}
+                aria-haspopup="menu"
               >
                 {t.resources}
               </button>
@@ -114,7 +127,7 @@ export function Navbar() {
             <Link href="/codigo-de-barras-gratis" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors text-purple-300">
               {t.freeBarcode}
             </Link>
-          </div>
+          </nav>
         </div>
 
         <div className="flex items-center gap-1">
@@ -126,6 +139,7 @@ export function Navbar() {
           <div className="w-px h-3 bg-white/20 mx-1 hidden sm:block" />
 
           <button
+            type="button"
             className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
             onClick={() => {
               if (language === "pt") setLanguage("en")

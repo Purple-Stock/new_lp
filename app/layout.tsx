@@ -25,20 +25,29 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Sistema de controle de estoque em nuvem para PMEs com QR Code, rastreabilidade e operacao em tempo real.",
+    "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
   openGraph: {
     type: "website",
     locale: "pt_BR",
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Controle De Estoque Com QR Code`,
     description:
-      "Sistema de controle de estoque em nuvem para PMEs com QR Code, rastreabilidade e operacao em tempo real.",
+      "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
+    images: [
+      {
+        url: "/images/hero-photo-1800x1200.webp",
+        width: 1800,
+        height: 1200,
+        alt: `${SITE_NAME} controle de estoque com QR Code`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} | Controle De Estoque Com QR Code`,
     description:
-      "Sistema de controle de estoque em nuvem para PMEs com QR Code, rastreabilidade e operacao em tempo real.",
+      "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
+    images: ["/images/hero-photo-1800x1200.webp"],
   },
   icons: {
     icon: [

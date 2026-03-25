@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { SITE_NAME } from "@/lib/site"
 
+const DEFAULT_SOCIAL_IMAGE = "/images/hero-photo-1800x1200.webp"
+
 type PageMetadataInput = {
   title: string
   description?: string
@@ -28,11 +30,20 @@ export function buildPageMetadata({
       url: path,
       title: socialTitle,
       description,
+      images: [
+        {
+          url: DEFAULT_SOCIAL_IMAGE,
+          width: 1800,
+          height: 1200,
+          alt: `${SITE_NAME} controle de estoque com QR Code`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
       description,
+      images: [DEFAULT_SOCIAL_IMAGE],
     },
     robots,
   }

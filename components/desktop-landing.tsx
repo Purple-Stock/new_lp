@@ -34,6 +34,7 @@ import { trackCtaClick, trackSeoLandingView } from "@/lib/analytics"
 import { MacOSFolderIcon } from "@/components/macos-folder-icon"
 import { DraggableFolder } from "@/components/draggable-folder"
 import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 import {
   Dialog,
   DialogContent,
@@ -1073,6 +1074,12 @@ export function DesktopLanding() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
+      <a
+        href="#main-content"
+        className="absolute left-4 top-4 z-[120] -translate-y-16 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-lg transition-transform focus:translate-y-0"
+      >
+        {language === "pt" ? "Pular para o conteúdo" : language === "en" ? "Skip to content" : "Aller au contenu"}
+      </a>
       {/* Animated gradient background */}
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-80" />
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -1080,6 +1087,7 @@ export function DesktopLanding() {
         <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-200/15 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
       </div>
       <Navbar />
+      <main id="main-content" className="relative">
       <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-24 pb-4 md:flex-row md:gap-6 md:px-10 md:pt-24">
         {/* Icons Left Side - Vertical */}
         <div className="relative z-[100] hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
@@ -1413,6 +1421,28 @@ export function DesktopLanding() {
                       {primaryHeroCta}
                     </Link>
                   </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-purple-300 bg-white/90 px-8 py-6 text-base font-semibold text-purple-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-purple-50"
+                  >
+                    <Link
+                      href="https://api.whatsapp.com/send/?phone=5511995597242&text=Ol%C3%A1%21+Quero+entender+como+o+Purple+Stock+pode+organizar+meu+estoque.&type=phone_number&app_absent=0"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackCtaClick({
+                          cta_name: "desktop_whatsapp_secondary",
+                          cta_target: "whatsapp",
+                          page_section: "hero_cta",
+                          cta_variant: "secondary",
+                        })
+                      }
+                    >
+                      {language === "pt" ? "Falar com especialista" : language === "en" ? "Talk to a specialist" : "Parler a un specialiste"}
+                    </Link>
+                  </Button>
                 </div>
                 <button
                   type="button"
@@ -1462,12 +1492,17 @@ export function DesktopLanding() {
                           alt={language === "pt" ? "Interface do Purple Stock - Lista de Itens" : language === "en" ? "Purple Stock Interface - Items List" : "Interface Purple Stock - Liste des Articles"}
                           width={1200}
                           height={800}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 92vw, 1200px"
                           className="w-full h-auto object-contain rounded-2xl"
                           priority
                         />
                         {/* Elegant Play Button */}
                         <DialogTrigger asChild>
-                          <button className="absolute inset-0 flex items-center justify-center group cursor-pointer rounded-2xl focus:outline-none focus:ring-4 focus:ring-purple-500/50 transition-all duration-300">
+                          <button
+                            type="button"
+                            aria-label={language === "pt" ? "Abrir demonstração em vídeo" : language === "en" ? "Open video demo" : "Ouvrir la demonstration video"}
+                            className="absolute inset-0 flex items-center justify-center group cursor-pointer rounded-2xl focus:outline-none focus:ring-4 focus:ring-purple-500/50 transition-all duration-300"
+                          >
                             <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-purple-600 transition-all duration-300 group-hover:bg-white group-hover:scale-110 group-hover:shadow-purple-500/50">
                               <div className="w-0 h-0 border-l-[20px] border-l-purple-600 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
                             </div>
@@ -2202,6 +2237,8 @@ export function DesktopLanding() {
           )
         })}
       </div>
+      <Footer />
+      </main>
     </div>
   )
 }

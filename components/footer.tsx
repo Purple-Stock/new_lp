@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Instagram, Youtube, Linkedin, Sparkles, Mail, Phone, MapPin, ArrowRight } from "lucide-react"
+import { Instagram, Youtube, Linkedin, Sparkles, Mail, Phone, MapPin, ArrowRight, MessageCircle, PlayCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { translations } from "@/utils/translations"
@@ -39,7 +39,7 @@ export function Footer() {
     {
       icon: MapPin,
       text: language === "pt" ? "São Paulo, Brasil" : language === "en" ? "São Paulo, Brazil" : "São Paulo, Brésil",
-      href: "#"
+      href: null
     }
   ]
 
@@ -88,6 +88,9 @@ export function Footer() {
                 <Link 
                   key={item.name} 
                   href={item.href} 
+                  aria-label={item.name}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex h-10 w-10 items-center justify-center rounded-lg border border-purple-200/80 bg-white/90 text-slate-600 transition-all duration-200 hover:scale-110 hover:border-purple-300 hover:text-purple-700"
                 >
                   <span className="sr-only">{item.name}</span>
@@ -144,8 +147,9 @@ export function Footer() {
               {language === "pt" ? "Contato" : language === "en" ? "Contact" : "Contact"}
             </h3>
 
-            <div className="space-y-3">
+            <address className="space-y-3 not-italic">
               {contactInfo.map((item, index) => (
+                item.href ? (
                 <Link
                   key={index}
                   href={item.href}
@@ -156,32 +160,47 @@ export function Footer() {
                   </div>
                   <span className="text-sm">{item.text}</span>
                 </Link>
+                ) : (
+                <div
+                  key={index}
+                  className="flex items-center space-x-3 text-slate-600"
+                >
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-purple-200/80 bg-white/85">
+                    <item.icon className="w-4 h-4" />
+                  </div>
+                  <span className="text-sm">{item.text}</span>
+                </div>
+                )
               ))}
-            </div>
+            </address>
           </div>
         </div>
 
         <div className="mb-14 mt-10 rounded-2xl border border-purple-200/70 bg-white/75 p-8 backdrop-blur-xl">
           <div className="text-center max-w-2xl mx-auto">
             <h3 className="mb-4 text-2xl font-bold text-slate-900">
-              {language === "pt" ? "Fique por dentro das novidades" : language === "en" ? "Stay up to date" : "Restez à jour"}
+              {language === "pt" ? "Quer validar na sua operação?" : language === "en" ? "Want to validate in your operation?" : "Voulez-vous valider dans votre operation ?"}
             </h3>
             <p className="mb-6 text-slate-600">
               {language === "pt" 
-                ? "Receba as últimas atualizações e dicas sobre gestão de inventário"
+                ? "Veja a demonstração ou fale com um especialista para entender se o Purple Stock encaixa no seu fluxo de estoque."
                 : language === "en"
-                ? "Get the latest updates and tips on inventory management"
-                : "Recevez les dernières mises à jour et conseils sur la gestion des stocks"
+                ? "Watch the demo or talk to a specialist to confirm if Purple Stock fits your inventory workflow."
+                : "Voyez la demo ou parlez avec un specialiste pour verifier si Purple Stock s'adapte a votre flux de stock."
               }
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <input
-                type="email"
-                placeholder={language === "pt" ? "Seu e-mail" : language === "en" ? "Your email" : "Votre email"}
-                className="flex-1 rounded-lg border border-purple-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-400"
-              />
-              <Button className="transform rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-3 text-white transition-all duration-300 hover:-translate-y-1 hover:from-purple-700 hover:to-indigo-700">
-                {language === "pt" ? "Inscrever" : language === "en" ? "Subscribe" : "S'abonner"}
+              <Button asChild className="transform rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-3 text-white transition-all duration-300 hover:-translate-y-1 hover:from-purple-700 hover:to-indigo-700">
+                <Link href="https://www.youtube.com/watch?v=fD4amz78t8c" target="_blank" rel="noopener noreferrer">
+                  <PlayCircle className="mr-2 h-4 w-4" />
+                  {language === "pt" ? "Ver demonstração" : language === "en" ? "Watch demo" : "Voir la demonstration"}
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="rounded-lg border-purple-300 bg-white/90 px-8 py-3 text-purple-700 hover:bg-purple-50">
+                <Link href="https://api.whatsapp.com/send/?phone=5511995597242&text=Ol%C3%A1%21+Quero+entender+se+o+Purple+Stock+serve+para+minha+opera%C3%A7%C3%A3o.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  {language === "pt" ? "Falar no WhatsApp" : language === "en" ? "Talk on WhatsApp" : "Parler sur WhatsApp"}
+                </Link>
               </Button>
             </div>
           </div>

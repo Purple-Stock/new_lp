@@ -1482,10 +1482,10 @@ export function DesktopLanding() {
                   <div className="relative rounded-3xl border-4 border-white bg-white p-2 shadow-2xl overflow-visible">
                     <div className="relative h-auto w-full">
                       <Image
-                        src="/images/app-items-list.png"
+                        src="/images/app-items-list-1200.webp"
                         alt={language === "pt" ? "Interface do Purple Stock - Lista de Itens" : language === "en" ? "Purple Stock Interface - Items List" : "Interface Purple Stock - Liste des Articles"}
                         width={1200}
-                        height={800}
+                        height={674}
                         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 92vw, 1200px"
                         className="h-auto w-full rounded-2xl object-contain"
                         priority

@@ -40,6 +40,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `${baseUrl}/blog/tag/${tag}`,
     },
+    robots: {
+      index: false,
+      follow: true,
+    },
   }
 }
 

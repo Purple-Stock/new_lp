@@ -1,11 +1,10 @@
 import { MetadataRoute } from 'next'
-import { getAllPosts, getAllTagSlugs } from '@/lib/blog'
+import { getAllPosts } from '@/lib/blog'
 import { getSiteUrl } from '@/lib/site'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl()
   const posts = await getAllPosts()
-  const tagSlugs = await getAllTagSlugs()
   const industrySlugs = [
     "atacado",
     "retail",
@@ -121,12 +120,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(post.date),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
-    })),
-    ...tagSlugs.map((tag) => ({
-      url: `${baseUrl}/blog/tag/${tag}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
     })),
   ]
 

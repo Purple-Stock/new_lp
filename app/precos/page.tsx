@@ -13,13 +13,13 @@ export default function PricingPage() {
   const copy = {
     pt: {
       badge: "Plano único",
-      title: "Preço simples para todo o time",
-      subtitle: "R$ 29,90 por time para sair da planilha e padronizar o estoque sem implantação longa.",
+      title: "Sistema de controle de estoque com preço simples para o time inteiro",
+      subtitle: "Veja o preço da Purple Stock para PME: R$ 29,90 por time, 7 dias grátis e implantação rápida para sair da planilha sem travar a operação.",
       priceLabel: "por time / mês",
-      ctaPrimary: "Quero ativar meu time por R$ 29,90",
-      ctaSecondary: "Tirar dúvidas no WhatsApp",
+      ctaPrimary: "Começar teste grátis de 7 dias",
+      ctaSecondary: "Tirar dúvidas sobre preço",
       cardTitle: "Purple Stock",
-      cardDescription: "Tudo que sua operação precisa para controlar estoque sem retrabalho.",
+      cardDescription: "Tudo que sua operação precisa para controlar estoque com rastreabilidade, rotina simples e preço direto.",
       guaranteeTitle: "Sem risco para começar",
       guarantees: ["7 dias grátis", "Sem fidelidade", "Cancele quando quiser", "Suporte na ativação"],
       includedTitle: "O que está incluso",
@@ -31,7 +31,7 @@ export default function PricingPage() {
         "Suporte para implantação inicial",
       ],
       benefitsTitle: "Por que este modelo funciona",
-      benefitsSubtitle: "Menos decisão de compra, mais foco em resultado operacional.",
+      benefitsSubtitle: "Menos atrito na contratação, mais foco em colocar o estoque para rodar rápido.",
       benefits: [
         {
           title: "Preço direto",
@@ -66,19 +66,19 @@ export default function PricingPage() {
         },
       ],
       finalTitle: "Pronto para padronizar seu estoque?",
-      finalSubtitle: "Entre agora com preço único de lançamento e acelere sua operação.",
-      finalPrimary: "Iniciar agora",
-      finalSecondary: "Quero tirar dúvidas",
+      finalSubtitle: "Ative seu time com teste grátis, preço único e uma rotina que a operação consegue usar no dia a dia.",
+      finalPrimary: "Testar agora",
+      finalSecondary: "Falar sobre implantação",
     },
     en: {
       badge: "Single plan",
-      title: "Simple pricing for your whole team",
-      subtitle: "R$ 29.90 per team to leave spreadsheets behind and standardize inventory quickly.",
+      title: "Inventory control software with simple pricing for your whole team",
+      subtitle: "See Purple Stock pricing for SMEs: R$ 29.90 per team, 7-day free trial, and fast setup to leave spreadsheets behind.",
       priceLabel: "per team / month",
-      ctaPrimary: "Activate my team for R$ 29.90",
-      ctaSecondary: "Talk on WhatsApp",
+      ctaPrimary: "Start 7-day free trial",
+      ctaSecondary: "Ask about pricing",
       cardTitle: "Purple Stock",
-      cardDescription: "Everything your operation needs to control inventory without rework.",
+      cardDescription: "Everything your operation needs to control inventory with traceability and a simple routine.",
       guaranteeTitle: "Low-risk start",
       guarantees: ["7-day free trial", "No lock-in", "Cancel anytime", "Onboarding support"],
       includedTitle: "What is included",
@@ -90,7 +90,7 @@ export default function PricingPage() {
         "Initial onboarding support",
       ],
       benefitsTitle: "Why this model works",
-      benefitsSubtitle: "Less purchase friction, more operational outcome.",
+      benefitsSubtitle: "Less buying friction, more focus on making stock operations work fast.",
       benefits: [
         {
           title: "Straightforward pricing",
@@ -125,19 +125,19 @@ export default function PricingPage() {
         },
       ],
       finalTitle: "Ready to standardize your inventory?",
-      finalSubtitle: "Start now with a single launch price and accelerate operations.",
+      finalSubtitle: "Start with a free trial, one price for the team, and a workflow your operation can actually use.",
       finalPrimary: "Start now",
-      finalSecondary: "I have questions",
+      finalSecondary: "Talk about setup",
     },
     fr: {
       badge: "Plan unique",
-      title: "Tarification simple pour toute votre équipe",
-      subtitle: "R$ 29,90 par équipe pour quitter les tableurs et standardiser le stock rapidement.",
+      title: "Logiciel de gestion de stock avec tarif simple pour toute votre équipe",
+      subtitle: "Découvrez le prix de Purple Stock pour PME: R$ 29,90 par équipe, essai gratuit 7 jours et mise en route rapide.",
       priceLabel: "par équipe / mois",
-      ctaPrimary: "Activer mon équipe pour R$ 29,90",
-      ctaSecondary: "Parler sur WhatsApp",
+      ctaPrimary: "Commencer l'essai gratuit",
+      ctaSecondary: "Poser une question sur le prix",
       cardTitle: "Purple Stock",
-      cardDescription: "Tout ce dont votre opération a besoin pour gérer le stock sans reprise.",
+      cardDescription: "Tout ce dont votre opération a besoin pour gérer le stock avec traçabilité et routine simple.",
       guaranteeTitle: "Démarrage sans risque",
       guarantees: ["Essai gratuit 7 jours", "Sans engagement", "Annulation à tout moment", "Support d'activation"],
       includedTitle: "Ce qui est inclus",
@@ -149,7 +149,7 @@ export default function PricingPage() {
         "Support initial de mise en place",
       ],
       benefitsTitle: "Pourquoi ce modèle fonctionne",
-      benefitsSubtitle: "Moins de friction à l'achat, plus de résultat opérationnel.",
+      benefitsSubtitle: "Moins de friction à l'achat, plus de rapidité pour faire tourner le stock.",
       benefits: [
         {
           title: "Prix direct",
@@ -184,9 +184,9 @@ export default function PricingPage() {
         },
       ],
       finalTitle: "Prêt à standardiser votre stock ?",
-      finalSubtitle: "Démarrez maintenant avec un prix unique de lancement.",
-      finalPrimary: "Démarrer maintenant",
-      finalSecondary: "J'ai des questions",
+      finalSubtitle: "Démarrez avec essai gratuit, prix unique et une routine que l'équipe peut adopter rapidement.",
+      finalPrimary: "Tester maintenant",
+      finalSecondary: "Parler de la mise en place",
     },
   }[language]
 
@@ -197,14 +197,14 @@ export default function PricingPage() {
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     description:
-      "Sistema de controle de estoque com inventario, rastreabilidade, QR Code e operacao em tempo real para PMEs.",
+      "Sistema de controle de estoque com inventario, rastreabilidade, QR Code, teste gratis e operacao em tempo real para PMEs.",
     offers: {
       "@type": "Offer",
       price: "29.90",
       priceCurrency: "BRL",
       availability: "https://schema.org/InStock",
       url: "https://www.purplestock.com.br/precos",
-      description: "Plano unico por time com 7 dias gratis e sem fidelidade.",
+      description: "Plano unico por time com 7 dias gratis, sem fidelidade e ativacao rapida.",
     },
     provider: {
       "@type": "Organization",
@@ -311,6 +311,7 @@ export default function PricingPage() {
                     cta_target: "app",
                     page_section: "pricing_single_card",
                     price_value: 29.9,
+                    query_cluster: "pricing",
                   })
                 }
               >
@@ -328,6 +329,7 @@ export default function PricingPage() {
                     cta_target: "whatsapp",
                     page_section: "pricing_single_card",
                     price_value: 29.9,
+                    query_cluster: "pricing",
                   })
                 }
               >
@@ -402,11 +404,12 @@ export default function PricingPage() {
               href="https://app.purplestock.com.br/"
               onClick={() =>
                 trackSeoCtaClick({
-                  cta_name: "pricing_single_bottom_primary",
-                  cta_target: "app",
-                  page_section: "pricing_bottom_cta",
-                  price_value: 29.9,
-                })
+                    cta_name: "pricing_single_bottom_primary",
+                    cta_target: "app",
+                    page_section: "pricing_bottom_cta",
+                    price_value: 29.9,
+                    query_cluster: "pricing",
+                  })
               }
             >
               <Button size="lg" className="bg-white px-8 py-4 text-lg font-semibold text-purple-700 hover:bg-gray-100">
@@ -417,11 +420,12 @@ export default function PricingPage() {
               href="https://wa.me/5511995597242?text=Ol%C3%A1!%20Quero%20tirar%20d%C3%BAvidas%20sobre%20o%20plano%20de%20R%24%2029%2C90%20por%20time."
               onClick={() =>
                 trackSeoCtaClick({
-                  cta_name: "pricing_single_bottom_secondary",
-                  cta_target: "whatsapp",
-                  page_section: "pricing_bottom_cta",
-                  price_value: 29.9,
-                })
+                    cta_name: "pricing_single_bottom_secondary",
+                    cta_target: "whatsapp",
+                    page_section: "pricing_bottom_cta",
+                    price_value: 29.9,
+                    query_cluster: "pricing",
+                  })
               }
             >
               <Button variant="outline" size="lg" className="border-2 border-white/30 bg-transparent px-8 py-4 text-lg font-semibold text-white hover:bg-white/10">

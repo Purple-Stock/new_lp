@@ -80,6 +80,18 @@ const nextConfig = {
     ]
 
     return [
+      {
+        source: "/sitemap.xml",
+        has: [{ type: "host", value: "blog.purplestock.com.br" }],
+        destination: "https://www.purplestock.com.br/sitemap.xml",
+        permanent: true,
+      },
+      {
+        source: "/robots.txt",
+        has: [{ type: "host", value: "blog.purplestock.com.br" }],
+        destination: "https://www.purplestock.com.br/robots.txt",
+        permanent: true,
+      },
       ...legacyResourceRedirects.map((redirect) => ({
         source: redirect.source,
         destination: redirect.destination,

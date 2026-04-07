@@ -5,48 +5,78 @@ import { translations } from "@/utils/translations"
 import Link from "next/link"
 import Image from "next/image"
 
-type IndustryId = "atacado" | "varejo" | "manufatura" | "logistica" | "moda" | "alimentos-bebidas" | "construcao" | "medico" | "beleza" | "comercio" | "educacao" | "audiovisual"
+type IndustrySlug =
+  | "varejo"
+  | "manufatura"
+  | "logistica"
+  | "food"
+  | "pharmaceutical"
+  | "automotivo"
+  | "construction"
+  | "technology"
+  | "audiovisual"
+
+type IndustryTranslationKey =
+  | "retail"
+  | "manufacturing"
+  | "logistics"
+  | "food"
+  | "pharmaceutical"
+  | "automotive"
+  | "construction"
+  | "technology"
+  | "audiovisual"
 
 interface Industry {
-  id: IndustryId
+  slug: IndustrySlug
+  translationKey: IndustryTranslationKey
   image: string
 }
 
 const industries: Industry[] = [
   {
-    id: "retail",
+    slug: "varejo",
+    translationKey: "retail",
     image: "/images/pexels-photo-264507.jpeg",
   },
   {
-    id: "manufacturing",
+    slug: "manufatura",
+    translationKey: "manufacturing",
     image: "/images/pexels-photo-1145434.jpeg",
   },
   {
-    id: "logistics",
+    slug: "logistica",
+    translationKey: "logistics",
     image: "/images/pexels-photo-1267338.jpeg",
   },
   {
-    id: "food",
+    slug: "food",
+    translationKey: "food",
     image: "/images/pexels-photo-1640777.jpeg",
   },
   {
-    id: "pharmaceutical",
+    slug: "pharmaceutical",
+    translationKey: "pharmaceutical",
     image: "/images/medical-appointment-doctor-healthcare-40568.webp",
   },
   {
-    id: "automotive",
+    slug: "automotivo",
+    translationKey: "automotive",
     image: "/images/pexels-photo-4483610.webp",
   },
   {
-    id: "construction",
+    slug: "construction",
+    translationKey: "construction",
     image: "/images/construction-site-build-construction-work-159358.jpeg",
   },
   {
-    id: "technology",
+    slug: "technology",
+    translationKey: "technology",
     image: "/images/pexels-photo-256541.webp",
   },
   {
-    id: "audiovisual",
+    slug: "audiovisual",
+    translationKey: "audiovisual",
     image: "/images/audio-visual-2.jpg",
   },
 ]
@@ -72,17 +102,19 @@ export function Industries() {
           {industries.map((industry, index) => (
             <Link
               key={index}
-              href={`/industrias/${industry.id}`}
+              href={`/industrias/${industry.slug}`}
               className="group relative aspect-square overflow-hidden rounded-2xl bg-gray-200"
             >
               <Image
                 src={industry.image || "/placeholder.svg"}
-                alt={t.industries.industries[industry.id]}
+                alt={t.industries.industries[industry.translationKey]}
                 fill
                 className="object-cover transition-transform group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 flex items-end p-4">
-                <h3 className="text-white font-medium">{t.industries.industries[industry.id]}</h3>
+                <h3 className="text-white font-medium">
+                  {t.industries.industries[industry.translationKey]}
+                </h3>
               </div>
             </Link>
           ))}
@@ -105,4 +137,3 @@ export function Industries() {
     </section>
   )
 }
-

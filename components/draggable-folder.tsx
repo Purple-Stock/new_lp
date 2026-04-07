@@ -3,12 +3,12 @@
 import { useState, useRef, useCallback, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { MacOSFolderIcon } from "@/components/macos-folder-icon"
-import type { ComponentType } from "react"
+import type { ComponentProps, ComponentType } from "react"
 
 interface DraggableFolderProps {
   label: string
   folderColor: "blue" | "purple" | "green" | "yellow" | "red" | "orange"
-  icon?: ComponentType<{ className?: string; color?: string }>
+  icon?: ComponentType<ComponentProps<typeof MacOSFolderIcon>>
   onDoubleClick?: () => void
   onClick?: () => void
   initialPosition?: { x: number; y: number }
@@ -34,7 +34,7 @@ export function DraggableFolder({
   const isSelected = externalSelected !== undefined ? externalSelected : internalSelected
   const [dragStart, setDragStart] = useState<{ x: number; y: number; offsetX: number; offsetY: number } | null>(null)
   const folderRef = useRef<HTMLDivElement>(null)
-  const clickTimeoutRef = useRef<NodeJS.Timeout>()
+  const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const actuallyDraggedRef = useRef(false)
 
   // Load saved position from localStorage after mount (client-side only)
@@ -137,7 +137,7 @@ export function DraggableFolder({
       // Handle click (not a drag) - only if we didn't drag
       if (clickTimeoutRef.current) {
         clearTimeout(clickTimeoutRef.current)
-        clickTimeoutRef.current = undefined
+        clickTimeoutRef.current = null
         // Double click detected
         if (onDoubleClick) {
           onDoubleClick()
@@ -148,7 +148,7 @@ export function DraggableFolder({
           if (onClick) {
             onClick()
           }
-          clickTimeoutRef.current = undefined
+          clickTimeoutRef.current = null
         }, 300)
       }
     }
@@ -210,12 +210,6 @@ export function DraggableFolder({
           <Icon 
             color={folderColor} 
             className="h-16 w-16" 
-            style={{ 
-              shapeRendering: "geometricPrecision",
-              imageRendering: '-webkit-optimize-contrast',
-              WebkitFontSmoothing: 'antialiased',
-              MozOsxFontSmoothing: 'grayscale',
-            }} 
           />
         </div>
         <span
@@ -230,4 +224,3 @@ export function DraggableFolder({
     </div>
   )
 }
-

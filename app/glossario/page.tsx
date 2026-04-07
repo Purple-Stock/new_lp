@@ -670,6 +670,52 @@ export default function Glossario() {
     }
   ]
 
+  // Map old term IDs to new slugs from /data/glossary.ts
+  const idToSlug: Record<string, string> = {
+    "3pl": "3pl",
+    "5s": "5s",
+    "80-20": "80-20",
+    "accounts-payable": "contas-a-pagar",
+    "accounts-receivable": "contas-a-receber",
+    "b2b": "b2b",
+    "barcode": "sistema-de-codigo-de-barras",
+    "bom": "lista-de-materiais",
+    "bullwhip": "efeito-chicote",
+    "ccc": "ciclo-de-conversao-de-caixa",
+    "current-assets": "ativos-circulantes",
+    "current-liabilities": "passivos-circulantes",
+    "cogs": "custo-das-mercadorias-vendidas",
+    "demand-forecasting": "previsao-de-demanda",
+    "dropshipping": "dropshipping",
+    "eoq": "quantidade-economica-pedido",
+    "erp": "erp",
+    "fifo": "peps",
+    "inflation": "inflacao",
+    "inventory-count": "inventario-fisico",
+    "inventory-management": "gestao-de-estoque",
+    "inventory-financing": "financiamento-de-estoque",
+    "inventory-turnover": "giro-de-estoque",
+    "itam": "gestao-ativos-ti",
+    "jit": "just-in-time",
+    "lifo": "ueps",
+    "lead-time": "lead-time",
+    "logistics": "logistica",
+    "moq": "quantidade-minima-pedido",
+    "picking-error": "picking",
+    "overstock": "excesso-de-estoque",
+    "recommerce": "logistica-reversa",
+    "reverse-logistics": "logistica-reversa",
+    "rfid": "rfid",
+    "safety-stock": "estoque-de-seguranca",
+    "sku": "sku",
+    "stockout": "ruptura-de-estoque",
+    "supply-chain": "cadeia-de-suprimentos",
+    "vmi": "vmi",
+    "wms": "wms",
+    "wac": "custo-medio-ponderado",
+    "working-capital": "capital-de-giro",
+  }
+
   // Filter terms based on search and category
   let filteredTerms = terms
 
@@ -758,13 +804,14 @@ export default function Glossario() {
         <div className="grid gap-6 mb-12">
           {filteredTerms.map((term) => {
             // Find which category this term belongs to
-            const termCategory = Object.entries(categorizedTerms).find(([_, termIds]) => 
+            const termCategory = Object.entries(categorizedTerms).find(([_, termIds]) =>
               termIds.includes(term.id)
             )?.[0]
             const categoryInfo = categories.find(cat => cat.id === termCategory)
-            
-            return (
-              <Card key={term.id} className="hover:shadow-lg transition-all duration-300 border-purple-100 hover:border-purple-200">
+            const slug = idToSlug[term.id]
+
+            const cardContent = (
+              <Card className="hover:shadow-lg transition-all duration-300 border-purple-100 hover:border-purple-200 h-full">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
@@ -786,6 +833,16 @@ export default function Glossario() {
                 </CardContent>
               </Card>
             )
+
+            if (slug) {
+              return (
+                <Link key={term.id} href={`/glossario/${slug}`} className="block">
+                  {cardContent}
+                </Link>
+              )
+            }
+
+            return <div key={term.id} className="block">{cardContent}</div>
           })}
         </div>
 

@@ -33,10 +33,37 @@ import {
 import { Button } from "@/components/ui/button"
 import { trackSeoCtaClick } from "@/lib/analytics"
 
-type IndustryId = "retail" | "manufacturing" | "logistics" | "food" | "pharmaceutical" | "automotive" | "construction" | "technology" | "audiovisual" | "events" | "restaurantes" | "electrical"
+type IndustryId =
+  | "varejo"
+  | "manufatura"
+  | "logistica"
+  | "food"
+  | "pharmaceutical"
+  | "automotivo"
+  | "construction"
+  | "technology"
+  | "audiovisual"
+  | "events"
+  | "restaurantes"
+  | "electrical"
+
+type IndustryTranslationKey =
+  | "retail"
+  | "manufacturing"
+  | "logistics"
+  | "food"
+  | "pharmaceutical"
+  | "automotive"
+  | "construction"
+  | "technology"
+  | "audiovisual"
+  | "events"
+  | "restaurantes"
+  | "electrical"
 
 interface Industry {
   id: IndustryId
+  translationKey: IndustryTranslationKey
   image: string
   icon: React.ComponentType<{ className?: string }>
   color: string
@@ -51,7 +78,8 @@ interface Industry {
 
 const industries: Industry[] = [
   {
-    id: "retail",
+    id: "varejo",
+    translationKey: "retail",
     image: "/images/pexels-photo-264507.jpeg",
     icon: Store,
     color: "text-blue-600",
@@ -61,7 +89,8 @@ const industries: Industry[] = [
     stats: { value: "40%", label: "Redução de perdas" }
   },
   {
-    id: "manufacturing",
+    id: "manufatura",
+    translationKey: "manufacturing",
     image: "/images/pexels-photo-1145434.jpeg",
     icon: Factory,
     color: "text-purple-600",
@@ -71,7 +100,8 @@ const industries: Industry[] = [
     stats: { value: "35%", label: "Aumento de eficiência" }
   },
   {
-    id: "logistics",
+    id: "logistica",
+    translationKey: "logistics",
     image: "/images/pexels-photo-1267338.jpeg",
     icon: Truck,
     color: "text-green-600",
@@ -82,6 +112,7 @@ const industries: Industry[] = [
   },
   {
     id: "food",
+    translationKey: "food",
     image: "/images/pexels-photo-1640777.jpeg",
     icon: Utensils,
     color: "text-orange-600",
@@ -92,6 +123,7 @@ const industries: Industry[] = [
   },
   {
     id: "pharmaceutical",
+    translationKey: "pharmaceutical",
     image: "/images/medical-appointment-doctor-healthcare-40568.webp",
     icon: Pill,
     color: "text-red-600",
@@ -101,7 +133,8 @@ const industries: Industry[] = [
     stats: { value: "45%", label: "Melhoria na precisão" }
   },
   {
-    id: "automotive",
+    id: "automotivo",
+    translationKey: "automotive",
     image: "/images/pexels-photo-4483610.webp",
     icon: Car,
     color: "text-indigo-600",
@@ -112,6 +145,7 @@ const industries: Industry[] = [
   },
   {
     id: "construction",
+    translationKey: "construction",
     image: "/images/construction-site-build-construction-work-159358.jpeg",
     icon: Building2,
     color: "text-amber-600",
@@ -122,6 +156,7 @@ const industries: Industry[] = [
   },
   {
     id: "technology",
+    translationKey: "technology",
     image: "/images/pexels-photo-256541.webp",
     icon: Cpu,
     color: "text-cyan-600",
@@ -132,6 +167,7 @@ const industries: Industry[] = [
   },
   {
     id: "audiovisual",
+    translationKey: "audiovisual",
     image: "/images/audio-visual-2.jpg",
     icon: Video,
     color: "text-pink-600",
@@ -142,6 +178,7 @@ const industries: Industry[] = [
   },
   {
     id: "events",
+    translationKey: "events",
     image: "/images/events-1.jpg",
     icon: Star,
     color: "text-yellow-600",
@@ -152,6 +189,7 @@ const industries: Industry[] = [
   },
   {
     id: "restaurantes",
+    translationKey: "restaurantes",
     image: "/images/pexels-photo-1640777.jpeg",
     icon: Utensils,
     color: "text-emerald-600",
@@ -162,6 +200,7 @@ const industries: Industry[] = [
   },
   {
     id: "electrical",
+    translationKey: "electrical",
     image: "/images/pexels-photo-4481259.webp",
     icon: Zap,
     color: "text-yellow-600",
@@ -173,12 +212,12 @@ const industries: Industry[] = [
 ]
 
 const industryNames: Record<IndustryId, string> = {
-  retail: "Controle de Estoque para Varejo",
-  manufacturing: "Controle de Estoque para Manufatura",
-  logistics: "Controle de Estoque para Logistica",
+  varejo: "Controle de Estoque para Varejo",
+  manufatura: "Controle de Estoque para Manufatura",
+  logistica: "Controle de Estoque para Logistica",
   food: "Controle de Estoque para Alimentos e Bebidas",
   pharmaceutical: "Controle de Estoque para Farmaceutico",
-  automotive: "Controle de Estoque para Automotivo",
+  automotivo: "Controle de Estoque para Automotivo",
   construction: "Controle de Estoque para Construcao",
   technology: "Controle de Estoque para Tecnologia",
   audiovisual: "Controle de Equipamentos Audiovisuais",
@@ -354,7 +393,7 @@ export default function IndustriasPage() {
               <div className="relative h-48 overflow-hidden">
                 <Image
                   src={industry.image || "/placeholder.svg"}
-                  alt={t.industries.industries[industry.id]}
+                  alt={t.industries.industries[industry.translationKey]}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -379,7 +418,7 @@ export default function IndustriasPage() {
               {/* Industry Content */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-200">
-                  {t.industries.industries[industry.id]}
+                  {t.industries.industries[industry.translationKey]}
                 </h3>
                 
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">
@@ -400,10 +439,10 @@ export default function IndustriasPage() {
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-purple-600 font-medium group-hover:text-purple-700 transition-colors duration-200">
                     {language === "pt"
-                      ? `Ver solução para ${t.industries.industries[industry.id]}`
+                      ? `Ver solução para ${t.industries.industries[industry.translationKey]}`
                       : language === "en"
-                        ? `View solution for ${t.industries.industries[industry.id]}`
-                        : `Voir la solution pour ${t.industries.industries[industry.id]}`}
+                        ? `View solution for ${t.industries.industries[industry.translationKey]}`
+                        : `Voir la solution pour ${t.industries.industries[industry.translationKey]}`}
                   </span>
                   <ArrowRight className="w-4 h-4 text-purple-600 group-hover:translate-x-1 transition-transform duration-200" />
                 </div>

@@ -8,11 +8,7 @@ try {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: process.env.NODE_ENV === 'development' ? '.next-dev' : '.next',
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
-    ignoreBuildErrors: true,
     tsconfigPath:
       process.env.NODE_ENV === 'development' ? 'tsconfig.dev.json' : 'tsconfig.json',
   },
@@ -64,6 +60,13 @@ const nextConfig = {
       },
     ]
 
+    const industrySlugRedirects = [
+      { source: "/industrias/retail", destination: "/industrias/varejo" },
+      { source: "/industrias/manufacturing", destination: "/industrias/manufatura" },
+      { source: "/industrias/logistics", destination: "/industrias/logistica" },
+      { source: "/industrias/automotive", destination: "/industrias/automotivo" },
+    ]
+
     const legacyResourceRedirects = [
       {
         source: "/recursos/codigo-de-barras",
@@ -92,6 +95,11 @@ const nextConfig = {
         destination: "https://www.purplestock.com.br/robots.txt",
         permanent: true,
       },
+      ...industrySlugRedirects.map((redirect) => ({
+        source: redirect.source,
+        destination: redirect.destination,
+        permanent: true,
+      })),
       ...legacyResourceRedirects.map((redirect) => ({
         source: redirect.source,
         destination: redirect.destination,

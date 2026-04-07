@@ -1,16 +1,18 @@
 import { MetadataRoute } from 'next'
-import { getAllPosts } from '@/lib/blog'
+import { getAllPosts, getAllTagSlugs } from '@/lib/blog'
 import { getSiteUrl } from '@/lib/site'
+import { glossaryTerms } from '@/data/glossary'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl()
   const posts = await getAllPosts()
+  const tagSlugs = await getAllTagSlugs()
   const industrySlugs = [
     "atacado",
-    "retail",
-    "manufacturing",
-    "logistics",
-    "automotive",
+    "varejo",
+    "manufatura",
+    "logistica",
+    "automotivo",
     "fashion",
     "food",
     "restaurantes",
@@ -90,7 +92,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  // Resource routes
+  // Resource routes (only pages that don't redirect)
   const resourceRoutes = [
     'controle-de-almoxarifado',
   ].map(resource => ({
@@ -123,11 +125,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ]
 
+  const tagRoutes = tagSlugs.map((tag) => ({
+    url: `${baseUrl}/blog/tag/${tag}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.5,
+  }))
+
+  const glossaryRoutes = glossaryTerms.map((term) => ({
+    url: `${baseUrl}/glossario/${term.slug}`,
+    lastModified: new Date('2026-04-07'),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
   return [
     ...staticRoutes,
     ...featureRoutes,
     ...resourceRoutes,
     ...industryRoutes,
     ...blogRoutes,
+    ...tagRoutes,
+    ...glossaryRoutes,
   ]
 }

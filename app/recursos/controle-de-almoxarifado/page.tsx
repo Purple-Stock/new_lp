@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { trackSeoCtaClick } from "@/lib/analytics"
+import { buildWhatsAppUrl } from "@/lib/contact"
 
 const checklist = [
   "Padronizar cadastro de itens com SKU, unidade e localização",
@@ -60,7 +61,7 @@ export default function ControleAlmoxarifadoPage() {
               </Button>
             </Link>
             <Link
-              href="https://wa.me/5511995597242?text=Ol%C3%A1!%20Quero%20implantar%20controle%20de%20almoxarifado%20na%20minha%20empresa."
+              href={buildWhatsAppUrl("Olá! Quero implantar controle de almoxarifado na minha empresa.")}
               onClick={() =>
                 trackSeoCtaClick({
                   cta_name: "almoxarifado_hero_secondary",

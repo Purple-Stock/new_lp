@@ -7,6 +7,7 @@ import { Check, Warehouse, Forklift, Box, MapPin, ArrowRight, Sparkles, Zap, Tar
 import Image from "next/image"
 import Link from "next/link"
 import { useLanguage } from "@/contexts/LanguageContext"
+import { getCalendlyUrl } from "@/lib/contact"
 import { translations } from "@/utils/translations"
 
 export default function WarehouseControlPage() {
@@ -237,7 +238,7 @@ export default function WarehouseControlPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link href="https://calendly.com/matheus-puppe/purple-stock">
+              <Link href={getCalendlyUrl()}>
                 <Button size="lg" className="bg-white hover:bg-gray-100 text-orange-700 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                   <Calendar className="w-5 h-5 mr-2" />
                   {t.cta.scheduleDemo}

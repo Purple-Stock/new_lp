@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Instagram, Youtube, Linkedin, Sparkles, Mail, Phone, MapPin, ArrowRight, MessageCircle, PlayCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/LanguageContext"
+import { buildWhatsAppUrl } from "@/lib/contact"
 import { translations } from "@/utils/translations"
 
 export function Footer() {
@@ -197,7 +198,7 @@ export function Footer() {
                 </Link>
               </Button>
               <Button asChild variant="outline" className="rounded-lg border-purple-300 bg-white/90 px-8 py-3 text-purple-700 hover:bg-purple-50">
-                <Link href="https://api.whatsapp.com/send/?phone=5511995597242&text=Ol%C3%A1%21+Quero+entender+se+o+Purple+Stock+serve+para+minha+opera%C3%A7%C3%A3o.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+                <Link href={buildWhatsAppUrl("Olá! Quero entender se o Purple Stock serve para minha operação.")} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   {language === "pt" ? "Falar no WhatsApp" : language === "en" ? "Talk on WhatsApp" : "Parler sur WhatsApp"}
                 </Link>

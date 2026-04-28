@@ -7,6 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Check, Star, Users, TrendingUp, Shield, Clock, Zap, ArrowRight, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { getCalendlyUrl } from "@/lib/contact"
 
 // This would typically come from a database or API
 const industriesData = [
@@ -708,7 +709,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                 </Button>
               </Link>
               
-              <Link href="https://calendly.com/matheus-puppe/purple-stock">
+              <Link href={getCalendlyUrl()}>
                 <Button size="lg" className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
                   <MessageCircle className="w-5 h-5 mr-2" />
                   Agendar Demonstração

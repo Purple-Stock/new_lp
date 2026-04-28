@@ -1,3 +1,5 @@
+import { buildWhatsAppUrl } from "@/lib/contact"
+
 export const translations = {
   pt: {
     nav: {
@@ -701,7 +703,7 @@ export const translations = {
             "SLA garantido",
           ],
           buttonText: "Fale com Vendas",
-          buttonLink: "https://api.whatsapp.com/send/?phone=5511995597242&text=Olá!+Gostaria+de+saber+mais+sobre+o+plano+Empresarial+do+Purple+Stock.&type=phone_number&app_absent=0",
+          buttonLink: buildWhatsAppUrl("Olá! Gostaria de saber mais sobre o plano Empresarial do Purple Stock."),
         },
       ],
     },
@@ -1459,7 +1461,7 @@ export const translations = {
             "API access",
           ],
           buttonText: "Talk to Sales",
-          buttonLink: "https://api.whatsapp.com/send/?phone=5511995597242&text=Hello!+I%27d+like+to+know+more+about+the+enterprise+plan.&type=phone_number&app_absent=0",
+          buttonLink: buildWhatsAppUrl("Hello! I'd like to know more about the enterprise plan."),
         },
       ],
     },
@@ -2224,7 +2226,7 @@ export const translations = {
             "Accès API",
           ],
           buttonText: "Parler aux Ventes",
-          buttonLink: "https://api.whatsapp.com/send/?phone=5511995597242&text=Bonjour%21+Je+souhaiterais+en+savoir+plus+sur+le+plan+entreprise.&type=phone_number&app_absent=0",
+          buttonLink: buildWhatsAppUrl("Bonjour! Je souhaiterais en savoir plus sur le plan entreprise."),
         },
       ],
     },

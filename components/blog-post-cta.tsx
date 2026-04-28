@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ArrowRight, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { trackSeoCtaClick } from "@/lib/analytics"
+import { buildWhatsAppUrl } from "@/lib/contact"
 
 type BlogPostCtaProps = {
   slug: string
@@ -57,7 +58,7 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
         </Button>
       </Link>
       <Link
-        href={`https://wa.me/5511995597242?text=${cta.whatsappText}`}
+        href={buildWhatsAppUrl(decodeURIComponent(cta.whatsappText))}
         onClick={() =>
           trackSeoCtaClick({
             cta_name: "blog_post_secondary_whatsapp",

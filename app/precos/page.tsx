@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { trackSeoCtaClick } from "@/lib/analytics"
+import { buildWhatsAppUrl } from "@/lib/contact"
 
 export default function PricingPage() {
   const { language } = useLanguage()
@@ -321,7 +322,7 @@ export default function PricingPage() {
                 </Button>
               </Link>
               <Link
-                href="https://wa.me/5511995597242?text=Ol%C3%A1!%20Quero%20entender%20o%20plano%20de%20R%24%2029%2C90%20por%20time."
+                href={buildWhatsAppUrl("Olá! Quero entender o plano de R$ 29,90 por time.")}
                 className="flex-1"
                 onClick={() =>
                   trackSeoCtaClick({
@@ -417,7 +418,7 @@ export default function PricingPage() {
               </Button>
             </Link>
             <Link
-              href="https://wa.me/5511995597242?text=Ol%C3%A1!%20Quero%20tirar%20d%C3%BAvidas%20sobre%20o%20plano%20de%20R%24%2029%2C90%20por%20time."
+              href={buildWhatsAppUrl("Olá! Quero tirar dúvidas sobre o plano de R$ 29,90 por time.")}
               onClick={() =>
                 trackSeoCtaClick({
                     cta_name: "pricing_single_bottom_secondary",

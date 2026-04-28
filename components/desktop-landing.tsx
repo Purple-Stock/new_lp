@@ -36,6 +36,7 @@ import { MacOSFolderIcon } from "@/components/macos-folder-icon"
 import { DraggableFolder } from "@/components/draggable-folder"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { buildWhatsAppUrl, getCalendlyUrl } from "@/lib/contact"
 
 const HeroVideoModal = dynamic(
   () => import("@/components/hero-video-modal").then((mod) => mod.HeroVideoModal),
@@ -554,7 +555,7 @@ export function DesktopLanding() {
           folderColor: "yellow" as const,
           action: {
             label: language === "pt" ? "Falar com humano" : language === "fr" ? "Parler à un humain" : "Talk to a human",
-            href: "https://api.whatsapp.com/send/?phone=5511995597242&text=Hello!+I%27d+like+to+speak+with+someone+about+Purple+Stock.&type=phone_number&app_absent=0",
+            href: buildWhatsAppUrl("Hello! I'd like to speak with someone about Purple Stock."),
           },
         },
       }) satisfies Record<WindowKey, {
@@ -1433,7 +1434,7 @@ export function DesktopLanding() {
                     className="border-purple-300 bg-white/90 px-8 py-6 text-base font-semibold text-purple-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-purple-50"
                   >
                     <Link
-                      href="https://api.whatsapp.com/send/?phone=5511995597242&text=Ol%C3%A1%21+Quero+entender+como+o+Purple+Stock+pode+organizar+meu+estoque.&type=phone_number&app_absent=0"
+                      href={buildWhatsAppUrl("Olá! Quero entender como o Purple Stock pode organizar meu estoque.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() =>
@@ -1903,7 +1904,7 @@ export function DesktopLanding() {
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                 >
                   <Link
-                    href="https://calendly.com/matheus-puppe/purple-stock"
+                    href={getCalendlyUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() =>

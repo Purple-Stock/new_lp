@@ -2,6 +2,7 @@ import { buildPageMetadata } from "@/lib/metadata"
 import { ArrowLeft, Sparkles, Clock, Bell, Calendar, MessageCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { buildWhatsAppUrl, getCalendlyUrl } from "@/lib/contact"
 
 export const metadata = buildPageMetadata({
   title: "Em Breve",
@@ -105,7 +106,7 @@ export default function ComingSoon() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Link
-                  href="https://wa.me/5511995597242?text=Olá! Gostaria de saber quando o Purple Stock será lançado."
+                  href={buildWhatsAppUrl("Olá! Gostaria de saber quando o Purple Stock será lançado.")}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -120,7 +121,7 @@ export default function ComingSoon() {
                 </Link>
                 
                 <Link
-                  href="https://calendly.com/matheus-puppe/purple-stock"
+                  href={getCalendlyUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ArrowLeft, BookOpen, ChevronRight, MessageCircle, ArrowRight } from "lucide-react"
 import { glossaryTerms, type GlossaryTerm } from "@/data/glossary"
 import { getSiteUrl } from "@/lib/site"
+import { buildWhatsAppUrl } from "@/lib/contact"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -383,7 +384,7 @@ export default async function GlossaryTermPage({ params }: PageProps) {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="https://wa.me/5511995597242?text=Ol%C3%A1!%20Vim%20do%20gloss%C3%A1rio%20e%20quero%20entender%20como%20implantar%20o%20Purple%20Stock.">
+                <Link href={buildWhatsAppUrl("Olá! Vim do glossário e quero entender como implantar o Purple Stock.")}>
                   <Button variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50">
                     <MessageCircle className="mr-2 h-4 w-4" />
                     Falar com especialista

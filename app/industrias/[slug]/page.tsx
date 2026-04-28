@@ -708,7 +708,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                 </Button>
               </Link>
               
-              <Link href="https://calendly.com/matheus-puppe">
+              <Link href="https://calendly.com/matheus-puppe/purple-stock">
                 <Button size="lg" className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
                   <MessageCircle className="w-5 h-5 mr-2" />
                   Agendar Demonstração

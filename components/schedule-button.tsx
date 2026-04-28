@@ -1,7 +1,7 @@
 import { Calendar } from "lucide-react"
 
 export function ScheduleButton() {
-  const calendlyUrl = "https://calendly.com/matheus-puppe"
+  const calendlyUrl = "https://calendly.com/matheus-puppe/purple-stock"
 
   return (
     <a

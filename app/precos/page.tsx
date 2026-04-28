@@ -321,12 +321,12 @@ export default function PricingPage() {
                 </Button>
               </Link>
               <Link
-                href="https://wa.me/5511995597242?text=Ol%C3%A1!%20Quero%20entender%20o%20plano%20de%20R%24%2029%2C90%20por%20time."
+                href="https://calendly.com/matheus-puppe/purple-stock"
                 className="flex-1"
                 onClick={() =>
                   trackSeoCtaClick({
                     cta_name: "pricing_single_plan_secondary",
-                    cta_target: "whatsapp",
+                    cta_target: "calendly",
                     page_section: "pricing_single_card",
                     price_value: 29.9,
                     query_cluster: "pricing",
@@ -417,11 +417,11 @@ export default function PricingPage() {
               </Button>
             </Link>
             <Link
-              href="https://wa.me/5511995597242?text=Ol%C3%A1!%20Quero%20tirar%20d%C3%BAvidas%20sobre%20o%20plano%20de%20R%24%2029%2C90%20por%20time."
+              href="https://calendly.com/matheus-puppe/purple-stock"
               onClick={() =>
                 trackSeoCtaClick({
                     cta_name: "pricing_single_bottom_secondary",
-                    cta_target: "whatsapp",
+                    cta_target: "calendly",
                     page_section: "pricing_bottom_cta",
                     price_value: 29.9,
                     query_cluster: "pricing",

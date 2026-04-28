@@ -120,7 +120,7 @@ export default function ComingSoon() {
                 </Link>
                 
                 <Link
-                  href="https://calendly.com/matheus-puppe"
+                  href="https://calendly.com/matheus-puppe/purple-stock"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

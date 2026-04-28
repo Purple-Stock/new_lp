@@ -554,7 +554,7 @@ export function DesktopLanding() {
           folderColor: "yellow" as const,
           action: {
             label: language === "pt" ? "Falar com humano" : language === "fr" ? "Parler à un humain" : "Talk to a human",
-            href: "https://api.whatsapp.com/send/?phone=5511995597242&text=Hello!+I%27d+like+to+speak+with+someone+about+Purple+Stock.&type=phone_number&app_absent=0",
+            href: "https://calendly.com/matheus-puppe/purple-stock",
           },
         },
       }) satisfies Record<WindowKey, {
@@ -1433,13 +1433,13 @@ export function DesktopLanding() {
                     className="border-purple-300 bg-white/90 px-8 py-6 text-base font-semibold text-purple-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-purple-50"
                   >
                     <Link
-                      href="https://api.whatsapp.com/send/?phone=5511995597242&text=Ol%C3%A1%21+Quero+entender+como+o+Purple+Stock+pode+organizar+meu+estoque.&type=phone_number&app_absent=0"
+                      href="https://calendly.com/matheus-puppe/purple-stock"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() =>
                         trackCtaClick({
-                          cta_name: "desktop_whatsapp_secondary",
-                          cta_target: "whatsapp",
+                          cta_name: "desktop_schedule_demo_secondary",
+                          cta_target: "calendly",
                           page_section: "hero_cta",
                           cta_variant: "secondary",
                         })
@@ -1903,7 +1903,7 @@ export function DesktopLanding() {
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                 >
                   <Link
-                    href="https://calendly.com/matheus-puppe"
+                    href="https://calendly.com/matheus-puppe/purple-stock"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() =>

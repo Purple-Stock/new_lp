@@ -1,14 +1,14 @@
-import { buildPageMetadata } from "@/lib/metadata"
-import { ProductDocumentation } from "@/components/product-documentation"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
+import { buildPageMetadata } from "@/lib/metadata";
+import { ProductDocumentation } from "@/components/product-documentation";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 export const metadata = buildPageMetadata({
   title: "Documentacao do Sistema de Estoque",
   description:
     "Consulte a documentacao do Purple Stock com guias de uso, operacao e recursos do sistema de controle de estoque.",
   path: "/documentacao",
-})
+});
 
 export default function DocumentacaoPage() {
   return (
@@ -21,5 +21,5 @@ export default function DocumentacaoPage() {
       </main>
       <Footer />
     </>
-  )
+  );
 }

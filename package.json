@@ -8,6 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "node --test tests/**/*.test.js",
+    "test:ci": "npm run test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "validate-sitemap": "node scripts/validate-sitemap.js",
     "validate-llms": "node scripts/validate-llms-txt.js"
   },
@@ -75,6 +79,7 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "15.5.14",
     "postcss": "^8",
+    "prettier": "^3.8.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
   },

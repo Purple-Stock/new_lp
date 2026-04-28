@@ -24,6 +24,7 @@ File: `next.config.mjs`
 ## 2) Local Validation (next start + Host header)
 
 Environment used:
+
 - `npm run build`
 - `PORT=4010 npm run start`
 
@@ -37,6 +38,7 @@ curl -I -H 'Host: blog.purplestock.com.br' http://127.0.0.1:4010/blog/slug-qualq
 ```
 
 Observed:
+
 - All tested cases returned permanent redirect (`308` in Next.js; SEO-equivalent to 301 for migration intent).
 - Generic `blog.*` paths redirect directly to canonical `https://www.purplestock.com.br/blog/*`.
 - Some legacy mapped slugs may perform an intermediate hop before reaching final canonical host.
@@ -67,5 +69,6 @@ curl -I https://www.purplestock.com.br/blog/open-erp-o-que-e-como-funciona
 ```
 
 Expected:
+
 - Permanent redirect status.
 - Final location on `https://www.purplestock.com.br/...`.

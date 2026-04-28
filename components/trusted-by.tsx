@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { useLanguage } from "@/contexts/LanguageContext"
+import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function TrustedBy() {
-  const { language } = useLanguage()
+  const { language } = useLanguage();
 
   const companies = [
     {
@@ -31,26 +31,25 @@ export function TrustedBy() {
       width: 240,
       height: 55,
     },
-  ]
+  ];
 
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-            {language === "pt" 
+            {language === "pt"
               ? "Confiado por empresas em crescimento"
               : language === "en"
-              ? "Trusted by growing businesses"
-              : "Fiable par les entreprises en croissance"
-            }
+                ? "Trusted by growing businesses"
+                : "Fiable par les entreprises en croissance"}
           </h2>
         </div>
-        
+
         <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
           {companies.map((company) => (
-            <div 
-              key={company.name} 
+            <div
+              key={company.name}
               className="flex items-center justify-center h-16"
             >
               <Image
@@ -65,6 +64,5 @@ export function TrustedBy() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

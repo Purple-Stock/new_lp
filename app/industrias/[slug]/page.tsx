@@ -1,21 +1,31 @@
-import type { Metadata } from "next"
-import { buildPageMetadata } from "@/lib/metadata"
-import { notFound } from "next/navigation"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowLeft, Check, Star, Users, TrendingUp, Shield, Clock, Zap, ArrowRight, MessageCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { getCalendlyUrl } from "@/lib/contact"
+import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
+import { notFound } from "next/navigation";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowLeft,
+  Check,
+  Star,
+  Users,
+  TrendingUp,
+  Shield,
+  Clock,
+  Zap,
+  ArrowRight,
+  MessageCircle,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { getCalendlyUrl } from "@/lib/contact";
 
 // This would typically come from a database or API
 const industriesData = [
   {
     name: "Atacado",
     slug: "atacado",
-    image:
-      "/images/pexels-photo-4483610.webp",
+    image: "/images/pexels-photo-4483610.webp",
     description:
       "Otimize a gestão de estoque para operações de atacado com o Purple Stock. Nossa solução é ideal para empresas que lidam com grandes volumes de produtos e precisam de controle preciso do inventário.",
     benefits: [
@@ -36,8 +46,7 @@ const industriesData = [
   {
     name: "Varejo",
     slug: "varejo",
-    image:
-      "/images/pexels-photo-264507.jpeg",
+    image: "/images/pexels-photo-264507.jpeg",
     description:
       "Transforme sua operação de varejo com o Purple Stock. Nossa plataforma oferece as ferramentas necessárias para gerenciar seu estoque com precisão e atender seus clientes com eficiência.",
     benefits: [
@@ -58,8 +67,7 @@ const industriesData = [
   {
     name: "Manufatura",
     slug: "manufatura",
-    image:
-      "/images/pexels-photo-1145434.jpeg",
+    image: "/images/pexels-photo-1145434.jpeg",
     description:
       "Otimize sua produção e controle de materiais com o Purple Stock. Nossa solução é projetada para atender às necessidades específicas da indústria de manufatura.",
     benefits: [
@@ -80,8 +88,7 @@ const industriesData = [
   {
     name: "Logística",
     slug: "logistica",
-    image:
-      "/images/pexels-photo-1267338.jpeg",
+    image: "/images/pexels-photo-1267338.jpeg",
     description:
       "Simplifique suas operações logísticas com o Purple Stock. Nossa plataforma oferece visibilidade completa e controle sobre toda a cadeia de suprimentos.",
     benefits: [
@@ -102,8 +109,7 @@ const industriesData = [
   {
     name: "Automotivo",
     slug: "automotivo",
-    image:
-      "/images/pexels-photo-4483610.webp",
+    image: "/images/pexels-photo-4483610.webp",
     description:
       "Transforme sua gestão de peças automotivas com o Purple Stock. Nossa solução é projetada especificamente para concessionárias, oficinas mecânicas, distribuidoras de peças e empresas do setor automotivo que precisam de controle total sobre peças, componentes e equipamentos.",
     benefits: [
@@ -134,8 +140,7 @@ const industriesData = [
   {
     name: "Moda",
     slug: "fashion",
-    image:
-      "/images/pexels-photo-994523.webp",
+    image: "/images/pexels-photo-994523.webp",
     description:
       "Gerencie coleções, tamanhos, cores e estilos com facilidade usando o Purple Stock. Nossa solução é ideal para o setor de moda e vestuário.",
     benefits: [
@@ -156,8 +161,7 @@ const industriesData = [
   {
     name: "Alimentos & Bebidas",
     slug: "food",
-    image:
-      "/images/pexels-photo-1640777.jpeg",
+    image: "/images/pexels-photo-1640777.jpeg",
     description:
       "Controle seu estoque de alimentos e bebidas com eficiência usando o Purple Stock. Nossa plataforma ajuda a gerenciar datas de validade, lotes e rastreabilidade.",
     benefits: [
@@ -178,8 +182,7 @@ const industriesData = [
   {
     name: "Restaurantes",
     slug: "restaurantes",
-    image:
-      "/images/pexels-photo-1640777.jpeg",
+    image: "/images/pexels-photo-1640777.jpeg",
     description:
       "Transforme a gestão do seu restaurante com o Purple Stock. Nossa plataforma oferece controle completo de ingredientes, estoque de alimentos e gestão de fornecedores para otimizar suas operações culinárias.",
     benefits: [
@@ -210,8 +213,7 @@ const industriesData = [
   {
     name: "Elétrico",
     slug: "electrical",
-    image:
-      "/images/pexels-photo-4481259.webp",
+    image: "/images/pexels-photo-4481259.webp",
     description:
       "Otimize a gestão do seu negócio elétrico com o Purple Stock. Nossa plataforma oferece controle completo de equipamentos elétricos, componentes, ferramentas e materiais para maximizar a eficiência operacional.",
     benefits: [
@@ -242,8 +244,7 @@ const industriesData = [
   {
     name: "Construção",
     slug: "construction",
-    image:
-      "/images/building-800x600.webp",
+    image: "/images/building-800x600.webp",
     description:
       "Gerencie materiais de construção, ferramentas e equipamentos com o Purple Stock. Nossa solução é ideal para construtoras e empresas do setor.",
     benefits: [
@@ -264,8 +265,7 @@ const industriesData = [
   {
     name: "Médico",
     slug: "pharmaceutical",
-    image:
-      "/images/medical-appointment-doctor-healthcare-40568.webp",
+    image: "/images/medical-appointment-doctor-healthcare-40568.webp",
     description:
       "Controle medicamentos, equipamentos e suprimentos médicos com precisão usando o Purple Stock. Nossa plataforma atende às necessidades específicas do setor de saúde.",
     benefits: [
@@ -286,8 +286,7 @@ const industriesData = [
   {
     name: "Beleza",
     slug: "beauty",
-    image:
-      "/images/pexels-photo-3985298.webp",
+    image: "/images/pexels-photo-3985298.webp",
     description:
       "Gerencie produtos de beleza, cosméticos e equipamentos com o Purple Stock. Nossa solução é ideal para salões, spas e lojas de cosméticos.",
     benefits: [
@@ -308,8 +307,7 @@ const industriesData = [
   {
     name: "Comércio",
     slug: "commerce",
-    image:
-      "/images/commerce-800x600.webp",
+    image: "/images/commerce-800x600.webp",
     description:
       "Otimize suas operações comerciais com o Purple Stock. Nossa plataforma oferece as ferramentas necessárias para gerenciar seu estoque com eficiência.",
     benefits: [
@@ -330,8 +328,7 @@ const industriesData = [
   {
     name: "Educação",
     slug: "education",
-    image:
-      "/images/pexels-photo-256541.webp",
+    image: "/images/pexels-photo-256541.webp",
     description:
       "Gerencie materiais didáticos, equipamentos e suprimentos escolares com o Purple Stock. Nossa solução é ideal para escolas, universidades e instituições de ensino.",
     benefits: [
@@ -352,8 +349,7 @@ const industriesData = [
   {
     name: "Tecnologia",
     slug: "technology",
-    image:
-      "/images/pexels-photo-256541.webp",
+    image: "/images/pexels-photo-256541.webp",
     description:
       "Transforme sua gestão de equipamentos tecnológicos com o Purple Stock. Nossa solução é projetada especificamente para empresas de tecnologia, startups, e departamentos de TI que precisam de controle total sobre equipamentos, componentes e ativos tecnológicos.",
     benefits: [
@@ -384,8 +380,7 @@ const industriesData = [
   {
     name: "Produção Audiovisual",
     slug: "audiovisual",
-    image:
-      "/images/audio-visual-1.jpg",
+    image: "/images/audio-visual-1.jpg",
     description:
       "Transforme sua gestão de equipamentos audiovisuais com o Purple Stock. Nossa solução é projetada especificamente para produtoras, estúdios de filmagem, empresas de eventos e profissionais do setor audiovisual que precisam de controle total sobre câmeras, iluminação, áudio e acessórios.",
     benefits: [
@@ -416,8 +411,7 @@ const industriesData = [
   {
     name: "Eventos",
     slug: "events",
-    image:
-      "/images/events-2.jpg",
+    image: "/images/events-2.jpg",
     description:
       "Transforme sua gestão de eventos com o Purple Stock. Nossa solução é projetada especificamente para empresas de eventos, organizadores de festas, casamentos, conferências e profissionais do setor que precisam de controle total sobre equipamentos, materiais e recursos.",
     benefits: [
@@ -445,15 +439,15 @@ const industriesData = [
       "Sistema de backup para dados de equipamentos",
     ],
   },
-]
+];
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params
-  const industry = industriesData.find((ind) => ind.slug === slug)
+  const { slug } = await params;
+  const industry = industriesData.find((ind) => ind.slug === slug);
 
   if (!industry) {
     return buildPageMetadata({
@@ -461,7 +455,7 @@ export async function generateMetadata({
       description:
         "Veja como o Purple Stock adapta o controle de estoque para diferentes operacoes e segmentos.",
       path: "/industrias",
-    })
+    });
   }
 
   if (industry.slug === "audiovisual") {
@@ -470,22 +464,26 @@ export async function generateMetadata({
       description:
         "Controle câmeras, lentes, iluminação e áudio com check-in/check-out, manutenção e rastreabilidade para produtoras e locadoras.",
       path: `/industrias/${industry.slug}`,
-    })
+    });
   }
 
   return buildPageMetadata({
     title: `Gestao de Estoque para ${industry.name}`,
     description: industry.description,
     path: `/industrias/${industry.slug}`,
-  })
+  });
 }
 
-export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
-  const industry = industriesData.find((ind) => ind.slug === slug)
+export default async function IndustryPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const industry = industriesData.find((ind) => ind.slug === slug);
 
   if (!industry) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -495,27 +493,35 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       <div className="pt-20">
         {/* Enhanced Hero Section */}
         <div className="relative h-[500px] overflow-hidden">
-          <Image src={industry.image || "/placeholder.svg"} alt={industry.name} fill className="object-cover" />
+          <Image
+            src={industry.image || "/placeholder.svg"}
+            alt={industry.name}
+            fill
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-          
+
           {/* Navigation and Content */}
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <Link href="/industrias" className="inline-flex items-center text-white mb-6 hover:text-purple-200 transition-colors duration-200 group">
+              <Link
+                href="/industrias"
+                className="inline-flex items-center text-white mb-6 hover:text-purple-200 transition-colors duration-200 group"
+              >
                 <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
                 Voltar para Indústrias
               </Link>
-              
+
               <div className="max-w-4xl">
                 <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-medium mb-6 border border-white/30">
                   <Star className="w-4 h-4 mr-2" />
                   Solução Especializada
                 </div>
-                
+
                 <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                   {industry.name}
                 </h1>
-                
+
                 <p className="text-xl lg:text-2xl text-white/90 max-w-3xl leading-relaxed">
                   {industry.description}
                 </p>
@@ -534,7 +540,8 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                   Benefícios para {industry.name}
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Descubra como o Purple Stock pode transformar suas operações e impulsionar o crescimento do seu negócio.
+                  Descubra como o Purple Stock pode transformar suas operações e
+                  impulsionar o crescimento do seu negócio.
                 </p>
               </div>
 
@@ -561,7 +568,8 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                   Recursos Principais
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Funcionalidades avançadas projetadas especificamente para atender às necessidades do seu setor.
+                  Funcionalidades avançadas projetadas especificamente para
+                  atender às necessidades do seu setor.
                 </p>
               </div>
 
@@ -591,7 +599,8 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                 Resultados Comprovados
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Empresas do setor de {industry.name} já estão transformando suas operações com o Purple Stock.
+                Empresas do setor de {industry.name} já estão transformando suas
+                operações com o Purple Stock.
               </p>
             </div>
 
@@ -600,31 +609,39 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <TrendingUp className="w-10 h-10 text-purple-600" />
                 </div>
-                <div className="text-3xl font-bold text-purple-600 mb-2">40%</div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">
+                  40%
+                </div>
                 <div className="text-gray-600">Aumento na Eficiência</div>
               </div>
-              
+
               <div className="text-center group flex flex-col items-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Shield className="w-10 h-10 text-blue-600" />
                 </div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">99.9%</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">
+                  99.9%
+                </div>
                 <div className="text-gray-600">Precisão no Controle</div>
               </div>
-              
+
               <div className="text-center group flex flex-col items-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Clock className="w-10 h-10 text-green-600" />
                 </div>
-                <div className="text-3xl font-bold text-green-600 mb-2">24/7</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  24/7
+                </div>
                 <div className="text-gray-600">Disponibilidade</div>
               </div>
-              
+
               <div className="text-center group flex flex-col items-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Users className="w-10 h-10 text-orange-600" />
                 </div>
-                <div className="text-3xl font-bold text-orange-600 mb-2">100%</div>
+                <div className="text-3xl font-bold text-orange-600 mb-2">
+                  100%
+                </div>
                 <div className="text-gray-600">Satisfação</div>
               </div>
             </div>
@@ -639,7 +656,8 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                 Casos de Sucesso
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Empresas do setor de {industry.name} que transformaram suas operações com o Purple Stock.
+                Empresas do setor de {industry.name} que transformaram suas
+                operações com o Purple Stock.
               </p>
             </div>
 
@@ -650,31 +668,39 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                     <Star className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900">Empresa de {industry.name}</h3>
+                    <h3 className="text-xl font-bold text-gray-900">
+                      Empresa de {industry.name}
+                    </h3>
                     <p className="text-gray-600">Setor: {industry.name}</p>
                   </div>
                 </div>
                 <blockquote className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  &ldquo;O Purple Stock revolucionou nossa gestão de estoque. Conseguimos reduzir perdas em 30% e aumentar a eficiência operacional significativamente.&rdquo;
+                  &ldquo;O Purple Stock revolucionou nossa gestão de estoque.
+                  Conseguimos reduzir perdas em 30% e aumentar a eficiência
+                  operacional significativamente.&rdquo;
                 </blockquote>
                 <div className="flex items-center text-sm text-gray-500">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
                   Cliente desde 2023
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center mr-4">
                     <TrendingUp className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900">Empresa de {industry.name}</h3>
+                    <h3 className="text-xl font-bold text-gray-900">
+                      Empresa de {industry.name}
+                    </h3>
                     <p className="text-gray-600">Setor: {industry.name}</p>
                   </div>
                 </div>
                 <blockquote className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  &ldquo;A implementação do Purple Stock foi rápida e os resultados foram imediatos. Nossa equipe adorou a facilidade de uso e a interface intuitiva.&rdquo;
+                  &ldquo;A implementação do Purple Stock foi rápida e os
+                  resultados foram imediatos. Nossa equipe adorou a facilidade
+                  de uso e a interface intuitiva.&rdquo;
                 </blockquote>
                 <div className="flex items-center text-sm text-gray-500">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
@@ -691,26 +717,34 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             <div className="absolute top-20 left-20 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
             <div className="absolute bottom-20 right-20 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
           </div>
-          
+
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               Transforme sua gestão de estoque hoje
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Junte-se a milhares de empresas que já otimizaram suas operações com o Purple Stock e descubra como podemos ajudar sua empresa do setor de {industry.name}.
+              Junte-se a milhares de empresas que já otimizaram suas operações
+              com o Purple Stock e descubra como podemos ajudar sua empresa do
+              setor de {industry.name}.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {/* <Link href="/coming-soon"> */}
               <Link href="https://app.purplestock.com.br/">
-                <Button size="lg" className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
+                <Button
+                  size="lg"
+                  className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl"
+                >
                   <Zap className="w-5 h-5 mr-2" />
                   Começar Teste Gratuito
                 </Button>
               </Link>
-              
+
               <Link href={getCalendlyUrl()}>
-                <Button size="lg" className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
+                <Button
+                  size="lg"
+                  className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl"
+                >
                   <MessageCircle className="w-5 h-5 mr-2" />
                   Agendar Demonstração
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -723,5 +757,5 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
       <Footer />
     </div>
-  )
+  );
 }

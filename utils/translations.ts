@@ -1,4 +1,4 @@
-import { buildWhatsAppUrl } from "@/lib/contact"
+import { buildWhatsAppUrl } from "@/lib/contact";
 
 export const translations = {
   pt: {
@@ -19,7 +19,8 @@ export const translations = {
         warehouseControl: "Controle de Almoxarifado",
         qrCodeManagement: "Gestão QR Code",
         clothingManufacturing: "Sistemas para Confecção",
-        equipmentManagement: "Sistema de Gerenciamento de Equipamentos por QR Code",
+        equipmentManagement:
+          "Sistema de Gerenciamento de Equipamentos por QR Code",
         factoryManagement: "Gestão de Facção",
         inventoryApp: "Aplicativo para Controle de Estoque",
       },
@@ -31,11 +32,13 @@ export const translations = {
       cta: "Comece Gratuitamente",
       subtitle: "Começa Com",
       subtitleHighlight: "Purple Stock",
-      description2: "Centralize seu inventário em uma plataforma poderosa e intuitiva. Com Purple Stock, tenha visibilidade total e controle preciso do seu estoque em qualquer dispositivo, a qualquer momento."
+      description2:
+        "Centralize seu inventário em uma plataforma poderosa e intuitiva. Com Purple Stock, tenha visibilidade total e controle preciso do seu estoque em qualquer dispositivo, a qualquer momento.",
     },
     industries: {
       title: "Software de Inventário para Sua Indústria",
-      description: "A solução de gestão de inventário da Purple Stock ajuda pequenas empresas de todos os setores a economizar tempo e dinheiro valiosos quando se trata de organizar inventário e ativos físicos.",
+      description:
+        "A solução de gestão de inventário da Purple Stock ajuda pequenas empresas de todos os setores a economizar tempo e dinheiro valiosos quando se trata de organizar inventário e ativos físicos.",
       industries: {
         retail: "Varejo",
         manufacturing: "Manufatura",
@@ -52,8 +55,8 @@ export const translations = {
         fashion: "Moda",
         beauty: "Beleza",
         commerce: "Comércio",
-        education: "Educação"
-      }
+        education: "Educação",
+      },
     },
     trustedBy: {
       title: "Confiado por Líderes do Mercado",
@@ -121,7 +124,8 @@ export const translations = {
         companyName: "Purchase Store",
       },
       {
-        quote: "Com o Purple Stock, nossa produção ficou muito mais organizada e eficiente. Um game-changer!",
+        quote:
+          "Com o Purple Stock, nossa produção ficou muito mais organizada e eficiente. Um game-changer!",
         company: "Fabricante de Portas Premium",
         companyName: "Concrem Portas",
       },
@@ -153,7 +157,8 @@ export const translations = {
           },
           lossPrevention: {
             title: "Prevenção de Perdas",
-            description: "Reduza a perda de inventário com recursos precisos de rastreamento e responsabilização.",
+            description:
+              "Reduza a perda de inventário com recursos precisos de rastreamento e responsabilização.",
           },
         },
         benefits: {
@@ -181,7 +186,8 @@ export const translations = {
         },
         cta: {
           title: "Pronto para Assumir o Controle do Seu Inventário?",
-          description: "Junte-se a milhares de empresas que otimizaram sua gestão de inventário com o Purple Stock.",
+          description:
+            "Junte-se a milhares de empresas que otimizaram sua gestão de inventário com o Purple Stock.",
           scheduleDemo: "Agendar Demonstração",
           startTrial: "Iniciar Teste Gratuito",
         },
@@ -207,22 +213,26 @@ export const translations = {
           },
           mobileScanning: {
             title: "Escaneamento Móvel",
-            description: "Use seu smartphone ou tablet como um leitor de código de barras com nosso aplicativo móvel.",
+            description:
+              "Use seu smartphone ou tablet como um leitor de código de barras com nosso aplicativo móvel.",
           },
           labelPrinting: {
             title: "Impressão de Etiquetas",
-            description: "Gere e imprima etiquetas de código de barras personalizadas diretamente da plataforma.",
+            description:
+              "Gere e imprima etiquetas de código de barras personalizadas diretamente da plataforma.",
           },
         },
         benefits: {
           title: "Benefícios do Nosso Sistema de Código de Barras",
           increasedSpeed: {
             title: "Maior Velocidade",
-            description: "Processe movimentações de inventário até 10x mais rápido que métodos manuais.",
+            description:
+              "Processe movimentações de inventário até 10x mais rápido que métodos manuais.",
           },
           reducedErrors: {
             title: "Redução de Erros",
-            description: "Elimine erros de entrada manual de dados com escaneamento preciso de código de barras.",
+            description:
+              "Elimine erros de entrada manual de dados com escaneamento preciso de código de barras.",
           },
           realTimeUpdates: {
             title: "Atualizações em Tempo Real",
@@ -231,7 +241,8 @@ export const translations = {
           },
           enhancedTraceability: {
             title: "Rastreabilidade Aprimorada",
-            description: "Acompanhe o histórico completo de cada item com registros detalhados de escaneamento.",
+            description:
+              "Acompanhe o histórico completo de cada item com registros detalhados de escaneamento.",
           },
         },
         cta: {
@@ -253,43 +264,52 @@ export const translations = {
             "Nossa plataforma fornece todas as ferramentas necessárias para gerenciar suas operações de compra e venda de forma eficiente.",
           purchaseOrders: {
             title: "Ordens de Compra",
-            description: "Crie, gerencie e acompanhe ordens de compra com fornecedores em poucos cliques.",
+            description:
+              "Crie, gerencie e acompanhe ordens de compra com fornecedores em poucos cliques.",
           },
           salesManagement: {
             title: "Gestão de Vendas",
-            description: "Processe pedidos de venda e acompanhe o desempenho com análises detalhadas.",
+            description:
+              "Processe pedidos de venda e acompanhe o desempenho com análises detalhadas.",
           },
           invoicing: {
             title: "Faturamento",
-            description: "Gere faturas profissionais e gerencie pagamentos de clientes.",
+            description:
+              "Gere faturas profissionais e gerencie pagamentos de clientes.",
           },
           paymentProcessing: {
             title: "Processamento de Pagamentos",
-            description: "Acompanhe pagamentos e gerencie contas a receber e a pagar.",
+            description:
+              "Acompanhe pagamentos e gerencie contas a receber e a pagar.",
           },
         },
         benefits: {
           title: "Benefícios do Nosso Sistema de Compras & Vendas",
           streamlinedWorkflows: {
             title: "Fluxos de Trabalho Otimizados",
-            description: "Automatize processos de compra e venda para economizar tempo e reduzir erros.",
+            description:
+              "Automatize processos de compra e venda para economizar tempo e reduzir erros.",
           },
           improvedCashFlow: {
             title: "Fluxo de Caixa Melhorado",
-            description: "Gerencie melhor contas a receber e a pagar para um fluxo de caixa aprimorado.",
+            description:
+              "Gerencie melhor contas a receber e a pagar para um fluxo de caixa aprimorado.",
           },
           enhancedCustomerService: {
             title: "Serviço ao Cliente Aprimorado",
-            description: "Forneça informações precisas sobre pedidos e estimativas de entrega aos clientes.",
+            description:
+              "Forneça informações precisas sobre pedidos e estimativas de entrega aos clientes.",
           },
           dataDecisions: {
             title: "Decisões Baseadas em Dados",
-            description: "Use dados de vendas para tomar decisões informadas de compra e otimizar o inventário.",
+            description:
+              "Use dados de vendas para tomar decisões informadas de compra e otimizar o inventário.",
           },
         },
         cta: {
           title: "Pronto para Otimizar Suas Operações de Compra & Venda?",
-          description: "Junte-se a milhares de empresas que otimizaram suas operações com o Purple Stock.",
+          description:
+            "Junte-se a milhares de empresas que otimizaram suas operações com o Purple Stock.",
           scheduleDemo: "Agendar Demonstração",
           startTrial: "Iniciar Teste Gratuito",
         },
@@ -310,11 +330,13 @@ export const translations = {
           },
           salesReports: {
             title: "Relatórios de Vendas",
-            description: "Analise dados de vendas por produto, categoria, cliente e período.",
+            description:
+              "Analise dados de vendas por produto, categoria, cliente e período.",
           },
           performanceMetrics: {
             title: "Métricas de Desempenho",
-            description: "Monitore indicadores-chave de desempenho (KPIs) para acompanhar a saúde do negócio.",
+            description:
+              "Monitore indicadores-chave de desempenho (KPIs) para acompanhar a saúde do negócio.",
           },
           customReports: {
             title: "Relatórios Personalizados",
@@ -326,337 +348,410 @@ export const translations = {
           title: "Benefícios das Nossas Análises & Relatórios",
           dataDecisions: {
             title: "Decisões Baseadas em Dados",
-            description: "Tome decisões de negócios informadas com base em dados e insights precisos.",
+            description:
+              "Tome decisões de negócios informadas com base em dados e insights precisos.",
           },
           identifyTrends: {
             title: "Identifique Tendências",
-            description: "Detecte tendências e padrões em seus dados para antecipar mudanças no mercado.",
+            description:
+              "Detecte tendências e padrões em seus dados para antecipar mudanças no mercado.",
           },
           optimizeInventory: {
             title: "Otimize o Inventário",
-            description: "Use análises para otimizar níveis de estoque e reduzir custos de armazenamento.",
+            description:
+              "Use análises para otimizar níveis de estoque e reduzir custos de armazenamento.",
           },
           improveProfitability: {
             title: "Melhore a Lucratividade",
-            description: "Identifique produtos de alto desempenho e áreas para melhoria para aumentar os lucros.",
+            description:
+              "Identifique produtos de alto desempenho e áreas para melhoria para aumentar os lucros.",
           },
         },
         cta: {
           title: "Pronto para Obter Insights Valiosos para o Seu Negócio?",
-          description: "Junte-se a milhares de empresas que otimizaram suas operações com as análises do Purple Stock.",
+          description:
+            "Junte-se a milhares de empresas que otimizaram suas operações com as análises do Purple Stock.",
           scheduleDemo: "Agendar Demonstração",
           startTrial: "Iniciar Teste Gratuito",
         },
       },
       warehouseControl: {
         title: "Controle de Almoxarifado",
-        description: "Otimize suas operações de almoxarifado com o sistema abrangente de gestão do Purple Stock. Organize o armazenamento, rastreie materiais e melhore a eficiência em toda sua instalação.",
+        description:
+          "Otimize suas operações de almoxarifado com o sistema abrangente de gestão do Purple Stock. Organize o armazenamento, rastreie materiais e melhore a eficiência em toda sua instalação.",
         startTrial: "Iniciar Teste Gratuito",
         features: {
           title: "Gestão Abrangente de Almoxarifado",
-          description: "Nosso sistema de controle de almoxarifado fornece todas as ferramentas necessárias para gerenciar seu armazém de forma eficiente e eficaz.",
+          description:
+            "Nosso sistema de controle de almoxarifado fornece todas as ferramentas necessárias para gerenciar seu armazém de forma eficiente e eficaz.",
           storageManagement: {
             title: "Gestão de Armazenamento",
-            description: "Otimize a utilização do espaço e organize materiais de forma eficiente em todo o almoxarifado."
+            description:
+              "Otimize a utilização do espaço e organize materiais de forma eficiente em todo o almoxarifado.",
           },
           receivingShipping: {
             title: "Recebimento & Expedição",
-            description: "Simplifique processos de recebimento e expedição com fluxos de trabalho e documentação automatizados."
+            description:
+              "Simplifique processos de recebimento e expedição com fluxos de trabalho e documentação automatizados.",
           },
           materialTracking: {
             title: "Rastreamento de Materiais",
-            description: "Acompanhe materiais e suprimentos com rastreamento detalhado de localização e histórico de movimentação."
+            description:
+              "Acompanhe materiais e suprimentos com rastreamento detalhado de localização e histórico de movimentação.",
           },
           staffManagement: {
             title: "Gestão de Pessoal",
-            description: "Gerencie a equipe do almoxarifado, atribua tarefas e acompanhe métricas de produtividade."
-          }
+            description:
+              "Gerencie a equipe do almoxarifado, atribua tarefas e acompanhe métricas de produtividade.",
+          },
         },
         benefits: {
           title: "Benefícios do Nosso Controle de Almoxarifado",
           improvedSpace: {
             title: "Melhor Utilização do Espaço",
-            description: "Otimize o layout e armazenamento para maximizar o espaço disponível e a eficiência."
+            description:
+              "Otimize o layout e armazenamento para maximizar o espaço disponível e a eficiência.",
           },
           enhancedProductivity: {
             title: "Produtividade Aprimorada",
-            description: "Otimize fluxos de trabalho e reduza o tempo gasto em tarefas manuais e busca de materiais."
+            description:
+              "Otimize fluxos de trabalho e reduza o tempo gasto em tarefas manuais e busca de materiais.",
           },
           betterOrganization: {
             title: "Melhor Organização",
-            description: "Mantenha seu almoxarifado organizado com processos sistemáticos de armazenamento e recuperação."
+            description:
+              "Mantenha seu almoxarifado organizado com processos sistemáticos de armazenamento e recuperação.",
           },
           realTimeVisibility: {
             title: "Visibilidade em Tempo Real",
-            description: "Acesse informações em tempo real sobre localização e movimentação de materiais em todo o almoxarifado."
-          }
+            description:
+              "Acesse informações em tempo real sobre localização e movimentação de materiais em todo o almoxarifado.",
+          },
         },
         cta: {
           title: "Pronto para Transformar sua Gestão de Almoxarifado?",
-          description: "Junte-se a milhares de empresas que otimizaram suas operações de almoxarifado com o Purple Stock.",
+          description:
+            "Junte-se a milhares de empresas que otimizaram suas operações de almoxarifado com o Purple Stock.",
           scheduleDemo: "Agendar Demonstração",
-          startTrial: "Iniciar Teste Gratuito"
+          startTrial: "Iniciar Teste Gratuito",
         },
       },
       qrCodeManagement: {
         title: "Gestão QR Code",
-        description: "Gerencie e rastreie seus produtos com QR Codes personalizados. Crie, imprima e monitore QR codes para melhorar a eficiência e precisão do seu negócio.",
+        description:
+          "Gerencie e rastreie seus produtos com QR Codes personalizados. Crie, imprima e monitore QR codes para melhorar a eficiência e precisão do seu negócio.",
         startTrial: "Iniciar Teste Gratuito",
         features: {
           title: "Recursos Completos de QR Code",
-          description: "Nossa solução de QR Code oferece todas as ferramentas necessárias para gerenciar seus produtos de forma eficiente.",
+          description:
+            "Nossa solução de QR Code oferece todas as ferramentas necessárias para gerenciar seus produtos de forma eficiente.",
           generation: {
             title: "Geração de QR Code",
-            description: "Crie QR codes personalizados com informações detalhadas do produto e rastreamento."
+            description:
+              "Crie QR codes personalizados com informações detalhadas do produto e rastreamento.",
           },
           scanning: {
             title: "Leitura Rápida",
-            description: "Escaneie QR codes instantaneamente para acessar informações do produto e atualizar registros."
+            description:
+              "Escaneie QR codes instantaneamente para acessar informações do produto e atualizar registros.",
           },
           tracking: {
             title: "Rastreamento Avançado",
-            description: "Acompanhe o histórico completo de cada produto através do QR code associado."
+            description:
+              "Acompanhe o histórico completo de cada produto através do QR code associado.",
           },
           integration: {
             title: "Integração Completa",
-            description: "Integre QR codes com seu sistema de inventário para atualizações automáticas."
-          }
+            description:
+              "Integre QR codes com seu sistema de inventário para atualizações automáticas.",
+          },
         },
         benefits: {
           title: "Benefícios da Gestão QR Code",
           efficiency: {
             title: "Maior Eficiência",
-            description: "Agilize processos de identificação e rastreamento com QR codes de fácil leitura."
+            description:
+              "Agilize processos de identificação e rastreamento com QR codes de fácil leitura.",
           },
           accuracy: {
             title: "Precisão Aprimorada",
-            description: "Elimine erros de identificação com QR codes únicos para cada produto."
+            description:
+              "Elimine erros de identificação com QR codes únicos para cada produto.",
           },
           accessibility: {
             title: "Fácil Acesso",
-            description: "Acesse informações detalhadas do produto instantaneamente com um simples escaneamento."
+            description:
+              "Acesse informações detalhadas do produto instantaneamente com um simples escaneamento.",
           },
           management: {
             title: "Gestão Simplificada",
-            description: "Gerencie seu inventário de forma mais eficiente com QR codes integrados."
-          }
+            description:
+              "Gerencie seu inventário de forma mais eficiente com QR codes integrados.",
+          },
         },
         cta: {
           title: "Pronto para Revolucionar seu Rastreamento de Produtos?",
-          description: "Junte-se a milhares de empresas que melhoraram suas operações com a gestão QR Code do Purple Stock.",
+          description:
+            "Junte-se a milhares de empresas que melhoraram suas operações com a gestão QR Code do Purple Stock.",
           scheduleDemo: "Agendar Demonstração",
-          startTrial: "Iniciar Teste Gratuito"
-        }
+          startTrial: "Iniciar Teste Gratuito",
+        },
       },
       clothingManufacturing: {
         title: "Como Implementar um Controle de Facção Eficiente",
-        description: "Estruture seu controle de facção com rastreabilidade por etapa, menos retrabalho e mais previsibilidade de entrega na confecção.",
+        description:
+          "Estruture seu controle de facção com rastreabilidade por etapa, menos retrabalho e mais previsibilidade de entrega na confecção.",
         startTrial: "Iniciar Teste Gratuito",
         features: {
           title: "Recursos Especializados para Confecção",
-          description: "Nossa solução oferece todas as ferramentas necessárias para gerenciar sua confecção de forma eficiente.",
+          description:
+            "Nossa solução oferece todas as ferramentas necessárias para gerenciar sua confecção de forma eficiente.",
           production: {
             title: "Controle de Produção",
-            description: "Acompanhe todas as etapas da produção, desde o corte até o acabamento, com controle de qualidade integrado."
+            description:
+              "Acompanhe todas as etapas da produção, desde o corte até o acabamento, com controle de qualidade integrado.",
           },
           materials: {
             title: "Gestão de Matéria-Prima",
-            description: "Controle seu estoque de tecidos, aviamentos e outros materiais com precisão e evite desperdícios."
+            description:
+              "Controle seu estoque de tecidos, aviamentos e outros materiais com precisão e evite desperdícios.",
           },
           costs: {
             title: "Controle de Custos",
-            description: "Calcule custos de produção, defina preços e acompanhe a rentabilidade de cada peça ou coleção."
+            description:
+              "Calcule custos de produção, defina preços e acompanhe a rentabilidade de cada peça ou coleção.",
           },
           orders: {
             title: "Gestão de Pedidos",
-            description: "Gerencie pedidos de clientes, programação de produção e entregas em um só lugar."
-          }
+            description:
+              "Gerencie pedidos de clientes, programação de produção e entregas em um só lugar.",
+          },
         },
         benefits: {
           title: "Benefícios do Sistema para Confecção",
           efficiency: {
             title: "Maior Produtividade",
-            description: "Otimize processos de produção e reduza tempo de ciclo com controles automatizados."
+            description:
+              "Otimize processos de produção e reduza tempo de ciclo com controles automatizados.",
           },
           quality: {
             title: "Controle de Qualidade",
-            description: "Garanta a qualidade das peças com acompanhamento em todas as etapas da produção."
+            description:
+              "Garanta a qualidade das peças com acompanhamento em todas as etapas da produção.",
           },
           costs: {
             title: "Redução de Custos",
-            description: "Minimize desperdícios e otimize o uso de recursos com controles precisos."
+            description:
+              "Minimize desperdícios e otimize o uso de recursos com controles precisos.",
           },
           management: {
             title: "Gestão Simplificada",
-            description: "Centralize todas as informações da sua confecção em uma única plataforma."
-          }
+            description:
+              "Centralize todas as informações da sua confecção em uma única plataforma.",
+          },
         },
         cta: {
           title: "Pronto para Transformar sua Confecção?",
-          description: "Junte-se a milhares de confecções que melhoraram suas operações com o Purple Stock.",
+          description:
+            "Junte-se a milhares de confecções que melhoraram suas operações com o Purple Stock.",
           scheduleDemo: "Agendar Demonstração",
-          startTrial: "Iniciar Teste Gratuito"
-        }
+          startTrial: "Iniciar Teste Gratuito",
+        },
       },
       equipmentManagement: {
         title: "Sistema de Gerenciamento de Equipamentos por QR Code",
-        description: "Gerencie seus equipamentos de forma eficiente com QR Codes. Rastreie manutenções, localizações e histórico de uso em tempo real.",
+        description:
+          "Gerencie seus equipamentos de forma eficiente com QR Codes. Rastreie manutenções, localizações e histórico de uso em tempo real.",
         startTrial: "Iniciar Teste Gratuito",
         features: {
           title: "Recursos Especializados para Gestão de Equipamentos",
-          description: "Nossa solução oferece todas as ferramentas necessárias para gerenciar seus equipamentos de forma eficiente e precisa.",
+          description:
+            "Nossa solução oferece todas as ferramentas necessárias para gerenciar seus equipamentos de forma eficiente e precisa.",
           tracking: {
             title: "Rastreamento em Tempo Real",
-            description: "Acompanhe a localização e status de cada equipamento através de QR codes únicos."
+            description:
+              "Acompanhe a localização e status de cada equipamento através de QR codes únicos.",
           },
           maintenance: {
             title: "Gestão de Manutenção",
-            description: "Programe e acompanhe manutenções preventivas e corretivas com alertas automáticos."
+            description:
+              "Programe e acompanhe manutenções preventivas e corretivas com alertas automáticos.",
           },
           history: {
             title: "Histórico Completo",
-            description: "Mantenha registros detalhados de uso, reparos e movimentações de cada equipamento."
+            description:
+              "Mantenha registros detalhados de uso, reparos e movimentações de cada equipamento.",
           },
           inspection: {
             title: "Inspeções e Checklist",
-            description: "Realize inspeções digitais e preencha checklists de verificação via smartphone."
-          }
+            description:
+              "Realize inspeções digitais e preencha checklists de verificação via smartphone.",
+          },
         },
         benefits: {
           title: "Benefícios do Sistema de Gerenciamento",
           efficiency: {
             title: "Maior Eficiência Operacional",
-            description: "Otimize o uso e a manutenção dos equipamentos com controles automatizados."
+            description:
+              "Otimize o uso e a manutenção dos equipamentos com controles automatizados.",
           },
           control: {
             title: "Controle Total",
-            description: "Tenha visibilidade completa sobre todos os seus equipamentos em um só lugar."
+            description:
+              "Tenha visibilidade completa sobre todos os seus equipamentos em um só lugar.",
           },
           maintenance: {
             title: "Manutenção Preventiva",
-            description: "Reduza custos e tempo de inatividade com manutenções programadas."
+            description:
+              "Reduza custos e tempo de inatividade com manutenções programadas.",
           },
           compliance: {
             title: "Conformidade e Segurança",
-            description: "Mantenha registros precisos para atender requisitos de conformidade e segurança."
-          }
+            description:
+              "Mantenha registros precisos para atender requisitos de conformidade e segurança.",
+          },
         },
         cta: {
           title: "Pronto para Revolucionar sua Gestão de Equipamentos?",
-          description: "Junte-se a milhares de empresas que otimizaram o gerenciamento de equipamentos com o Purple Stock.",
+          description:
+            "Junte-se a milhares de empresas que otimizaram o gerenciamento de equipamentos com o Purple Stock.",
           scheduleDemo: "Agendar Demonstração",
-          startTrial: "Iniciar Teste Gratuito"
-        }
+          startTrial: "Iniciar Teste Gratuito",
+        },
       },
       factoryManagement: {
         title: "Gestão de Facção",
-        description: "Sistema completo para gestão de facções. Controle produção, prazos, qualidade e custos em uma única plataforma integrada.",
+        description:
+          "Sistema completo para gestão de facções. Controle produção, prazos, qualidade e custos em uma única plataforma integrada.",
         startTrial: "Iniciar Teste Gratuito",
         features: {
           title: "Recursos Especializados para Facção",
-          description: "Nossa solução oferece todas as ferramentas necessárias para gerenciar sua facção de forma eficiente.",
+          description:
+            "Nossa solução oferece todas as ferramentas necessárias para gerenciar sua facção de forma eficiente.",
           production: {
             title: "Controle de Produção",
-            description: "Acompanhe todas as etapas da produção, desde o recebimento até a expedição, com controle de qualidade."
+            description:
+              "Acompanhe todas as etapas da produção, desde o recebimento até a expedição, com controle de qualidade.",
           },
           deadlines: {
             title: "Gestão de Prazos",
-            description: "Controle prazos de entrega, prioridades e capacidade produtiva de forma eficiente."
+            description:
+              "Controle prazos de entrega, prioridades e capacidade produtiva de forma eficiente.",
           },
           quality: {
             title: "Controle de Qualidade",
-            description: "Registre inspeções, defeitos e ações corretivas para garantir a qualidade das peças."
+            description:
+              "Registre inspeções, defeitos e ações corretivas para garantir a qualidade das peças.",
           },
           costs: {
             title: "Gestão Financeira",
-            description: "Calcule custos, margens e acompanhe pagamentos por produção."
-          }
+            description:
+              "Calcule custos, margens e acompanhe pagamentos por produção.",
+          },
         },
         benefits: {
           title: "Benefícios da Gestão de Facção",
           efficiency: {
             title: "Maior Produtividade",
-            description: "Otimize processos e aumente a produtividade com controles automatizados."
+            description:
+              "Otimize processos e aumente a produtividade com controles automatizados.",
           },
           quality: {
             title: "Garantia de Qualidade",
-            description: "Mantenha padrões de qualidade consistentes em toda a produção."
+            description:
+              "Mantenha padrões de qualidade consistentes em toda a produção.",
           },
           deadlines: {
             title: "Cumprimento de Prazos",
-            description: "Entregue no prazo com melhor planejamento e controle da produção."
+            description:
+              "Entregue no prazo com melhor planejamento e controle da produção.",
           },
           costs: {
             title: "Controle Financeiro",
-            description: "Tenha visibilidade completa sobre custos e rentabilidade por cliente e peça."
-          }
+            description:
+              "Tenha visibilidade completa sobre custos e rentabilidade por cliente e peça.",
+          },
         },
         cta: {
           title: "Pronto para Transformar sua Facção?",
-          description: "Junte-se a milhares de facções que melhoraram suas operações com o Purple Stock.",
+          description:
+            "Junte-se a milhares de facções que melhoraram suas operações com o Purple Stock.",
           scheduleDemo: "Agendar Demonstração",
-          startTrial: "Iniciar Teste Gratuito"
-        }
+          startTrial: "Iniciar Teste Gratuito",
+        },
       },
       inventoryApp: {
         title: "Aplicativo para Controle de Estoque",
-        description: "Gerencie seu estoque de qualquer lugar com nosso aplicativo móvel. Controle inventário, vendas e compras direto do seu smartphone.",
+        description:
+          "Gerencie seu estoque de qualquer lugar com nosso aplicativo móvel. Controle inventário, vendas e compras direto do seu smartphone.",
         startTrial: "Iniciar Teste Gratuito",
         features: {
           title: "Recursos do Aplicativo Móvel",
-          description: "Nossa solução móvel oferece todas as ferramentas necessárias para gerenciar seu estoque em movimento.",
+          description:
+            "Nossa solução móvel oferece todas as ferramentas necessárias para gerenciar seu estoque em movimento.",
           mobileScanning: {
             title: "Leitura por Câmera",
-            description: "Use a câmera do celular para ler códigos de barras e QR codes sem equipamentos adicionais."
+            description:
+              "Use a câmera do celular para ler códigos de barras e QR codes sem equipamentos adicionais.",
           },
           offlineMode: {
             title: "Modo Offline",
-            description: "Continue trabalhando mesmo sem internet, com sincronização automática quando reconectado."
+            description:
+              "Continue trabalhando mesmo sem internet, com sincronização automática quando reconectado.",
           },
           realTimeUpdates: {
             title: "Atualizações em Tempo Real",
-            description: "Mantenha seu estoque atualizado com sincronização instantânea entre todos os dispositivos."
+            description:
+              "Mantenha seu estoque atualizado com sincronização instantânea entre todos os dispositivos.",
           },
           notifications: {
             title: "Notificações Inteligentes",
-            description: "Receba alertas sobre níveis baixos de estoque, pedidos novos e mais."
-          }
+            description:
+              "Receba alertas sobre níveis baixos de estoque, pedidos novos e mais.",
+          },
         },
         benefits: {
           title: "Benefícios do Aplicativo Móvel",
           mobility: {
             title: "Mobilidade Total",
-            description: "Acesse e gerencie seu estoque de qualquer lugar, a qualquer momento."
+            description:
+              "Acesse e gerencie seu estoque de qualquer lugar, a qualquer momento.",
           },
           easeOfUse: {
             title: "Fácil de Usar",
-            description: "Interface intuitiva desenvolvida para agilizar suas operações diárias."
+            description:
+              "Interface intuitiva desenvolvida para agilizar suas operações diárias.",
           },
           integration: {
             title: "Integração Completa",
-            description: "Sincronização perfeita com a plataforma web do Purple Stock."
+            description:
+              "Sincronização perfeita com a plataforma web do Purple Stock.",
           },
           productivity: {
             title: "Maior Produtividade",
-            description: "Realize operações de estoque mais rapidamente com ferramentas móveis otimizadas."
-          }
+            description:
+              "Realize operações de estoque mais rapidamente com ferramentas móveis otimizadas.",
+          },
         },
         cta: {
           title: "Pronto para Mobilizar seu Controle de Estoque?",
-          description: "Junte-se a milhares de empresas que já utilizam o aplicativo Purple Stock para gestão de estoque.",
+          description:
+            "Junte-se a milhares de empresas que já utilizam o aplicativo Purple Stock para gestão de estoque.",
           scheduleDemo: "Agendar Demonstração",
-          startTrial: "Iniciar Teste Gratuito"
-        }
+          startTrial: "Iniciar Teste Gratuito",
+        },
       },
     },
     glossary: {
       title: "Glossario de Gestao de Estoque para PMEs",
-      description: "Este glossario reune os termos mais usados em estoque, almoxarifado e operacao para ajudar sua equipe a falar a mesma lingua e decidir mais rapido.",
+      description:
+        "Este glossario reune os termos mais usados em estoque, almoxarifado e operacao para ajudar sua equipe a falar a mesma lingua e decidir mais rapido.",
       learnMore: {
-        title: "Quer aprender mais sobre estratégias de crescimento e melhores práticas de gestão de estoque?",
+        title:
+          "Quer aprender mais sobre estratégias de crescimento e melhores práticas de gestão de estoque?",
         description: "Confira o Blog do Purple Stock abaixo:",
-        link: "Blog Purple Stock"
-      }
+        link: "Blog Purple Stock",
+      },
     },
     pricing: {
       title: "Planos e Preços",
@@ -666,11 +761,7 @@ export const translations = {
           name: "Gratuito",
           price: "R$ 0,00",
           description: "Para começar",
-          features: [
-            "Até 10 itens",
-            "Análises básicas",
-            "Suporte por email",
-          ],
+          features: ["Até 10 itens", "Análises básicas", "Suporte por email"],
           buttonText: "Começar Agora",
           buttonLink: "https://app.purplestock.com.br/",
         },
@@ -703,13 +794,16 @@ export const translations = {
             "SLA garantido",
           ],
           buttonText: "Fale com Vendas",
-          buttonLink: buildWhatsAppUrl("Olá! Gostaria de saber mais sobre o plano Empresarial do Purple Stock."),
+          buttonLink: buildWhatsAppUrl(
+            "Olá! Gostaria de saber mais sobre o plano Empresarial do Purple Stock."
+          ),
         },
       ],
     },
     barcodeGenerator: {
       title: "Gerador de Código de Barras Grátis",
-      description: "Crie códigos de barras profissionais para seu negócio. Suporte para múltiplos formatos, personalização completa e download gratuito.",
+      description:
+        "Crie códigos de barras profissionais para seu negócio. Suporte para múltiplos formatos, personalização completa e download gratuito.",
       configuration: {
         title: "Configuração",
         description: "Personalize seu código de barras com as opções abaixo",
@@ -718,11 +812,11 @@ export const translations = {
         size: "Tamanho",
         barcodeColor: "Cor do Código",
         backgroundColor: "Cor de Fundo",
-        showText: "Mostrar Texto"
+        showText: "Mostrar Texto",
       },
       actions: {
         download: "Baixar Código",
-        copyUrl: "Copiar URL"
+        copyUrl: "Copiar URL",
       },
       preview: {
         title: "Visualização",
@@ -731,11 +825,12 @@ export const translations = {
         enterData: "Digite os dados para gerar o código",
         type: "Tipo",
         data: "Dados",
-        dimensions: "Dimensões"
+        dimensions: "Dimensões",
       },
       information: {
         title: "Informações",
-        description: "Aprenda sobre diferentes tipos de códigos de barras e suas aplicações",
+        description:
+          "Aprenda sobre diferentes tipos de códigos de barras e suas aplicações",
         formats: {
           title: "Formatos",
           code128: "Ideal para uso geral, suporta caracteres alfanuméricos",
@@ -746,49 +841,55 @@ export const translations = {
           upce: "Versão compacta do UPC-A",
           itf14: "Especializado para logística e transporte",
           codabar: "Usado em bibliotecas, saúde e logística",
-          default: "Formato padrão para uso geral"
+          default: "Formato padrão para uso geral",
         },
         usage: {
           title: "Aplicações",
           retail: {
             title: "Varejo",
-            description: "Identificação de produtos, controle de estoque e ponto de venda"
+            description:
+              "Identificação de produtos, controle de estoque e ponto de venda",
           },
           logistics: {
             title: "Logística",
-            description: "Rastreamento de pacotes, controle de armazém e gestão de inventário"
+            description:
+              "Rastreamento de pacotes, controle de armazém e gestão de inventário",
           },
           healthcare: {
             title: "Saúde",
-            description: "Identificação de pacientes, medicamentos e equipamentos médicos"
+            description:
+              "Identificação de pacientes, medicamentos e equipamentos médicos",
           },
           manufacturing: {
             title: "Manufatura",
-            description: "Controle de qualidade, rastreabilidade e gestão de ativos"
-          }
+            description:
+              "Controle de qualidade, rastreabilidade e gestão de ativos",
+          },
         },
         tips: {
           title: "Dicas",
           items: [
             {
               title: "Escolha o formato correto",
-              description: "Use EAN-13 para produtos comerciais, Code 128 para uso geral"
+              description:
+                "Use EAN-13 para produtos comerciais, Code 128 para uso geral",
             },
             {
               title: "Verifique a qualidade da impressão",
-              description: "Imprima em alta resolução para melhor leitura"
+              description: "Imprima em alta resolução para melhor leitura",
             },
             {
               title: "Teste antes de usar",
-              description: "Sempre teste o código com um leitor antes da implementação"
+              description:
+                "Sempre teste o código com um leitor antes da implementação",
             },
             {
               title: "Mantenha consistência",
-              description: "Use o mesmo formato para produtos similares"
-            }
-          ]
-        }
-      }
+              description: "Use o mesmo formato para produtos similares",
+            },
+          ],
+        },
+      },
     },
   },
   en: {
@@ -821,11 +922,13 @@ export const translations = {
       cta: "Start for Free",
       subtitle: "Starts With",
       subtitleHighlight: "Purple Stock",
-      description2: "Centralize your inventory on a powerful and intuitive platform. With Purple Stock, have total visibility and precise control of your stock on any device, at any time."
+      description2:
+        "Centralize your inventory on a powerful and intuitive platform. With Purple Stock, have total visibility and precise control of your stock on any device, at any time.",
     },
     industries: {
       title: "Inventory Software for Your Industry",
-      description: "Purple Stock's inventory management solution helps small businesses across all sectors save valuable time and money when it comes to organizing inventory and physical assets.",
+      description:
+        "Purple Stock's inventory management solution helps small businesses across all sectors save valuable time and money when it comes to organizing inventory and physical assets.",
       industries: {
         retail: "Retail",
         manufacturing: "Manufacturing",
@@ -842,8 +945,8 @@ export const translations = {
         fashion: "Fashion",
         beauty: "Beauty",
         commerce: "Commerce",
-        education: "Education"
-      }
+        education: "Education",
+      },
     },
     trustedBy: {
       title: "Trusted by Market Leaders",
@@ -871,7 +974,10 @@ export const translations = {
       barcode: {
         title: "Barcode Scanning",
         subtitle: "Speed Up Your Operations",
-        description: ["Stock in and out with just a beep!", "Generate and print custom barcodes in Purple Stock"],
+        description: [
+          "Stock in and out with just a beep!",
+          "Generate and print custom barcodes in Purple Stock",
+        ],
       },
       security: {
         title: "Advanced Security",
@@ -902,12 +1008,14 @@ export const translations = {
     },
     testimonials: [
       {
-        quote: "Purple Stock revolutionized our inventory management. We now have total control over our stock.",
+        quote:
+          "Purple Stock revolutionized our inventory management. We now have total control over our stock.",
         company: "Women's Fashion Store",
         companyName: "Purchase Store",
       },
       {
-        quote: "With Purple Stock, our production became much more organized and efficient. A real game-changer!",
+        quote:
+          "With Purple Stock, our production became much more organized and efficient. A real game-changer!",
         company: "Premium Door Manufacturer",
         companyName: "Concrem Portas",
       },
@@ -934,35 +1042,42 @@ export const translations = {
           },
           inventoryMovements: {
             title: "Inventory Movements",
-            description: "Track all inventory movements with detailed logs of who did what, when, and where.",
+            description:
+              "Track all inventory movements with detailed logs of who did what, when, and where.",
           },
           lossPrevention: {
             title: "Loss Prevention",
-            description: "Reduce inventory shrinkage with accurate tracking and accountability features.",
+            description:
+              "Reduce inventory shrinkage with accurate tracking and accountability features.",
           },
         },
         benefits: {
           title: "Benefits of Our Inventory Control",
           reduceStockouts: {
             title: "Reduce Stockouts",
-            description: "Never miss a sale due to stockouts with automated reorder points and inventory alerts.",
+            description:
+              "Never miss a sale due to stockouts with automated reorder points and inventory alerts.",
           },
           optimizeStock: {
             title: "Optimize Stock Levels",
-            description: "Maintain optimal inventory levels to reduce carrying costs while meeting customer demand.",
+            description:
+              "Maintain optimal inventory levels to reduce carrying costs while meeting customer demand.",
           },
           improveAccuracy: {
             title: "Improve Accuracy",
-            description: "Eliminate manual counting errors and maintain accurate inventory records at all times.",
+            description:
+              "Eliminate manual counting errors and maintain accurate inventory records at all times.",
           },
           saveTime: {
             title: "Save Time",
-            description: "Automate routine inventory tasks and free up your team to focus on growing your business.",
+            description:
+              "Automate routine inventory tasks and free up your team to focus on growing your business.",
           },
         },
         cta: {
           title: "Ready to Take Control of Your Inventory?",
-          description: "Join thousands of businesses that have optimized their inventory management with Purple Stock.",
+          description:
+            "Join thousands of businesses that have optimized their inventory management with Purple Stock.",
           scheduleDemo: "Schedule Demo",
           startTrial: "Start Free Trial",
         },
@@ -978,38 +1093,46 @@ export const translations = {
             "Our barcoding system provides all the tools you need to track your inventory with speed and precision.",
           barcodeScanning: {
             title: "Barcode Scanning",
-            description: "Quickly scan barcodes to update inventory, process sales, and track movements in real-time.",
+            description:
+              "Quickly scan barcodes to update inventory, process sales, and track movements in real-time.",
           },
           qrCodeSupport: {
             title: "QR Code Support",
-            description: "Generate and scan QR codes for enhanced data storage and tracking capabilities.",
+            description:
+              "Generate and scan QR codes for enhanced data storage and tracking capabilities.",
           },
           mobileScanning: {
             title: "Mobile Scanning",
-            description: "Use your smartphone or tablet as a barcode scanner with our mobile app.",
+            description:
+              "Use your smartphone or tablet as a barcode scanner with our mobile app.",
           },
           labelPrinting: {
             title: "Label Printing",
-            description: "Generate and print custom barcode labels directly from the platform.",
+            description:
+              "Generate and print custom barcode labels directly from the platform.",
           },
         },
         benefits: {
           title: "Benefits of Our Barcoding System",
           increasedSpeed: {
             title: "Increased Speed",
-            description: "Process inventory movements up to 10x faster than manual methods.",
+            description:
+              "Process inventory movements up to 10x faster than manual methods.",
           },
           reducedErrors: {
             title: "Reduced Errors",
-            description: "Eliminate manual data entry errors with accurate barcode scanning.",
+            description:
+              "Eliminate manual data entry errors with accurate barcode scanning.",
           },
           realTimeUpdates: {
             title: "Real-time Updates",
-            description: "Update inventory records instantly with each scan for accurate stock levels.",
+            description:
+              "Update inventory records instantly with each scan for accurate stock levels.",
           },
           enhancedTraceability: {
             title: "Enhanced Traceability",
-            description: "Track the complete history of each item with detailed scan records.",
+            description:
+              "Track the complete history of each item with detailed scan records.",
           },
         },
         cta: {
@@ -1031,43 +1154,52 @@ export const translations = {
             "Our platform provides all the tools you need to manage your purchasing and sales operations efficiently.",
           purchaseOrders: {
             title: "Purchase Orders",
-            description: "Create, manage, and track purchase orders with suppliers in a few clicks.",
+            description:
+              "Create, manage, and track purchase orders with suppliers in a few clicks.",
           },
           salesManagement: {
             title: "Sales Management",
-            description: "Process sales orders and track performance with detailed analytics.",
+            description:
+              "Process sales orders and track performance with detailed analytics.",
           },
           invoicing: {
             title: "Invoicing",
-            description: "Generate professional invoices and manage customer payments.",
+            description:
+              "Generate professional invoices and manage customer payments.",
           },
           paymentProcessing: {
             title: "Payment Processing",
-            description: "Track payments and manage accounts receivable and payable.",
+            description:
+              "Track payments and manage accounts receivable and payable.",
           },
         },
         benefits: {
           title: "Benefits of Our Purchase & Sales System",
           streamlinedWorkflows: {
             title: "Streamlined Workflows",
-            description: "Automate purchase and sales processes to save time and reduce errors.",
+            description:
+              "Automate purchase and sales processes to save time and reduce errors.",
           },
           improvedCashFlow: {
             title: "Improved Cash Flow",
-            description: "Better manage accounts receivable and payable for improved cash flow.",
+            description:
+              "Better manage accounts receivable and payable for improved cash flow.",
           },
           enhancedCustomerService: {
             title: "Enhanced Customer Service",
-            description: "Provide accurate order information and delivery estimates to customers.",
+            description:
+              "Provide accurate order information and delivery estimates to customers.",
           },
           dataDecisions: {
             title: "Data-Driven Decisions",
-            description: "Use sales data to make informed purchasing decisions and optimize inventory.",
+            description:
+              "Use sales data to make informed purchasing decisions and optimize inventory.",
           },
         },
         cta: {
           title: "Ready to Optimize Your Purchase & Sales Operations?",
-          description: "Join thousands of businesses that have streamlined their operations with Purple Stock.",
+          description:
+            "Join thousands of businesses that have streamlined their operations with Purple Stock.",
           scheduleDemo: "Schedule Demo",
           startTrial: "Start Free Trial",
         },
@@ -1079,41 +1211,50 @@ export const translations = {
         startTrial: "Start Free Trial",
         features: {
           title: "Comprehensive Analytics & Reporting",
-          description: "Our platform provides powerful tools to analyze your data and generate insightful reports.",
+          description:
+            "Our platform provides powerful tools to analyze your data and generate insightful reports.",
           inventoryAnalytics: {
             title: "Inventory Analytics",
-            description: "Track inventory performance with detailed analytics on stock levels, turnover, and more.",
+            description:
+              "Track inventory performance with detailed analytics on stock levels, turnover, and more.",
           },
           salesReports: {
             title: "Sales Reports",
-            description: "Analyze sales data by product, category, customer, and time period.",
+            description:
+              "Analyze sales data by product, category, customer, and time period.",
           },
           performanceMetrics: {
             title: "Performance Metrics",
-            description: "Monitor key performance indicators (KPIs) to track business health.",
+            description:
+              "Monitor key performance indicators (KPIs) to track business health.",
           },
           customReports: {
             title: "Custom Reports",
-            description: "Create and export custom reports tailored to your specific business needs.",
+            description:
+              "Create and export custom reports tailored to your specific business needs.",
           },
         },
         benefits: {
           title: "Benefits of Our Analytics & Reporting",
           dataDecisions: {
             title: "Data-Driven Decisions",
-            description: "Make informed business decisions based on accurate data and insights.",
+            description:
+              "Make informed business decisions based on accurate data and insights.",
           },
           identifyTrends: {
             title: "Identify Trends",
-            description: "Spot trends and patterns in your data to anticipate market changes.",
+            description:
+              "Spot trends and patterns in your data to anticipate market changes.",
           },
           optimizeInventory: {
             title: "Optimize Inventory",
-            description: "Use analytics to optimize stock levels and reduce carrying costs.",
+            description:
+              "Use analytics to optimize stock levels and reduce carrying costs.",
           },
           improveProfitability: {
             title: "Improve Profitability",
-            description: "Identify high-performing products and areas for improvement to boost profits.",
+            description:
+              "Identify high-performing products and areas for improvement to boost profits.",
           },
         },
         cta: {
@@ -1126,297 +1267,361 @@ export const translations = {
       },
       warehouseControl: {
         title: "Warehouse Control",
-        description: "Streamline your warehouse operations with Purple Stock's comprehensive warehouse management system. Optimize storage, track materials, and improve efficiency across your facility.",
+        description:
+          "Streamline your warehouse operations with Purple Stock's comprehensive warehouse management system. Optimize storage, track materials, and improve efficiency across your facility.",
         startTrial: "Start Free Trial",
         features: {
           title: "Comprehensive Warehouse Management",
-          description: "Our warehouse control system provides all the tools you need to manage your warehouse efficiently and effectively."
+          description:
+            "Our warehouse control system provides all the tools you need to manage your warehouse efficiently and effectively.",
         },
         benefits: {
           title: "Benefits of Our Warehouse Control",
           improvedSpace: {
             title: "Improved Space Utilization",
-            description: "Optimize warehouse layout and storage to maximize available space and efficiency."
+            description:
+              "Optimize warehouse layout and storage to maximize available space and efficiency.",
           },
           enhancedProductivity: {
             title: "Enhanced Productivity",
-            description: "Streamline workflows and reduce time spent on manual tasks and searching for materials."
+            description:
+              "Streamline workflows and reduce time spent on manual tasks and searching for materials.",
           },
           betterOrganization: {
             title: "Better Organization",
-            description: "Keep your warehouse organized with systematic storage and retrieval processes."
+            description:
+              "Keep your warehouse organized with systematic storage and retrieval processes.",
           },
           realTimeVisibility: {
             title: "Real-time Visibility",
-            description: "Access real-time information about material locations and movement throughout your warehouse."
-          }
+            description:
+              "Access real-time information about material locations and movement throughout your warehouse.",
+          },
         },
         cta: {
           title: "Ready to Transform Your Warehouse Management?",
-          description: "Join thousands of businesses that have optimized their warehouse operations with Purple Stock.",
+          description:
+            "Join thousands of businesses that have optimized their warehouse operations with Purple Stock.",
           scheduleDemo: "Schedule Demo",
-          startTrial: "Start Free Trial"
-        }
+          startTrial: "Start Free Trial",
+        },
       },
       qrCodeManagement: {
         title: "QR Code Management",
-        description: "Manage and track your products with custom QR Codes. Create, print, and monitor QR codes to improve your business efficiency and accuracy.",
+        description:
+          "Manage and track your products with custom QR Codes. Create, print, and monitor QR codes to improve your business efficiency and accuracy.",
         startTrial: "Start Free Trial",
         features: {
           title: "Complete QR Code Features",
-          description: "Our QR Code solution provides all the tools you need to manage your products efficiently.",
+          description:
+            "Our QR Code solution provides all the tools you need to manage your products efficiently.",
           generation: {
             title: "QR Code Generation",
-            description: "Create custom QR codes with detailed product information and tracking."
+            description:
+              "Create custom QR codes with detailed product information and tracking.",
           },
           scanning: {
             title: "Quick Scanning",
-            description: "Instantly scan QR codes to access product information and update records."
+            description:
+              "Instantly scan QR codes to access product information and update records.",
           },
           tracking: {
             title: "Advanced Tracking",
-            description: "Track the complete history of each product through its associated QR code."
+            description:
+              "Track the complete history of each product through its associated QR code.",
           },
           integration: {
             title: "Complete Integration",
-            description: "Integrate QR codes with your inventory system for automatic updates."
-          }
+            description:
+              "Integrate QR codes with your inventory system for automatic updates.",
+          },
         },
         benefits: {
           title: "Benefits of QR Code Management",
           efficiency: {
             title: "Increased Efficiency",
-            description: "Streamline identification and tracking processes with easy-to-read QR codes."
+            description:
+              "Streamline identification and tracking processes with easy-to-read QR codes.",
           },
           accuracy: {
             title: "Enhanced Accuracy",
-            description: "Eliminate identification errors with unique QR codes for each product."
+            description:
+              "Eliminate identification errors with unique QR codes for each product.",
           },
           accessibility: {
             title: "Easy Access",
-            description: "Access detailed product information instantly with a simple scan."
+            description:
+              "Access detailed product information instantly with a simple scan.",
           },
           management: {
             title: "Simplified Management",
-            description: "Manage your inventory more efficiently with integrated QR codes."
-          }
+            description:
+              "Manage your inventory more efficiently with integrated QR codes.",
+          },
         },
         cta: {
           title: "Ready to Revolutionize Your Product Tracking?",
-          description: "Join thousands of businesses that have improved their operations with Purple Stock's QR Code management.",
+          description:
+            "Join thousands of businesses that have improved their operations with Purple Stock's QR Code management.",
           scheduleDemo: "Schedule Demo",
-          startTrial: "Start Free Trial"
-        }
+          startTrial: "Start Free Trial",
+        },
       },
       clothingManufacturing: {
         title: "Clothing Manufacturing System",
-        description: "Complete system for clothing manufacturing management. Control production, raw material inventory, costs, and sales in a single integrated platform.",
+        description:
+          "Complete system for clothing manufacturing management. Control production, raw material inventory, costs, and sales in a single integrated platform.",
         startTrial: "Start Free Trial",
         features: {
           title: "Specialized Features for Manufacturing",
-          description: "Our solution provides all the tools needed to manage your clothing manufacturing efficiently.",
+          description:
+            "Our solution provides all the tools needed to manage your clothing manufacturing efficiently.",
           production: {
             title: "Production Control",
-            description: "Track all production stages, from cutting to finishing, with integrated quality control."
+            description:
+              "Track all production stages, from cutting to finishing, with integrated quality control.",
           },
           materials: {
             title: "Raw Material Management",
-            description: "Control your inventory of fabrics, notions, and other materials with precision and avoid waste."
+            description:
+              "Control your inventory of fabrics, notions, and other materials with precision and avoid waste.",
           },
           costs: {
             title: "Cost Control",
-            description: "Calculate production costs, set prices, and track profitability for each piece or collection."
+            description:
+              "Calculate production costs, set prices, and track profitability for each piece or collection.",
           },
           orders: {
             title: "Order Management",
-            description: "Manage customer orders, production scheduling, and deliveries in one place."
-          }
+            description:
+              "Manage customer orders, production scheduling, and deliveries in one place.",
+          },
         },
         benefits: {
           title: "Benefits of the Manufacturing System",
           efficiency: {
             title: "Increased Productivity",
-            description: "Optimize production processes and reduce cycle time with automated controls."
+            description:
+              "Optimize production processes and reduce cycle time with automated controls.",
           },
           quality: {
             title: "Quality Control",
-            description: "Ensure piece quality with monitoring at all production stages."
+            description:
+              "Ensure piece quality with monitoring at all production stages.",
           },
           costs: {
             title: "Cost Reduction",
-            description: "Minimize waste and optimize resource usage with precise controls."
+            description:
+              "Minimize waste and optimize resource usage with precise controls.",
           },
           management: {
             title: "Simplified Management",
-            description: "Centralize all your manufacturing information in a single platform."
-          }
+            description:
+              "Centralize all your manufacturing information in a single platform.",
+          },
         },
         cta: {
           title: "Ready to Transform Your Manufacturing?",
-          description: "Join thousands of manufacturers that have improved their operations with Purple Stock.",
+          description:
+            "Join thousands of manufacturers that have improved their operations with Purple Stock.",
           scheduleDemo: "Schedule Demo",
-          startTrial: "Start Free Trial"
-        }
+          startTrial: "Start Free Trial",
+        },
       },
       equipmentManagement: {
         title: "Equipment Management System with QR Code",
-        description: "Manage your equipment efficiently with QR Codes. Track maintenance, locations, and usage history in real-time.",
+        description:
+          "Manage your equipment efficiently with QR Codes. Track maintenance, locations, and usage history in real-time.",
         startTrial: "Start Free Trial",
         features: {
           title: "Specialized Equipment Management Features",
-          description: "Our solution provides all the tools needed to manage your equipment efficiently and accurately.",
+          description:
+            "Our solution provides all the tools needed to manage your equipment efficiently and accurately.",
           tracking: {
             title: "Real-Time Tracking",
-            description: "Monitor location and status of each equipment through unique QR codes."
+            description:
+              "Monitor location and status of each equipment through unique QR codes.",
           },
           maintenance: {
             title: "Maintenance Management",
-            description: "Schedule and track preventive and corrective maintenance with automatic alerts."
+            description:
+              "Schedule and track preventive and corrective maintenance with automatic alerts.",
           },
           history: {
             title: "Complete History",
-            description: "Maintain detailed records of usage, repairs, and movements for each equipment."
+            description:
+              "Maintain detailed records of usage, repairs, and movements for each equipment.",
           },
           inspection: {
             title: "Inspections & Checklists",
-            description: "Perform digital inspections and complete verification checklists via smartphone."
-          }
+            description:
+              "Perform digital inspections and complete verification checklists via smartphone.",
+          },
         },
         benefits: {
           title: "Benefits of the Management System",
           efficiency: {
             title: "Increased Operational Efficiency",
-            description: "Optimize equipment usage and maintenance with automated controls."
+            description:
+              "Optimize equipment usage and maintenance with automated controls.",
           },
           control: {
             title: "Total Control",
-            description: "Have complete visibility over all your equipment in one place."
+            description:
+              "Have complete visibility over all your equipment in one place.",
           },
           maintenance: {
             title: "Preventive Maintenance",
-            description: "Reduce costs and downtime with scheduled maintenance."
+            description:
+              "Reduce costs and downtime with scheduled maintenance.",
           },
           compliance: {
             title: "Compliance and Safety",
-            description: "Maintain accurate records to meet compliance and safety requirements."
-          }
+            description:
+              "Maintain accurate records to meet compliance and safety requirements.",
+          },
         },
         cta: {
           title: "Ready to Revolutionize Your Equipment Management?",
-          description: "Join thousands of companies that have optimized their equipment management with Purple Stock.",
+          description:
+            "Join thousands of companies that have optimized their equipment management with Purple Stock.",
           scheduleDemo: "Schedule Demo",
-          startTrial: "Start Free Trial"
-        }
+          startTrial: "Start Free Trial",
+        },
       },
       factoryManagement: {
         title: "Clothing Factory Management",
-        description: "Complete system for clothing factory management. Control production, deadlines, quality, and costs in a single integrated platform.",
+        description:
+          "Complete system for clothing factory management. Control production, deadlines, quality, and costs in a single integrated platform.",
         startTrial: "Start Free Trial",
         features: {
           title: "Specialized Factory Features",
-          description: "Our solution provides all the tools needed to manage your clothing factory efficiently.",
+          description:
+            "Our solution provides all the tools needed to manage your clothing factory efficiently.",
           production: {
             title: "Production Control",
-            description: "Track all production stages, from receiving to shipping, with quality control."
+            description:
+              "Track all production stages, from receiving to shipping, with quality control.",
           },
           deadlines: {
             title: "Deadline Management",
-            description: "Control delivery deadlines, priorities, and production capacity efficiently."
+            description:
+              "Control delivery deadlines, priorities, and production capacity efficiently.",
           },
           quality: {
             title: "Quality Control",
-            description: "Record inspections, defects, and corrective actions to ensure piece quality."
+            description:
+              "Record inspections, defects, and corrective actions to ensure piece quality.",
           },
           costs: {
             title: "Financial Management",
-            description: "Calculate costs, margins, and track production payments."
-          }
+            description:
+              "Calculate costs, margins, and track production payments.",
+          },
         },
         benefits: {
           title: "Benefits of Factory Management",
           efficiency: {
             title: "Increased Productivity",
-            description: "Optimize processes and increase productivity with automated controls."
+            description:
+              "Optimize processes and increase productivity with automated controls.",
           },
           quality: {
             title: "Quality Assurance",
-            description: "Maintain consistent quality standards throughout production."
+            description:
+              "Maintain consistent quality standards throughout production.",
           },
           deadlines: {
             title: "Meeting Deadlines",
-            description: "Deliver on time with better production planning and control."
+            description:
+              "Deliver on time with better production planning and control.",
           },
           costs: {
             title: "Financial Control",
-            description: "Have complete visibility over costs and profitability by client and piece."
-          }
+            description:
+              "Have complete visibility over costs and profitability by client and piece.",
+          },
         },
         cta: {
           title: "Ready to Transform Your Factory?",
-          description: "Join thousands of factories that have improved their operations with Purple Stock.",
+          description:
+            "Join thousands of factories that have improved their operations with Purple Stock.",
           scheduleDemo: "Schedule Demo",
-          startTrial: "Start Free Trial"
-        }
+          startTrial: "Start Free Trial",
+        },
       },
       inventoryApp: {
         title: "Inventory Control App",
-        description: "Manage your inventory from anywhere with our mobile app. Control inventory, sales, and purchases right from your smartphone.",
+        description:
+          "Manage your inventory from anywhere with our mobile app. Control inventory, sales, and purchases right from your smartphone.",
         startTrial: "Start Free Trial",
         features: {
           title: "Mobile App Features",
-          description: "Our mobile solution provides all the tools needed to manage your inventory on the go.",
+          description:
+            "Our mobile solution provides all the tools needed to manage your inventory on the go.",
           mobileScanning: {
             title: "Camera Scanning",
-            description: "Use your phone's camera to scan barcodes and QR codes without additional equipment."
+            description:
+              "Use your phone's camera to scan barcodes and QR codes without additional equipment.",
           },
           offlineMode: {
             title: "Offline Mode",
-            description: "Keep working even without internet, with automatic synchronization when reconnected."
+            description:
+              "Keep working even without internet, with automatic synchronization when reconnected.",
           },
           realTimeUpdates: {
             title: "Real-Time Updates",
-            description: "Keep your inventory up-to-date with instant synchronization across all devices."
+            description:
+              "Keep your inventory up-to-date with instant synchronization across all devices.",
           },
           notifications: {
             title: "Smart Notifications",
-            description: "Receive alerts about low stock levels, new orders, and more."
-          }
+            description:
+              "Receive alerts about low stock levels, new orders, and more.",
+          },
         },
         benefits: {
           title: "Mobile App Benefits",
           mobility: {
             title: "Total Mobility",
-            description: "Access and manage your inventory from anywhere, anytime."
+            description:
+              "Access and manage your inventory from anywhere, anytime.",
           },
           easeOfUse: {
             title: "Easy to Use",
-            description: "Intuitive interface designed to streamline your daily operations."
+            description:
+              "Intuitive interface designed to streamline your daily operations.",
           },
           integration: {
             title: "Complete Integration",
-            description: "Seamless synchronization with Purple Stock's web platform."
+            description:
+              "Seamless synchronization with Purple Stock's web platform.",
           },
           productivity: {
             title: "Increased Productivity",
-            description: "Effectuez les opérations de stock plus rapidement avec des outils mobiles optimisés."
-          }
+            description:
+              "Effectuez les opérations de stock plus rapidement avec des outils mobiles optimisés.",
+          },
         },
         cta: {
           title: "Ready to Mobilize Your Inventory Control?",
-          description: "Join thousands of businesses already using the Purple Stock app for inventory management.",
+          description:
+            "Join thousands of businesses already using the Purple Stock app for inventory management.",
           scheduleDemo: "Schedule Demo",
-          startTrial: "Start Free Trial"
-        }
+          startTrial: "Start Free Trial",
+        },
       },
     },
     glossary: {
       title: "Glossary of Terms for Small Businesses",
-      description: "Our glossary explains important inventory management and accounting terms and acronyms, providing small businesses with the knowledge needed to optimize inventory processes, control costs, and enhance their finances.",
+      description:
+        "Our glossary explains important inventory management and accounting terms and acronyms, providing small businesses with the knowledge needed to optimize inventory processes, control costs, and enhance their finances.",
       learnMore: {
-        title: "Want to learn more about growth strategies and best practices in inventory management?",
+        title:
+          "Want to learn more about growth strategies and best practices in inventory management?",
         description: "Check out the Purple Stock Blog below:",
-        link: "Purple Stock Blog"
-      }
+        link: "Purple Stock Blog",
+      },
     },
     pricing: {
       title: "Plans and Pricing",
@@ -1426,11 +1631,7 @@ export const translations = {
           name: "Free",
           price: "$0.00",
           description: "To get started",
-          features: [
-            "Up to 10 items",
-            "Basic analytics",
-            "Email support",
-          ],
+          features: ["Up to 10 items", "Basic analytics", "Email support"],
           buttonText: "Get Started",
           buttonLink: "https://app.purplestock.com.br/",
         },
@@ -1461,13 +1662,16 @@ export const translations = {
             "API access",
           ],
           buttonText: "Talk to Sales",
-          buttonLink: buildWhatsAppUrl("Hello! I'd like to know more about the enterprise plan."),
+          buttonLink: buildWhatsAppUrl(
+            "Hello! I'd like to know more about the enterprise plan."
+          ),
         },
       ],
     },
     barcodeGenerator: {
       title: "Free Barcode Generator",
-      description: "Create professional barcodes for your business. Support for multiple formats, complete customization and free download.",
+      description:
+        "Create professional barcodes for your business. Support for multiple formats, complete customization and free download.",
       configuration: {
         title: "Configuration",
         description: "Customize your barcode with the options below",
@@ -1476,11 +1680,11 @@ export const translations = {
         size: "Size",
         barcodeColor: "Barcode Color",
         backgroundColor: "Background Color",
-        showText: "Show Text"
+        showText: "Show Text",
       },
       actions: {
         download: "Download Barcode",
-        copyUrl: "Copy URL"
+        copyUrl: "Copy URL",
       },
       preview: {
         title: "Preview",
@@ -1489,11 +1693,12 @@ export const translations = {
         enterData: "Enter data to generate barcode",
         type: "Type",
         data: "Data",
-        dimensions: "Dimensions"
+        dimensions: "Dimensions",
       },
       information: {
         title: "Information",
-        description: "Learn about different barcode types and their applications",
+        description:
+          "Learn about different barcode types and their applications",
         formats: {
           title: "Formats",
           code128: "Ideal for general use, supports alphanumeric characters",
@@ -1504,49 +1709,54 @@ export const translations = {
           upce: "Compact version of UPC-A",
           itf14: "Specialized for logistics and transportation",
           codabar: "Used in libraries, healthcare and logistics",
-          default: "Standard format for general use"
+          default: "Standard format for general use",
         },
         usage: {
           title: "Applications",
           retail: {
             title: "Retail",
-            description: "Product identification, inventory control and point of sale"
+            description:
+              "Product identification, inventory control and point of sale",
           },
           logistics: {
             title: "Logistics",
-            description: "Package tracking, warehouse control and inventory management"
+            description:
+              "Package tracking, warehouse control and inventory management",
           },
           healthcare: {
             title: "Healthcare",
-            description: "Patient identification, medications and medical equipment"
+            description:
+              "Patient identification, medications and medical equipment",
           },
           manufacturing: {
             title: "Manufacturing",
-            description: "Quality control, traceability and asset management"
-          }
+            description: "Quality control, traceability and asset management",
+          },
         },
         tips: {
           title: "Tips",
           items: [
             {
               title: "Choose the right format",
-              description: "Use EAN-13 for commercial products, Code 128 for general use"
+              description:
+                "Use EAN-13 for commercial products, Code 128 for general use",
             },
             {
               title: "Check print quality",
-              description: "Print in high resolution for better readability"
+              description: "Print in high resolution for better readability",
             },
             {
               title: "Test before using",
-              description: "Always test the barcode with a reader before implementation"
+              description:
+                "Always test the barcode with a reader before implementation",
             },
             {
               title: "Maintain consistency",
-              description: "Use the same format for similar products"
-            }
-          ]
-        }
-      }
+              description: "Use the same format for similar products",
+            },
+          ],
+        },
+      },
     },
   },
   fr: {
@@ -1579,11 +1789,13 @@ export const translations = {
       cta: "Commencer Gratuitement",
       subtitle: "Commence Avec",
       subtitleHighlight: "Purple Stock",
-      description2: "Centralisez votre inventaire sur une plateforme puissante et intuitive. Avec Purple Stock, ayez une visibilité totale et un contrôle précis de votre stock sur n'importe quel appareil, à tout moment."
+      description2:
+        "Centralisez votre inventaire sur une plateforme puissante et intuitive. Avec Purple Stock, ayez une visibilité totale et un contrôle précis de votre stock sur n'importe quel appareil, à tout moment.",
     },
     industries: {
       title: "Logiciel d'Inventaire pour Votre Industrie",
-      description: "La solution de gestion d'inventaire de Purple Stock aide les petites entreprises de tous les secteurs à économiser du temps et de l'argent précieux lorsqu'il s'agit d'organiser l'inventaire et les actifs physiques.",
+      description:
+        "La solution de gestion d'inventaire de Purple Stock aide les petites entreprises de tous les secteurs à économiser du temps et de l'argent précieux lorsqu'il s'agit d'organiser l'inventaire et les actifs physiques.",
       industries: {
         retail: "Commerce",
         manufacturing: "Fabrication",
@@ -1600,12 +1812,13 @@ export const translations = {
         fashion: "Mode",
         beauty: "Beauté",
         commerce: "Commerce",
-        education: "Éducation"
-      }
+        education: "Éducation",
+      },
     },
     trustedBy: {
       title: "Fiable par les Leaders du Marché",
-      description: "Des détaillants aux fabricants, nous aidons les entreprises à optimiser leur contrôle des stocks et à stimuler la croissance.",
+      description:
+        "Des détaillants aux fabricants, nous aidons les entreprises à optimiser leur contrôle des stocks et à stimuler la croissance.",
     },
     footer: {
       purpleStock: "Purple Stock",
@@ -1662,12 +1875,14 @@ export const translations = {
     },
     testimonials: [
       {
-        quote: "Purple Stock a révolutionné notre gestion des stocks. Nous avons maintenant un contrôle total sur notre inventaire.",
+        quote:
+          "Purple Stock a révolutionné notre gestion des stocks. Nous avons maintenant un contrôle total sur notre inventaire.",
         company: "Magasin de Mode Féminine",
         companyName: "Purchase Store",
       },
       {
-        quote: "Avec Purple Stock, notre production est devenue beaucoup plus organisée et efficace. Un véritable changement !",
+        quote:
+          "Avec Purple Stock, notre production est devenue beaucoup plus organisée et efficace. Un véritable changement !",
         company: "Fabricant de Portes Premium",
         companyName: "Concrem Portas",
       },
@@ -1675,500 +1890,610 @@ export const translations = {
     featurePages: {
       inventoryControl: {
         title: "Contrôle des Stocks",
-        description: "Prenez le contrôle total de votre inventaire avec le puissant système de gestion des stocks de Purple Stock. Suivez les niveaux de stock, surveillez les mouvements et éliminez les erreurs avec notre plateforme intuitive.",
+        description:
+          "Prenez le contrôle total de votre inventaire avec le puissant système de gestion des stocks de Purple Stock. Suivez les niveaux de stock, surveillez les mouvements et éliminez les erreurs avec notre plateforme intuitive.",
         startTrial: "Commencer l'Essai Gratuit",
         features: {
           title: "Gestion Complète des Stocks",
-          description: "Notre système de contrôle des stocks fournit tous les outils nécessaires pour gérer votre inventaire efficacement et précisément.",
+          description:
+            "Notre système de contrôle des stocks fournit tous les outils nécessaires pour gérer votre inventaire efficacement et précisément.",
           centralizedInventory: {
             title: "Inventaire Centralisé",
-            description: "Gérez tout votre inventaire au même endroit, avec des mises à jour en temps réel sur tous vos sites et appareils.",
+            description:
+              "Gérez tout votre inventaire au même endroit, avec des mises à jour en temps réel sur tous vos sites et appareils.",
           },
           stockTracking: {
             title: "Suivi des Niveaux de Stock",
-            description: "Surveillez les niveaux de stock avec précision et recevez des alertes lorsque l'inventaire atteint des seuils minimaux.",
+            description:
+              "Surveillez les niveaux de stock avec précision et recevez des alertes lorsque l'inventaire atteint des seuils minimaux.",
           },
           inventoryMovements: {
             title: "Mouvements d'Inventaire",
-            description: "Suivez tous les mouvements d'inventaire avec des enregistrements détaillés de qui a fait quoi, quand et où.",
+            description:
+              "Suivez tous les mouvements d'inventaire avec des enregistrements détaillés de qui a fait quoi, quand et où.",
           },
           lossPrevention: {
             title: "Prévention des Pertes",
-            description: "Réduisez la perte d'inventaire avec des fonctionnalités précises de suivi et de responsabilisation.",
+            description:
+              "Réduisez la perte d'inventaire avec des fonctionnalités précises de suivi et de responsabilisation.",
           },
         },
         benefits: {
           title: "Avantages de Notre Contrôle des Stocks",
           reduceStockouts: {
             title: "Réduisez les Ruptures de Stock",
-            description: "Ne manquez jamais une vente due aux ruptures de stock avec des points de réapprovisionnement automatisés et des alertes d'inventaire.",
+            description:
+              "Ne manquez jamais une vente due aux ruptures de stock avec des points de réapprovisionnement automatisés et des alertes d'inventaire.",
           },
           optimizeStock: {
             title: "Optimisez les Niveaux de Stock",
-            description: "Maintenez des niveaux optimaux d'inventaire pour réduire les coûts de stockage tout en répondant à la demande des clients.",
+            description:
+              "Maintenez des niveaux optimaux d'inventaire pour réduire les coûts de stockage tout en répondant à la demande des clients.",
           },
           improveAccuracy: {
             title: "Améliorez la Précision",
-            description: "Éliminez les erreurs de comptage manuel et maintenez des enregistrements précis d'inventaire à tout moment.",
+            description:
+              "Éliminez les erreurs de comptage manuel et maintenez des enregistrements précis d'inventaire à tout moment.",
           },
           saveTime: {
             title: "Gagnez du Temps",
-            description: "Automatisez les tâches de routine d'inventaire et libérez votre équipe pour se concentrer sur la croissance de votre entreprise.",
+            description:
+              "Automatisez les tâches de routine d'inventaire et libérez votre équipe pour se concentrer sur la croissance de votre entreprise.",
           },
         },
         cta: {
           title: "Prêt à Prendre le Contrôle de Votre Inventaire ?",
-          description: "Rejoignez des milliers d'entreprises qui ont optimisé leur gestion des stocks avec Purple Stock.",
+          description:
+            "Rejoignez des milliers d'entreprises qui ont optimisé leur gestion des stocks avec Purple Stock.",
           scheduleDemo: "Planifier une Démo",
           startTrial: "Commencer l'Essai Gratuit",
         },
       },
       barcoding: {
         title: "Code-barres",
-        description: "Optimisez vos opérations d'inventaire avec le puissant système de lecture de code-barres de Purple Stock. Générez, imprimez et scannez des codes-barres pour suivre l'inventaire avec rapidité et précision.",
+        description:
+          "Optimisez vos opérations d'inventaire avec le puissant système de lecture de code-barres de Purple Stock. Générez, imprimez et scannez des codes-barres pour suivre l'inventaire avec rapidité et précision.",
         startTrial: "Commencer l'Essai Gratuit",
         features: {
           title: "Solutions Complètes de Code-barres",
-          description: "Notre système de code-barres fournit tous les outils nécessaires pour suivre votre inventaire avec rapidité et précision.",
+          description:
+            "Notre système de code-barres fournit tous les outils nécessaires pour suivre votre inventaire avec rapidité et précision.",
           barcodeScanning: {
             title: "Scan de Code-barres",
-            description: "Scannez rapidement les codes-barres pour mettre à jour l'inventaire, traiter les ventes et suivre les mouvements en temps réel.",
+            description:
+              "Scannez rapidement les codes-barres pour mettre à jour l'inventaire, traiter les ventes et suivre les mouvements en temps réel.",
           },
           qrCodeSupport: {
             title: "Support QR Code",
-            description: "Générez et scannez des QR codes pour des capacités améliorées de stockage et de suivi des données.",
+            description:
+              "Générez et scannez des QR codes pour des capacités améliorées de stockage et de suivi des données.",
           },
           mobileScanning: {
             title: "Scan Mobile",
-            description: "Utilisez votre smartphone ou tablette comme lecteur de code-barres avec notre application mobile.",
+            description:
+              "Utilisez votre smartphone ou tablette comme lecteur de code-barres avec notre application mobile.",
           },
           labelPrinting: {
             title: "Impression d'Étiquettes",
-            description: "Générez et imprimez des étiquettes de code-barres personnalisées directement depuis la plateforme.",
+            description:
+              "Générez et imprimez des étiquettes de code-barres personnalisées directement depuis la plateforme.",
           },
         },
         benefits: {
           title: "Avantages de Notre Système de Code-barres",
           increasedSpeed: {
             title: "Vitesse Accrue",
-            description: "Traitez les mouvements d'inventaire jusqu'à 10 fois plus vite que les méthodes manuelles.",
+            description:
+              "Traitez les mouvements d'inventaire jusqu'à 10 fois plus vite que les méthodes manuelles.",
           },
           reducedErrors: {
             title: "Erreurs Réduites",
-            description: "Éliminez les erreurs de saisie manuelle avec un scan précis de code-barres.",
+            description:
+              "Éliminez les erreurs de saisie manuelle avec un scan précis de code-barres.",
           },
           realTimeUpdates: {
             title: "Mises à Jour en Temps Réel",
-            description: "Mettez à jour les enregistrements d'inventaire instantanément avec chaque scan pour des niveaux de stock précis.",
+            description:
+              "Mettez à jour les enregistrements d'inventaire instantanément avec chaque scan pour des niveaux de stock précis.",
           },
           enhancedTraceability: {
             title: "Traçabilité Améliorée",
-            description: "Suivez l'historique complet de chaque article avec des enregistrements détaillés de scan.",
+            description:
+              "Suivez l'historique complet de chaque article avec des enregistrements détaillés de scan.",
           },
         },
         cta: {
           title: "Prêt à Optimiser Vos Opérations d'Inventaire ?",
-          description: "Rejoignez des milliers d'entreprises qui ont amélioré leur efficacité avec le système de code-barres de Purple Stock.",
+          description:
+            "Rejoignez des milliers d'entreprises qui ont amélioré leur efficacité avec le système de code-barres de Purple Stock.",
           scheduleDemo: "Planifier une Démo",
           startTrial: "Commencer l'Essai Gratuit",
         },
       },
       purchaseSales: {
         title: "Achats & Ventes",
-        description: "Optimisez vos processus d'achat et de vente avec la solution intégrée de Purple Stock. Créez des commandes d'achat, gérez les ventes et suivez les performances, le tout au même endroit.",
+        description:
+          "Optimisez vos processus d'achat et de vente avec la solution intégrée de Purple Stock. Créez des commandes d'achat, gérez les ventes et suivez les performances, le tout au même endroit.",
         startTrial: "Commencer l'Essai Gratuit",
         features: {
           title: "Gestion Complète des Achats & Ventes",
-          description: "Notre plateforme fournit tous les outils nécessaires pour gérer vos opérations d'achat et de vente efficacement.",
+          description:
+            "Notre plateforme fournit tous les outils nécessaires pour gérer vos opérations d'achat et de vente efficacement.",
           purchaseOrders: {
             title: "Commandes d'Achat",
-            description: "Créez, gérez et suivez les commandes d'achat avec les fournisseurs en quelques clics.",
+            description:
+              "Créez, gérez et suivez les commandes d'achat avec les fournisseurs en quelques clics.",
           },
           salesManagement: {
             title: "Gestion des Ventes",
-            description: "Traitez les commandes de vente et suivez les performances avec des analyses détaillées.",
+            description:
+              "Traitez les commandes de vente et suivez les performances avec des analyses détaillées.",
           },
           invoicing: {
             title: "Facturation",
-            description: "Générez des factures professionnelles et gérez les paiements clients.",
+            description:
+              "Générez des factures professionnelles et gérez les paiements clients.",
           },
           paymentProcessing: {
             title: "Traitement des Paiements",
-            description: "Suivez les paiements et gérez les comptes clients et fournisseurs.",
+            description:
+              "Suivez les paiements et gérez les comptes clients et fournisseurs.",
           },
         },
         benefits: {
           title: "Avantages de Notre Système d'Achats & Ventes",
           streamlinedWorkflows: {
             title: "Flux de Travail Optimisés",
-            description: "Automatisez les processus d'achat et de vente pour gagner du temps et réduire les erreurs.",
+            description:
+              "Automatisez les processus d'achat et de vente pour gagner du temps et réduire les erreurs.",
           },
           improvedCashFlow: {
             title: "Flux de Trésorerie Amélioré",
-            description: "Mieux gérez les comptes clients et fournisseurs pour un flux de trésorerie amélioré.",
+            description:
+              "Mieux gérez les comptes clients et fournisseurs pour un flux de trésorerie amélioré.",
           },
           enhancedCustomerService: {
             title: "Service Client Amélioré",
-            description: "Fournissez des informations précises sur les commandes et les estimations de livraison aux clients.",
+            description:
+              "Fournissez des informations précises sur les commandes et les estimations de livraison aux clients.",
           },
           dataDecisions: {
             title: "Décisions Basées sur les Données",
-            description: "Utilisez les données de ventes pour prendre des décisions d'achat éclairées et optimiser l'inventaire.",
+            description:
+              "Utilisez les données de ventes pour prendre des décisions d'achat éclairées et optimiser l'inventaire.",
           },
         },
         cta: {
           title: "Prêt à Optimiser Vos Opérations d'Achat & Vente ?",
-          description: "Rejoignez des milliers d'entreprises qui ont optimisé leurs opérations avec Purple Stock.",
+          description:
+            "Rejoignez des milliers d'entreprises qui ont optimisé leurs opérations avec Purple Stock.",
           scheduleDemo: "Planifier une Démo",
           startTrial: "Commencer l'Essai Gratuit",
         },
       },
       analyticsReporting: {
         title: "Analyses & Rapports",
-        description: "Obtenez des insights précieux sur les performances de votre inventaire et de votre entreprise avec les puissants outils d'analyse et de reporting de Purple Stock. Prenez des décisions basées sur les données pour optimiser vos opérations.",
+        description:
+          "Obtenez des insights précieux sur les performances de votre inventaire et de votre entreprise avec les puissants outils d'analyse et de reporting de Purple Stock. Prenez des décisions basées sur les données pour optimiser vos opérations.",
         startTrial: "Commencer l'Essai Gratuit",
         features: {
           title: "Analyses & Rapports Complets",
-          description: "Notre plateforme fournit des outils puissants pour analyser vos données et générer des rapports perspicaces.",
+          description:
+            "Notre plateforme fournit des outils puissants pour analyser vos données et générer des rapports perspicaces.",
           inventoryAnalytics: {
             title: "Analyses d'Inventaire",
-            description: "Suivez les performances de l'inventaire avec des analyses détaillées sur les niveaux de stock, la rotation et plus encore.",
+            description:
+              "Suivez les performances de l'inventaire avec des analyses détaillées sur les niveaux de stock, la rotation et plus encore.",
           },
           salesReports: {
             title: "Rapports de Ventes",
-            description: "Analysez les données de ventes par produit, catégorie, client et période.",
+            description:
+              "Analysez les données de ventes par produit, catégorie, client et période.",
           },
           performanceMetrics: {
             title: "Métriques de Performance",
-            description: "Monitorez les indicateurs clés de performance (KPI) pour suivre la santé de l'entreprise.",
+            description:
+              "Monitorez les indicateurs clés de performance (KPI) pour suivre la santé de l'entreprise.",
           },
           customReports: {
             title: "Rapports Personnalisés",
-            description: "Créez et exportez des rapports personnalisés adaptés aux besoins spécifiques de votre entreprise.",
+            description:
+              "Créez et exportez des rapports personnalisés adaptés aux besoins spécifiques de votre entreprise.",
           },
         },
         benefits: {
           title: "Avantages de Nos Analyses & Rapports",
           dataDecisions: {
             title: "Décisions Basées sur les Données",
-            description: "Prenez des décisions commerciales éclairées basées sur des données et des insights précis.",
+            description:
+              "Prenez des décisions commerciales éclairées basées sur des données et des insights précis.",
           },
           identifyTrends: {
             title: "Identifiez les Tendances",
-            description: "Détectez les tendances et les modèles dans vos données pour anticiper les changements du marché.",
+            description:
+              "Détectez les tendances et les modèles dans vos données pour anticiper les changements du marché.",
           },
           optimizeInventory: {
             title: "Optimisez l'Inventaire",
-            description: "Utilisez les analyses pour optimiser les niveaux de stock et réduire les coûts de stockage.",
+            description:
+              "Utilisez les analyses pour optimiser les niveaux de stock et réduire les coûts de stockage.",
           },
           improveProfitability: {
             title: "Améliorez la Rentabilité",
-            description: "Identifiez les produits performants et les domaines d'amélioration pour augmenter les profits.",
+            description:
+              "Identifiez les produits performants et les domaines d'amélioration pour augmenter les profits.",
           },
         },
         cta: {
           title: "Prêt à Obtenir des Insights Précieux pour Votre Entreprise ?",
-          description: "Rejoignez des milliers d'entreprises qui ont optimisé leurs opérations avec les analyses de Purple Stock.",
+          description:
+            "Rejoignez des milliers d'entreprises qui ont optimisé leurs opérations avec les analyses de Purple Stock.",
           scheduleDemo: "Planifier une Démo",
           startTrial: "Commencer l'Essai Gratuit",
         },
       },
       warehouseControl: {
         title: "Gestion d'Entrepôt",
-        description: "Optimisez vos opérations d'entrepôt avec le système complet de gestion d'entrepôt de Purple Stock. Organisez le stockage, suivez les matériaux et améliorez l'efficacité dans toute votre installation.",
+        description:
+          "Optimisez vos opérations d'entrepôt avec le système complet de gestion d'entrepôt de Purple Stock. Organisez le stockage, suivez les matériaux et améliorez l'efficacité dans toute votre installation.",
         startTrial: "Commencer l'Essai Gratuit",
         features: {
           title: "Gestion Complète d'Entrepôt",
-          description: "Notre système de gestion d'entrepôt fournit tous les outils nécessaires pour gérer votre entrepôt efficacement et efficacement.",
+          description:
+            "Notre système de gestion d'entrepôt fournit tous les outils nécessaires pour gérer votre entrepôt efficacement et efficacement.",
           storageManagement: {
             title: "Gestion du Stockage",
-            description: "Optimisez l'utilisation de l'espace et organisez les matériaux efficacement dans tout l'entrepôt.",
+            description:
+              "Optimisez l'utilisation de l'espace et organisez les matériaux efficacement dans tout l'entrepôt.",
           },
           receivingShipping: {
             title: "Réception & Expédition",
-            description: "Simplifiez les processus de réception et d'expédition avec des flux de travail et une documentation automatisés.",
+            description:
+              "Simplifiez les processus de réception et d'expédition avec des flux de travail et une documentation automatisés.",
           },
           materialTracking: {
             title: "Suivi des Matériaux",
-            description: "Suivez les matériaux et les fournitures avec un suivi détaillé de l'emplacement et de l'historique des mouvements.",
+            description:
+              "Suivez les matériaux et les fournitures avec un suivi détaillé de l'emplacement et de l'historique des mouvements.",
           },
           staffManagement: {
             title: "Gestion du Personnel",
-            description: "Gérez l'équipe de l'entrepôt, attribuez des tâches et suivez les métriques de productivité.",
+            description:
+              "Gérez l'équipe de l'entrepôt, attribuez des tâches et suivez les métriques de productivité.",
           },
         },
         benefits: {
           title: "Avantages de Notre Gestion d'Entrepôt",
           improvedSpace: {
             title: "Meilleure Utilisation de l'Espace",
-            description: "Optimisez la disposition et le stockage pour maximiser l'espace disponible et l'efficacité.",
+            description:
+              "Optimisez la disposition et le stockage pour maximiser l'espace disponible et l'efficacité.",
           },
           enhancedProductivity: {
             title: "Productivité Améliorée",
-            description: "Optimisez les flux de travail et réduisez le temps passé sur les tâches manuelles et la recherche de matériaux.",
+            description:
+              "Optimisez les flux de travail et réduisez le temps passé sur les tâches manuelles et la recherche de matériaux.",
           },
           betterOrganization: {
             title: "Meilleure Organisation",
-            description: "Maintenez votre entrepôt organisé avec des processus systématiques de stockage et de récupération.",
+            description:
+              "Maintenez votre entrepôt organisé avec des processus systématiques de stockage et de récupération.",
           },
           realTimeVisibility: {
             title: "Visibilité en Temps Réel",
-            description: "Accédez aux informations en temps réel sur l'emplacement et le mouvement des matériaux dans tout l'entrepôt.",
+            description:
+              "Accédez aux informations en temps réel sur l'emplacement et le mouvement des matériaux dans tout l'entrepôt.",
           },
         },
         cta: {
           title: "Prêt à Transformer votre Gestion d'Entrepôt ?",
-          description: "Rejoignez des milliers d'entreprises qui ont optimisé leurs opérations d'entrepôt avec Purple Stock.",
+          description:
+            "Rejoignez des milliers d'entreprises qui ont optimisé leurs opérations d'entrepôt avec Purple Stock.",
           scheduleDemo: "Planifier une Démo",
           startTrial: "Commencer l'Essai Gratuit",
         },
       },
       qrCodeManagement: {
         title: "Gestion QR Code",
-        description: "Gérez et suivez vos produits avec des QR Codes personnalisés. Créez, imprimez et surveillez les QR codes pour améliorer l'efficacité et la précision de votre entreprise.",
+        description:
+          "Gérez et suivez vos produits avec des QR Codes personnalisés. Créez, imprimez et surveillez les QR codes pour améliorer l'efficacité et la précision de votre entreprise.",
         startTrial: "Commencer l'Essai Gratuit",
         features: {
           title: "Fonctionnalités Complètes de QR Code",
-          description: "Notre solution QR Code offre tous les outils nécessaires pour gérer vos produits efficacement.",
+          description:
+            "Notre solution QR Code offre tous les outils nécessaires pour gérer vos produits efficacement.",
           generation: {
             title: "Génération de QR Code",
-            description: "Créez des QR codes personnalisés avec des informations détaillées sur le produit et le suivi.",
+            description:
+              "Créez des QR codes personnalisés avec des informations détaillées sur le produit et le suivi.",
           },
           scanning: {
             title: "Scan Rapide",
-            description: "Scannez instantanément les QR codes pour accéder aux informations du produit et mettre à jour les enregistrements.",
+            description:
+              "Scannez instantanément les QR codes pour accéder aux informations du produit et mettre à jour les enregistrements.",
           },
           tracking: {
             title: "Suivi Avancé",
-            description: "Suivez l'historique complet de chaque produit via le QR code associé.",
+            description:
+              "Suivez l'historique complet de chaque produit via le QR code associé.",
           },
           integration: {
             title: "Intégration Complète",
-            description: "Intégrez les QR codes avec votre système d'inventaire pour des mises à jour automatiques.",
+            description:
+              "Intégrez les QR codes avec votre système d'inventaire pour des mises à jour automatiques.",
           },
         },
         benefits: {
           title: "Avantages de la Gestion QR Code",
           efficiency: {
             title: "Efficacité Accrue",
-            description: "Rationalisez les processus d'identification et de suivi avec des QR codes faciles à lire.",
+            description:
+              "Rationalisez les processus d'identification et de suivi avec des QR codes faciles à lire.",
           },
           accuracy: {
             title: "Précision Améliorée",
-            description: "Éliminez les erreurs d'identification avec des QR codes uniques pour chaque produit.",
+            description:
+              "Éliminez les erreurs d'identification avec des QR codes uniques pour chaque produit.",
           },
           accessibility: {
             title: "Accès Facile",
-            description: "Accédez aux informations détaillées du produit instantanément avec un simple scan.",
+            description:
+              "Accédez aux informations détaillées du produit instantanément avec un simple scan.",
           },
           management: {
             title: "Gestion Simplifiée",
-            description: "Gérez votre inventaire plus efficacement avec des QR codes intégrés.",
+            description:
+              "Gérez votre inventaire plus efficacement avec des QR codes intégrés.",
           },
         },
         cta: {
           title: "Prêt à Révolutionner votre Suivi de Produits ?",
-          description: "Rejoignez des milliers d'entreprises qui ont amélioré leurs opérations avec la gestion QR Code de Purple Stock.",
+          description:
+            "Rejoignez des milliers d'entreprises qui ont amélioré leurs opérations avec la gestion QR Code de Purple Stock.",
           scheduleDemo: "Planifier une Démo",
           startTrial: "Commencer l'Essai Gratuit",
         },
       },
       clothingManufacturing: {
         title: "Systèmes pour Confection",
-        description: "Système complet pour la gestion des confections. Contrôlez la production, le stock de matières premières, les coûts et les ventes dans une seule plateforme intégrée.",
+        description:
+          "Système complet pour la gestion des confections. Contrôlez la production, le stock de matières premières, les coûts et les ventes dans une seule plateforme intégrée.",
         startTrial: "Commencer l'Essai Gratuit",
         features: {
           title: "Fonctionnalités Spécialisées pour Confection",
-          description: "Notre solution offre tous les outils nécessaires pour gérer votre confection efficacement.",
+          description:
+            "Notre solution offre tous les outils nécessaires pour gérer votre confection efficacement.",
           production: {
             title: "Contrôle de Production",
-            description: "Suivez toutes les étapes de la production, de la coupe à la finition, avec contrôle de qualité intégré.",
+            description:
+              "Suivez toutes les étapes de la production, de la coupe à la finition, avec contrôle de qualité intégré.",
           },
           materials: {
             title: "Gestion des Matières Premières",
-            description: "Contrôlez votre stock de tissus, accessoires et autres matériaux avec précision et évitez le gaspillage.",
+            description:
+              "Contrôlez votre stock de tissus, accessoires et autres matériaux avec précision et évitez le gaspillage.",
           },
           costs: {
             title: "Contrôle des Coûts",
-            description: "Calculez les coûts de production, définissez les prix et suivez la rentabilité de chaque pièce ou collection.",
+            description:
+              "Calculez les coûts de production, définissez les prix et suivez la rentabilité de chaque pièce ou collection.",
           },
           orders: {
             title: "Gestion des Commandes",
-            description: "Gérez les commandes clients, la programmation de production et les livraisons en un seul endroit.",
+            description:
+              "Gérez les commandes clients, la programmation de production et les livraisons en un seul endroit.",
           },
         },
         benefits: {
           title: "Avantages du Système pour Confection",
           efficiency: {
             title: "Productivité Accrue",
-            description: "Optimisez les processus de production et réduisez le temps de cycle avec des contrôles automatisés.",
+            description:
+              "Optimisez les processus de production et réduisez le temps de cycle avec des contrôles automatisés.",
           },
           quality: {
             title: "Contrôle de Qualité",
-            description: "Garantissez la qualité des pièces avec un suivi à toutes les étapes de la production.",
+            description:
+              "Garantissez la qualité des pièces avec un suivi à toutes les étapes de la production.",
           },
           costs: {
             title: "Réduction des Coûts",
-            description: "Minimisez le gaspillage et optimisez l'utilisation des ressources avec des contrôles précis.",
+            description:
+              "Minimisez le gaspillage et optimisez l'utilisation des ressources avec des contrôles précis.",
           },
           management: {
             title: "Gestion Simplifiée",
-            description: "Centralisez toutes les informations de votre confection dans une seule plateforme.",
+            description:
+              "Centralisez toutes les informations de votre confection dans une seule plateforme.",
           },
         },
         cta: {
           title: "Prêt à Transformer votre Confection ?",
-          description: "Rejoignez des milliers de confections qui ont amélioré leurs opérations avec Purple Stock.",
+          description:
+            "Rejoignez des milliers de confections qui ont amélioré leurs opérations avec Purple Stock.",
           scheduleDemo: "Planifier une Démo",
           startTrial: "Commencer l'Essai Gratuit",
         },
       },
       equipmentManagement: {
         title: "Système de Gestion d'Équipements par QR Code",
-        description: "Gérez vos équipements efficacement avec des QR Codes. Suivez les maintenances, les emplacements et l'historique d'utilisation en temps réel.",
+        description:
+          "Gérez vos équipements efficacement avec des QR Codes. Suivez les maintenances, les emplacements et l'historique d'utilisation en temps réel.",
         startTrial: "Commencer l'Essai Gratuit",
         features: {
           title: "Fonctionnalités Spécialisées pour Gestion d'Équipements",
-          description: "Notre solution offre tous les outils nécessaires pour gérer vos équipements efficacement et précisément.",
+          description:
+            "Notre solution offre tous les outils nécessaires pour gérer vos équipements efficacement et précisément.",
           tracking: {
             title: "Suivi en Temps Réel",
-            description: "Surveillez l'emplacement et le statut de chaque équipement via des QR codes uniques.",
+            description:
+              "Surveillez l'emplacement et le statut de chaque équipement via des QR codes uniques.",
           },
           maintenance: {
             title: "Gestion de Maintenance",
-            description: "Planifiez et suivez les maintenances préventives et correctives avec des alertes automatiques.",
+            description:
+              "Planifiez et suivez les maintenances préventives et correctives avec des alertes automatiques.",
           },
           history: {
             title: "Historique Complet",
-            description: "Maintenez des enregistrements détaillés d'utilisation, de réparations et de mouvements pour chaque équipement.",
+            description:
+              "Maintenez des enregistrements détaillés d'utilisation, de réparations et de mouvements pour chaque équipement.",
           },
           inspection: {
             title: "Inspections & Checklists",
-            description: "Effectuez des inspections numériques et remplissez des checklists de vérification via smartphone.",
+            description:
+              "Effectuez des inspections numériques et remplissez des checklists de vérification via smartphone.",
           },
         },
         benefits: {
           title: "Avantages du Système de Gestion",
           efficiency: {
             title: "Efficacité Opérationnelle Accrue",
-            description: "Optimisez l'utilisation et la maintenance des équipements avec des contrôles automatisés.",
+            description:
+              "Optimisez l'utilisation et la maintenance des équipements avec des contrôles automatisés.",
           },
           control: {
             title: "Contrôle Total",
-            description: "Ayez une visibilité complète sur tous vos équipements en un seul endroit.",
+            description:
+              "Ayez une visibilité complète sur tous vos équipements en un seul endroit.",
           },
           maintenance: {
             title: "Maintenance Préventive",
-            description: "Réduisez les coûts et les temps d'arrêt avec des maintenances programmées.",
+            description:
+              "Réduisez les coûts et les temps d'arrêt avec des maintenances programmées.",
           },
           compliance: {
             title: "Conformité et Sécurité",
-            description: "Maintenez des enregistrements précis pour répondre aux exigences de conformité et de sécurité.",
+            description:
+              "Maintenez des enregistrements précis pour répondre aux exigences de conformité et de sécurité.",
           },
         },
         cta: {
           title: "Prêt à Révolutionner votre Gestion d'Équipements ?",
-          description: "Rejoignez des milliers d'entreprises qui ont optimisé leur gestion d'équipements avec Purple Stock.",
+          description:
+            "Rejoignez des milliers d'entreprises qui ont optimisé leur gestion d'équipements avec Purple Stock.",
           scheduleDemo: "Planifier une Démo",
           startTrial: "Commencer l'Essai Gratuit",
         },
       },
       factoryManagement: {
         title: "Gestion d'Usine",
-        description: "Système complet pour la gestion d'usine. Contrôlez la production, les délais, la qualité et les coûts dans une seule plateforme intégrée.",
+        description:
+          "Système complet pour la gestion d'usine. Contrôlez la production, les délais, la qualité et les coûts dans une seule plateforme intégrée.",
         startTrial: "Commencer l'Essai Gratuit",
         features: {
           title: "Fonctionnalités Spécialisées pour Usine",
-          description: "Notre solution offre tous les outils nécessaires pour gérer votre usine efficacement.",
+          description:
+            "Notre solution offre tous les outils nécessaires pour gérer votre usine efficacement.",
           production: {
             title: "Contrôle de Production",
-            description: "Suivez toutes les étapes de la production, de la réception à l'expédition, avec contrôle de qualité.",
+            description:
+              "Suivez toutes les étapes de la production, de la réception à l'expédition, avec contrôle de qualité.",
           },
           deadlines: {
             title: "Gestion des Délais",
-            description: "Contrôlez les délais de livraison, les priorités et la capacité de production de manière efficace.",
+            description:
+              "Contrôlez les délais de livraison, les priorités et la capacité de production de manière efficace.",
           },
           quality: {
             title: "Contrôle de Qualité",
-            description: "Enregistrez les inspections, les défauts et les actions correctives pour garantir la qualité des pièces.",
+            description:
+              "Enregistrez les inspections, les défauts et les actions correctives pour garantir la qualité des pièces.",
           },
           costs: {
             title: "Gestion Financière",
-            description: "Calculez les coûts, les marges et suivez les paiements par production.",
+            description:
+              "Calculez les coûts, les marges et suivez les paiements par production.",
           },
         },
         benefits: {
           title: "Avantages de la Gestion d'Usine",
           efficiency: {
             title: "Productivité Accrue",
-            description: "Optimisez les processus et augmentez la productivité avec des contrôles automatisés.",
+            description:
+              "Optimisez les processus et augmentez la productivité avec des contrôles automatisés.",
           },
           quality: {
             title: "Garantie de Qualité",
-            description: "Maintenez des standards de qualité cohérents tout au long de la production.",
+            description:
+              "Maintenez des standards de qualité cohérents tout au long de la production.",
           },
           deadlines: {
             title: "Respect des Délais",
-            description: "Livrez dans les délais avec une meilleure planification et un meilleur contrôle de la production.",
+            description:
+              "Livrez dans les délais avec une meilleure planification et un meilleur contrôle de la production.",
           },
           costs: {
             title: "Contrôle Financier",
-            description: "Ayez une visibilité complète sur les coûts et la rentabilité par client et par pièce.",
+            description:
+              "Ayez une visibilité complète sur les coûts et la rentabilité par client et par pièce.",
           },
         },
         cta: {
           title: "Prêt à Transformer votre Usine ?",
-          description: "Rejoignez des milliers d'usines qui ont amélioré leurs opérations avec Purple Stock.",
+          description:
+            "Rejoignez des milliers d'usines qui ont amélioré leurs opérations avec Purple Stock.",
           scheduleDemo: "Planifier une Démo",
           startTrial: "Commencer l'Essai Gratuit",
         },
       },
       inventoryApp: {
         title: "Application de Contrôle des Stocks",
-        description: "Gérez votre stock de n'importe où avec notre application mobile. Contrôlez l'inventaire, les ventes et les achats directement depuis votre smartphone.",
+        description:
+          "Gérez votre stock de n'importe où avec notre application mobile. Contrôlez l'inventaire, les ventes et les achats directement depuis votre smartphone.",
         startTrial: "Commencer l'Essai Gratuit",
         features: {
           title: "Fonctionnalités de l'Application Mobile",
-          description: "Notre solution mobile offre tous les outils nécessaires pour gérer votre stock en déplacement.",
+          description:
+            "Notre solution mobile offre tous les outils nécessaires pour gérer votre stock en déplacement.",
           mobileScanning: {
             title: "Scan par Caméra",
-            description: "Utilisez l'appareil photo du téléphone pour lire les codes-barres et QR codes sans équipement supplémentaire.",
+            description:
+              "Utilisez l'appareil photo du téléphone pour lire les codes-barres et QR codes sans équipement supplémentaire.",
           },
           offlineMode: {
             title: "Mode Hors Ligne",
-            description: "Continuez à travailler même sans internet, avec synchronisation automatique lors de la reconnexion.",
+            description:
+              "Continuez à travailler même sans internet, avec synchronisation automatique lors de la reconnexion.",
           },
           realTimeUpdates: {
             title: "Mises à Jour en Temps Réel",
-            description: "Maintenez votre stock à jour avec une synchronisation instantanée entre tous les appareils.",
+            description:
+              "Maintenez votre stock à jour avec une synchronisation instantanée entre tous les appareils.",
           },
           notifications: {
             title: "Notifications Intelligentes",
-            description: "Recevez des alertes sur les niveaux bas de stock, les nouvelles commandes et plus encore.",
+            description:
+              "Recevez des alertes sur les niveaux bas de stock, les nouvelles commandes et plus encore.",
           },
         },
         benefits: {
           title: "Avantages de l'Application Mobile",
           mobility: {
             title: "Mobilité Totale",
-            description: "Accédez et gérez votre stock de n'importe où, à tout moment.",
+            description:
+              "Accédez et gérez votre stock de n'importe où, à tout moment.",
           },
           easeOfUse: {
             title: "Facile à Utiliser",
-            description: "Interface intuitive conçue pour rationaliser vos opérations quotidiennes.",
+            description:
+              "Interface intuitive conçue pour rationaliser vos opérations quotidiennes.",
           },
           integration: {
             title: "Intégration Complète",
-            description: "Synchronisation parfaite avec la plateforme web de Purple Stock.",
+            description:
+              "Synchronisation parfaite avec la plateforme web de Purple Stock.",
           },
           productivity: {
             title: "Productivité Accrue",
-            description: "Effectuez les opérations de stock plus rapidement avec des outils mobiles optimisés.",
+            description:
+              "Effectuez les opérations de stock plus rapidement avec des outils mobiles optimisés.",
           },
         },
         cta: {
           title: "Prêt à Mobiliser votre Contrôle des Stocks ?",
-          description: "Rejoignez des milliers d'entreprises qui utilisent déjà l'application Purple Stock pour la gestion des stocks.",
+          description:
+            "Rejoignez des milliers d'entreprises qui utilisent déjà l'application Purple Stock pour la gestion des stocks.",
           scheduleDemo: "Planifier une Démo",
           startTrial: "Commencer l'Essai Gratuit",
         },
@@ -2176,12 +2501,14 @@ export const translations = {
     },
     glossary: {
       title: "Glossaire des Termes pour les Petites Entreprises",
-      description: "Notre glossaire explique les termes et acronymes importants de la gestion des stocks et de la comptabilité, fournissant aux petites entreprises les connaissances nécessaires pour optimiser les processus d'inventaire, contrôler les coûts et améliorer leurs finances.",
+      description:
+        "Notre glossaire explique les termes et acronymes importants de la gestion des stocks et de la comptabilité, fournissant aux petites entreprises les connaissances nécessaires pour optimiser les processus d'inventaire, contrôler les coûts et améliorer leurs finances.",
       learnMore: {
-        title: "Vous souhaitez en savoir plus sur les stratégies de croissance et les meilleures pratiques de gestion des stocks ?",
+        title:
+          "Vous souhaitez en savoir plus sur les stratégies de croissance et les meilleures pratiques de gestion des stocks ?",
         description: "Consultez le Blog Purple Stock ci-dessous :",
-        link: "Blog Purple Stock"
-      }
+        link: "Blog Purple Stock",
+      },
     },
     pricing: {
       title: "Plans et Tarifs",
@@ -2226,42 +2553,49 @@ export const translations = {
             "Accès API",
           ],
           buttonText: "Parler aux Ventes",
-          buttonLink: buildWhatsAppUrl("Bonjour! Je souhaiterais en savoir plus sur le plan entreprise."),
+          buttonLink: buildWhatsAppUrl(
+            "Bonjour! Je souhaiterais en savoir plus sur le plan entreprise."
+          ),
         },
       ],
     },
     barcodeGenerator: {
       title: "Générateur de Code-barres Gratuit",
-      description: "Créez des codes-barres professionnels pour votre entreprise. Support pour plusieurs formats, personnalisation complète et téléchargement gratuit.",
+      description:
+        "Créez des codes-barres professionnels pour votre entreprise. Support pour plusieurs formats, personnalisation complète et téléchargement gratuit.",
       configuration: {
         title: "Configuration",
-        description: "Personnalisez votre code-barres avec les options ci-dessous",
+        description:
+          "Personnalisez votre code-barres avec les options ci-dessous",
         data: "Données du Code",
         type: "Type de Code",
         size: "Taille",
         barcodeColor: "Couleur du Code",
         backgroundColor: "Couleur de Fond",
-        showText: "Afficher le Texte"
+        showText: "Afficher le Texte",
       },
       actions: {
         download: "Télécharger le Code",
-        copyUrl: "Copier l'URL"
+        copyUrl: "Copier l'URL",
       },
       preview: {
         title: "Aperçu",
-        description: "Voyez comment votre code-barres apparaîtra avant le téléchargement",
+        description:
+          "Voyez comment votre code-barres apparaîtra avant le téléchargement",
         error: "Erreur lors du chargement du code-barres",
         enterData: "Entrez les données pour générer le code",
         type: "Type",
         data: "Données",
-        dimensions: "Dimensions"
+        dimensions: "Dimensions",
       },
       information: {
         title: "Informations",
-        description: "Apprenez sur différents types de codes-barres et leurs applications",
+        description:
+          "Apprenez sur différents types de codes-barres et leurs applications",
         formats: {
           title: "Formats",
-          code128: "Idéal pour usage général, supporte les caractères alphanumériques",
+          code128:
+            "Idéal pour usage général, supporte les caractères alphanumériques",
           code39: "Standard industriel, largement utilisé en logistique",
           ean13: "Standard international pour produits commerciaux",
           ean8: "Version compacte d'EAN-13 pour petits produits",
@@ -2269,49 +2603,56 @@ export const translations = {
           upce: "Version compacte d'UPC-A",
           itf14: "Spécialisé pour logistique et transport",
           codabar: "Utilisé en bibliothèques, santé et logistique",
-          default: "Format standard pour usage général"
+          default: "Format standard pour usage général",
         },
         usage: {
           title: "Applications",
           retail: {
             title: "Commerce de Détail",
-            description: "Identification de produits, contrôle des stocks et point de vente"
+            description:
+              "Identification de produits, contrôle des stocks et point de vente",
           },
           logistics: {
             title: "Logistique",
-            description: "Suivi de colis, contrôle d'entrepôt et gestion des stocks"
+            description:
+              "Suivi de colis, contrôle d'entrepôt et gestion des stocks",
           },
           healthcare: {
             title: "Santé",
-            description: "Identification des patients, médicaments et équipements médicaux"
+            description:
+              "Identification des patients, médicaments et équipements médicaux",
           },
           manufacturing: {
             title: "Fabrication",
-            description: "Contrôle qualité, traçabilité et gestion des actifs"
-          }
+            description: "Contrôle qualité, traçabilité et gestion des actifs",
+          },
         },
         tips: {
           title: "Conseils",
           items: [
             {
               title: "Choisissez le bon format",
-              description: "Utilisez EAN-13 pour produits commerciaux, Code 128 pour usage général"
+              description:
+                "Utilisez EAN-13 pour produits commerciaux, Code 128 pour usage général",
             },
             {
               title: "Vérifiez la qualité d'impression",
-              description: "Imprimez en haute résolution pour une meilleure lisibilité"
+              description:
+                "Imprimez en haute résolution pour une meilleure lisibilité",
             },
             {
               title: "Testez avant utilisation",
-              description: "Testez toujours le code avec un lecteur avant implémentation"
+              description:
+                "Testez toujours le code avec un lecteur avant implémentation",
             },
             {
               title: "Maintenez la cohérence",
-              description: "Utilisez le même format pour des produits similaires"
-            }
-          ]
-        }
-      }
+              description:
+                "Utilisez le même format pour des produits similaires",
+            },
+          ],
+        },
+      },
     },
   },
-}
+};

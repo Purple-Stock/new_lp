@@ -9,12 +9,14 @@ This document explains the `llms.txt` file implementation for the PurpleStock ap
 ## 🎯 Purpose and Benefits
 
 ### For AI Systems
+
 - **Better Understanding**: Helps LLMs comprehend your website structure
 - **Improved Context**: Provides clear descriptions of features and capabilities
 - **Navigation Aid**: Offers direct links to important content sections
 - **Content Discovery**: Enables AI to find and reference relevant information
 
 ### For SEO and Discoverability
+
 - **AI-Friendly Indexing**: Improves how AI search engines understand your site
 - **Structured Information**: Clear hierarchy of features and capabilities
 - **Industry-Specific Context**: Detailed descriptions for business applications
@@ -23,13 +25,15 @@ This document explains the `llms.txt` file implementation for the PurpleStock ap
 ## 🏗️ Implementation Details
 
 ### File Location
+
 - **Route**: `app/llms.txt/route.ts`
 - **URL**: `https://yourdomain.com/llms.txt`
 - **Content-Type**: `text/plain; charset=utf-8`
 
 ### Technical Implementation
+
 ```typescript
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 export async function GET() {
   const content = `# PurpleStock
@@ -38,8 +42,8 @@ export async function GET() {
 
   return new Response(content, {
     headers: {
-      "Content-Type": "text/plain; charset=utf-8"
-    }
+      "Content-Type": "text/plain; charset=utf-8",
+    },
   });
 }
 ```
@@ -47,26 +51,31 @@ export async function GET() {
 ## 📖 Content Structure
 
 ### 1. **Header Section**
+
 - Application name and tagline
 - Brief description of purpose and capabilities
 
 ### 2. **Main Features**
+
 - **Gestão de Estoque**: Inventory management features
 - **Códigos e Rastreamento**: Barcode and QR code solutions
 - **Gestão de Equipamentos**: Equipment management tools
 - **Análise e Relatórios**: Analytics and reporting capabilities
 
 ### 3. **Industry Coverage**
+
 - 9 different industries with specific use cases
 - Direct links to industry-specific pages
 - Clear value propositions for each sector
 
 ### 4. **Resources and Tools**
+
 - Technical resources and documentation
 - Implementation guides and best practices
 - Free tools and utilities
 
 ### 5. **Technical Information**
+
 - Technology stack details
 - API documentation references
 - Integration capabilities
@@ -74,13 +83,16 @@ export async function GET() {
 ## 🔗 Link Structure
 
 ### Internal Links
+
 All links in the `llms.txt` file use relative paths that work seamlessly:
+
 - `/features/inventory-control` → Feature pages
 - `/industrias/retail` → Industry-specific pages
 - `/recursos/codigo-de-barras` → Resource pages
 - `/artigos/como-usar-qr-code-controle-estoque` → Article pages
 
 ### Link Categories
+
 - **Features**: Core application functionality
 - **Industries**: Target market segments
 - **Resources**: Tools and documentation
@@ -90,21 +102,27 @@ All links in the `llms.txt` file use relative paths that work seamlessly:
 ## 🚀 Usage Examples
 
 ### For AI Assistants
+
 AI systems can now:
+
 - Understand PurpleStock's capabilities
 - Navigate to relevant feature pages
 - Provide accurate information about services
 - Suggest appropriate solutions for different industries
 
 ### For Content Generation
+
 LLMs can:
+
 - Generate accurate descriptions of features
 - Create industry-specific content
 - Provide technical documentation
 - Suggest relevant use cases
 
 ### For Search Engines
+
 AI-powered search can:
+
 - Better understand your business model
 - Index industry-specific content
 - Provide more relevant search results
@@ -113,6 +131,7 @@ AI-powered search can:
 ## 🔧 Customization
 
 ### Adding New Features
+
 When adding new features, update the `llms.txt` content:
 
 ```typescript
@@ -121,13 +140,16 @@ When adding new features, update the `llms.txt` content:
 ```
 
 ### Updating Industry Information
+
 ```typescript
 // Add new industries
 - [New Industry](/industrias/new-industry): Description of industry benefits
 ```
 
 ### Modifying Content
+
 The content is stored as a template string, making it easy to:
+
 - Update descriptions
 - Add new sections
 - Modify priorities
@@ -146,6 +168,7 @@ The content is stored as a template string, making it easy to:
 ## 🌐 Best Practices
 
 ### Content Guidelines
+
 1. **Clear Descriptions**: Use concise, descriptive language
 2. **Consistent Formatting**: Maintain Markdown structure
 3. **Relevant Links**: Include only important, relevant pages
@@ -153,12 +176,14 @@ The content is stored as a template string, making it easy to:
 5. **Technical Accuracy**: Ensure all technical information is correct
 
 ### SEO Considerations
+
 1. **Keyword Integration**: Include relevant industry keywords
 2. **Link Structure**: Use descriptive anchor text
 3. **Content Hierarchy**: Organize information logically
 4. **Update Frequency**: Keep content current with site changes
 
 ### AI Optimization
+
 1. **Structured Information**: Clear sections and subsections
 2. **Descriptive Text**: Detailed explanations of features
 3. **Contextual Links**: Links that provide context
@@ -167,6 +192,7 @@ The content is stored as a template string, making it easy to:
 ## 🔍 Testing and Validation
 
 ### Local Testing
+
 ```bash
 # Test the llms.txt file
 curl http://localhost:3001/llms.txt
@@ -179,6 +205,7 @@ curl -s http://localhost:3001/llms.txt | grep -E "^#|^##|^-"
 ```
 
 ### Production Testing
+
 ```bash
 # Test production URL
 curl https://yourdomain.com/llms.txt
@@ -190,6 +217,7 @@ curl -I https://yourdomain.com/llms.txt | grep "Content-Type"
 ## 📈 Future Enhancements
 
 ### Potential Improvements
+
 1. **Dynamic Content**: Generate content based on database
 2. **Multi-language Support**: Support for different languages
 3. **Version Control**: Track changes and updates
@@ -197,6 +225,7 @@ curl -I https://yourdomain.com/llms.txt | grep "Content-Type"
 5. **Schema Markup**: Add structured data for better AI understanding
 
 ### Integration Opportunities
+
 1. **AI Chatbots**: Use content for better responses
 2. **Content Generation**: Help LLMs create relevant content
 3. **Search Optimization**: Improve AI-powered search results
@@ -205,12 +234,14 @@ curl -I https://yourdomain.com/llms.txt | grep "Content-Type"
 ## 🎯 Success Metrics
 
 ### Measurable Benefits
+
 - **AI Understanding**: Better comprehension by LLMs
 - **Content Discovery**: Improved content accessibility
 - **SEO Performance**: Better search engine understanding
 - **User Experience**: Enhanced AI-powered interactions
 
 ### Monitoring
+
 - **Content Accuracy**: Regular validation of information
 - **Link Functionality**: Ensure all links work correctly
 - **Content Updates**: Keep information current
@@ -219,11 +250,13 @@ curl -I https://yourdomain.com/llms.txt | grep "Content-Type"
 ## 📚 Additional Resources
 
 ### Documentation
+
 - [Sitemap Implementation](./SITEMAP_README.md)
 - [Robots.txt Configuration](./app/robots.ts)
 - [Next.js App Router Documentation](https://nextjs.org/docs)
 
 ### Standards and References
+
 - [LLMs.txt Standard](https://github.com/AnswerDotAI/llms-txt)
 - [AI-Friendly Web Standards](https://nextleft.com/blog/llms-txt/)
 - [Next.js Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)

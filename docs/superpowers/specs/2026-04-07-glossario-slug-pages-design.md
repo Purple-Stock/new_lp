@@ -15,17 +15,17 @@ Transformar o glossário monolítico atual (uma única página com ~60 termos re
 
 ### Novos arquivos
 
-| Arquivo | Responsabilidade |
-|---------|-----------------|
-| `/data/glossary.ts` | Array de objetos `GlossaryTerm` — fonte única de verdade |
-| `/app/glossario/[slug]/page.tsx` | Página estática individual por termo |
+| Arquivo                          | Responsabilidade                                         |
+| -------------------------------- | -------------------------------------------------------- |
+| `/data/glossary.ts`              | Array de objetos `GlossaryTerm` — fonte única de verdade |
+| `/app/glossario/[slug]/page.tsx` | Página estática individual por termo                     |
 
 ### Arquivos modificados
 
-| Arquivo | Mudança |
-|---------|---------|
+| Arquivo                   | Mudança                                        |
+| ------------------------- | ---------------------------------------------- |
 | `/app/glossario/page.tsx` | Cards passam a linkar para `/glossario/{slug}` |
-| `/app/sitemap.ts` | Importa termos e gera rotas dinamicamente |
+| `/app/sitemap.ts`         | Importa termos e gera rotas dinamicamente      |
 
 ---
 
@@ -35,27 +35,28 @@ Transformar o glossário monolítico atual (uma única página com ~60 termos re
 // /data/glossary.ts
 
 export interface GlossaryTerm {
-  slug: string                  // ex: "sku", "lead-time", "efeito-chicote"
-  term: string                  // ex: "SKU (Stock Keeping Unit)"
-  category: 'inventory' | 'logistics' | 'finance' | 'management' | 'technology'
-  shortDefinition: string       // ~50 palavras — card da listagem + meta description
-  definition: string            // ~300 palavras — seção principal da página
-  example: string               // ~200 palavras — caso prático concreto
-  formula?: string              // expressão/texto quando aplicável
-  formulaExplanation?: string   // explicação dos componentes da fórmula
-  faq: [                        // exatamente 3 perguntas por termo
+  slug: string; // ex: "sku", "lead-time", "efeito-chicote"
+  term: string; // ex: "SKU (Stock Keeping Unit)"
+  category: "inventory" | "logistics" | "finance" | "management" | "technology";
+  shortDefinition: string; // ~50 palavras — card da listagem + meta description
+  definition: string; // ~300 palavras — seção principal da página
+  example: string; // ~200 palavras — caso prático concreto
+  formula?: string; // expressão/texto quando aplicável
+  formulaExplanation?: string; // explicação dos componentes da fórmula
+  faq: [
+    // exatamente 3 perguntas por termo
     { question: string; answer: string },
     { question: string; answer: string },
     { question: string; answer: string },
-  ]
-  relatedTerms: string[]        // slugs de outros termos no glossário
-  relatedFeatures?: string[]    // ex: ['inventory-control', 'barcoding']
-  relatedIndustries?: string[]  // ex: ['varejo', 'logistica']
+  ];
+  relatedTerms: string[]; // slugs de outros termos no glossário
+  relatedFeatures?: string[]; // ex: ['inventory-control', 'barcoding']
+  relatedIndustries?: string[]; // ex: ['varejo', 'logistica']
 }
 
 export const glossaryTerms: GlossaryTerm[] = [
   // ... um objeto por termo
-]
+];
 ```
 
 Os slugs são derivados do nome do termo em português, lowercase e hifenizado. Os campos `definition`, `example` e `faq[].answer` são placeholders a serem preenchidos pelo time de conteúdo.
@@ -73,10 +74,10 @@ Os slugs são derivados do nome do termo em português, lowercase e hifenizado. 
 1. **Hero** — nome do termo + badge de categoria + `shortDefinition`
 2. **Definição completa** — `definition` com H2 "O que é {term}?"
 3. **Exemplo prático** — `example` com H2 "Exemplo prático"
-4. **Fórmula** *(condicional — só aparece se `formula` existir)* — bloco destacado com fórmula + `formulaExplanation`
+4. **Fórmula** _(condicional — só aparece se `formula` existir)_ — bloco destacado com fórmula + `formulaExplanation`
 5. **Termos relacionados** — cards com link para `/glossario/{slug}` dos `relatedTerms`
-6. **Features relacionadas** *(condicional)* — links para `/features/{slug}` dos `relatedFeatures`
-7. **Indústrias relacionadas** *(condicional)* — links para `/industrias/{slug}` dos `relatedIndustries`
+6. **Features relacionadas** _(condicional)_ — links para `/features/{slug}` dos `relatedFeatures`
+7. **Indústrias relacionadas** _(condicional)_ — links para `/industrias/{slug}` dos `relatedIndustries`
 8. **FAQ** — accordion com as 3 perguntas/respostas
 9. **CTA** — banner de cadastro Purple Stock (reutilizar padrão do blog)
 
@@ -114,14 +115,14 @@ Home → Glossário → {term}
 
 ```typescript
 // /app/sitemap.ts — adicionar:
-import { glossaryTerms } from '@/data/glossary'
+import { glossaryTerms } from "@/data/glossary";
 
 const glossaryRoutes = glossaryTerms.map((term) => ({
   url: `${baseUrl}/glossario/${term.slug}`,
-  lastModified: new Date('2026-04-07'),
-  changeFrequency: 'monthly' as const,
+  lastModified: new Date("2026-04-07"),
+  changeFrequency: "monthly" as const,
   priority: 0.6,
-}))
+}));
 ```
 
 ---
@@ -159,7 +160,7 @@ Os seguintes slugs serão gerados a partir do `glossario/page.tsx` atual:
 
 `3pl`, `5s`, `80-20`, `contas-a-pagar`, `contas-a-receber`, `b2b`, `sistema-de-codigo-de-barras`, `lista-de-materiais`, `efeito-chicote`, `ciclo-de-conversao-de-caixa`, `ativos-circulantes`, `passivos-circulantes`, `custo-das-mercadorias-vendidas`, `ciclo-de-tempo`, `dropshipping`, `sku`, `estoque-de-seguranca`, `giro-de-estoque`, `ruptura-de-estoque`, `excesso-de-estoque`, `financiamento-de-estoque`, `gestao-de-estoque`, `inventario-fisico`, `just-in-time`, `kanban`, `lead-time`, `logistica`, `picking`, `ponto-de-reposicao`, `logistica-reversa`, `wms`, `vmi`, `cadeia-de-suprimentos`, `capital-de-giro`, `inflacao`
 
-*(~35 termos identificados — validar contagem final na leitura do arquivo)*
+_(~35 termos identificados — validar contagem final na leitura do arquivo)_
 
 ---
 

@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { FileCode } from "lucide-react"
-import { useEffect, useMemo, useState } from "react"
-import { useLanguage } from "@/contexts/LanguageContext"
-import Image from "next/image"
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { FileCode } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import Image from "next/image";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 export function ProductDocumentation() {
-  const { language } = useLanguage()
-  const [selectedTopicIndex, setSelectedTopicIndex] = useState(0)
-  const [previewOpen, setPreviewOpen] = useState(false)
+  const { language } = useLanguage();
+  const [selectedTopicIndex, setSelectedTopicIndex] = useState(0);
+  const [previewOpen, setPreviewOpen] = useState(false);
 
   const documentationSection = useMemo(
     () =>
@@ -122,7 +122,8 @@ export function ProductDocumentation() {
         en: {
           badge: "Customer guide",
           title: "How Purple Stock supports your operations",
-          subtitle: "A simple, non-technical view of what your team can do day to day.",
+          subtitle:
+            "A simple, non-technical view of what your team can do day to day.",
           highlightsLabel: "In daily operations, you can",
           topics: [
             {
@@ -130,87 +131,147 @@ export function ProductDocumentation() {
               title: "1. Get started quickly",
               description:
                 "Create access, log in, and start with your team without complex onboarding.",
-              highlights: ["Quick team access", "Simple use on desktop and mobile", "Fast operational start"],
+              highlights: [
+                "Quick team access",
+                "Simple use on desktop and mobile",
+                "Fast operational start",
+              ],
             },
             {
               id: "doc-teams",
               title: "2. Organize teams and responsibilities",
-              description: "Each team works in its own context with clear visibility and less confusion.",
-              highlights: ["Separate operations by team", "Role-based visibility", "Fewer organization mistakes"],
+              description:
+                "Each team works in its own context with clear visibility and less confusion.",
+              highlights: [
+                "Separate operations by team",
+                "Role-based visibility",
+                "Fewer organization mistakes",
+              ],
             },
             {
               id: "doc-items",
               title: "3. Control items and locations",
-              description: "Register items and locations and track everything in one place.",
-              highlights: ["Know where each item is", "See updated balances", "Standardize item records"],
+              description:
+                "Register items and locations and track everything in one place.",
+              highlights: [
+                "Know where each item is",
+                "See updated balances",
+                "Standardize item records",
+              ],
             },
             {
               id: "doc-movements",
               title: "4. Register stock movements without spreadsheets",
-              description: "Inbound, outbound, transfers, adjustments, and counts with clear history.",
-              highlights: ["Post movements in a few steps", "Keep audit history", "Reduce manual rework"],
+              description:
+                "Inbound, outbound, transfers, adjustments, and counts with clear history.",
+              highlights: [
+                "Post movements in a few steps",
+                "Keep audit history",
+                "Reduce manual rework",
+              ],
             },
             {
               id: "doc-reports",
               title: "5. Make decisions with reports",
-              description: "Track losses, replenishment, and performance to act faster.",
-              highlights: ["See what needs replenishment", "Spot operational bottlenecks", "Support purchasing decisions"],
+              description:
+                "Track losses, replenishment, and performance to act faster.",
+              highlights: [
+                "See what needs replenishment",
+                "Spot operational bottlenecks",
+                "Support purchasing decisions",
+              ],
             },
             {
               id: "doc-qr",
               title: "6. Use QR code and labels",
-              description: "Mobile scanning and labels make inventory faster and more reliable.",
-              highlights: ["Faster item checks", "Better inventory accuracy", "Higher data confidence"],
+              description:
+                "Mobile scanning and labels make inventory faster and more reliable.",
+              highlights: [
+                "Faster item checks",
+                "Better inventory accuracy",
+                "Higher data confidence",
+              ],
             },
           ],
         },
         fr: {
           badge: "Guide client",
           title: "Comment Purple Stock aide votre opération",
-          subtitle: "Une vue simple et non technique de ce que votre équipe peut faire au quotidien.",
+          subtitle:
+            "Une vue simple et non technique de ce que votre équipe peut faire au quotidien.",
           highlightsLabel: "Au quotidien, vous pouvez",
           topics: [
             {
               id: "doc-access",
               title: "1. Démarrer rapidement",
-              description: "Créer les accès, se connecter et commencer sans déploiement complexe.",
-              highlights: ["Accès rapide pour l'équipe", "Usage simple web et mobile", "Démarrage opérationnel rapide"],
+              description:
+                "Créer les accès, se connecter et commencer sans déploiement complexe.",
+              highlights: [
+                "Accès rapide pour l'équipe",
+                "Usage simple web et mobile",
+                "Démarrage opérationnel rapide",
+              ],
             },
             {
               id: "doc-teams",
               title: "2. Organiser équipes et responsabilités",
-              description: "Chaque équipe travaille dans son contexte avec une visibilité claire.",
-              highlights: ["Séparer les opérations par équipe", "Donner la bonne visibilité", "Réduire les erreurs d'organisation"],
+              description:
+                "Chaque équipe travaille dans son contexte avec une visibilité claire.",
+              highlights: [
+                "Séparer les opérations par équipe",
+                "Donner la bonne visibilité",
+                "Réduire les erreurs d'organisation",
+              ],
             },
             {
               id: "doc-items",
               title: "3. Gérer articles et emplacements",
-              description: "Enregistrer les articles et emplacements et tout suivre au même endroit.",
-              highlights: ["Savoir où est chaque article", "Voir les soldes à jour", "Standardiser le catalogue"],
+              description:
+                "Enregistrer les articles et emplacements et tout suivre au même endroit.",
+              highlights: [
+                "Savoir où est chaque article",
+                "Voir les soldes à jour",
+                "Standardiser le catalogue",
+              ],
             },
             {
               id: "doc-movements",
               title: "4. Enregistrer les mouvements sans tableurs",
-              description: "Entrées, sorties, transferts, ajustements et comptages avec historique clair.",
-              highlights: ["Saisir en quelques étapes", "Garder l'historique", "Réduire le travail manuel"],
+              description:
+                "Entrées, sorties, transferts, ajustements et comptages avec historique clair.",
+              highlights: [
+                "Saisir en quelques étapes",
+                "Garder l'historique",
+                "Réduire le travail manuel",
+              ],
             },
             {
               id: "doc-reports",
               title: "5. Décider avec les rapports",
-              description: "Suivre pertes, réassort et performance pour agir plus vite.",
-              highlights: ["Voir les besoins de réassort", "Identifier les blocages", "Aider les décisions d'achat"],
+              description:
+                "Suivre pertes, réassort et performance pour agir plus vite.",
+              highlights: [
+                "Voir les besoins de réassort",
+                "Identifier les blocages",
+                "Aider les décisions d'achat",
+              ],
             },
             {
               id: "doc-qr",
               title: "6. Utiliser QR code et étiquettes",
-              description: "Le scan mobile et les étiquettes rendent le contrôle plus rapide et fiable.",
-              highlights: ["Contrôles plus rapides", "Meilleure précision", "Plus de confiance dans les données"],
+              description:
+                "Le scan mobile et les étiquettes rendent le contrôle plus rapide et fiable.",
+              highlights: [
+                "Contrôles plus rapides",
+                "Meilleure précision",
+                "Plus de confiance dans les données",
+              ],
             },
           ],
         },
       })[language],
-    [language],
-  )
+    [language]
+  );
 
   const actionsByTopic = useMemo(
     () =>
@@ -218,45 +279,117 @@ export function ProductDocumentation() {
         pt: {
           title: "O que você consegue fazer nesta tela",
           items: {
-            "doc-acesso": ["Entrar na conta da empresa.", "Escolher a equipe para começar o trabalho.", "Acessar rapidamente os módulos principais."],
-            "doc-equipes": ["Criar uma nova equipe.", "Ver equipes já existentes.", "Atualizar ou remover equipes quando necessário."],
-            "doc-itens": ["Cadastrar novos itens.", "Consultar itens e saldos.", "Editar ou excluir itens e locais cadastrados."],
-            "doc-movimentos": ["Registrar entrada, saída, transferência, ajuste e contagem.", "Consultar o que acabou de ser lançado.", "Corrigir lançamentos com novo ajuste quando preciso."],
-            "doc-relatorios": ["Ver indicadores de perdas e reposição.", "Filtrar por período e equipe.", "Definir prioridades de compra e ação."],
-            "doc-qr": ["Gerar e imprimir etiquetas.", "Escanear itens no celular.", "Atualizar conferências de inventário com mais rapidez."],
+            "doc-acesso": [
+              "Entrar na conta da empresa.",
+              "Escolher a equipe para começar o trabalho.",
+              "Acessar rapidamente os módulos principais.",
+            ],
+            "doc-equipes": [
+              "Criar uma nova equipe.",
+              "Ver equipes já existentes.",
+              "Atualizar ou remover equipes quando necessário.",
+            ],
+            "doc-itens": [
+              "Cadastrar novos itens.",
+              "Consultar itens e saldos.",
+              "Editar ou excluir itens e locais cadastrados.",
+            ],
+            "doc-movimentos": [
+              "Registrar entrada, saída, transferência, ajuste e contagem.",
+              "Consultar o que acabou de ser lançado.",
+              "Corrigir lançamentos com novo ajuste quando preciso.",
+            ],
+            "doc-relatorios": [
+              "Ver indicadores de perdas e reposição.",
+              "Filtrar por período e equipe.",
+              "Definir prioridades de compra e ação.",
+            ],
+            "doc-qr": [
+              "Gerar e imprimir etiquetas.",
+              "Escanear itens no celular.",
+              "Atualizar conferências de inventário com mais rapidez.",
+            ],
           } as Record<string, string[]>,
         },
         en: {
           title: "What you can do on this screen",
           items: {
-            "doc-access": ["Log into your company account.", "Choose the team to operate.", "Open key modules quickly."],
-            "doc-teams": ["Create a new team.", "View existing teams.", "Update or remove teams when needed."],
-            "doc-items": ["Create new items.", "Check items and balances.", "Edit or delete existing items and locations."],
-            "doc-movements": ["Register inbound, outbound, transfer, adjustment, and count.", "Review the latest movement.", "Correct data with a follow-up adjustment."],
-            "doc-reports": ["View loss and replenishment indicators.", "Filter by team and period.", "Set buying and action priorities."],
-            "doc-qr": ["Generate and print labels.", "Scan items with mobile.", "Update inventory checks faster."],
+            "doc-access": [
+              "Log into your company account.",
+              "Choose the team to operate.",
+              "Open key modules quickly.",
+            ],
+            "doc-teams": [
+              "Create a new team.",
+              "View existing teams.",
+              "Update or remove teams when needed.",
+            ],
+            "doc-items": [
+              "Create new items.",
+              "Check items and balances.",
+              "Edit or delete existing items and locations.",
+            ],
+            "doc-movements": [
+              "Register inbound, outbound, transfer, adjustment, and count.",
+              "Review the latest movement.",
+              "Correct data with a follow-up adjustment.",
+            ],
+            "doc-reports": [
+              "View loss and replenishment indicators.",
+              "Filter by team and period.",
+              "Set buying and action priorities.",
+            ],
+            "doc-qr": [
+              "Generate and print labels.",
+              "Scan items with mobile.",
+              "Update inventory checks faster.",
+            ],
           } as Record<string, string[]>,
         },
         fr: {
           title: "Ce que vous pouvez faire sur cet écran",
           items: {
-            "doc-access": ["Se connecter au compte de l'entreprise.", "Choisir l'équipe active.", "Accéder rapidement aux modules clés."],
-            "doc-teams": ["Créer une équipe.", "Voir les équipes existantes.", "Mettre à jour ou supprimer une équipe."],
-            "doc-items": ["Créer des articles.", "Consulter articles et soldes.", "Modifier ou supprimer articles et emplacements."],
-            "doc-movements": ["Enregistrer entrée, sortie, transfert, ajustement et comptage.", "Vérifier le dernier mouvement.", "Corriger avec un nouvel ajustement si nécessaire."],
-            "doc-reports": ["Voir les indicateurs de perte et réassort.", "Filtrer par période et équipe.", "Définir les priorités d'action."],
-            "doc-qr": ["Générer et imprimer des étiquettes.", "Scanner les articles sur mobile.", "Accélérer la mise à jour d'inventaire."],
+            "doc-access": [
+              "Se connecter au compte de l'entreprise.",
+              "Choisir l'équipe active.",
+              "Accéder rapidement aux modules clés.",
+            ],
+            "doc-teams": [
+              "Créer une équipe.",
+              "Voir les équipes existantes.",
+              "Mettre à jour ou supprimer une équipe.",
+            ],
+            "doc-items": [
+              "Créer des articles.",
+              "Consulter articles et soldes.",
+              "Modifier ou supprimer articles et emplacements.",
+            ],
+            "doc-movements": [
+              "Enregistrer entrée, sortie, transfert, ajustement et comptage.",
+              "Vérifier le dernier mouvement.",
+              "Corriger avec un nouvel ajustement si nécessaire.",
+            ],
+            "doc-reports": [
+              "Voir les indicateurs de perte et réassort.",
+              "Filtrer par période et équipe.",
+              "Définir les priorités d'action.",
+            ],
+            "doc-qr": [
+              "Générer et imprimer des étiquettes.",
+              "Scanner les articles sur mobile.",
+              "Accélérer la mise à jour d'inventaire.",
+            ],
           } as Record<string, string[]>,
         },
       })[language],
-    [language],
-  )
+    [language]
+  );
 
   useEffect(() => {
-    setSelectedTopicIndex(0)
-  }, [language])
+    setSelectedTopicIndex(0);
+  }, [language]);
 
-  const selectedTopic = documentationSection.topics[selectedTopicIndex]
+  const selectedTopic = documentationSection.topics[selectedTopicIndex];
   const topicImage =
     selectedTopic.id === "doc-acesso" || selectedTopic.id === "doc-access"
       ? "/images/docs/app-home.png"
@@ -264,13 +397,15 @@ export function ProductDocumentation() {
         ? "/images/docs/app-team-selection.png"
         : selectedTopic.id === "doc-itens" || selectedTopic.id === "doc-items"
           ? "/images/docs/app-items.png"
-          : selectedTopic.id === "doc-movimentos" || selectedTopic.id === "doc-movements"
+          : selectedTopic.id === "doc-movimentos" ||
+              selectedTopic.id === "doc-movements"
             ? "/images/docs/app-movements.png"
-            : selectedTopic.id === "doc-relatorios" || selectedTopic.id === "doc-reports"
+            : selectedTopic.id === "doc-relatorios" ||
+                selectedTopic.id === "doc-reports"
               ? "/images/docs/app-reports.png"
               : selectedTopic.id === "doc-qr"
                 ? "/images/docs/app-labels.png"
-                : null
+                : null;
 
   return (
     <section className="rounded-3xl border border-violet-100 bg-violet-50/40 p-6 sm:p-8">
@@ -279,7 +414,9 @@ export function ProductDocumentation() {
           <FileCode className="h-3.5 w-3.5" />
           {documentationSection.badge}
         </div>
-        <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">{documentationSection.title}</h1>
+        <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
+          {documentationSection.title}
+        </h1>
         <p className="mt-2 text-slate-600">{documentationSection.subtitle}</p>
       </div>
       <div className="grid gap-6 lg:grid-cols-[220px,minmax(0,1fr)]">
@@ -305,14 +442,26 @@ export function ProductDocumentation() {
           </nav>
         </aside>
         <div className="space-y-4">
-          <article id={selectedTopic.id} key={selectedTopic.id} className="rounded-2xl border border-violet-200 bg-white p-6 lg:p-7 scroll-mt-28">
-            <h2 className="text-lg font-semibold text-slate-900">{selectedTopic.title}</h2>
+          <article
+            id={selectedTopic.id}
+            key={selectedTopic.id}
+            className="rounded-2xl border border-violet-200 bg-white p-6 lg:p-7 scroll-mt-28"
+          >
+            <h2 className="text-lg font-semibold text-slate-900">
+              {selectedTopic.title}
+            </h2>
             <div className="mt-3 grid gap-5 md:grid-cols-[minmax(0,1fr),440px] md:items-start">
               <div>
-                <p className="text-sm leading-relaxed text-slate-600">{selectedTopic.description}</p>
+                <p className="text-sm leading-relaxed text-slate-600">
+                  {selectedTopic.description}
+                </p>
               </div>
               {topicImage ? (
-                <button type="button" onClick={() => setPreviewOpen(true)} className="block text-left">
+                <button
+                  type="button"
+                  onClick={() => setPreviewOpen(true)}
+                  className="block text-left"
+                >
                   <Image
                     src={topicImage}
                     alt={selectedTopic.title}
@@ -321,13 +470,19 @@ export function ProductDocumentation() {
                     className="w-full rounded-xl border border-slate-200 transition-transform hover:scale-[1.01]"
                   />
                   <span className="mt-2 block text-xs text-slate-500">
-                    {language === "pt" ? "Clique para ampliar" : language === "en" ? "Click to enlarge" : "Cliquez pour agrandir"}
+                    {language === "pt"
+                      ? "Clique para ampliar"
+                      : language === "en"
+                        ? "Click to enlarge"
+                        : "Cliquez pour agrandir"}
                   </span>
                 </button>
               ) : null}
             </div>
             <div className="mt-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-violet-700">{documentationSection.highlightsLabel}</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-violet-700">
+                {documentationSection.highlightsLabel}
+              </p>
               {"steps" in selectedTopic ? (
                 <ol className="mt-2 space-y-1">
                   {(selectedTopic.steps as string[]).map((step) => (
@@ -348,7 +503,9 @@ export function ProductDocumentation() {
             </div>
           </article>
           <section className="rounded-2xl border border-violet-200 bg-white p-6 lg:p-7">
-            <h2 className="text-lg font-semibold text-slate-900">{actionsByTopic.title}</h2>
+            <h2 className="text-lg font-semibold text-slate-900">
+              {actionsByTopic.title}
+            </h2>
             <ul className="mt-3 space-y-2">
               {(actionsByTopic.items[selectedTopic.id] ?? []).map((item) => (
                 <li key={item} className="text-sm text-slate-600">
@@ -374,5 +531,5 @@ export function ProductDocumentation() {
         </DialogContent>
       </Dialog>
     </section>
-  )
+  );
 }

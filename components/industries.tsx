@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useLanguage } from "@/contexts/LanguageContext"
-import { translations } from "@/utils/translations"
-import Link from "next/link"
-import Image from "next/image"
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/utils/translations";
+import Link from "next/link";
+import Image from "next/image";
 
 type IndustrySlug =
   | "varejo"
@@ -14,7 +14,7 @@ type IndustrySlug =
   | "automotivo"
   | "construction"
   | "technology"
-  | "audiovisual"
+  | "audiovisual";
 
 type IndustryTranslationKey =
   | "retail"
@@ -25,12 +25,12 @@ type IndustryTranslationKey =
   | "automotive"
   | "construction"
   | "technology"
-  | "audiovisual"
+  | "audiovisual";
 
 interface Industry {
-  slug: IndustrySlug
-  translationKey: IndustryTranslationKey
-  image: string
+  slug: IndustrySlug;
+  translationKey: IndustryTranslationKey;
+  image: string;
 }
 
 const industries: Industry[] = [
@@ -79,23 +79,28 @@ const industries: Industry[] = [
     translationKey: "audiovisual",
     image: "/images/audio-visual-2.jpg",
   },
-]
+];
 
 export function Industries() {
-  const { language } = useLanguage()
-  const t = translations[language]
+  const { language } = useLanguage();
+  const t = translations[language];
 
   return (
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center mb-4">{t.industries.title}</h2>
+        <h2 className="text-4xl font-bold text-center mb-4">
+          {t.industries.title}
+        </h2>
         <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
           {t.industries.description}
         </p>
         <p className="text-center mb-12">
-          {language === "pt" && "Selecione seu setor para saber como a Purple Stock pode ajudá-lo a controlar suas operações."}
-          {language === "en" && "Select your industry to learn how Purple Stock can help you control your operations."}
-          {language === "fr" && "Sélectionnez votre secteur pour découvrir comment Purple Stock peut vous aider à contrôler vos opérations."}
+          {language === "pt" &&
+            "Selecione seu setor para saber como a Purple Stock pode ajudá-lo a controlar suas operações."}
+          {language === "en" &&
+            "Select your industry to learn how Purple Stock can help you control your operations."}
+          {language === "fr" &&
+            "Sélectionnez votre secteur pour découvrir comment Purple Stock peut vous aider à contrôler vos opérations."}
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -135,5 +140,5 @@ export function Industries() {
         </div>
       </div>
     </section>
-  )
+  );
 }

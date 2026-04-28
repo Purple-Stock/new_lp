@@ -35,6 +35,7 @@ Use this checklist to ensure your sitemap works perfectly in production.
 ## 🔍 Post-Deployment Testing
 
 - [ ] **Sitemap Validation**
+
   ```bash
   # Test production sitemap
   SITEMAP_URL=https://yourdomain.com/sitemap.xml npm run validate-sitemap

@@ -1,51 +1,57 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ChevronDown, Globe, Box, ArrowRight } from "lucide-react"
-import { useLanguage } from "@/contexts/LanguageContext"
-import { translations } from "@/utils/translations"
-import { useEffect, useRef, useState } from "react"
-import { cn } from "@/lib/utils"
-import { trackSeoCtaClick } from "@/lib/analytics"
+import Link from "next/link";
+import { ChevronDown, Globe, Box, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/utils/translations";
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
+import { trackSeoCtaClick } from "@/lib/analytics";
 
 export function Navbar() {
-  const { language, setLanguage } = useLanguage()
-  const t = translations[language].nav
-  const [featuresOpen, setFeaturesOpen] = useState(false)
-  const [currentTime, setCurrentTime] = useState<string | null>(null)
-  const featuresRef = useRef<HTMLDivElement>(null)
+  const { language, setLanguage } = useLanguage();
+  const t = translations[language].nav;
+  const [featuresOpen, setFeaturesOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState<string | null>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
   const navLabel =
     language === "pt"
       ? "Navegação principal"
       : language === "fr"
         ? "Navigation principale"
-        : "Primary navigation"
+        : "Primary navigation";
 
   useEffect(() => {
     const updateTime = () => {
       setCurrentTime(
-        new Date().toLocaleTimeString(language === "pt" ? "pt-BR" : language === "fr" ? "fr-FR" : "en-US", {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-      )
-    }
+        new Date().toLocaleTimeString(
+          language === "pt" ? "pt-BR" : language === "fr" ? "fr-FR" : "en-US",
+          {
+            hour: "2-digit",
+            minute: "2-digit",
+          }
+        )
+      );
+    };
 
-    updateTime()
-    const interval = setInterval(updateTime, 60000)
-    return () => clearInterval(interval)
-  }, [language])
+    updateTime();
+    const interval = setInterval(updateTime, 60000);
+    return () => clearInterval(interval);
+  }, [language]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (featuresRef.current && !featuresRef.current.contains(event.target as Node)) {
-        setFeaturesOpen(false)
+      if (
+        featuresRef.current &&
+        !featuresRef.current.contains(event.target as Node)
+      ) {
+        setFeaturesOpen(false);
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 h-[25px] bg-gradient-to-b from-[#3d3d3d] to-[#2a2a2a] shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
@@ -53,7 +59,13 @@ export function Navbar() {
         <div className="flex items-center gap-0">
           <Link
             href="/"
-            aria-label={language === "pt" ? "Ir para a página inicial" : language === "fr" ? "Aller à l'accueil" : "Go to homepage"}
+            aria-label={
+              language === "pt"
+                ? "Ir para a página inicial"
+                : language === "fr"
+                  ? "Aller à l'accueil"
+                  : "Go to homepage"
+            }
             className="flex items-center justify-center w-8 h-full hover:bg-white/10 transition-colors"
           >
             <Box className="w-[14px] h-[14px] text-white" strokeWidth={2.5} />
@@ -67,7 +79,10 @@ export function Navbar() {
             <div className="relative" ref={featuresRef}>
               <button
                 type="button"
-                className={cn("px-3 py-0.5 rounded-[3px] transition-colors", featuresOpen ? "bg-[#0058d0] text-white" : "hover:bg-white/10")}
+                className={cn(
+                  "px-3 py-0.5 rounded-[3px] transition-colors",
+                  featuresOpen ? "bg-[#0058d0] text-white" : "hover:bg-white/10"
+                )}
                 onClick={() => setFeaturesOpen(!featuresOpen)}
                 aria-expanded={featuresOpen}
                 aria-haspopup="menu"
@@ -78,12 +93,36 @@ export function Navbar() {
               {featuresOpen && (
                 <div className="absolute left-0 mt-[3px] w-64 rounded-md shadow-[0_10px_40px_rgba(0,0,0,0.4)] bg-[#2d2d2d]/95 backdrop-blur-xl border border-white/10 animate-in fade-in slide-in-from-top-1 duration-150 overflow-hidden py-1">
                   {[
-                    { href: "/features/inventory-control", label: t.features.inventoryControl, shortcut: "⌘I" },
-                    { href: "/features/barcoding", label: t.features.barcoding, shortcut: "⌘B" },
-                    { href: "/features/purchase-sales", label: t.features.purchaseSales, shortcut: "⌘P" },
-                    { href: "/features/analytics-reporting", label: t.features.analyticsReporting, shortcut: "⌘R" },
-                    { href: "/features/warehouse-control", label: t.features.warehouseControl, shortcut: "⌘W" },
-                    { href: "/features/qr-code-management", label: t.features.qrCodeManagement, shortcut: "⌘Q" },
+                    {
+                      href: "/features/inventory-control",
+                      label: t.features.inventoryControl,
+                      shortcut: "⌘I",
+                    },
+                    {
+                      href: "/features/barcoding",
+                      label: t.features.barcoding,
+                      shortcut: "⌘B",
+                    },
+                    {
+                      href: "/features/purchase-sales",
+                      label: t.features.purchaseSales,
+                      shortcut: "⌘P",
+                    },
+                    {
+                      href: "/features/analytics-reporting",
+                      label: t.features.analyticsReporting,
+                      shortcut: "⌘R",
+                    },
+                    {
+                      href: "/features/warehouse-control",
+                      label: t.features.warehouseControl,
+                      shortcut: "⌘W",
+                    },
+                    {
+                      href: "/features/qr-code-management",
+                      label: t.features.qrCodeManagement,
+                      shortcut: "⌘Q",
+                    },
                   ].map((item) => (
                     <Link
                       key={item.href}
@@ -92,15 +131,29 @@ export function Navbar() {
                       onClick={() => setFeaturesOpen(false)}
                     >
                       <span>{item.label}</span>
-                      <span className="text-[11px] text-white/40">{item.shortcut}</span>
+                      <span className="text-[11px] text-white/40">
+                        {item.shortcut}
+                      </span>
                     </Link>
                   ))}
                   <div className="h-px bg-white/10 my-1 mx-3" />
                   {[
-                    { href: "/features/clothing-manufacturing", label: t.features.clothingManufacturing },
-                    { href: "/features/equipment-management", label: t.features.equipmentManagement },
-                    { href: "/features/factory-management", label: t.features.factoryManagement },
-                    { href: "/features/inventory-app", label: t.features.inventoryApp },
+                    {
+                      href: "/features/clothing-manufacturing",
+                      label: t.features.clothingManufacturing,
+                    },
+                    {
+                      href: "/features/equipment-management",
+                      label: t.features.equipmentManagement,
+                    },
+                    {
+                      href: "/features/factory-management",
+                      label: t.features.factoryManagement,
+                    },
+                    {
+                      href: "/features/inventory-app",
+                      label: t.features.inventoryApp,
+                    },
                   ].map((item) => (
                     <Link
                       key={item.href}
@@ -115,16 +168,32 @@ export function Navbar() {
               )}
             </div>
 
-            <Link href="/industrias" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
+            <Link
+              href="/industrias"
+              className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
+            >
               {t.industries}
             </Link>
-            <Link href="/blog" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
+            <Link
+              href="/blog"
+              className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
+            >
               {t.blog}
             </Link>
-            <Link href="/documentacao" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors">
-              {language === "pt" ? "Documentação" : language === "en" ? "Documentation" : "Documentation"}
+            <Link
+              href="/documentacao"
+              className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
+            >
+              {language === "pt"
+                ? "Documentação"
+                : language === "en"
+                  ? "Documentation"
+                  : "Documentation"}
             </Link>
-            <Link href="/codigo-de-barras-gratis" className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors text-purple-300">
+            <Link
+              href="/codigo-de-barras-gratis"
+              className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors text-purple-300"
+            >
               {t.freeBarcode}
             </Link>
           </nav>
@@ -142,9 +211,9 @@ export function Navbar() {
             type="button"
             className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
             onClick={() => {
-              if (language === "pt") setLanguage("en")
-              else if (language === "en") setLanguage("fr")
-              else setLanguage("pt")
+              if (language === "pt") setLanguage("en");
+              else if (language === "en") setLanguage("fr");
+              else setLanguage("pt");
             }}
           >
             <Globe className="w-3.5 h-3.5 text-white/70" strokeWidth={2} />
@@ -154,7 +223,9 @@ export function Navbar() {
 
           {currentTime && (
             <div className="hidden sm:flex items-center px-2 py-0.5 rounded-[3px] hover:bg-white/10 transition-colors cursor-default">
-              <span className="text-[11px] text-white/90 font-medium tabular-nums">{currentTime}</span>
+              <span className="text-[11px] text-white/90 font-medium tabular-nums">
+                {currentTime}
+              </span>
             </div>
           )}
 
@@ -177,5 +248,5 @@ export function Navbar() {
         </div>
       </div>
     </header>
-  )
+  );
 }

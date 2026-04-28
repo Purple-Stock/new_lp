@@ -1,23 +1,28 @@
-"use client"
+"use client";
 
-import { PlayCircle } from "lucide-react"
+import { PlayCircle } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 
 type HeroVideoModalProps = {
-  language: "pt" | "en" | "fr"
-  onOpen: (ctaName: string) => void
-  open: boolean
-  onOpenChange: (open: boolean) => void
-}
+  language: "pt" | "en" | "fr";
+  onOpen: (ctaName: string) => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+};
 
-export function HeroVideoModal({ language, onOpen, open, onOpenChange }: HeroVideoModalProps) {
+export function HeroVideoModal({
+  language,
+  onOpen,
+  open,
+  onOpenChange,
+}: HeroVideoModalProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
@@ -46,15 +51,27 @@ export function HeroVideoModal({ language, onOpen, open, onOpenChange }: HeroVid
             className="rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-8 py-6 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:from-purple-700 hover:to-purple-800"
             onClick={() => onOpen("desktop_watch_demo_button")}
           >
-            <PlayCircle className="mr-2 h-5 w-5" strokeWidth={2.5} style={{ strokeLinecap: "round", strokeLinejoin: "round" }} />
-            {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch demo" : "Voir la demonstration"}
+            <PlayCircle
+              className="mr-2 h-5 w-5"
+              strokeWidth={2.5}
+              style={{ strokeLinecap: "round", strokeLinejoin: "round" }}
+            />
+            {language === "pt"
+              ? "Ver Demonstração"
+              : language === "en"
+                ? "Watch demo"
+                : "Voir la demonstration"}
           </Button>
         </DialogTrigger>
       </div>
 
       <DialogContent className="max-w-4xl w-full p-0 bg-black">
         <DialogTitle className="sr-only">
-          {language === "pt" ? "Demonstração do Purple Stock" : language === "en" ? "Purple Stock Demo" : "Démo Purple Stock"}
+          {language === "pt"
+            ? "Demonstração do Purple Stock"
+            : language === "en"
+              ? "Purple Stock Demo"
+              : "Démo Purple Stock"}
         </DialogTitle>
         <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
           <iframe
@@ -67,5 +84,5 @@ export function HeroVideoModal({ language, onOpen, open, onOpenChange }: HeroVid
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

@@ -1,28 +1,43 @@
-"use client"
+"use client";
 
-import { ArrowRight, Check, MessageCircle, Shield, Users, Zap } from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Navbar } from "@/components/navbar"
-import { useLanguage } from "@/contexts/LanguageContext"
-import { trackSeoCtaClick } from "@/lib/analytics"
-import { buildWhatsAppUrl } from "@/lib/contact"
+import {
+  ArrowRight,
+  Check,
+  MessageCircle,
+  Shield,
+  Users,
+  Zap,
+} from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Navbar } from "@/components/navbar";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { trackSeoCtaClick } from "@/lib/analytics";
+import { buildWhatsAppUrl } from "@/lib/contact";
 
 export default function PricingPage() {
-  const { language } = useLanguage()
+  const { language } = useLanguage();
 
   const copy = {
     pt: {
       badge: "Plano único",
-      title: "Sistema de controle de estoque com preço simples para o time inteiro",
-      subtitle: "Veja o preço da Purple Stock para PME: R$ 29,90 por time, 7 dias grátis e implantação rápida para sair da planilha sem travar a operação.",
+      title:
+        "Sistema de controle de estoque com preço simples para o time inteiro",
+      subtitle:
+        "Veja o preço da Purple Stock para PME: R$ 29,90 por time, 7 dias grátis e implantação rápida para sair da planilha sem travar a operação.",
       priceLabel: "por time / mês",
       ctaPrimary: "Começar teste grátis de 7 dias",
       ctaSecondary: "Tirar dúvidas sobre preço",
       cardTitle: "Purple Stock",
-      cardDescription: "Tudo que sua operação precisa para controlar estoque com rastreabilidade, rotina simples e preço direto.",
+      cardDescription:
+        "Tudo que sua operação precisa para controlar estoque com rastreabilidade, rotina simples e preço direto.",
       guaranteeTitle: "Sem risco para começar",
-      guarantees: ["7 dias grátis", "Sem fidelidade", "Cancele quando quiser", "Suporte na ativação"],
+      guarantees: [
+        "7 dias grátis",
+        "Sem fidelidade",
+        "Cancele quando quiser",
+        "Suporte na ativação",
+      ],
       includedTitle: "O que está incluso",
       included: [
         "Controle de entrada, saída e ajustes",
@@ -32,19 +47,23 @@ export default function PricingPage() {
         "Suporte para implantação inicial",
       ],
       benefitsTitle: "Por que este modelo funciona",
-      benefitsSubtitle: "Menos atrito na contratação, mais foco em colocar o estoque para rodar rápido.",
+      benefitsSubtitle:
+        "Menos atrito na contratação, mais foco em colocar o estoque para rodar rápido.",
       benefits: [
         {
           title: "Preço direto",
-          description: "R$ 29,90 por time, sem matriz confusa de funcionalidades.",
+          description:
+            "R$ 29,90 por time, sem matriz confusa de funcionalidades.",
         },
         {
           title: "Ativação rápida",
-          description: "Fluxo pensado para sair da planilha sem travar a operação.",
+          description:
+            "Fluxo pensado para sair da planilha sem travar a operação.",
         },
         {
           title: "Escalável",
-          description: "Comece simples e cresça mantendo padronização de processo.",
+          description:
+            "Comece simples e cresça mantendo padronização de processo.",
         },
       ],
       faqTitle: "Perguntas frequentes",
@@ -67,21 +86,30 @@ export default function PricingPage() {
         },
       ],
       finalTitle: "Pronto para padronizar seu estoque?",
-      finalSubtitle: "Ative seu time com teste grátis, preço único e uma rotina que a operação consegue usar no dia a dia.",
+      finalSubtitle:
+        "Ative seu time com teste grátis, preço único e uma rotina que a operação consegue usar no dia a dia.",
       finalPrimary: "Testar agora",
       finalSecondary: "Falar sobre implantação",
     },
     en: {
       badge: "Single plan",
-      title: "Inventory control software with simple pricing for your whole team",
-      subtitle: "See Purple Stock pricing for SMEs: R$ 29.90 per team, 7-day free trial, and fast setup to leave spreadsheets behind.",
+      title:
+        "Inventory control software with simple pricing for your whole team",
+      subtitle:
+        "See Purple Stock pricing for SMEs: R$ 29.90 per team, 7-day free trial, and fast setup to leave spreadsheets behind.",
       priceLabel: "per team / month",
       ctaPrimary: "Start 7-day free trial",
       ctaSecondary: "Ask about pricing",
       cardTitle: "Purple Stock",
-      cardDescription: "Everything your operation needs to control inventory with traceability and a simple routine.",
+      cardDescription:
+        "Everything your operation needs to control inventory with traceability and a simple routine.",
       guaranteeTitle: "Low-risk start",
-      guarantees: ["7-day free trial", "No lock-in", "Cancel anytime", "Onboarding support"],
+      guarantees: [
+        "7-day free trial",
+        "No lock-in",
+        "Cancel anytime",
+        "Onboarding support",
+      ],
       includedTitle: "What is included",
       included: [
         "Inbound, outbound, and adjustment control",
@@ -91,7 +119,8 @@ export default function PricingPage() {
         "Initial onboarding support",
       ],
       benefitsTitle: "Why this model works",
-      benefitsSubtitle: "Less buying friction, more focus on making stock operations work fast.",
+      benefitsSubtitle:
+        "Less buying friction, more focus on making stock operations work fast.",
       benefits: [
         {
           title: "Straightforward pricing",
@@ -99,11 +128,13 @@ export default function PricingPage() {
         },
         {
           title: "Fast activation",
-          description: "Designed to move you off spreadsheets without operational disruption.",
+          description:
+            "Designed to move you off spreadsheets without operational disruption.",
         },
         {
           title: "Scalable",
-          description: "Start simple and scale while keeping process consistency.",
+          description:
+            "Start simple and scale while keeping process consistency.",
         },
       ],
       faqTitle: "Frequently asked questions",
@@ -126,21 +157,30 @@ export default function PricingPage() {
         },
       ],
       finalTitle: "Ready to standardize your inventory?",
-      finalSubtitle: "Start with a free trial, one price for the team, and a workflow your operation can actually use.",
+      finalSubtitle:
+        "Start with a free trial, one price for the team, and a workflow your operation can actually use.",
       finalPrimary: "Start now",
       finalSecondary: "Talk about setup",
     },
     fr: {
       badge: "Plan unique",
-      title: "Logiciel de gestion de stock avec tarif simple pour toute votre équipe",
-      subtitle: "Découvrez le prix de Purple Stock pour PME: R$ 29,90 par équipe, essai gratuit 7 jours et mise en route rapide.",
+      title:
+        "Logiciel de gestion de stock avec tarif simple pour toute votre équipe",
+      subtitle:
+        "Découvrez le prix de Purple Stock pour PME: R$ 29,90 par équipe, essai gratuit 7 jours et mise en route rapide.",
       priceLabel: "par équipe / mois",
       ctaPrimary: "Commencer l'essai gratuit",
       ctaSecondary: "Poser une question sur le prix",
       cardTitle: "Purple Stock",
-      cardDescription: "Tout ce dont votre opération a besoin pour gérer le stock avec traçabilité et routine simple.",
+      cardDescription:
+        "Tout ce dont votre opération a besoin pour gérer le stock avec traçabilité et routine simple.",
       guaranteeTitle: "Démarrage sans risque",
-      guarantees: ["Essai gratuit 7 jours", "Sans engagement", "Annulation à tout moment", "Support d'activation"],
+      guarantees: [
+        "Essai gratuit 7 jours",
+        "Sans engagement",
+        "Annulation à tout moment",
+        "Support d'activation",
+      ],
       includedTitle: "Ce qui est inclus",
       included: [
         "Contrôle des entrées, sorties et ajustements",
@@ -150,19 +190,23 @@ export default function PricingPage() {
         "Support initial de mise en place",
       ],
       benefitsTitle: "Pourquoi ce modèle fonctionne",
-      benefitsSubtitle: "Moins de friction à l'achat, plus de rapidité pour faire tourner le stock.",
+      benefitsSubtitle:
+        "Moins de friction à l'achat, plus de rapidité pour faire tourner le stock.",
       benefits: [
         {
           title: "Prix direct",
-          description: "R$ 29,90 par équipe, sans matrice de fonctionnalités complexe.",
+          description:
+            "R$ 29,90 par équipe, sans matrice de fonctionnalités complexe.",
         },
         {
           title: "Activation rapide",
-          description: "Conçu pour quitter les tableurs sans bloquer l'opération.",
+          description:
+            "Conçu pour quitter les tableurs sans bloquer l'opération.",
         },
         {
           title: "Évolutif",
-          description: "Commencez simple et développez avec une exécution standardisée.",
+          description:
+            "Commencez simple et développez avec une exécution standardisée.",
         },
       ],
       faqTitle: "Questions fréquentes",
@@ -185,11 +229,12 @@ export default function PricingPage() {
         },
       ],
       finalTitle: "Prêt à standardiser votre stock ?",
-      finalSubtitle: "Démarrez avec essai gratuit, prix unique et une routine que l'équipe peut adopter rapidement.",
+      finalSubtitle:
+        "Démarrez avec essai gratuit, prix unique et une routine que l'équipe peut adopter rapidement.",
       finalPrimary: "Tester maintenant",
       finalSecondary: "Parler de la mise en place",
     },
-  }[language]
+  }[language];
 
   const softwareApplicationSchema = {
     "@context": "https://schema.org",
@@ -205,14 +250,15 @@ export default function PricingPage() {
       priceCurrency: "BRL",
       availability: "https://schema.org/InStock",
       url: "https://www.purplestock.com.br/precos",
-      description: "Plano unico por time com 7 dias gratis, sem fidelidade e ativacao rapida.",
+      description:
+        "Plano unico por time com 7 dias gratis, sem fidelidade e ativacao rapida.",
     },
     provider: {
       "@type": "Organization",
       name: "Purple Stock",
       url: "https://www.purplestock.com.br",
     },
-  }
+  };
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -225,12 +271,20 @@ export default function PricingPage() {
         text: faq.a,
       },
     })),
-  }
+  };
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)]">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareApplicationSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
       <Navbar />
 
@@ -246,14 +300,22 @@ export default function PricingPage() {
                 {copy.title}
               </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-xl text-gray-600">{copy.subtitle}</p>
+            <p className="mx-auto mt-6 max-w-3xl text-xl text-gray-600">
+              {copy.subtitle}
+            </p>
             <p className="mx-auto mt-4 max-w-3xl text-sm text-gray-500">
               Compare também por cenário em{" "}
-              <Link href="/industrias" className="font-semibold text-purple-700 hover:text-purple-800">
+              <Link
+                href="/industrias"
+                className="font-semibold text-purple-700 hover:text-purple-800"
+              >
                 soluções por setor
               </Link>{" "}
               e no guia de{" "}
-              <Link href="/recursos/controle-de-almoxarifado" className="font-semibold text-purple-700 hover:text-purple-800">
+              <Link
+                href="/recursos/controle-de-almoxarifado"
+                className="font-semibold text-purple-700 hover:text-purple-800"
+              >
                 controle de almoxarifado
               </Link>
               .
@@ -266,22 +328,31 @@ export default function PricingPage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border-2 border-purple-200 bg-white/90 p-8 shadow-xl backdrop-blur-xl">
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900">{copy.cardTitle}</h2>
+              <h2 className="text-2xl font-bold text-gray-900">
+                {copy.cardTitle}
+              </h2>
               <p className="mt-2 text-gray-600">{copy.cardDescription}</p>
             </div>
 
             <div className="mt-8 text-center">
               <div className="flex items-baseline justify-center gap-2">
-                <span className="text-6xl font-bold text-gray-900">R$ 29,90</span>
+                <span className="text-6xl font-bold text-gray-900">
+                  R$ 29,90
+                </span>
                 <span className="text-lg text-gray-500">{copy.priceLabel}</span>
               </div>
             </div>
 
             <div className="mt-6 rounded-2xl border border-green-200 bg-green-50/80 p-4">
-              <h3 className="text-sm font-semibold text-green-800">{copy.guaranteeTitle}</h3>
+              <h3 className="text-sm font-semibold text-green-800">
+                {copy.guaranteeTitle}
+              </h3>
               <div className="mt-3 flex flex-wrap gap-2">
                 {copy.guarantees.map((item) => (
-                  <span key={item} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-green-700 border border-green-200">
+                  <span
+                    key={item}
+                    className="rounded-full bg-white px-3 py-1 text-xs font-medium text-green-700 border border-green-200"
+                  >
                     {item}
                   </span>
                 ))}
@@ -289,7 +360,9 @@ export default function PricingPage() {
             </div>
 
             <div className="mt-8">
-              <h3 className="mb-4 text-lg font-semibold text-gray-900">{copy.includedTitle}</h3>
+              <h3 className="mb-4 text-lg font-semibold text-gray-900">
+                {copy.includedTitle}
+              </h3>
               <ul className="space-y-3">
                 {copy.included.map((feature) => (
                   <li key={feature} className="flex items-start">
@@ -322,7 +395,9 @@ export default function PricingPage() {
                 </Button>
               </Link>
               <Link
-                href={buildWhatsAppUrl("Olá! Quero entender o plano de R$ 29,90 por time.")}
+                href={buildWhatsAppUrl(
+                  "Olá! Quero entender o plano de R$ 29,90 por time."
+                )}
                 className="flex-1"
                 onClick={() =>
                   trackSeoCtaClick({
@@ -334,7 +409,10 @@ export default function PricingPage() {
                   })
                 }
               >
-                <Button variant="outline" className="w-full border-2 border-purple-300 py-6 text-lg font-semibold text-purple-700 hover:bg-purple-50">
+                <Button
+                  variant="outline"
+                  className="w-full border-2 border-purple-300 py-6 text-lg font-semibold text-purple-700 hover:bg-purple-50"
+                >
                   <MessageCircle className="mr-2 h-5 w-5" />
                   {copy.ctaSecondary}
                 </Button>
@@ -347,30 +425,46 @@ export default function PricingPage() {
       <section className="py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
-            <h2 className="text-4xl font-bold text-gray-900">{copy.benefitsTitle}</h2>
-            <p className="mx-auto mt-3 max-w-3xl text-xl text-gray-600">{copy.benefitsSubtitle}</p>
+            <h2 className="text-4xl font-bold text-gray-900">
+              {copy.benefitsTitle}
+            </h2>
+            <p className="mx-auto mt-3 max-w-3xl text-xl text-gray-600">
+              {copy.benefitsSubtitle}
+            </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             <div className="rounded-2xl border border-white/60 bg-white/80 p-6 text-center shadow-sm backdrop-blur-md">
               <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
                 <Shield className="h-6 w-6 text-purple-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900">{copy.benefits[0].title}</h3>
-              <p className="mt-2 text-gray-600">{copy.benefits[0].description}</p>
+              <h3 className="text-lg font-semibold text-gray-900">
+                {copy.benefits[0].title}
+              </h3>
+              <p className="mt-2 text-gray-600">
+                {copy.benefits[0].description}
+              </p>
             </div>
             <div className="rounded-2xl border border-white/60 bg-white/80 p-6 text-center shadow-sm backdrop-blur-md">
               <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
                 <Zap className="h-6 w-6 text-purple-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900">{copy.benefits[1].title}</h3>
-              <p className="mt-2 text-gray-600">{copy.benefits[1].description}</p>
+              <h3 className="text-lg font-semibold text-gray-900">
+                {copy.benefits[1].title}
+              </h3>
+              <p className="mt-2 text-gray-600">
+                {copy.benefits[1].description}
+              </p>
             </div>
             <div className="rounded-2xl border border-white/60 bg-white/80 p-6 text-center shadow-sm backdrop-blur-md">
               <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
                 <Users className="h-6 w-6 text-purple-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900">{copy.benefits[2].title}</h3>
-              <p className="mt-2 text-gray-600">{copy.benefits[2].description}</p>
+              <h3 className="text-lg font-semibold text-gray-900">
+                {copy.benefits[2].title}
+              </h3>
+              <p className="mt-2 text-gray-600">
+                {copy.benefits[2].description}
+              </p>
             </div>
           </div>
         </div>
@@ -379,11 +473,16 @@ export default function PricingPage() {
       <section className="py-14">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
-            <h2 className="text-4xl font-bold text-gray-900">{copy.faqTitle}</h2>
+            <h2 className="text-4xl font-bold text-gray-900">
+              {copy.faqTitle}
+            </h2>
           </div>
           <div className="space-y-5">
             {copy.faqs.map((faq) => (
-              <div key={faq.q} className="rounded-xl border border-white/60 bg-white/85 p-6 shadow-sm backdrop-blur-md">
+              <div
+                key={faq.q}
+                className="rounded-xl border border-white/60 bg-white/85 p-6 shadow-sm backdrop-blur-md"
+              >
                 <h3 className="text-lg font-semibold text-gray-900">{faq.q}</h3>
                 <p className="mt-2 text-gray-600">{faq.a}</p>
               </div>
@@ -398,38 +497,51 @@ export default function PricingPage() {
           <div className="absolute bottom-20 right-20 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-white md:text-5xl">{copy.finalTitle}</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-xl text-white/90">{copy.finalSubtitle}</p>
+          <h2 className="text-4xl font-bold text-white md:text-5xl">
+            {copy.finalTitle}
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-xl text-white/90">
+            {copy.finalSubtitle}
+          </p>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="https://app.purplestock.com.br/"
               onClick={() =>
                 trackSeoCtaClick({
-                    cta_name: "pricing_single_bottom_primary",
-                    cta_target: "app",
-                    page_section: "pricing_bottom_cta",
-                    price_value: 29.9,
-                    query_cluster: "pricing",
-                  })
+                  cta_name: "pricing_single_bottom_primary",
+                  cta_target: "app",
+                  page_section: "pricing_bottom_cta",
+                  price_value: 29.9,
+                  query_cluster: "pricing",
+                })
               }
             >
-              <Button size="lg" className="bg-white px-8 py-4 text-lg font-semibold text-purple-700 hover:bg-gray-100">
+              <Button
+                size="lg"
+                className="bg-white px-8 py-4 text-lg font-semibold text-purple-700 hover:bg-gray-100"
+              >
                 {copy.finalPrimary}
               </Button>
             </Link>
             <Link
-              href={buildWhatsAppUrl("Olá! Quero tirar dúvidas sobre o plano de R$ 29,90 por time.")}
+              href={buildWhatsAppUrl(
+                "Olá! Quero tirar dúvidas sobre o plano de R$ 29,90 por time."
+              )}
               onClick={() =>
                 trackSeoCtaClick({
-                    cta_name: "pricing_single_bottom_secondary",
-                    cta_target: "whatsapp",
-                    page_section: "pricing_bottom_cta",
-                    price_value: 29.9,
-                    query_cluster: "pricing",
-                  })
+                  cta_name: "pricing_single_bottom_secondary",
+                  cta_target: "whatsapp",
+                  page_section: "pricing_bottom_cta",
+                  price_value: 29.9,
+                  query_cluster: "pricing",
+                })
               }
             >
-              <Button variant="outline" size="lg" className="border-2 border-white/30 bg-transparent px-8 py-4 text-lg font-semibold text-white hover:bg-white/10">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-2 border-white/30 bg-transparent px-8 py-4 text-lg font-semibold text-white hover:bg-white/10"
+              >
                 {copy.finalSecondary}
               </Button>
             </Link>
@@ -437,5 +549,5 @@ export default function PricingPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

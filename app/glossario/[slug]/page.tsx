@@ -1,25 +1,31 @@
-import { notFound } from "next/navigation"
-import type { Metadata } from "next"
-import Link from "next/link"
-import { ArrowLeft, BookOpen, ChevronRight, MessageCircle, ArrowRight } from "lucide-react"
-import { glossaryTerms, type GlossaryTerm } from "@/data/glossary"
-import { getSiteUrl } from "@/lib/site"
-import { buildWhatsAppUrl } from "@/lib/contact"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  ArrowLeft,
+  BookOpen,
+  ChevronRight,
+  MessageCircle,
+  ArrowRight,
+} from "lucide-react";
+import { glossaryTerms, type GlossaryTerm } from "@/data/glossary";
+import { getSiteUrl } from "@/lib/site";
+import { buildWhatsAppUrl } from "@/lib/contact";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 
 type PageProps = {
-  params: Promise<{ slug: string }>
-}
+  params: Promise<{ slug: string }>;
+};
 
 const categoryLabels: Record<GlossaryTerm["category"], string> = {
   inventory: "Inventário",
@@ -27,11 +33,11 @@ const categoryLabels: Record<GlossaryTerm["category"], string> = {
   finance: "Finanças",
   management: "Gestão",
   technology: "Tecnologia",
-}
+};
 
 const featureLabels: Record<string, string> = {
   "analytics-reporting": "Analytics e Relatórios",
-  "barcoding": "Código de Barras",
+  barcoding: "Código de Barras",
   "clothing-manufacturing": "Confecção e Vestuário",
   "equipment-management": "Gestão de Equipamentos",
   "factory-management": "Gestão de Fábrica",
@@ -40,27 +46,27 @@ const featureLabels: Record<string, string> = {
   "purchase-sales": "Compras e Vendas",
   "qr-code-management": "Gestão QR Code",
   "warehouse-control": "Controle de Armazém",
-}
+};
 
 const industryLabels: Record<string, string> = {
-  "atacado": "Atacado",
-  "varejo": "Varejo",
-  "manufatura": "Manufatura",
-  "logistica": "Logística",
-  "automotivo": "Automotivo",
-  "food": "Alimentos & Bebidas",
-  "restaurantes": "Restaurantes",
-  "electrical": "Elétrico",
-  "construction": "Construção",
-  "pharmaceutical": "Farmacêutico",
-  "beauty": "Beleza",
-  "commerce": "Comércio",
-  "education": "Educação",
-  "technology": "Tecnologia",
-  "audiovisual": "Audiovisual",
-  "events": "Eventos",
-  "fashion": "Moda",
-}
+  atacado: "Atacado",
+  varejo: "Varejo",
+  manufatura: "Manufatura",
+  logistica: "Logística",
+  automotivo: "Automotivo",
+  food: "Alimentos & Bebidas",
+  restaurantes: "Restaurantes",
+  electrical: "Elétrico",
+  construction: "Construção",
+  pharmaceutical: "Farmacêutico",
+  beauty: "Beleza",
+  commerce: "Comércio",
+  education: "Educação",
+  technology: "Tecnologia",
+  audiovisual: "Audiovisual",
+  events: "Eventos",
+  fashion: "Moda",
+};
 
 const categoryColors: Record<GlossaryTerm["category"], string> = {
   inventory: "bg-blue-100 text-blue-700",
@@ -68,26 +74,28 @@ const categoryColors: Record<GlossaryTerm["category"], string> = {
   finance: "bg-purple-100 text-purple-700",
   management: "bg-orange-100 text-orange-700",
   technology: "bg-red-100 text-red-700",
-}
+};
 
 function findBySlug(slug: string): GlossaryTerm | undefined {
-  return glossaryTerms.find((t) => t.slug === slug)
+  return glossaryTerms.find((t) => t.slug === slug);
 }
 
 export function generateStaticParams() {
-  return glossaryTerms.map((term) => ({ slug: term.slug }))
+  return glossaryTerms.map((term) => ({ slug: term.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params
-  const term = findBySlug(slug)
-  const baseUrl = getSiteUrl()
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const term = findBySlug(slug);
+  const baseUrl = getSiteUrl();
 
   if (!term) {
-    return { title: "Termo não encontrado | Glossário Purple Stock" }
+    return { title: "Termo não encontrado | Glossário Purple Stock" };
   }
 
-  const termUrl = `${baseUrl}/glossario/${term.slug}`
+  const termUrl = `${baseUrl}/glossario/${term.slug}`;
 
   return {
     title: `${term.term} — Glossário de Estoque | Purple Stock`,
@@ -107,23 +115,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${term.term} — Glossário de Estoque | Purple Stock`,
       description: term.shortDefinition || undefined,
     },
-  }
+  };
 }
 
 export default async function GlossaryTermPage({ params }: PageProps) {
-  const { slug } = await params
-  const term = findBySlug(slug)
+  const { slug } = await params;
+  const term = findBySlug(slug);
 
   if (!term) {
-    notFound()
+    notFound();
   }
 
   const relatedTermsData = term.relatedTerms
     .map((s) => findBySlug(s))
-    .filter(Boolean) as GlossaryTerm[]
+    .filter(Boolean) as GlossaryTerm[];
 
-  const baseUrl = getSiteUrl()
-  const termUrl = `${baseUrl}/glossario/${term.slug}`
+  const baseUrl = getSiteUrl();
+  const termUrl = `${baseUrl}/glossario/${term.slug}`;
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -149,7 +157,7 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         item: termUrl,
       },
     ],
-  }
+  };
 
   const definedTermJsonLd = {
     "@context": "https://schema.org",
@@ -162,15 +170,15 @@ export default async function GlossaryTermPage({ params }: PageProps) {
       url: `${baseUrl}/glossario`,
     },
     url: termUrl,
-  }
+  };
 
-  const hasContent = !!term.definition
-  const hasExample = !!term.example
-  const hasFormula = !!term.formula
-  const hasFaq = term.faq.some((f) => f.question || f.answer)
-  const hasRelatedTerms = relatedTermsData.length > 0
-  const hasRelatedFeatures = (term.relatedFeatures?.length ?? 0) > 0
-  const hasRelatedIndustries = (term.relatedIndustries?.length ?? 0) > 0
+  const hasContent = !!term.definition;
+  const hasExample = !!term.example;
+  const hasFormula = !!term.formula;
+  const hasFaq = term.faq.some((f) => f.question || f.answer);
+  const hasRelatedTerms = relatedTermsData.length > 0;
+  const hasRelatedFeatures = (term.relatedFeatures?.length ?? 0) > 0;
+  const hasRelatedIndustries = (term.relatedIndustries?.length ?? 0) > 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
@@ -190,7 +198,10 @@ export default async function GlossaryTermPage({ params }: PageProps) {
             Home
           </Link>
           <ChevronRight className="w-4 h-4" />
-          <Link href="/glossario" className="hover:text-purple-600 transition-colors">
+          <Link
+            href="/glossario"
+            className="hover:text-purple-600 transition-colors"
+          >
             Glossário
           </Link>
           <ChevronRight className="w-4 h-4" />
@@ -213,9 +224,13 @@ export default async function GlossaryTermPage({ params }: PageProps) {
               {categoryLabels[term.category]}
             </Badge>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{term.term}</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            {term.term}
+          </h1>
           {term.shortDefinition && (
-            <p className="text-lg text-gray-600 leading-relaxed">{term.shortDefinition}</p>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              {term.shortDefinition}
+            </p>
           )}
         </div>
 
@@ -234,10 +249,14 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         {/* Exemplo prático */}
         {hasExample && (
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Exemplo prático</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              Exemplo prático
+            </h2>
             <Card className="border-green-200 bg-green-50">
               <CardHeader>
-                <CardTitle className="text-lg text-green-800">Caso real</CardTitle>
+                <CardTitle className="text-lg text-green-800">
+                  Caso real
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-green-700 leading-relaxed whitespace-pre-line">
@@ -251,7 +270,9 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         {/* Fórmula */}
         {hasFormula && (
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fórmula</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              Fórmula
+            </h2>
             <Card className="border-purple-200 bg-purple-50">
               <CardContent className="py-6">
                 <div className="font-mono text-lg bg-white rounded-lg px-6 py-4 border border-purple-100 mb-4 text-center text-purple-800">
@@ -270,7 +291,9 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         {/* Termos relacionados */}
         {hasRelatedTerms && (
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Termos relacionados</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              Termos relacionados
+            </h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {relatedTermsData.map((related) => (
                 <Link
@@ -282,7 +305,9 @@ export default async function GlossaryTermPage({ params }: PageProps) {
                     <CardContent className="py-4">
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex-1">
-                          <p className="font-medium text-gray-900">{related.term}</p>
+                          <p className="font-medium text-gray-900">
+                            {related.term}
+                          </p>
                           {related.shortDefinition && (
                             <p className="text-sm text-gray-500 mt-1 line-clamp-2">
                               {related.shortDefinition}
@@ -327,7 +352,9 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         {/* Indústrias relacionadas */}
         {hasRelatedIndustries && (
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Indústrias relacionadas</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              Indústrias relacionadas
+            </h2>
             <div className="flex flex-wrap gap-3">
               {term.relatedIndustries!.map((industry) => (
                 <Link
@@ -374,8 +401,8 @@ export default async function GlossaryTermPage({ params }: PageProps) {
                 Quer aplicar esse conhecimento na prática?
               </h3>
               <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-                O Purple Stock ajuda sua equipe a dominar o estoque com controle total, relatórios
-                inteligentes e alertas automáticos.
+                O Purple Stock ajuda sua equipe a dominar o estoque com controle
+                total, relatórios inteligentes e alertas automáticos.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="https://app.purplestock.com.br/">
@@ -384,8 +411,15 @@ export default async function GlossaryTermPage({ params }: PageProps) {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href={buildWhatsAppUrl("Olá! Vim do glossário e quero entender como implantar o Purple Stock.")}>
-                  <Button variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50">
+                <Link
+                  href={buildWhatsAppUrl(
+                    "Olá! Vim do glossário e quero entender como implantar o Purple Stock."
+                  )}
+                >
+                  <Button
+                    variant="outline"
+                    className="border-purple-300 text-purple-700 hover:bg-purple-50"
+                  >
                     <MessageCircle className="mr-2 h-4 w-4" />
                     Falar com especialista
                   </Button>
@@ -397,5 +431,5 @@ export default async function GlossaryTermPage({ params }: PageProps) {
       </div>
       <Footer />
     </div>
-  )
+  );
 }

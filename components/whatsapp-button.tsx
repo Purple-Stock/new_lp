@@ -1,8 +1,8 @@
-import { MessageCircle } from "lucide-react"
-import { getWhatsAppUrl } from "@/lib/contact"
+import { MessageCircle } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/contact";
 
 export function WhatsAppButton() {
-  const whatsappUrl = getWhatsAppUrl()
+  const whatsappUrl = getWhatsAppUrl();
 
   return (
     <a
@@ -15,5 +15,5 @@ export function WhatsAppButton() {
     >
       <MessageCircle className="h-6 w-6" />
     </a>
-  )
+  );
 }

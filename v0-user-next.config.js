@@ -3,9 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["v0.blob.com", "hebbkx1anhila5yf.public.blob.vercel-storage.com", "images.pexels.com"],
+    domains: [
+      "v0.blob.com",
+      "hebbkx1anhila5yf.public.blob.vercel-storage.com",
+      "images.pexels.com",
+    ],
   },
-}
+};
 
-module.exports = nextConfig
-
+module.exports = nextConfig;

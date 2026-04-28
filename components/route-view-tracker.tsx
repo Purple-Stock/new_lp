@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { usePathname } from "next/navigation"
-import { trackEvent, trackSeoLandingView } from "@/lib/analytics"
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { trackEvent, trackSeoLandingView } from "@/lib/analytics";
 
 const ORGANIC_LANDING_PREFIXES = [
   "/blog",
@@ -10,29 +10,31 @@ const ORGANIC_LANDING_PREFIXES = [
   "/industrias",
   "/features",
   "/precos",
-]
+];
 
 export function RouteViewTracker() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!pathname) {
-      return
+      return;
     }
 
     trackEvent("page_view", {
       page_path: pathname,
       page_type: pathname === "/" ? "home" : "content",
-    })
+    });
 
-    const isLanding = pathname === "/" || ORGANIC_LANDING_PREFIXES.some((prefix) => pathname.startsWith(prefix))
+    const isLanding =
+      pathname === "/" ||
+      ORGANIC_LANDING_PREFIXES.some((prefix) => pathname.startsWith(prefix));
     if (isLanding) {
       trackSeoLandingView({
         page_path: pathname,
         page_type: pathname === "/" ? "home" : "content",
-      })
+      });
     }
-  }, [pathname])
+  }, [pathname]);
 
-  return null
+  return null;
 }

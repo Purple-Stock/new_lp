@@ -1,19 +1,21 @@
-let userConfig = undefined
+let userConfig = undefined;
 try {
-  userConfig = await import('./v0-user-next.config')
+  userConfig = await import("./v0-user-next.config");
 } catch (e) {
   // ignore error
 }
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: process.env.NODE_ENV === 'development' ? '.next-dev' : '.next',
+  distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
   typescript: {
     tsconfigPath:
-      process.env.NODE_ENV === 'development' ? 'tsconfig.dev.json' : 'tsconfig.json',
+      process.env.NODE_ENV === "development"
+        ? "tsconfig.dev.json"
+        : "tsconfig.json",
   },
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
   },
   experimental: {
     webpackBuildWorker: true,
@@ -23,7 +25,8 @@ const nextConfig = {
   async redirects() {
     const legacyBlogSlugRedirects = [
       {
-        source: "/blog/controle-de-estoque-por-qr-code-versus-gerenciamento-de-estoque-tradicional",
+        source:
+          "/blog/controle-de-estoque-por-qr-code-versus-gerenciamento-de-estoque-tradicional",
         destination: "/blog/como-usar-qr-code-controle-estoque",
       },
       {
@@ -47,25 +50,34 @@ const nextConfig = {
         destination: "/recursos/controle-de-almoxarifado",
       },
       {
-        source: "/blog/sistema-de-controle-de-almoxarifado-a-solucao-para-a-eficiencia-e-reducao-de-custos-na-gestao-de-estoques",
+        source:
+          "/blog/sistema-de-controle-de-almoxarifado-a-solucao-para-a-eficiencia-e-reducao-de-custos-na-gestao-de-estoques",
         destination: "/recursos/controle-de-almoxarifado",
       },
       {
-        source: "/blog/como-implementar-um-controle-de-faccao-eficiente-estrategias-para-otimizar-a-producao-na-confeccao",
+        source:
+          "/blog/como-implementar-um-controle-de-faccao-eficiente-estrategias-para-otimizar-a-producao-na-confeccao",
         destination: "/features/clothing-manufacturing",
       },
       {
-        source: "/blog/maximizando-a-eficiencia-do-controle-de-inventario-com-tecnologia-qr-code",
+        source:
+          "/blog/maximizando-a-eficiencia-do-controle-de-inventario-com-tecnologia-qr-code",
         destination: "/blog/como-usar-qr-code-controle-estoque",
       },
-    ]
+    ];
 
     const industrySlugRedirects = [
       { source: "/industrias/retail", destination: "/industrias/varejo" },
-      { source: "/industrias/manufacturing", destination: "/industrias/manufatura" },
+      {
+        source: "/industrias/manufacturing",
+        destination: "/industrias/manufatura",
+      },
       { source: "/industrias/logistics", destination: "/industrias/logistica" },
-      { source: "/industrias/automotive", destination: "/industrias/automotivo" },
-    ]
+      {
+        source: "/industrias/automotive",
+        destination: "/industrias/automotivo",
+      },
+    ];
 
     const legacyResourceRedirects = [
       {
@@ -80,7 +92,7 @@ const nextConfig = {
         source: "/recursos/gestao-de-estoque",
         destination: "/features/inventory-control",
       },
-    ]
+    ];
 
     return [
       {
@@ -140,10 +152,10 @@ const nextConfig = {
         destination: "https://www.purplestock.com.br/blog/:path*",
         permanent: true,
       },
-    ]
+    ];
   },
   async headers() {
-    const isDevelopment = process.env.NODE_ENV === "development"
+    const isDevelopment = process.env.NODE_ENV === "development";
     const contentSecurityPolicy = [
       "default-src 'self'",
       `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com`,
@@ -158,45 +170,51 @@ const nextConfig = {
       "form-action 'self'",
       "frame-ancestors 'self'",
       "upgrade-insecure-requests",
-    ].join("; ")
+    ].join("; ");
 
     return [
       {
         source: "/:path*",
         headers: [
           { key: "Content-Security-Policy", value: contentSecurityPolicy },
-          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains; preload",
+          },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "X-XSS-Protection", value: "1; mode=block" },
         ],
       },
-    ]
+    ];
   },
-}
+};
 
-mergeConfig(nextConfig, userConfig)
+mergeConfig(nextConfig, userConfig);
 
 function mergeConfig(nextConfig, userConfig) {
   if (!userConfig) {
-    return
+    return;
   }
 
   for (const key in userConfig) {
     if (
-      typeof nextConfig[key] === 'object' &&
+      typeof nextConfig[key] === "object" &&
       !Array.isArray(nextConfig[key])
     ) {
       nextConfig[key] = {
         ...nextConfig[key],
         ...userConfig[key],
-      }
+      };
     } else {
-      nextConfig[key] = userConfig[key]
+      nextConfig[key] = userConfig[key];
     }
   }
 }
 
-export default nextConfig
+export default nextConfig;

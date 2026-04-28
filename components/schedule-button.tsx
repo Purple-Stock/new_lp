@@ -1,7 +1,8 @@
-import { Calendar } from "lucide-react"
+import { Calendar } from "lucide-react";
+import { getCalendlyUrl } from "@/lib/contact";
 
 export function ScheduleButton() {
-  const calendlyUrl = "https://calendly.com/matheus-puppe"
+  const calendlyUrl = getCalendlyUrl();
 
   return (
     <a
@@ -14,5 +15,5 @@ export function ScheduleButton() {
     >
       <Calendar className="h-6 w-6" />
     </a>
-  )
+  );
 }

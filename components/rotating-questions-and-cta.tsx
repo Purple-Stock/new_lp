@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useLanguage } from "@/contexts/LanguageContext"
-import { translations } from "@/utils/translations"
-import { ArrowRight, CheckCircle, Star, Play } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/utils/translations";
+import { ArrowRight, CheckCircle, Star, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const ROTATING_QUESTIONS = {
   pt: [
@@ -23,27 +23,27 @@ const ROTATING_QUESTIONS = {
     "Vous voulez un contrôle total de votre inventaire en temps réel ?",
     "Prêt à éliminer les erreurs de comptage manuel ?",
   ],
-}
+};
 
 export function RotatingQuestionsAndCTA() {
-  const { language } = useLanguage()
-  const t = translations[language]
-  const questions = ROTATING_QUESTIONS[language]
+  const { language } = useLanguage();
+  const t = translations[language];
+  const questions = ROTATING_QUESTIONS[language];
 
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsAnimating(true)
+      setIsAnimating(true);
       setTimeout(() => {
-        setCurrentQuestion((prev) => (prev + 1) % questions.length)
-        setIsAnimating(false)
-      }, 500)
-    }, 5000)
+        setCurrentQuestion((prev) => (prev + 1) % questions.length);
+        setIsAnimating(false);
+      }, 500);
+    }, 5000);
 
-    return () => clearInterval(interval)
-  }, [questions, language])
+    return () => clearInterval(interval);
+  }, [questions, language]);
 
   return (
     <section className="py-24 bg-gradient-to-br from-purple-50 via-white to-blue-50 relative overflow-hidden">
@@ -52,15 +52,19 @@ export function RotatingQuestionsAndCTA() {
         <div className="absolute top-20 left-20 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
         <div className="absolute bottom-20 right-20 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
       </div>
-      
+
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Rotating Questions Section */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-8">
             <Star className="w-4 h-4 mr-2" />
-            {language === "pt" ? "Perguntas Frequentes" : language === "en" ? "Frequently Asked" : "Questions Fréquentes"}
+            {language === "pt"
+              ? "Perguntas Frequentes"
+              : language === "en"
+                ? "Frequently Asked"
+                : "Questions Fréquentes"}
           </div>
-          
+
           <div className="mb-16 h-40 relative">
             {questions.map((question, index) => (
               <div
@@ -93,9 +97,7 @@ export function RotatingQuestionsAndCTA() {
               {t.hero.title}
             </span>
             <br />
-            <span className="text-gray-900">
-              {t.hero.subtitle}{" "}
-            </span> 
+            <span className="text-gray-900">{t.hero.subtitle} </span>
             <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
               {t.hero.subtitleHighlight}
             </span>
@@ -112,49 +114,58 @@ export function RotatingQuestionsAndCTA() {
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
               <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                {language === "pt" ? "Controle Total" : language === "en" ? "Total Control" : "Contrôle Total"}
+                {language === "pt"
+                  ? "Controle Total"
+                  : language === "en"
+                    ? "Total Control"
+                    : "Contrôle Total"}
               </h4>
               <p className="text-gray-600 text-sm">
-                {language === "pt" 
+                {language === "pt"
                   ? "Visibilidade completa do seu inventário em tempo real"
                   : language === "en"
-                  ? "Complete visibility of your inventory in real-time"
-                  : "Visibilité complète de votre inventaire en temps réel"
-                }
+                    ? "Complete visibility of your inventory in real-time"
+                    : "Visibilité complète de votre inventaire en temps réel"}
               </p>
             </div>
-            
+
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
               <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                {language === "pt" ? "Automação Inteligente" : language === "en" ? "Smart Automation" : "Automatisation Intelligente"}
+                {language === "pt"
+                  ? "Automação Inteligente"
+                  : language === "en"
+                    ? "Smart Automation"
+                    : "Automatisation Intelligente"}
               </h4>
               <p className="text-gray-600 text-sm">
-                {language === "pt" 
+                {language === "pt"
                   ? "Processos automatizados que economizam tempo e reduzem erros"
                   : language === "en"
-                  ? "Automated processes that save time and reduce errors"
-                  : "Processus automatisés qui économisent du temps et réduisent les erreurs"
-                }
+                    ? "Automated processes that save time and reduce errors"
+                    : "Processus automatisés qui économisent du temps et réduisent les erreurs"}
               </p>
             </div>
-            
+
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
               <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                {language === "pt" ? "Relatórios Avançados" : language === "en" ? "Advanced Reports" : "Rapports Avancés"}
+                {language === "pt"
+                  ? "Relatórios Avançados"
+                  : language === "en"
+                    ? "Advanced Reports"
+                    : "Rapports Avancés"}
               </h4>
               <p className="text-gray-600 text-sm">
-                {language === "pt" 
+                {language === "pt"
                   ? "Insights valiosos para tomada de decisões estratégicas"
                   : language === "en"
-                  ? "Valuable insights for strategic decision making"
-                  : "Aperçus précieux pour la prise de décisions stratégiques"
-                }
+                    ? "Valuable insights for strategic decision making"
+                    : "Aperçus précieux pour la prise de décisions stratégiques"}
               </p>
             </div>
           </div>
@@ -163,18 +174,32 @@ export function RotatingQuestionsAndCTA() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             {/* <Link href="/coming-soon"> */}
             <Link href="https://app.purplestock.com.br/">
-              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-10 py-6 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-10 py-6 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl"
+              >
                 <Star className="w-6 h-6 mr-3" />
-                {language === "pt" ? "Começar Agora" : language === "en" ? "Get Started Now" : "Commencer Maintenant"}
+                {language === "pt"
+                  ? "Começar Agora"
+                  : language === "en"
+                    ? "Get Started Now"
+                    : "Commencer Maintenant"}
                 <ArrowRight className="w-6 h-6 ml-3" />
               </Button>
             </Link>
-            
+
             {/* <Link href="/coming-soon"> */}
             <Link href="https://app.purplestock.com.br/">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-6 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-6 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl"
+              >
                 <Play className="w-6 h-6 mr-3" />
-                {language === "pt" ? "Ver Demonstração" : language === "en" ? "Watch Demo" : "Voir la Démo"}
+                {language === "pt"
+                  ? "Ver Demonstração"
+                  : language === "en"
+                    ? "Watch Demo"
+                    : "Voir la Démo"}
               </Button>
             </Link>
           </div>
@@ -182,22 +207,38 @@ export function RotatingQuestionsAndCTA() {
           {/* Trust Indicators */}
           <div className="mt-16 pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500 mb-4">
-              {language === "pt" ? "Já confiado por milhares de empresas:" : language === "en" ? "Already trusted by thousands of companies:" : "Déjà approuvé par des milliers d'entreprises:"}
+              {language === "pt"
+                ? "Já confiado por milhares de empresas:"
+                : language === "en"
+                  ? "Already trusted by thousands of companies:"
+                  : "Déjà approuvé par des milliers d'entreprises:"}
             </p>
             <div className="flex items-center justify-center space-x-8 text-center">
               <div>
                 <div className="text-2xl font-bold text-blue-600">99.9%</div>
-                <div className="text-xs text-gray-500">{language === "pt" ? "Uptime" : language === "en" ? "Uptime" : "Disponibilité"}</div>
+                <div className="text-xs text-gray-500">
+                  {language === "pt"
+                    ? "Uptime"
+                    : language === "en"
+                      ? "Uptime"
+                      : "Disponibilité"}
+                </div>
               </div>
               <div className="w-px h-8 bg-gray-300"></div>
               <div>
                 <div className="text-2xl font-bold text-green-600">4.9/5</div>
-                <div className="text-xs text-gray-500">{language === "pt" ? "Avaliação" : language === "en" ? "Rating" : "Évaluation"}</div>
+                <div className="text-xs text-gray-500">
+                  {language === "pt"
+                    ? "Avaliação"
+                    : language === "en"
+                      ? "Rating"
+                      : "Évaluation"}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

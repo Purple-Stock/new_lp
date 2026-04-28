@@ -1,4 +1,4 @@
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 export async function GET() {
   const content = `# PurpleStock
@@ -82,7 +82,7 @@ Solução proprietária da PurpleStock para gestão empresarial.
 
   return new Response(content, {
     headers: {
-      "Content-Type": "text/plain; charset=utf-8"
-    }
+      "Content-Type": "text/plain; charset=utf-8",
+    },
   });
 }

@@ -1,22 +1,18 @@
-import { MetadataRoute } from 'next'
-import { getSiteUrl } from '@/lib/site'
+import { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = getSiteUrl()
-  
+  const baseUrl = getSiteUrl();
+
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
-        disallow: [
-          '/api/',
-          '/admin/',
-          '/private/',
-        ],
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/admin/", "/private/"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
     // Note: llms.txt is available at ${baseUrl}/llms.txt for AI/LLM discovery
-  }
+  };
 }

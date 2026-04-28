@@ -1,9 +1,9 @@
-import React from "react"
-import { cn } from "@/lib/utils"
+import React from "react";
+import { cn } from "@/lib/utils";
 
 interface MacOSFolderIconProps {
-  className?: string
-  color?: string
+  className?: string;
+  color?: string;
 }
 
 const folderColors = {
@@ -73,11 +73,17 @@ const folderColors = {
     bodyShadow: "rgba(156, 63, 12, 0.35)",
     baseShadow: "rgba(234, 88, 12, 0.28)",
   },
-}
+};
 
-export function MacOSFolderIcon({ className, color = "blue" }: MacOSFolderIconProps) {
-  const validColor = color && color in folderColors ? (color as keyof typeof folderColors) : "blue"
-  const colors = folderColors[validColor]
+export function MacOSFolderIcon({
+  className,
+  color = "blue",
+}: MacOSFolderIconProps) {
+  const validColor =
+    color && color in folderColors
+      ? (color as keyof typeof folderColors)
+      : "blue";
+  const colors = folderColors[validColor];
 
   return (
     <svg
@@ -93,31 +99,88 @@ export function MacOSFolderIcon({ className, color = "blue" }: MacOSFolderIconPr
       }}
     >
       <defs>
-        <linearGradient id={`folder-body-${validColor}`} x1="18" y1="16" x2="50" y2="60" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id={`folder-body-${validColor}`}
+          x1="18"
+          y1="16"
+          x2="50"
+          y2="60"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0%" stopColor={colors.bodyStart} />
           <stop offset="55%" stopColor={colors.bodyMid} />
           <stop offset="100%" stopColor={colors.bodyEnd} />
         </linearGradient>
-        <linearGradient id={`folder-tab-${validColor}`} x1="12" y1="14" x2="40" y2="28" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id={`folder-tab-${validColor}`}
+          x1="12"
+          y1="14"
+          x2="40"
+          y2="28"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0%" stopColor={colors.tabStart} />
           <stop offset="100%" stopColor={colors.tabEnd} />
         </linearGradient>
-        <linearGradient id={`folder-highlight-${validColor}`} x1="16" y1="32" x2="48" y2="36" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor={colors.bodyHighlight} stopOpacity="0.9" />
-          <stop offset="100%" stopColor={colors.bodyHighlight} stopOpacity="0.0" />
+        <linearGradient
+          id={`folder-highlight-${validColor}`}
+          x1="16"
+          y1="32"
+          x2="48"
+          y2="36"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop
+            offset="0%"
+            stopColor={colors.bodyHighlight}
+            stopOpacity="0.9"
+          />
+          <stop
+            offset="100%"
+            stopColor={colors.bodyHighlight}
+            stopOpacity="0.0"
+          />
         </linearGradient>
-        <linearGradient id={`folder-edge-${validColor}`} x1="8" y1="27" x2="54" y2="40" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.95)" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0.2)" stopOpacity="0.2" />
+        <linearGradient
+          id={`folder-edge-${validColor}`}
+          x1="8"
+          y1="27"
+          x2="54"
+          y2="40"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop
+            offset="0%"
+            stopColor="rgba(255,255,255,0.95)"
+            stopOpacity="0.8"
+          />
+          <stop
+            offset="100%"
+            stopColor="rgba(255,255,255,0.2)"
+            stopOpacity="0.2"
+          />
         </linearGradient>
-        <radialGradient id={`folder-shadow-${validColor}`} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(32 55) scale(20 6)">
+        <radialGradient
+          id={`folder-shadow-${validColor}`}
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(32 55) scale(20 6)"
+        >
           <stop offset="0%" stopColor={colors.baseShadow} stopOpacity="0.55" />
           <stop offset="100%" stopColor={colors.baseShadow} stopOpacity="0" />
         </radialGradient>
       </defs>
 
       {/* Base soft shadow */}
-      <ellipse cx="32" cy="55" rx="18" ry="6" fill={`url(#folder-shadow-${validColor})`} />
+      <ellipse
+        cx="32"
+        cy="55"
+        rx="18"
+        ry="6"
+        fill={`url(#folder-shadow-${validColor})`}
+      />
 
       {/* Folder Tab */}
       <path
@@ -168,6 +231,5 @@ export function MacOSFolderIcon({ className, color = "blue" }: MacOSFolderIconPr
         opacity="0.22"
       />
     </svg>
-  )
+  );
 }
-

@@ -1,9 +1,8 @@
-import { MessageCircle } from "lucide-react"
+import { MessageCircle } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/contact";
 
 export function WhatsAppButton() {
-  const phoneNumber = "5511995597242" // Format: country code (55) + phone number
-  const message = encodeURIComponent("Olá! Gostaria de saber mais sobre o Purple Stock.")
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
+  const whatsappUrl = getWhatsAppUrl();
 
   return (
     <a
@@ -16,5 +15,5 @@ export function WhatsAppButton() {
     >
       <MessageCircle className="h-6 w-6" />
     </a>
-  )
+  );
 }

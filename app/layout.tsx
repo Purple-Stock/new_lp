@@ -1,22 +1,22 @@
-import { LanguageProvider } from "@/contexts/LanguageContext"
-import { WhatsAppButton } from "@/components/whatsapp-button"
-import { ScheduleButton } from "@/components/schedule-button"
-import { RouteViewTracker } from "@/components/route-view-tracker"
-import { getSiteUrl, SITE_NAME } from "@/lib/site"
-import { Poppins } from "next/font/google"
-import Script from "next/script"
-import type { Metadata } from "next"
-import type React from "react"
-import "@/styles/globals.css"
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import { WhatsAppButton } from "@/components/whatsapp-button";
+import { ScheduleButton } from "@/components/schedule-button";
+import { RouteViewTracker } from "@/components/route-view-tracker";
+import { getSiteUrl, SITE_NAME } from "@/lib/site";
+import { Poppins } from "next/font/google";
+import Script from "next/script";
+import type { Metadata } from "next";
+import type React from "react";
+import "@/styles/globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
-})
+});
 
-const siteUrl = getSiteUrl()
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+const siteUrl = getSiteUrl();
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -59,12 +59,12 @@ export const metadata: Metadata = {
     ],
   },
   generator: "v0.dev",
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
@@ -99,5 +99,5 @@ export default function RootLayout({
         </LanguageProvider>
       </body>
     </html>
-  )
+  );
 }

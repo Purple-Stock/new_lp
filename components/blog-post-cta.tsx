@@ -1,13 +1,14 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ArrowRight, MessageCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { trackSeoCtaClick } from "@/lib/analytics"
+import Link from "next/link";
+import { ArrowRight, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { trackSeoCtaClick } from "@/lib/analytics";
+import { buildWhatsAppUrl } from "@/lib/contact";
 
 type BlogPostCtaProps = {
-  slug: string
-}
+  slug: string;
+};
 
 export function BlogPostCta({ slug }: BlogPostCtaProps) {
   const ctaBySlug = {
@@ -29,14 +30,14 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
       whatsappText:
         "Ol%C3%A1!%20Vim%20do%20artigo%20sobre%20aplicativo%20de%20estoque%20e%20quero%20comparar%20o%20Purple%20Stock%20com%20minha%20opera%C3%A7%C3%A3o.",
     },
-  } as const
+  } as const;
 
   const cta = ctaBySlug[slug as keyof typeof ctaBySlug] ?? {
     primaryLabel: "Testar Purple Stock",
     secondaryLabel: "Falar com especialista",
     whatsappText:
       "Ol%C3%A1!%20Vim%20do%20blog%20e%20quero%20entender%20como%20implantar%20o%20Purple%20Stock.",
-  }
+  };
 
   return (
     <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -57,7 +58,7 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
         </Button>
       </Link>
       <Link
-        href={`https://wa.me/5511995597242?text=${cta.whatsappText}`}
+        href={buildWhatsAppUrl(decodeURIComponent(cta.whatsappText))}
         onClick={() =>
           trackSeoCtaClick({
             cta_name: "blog_post_secondary_whatsapp",
@@ -67,11 +68,14 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
           })
         }
       >
-        <Button variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50">
+        <Button
+          variant="outline"
+          className="border-purple-300 text-purple-700 hover:bg-purple-50"
+        >
           <MessageCircle className="mr-2 h-4 w-4" />
           {cta.secondaryLabel}
         </Button>
       </Link>
     </div>
-  )
+  );
 }

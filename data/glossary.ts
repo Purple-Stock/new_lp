@@ -1,20 +1,20 @@
 export interface GlossaryTerm {
-  slug: string
-  term: string
-  category: "inventory" | "logistics" | "finance" | "management" | "technology"
-  shortDefinition: string // ~50 palavras — card da listagem + meta description
-  definition: string // ~300 palavras — seção principal da página
-  example: string // ~200 palavras — caso prático concreto
-  formula?: string // expressão/texto quando aplicável
-  formulaExplanation?: string // explicação dos componentes da fórmula
+  slug: string;
+  term: string;
+  category: "inventory" | "logistics" | "finance" | "management" | "technology";
+  shortDefinition: string; // ~50 palavras — card da listagem + meta description
+  definition: string; // ~300 palavras — seção principal da página
+  example: string; // ~200 palavras — caso prático concreto
+  formula?: string; // expressão/texto quando aplicável
+  formulaExplanation?: string; // explicação dos componentes da fórmula
   faq: [
     { question: string; answer: string },
     { question: string; answer: string },
     { question: string; answer: string },
-  ]
-  relatedTerms: string[] // slugs de outros termos no glossário
-  relatedFeatures?: string[] // ex: ['inventory-control', 'barcoding']
-  relatedIndustries?: string[] // ex: ['varejo', 'logistica']
+  ];
+  relatedTerms: string[]; // slugs de outros termos no glossário
+  relatedFeatures?: string[]; // ex: ['inventory-control', 'barcoding']
+  relatedIndustries?: string[]; // ex: ['varejo', 'logistica']
 }
 
 export const glossaryTerms: GlossaryTerm[] = [
@@ -81,7 +81,11 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["contas-a-receber", "capital-de-giro", "passivos-circulantes"],
+    relatedTerms: [
+      "contas-a-receber",
+      "capital-de-giro",
+      "passivos-circulantes",
+    ],
     relatedFeatures: ["purchase-sales"],
     relatedIndustries: ["varejo", "manufatura"],
   },
@@ -196,7 +200,11 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["passivos-circulantes", "capital-de-giro", "contas-a-receber"],
+    relatedTerms: [
+      "passivos-circulantes",
+      "capital-de-giro",
+      "contas-a-receber",
+    ],
     relatedFeatures: ["analytics-reporting"],
     relatedIndustries: ["varejo", "manufatura"],
   },
@@ -247,7 +255,11 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["estoque-de-seguranca", "ponto-de-reposicao", "efeito-chicote"],
+    relatedTerms: [
+      "estoque-de-seguranca",
+      "ponto-de-reposicao",
+      "efeito-chicote",
+    ],
     relatedFeatures: ["inventory-control"],
     relatedIndustries: ["manufatura", "varejo"],
   },
@@ -279,7 +291,11 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["estoque-de-seguranca", "giro-de-estoque", "ruptura-de-estoque"],
+    relatedTerms: [
+      "estoque-de-seguranca",
+      "giro-de-estoque",
+      "ruptura-de-estoque",
+    ],
     relatedFeatures: ["inventory-control", "barcoding"],
     relatedIndustries: ["varejo", "manufatura"],
   },
@@ -290,7 +306,8 @@ export const glossaryTerms: GlossaryTerm[] = [
     shortDefinition: "", // TODO: ~50 palavras
     definition: "", // TODO: ~300 palavras
     example: "", // TODO: ~200 palavras
-    formula: "Estoque de Segurança = (Demanda Máxima - Demanda Média) × Lead Time",
+    formula:
+      "Estoque de Segurança = (Demanda Máxima - Demanda Média) × Lead Time",
     formulaExplanation:
       "Demanda Máxima = maior quantidade vendida em um período; Demanda Média = média de vendas no mesmo período; Lead Time = tempo de reposição em dias.",
     faq: [
@@ -317,7 +334,11 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["sku", "excesso-de-estoque", "custo-das-mercadorias-vendidas"],
+    relatedTerms: [
+      "sku",
+      "excesso-de-estoque",
+      "custo-das-mercadorias-vendidas",
+    ],
     relatedFeatures: ["analytics-reporting", "inventory-control"],
     relatedIndustries: ["varejo", "atacado"],
   },
@@ -349,7 +370,11 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["giro-de-estoque", "estoque-de-seguranca", "financiamento-de-estoque"],
+    relatedTerms: [
+      "giro-de-estoque",
+      "estoque-de-seguranca",
+      "financiamento-de-estoque",
+    ],
     relatedFeatures: ["analytics-reporting"],
     relatedIndustries: ["varejo", "manufatura"],
   },
@@ -445,7 +470,11 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["estoque-de-seguranca", "ponto-de-reposicao", "efeito-chicote"],
+    relatedTerms: [
+      "estoque-de-seguranca",
+      "ponto-de-reposicao",
+      "efeito-chicote",
+    ],
     relatedFeatures: ["inventory-control"],
     relatedIndustries: ["manufatura", "varejo"],
   },
@@ -488,7 +517,8 @@ export const glossaryTerms: GlossaryTerm[] = [
     shortDefinition: "", // TODO: ~50 palavras
     definition: "", // TODO: ~300 palavras
     example: "", // TODO: ~200 palavras
-    formula: "Ponto de Reposição = (Demanda Média Diária × Lead Time) + Estoque de Segurança",
+    formula:
+      "Ponto de Reposição = (Demanda Média Diária × Lead Time) + Estoque de Segurança",
     formulaExplanation:
       "Demanda Média Diária = quantidade média vendida por dia; Lead Time = dias para o fornecedor entregar; Estoque de Segurança = buffer contra variações.",
     faq: [
@@ -579,7 +609,11 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["ativos-circulantes", "passivos-circulantes", "ciclo-de-conversao-de-caixa"],
+    relatedTerms: [
+      "ativos-circulantes",
+      "passivos-circulantes",
+      "ciclo-de-conversao-de-caixa",
+    ],
     relatedFeatures: ["analytics-reporting"],
     relatedIndustries: ["varejo", "atacado"],
   },
@@ -606,7 +640,8 @@ export const glossaryTerms: GlossaryTerm[] = [
     shortDefinition: "", // TODO: ~50 palavras
     definition: "", // TODO: ~300 palavras
     example: "", // TODO: ~200 palavras
-    formula: "WAC = Custo Total dos Itens Disponíveis / Total de Unidades Disponíveis",
+    formula:
+      "WAC = Custo Total dos Itens Disponíveis / Total de Unidades Disponíveis",
     formulaExplanation:
       "Custo Total dos Itens Disponíveis = soma do custo de abertura + custo de todas as compras do período; Total de Unidades Disponíveis = unidades em estoque no início + unidades compradas.",
     faq: [
@@ -614,7 +649,12 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["peps", "ueps", "gestao-de-estoque", "custo-das-mercadorias-vendidas"],
+    relatedTerms: [
+      "peps",
+      "ueps",
+      "gestao-de-estoque",
+      "custo-das-mercadorias-vendidas",
+    ],
     relatedFeatures: ["inventory-control", "analytics-reporting"],
     relatedIndustries: ["varejo", "manufatura"],
   },
@@ -630,7 +670,12 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["ueps", "custo-medio-ponderado", "gestao-de-estoque", "inventario-fisico"],
+    relatedTerms: [
+      "ueps",
+      "custo-medio-ponderado",
+      "gestao-de-estoque",
+      "inventario-fisico",
+    ],
     relatedFeatures: ["inventory-control"],
     relatedIndustries: ["food", "pharmaceutical", "varejo"],
   },
@@ -663,7 +708,11 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
     ],
     relatedTerms: ["wms", "gestao-de-estoque", "cadeia-de-suprimentos"],
-    relatedFeatures: ["inventory-control", "purchase-sales", "analytics-reporting"],
+    relatedFeatures: [
+      "inventory-control",
+      "purchase-sales",
+      "analytics-reporting",
+    ],
     relatedIndustries: ["manufatura", "varejo", "logistica"],
   },
   {
@@ -710,7 +759,12 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["estoque-de-seguranca", "ponto-de-reposicao", "giro-de-estoque", "efeito-chicote"],
+    relatedTerms: [
+      "estoque-de-seguranca",
+      "ponto-de-reposicao",
+      "giro-de-estoque",
+      "efeito-chicote",
+    ],
     relatedFeatures: ["analytics-reporting", "inventory-control"],
     relatedIndustries: ["varejo", "manufatura", "logistica"],
   },
@@ -729,7 +783,11 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["ponto-de-reposicao", "estoque-de-seguranca", "custo-das-mercadorias-vendidas"],
+    relatedTerms: [
+      "ponto-de-reposicao",
+      "estoque-de-seguranca",
+      "custo-das-mercadorias-vendidas",
+    ],
     relatedFeatures: ["inventory-control", "purchase-sales"],
     relatedIndustries: ["manufatura", "varejo", "atacado"],
   },
@@ -745,8 +803,12 @@ export const glossaryTerms: GlossaryTerm[] = [
       { question: "", answer: "" }, // TODO
       { question: "", answer: "" }, // TODO
     ],
-    relatedTerms: ["quantidade-economica-pedido", "ponto-de-reposicao", "cadeia-de-suprimentos"],
+    relatedTerms: [
+      "quantidade-economica-pedido",
+      "ponto-de-reposicao",
+      "cadeia-de-suprimentos",
+    ],
     relatedFeatures: ["purchase-sales", "inventory-control"],
     relatedIndustries: ["manufatura", "varejo", "atacado"],
   },
-]
+];

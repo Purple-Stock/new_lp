@@ -1,14 +1,14 @@
-import type { Metadata } from "next"
-import { SITE_NAME } from "@/lib/site"
+import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/site";
 
-const DEFAULT_SOCIAL_IMAGE = "/images/hero-photo-1800x1200.webp"
+const DEFAULT_SOCIAL_IMAGE = "/images/hero-photo-1800x1200.webp";
 
 type PageMetadataInput = {
-  title: string
-  description?: string
-  path: string
-  robots?: Metadata["robots"]
-}
+  title: string;
+  description?: string;
+  path: string;
+  robots?: Metadata["robots"];
+};
 
 export function buildPageMetadata({
   title,
@@ -16,7 +16,9 @@ export function buildPageMetadata({
   path,
   robots,
 }: PageMetadataInput): Metadata {
-  const socialTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`
+  const socialTitle = title.includes(SITE_NAME)
+    ? title
+    : `${title} | ${SITE_NAME}`;
 
   return {
     title,
@@ -46,5 +48,5 @@ export function buildPageMetadata({
       images: [DEFAULT_SOCIAL_IMAGE],
     },
     robots,
-  }
+  };
 }

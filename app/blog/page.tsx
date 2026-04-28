@@ -1,41 +1,44 @@
-import Link from "next/link"
-import Image from "next/image"
-import type { Metadata } from "next"
-import { BookOpen, ArrowRight, Clock3 } from "lucide-react"
-import { getAllPosts, slugifyTag } from "@/lib/blog"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
+import Link from "next/link";
+import Image from "next/image";
+import type { Metadata } from "next";
+import { BookOpen, ArrowRight, Clock3 } from "lucide-react";
+import { getAllPosts, slugifyTag } from "@/lib/blog";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
-const POSTS_PER_PAGE = 10
+const POSTS_PER_PAGE = 10;
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Artigos práticos sobre controle de estoque, rastreabilidade e eficiência operacional.",
+  description:
+    "Artigos práticos sobre controle de estoque, rastreabilidade e eficiência operacional.",
   alternates: {
     canonical: "/blog",
   },
-}
+};
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("pt-BR", {
     day: "2-digit",
     month: "long",
     year: "numeric",
-  }).format(new Date(date))
+  }).format(new Date(date));
 }
 
 type PageProps = {
-  searchParams: Promise<{ page?: string }>
-}
+  searchParams: Promise<{ page?: string }>;
+};
 
 export default async function BlogPage({ searchParams }: PageProps) {
-  const { page } = await searchParams
-  const posts = await getAllPosts()
-  const currentPage = Number.isNaN(Number(page)) ? 1 : Math.max(1, Number(page ?? "1"))
-  const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE))
-  const normalizedPage = Math.min(currentPage, totalPages)
-  const start = (normalizedPage - 1) * POSTS_PER_PAGE
-  const paginatedPosts = posts.slice(start, start + POSTS_PER_PAGE)
+  const { page } = await searchParams;
+  const posts = await getAllPosts();
+  const currentPage = Number.isNaN(Number(page))
+    ? 1
+    : Math.max(1, Number(page ?? "1"));
+  const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
+  const normalizedPage = Math.min(currentPage, totalPages);
+  const start = (normalizedPage - 1) * POSTS_PER_PAGE;
+  const paginatedPosts = posts.slice(start, start + POSTS_PER_PAGE);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)]">
@@ -55,21 +58,31 @@ export default async function BlogPage({ searchParams }: PageProps) {
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-600 md:text-xl">
-              Guias curtos, linguagem direta e foco em resultado para facilitar a leitura do cliente e apoiar melhorias de operação.
+              Guias curtos, linguagem direta e foco em resultado para facilitar
+              a leitura do cliente e apoiar melhorias de operação.
             </p>
           </header>
 
           <div className="grid gap-8">
             {paginatedPosts.map((post) => {
-              const cover = post.coverImage ?? "/images/hero-photo-900x600.webp"
+              const cover =
+                post.coverImage ?? "/images/hero-photo-900x600.webp";
               return (
                 <article
                   key={post.slug}
                   className="overflow-hidden rounded-3xl border border-white/70 bg-white/90 shadow-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                 >
                   <div className="grid gap-0 md:grid-cols-[320px_1fr]">
-                    <Link href={`/blog/${post.slug}`} className="relative block min-h-56 overflow-hidden">
-                      <Image src={cover} alt={post.title} fill className="object-cover transition-transform duration-500 hover:scale-105" />
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="relative block min-h-56 overflow-hidden"
+                    >
+                      <Image
+                        src={cover}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform duration-500 hover:scale-105"
+                      />
                     </Link>
 
                     <div className="p-6 md:p-8">
@@ -85,12 +98,17 @@ export default async function BlogPage({ searchParams }: PageProps) {
                       </div>
 
                       <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-                        <Link href={`/blog/${post.slug}`} className="hover:text-purple-700">
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          className="hover:text-purple-700"
+                        >
                           {post.title}
                         </Link>
                       </h2>
 
-                      <p className="mt-3 text-base leading-relaxed text-gray-600">{post.excerpt}</p>
+                      <p className="mt-3 text-base leading-relaxed text-gray-600">
+                        {post.excerpt}
+                      </p>
 
                       {post.tags.length > 0 && (
                         <div className="mt-5 flex flex-wrap gap-2">
@@ -107,7 +125,10 @@ export default async function BlogPage({ searchParams }: PageProps) {
                       )}
 
                       <div className="mt-6">
-                        <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-800">
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          className="inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-800"
+                        >
                           Ler artigo completo
                           <ArrowRight className="h-4 w-4" />
                         </Link>
@@ -115,7 +136,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
                     </div>
                   </div>
                 </article>
-              )
+              );
             })}
           </div>
 
@@ -123,13 +144,19 @@ export default async function BlogPage({ searchParams }: PageProps) {
             <nav className="mt-12 flex items-center justify-center gap-3">
               {normalizedPage > 1 ? (
                 <Link
-                  href={normalizedPage - 1 === 1 ? "/blog" : `/blog?page=${normalizedPage - 1}`}
+                  href={
+                    normalizedPage - 1 === 1
+                      ? "/blog"
+                      : `/blog?page=${normalizedPage - 1}`
+                  }
                   className="rounded-xl border border-purple-200 bg-white px-4 py-2 text-sm font-semibold text-purple-700 shadow-sm hover:bg-purple-50"
                 >
                   Anterior
                 </Link>
               ) : (
-                <span className="rounded-xl border border-gray-200 bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-400">Anterior</span>
+                <span className="rounded-xl border border-gray-200 bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-400">
+                  Anterior
+                </span>
               )}
 
               <span className="rounded-xl border border-white/70 bg-white/80 px-4 py-2 text-sm font-semibold text-gray-700">
@@ -144,7 +171,9 @@ export default async function BlogPage({ searchParams }: PageProps) {
                   Próxima
                 </Link>
               ) : (
-                <span className="rounded-xl border border-gray-200 bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-400">Próxima</span>
+                <span className="rounded-xl border border-gray-200 bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-400">
+                  Próxima
+                </span>
               )}
             </nav>
           )}
@@ -153,5 +182,5 @@ export default async function BlogPage({ searchParams }: PageProps) {
 
       <Footer />
     </div>
-  )
+  );
 }

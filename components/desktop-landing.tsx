@@ -554,7 +554,7 @@ export function DesktopLanding() {
           folderColor: "yellow" as const,
           action: {
             label: language === "pt" ? "Falar com humano" : language === "fr" ? "Parler à un humain" : "Talk to a human",
-            href: "https://calendly.com/matheus-puppe/purple-stock",
+            href: "https://api.whatsapp.com/send/?phone=5511995597242&text=Hello!+I%27d+like+to+speak+with+someone+about+Purple+Stock.&type=phone_number&app_absent=0",
           },
         },
       }) satisfies Record<WindowKey, {
@@ -1433,13 +1433,13 @@ export function DesktopLanding() {
                     className="border-purple-300 bg-white/90 px-8 py-6 text-base font-semibold text-purple-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-purple-50"
                   >
                     <Link
-                      href="https://calendly.com/matheus-puppe/purple-stock"
+                      href="https://api.whatsapp.com/send/?phone=5511995597242&text=Ol%C3%A1%21+Quero+entender+como+o+Purple+Stock+pode+organizar+meu+estoque.&type=phone_number&app_absent=0"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() =>
                         trackCtaClick({
-                          cta_name: "desktop_schedule_demo_secondary",
-                          cta_target: "calendly",
+                          cta_name: "desktop_whatsapp_secondary",
+                          cta_target: "whatsapp",
                           page_section: "hero_cta",
                           cta_variant: "secondary",
                         })

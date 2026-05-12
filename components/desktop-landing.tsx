@@ -1143,6 +1143,95 @@ export function DesktopLanding() {
     [language]
   );
 
+  const heroSignalCards = useMemo(
+    () =>
+      ({
+        pt: [
+          {
+            title: "Sem saldo duvidoso",
+            body: "Seu time responde com histórico, localização e saldo confiável antes que a operação vire discussão.",
+            icon: ShieldCheck,
+            tone: "border-emerald-200 bg-emerald-50/80 text-emerald-700 shadow-emerald-100/80",
+          },
+          {
+            title: "Sem caça ao culpado",
+            body: "Entrada, saída, ajuste e transferência ficam no mesmo fluxo para parar o jogo de empurra.",
+            icon: UsersRound,
+            tone: "border-rose-200 bg-rose-50/80 text-rose-700 shadow-rose-100/80",
+          },
+          {
+            title: "Sem planilha paralela",
+            body: "QR Code no celular e rastreabilidade no dia a dia para ninguém depender de memória ou favor.",
+            icon: ScanLine,
+            tone: "border-violet-200 bg-violet-50/80 text-violet-700 shadow-violet-100/80",
+          },
+        ],
+        en: [
+          {
+            title: "No unreliable stock balance",
+            body: "Teams answer with history, location, and trusted balance before operations turn into blame.",
+            icon: ShieldCheck,
+            tone: "border-emerald-200 bg-emerald-50/80 text-emerald-700 shadow-emerald-100/80",
+          },
+          {
+            title: "No blame game",
+            body: "Inbound, outbound, adjustment, and transfer stay in one operational flow.",
+            icon: UsersRound,
+            tone: "border-rose-200 bg-rose-50/80 text-rose-700 shadow-rose-100/80",
+          },
+          {
+            title: "No parallel spreadsheets",
+            body: "QR code on mobile and traceability in daily routines instead of memory-based workarounds.",
+            icon: ScanLine,
+            tone: "border-violet-200 bg-violet-50/80 text-violet-700 shadow-violet-100/80",
+          },
+        ],
+        fr: [
+          {
+            title: "Sans solde douteux",
+            body: "L'equipe repond avec historique, emplacement et solde fiable avant que l'operation ne tourne au conflit.",
+            icon: ShieldCheck,
+            tone: "border-emerald-200 bg-emerald-50/80 text-emerald-700 shadow-emerald-100/80",
+          },
+          {
+            title: "Sans jeu de faute",
+            body: "Entree, sortie, ajustement et transfert restent dans un seul flux operationnel.",
+            icon: UsersRound,
+            tone: "border-rose-200 bg-rose-50/80 text-rose-700 shadow-rose-100/80",
+          },
+          {
+            title: "Sans tableur parallele",
+            body: "QR code sur mobile et tracabilite quotidienne sans dependance a la memoire.",
+            icon: ScanLine,
+            tone: "border-violet-200 bg-violet-50/80 text-violet-700 shadow-violet-100/80",
+          },
+        ],
+      })[language],
+    [language]
+  );
+
+  const heroTrustBar = useMemo(
+    () =>
+      ({
+        pt: [
+          "Teste por 7 dias com cancelamento livre",
+          "Comece leve, sem projeto longo",
+          "Use no celular com QR Code desde o primeiro fluxo",
+        ],
+        en: [
+          "7-day trial with flexible cancellation",
+          "Start light without a long rollout project",
+          "Run on mobile with QR code from day one",
+        ],
+        fr: [
+          "Essai de 7 jours avec annulation flexible",
+          "Demarrez leger sans long projet de deploiement",
+          "Utilisez le mobile avec QR code des le premier jour",
+        ],
+      })[language],
+    [language]
+  );
+
   const rotatingSectors = useMemo(
     () =>
       ({
@@ -1619,31 +1708,41 @@ export function DesktopLanding() {
               <div className="flex-1 space-y-8 overflow-visible px-4 py-8 sm:px-10 sm:py-10">
                 {/* Top Section - Title and Description */}
                 <div className="text-center space-y-6 mb-12">
+                  <div className="mx-auto inline-flex max-w-fit items-center gap-2 rounded-full border border-rose-200 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-rose-700 shadow-[0_12px_40px_-24px_rgba(190,24,93,0.55)]">
+                    <span className="inline-flex h-2.5 w-2.5 rounded-full bg-rose-500" />
+                    {language === "pt"
+                      ? "Estoque fora do controle custa venda e autoridade"
+                      : language === "en"
+                        ? "Broken stock control costs sales and authority"
+                        : "Un stock hors controle coute ventes et autorite"}
+                  </div>
                   <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight">
                     {language === "pt" ? (
                       <>
                         {
-                          "Pare de perder venda, tempo e autoridade por causa de estoque desorganizado"
+                          "Quando o saldo vira discussão, sua operação perde venda, tempo e autoridade"
                         }
                       </>
                     ) : language === "en" ? (
                       <>
-                        {"Stop losing sales because stock records do not match"}
+                        {
+                          "When stock becomes an argument, operations lose sales, time, and credibility"
+                        }
                       </>
                     ) : (
                       <>
                         {
-                          "Arretez de perdre des ventes parce que le stock ne correspond pas"
+                          "Quand le stock devient une discussion, l'operation perd ventes, temps et credibilite"
                         }
                       </>
                     )}
                   </h1>
                   <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                     {language === "pt"
-                      ? "Quando o saldo não bate, ninguém confia em ninguém: a venda trava, o retrabalho cresce e a operação vira refém de planilha paralela. O Purple Stock organiza o estoque no celular, com QR Code e histórico claro, para seu time voltar a operar com segurança e responder rápido sem improviso."
+                      ? "Purple Stock coloca entrada, saída, transferência, ajuste e inventário no mesmo fluxo rastreável. Seu time volta a responder no celular, com QR Code, histórico claro e confiança para agir rápido sem improviso."
                       : language === "en"
-                        ? "In a few days, your team moves from spreadsheets to simple stock control on mobile, with QR code and history of what came in, what went out, and where each move happened."
-                        : "En quelques jours, votre equipe passe du tableur a un controle de stock simple sur mobile, avec QR code et historique des entrees, sorties et emplacements."}
+                        ? "Purple Stock keeps inbound, outbound, transfer, adjustment, and inventory count in one traceable flow. Your team answers on mobile with QR code, clear history, and enough confidence to act fast."
+                        : "Purple Stock regroupe entree, sortie, transfert, ajustement et inventaire dans un seul flux tracable. Votre equipe repond sur mobile avec QR code, historique clair et assez de confiance pour agir vite."}
                   </p>
                   <div className="mx-auto max-w-3xl rounded-2xl border border-blue-100 bg-blue-50/80 px-5 py-4 text-left">
                     <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">
@@ -1653,63 +1752,27 @@ export function DesktopLanding() {
                       {playbookContent.uvpText}
                     </p>
                   </div>
-                  <div className="mx-auto grid w-full max-w-3xl gap-3 text-left sm:grid-cols-3">
-                    {[
-                      {
-                        title:
-                          language === "pt"
-                            ? "Controle sem improviso"
-                            : language === "en"
-                              ? "Guided setup"
-                              : "Mise en route guidee",
-                        value:
-                          language === "pt"
-                            ? "Veja saldo confiável, ache o item rápido e responda com segurança sem depender de memória ou favores."
-                            : language === "en"
-                              ? "Assisted onboarding to start with the essentials without stopping operations."
-                              : "Onboarding assiste pour commencer avec l'essentiel sans arreter l'operation.",
-                      },
-                      {
-                        title:
-                          language === "pt"
-                            ? "Velocidade com padrão"
-                            : language === "en"
-                              ? "Operations flow"
-                              : "Flux operationnel",
-                        value:
-                          language === "pt"
-                            ? "O time registra entrada, saída e transferência no mesmo fluxo, sem cada pessoa inventar um processo."
-                            : language === "en"
-                              ? "5 standard movements: stock in, stock out, transfer, adjustment, and count."
-                              : "5 mouvements standard: entree, sortie, transfert, ajustement et comptage.",
-                      },
-                      {
-                        title:
-                          language === "pt"
-                            ? "Autoridade operacional"
-                            : language === "en"
-                              ? "Daily execution"
-                              : "Execution quotidienne",
-                        value:
-                          language === "pt"
-                            ? "Cada item deixa rastro. Você sabe onde estava, para onde foi e quem mexeu antes que o problema vire discussão."
-                            : language === "en"
-                              ? "Mobile operation with QR code, without depending on a desktop in the warehouse."
-                              : "Operation mobile avec QR code, sans dependre d'un ordinateur dans l'entrepot.",
-                      },
-                    ].map((proof) => (
-                      <div
-                        key={proof.title}
-                        className="rounded-xl border border-slate-200 bg-white px-4 py-3"
-                      >
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                          {proof.title}
-                        </p>
-                        <p className="mt-1 text-base font-bold text-slate-900">
-                          {proof.value}
-                        </p>
-                      </div>
-                    ))}
+                  <div className="mx-auto grid w-full max-w-5xl gap-3 text-left lg:grid-cols-3">
+                    {heroSignalCards.map((proof) => {
+                      const Icon = proof.icon;
+
+                      return (
+                        <div
+                          key={proof.title}
+                          className="rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.3)]"
+                        >
+                          <div
+                            className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold ${proof.tone}`}
+                          >
+                            <Icon className="h-3.5 w-3.5" strokeWidth={2.5} />
+                            {proof.title}
+                          </div>
+                          <p className="mt-3 text-sm leading-relaxed text-slate-700 sm:text-[15px]">
+                            {proof.body}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
                   <div className="mx-auto w-full max-w-2xl rounded-2xl border border-purple-200 bg-gradient-to-r from-purple-50 via-white to-purple-50 px-5 py-4 shadow-sm">
                     <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:text-left">
@@ -1744,17 +1807,17 @@ export function DesktopLanding() {
                     </p>
                     <p className="mt-2 text-sm font-medium text-slate-700">
                       {language === "pt"
-                        ? "Entre rápido, valide na rotina e sinta o estoque voltando para sua mão antes de cair em implantação longa."
+                        ? "Entre rápido, valide na rotina e prove para a equipe que o estoque pode voltar para sua mão antes de cair em implantação longa."
                         : language === "en"
-                          ? "Built for teams that want to start small and validate the operation before any large system project."
-                          : "Concu pour demarrer petit et valider l'operation avant tout grand projet de systeme."}
+                          ? "Built for teams that want to validate control in the real operation before committing to a long systems project."
+                          : "Concu pour les equipes qui veulent valider le controle dans l'operation avant un long projet de systeme."}
                     </p>
                     <p className="mt-1 text-xs text-slate-500">
                       {language === "pt"
-                        ? "Teste com cartão de crédito e cancelamento a qualquer momento."
+                        ? "Teste com cartão de crédito, cancelamento livre e setup guiado para começar sem travar a operação."
                         : language === "en"
-                          ? "Trial with credit card and cancel anytime."
-                          : "Essai avec carte bancaire et annulation a tout moment."}
+                          ? "Trial with credit card, flexible cancellation, and guided setup."
+                          : "Essai avec carte bancaire, annulation flexible et setup guide."}
                     </p>
                     <div className="mt-3">
                       <Button
@@ -1860,6 +1923,17 @@ export function DesktopLanding() {
                         ? "Trial with credit card • Cancel anytime • Guided setup"
                         : "Essai avec carte bancaire • Annulation a tout moment • Setup guide"}
                   </p>
+                  <div className="mx-auto flex w-full max-w-4xl flex-wrap items-center justify-center gap-2 text-xs text-slate-600">
+                    {heroTrustBar.map((item) => (
+                      <span
+                        key={item}
+                        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-3 py-2 shadow-sm"
+                      >
+                        <span className="h-2 w-2 rounded-full bg-purple-500" />
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                   <div className="mx-auto mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
                     <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
                       <Smartphone className="h-3.5 w-3.5" />
@@ -1883,6 +1957,7 @@ export function DesktopLanding() {
                 {/* Main Content Area - App Screenshot */}
                 <div className="relative py-12">
                   <div className="relative mx-auto max-w-6xl">
+                    <div className="pointer-events-none absolute inset-x-8 top-8 h-40 rounded-full bg-purple-400/20 blur-3xl" />
                     <div className="relative rounded-3xl border-4 border-white bg-white p-2 shadow-2xl overflow-visible">
                       <div className="relative h-auto w-full">
                         <Image
@@ -1900,6 +1975,38 @@ export function DesktopLanding() {
                           className="h-auto w-full rounded-2xl object-contain"
                           priority
                         />
+                        <div className="pointer-events-none absolute left-4 top-4 hidden rounded-2xl border border-white/70 bg-slate-950/80 px-4 py-3 text-left text-white shadow-2xl backdrop-blur md:block">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-purple-200">
+                            {language === "pt"
+                              ? "Resposta sem improviso"
+                              : language === "en"
+                                ? "No-guesswork response"
+                                : "Reponse sans improvisation"}
+                          </p>
+                          <p className="mt-1 max-w-[220px] text-sm leading-relaxed text-white/90">
+                            {language === "pt"
+                              ? "Saldo, localização e histórico em um único fluxo para o time agir sem travar a operação."
+                              : language === "en"
+                                ? "Balance, location, and history in one flow so teams can act without freezing operations."
+                                : "Solde, emplacement et historique dans un seul flux pour agir sans bloquer l'operation."}
+                          </p>
+                        </div>
+                        <div className="pointer-events-none absolute bottom-4 right-4 hidden rounded-2xl border border-emerald-200 bg-white/95 px-4 py-3 text-left shadow-xl md:block">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-700">
+                            {language === "pt"
+                              ? "Fluxo auditável"
+                              : language === "en"
+                                ? "Auditable flow"
+                                : "Flux auditable"}
+                          </p>
+                          <p className="mt-1 text-sm font-semibold text-slate-900">
+                            {language === "pt"
+                              ? "Entrada • Saída • Transferência • Ajuste • Inventário"
+                              : language === "en"
+                                ? "Inbound • Outbound • Transfer • Adjustment • Count"
+                                : "Entree • Sortie • Transfert • Ajustement • Inventaire"}
+                          </p>
+                        </div>
                         {shouldLoadVideoModal ? (
                           <HeroVideoModal
                             language={language}

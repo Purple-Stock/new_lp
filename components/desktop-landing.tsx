@@ -863,9 +863,9 @@ export function DesktopLanding() {
       ({
         pt: {
           uvpBadge:
-            "Para empresas que já cansaram de perder venda por falta de produto, erro de contagem ou estoque sumido no almoxarifado.",
+            "Para empresas que cansaram de passar aperto entre planilha, sistema e prateleira.",
           uvpText:
-            "Purple Stock organiza entrada, saída, transferência, ajuste e inventário em um único fluxo rastreável, para qualquer pessoa do time saber o que tem, onde está e quem mexeu, sem virar um projeto gigante de sistema.",
+            "Purple Stock devolve controle para a operação. Entrada, saída, transferência, ajuste e inventário ficam no mesmo fluxo rastreável, para o time agir rápido, parar de improvisar e voltar a responder com segurança quando alguém pergunta onde está o item, quanto tem e quem mexeu por último.",
           howItWorksTitle:
             "Como funciona o sistema de controle de estoque na prática",
           howItWorksSubtitle:
@@ -893,41 +893,41 @@ export function DesktopLanding() {
             {
               metric: "Rastreabilidade por item",
               detail:
-                "Quem movimentou, quando movimentou e em qual local a operação aconteceu.",
+                "Quem movimentou, quando movimentou e em qual local a operação aconteceu sem depender de memória, print ou planilha paralela.",
             },
             {
               metric: "Histórico único de movimentações",
               detail:
-                "Entrada, saída, transferência, ajuste e contagem no mesmo fluxo operacional.",
+                "Entrada, saída, transferência, ajuste e contagem no mesmo fluxo operacional, sem cada pessoa controlar de um jeito.",
             },
             {
               metric: "Conferência por localização",
               detail:
-                "Consulta de saldo e inventário por local sem consolidar planilhas manualmente.",
+                "Consulta de saldo e inventário por local para achar item rápido e evitar venda perdida por saldo que não bate.",
             },
           ],
           compareTitle: "Purple Stock vs ERP tradicional",
           compareSubtitle:
-            "Quando o foco é operação de estoque rápida, o modelo de implantação faz diferença.",
+            "Quando o problema é caos operacional no estoque, velocidade de implantação e clareza no uso pesam mais que escopo gigante.",
           compareRows: [
             {
               label: "Implantação",
-              purple: "Setup leve e progressivo",
-              erp: "Projeto mais extenso em média",
+              purple: "Começa leve, entra rápido na rotina",
+              erp: "Projeto mais pesado e demorado em média",
             },
             {
               label: "Curva de uso para operação",
-              purple: "Fluxo direto para almoxarifado",
+              purple: "Fluxo direto para quem opera",
               erp: "Treinamento mais extenso em média",
             },
             {
               label: "Operação no celular + QR",
               purple: "Nativo no fluxo diário",
-              erp: "Geralmente depende de módulo extra",
+              erp: "Geralmente depende de módulo extra ou adaptação",
             },
             {
               label: "Foco inicial",
-              purple: "Controle de estoque e rastreabilidade",
+              purple: "Acabar com descontrole, retrabalho e saldo duvidoso",
               erp: "Suite ampla com escopo maior",
             },
           ],
@@ -935,23 +935,23 @@ export function DesktopLanding() {
           objections: [
             {
               q: "Dá para começar sem migração complexa?",
-              a: "Sim. Você pode iniciar com o cadastro essencial e evoluir por etapas, sem parar a operação.",
+              a: "Sim. Você pode começar pelo cadastro essencial e colocar a operação para rodar por etapas, sem travar o time nem entrar em projeto grande logo de cara.",
             },
             {
               q: "Meus dados ficam seguros e separados por equipe?",
-              a: "Sim. O sistema opera por times com contexto ativo e permissões por usuário, mantendo cada operação isolada.",
+              a: "Sim. O sistema opera por times com contexto ativo e permissões por usuário, para cada operação ficar separada e auditável.",
             },
             {
               q: "Funciona no celular no dia a dia da operação?",
-              a: "Sim. Os fluxos de entrada, saída, transferência e contagem são diretos e podem ser feitos no celular.",
+              a: "Sim. Os fluxos de entrada, saída, transferência e contagem foram pensados para o dia a dia da operação, direto no celular.",
             },
             {
               q: "Posso testar sem ficar preso?",
-              a: "Sim. O teste utiliza cartão de crédito e você pode cancelar quando quiser dentro do período de avaliação.",
+              a: "Sim. O teste usa cartão de crédito, mas você pode cancelar quando quiser dentro do período de avaliação se não sentir a operação mais na mão.",
             },
             {
               q: "Quanto custa para começar?",
-              a: "O plano de entrada começa em R$29,90/mês na oferta atual, com revisão de preço conforme evolução da operação.",
+              a: "O plano de entrada começa em R$29,90/mês na oferta atual, para você validar rápido antes de assumir um projeto caro e demorado.",
             },
           ],
         },
@@ -1184,7 +1184,7 @@ export function DesktopLanding() {
     if (language === "pt") {
       return usePainCta
         ? "Quero parar de perder vendas agora"
-        : "Começar teste grátis de 7 dias";
+        : "Quero colocar meu estoque na mão de novo";
     }
     if (language === "fr") {
       return usePainCta
@@ -1621,7 +1621,11 @@ export function DesktopLanding() {
                 <div className="text-center space-y-6 mb-12">
                   <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight">
                     {language === "pt" ? (
-                      <>{"Pare de perder venda porque o estoque não bate"}</>
+                      <>
+                        {
+                          "Pare de perder venda, tempo e autoridade por causa de estoque desorganizado"
+                        }
+                      </>
                     ) : language === "en" ? (
                       <>
                         {"Stop losing sales because stock records do not match"}
@@ -1636,7 +1640,7 @@ export function DesktopLanding() {
                   </h1>
                   <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                     {language === "pt"
-                      ? "Em poucos dias, seu time sai da planilha para um controle de estoque simples, no celular, com QR Code e histórico do que entrou, saiu e foi para cada lugar."
+                      ? "Quando o saldo não bate, ninguém confia em ninguém: a venda trava, o retrabalho cresce e a operação vira refém de planilha paralela. O Purple Stock organiza o estoque no celular, com QR Code e histórico claro, para seu time voltar a operar com segurança e responder rápido sem improviso."
                       : language === "en"
                         ? "In a few days, your team moves from spreadsheets to simple stock control on mobile, with QR code and history of what came in, what went out, and where each move happened."
                         : "En quelques jours, votre equipe passe du tableur a un controle de stock simple sur mobile, avec QR code et historique des entrees, sorties et emplacements."}
@@ -1654,13 +1658,13 @@ export function DesktopLanding() {
                       {
                         title:
                           language === "pt"
-                            ? "Setup guiado"
+                            ? "Controle sem improviso"
                             : language === "en"
                               ? "Guided setup"
                               : "Mise en route guidee",
                         value:
                           language === "pt"
-                            ? "Onboarding assistido para começar com o básico sem parar a operação."
+                            ? "Veja saldo confiável, ache o item rápido e responda com segurança sem depender de memória ou favores."
                             : language === "en"
                               ? "Assisted onboarding to start with the essentials without stopping operations."
                               : "Onboarding assiste pour commencer avec l'essentiel sans arreter l'operation.",
@@ -1668,13 +1672,13 @@ export function DesktopLanding() {
                       {
                         title:
                           language === "pt"
-                            ? "Fluxo operacional"
+                            ? "Velocidade com padrão"
                             : language === "en"
                               ? "Operations flow"
                               : "Flux operationnel",
                         value:
                           language === "pt"
-                            ? "5 movimentos padrão: entrada, saída, transferência, ajuste e contagem."
+                            ? "O time registra entrada, saída e transferência no mesmo fluxo, sem cada pessoa inventar um processo."
                             : language === "en"
                               ? "5 standard movements: stock in, stock out, transfer, adjustment, and count."
                               : "5 mouvements standard: entree, sortie, transfert, ajustement et comptage.",
@@ -1682,13 +1686,13 @@ export function DesktopLanding() {
                       {
                         title:
                           language === "pt"
-                            ? "Execucao diaria"
+                            ? "Autoridade operacional"
                             : language === "en"
                               ? "Daily execution"
                               : "Execution quotidienne",
                         value:
                           language === "pt"
-                            ? "Operação no celular com QR Code, sem depender de computador no almoxarifado."
+                            ? "Cada item deixa rastro. Você sabe onde estava, para onde foi e quem mexeu antes que o problema vire discussão."
                             : language === "en"
                               ? "Mobile operation with QR code, without depending on a desktop in the warehouse."
                               : "Operation mobile avec QR code, sans dependre d'un ordinateur dans l'entrepot.",
@@ -1740,7 +1744,7 @@ export function DesktopLanding() {
                     </p>
                     <p className="mt-2 text-sm font-medium text-slate-700">
                       {language === "pt"
-                        ? "Pensado para uma operação começar pequena e testar na prática antes de qualquer projeto grande."
+                        ? "Entre rápido, valide na rotina e sinta o estoque voltando para sua mão antes de cair em implantação longa."
                         : language === "en"
                           ? "Built for teams that want to start small and validate the operation before any large system project."
                           : "Concu pour demarrer petit et valider l'operation avant tout grand projet de systeme."}
@@ -1807,7 +1811,7 @@ export function DesktopLanding() {
                     >
                       <Link
                         href={buildWhatsAppUrl(
-                          "Olá! Quero entender como o Purple Stock pode organizar meu estoque."
+                          "Olá! Quero parar de perder controle do meu estoque e entender como o Purple Stock pode organizar minha operação."
                         )}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -1821,7 +1825,7 @@ export function DesktopLanding() {
                         }
                       >
                         {language === "pt"
-                          ? "Falar com especialista"
+                          ? "Quero falar com especialista"
                           : language === "en"
                             ? "Talk to a specialist"
                             : "Parler a un specialiste"}
@@ -1844,7 +1848,7 @@ export function DesktopLanding() {
                     }}
                   >
                     {language === "pt"
-                      ? "Prefere ver primeiro? Ver demonstração em vídeo"
+                      ? "Prefere ver antes? Assistir demonstração em vídeo"
                       : language === "en"
                         ? "Prefer to watch first? Watch the video demo"
                         : "Vous preferez voir d'abord? Voir la demonstration video"}

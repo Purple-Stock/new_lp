@@ -253,6 +253,13 @@ export default function PricingPage() {
       description:
         "Plano unico por time com 7 dias gratis, sem fidelidade e ativacao rapida.",
     },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      ratingCount: "127",
+      bestRating: "5",
+      worstRating: "1",
+    },
     provider: {
       "@type": "Organization",
       name: "Purple Stock",

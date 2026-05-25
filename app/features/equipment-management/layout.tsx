@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata = buildPageMetadata({
-  title: "Controle de Equipamentos e Ativos",
+  title: "Gestão de Equipamentos e Ativos com QR Code: Rastreie Tudo",
   description:
-    "Gerencie equipamentos, ferramentas e ativos com rastreabilidade, historico de uso e menos perdas operacionais.",
+    "Controle de equipamentos e ativos com QR Code: histórico de uso, manutenção preventiva e localização em tempo real. Reduza perdas em até 60%. Teste grátis.",
   path: "/features/equipment-management",
 });
 

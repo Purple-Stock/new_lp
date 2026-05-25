@@ -1,0 +1,141 @@
+---
+title: "VMI vs Estoque Próprio: Qual Modelo Reduz Mais Ruptura em 2026?"
+excerpt: "Compare VMI (Vendor Managed Inventory) com gestão própria de estoque. Veja prós, contras e quando cada modelo reduz ruptura e custo operacional."
+date: "2026-05-25"
+author: "Time Purple Stock"
+readingTime: "8 min"
+coverImage: "/images/inventory.png"
+tags:
+  - "VMI"
+  - "Gestão de Estoque"
+  - "Cadeia de Suprimentos"
+---
+
+Se você está avaliando se deve implementar VMI (Vendor Managed Inventory) ou manter a gestão própria de estoque, a resposta depende de três fatores: volume de SKUs, relação com fornecedores e maturidade operacional.
+
+Este guia compara os dois modelos com dados reais e mostra quando cada um faz sentido para PMEs brasileiras.
+
+## O que é VMI (Vendor Managed Inventory)?
+
+VMI é um modelo colaborativo onde o **fornecedor monitora e repõe seu estoque automaticamente**, com base em dados compartilhados em tempo real. Você não emite pedidos — o fornecedor decide quando e quanto enviar, dentro de parâmetros acordados em contrato.
+
+**Como funciona na prática:**
+
+1. Você compartilha dados de vendas e estoque via API ou EDI
+2. O fornecedor monitora seus níveis diariamente
+3. Reposições são programadas automaticamente quando o estoque atinge o ponto mínimo
+4. Você recebe a mercadoria sem precisar emitir pedido de compra
+
+## O que é gestão própria de estoque?
+
+No modelo tradicional, **sua equipe é responsável por tudo**: monitorar saldos, calcular ponto de reposição, emitir pedidos, negociar com fornecedores e conferir entregas. O sistema de estoque (ERP, planilha ou software especializado) apoia a operação, mas a decisão é sempre interna.
+
+## Comparativo direto: VMI vs Estoque Próprio
+
+| Critério                   | VMI                                             | Estoque Próprio                                   |
+| -------------------------- | ----------------------------------------------- | ------------------------------------------------- |
+| **Controle**               | Compartilhado com fornecedor                    | Total da sua equipe                               |
+| **Ruptura**                | Geralmente menor (fornecedor antecipa demanda)  | Depende da qualidade do planejamento interno      |
+| **Custo operacional**      | Menor (menos pedidos, menos equipe de compras)  | Maior (horas em negociação, emissão, conferência) |
+| **Flexibilidade**          | Limitada aos parâmetros do contrato             | Total para mudar fornecedores e volumes           |
+| **Integração tecnológica** | Exige API ou EDI com fornecedor                 | Funciona com qualquer sistema básico              |
+| **Risco de excesso**       | Menor (fornecedor equilibra múltiplos clientes) | Maior se previsão de demanda for imprecisa        |
+| **Dependência**            | Alta do fornecedor                              | Baixa, mas exige equipe capacitada                |
+
+## Quando VMI faz sentido
+
+VMI funciona melhor quando:
+
+- **Você tem 5-20 fornecedores estratégicos** que representam 60%+ do seu faturamento
+- **Os produtos têm alta rotatividade** (giro > 12x ao ano)
+- **Sua equipe de compras está sobrecarregada** e não consegue emitir pedidos com frequência ideal
+- **Você confia nos fornecedores** e está disposto a compartilhar dados de vendas
+- **Houve problemas recorrentes de ruptura** que não foram resolvidos com ajustes internos
+
+**Setores onde VMI brilha:** varejo de bens de consumo (alimentos, bebidas, higiene), autopeças, produtos farmacêuticos, materiais de construção.
+
+## Quando estoque próprio é melhor
+
+Gestão própria faz sentido quando:
+
+- **Seus fornecedores são pequenos ou instáveis** e não têm capacidade de gerenciar seu estoque
+- **Você precisa de flexibilidade total** para mudar volumes, trocar fornecedores ou negociar preços agressivamente
+- **Os produtos têm baixa rotatividade** ou demanda muito sazonal/irregular
+- **Você não quer compartilhar dados sensíveis** (margens, vendas, estratégias)
+- **Sua equipe é pequena mas capacitada** e consegue manter a rotina de compras sob controle
+
+**Setores onde estoque próprio prevalece:** indústrias com matérias-primas sob encomenda, e-commerces de nicho com produtos exclusivos, empresas com forte sazonalidade.
+
+## 3 sinais de que você deve migrar para VMI
+
+1. **Ruptura recorrente nos itens curva A** (20% dos SKUs que geram 80% do faturamento)
+2. **Equipe de compras passa mais tempo emitindo pedidos do que negociando estrategicamente**
+3. **Você já tem integração tecnológica** (sistema de estoque com API aberta)
+
+## 3 sinais de que estoque próprio ainda é melhor
+
+1. **Seus fornecedores não têm maturidade operacional** para gerenciar seu estoque
+2. **Você precisa de flexibilidade para negociar preços** e trocar fornecedores rapidamente
+3. **Sua demanda é muito irregular** e o fornecedor não consegue prever com precisão
+
+## Modelo híbrido: o melhor dos dois mundos
+
+Muitas PMEs estão adotando um **modelo híbrido**: VMI para fornecedores estratégicos de alta rotatividade e gestão própria para itens de baixo giro ou fornecedores instáveis.
+
+**Exemplo prático:**
+
+- VMI com 5 fornecedores estratégicos (60% do faturamento, produtos curva A)
+- Gestão própria para 50+ fornecedores de itens C (baixo giro, demanda irregular)
+
+Esse modelo reduz ruptura nos itens críticos sem abrir mão da flexibilidade onde ela importa.
+
+## Como implementar VMI em 5 passos
+
+1. **Selecione 2-3 fornecedores estratégicos** com relacionamento de confiança
+2. **Defina parâmetros claros**: estoque mínimo (7 dias de venda), máximo (21 dias), frequência de reposição
+3. **Integre sistemas**: API do seu sistema de estoque com ERP do fornecedor (ou planilha compartilhada no início)
+4. **Monitore KPIs mensalmente**: taxa de ruptura, nível de serviço, giro de estoque
+5. **Revise parâmetros trimestralmente**: ajuste mínimo/máximo conforme sazonalidade e crescimento
+
+## Ferramentas que facilitam VMI para PMEs
+
+Sistemas como **Purple Stock** oferecem:
+
+- Dashboard em tempo real com níveis de estoque por fornecedor
+- Alertas automáticos quando itens se aproximam do ponto de reposição
+- API aberta para integração com ERPs de fornecedores
+- Relatórios de giro e cobertura para dimensionar parâmetros de VMI
+
+Isso permite que PMEs participem de modelos colaborativos antes restritos a grandes corporações.
+
+## Conclusão: qual modelo escolher?
+
+**Escolha VMI se:** você tem fornecedores estratégicos maduros, ruptura recorrente nos itens A e equipe de compras sobrecarregada.
+
+**Escolha estoque próprio se:** seus fornecedores são instáveis, você precisa de flexibilidade total ou sua demanda é muito irregular.
+
+**Escolha modelo híbrido se:** você quer reduzir ruptura nos itens críticos sem abrir mão do controle nos itens de baixo giro.
+
+A melhor decisão é a que equilibra **redução de ruptura, custo operacional e flexibilidade estratégica**. Comece pequeno (2-3 fornecedores), meça resultados e expanda gradualmente.
+
+## Leituras complementares
+
+- [VMI: o que é e como funciona](/glossario/vmi)
+- [Ruptura de estoque: como calcular e reduzir](/glossario/ruptura-de-estoque)
+- [Como aumentar acuracidade de estoque](/blog/como-aumentar-acuracidade-de-estoque)
+- [Indicadores essenciais para estoque](/blog/indicadores-essenciais-estoque)
+- [Ver planos e preços](/precos)
+
+## FAQ
+
+### VMI é o mesmo que consignação?
+
+Não. No VMI, o fornecedor gerencia a reposição mas você compra o estoque na entrega. Na consignação, o fornecedor mantém a propriedade até a venda ao consumidor final. VMI é sobre quem decide quando repor; consignação é sobre quem é dono do estoque.
+
+### Minha PME é pequena demais para VMI?
+
+Não necessariamente. VMI está se tornando acessível para PMEs graças a sistemas em nuvem com APIs abertas. Comece com 2-3 fornecedores estratégicos e produtos de alta rotatividade. Use planilhas compartilhadas no início antes de partir para integração via API.
+
+### Como medir se o VMI está funcionando?
+
+Monitore 4 KPIs mensalmente: (1) Taxa de ruptura (meta < 2%), (2) Nível de serviço do fornecedor (% de reposições no prazo), (3) Giro de estoque, (4) Cobertura de estoque (dias de venda disponíveis). Revise parâmetros mínimo/máximo trimestralmente.

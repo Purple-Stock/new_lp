@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata = buildPageMetadata({
-  title: "Aplicativo de Estoque para Operacao em Campo",
+  title: "Aplicativo de Controle de Estoque: Operação Completa pelo Celular",
   description:
-    "Use o app de estoque do Purple Stock para registrar movimentacoes, inventarios e consultas em tempo real.",
+    "App de estoque mobile: registre entradas, saídas, inventários e consultas de qualquer lugar. Substitua a planilha por um app que funciona offline. Teste grátis.",
   path: "/features/inventory-app",
 });
 

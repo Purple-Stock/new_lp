@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import {
+  useState,
+  useRef,
+  useCallback,
+  useLayoutEffect,
+  useEffect,
+} from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { MacOSFolderIcon } from "@/components/macos-folder-icon";
@@ -57,14 +63,14 @@ export function DraggableFolder({
     : null;
 
   // --- convert sidebar-slot coordinates to viewport on first mount ---
-  useEffect(() => {
+  useLayoutEffect(() => {
     const saved = storageVersionedKey
       ? localStorage.getItem(storageVersionedKey)
       : null;
     if (saved) {
       try {
-        setPosition(JSON.parse(saved));
-        setMounted(true);
+        const p = JSON.parse(saved);
+        setPosition(p);
         return;
       } catch {
         /* stale */
@@ -143,7 +149,7 @@ export function DraggableFolder({
     };
   }, [storageVersionedKey, onClick, onDoubleClick]);
 
-  if (!mounted) return null;
+  if (typeof document === "undefined") return null;
 
   return createPortal(
     <div

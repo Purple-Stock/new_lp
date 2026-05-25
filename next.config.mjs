@@ -17,6 +17,7 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  outputFileTracingRoot: new URL(".", import.meta.url).pathname,
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,

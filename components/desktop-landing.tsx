@@ -1,7 +1,6 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import {
+import React, {
   useCallback,
   useEffect,
   useMemo,
@@ -39,18 +38,18 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/utils/translations";
 import { cn } from "@/lib/utils";
-import { trackCtaClick } from "@/lib/analytics";
+import { trackCtaClick, trackSeoLandingView } from "@/lib/analytics";
 import { MacOSFolderIcon } from "@/components/macos-folder-icon";
 import { DraggableFolder } from "@/components/draggable-folder";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { buildWhatsAppUrl, getCalendlyUrl } from "@/lib/contact";
-
-const HeroVideoModal = dynamic(
-  () =>
-    import("@/components/hero-video-modal").then((mod) => mod.HeroVideoModal),
-  { ssr: false }
-);
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 type StageKey = "startup" | "growth" | "scale";
 type WindowKey = "inventory" | "analytics" | "qr" | "support";
@@ -93,11 +92,20 @@ export function DesktopLanding() {
     y: number;
   } | null>(null);
   const mainBoxRef = useRef<HTMLDivElement>(null);
-  const [shouldLoadVideoModal, setShouldLoadVideoModal] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [sectorIndex, setSectorIndex] = useState(0);
   const [usePainCta, setUsePainCta] = useState(false);
-  const demoVideoUrl = "https://www.youtube.com/watch?v=fD4amz78t8c";
+  const [portalContainer, setPortalContainer] = useState<HTMLDivElement | null>(
+    null
+  );
+
+  useEffect(() => {
+    trackSeoLandingView({
+      page_path: "/",
+      landing_name: "desktop_landing",
+    });
+  }, []);
 
   // Handle main box dragging
   const handleMainBoxMouseDown = useCallback(
@@ -300,16 +308,6 @@ export function DesktopLanding() {
           : "Mobile-first inventory",
     ];
   }, [language]);
-
-  const openVideoModal = useCallback((ctaName: string) => {
-    setShouldLoadVideoModal(true);
-    setIsVideoModalOpen(true);
-    trackCtaClick({
-      cta_name: ctaName,
-      cta_target: "video_modal",
-      page_section: "hero_media",
-    });
-  }, []);
 
   const stageMap: Record<
     StageKey,
@@ -724,9 +722,7 @@ export function DesktopLanding() {
                 : language === "fr"
                   ? "Parler à un humain"
                   : "Talk to a human",
-            href: buildWhatsAppUrl(
-              "Hello! I'd like to speak with someone about Purple Stock."
-            ),
+            href: "https://api.whatsapp.com/send/?phone=5511995597242&text=Hello!+I%27d+like+to+speak+with+someone+about+Purple+Stock.&type=phone_number&app_absent=0",
           },
         },
       }) satisfies Record<
@@ -862,9 +858,9 @@ export function DesktopLanding() {
       ({
         pt: {
           uvpBadge:
-            "Para empresas que cansaram de passar aperto entre planilha, sistema e prateleira.",
+            "Para empresas que já cansaram de perder venda por falta de produto, erro de contagem ou estoque sumido no almoxarifado.",
           uvpText:
-            "Purple Stock devolve controle para a operação. Entrada, saída, transferência, ajuste e inventário ficam no mesmo fluxo rastreável, para o time agir rápido, parar de improvisar e voltar a responder com segurança quando alguém pergunta onde está o item, quanto tem e quem mexeu por último.",
+            "Purple Stock organiza entrada, saída, transferência, ajuste e inventário em um único fluxo rastreável, para qualquer pessoa do time saber o que tem, onde está e quem mexeu, sem virar um projeto gigante de sistema.",
           howItWorksTitle:
             "Como funciona o sistema de controle de estoque na prática",
           howItWorksSubtitle:
@@ -892,41 +888,41 @@ export function DesktopLanding() {
             {
               metric: "Rastreabilidade por item",
               detail:
-                "Quem movimentou, quando movimentou e em qual local a operação aconteceu sem depender de memória, print ou planilha paralela.",
+                "Quem movimentou, quando movimentou e em qual local a operação aconteceu.",
             },
             {
               metric: "Histórico único de movimentações",
               detail:
-                "Entrada, saída, transferência, ajuste e contagem no mesmo fluxo operacional, sem cada pessoa controlar de um jeito.",
+                "Entrada, saída, transferência, ajuste e contagem no mesmo fluxo operacional.",
             },
             {
               metric: "Conferência por localização",
               detail:
-                "Consulta de saldo e inventário por local para achar item rápido e evitar venda perdida por saldo que não bate.",
+                "Consulta de saldo e inventário por local sem consolidar planilhas manualmente.",
             },
           ],
           compareTitle: "Purple Stock vs ERP tradicional",
           compareSubtitle:
-            "Quando o problema é caos operacional no estoque, velocidade de implantação e clareza no uso pesam mais que escopo gigante.",
+            "Quando o foco é operação de estoque rápida, o modelo de implantação faz diferença.",
           compareRows: [
             {
               label: "Implantação",
-              purple: "Começa leve, entra rápido na rotina",
-              erp: "Projeto mais pesado e demorado em média",
+              purple: "Setup leve e progressivo",
+              erp: "Projeto mais extenso em média",
             },
             {
               label: "Curva de uso para operação",
-              purple: "Fluxo direto para quem opera",
+              purple: "Fluxo direto para almoxarifado",
               erp: "Treinamento mais extenso em média",
             },
             {
               label: "Operação no celular + QR",
               purple: "Nativo no fluxo diário",
-              erp: "Geralmente depende de módulo extra ou adaptação",
+              erp: "Geralmente depende de módulo extra",
             },
             {
               label: "Foco inicial",
-              purple: "Acabar com descontrole, retrabalho e saldo duvidoso",
+              purple: "Controle de estoque e rastreabilidade",
               erp: "Suite ampla com escopo maior",
             },
           ],
@@ -934,23 +930,23 @@ export function DesktopLanding() {
           objections: [
             {
               q: "Dá para começar sem migração complexa?",
-              a: "Sim. Você pode começar pelo cadastro essencial e colocar a operação para rodar por etapas, sem travar o time nem entrar em projeto grande logo de cara.",
+              a: "Sim. Você pode iniciar com o cadastro essencial e evoluir por etapas, sem parar a operação.",
             },
             {
               q: "Meus dados ficam seguros e separados por equipe?",
-              a: "Sim. O sistema opera por times com contexto ativo e permissões por usuário, para cada operação ficar separada e auditável.",
+              a: "Sim. O sistema opera por times com contexto ativo e permissões por usuário, mantendo cada operação isolada.",
             },
             {
               q: "Funciona no celular no dia a dia da operação?",
-              a: "Sim. Os fluxos de entrada, saída, transferência e contagem foram pensados para o dia a dia da operação, direto no celular.",
+              a: "Sim. Os fluxos de entrada, saída, transferência e contagem são diretos e podem ser feitos no celular.",
             },
             {
               q: "Posso testar sem ficar preso?",
-              a: "Sim. O teste usa cartão de crédito, mas você pode cancelar quando quiser dentro do período de avaliação se não sentir a operação mais na mão.",
+              a: "Sim. O teste utiliza cartão de crédito e você pode cancelar quando quiser dentro do período de avaliação.",
             },
             {
               q: "Quanto custa para começar?",
-              a: "O plano de entrada começa em R$29,90/mês na oferta atual, para você validar rápido antes de assumir um projeto caro e demorado.",
+              a: "O plano de entrada começa em R$29,90/mês na oferta atual, com revisão de preço conforme evolução da operação.",
             },
           ],
         },
@@ -1142,73 +1138,6 @@ export function DesktopLanding() {
     [language]
   );
 
-  const heroSignalCards = useMemo(
-    () =>
-      ({
-        pt: [
-          {
-            title: "Sem saldo duvidoso",
-            body: "Seu time responde com histórico, localização e saldo confiável antes que a operação vire discussão.",
-            icon: ShieldCheck,
-            tone: "border-emerald-200 bg-emerald-50/80 text-emerald-700 shadow-emerald-100/80",
-          },
-          {
-            title: "Sem caça ao culpado",
-            body: "Entrada, saída, ajuste e transferência ficam no mesmo fluxo para parar o jogo de empurra.",
-            icon: UsersRound,
-            tone: "border-rose-200 bg-rose-50/80 text-rose-700 shadow-rose-100/80",
-          },
-          {
-            title: "Sem planilha paralela",
-            body: "QR Code no celular e rastreabilidade no dia a dia para ninguém depender de memória ou favor.",
-            icon: ScanLine,
-            tone: "border-violet-200 bg-violet-50/80 text-violet-700 shadow-violet-100/80",
-          },
-        ],
-        en: [
-          {
-            title: "No unreliable stock balance",
-            body: "Teams answer with history, location, and trusted balance before operations turn into blame.",
-            icon: ShieldCheck,
-            tone: "border-emerald-200 bg-emerald-50/80 text-emerald-700 shadow-emerald-100/80",
-          },
-          {
-            title: "No blame game",
-            body: "Inbound, outbound, adjustment, and transfer stay in one operational flow.",
-            icon: UsersRound,
-            tone: "border-rose-200 bg-rose-50/80 text-rose-700 shadow-rose-100/80",
-          },
-          {
-            title: "No parallel spreadsheets",
-            body: "QR code on mobile and traceability in daily routines instead of memory-based workarounds.",
-            icon: ScanLine,
-            tone: "border-violet-200 bg-violet-50/80 text-violet-700 shadow-violet-100/80",
-          },
-        ],
-        fr: [
-          {
-            title: "Sans solde douteux",
-            body: "L'equipe repond avec historique, emplacement et solde fiable avant que l'operation ne tourne au conflit.",
-            icon: ShieldCheck,
-            tone: "border-emerald-200 bg-emerald-50/80 text-emerald-700 shadow-emerald-100/80",
-          },
-          {
-            title: "Sans jeu de faute",
-            body: "Entree, sortie, ajustement et transfert restent dans un seul flux operationnel.",
-            icon: UsersRound,
-            tone: "border-rose-200 bg-rose-50/80 text-rose-700 shadow-rose-100/80",
-          },
-          {
-            title: "Sans tableur parallele",
-            body: "QR code sur mobile et tracabilite quotidienne sans dependance a la memoire.",
-            icon: ScanLine,
-            tone: "border-violet-200 bg-violet-50/80 text-violet-700 shadow-violet-100/80",
-          },
-        ],
-      })[language],
-    [language]
-  );
-
   const rotatingSectors = useMemo(
     () =>
       ({
@@ -1250,7 +1179,7 @@ export function DesktopLanding() {
     if (language === "pt") {
       return usePainCta
         ? "Quero parar de perder vendas agora"
-        : "Quero colocar meu estoque na mão de novo";
+        : "Começar teste grátis de 7 dias";
     }
     if (language === "fr") {
       return usePainCta
@@ -1284,6 +1213,24 @@ export function DesktopLanding() {
             result:
               '"A equipe passou a conferir estoque por localização sem perder tempo procurando item."',
           },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result:
+              '"Parou de existir planilha paralela para controle diário de estoque."',
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result:
+              '"Hoje o time enxerga saldo e movimentações no mesmo painel operacional."',
+          },
         ],
         en: [
           {
@@ -1303,6 +1250,24 @@ export function DesktopLanding() {
             maxWidth: "max-w-[240px]",
             result:
               '"The team now runs stock checks by location without wasting time searching items."',
+          },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result:
+              '"Daily stock control no longer depends on parallel spreadsheets."',
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result:
+              '"Operations now see stock balance and movement history in one place."',
           },
         ],
         fr: [
@@ -1324,10 +1289,61 @@ export function DesktopLanding() {
             result:
               '"L\'equipe controle le stock par emplacement sans perdre du temps a chercher les articles."',
           },
+          {
+            name: "Da Rua",
+            logo: "/images/logos/da-rua.png",
+            width: 120,
+            height: 40,
+            maxWidth: "max-w-[120px]",
+            result:
+              '"Le controle quotidien ne depend plus de tableurs paralleles."',
+          },
+          {
+            name: "DPS Brasil",
+            logo: "/images/logos/dps-brasil-preto.png",
+            width: 180,
+            height: 60,
+            maxWidth: "max-w-[180px]",
+            result:
+              '"Les soldes et mouvements sont visibles dans le meme panneau operationnel."',
+          },
         ],
       })[language],
     [language]
   );
+
+  // Dynamic questions array
+  const questions = useMemo(() => {
+    return {
+      pt: [
+        "Seu time precisa controlar estoque por localização sem planilhas?",
+        "Você quer registrar entrada, saída, ajuste e transferência no mesmo fluxo?",
+        "Precisa rastrear itens com QR Code direto pelo celular?",
+        "Quer relatórios consolidados por time para decidir reposição?",
+      ],
+      en: [
+        "Does your team need location-based stock control without spreadsheets?",
+        "Do you want inbound, outbound, transfer, and adjustment in one flow?",
+        "Need to track items with QR code directly from mobile devices?",
+        "Want consolidated team reports to improve replenishment decisions?",
+      ],
+      fr: [
+        "Votre equipe doit controler le stock par emplacement sans tableurs?",
+        "Voulez-vous gerer entree, sortie, transfert et ajustement dans un seul flux?",
+        "Besoin de suivre les articles par QR code depuis le mobile?",
+        "Voulez-vous des rapports consolides par equipe pour le reassort?",
+      ],
+    }[language];
+  }, [language]);
+
+  // Auto-rotate questions
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentQuestionIndex((prev) => (prev + 1) % questions.length);
+    }, 4000); // Change question every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [questions.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -1347,804 +1363,1535 @@ export function DesktopLanding() {
   }, [rotatingSectors, sectorIndex]);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[linear-gradient(180deg,#fcfcfd_0%,#f8f4ff_48%,#f6f1ea_100%)] text-slate-900">
-      <a
-        href="#main-content"
-        className="absolute left-4 top-4 z-[120] -translate-y-16 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-lg transition-transform focus:translate-y-0"
-      >
-        {language === "pt"
-          ? "Pular para o conteúdo"
-          : language === "en"
-            ? "Skip to content"
-            : "Aller au contenu"}
-      </a>
+    <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)] text-slate-900">
+      {/* Animated gradient background */}
+      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-80" />
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.28]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px)",
-            backgroundSize: "72px 72px",
-            maskImage:
-              "radial-gradient(circle at center, black 0%, rgba(0,0,0,0.78) 45%, transparent 78%)",
-          }}
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-purple-200/20 to-transparent rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: "8s" }}
         />
-        <div className="absolute left-[-12%] top-[-8%] h-[32rem] w-[32rem] rounded-full bg-purple-200/20 blur-3xl" />
-        <div className="absolute bottom-[-18%] right-[-10%] h-[28rem] w-[28rem] rounded-full bg-amber-100/40 blur-3xl" />
-        <div className="absolute left-[8%] top-[14%] h-64 w-64 rounded-full bg-cyan-100/30 blur-3xl" />
-        <div className="absolute right-[10%] top-[28%] h-72 w-72 rounded-full bg-violet-100/35 blur-3xl" />
+        <div
+          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-200/15 to-transparent rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: "10s", animationDelay: "2s" }}
+        />
       </div>
       <Navbar />
-      <main id="main-content" className="relative">
-        <div className="relative mx-auto min-h-screen w-full max-w-[1180px] px-4 pb-8 pt-16 md:px-8 md:pt-16">
-          <div className="pointer-events-none absolute inset-x-0 top-20 hidden h-[620px] 2xl:block">
-            <div className="pointer-events-auto absolute -left-20 top-10 h-full w-24">
-              {windowApps.slice(0, 2).map((app, index) => (
-                <DraggableFolder
-                  key={app.key}
-                  label={app.label}
-                  folderColor={app.folderColor}
-                  icon={app.icon}
-                  storageKey={`hero-${app.key}`}
-                  initialPosition={{ x: 0, y: 18 + index * 136 }}
-                  isSelected={selectedFolder === app.key}
-                  onClick={() => setSelectedFolder(app.key)}
-                  onDoubleClick={() => {
-                    setSelectedFolder(app.key);
-                    openWindow(app.key);
-                  }}
-                />
-              ))}
-            </div>
-            <div className="pointer-events-auto absolute -right-20 top-10 h-full w-24">
-              {windowApps.slice(2, 4).map((app, index) => (
-                <DraggableFolder
-                  key={app.key}
-                  label={app.label}
-                  folderColor={app.folderColor}
-                  icon={app.icon}
-                  storageKey={`hero-${app.key}`}
-                  initialPosition={{ x: 0, y: 18 + index * 136 }}
-                  isSelected={selectedFolder === app.key}
-                  onClick={() => setSelectedFolder(app.key)}
-                  onDoubleClick={() => {
-                    setSelectedFolder(app.key);
-                    openWindow(app.key);
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="relative z-0 flex flex-1 flex-col gap-8">
+
+      {/* Folders rendered via portal — slots in sidebars provide initial coords */}
+      {windowApps.slice(0, 2).map((app, index) => (
+        <DraggableFolder
+          key={app.key}
+          label={app.label}
+          folderColor={app.folderColor}
+          icon={app.icon}
+          storageKey={`window-app-left-${app.key}`}
+          initialPosition={{ x: 20, y: 80 + index * 180 }}
+          portalContainer={portalContainer}
+          isSelected={selectedFolder === app.key}
+          onDoubleClick={() => openWindow(app.key)}
+          onClick={() => setSelectedFolder(app.key)}
+        />
+      ))}
+      {windowApps.slice(2).map((app, index) => (
+        <DraggableFolder
+          key={app.key}
+          label={app.label}
+          folderColor={app.folderColor}
+          icon={app.icon}
+          storageKey={`window-app-right-${app.key}`}
+          initialPosition={{ x: 300, y: 80 + index * 180 }}
+          portalContainer={portalContainer}
+          isSelected={selectedFolder === app.key}
+          onDoubleClick={() => openWindow(app.key)}
+          onClick={() => setSelectedFolder(app.key)}
+        />
+      ))}
+      {shortcutLinks.slice(0, 2).map((item, index) => (
+        <DraggableFolder
+          key={item.label}
+          label={item.label}
+          folderColor={item.folderColor}
+          icon={item.icon}
+          storageKey={`shortcut-left-${item.label}`}
+          initialPosition={{ x: 20, y: 440 + index * 180 }}
+          portalContainer={portalContainer}
+          isSelected={selectedFolder === `shortcut-${item.label}`}
+          onDoubleClick={() => {
+            if (typeof window !== "undefined") {
+              window.open(
+                item.href,
+                item.href.startsWith("http") ? "_blank" : "_self"
+              );
+            }
+          }}
+          onClick={() => setSelectedFolder(`shortcut-${item.label}`)}
+        />
+      ))}
+      {shortcutLinks.slice(2).map((item, index) => (
+        <DraggableFolder
+          key={item.label}
+          label={item.label}
+          folderColor={item.folderColor}
+          icon={item.icon}
+          storageKey={`shortcut-right-${item.label}`}
+          initialPosition={{ x: 300, y: 440 + index * 180 }}
+          portalContainer={portalContainer}
+          isSelected={selectedFolder === `shortcut-${item.label}`}
+          onDoubleClick={() => {
+            if (typeof window !== "undefined") {
+              window.open(
+                item.href,
+                item.href.startsWith("http") ? "_blank" : "_self"
+              );
+            }
+          }}
+          onClick={() => setSelectedFolder(`shortcut-${item.label}`)}
+        />
+      ))}
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-24 pb-4 md:flex-row md:gap-6 md:px-10 md:pt-24">
+        {/* Portal target for draggable folders */}
+        <div
+          ref={setPortalContainer}
+          className="absolute inset-0 pointer-events-none"
+        />
+        {/* Icons Left Side - Vertical (slots only) */}
+        <div className="relative z-0 hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
+          {windowApps.slice(0, 2).map((app, index) => (
             <div
-              ref={mainBoxRef}
-              className="relative z-0 flex min-h-[calc(100vh-7.5rem)] flex-col overflow-hidden rounded-[28px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(252,252,253,0.96)_0%,rgba(247,243,255,0.88)_100%)] shadow-[0_30px_80px_-42px_rgba(30,27,75,0.22)] backdrop-blur-sm transition-transform"
-              style={{
-                transform: `translate(${mainBoxPosition.x}px, ${mainBoxPosition.y}px)`,
-                userSelect: "none",
-                WebkitUserSelect: "none",
-              }}
-              onMouseDown={handleMainBoxMouseDown}
-              onDragStart={(e) => e.preventDefault()}
-            >
-              <div className="main-box-header relative flex-shrink-0 items-center justify-between border-b border-slate-200/80 bg-[linear-gradient(180deg,rgba(249,250,251,0.96)_0%,rgba(241,245,249,0.86)_100%)] px-4 py-2.5 sm:px-5">
-                <div className="flex items-center gap-[6px]" aria-hidden="true">
-                  <span className="h-[12px] w-[12px] rounded-full bg-[#e86a63] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
-                  <span className="h-[12px] w-[12px] rounded-full bg-[#e9b54c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
-                  <span className="h-[12px] w-[12px] rounded-full bg-[#4ab96a] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
-                </div>
+              key={app.key}
+              id={`folder-slot-${`window-app-left-${app.key}`}`}
+              className="absolute left-0"
+              style={{ top: `${80 + index * 180}px` }}
+            />
+          ))}
+          {shortcutLinks.slice(0, 2).map((item, index) => (
+            <div
+              key={item.label}
+              id={`folder-slot-${`shortcut-left-${item.label}`}`}
+              className="absolute left-0"
+              style={{ top: `${440 + index * 180}px` }}
+            />
+          ))}
+        </div>
 
-                {/* Center Title */}
-                <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
-                  <Link
-                    href="/"
-                    className="flex h-4 w-4 items-center justify-center rounded bg-purple-600"
-                    aria-label="Go to homepage"
+        <div className="relative z-0 flex flex-1 flex-col gap-8">
+          <div
+            ref={mainBoxRef}
+            className="relative z-0 flex min-h-[calc(100vh-7.5rem)] flex-col overflow-hidden rounded-xl border border-slate-200/60 bg-white/95 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl transition-transform cursor-move"
+            style={{
+              transform: `translate(${mainBoxPosition.x}px, ${mainBoxPosition.y}px)`,
+              userSelect: "none",
+              WebkitUserSelect: "none",
+            }}
+            onMouseDown={handleMainBoxMouseDown}
+            onDragStart={(e) => e.preventDefault()}
+          >
+            <div className="main-box-header flex items-center justify-between border-b border-white/60 bg-gradient-to-r from-slate-50/95 via-white/90 to-purple-50/80 px-4 py-2.5 sm:px-5 relative cursor-grab active:cursor-grabbing flex-shrink-0 shadow-[inset_0_-1px_0_rgba(255,255,255,0.8)]">
+              {/* Traffic Lights */}
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-[6px] group">
+                  <button
+                    className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#ff6058] to-[#e4473c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:from-[#ff7066] hover:to-[#e4554a] group-hover:scale-105"
+                    onClick={closeMainPreviewWindows}
+                    aria-label="Close all preview windows"
+                    title="Close all preview windows"
                   >
-                    <Box className="w-2.5 h-2.5 text-white" strokeWidth={3} />
-                  </Link>
-                  <span className="text-[12px] font-semibold tracking-[0.08em] text-slate-700">
-                    Purple Stock
-                  </span>
-                  <span className="rounded-full border border-slate-200 bg-white/90 px-2 py-0.5 text-[10px] font-medium tracking-[0.06em] text-slate-500">
-                    estoque
-                  </span>
-                </div>
-
-                <div className="rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 text-[10px] font-medium tracking-[0.06em] text-slate-500">
-                  {language === "pt"
-                    ? "operação"
-                    : language === "fr"
-                      ? "operation"
-                      : "operations"}
+                    <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[8px] text-[#4d0000] font-bold">
+                      ×
+                    </span>
+                  </button>
+                  <button
+                    className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#ffbd2e] to-[#e5a319] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:from-[#ffc940] hover:to-[#e5ae25] group-hover:scale-105"
+                    onClick={resetMainPreview}
+                    aria-label="Reset preview position"
+                    title="Reset preview position"
+                  >
+                    <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[8px] text-[#4d3800] font-bold">
+                      −
+                    </span>
+                  </button>
+                  <button
+                    className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#28c840] to-[#1aab2c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:from-[#34d44c] hover:to-[#26b738] group-hover:scale-105"
+                    onClick={openApp}
+                    aria-label="Open Purple Stock app"
+                    title="Open Purple Stock app"
+                  >
+                    <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[6px] text-[#003d00]">
+                      ⤢
+                    </span>
+                  </button>
                 </div>
               </div>
 
-              <div className="flex-1 space-y-8 overflow-visible px-4 py-4 sm:px-5 sm:py-6">
-                {/* Top Section - Title and Description */}
-                <div className="mb-10 space-y-5 text-center">
-                  <div className="mx-auto inline-flex max-w-fit items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-xs font-semibold tracking-[0.04em] text-violet-800">
-                    <span className="inline-flex h-2.5 w-2.5 rounded-full bg-violet-600" />
+              {/* Center Title */}
+              <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+                <Link
+                  href="/"
+                  className="flex h-4 w-4 items-center justify-center rounded bg-gradient-to-br from-purple-500 to-purple-600 shadow-sm"
+                  aria-label="Go to homepage"
+                  title="Go to homepage"
+                >
+                  <Box className="w-2.5 h-2.5 text-white" strokeWidth={3} />
+                </Link>
+                <span className="text-[12px] font-semibold text-slate-600 tracking-wide">
+                  Purple Stock OS
+                </span>
+                <span className="text-[10px] text-slate-400 font-medium">
+                  v2.0
+                </span>
+              </div>
+
+              {/* Right Side - Status */}
+              <div className="flex items-center gap-3">
+                <div className="hidden sm:flex items-center gap-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_4px_rgba(16,185,129,0.5)]" />
+                  <span className="text-[10px] text-emerald-600 font-medium">
                     {language === "pt"
-                      ? "Controle falho de estoque vira custo operacional"
-                      : language === "en"
-                        ? "Weak stock control turns into operational cost"
-                        : "Un controle de stock fragile devient un cout operationnel"}
-                  </div>
-                  <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight">
-                    {language === "pt" ? (
-                      <>
-                        {
-                          "Quando o saldo vira discussão, sua operação perde venda, tempo e autoridade"
-                        }
-                      </>
-                    ) : language === "en" ? (
-                      <>
-                        {
-                          "When stock becomes an argument, operations lose sales, time, and credibility"
-                        }
-                      </>
-                    ) : (
-                      <>
-                        {
-                          "Quand le stock devient une discussion, l'operation perd ventes, temps et credibilite"
-                        }
-                      </>
-                    )}
-                  </h1>
-                  <p className="mx-auto max-w-2xl text-lg leading-relaxed text-slate-600 lg:text-xl">
-                    {language === "pt"
-                      ? "Purple Stock coloca entrada, saída, transferência, ajuste e inventário no mesmo fluxo rastreável. Seu time volta a responder no celular, com QR Code, histórico claro e confiança para agir rápido sem improviso."
-                      : language === "en"
-                        ? "Purple Stock keeps inbound, outbound, transfer, adjustment, and inventory count in one traceable flow. Your team answers on mobile with QR code, clear history, and enough confidence to act fast."
-                        : "Purple Stock regroupe entree, sortie, transfert, ajustement et inventaire dans un seul flux tracable. Votre equipe repond sur mobile avec QR code, historique clair et assez de confiance pour agir vite."}
+                      ? "Online"
+                      : language === "fr"
+                        ? "En ligne"
+                        : "Online"}
+                  </span>
+                </div>
+                <span className="text-[11px] text-slate-400 font-medium hidden md:block">
+                  {language === "pt"
+                    ? "Workspace de Operação"
+                    : language === "fr"
+                      ? "Espace des Operations"
+                      : "Operations Workspace"}
+                </span>
+              </div>
+            </div>
+
+            {/* Toolbar */}
+            <div className="flex items-center justify-between px-4 sm:px-5 py-2 bg-gradient-to-b from-slate-50/80 to-white/60 border-b border-slate-200/50 flex-shrink-0">
+              <div className="flex items-center gap-1">
+                <button
+                  className="p-1.5 rounded-md hover:bg-slate-100/80 transition-colors text-slate-400 hover:text-slate-600"
+                  onClick={goBack}
+                  aria-label="Back"
+                  title="Back"
+                >
+                  <ArrowRight
+                    className="w-3.5 h-3.5 rotate-180"
+                    strokeWidth={2.5}
+                  />
+                </button>
+                <button
+                  className="p-1.5 rounded-md hover:bg-slate-100/80 transition-colors text-slate-400 hover:text-slate-600"
+                  onClick={goForward}
+                  aria-label="Forward"
+                  title="Forward"
+                >
+                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
+                </button>
+                <div className="w-px h-4 bg-slate-200 mx-1" />
+                <button
+                  className="p-1.5 rounded-md hover:bg-slate-100/80 transition-colors text-slate-400 hover:text-slate-600"
+                  onClick={reloadPage}
+                  aria-label="Reload page"
+                  title="Reload page"
+                >
+                  <RefreshCw className="w-3.5 h-3.5" strokeWidth={2.5} />
+                </button>
+              </div>
+
+              {/* Search Bar */}
+              <div className="hidden sm:flex items-center gap-2 bg-slate-100/80 rounded-lg px-3 py-1.5 flex-1 max-w-md mx-4 border border-slate-200/60">
+                <svg
+                  className="w-3.5 h-3.5 text-slate-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+                <span className="text-[11px] text-slate-400">
+                  {language === "pt"
+                    ? "Buscar recursos, docs, produtos..."
+                    : language === "fr"
+                      ? "Rechercher ressources, docs..."
+                      : "Search resources, docs, products..."}
+                </span>
+                <div className="ml-auto flex items-center gap-0.5">
+                  <span className="text-[9px] text-slate-400 bg-white/80 px-1 py-0.5 rounded border border-slate-200/80 shadow-sm">
+                    ⌘
+                  </span>
+                  <span className="text-[9px] text-slate-400 bg-white/80 px-1 py-0.5 rounded border border-slate-200/80 shadow-sm">
+                    K
+                  </span>
+                </div>
+              </div>
+
+              {/* Right actions */}
+              <div className="flex items-center gap-1">
+                <button
+                  className="p-1.5 rounded-md hover:bg-slate-100/80 transition-colors text-slate-400 hover:text-slate-600"
+                  onClick={cycleLanguage}
+                  aria-label="Switch language"
+                  title="Switch language"
+                >
+                  <Globe className="w-3.5 h-3.5" strokeWidth={2.5} />
+                </button>
+                <button
+                  className="p-1.5 rounded-md hover:bg-slate-100/80 transition-colors text-slate-400 hover:text-slate-600"
+                  onClick={openPricing}
+                  aria-label="Open pricing"
+                  title="Open pricing"
+                >
+                  <Sparkles className="w-3.5 h-3.5" strokeWidth={2.5} />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex-1 space-y-8 overflow-visible px-4 py-8 sm:px-10 sm:py-10">
+              {/* Top Section - Title and Description */}
+              <div className="text-center space-y-6 mb-12">
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight">
+                  {language === "pt" ? (
+                    <>{"Pare de perder venda porque o estoque não bate"}</>
+                  ) : language === "en" ? (
+                    <>
+                      {"Stop losing sales because stock records do not match"}
+                    </>
+                  ) : (
+                    <>
+                      {
+                        "Arretez de perdre des ventes parce que le stock ne correspond pas"
+                      }
+                    </>
+                  )}
+                </h1>
+                <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                  {language === "pt"
+                    ? "Em poucos dias, seu time sai da planilha para um controle de estoque simples, no celular, com QR Code e histórico do que entrou, saiu e foi para cada lugar."
+                    : language === "en"
+                      ? "In a few days, your team moves from spreadsheets to simple stock control on mobile, with QR code and history of what came in, what went out, and where each move happened."
+                      : "En quelques jours, votre equipe passe du tableur a un controle de stock simple sur mobile, avec QR code et historique des entrees, sorties et emplacements."}
+                </p>
+                <div className="mx-auto max-w-3xl rounded-2xl border border-blue-100 bg-blue-50/80 px-5 py-4 text-left">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">
+                    {playbookContent.uvpBadge}
                   </p>
-                  <p className="mx-auto max-w-xl text-base leading-7 text-slate-700 [font-family:var(--font-editorial)]">
+                  <p className="mt-2 text-sm text-slate-700 sm:text-base">
                     {playbookContent.uvpText}
                   </p>
-                  {/* CTA Buttons */}
-                  <div className="flex flex-col items-center justify-center gap-3 pt-2 sm:flex-row">
+                </div>
+                <div className="mx-auto grid w-full max-w-3xl gap-3 text-left sm:grid-cols-3">
+                  {[
+                    {
+                      title:
+                        language === "pt"
+                          ? "Setup guiado"
+                          : language === "en"
+                            ? "Guided setup"
+                            : "Mise en route guidee",
+                      value:
+                        language === "pt"
+                          ? "Onboarding assistido para começar com o básico sem parar a operação."
+                          : language === "en"
+                            ? "Assisted onboarding to start with the essentials without stopping operations."
+                            : "Onboarding assiste pour commencer avec l'essentiel sans arreter l'operation.",
+                    },
+                    {
+                      title:
+                        language === "pt"
+                          ? "Fluxo operacional"
+                          : language === "en"
+                            ? "Operations flow"
+                            : "Flux operationnel",
+                      value:
+                        language === "pt"
+                          ? "5 movimentos padrão: entrada, saída, transferência, ajuste e contagem."
+                          : language === "en"
+                            ? "5 standard movements: stock in, stock out, transfer, adjustment, and count."
+                            : "5 mouvements standard: entree, sortie, transfert, ajustement et comptage.",
+                    },
+                    {
+                      title:
+                        language === "pt"
+                          ? "Execucao diaria"
+                          : language === "en"
+                            ? "Daily execution"
+                            : "Execution quotidienne",
+                      value:
+                        language === "pt"
+                          ? "Operação no celular com QR Code, sem depender de computador no almoxarifado."
+                          : language === "en"
+                            ? "Mobile operation with QR code, without depending on a desktop in the warehouse."
+                            : "Operation mobile avec QR code, sans dependre d'un ordinateur dans l'entrepot.",
+                    },
+                  ].map((proof) => (
+                    <div
+                      key={proof.title}
+                      className="rounded-xl border border-slate-200 bg-white px-4 py-3"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        {proof.title}
+                      </p>
+                      <p className="mt-1 text-base font-bold text-slate-900">
+                        {proof.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mx-auto w-full max-w-2xl rounded-2xl border border-purple-200 bg-gradient-to-r from-purple-50 via-white to-purple-50 px-5 py-4 shadow-sm">
+                  <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:text-left">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+                      <BadgePercent className="h-3.5 w-3.5" />
+                      {language === "pt"
+                        ? "Oferta de lançamento"
+                        : language === "en"
+                          ? "Launch offer"
+                          : "Offre de lancement"}
+                    </div>
+                    <div className="flex items-end gap-1">
+                      <span className="text-3xl font-extrabold leading-none text-purple-700 sm:text-4xl">
+                        R$29,90
+                      </span>
+                      <span className="pb-1 text-xs font-semibold text-purple-600 sm:text-sm">
+                        /
+                        {language === "pt"
+                          ? "mês"
+                          : language === "en"
+                            ? "month"
+                            : "mois"}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-purple-700">
+                    {language === "pt"
+                      ? "Lote de lançamento com revisão semanal de preço"
+                      : language === "en"
+                        ? "Launch lot with weekly price review"
+                        : "Lot de lancement avec revision hebdomadaire du prix"}
+                  </p>
+                  <p className="mt-2 text-sm font-medium text-slate-700">
+                    {language === "pt"
+                      ? "Pensado para uma operação começar pequena e testar na prática antes de qualquer projeto grande."
+                      : language === "en"
+                        ? "Built for teams that want to start small and validate the operation before any large system project."
+                        : "Concu pour demarrer petit et valider l'operation avant tout grand projet de systeme."}
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {language === "pt"
+                      ? "Teste com cartão de crédito e cancelamento a qualquer momento."
+                      : language === "en"
+                        ? "Trial with credit card and cancel anytime."
+                        : "Essai avec carte bancaire et annulation a tout moment."}
+                  </p>
+                  <div className="mt-3">
                     <Button
                       asChild
-                      size="lg"
-                      className="rounded-lg bg-violet-700 px-8 py-6 text-base font-semibold text-white shadow-sm transition-colors hover:bg-violet-800"
+                      size="sm"
+                      className="bg-purple-700 text-white hover:bg-purple-800"
                     >
                       <Link
                         href="https://app.purplestock.com.br/"
                         onClick={() =>
                           trackCtaClick({
-                            cta_name: "desktop_trial_primary",
+                            cta_name: "desktop_launch_offer",
                             cta_target: "app",
-                            page_section: "hero_cta",
-                            cta_variant: usePainCta ? "pain" : "default",
-                          })
-                        }
-                      >
-                        {primaryHeroCta}
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      size="lg"
-                      variant="outline"
-                      className="border-slate-300 bg-white px-8 py-6 text-base font-semibold text-slate-800 shadow-sm transition-colors hover:bg-slate-50"
-                    >
-                      <Link
-                        href={demoVideoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() =>
-                          trackCtaClick({
-                            cta_name: "desktop_video_secondary",
-                            cta_target: "video",
-                            page_section: "hero_cta",
-                            cta_variant: "secondary",
+                            page_section: "hero_offer",
                           })
                         }
                       >
                         {language === "pt"
-                          ? "Ver demonstração"
+                          ? "Assinar por R$29,90"
                           : language === "en"
-                            ? "Watch demo"
-                            : "Voir la demonstration"}
+                            ? "Subscribe for R$29.90"
+                            : "Souscrire pour R$29,90"}
                       </Link>
                     </Button>
                   </div>
-                  <p className="mx-auto max-w-xl text-sm leading-6 text-slate-600">
-                    {language === "pt"
-                      ? "A partir de R$29,90/mês. Teste por 7 dias com cancelamento livre e uso no celular com QR Code desde o primeiro fluxo."
-                      : language === "en"
-                        ? "Starting at R$29.90/month. Run a 7-day trial with flexible cancellation and mobile QR code use from day one."
-                        : "A partir de R$29,90/mois. Testez pendant 7 jours avec annulation flexible et usage mobile avec QR code des le premier flux."}
-                  </p>
                 </div>
-
-                {/* Main Content Area - App Screenshot */}
-                <div className="relative py-6">
-                  <div className="relative mx-auto max-w-6xl">
-                    <div className="pointer-events-none absolute inset-x-12 top-10 h-32 rounded-full bg-violet-200/30 blur-3xl" />
-                    <div className="relative overflow-hidden rounded-[24px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.95)_0%,rgba(248,250,252,0.9)_100%)] shadow-[0_24px_70px_-38px_rgba(15,23,42,0.24)]">
-                      <div className="flex items-center justify-between border-b border-slate-200/80 px-4 py-3">
-                        <div className="flex items-center gap-2 text-[11px] font-medium tracking-[0.05em] text-slate-500">
-                          <span className="inline-flex h-2 w-2 rounded-full bg-violet-500" />
-                          {language === "pt"
-                            ? "workspace operacional"
-                            : language === "en"
-                              ? "operations workspace"
-                              : "espace operationnel"}
-                        </div>
-                        <div className="flex items-center gap-2 text-[11px] text-slate-500">
-                          <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-1 text-emerald-700">
-                            {language === "pt"
-                              ? "rastreável"
-                              : language === "en"
-                                ? "traceable"
-                                : "tracable"}
-                          </span>
-                          <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-1">
-                            QR code
-                          </span>
-                        </div>
-                      </div>
-                      <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_240px]">
-                        <div className="relative h-auto w-full border-b border-slate-200/80 lg:border-b-0 lg:border-r">
-                          <Image
-                            src="/images/app-items-list-1200.webp"
-                            alt={
-                              language === "pt"
-                                ? "Interface do Purple Stock - Lista de Itens"
-                                : language === "en"
-                                  ? "Purple Stock Interface - Items List"
-                                  : "Interface Purple Stock - Liste des Articles"
-                            }
-                            width={1200}
-                            height={674}
-                            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 92vw, 1200px"
-                            className="h-auto w-full object-contain"
-                            priority
-                          />
-                          {shouldLoadVideoModal ? (
-                            <HeroVideoModal
-                              language={language}
-                              onOpen={openVideoModal}
-                              open={isVideoModalOpen}
-                              onOpenChange={setIsVideoModalOpen}
-                            />
-                          ) : null}
-                        </div>
-                        <aside className="flex flex-col justify-between gap-6 bg-[linear-gradient(180deg,rgba(248,250,252,0.92)_0%,rgba(255,255,255,0.9)_100%)] px-4 py-4">
-                          <div className="space-y-4">
-                            <p className="text-[11px] font-medium tracking-[0.06em] text-slate-500">
-                              {language === "pt"
-                                ? "fluxo ativo"
-                                : language === "en"
-                                  ? "active flow"
-                                  : "flux actif"}
-                            </p>
-                            <div className="space-y-3 text-sm text-slate-700">
-                              <p className="border-b border-slate-200 pb-3">
-                                {language === "pt"
-                                  ? "Entrada, saída, ajuste e contagem no mesmo padrão de uso."
-                                  : language === "en"
-                                    ? "Inbound, outbound, adjustment, and count in one usage pattern."
-                                    : "Entree, sortie, ajustement et comptage dans le meme schema."}
-                              </p>
-                              <p className="border-b border-slate-200 pb-3">
-                                {language === "pt"
-                                  ? "Histórico por item e por local, sem memória paralela do time."
-                                  : language === "en"
-                                    ? "Item and location history, without team memory gaps."
-                                    : "Historique par article et emplacement, sans memoire parallele."}
-                              </p>
-                              <p>
-                                {language === "pt"
-                                  ? "Operação responde rápido porque o contexto já está na tela."
-                                  : language === "en"
-                                    ? "Operations move faster because context is already on screen."
-                                    : "L'equipe agit plus vite parce que le contexte est deja a l'ecran."}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="rounded-2xl border border-slate-200 bg-white/90 px-4 py-3">
-                            <p className="text-[11px] font-medium tracking-[0.06em] text-slate-500">
-                              {language === "pt"
-                                ? "tempo para rotina"
-                                : language === "en"
-                                  ? "time to routine"
-                                  : "temps jusqu'a la routine"}
-                            </p>
-                            <p className="mt-2 text-2xl font-bold text-slate-900">
-                              7 dias
-                            </p>
-                            <p className="mt-1 text-sm text-slate-600">
-                              {language === "pt"
-                                ? "para validar no celular com o fluxo real"
-                                : language === "en"
-                                  ? "to validate on mobile with the real workflow"
-                                  : "pour valider sur mobile avec le flux reel"}
-                            </p>
-                          </div>
-                        </aside>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-12 border-t border-b border-slate-200 py-8">
-                  <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-start">
-                    <div>
-                      <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-                        {language === "pt"
-                          ? "O que muda quando o estoque volta para a mão da operação"
-                          : language === "en"
-                            ? "What changes when stock control returns to the operations team"
-                            : "Ce qui change quand le stock revient dans les mains de l'equipe"}
-                      </h2>
-                      <p className="mt-3 max-w-2xl text-slate-600">
-                        {language === "pt"
-                          ? "Saldo visível, movimentação padronizada e histórico auditável no mesmo fluxo, sem depender de planilhas paralelas ou memória da equipe."
-                          : language === "en"
-                            ? "Visible balance, standardized stock movements, and auditable history in the same flow without depending on spreadsheets or memory."
-                            : "Solde visible, mouvements standardises et historique auditable dans le meme flux, sans dependre de tableurs ou de la memoire de l'equipe."}
-                      </p>
-                    </div>
-                    <ul className="space-y-3 text-sm text-slate-700">
-                      <li className="border-b border-slate-200 pb-3">
-                        {language === "pt"
-                          ? "Consulte saldo e localização de cada item em tempo real."
-                          : language === "en"
-                            ? "See item balance and location in real time."
-                            : "Consultez le solde et l'emplacement de chaque article en temps reel."}
-                      </li>
-                      <li className="border-b border-slate-200 pb-3">
-                        {language === "pt"
-                          ? "Registre entrada, saída, transferência, ajuste e contagem no mesmo padrão."
-                          : language === "en"
-                            ? "Record inbound, outbound, transfer, adjustment, and counts in the same operating pattern."
-                            : "Enregistrez entree, sortie, transfert, ajustement et comptage dans le meme schema."}
-                      </li>
-                      <li>
-                        {language === "pt"
-                          ? "Acompanhe perdas, reposição e desempenho por time sem consolidação manual."
-                          : language === "en"
-                            ? "Track losses, replenishment, and team performance without manual consolidation."
-                            : "Suivez pertes, reassort et performance de l'equipe sans consolidation manuelle."}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <section className="mb-12 border-t border-b border-slate-200 py-8">
-                  <div className="mb-6">
-                    <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-                      {playbookContent.howItWorksTitle}
-                    </h2>
-                    <p className="mt-2 text-slate-600">
-                      {playbookContent.howItWorksSubtitle}
-                    </p>
-                  </div>
-                  <ol className="space-y-4">
-                    {playbookContent.steps.map((step) => (
-                      <li
-                        key={step.title}
-                        className="grid gap-2 border-b border-slate-200 pb-4 last:border-b-0 last:pb-0 md:grid-cols-[260px_minmax(0,1fr)] md:gap-6"
-                      >
-                        <h3 className="font-semibold text-slate-900">
-                          {step.title}
-                        </h3>
-                        <p className="max-w-xl text-sm leading-relaxed text-slate-600">
-                          {step.body}
-                        </p>
-                      </li>
-                    ))}
-                  </ol>
-                </section>
-
-                <section className="mb-12 border-t border-b border-slate-200 py-8">
-                  <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-                    {playbookContent.proofTitle}
-                  </h2>
-                  <ul className="mt-5 space-y-4">
-                    {playbookContent.proofItems.map((item) => (
-                      <li
-                        key={item.metric}
-                        className="grid gap-2 border-b border-slate-200 pb-4 last:border-b-0 last:pb-0 md:grid-cols-[260px_minmax(0,1fr)] md:gap-6"
-                      >
-                        <p className="text-base font-bold text-slate-900">
-                          {item.metric}
-                        </p>
-                        <p className="max-w-xl text-sm leading-relaxed text-slate-600">
-                          {item.detail}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-
-                <section className="mb-12 border-t border-b border-slate-200 py-8">
-                  <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                    <div>
-                      <p className="text-xs font-semibold tracking-[0.12em] text-violet-700">
-                        {language === "pt"
-                          ? "Próximo passo"
-                          : language === "en"
-                            ? "Next step"
-                            : "Prochaine etape"}
-                      </p>
-                      <h2 className="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-                        {language === "pt"
-                          ? "Se o problema hoje é descontrole no estoque, o teste precisa começar na rotina"
-                          : language === "en"
-                            ? "If the problem is stock chaos today, the trial needs to start inside the real routine"
-                            : "Si le probleme est le chaos du stock, l'essai doit commencer dans la routine reelle"}
-                      </h2>
-                      <p className="mt-3 max-w-2xl text-slate-600">
-                        {language === "pt"
-                          ? "Veja a demonstração, valide com sua equipe e entenda em poucos dias se o Purple Stock devolve visibilidade e resposta para a operação."
-                          : language === "en"
-                            ? "Watch the demo, validate it with your team, and confirm in a few days whether Purple Stock restores visibility and response speed."
-                            : "Voyez la demonstration, validez avec votre equipe et confirmez en quelques jours si Purple Stock redonne visibilite et vitesse d'action."}
-                      </p>
-                    </div>
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="border-slate-300 bg-white text-slate-800 hover:bg-slate-50"
-                    >
-                      <Link href="/documentacao">
-                        {language === "pt"
-                          ? "Abrir documentação"
-                          : language === "en"
-                            ? "Open documentation"
-                            : "Ouvrir la documentation"}
-                      </Link>
-                    </Button>
-                  </div>
-                </section>
-
-                <section className="mb-12 border-t border-b border-slate-200 py-8">
-                  <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-                    {playbookContent.compareTitle}
-                  </h2>
-                  <p className="mt-2 max-w-2xl text-slate-600">
-                    {playbookContent.compareSubtitle}
-                  </p>
-                  <div className="mt-5 overflow-hidden border border-slate-200">
-                    <table className="min-w-full bg-white text-left text-sm">
-                      <thead className="bg-slate-50">
-                        <tr>
-                          <th className="px-4 py-3 font-semibold text-slate-600">
-                            {language === "pt"
-                              ? "Criterio"
-                              : language === "en"
-                                ? "Criteria"
-                                : "Critere"}
-                          </th>
-                          <th className="px-4 py-3 font-semibold text-purple-700">
-                            Purple Stock
-                          </th>
-                          <th className="px-4 py-3 font-semibold text-slate-600">
-                            {language === "pt"
-                              ? "ERP tradicional"
-                              : language === "en"
-                                ? "Traditional ERP"
-                                : "ERP traditionnel"}
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {playbookContent.compareRows.map((row) => (
-                          <tr
-                            key={row.label}
-                            className="border-t border-slate-100"
-                          >
-                            <td className="px-4 py-3 font-medium text-slate-900">
-                              {row.label}
-                            </td>
-                            <td className="px-4 py-3 text-slate-700">
-                              {row.purple}
-                            </td>
-                            <td className="px-4 py-3 text-slate-600">
-                              {row.erp}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </section>
-
-                <section className="mb-12 border-t border-b border-slate-200 py-8">
-                  <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-                    {playbookContent.objectionsTitle}
-                  </h2>
-                  <div className="mt-5 space-y-4">
-                    {playbookContent.objections.map((item) => (
-                      <div
-                        key={item.q}
-                        className="grid gap-2 border-b border-slate-200 pb-4 last:border-b-0 last:pb-0 md:grid-cols-[260px_minmax(0,1fr)] md:gap-6"
-                      >
-                        <p className="font-semibold text-slate-900">{item.q}</p>
-                        <p className="max-w-xl text-sm leading-relaxed text-slate-600">
-                          {item.a}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </section>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                   <Button
                     asChild
                     size="lg"
-                    className="rounded-lg bg-violet-700 px-8 py-6 text-base font-semibold text-white shadow-sm transition-colors hover:bg-violet-800"
+                    className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
                   >
                     <Link
                       href="https://app.purplestock.com.br/"
                       onClick={() =>
                         trackCtaClick({
-                          cta_name: "desktop_trial_secondary",
+                          cta_name: "desktop_trial_primary",
                           cta_target: "app",
-                          page_section: "secondary_cta",
+                          page_section: "hero_cta",
+                          cta_variant: usePainCta ? "pain" : "default",
                         })
                       }
                     >
-                      <Sparkles
-                        className="w-5 h-5 mr-2"
-                        strokeWidth={2.5}
-                        style={{
-                          strokeLinecap: "round",
-                          strokeLinejoin: "round",
-                        }}
-                      />
-                      {language === "pt"
-                        ? "Começar teste grátis de 7 dias"
-                        : language === "en"
-                          ? "Start 7-day free trial"
-                          : "Commencer l'essai gratuit de 7 jours"}
-                      <ArrowRight
-                        className="w-5 h-5 ml-2"
-                        strokeWidth={2.5}
-                        style={{
-                          strokeLinecap: "round",
-                          strokeLinejoin: "round",
-                        }}
-                      />
+                      {primaryHeroCta}
                     </Link>
                   </Button>
+                </div>
+                <button
+                  type="button"
+                  className="mx-auto inline-flex items-center text-sm font-medium text-purple-700 underline underline-offset-2 hover:text-purple-800"
+                  onClick={() => {
+                    setIsVideoModalOpen(true);
+                    trackCtaClick({
+                      cta_name: "desktop_view_demo_primary",
+                      cta_target: "video_modal",
+                      page_section: "hero_cta",
+                    });
+                  }}
+                >
+                  {language === "pt"
+                    ? "Prefere ver primeiro? Ver demonstração em vídeo"
+                    : language === "en"
+                      ? "Prefer to watch first? Watch the video demo"
+                      : "Vous preferez voir d'abord? Voir la demonstration video"}
+                </button>
+                <p className="text-sm text-slate-500">
+                  {language === "pt"
+                    ? "Teste com cartão de crédito • Cancele quando quiser • Setup guiado"
+                    : language === "en"
+                      ? "Trial with credit card • Cancel anytime • Guided setup"
+                      : "Essai avec carte bancaire • Annulation a tout moment • Setup guide"}
+                </p>
+                <div className="mx-auto mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
+                    <Smartphone className="h-3.5 w-3.5" />
+                    {language === "pt"
+                      ? "Compatível com iOS"
+                      : language === "en"
+                        ? "Compatible with iOS"
+                        : "Compatible iOS"}
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-slate-700">
+                    <Smartphone className="h-3.5 w-3.5" />
+                    {language === "pt"
+                      ? "Compatível com Android"
+                      : language === "en"
+                        ? "Compatible with Android"
+                        : "Compatible Android"}
+                  </span>
+                </div>
+              </div>
+
+              {/* Main Content Area - App Screenshot */}
+              <div className="relative py-12">
+                <div className="relative mx-auto max-w-6xl">
+                  <Dialog
+                    open={isVideoModalOpen}
+                    onOpenChange={setIsVideoModalOpen}
+                  >
+                    <div className="relative rounded-3xl shadow-2xl overflow-visible border-4 border-white bg-white p-2">
+                      <div className="relative w-full h-auto">
+                        <Image
+                          src="/images/app-items-list.png"
+                          alt={
+                            language === "pt"
+                              ? "Interface do Purple Stock - Lista de Itens"
+                              : language === "en"
+                                ? "Purple Stock Interface - Items List"
+                                : "Interface Purple Stock - Liste des Articles"
+                          }
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto object-contain rounded-2xl"
+                          priority
+                        />
+                        {/* Elegant Play Button */}
+                        <DialogTrigger asChild>
+                          <button className="absolute inset-0 flex items-center justify-center group cursor-pointer rounded-2xl focus:outline-none focus:ring-4 focus:ring-purple-500/50 transition-all duration-300">
+                            <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-purple-600 transition-all duration-300 group-hover:bg-white group-hover:scale-110 group-hover:shadow-purple-500/50">
+                              <div className="w-0 h-0 border-l-[20px] border-l-purple-600 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
+                            </div>
+                          </button>
+                        </DialogTrigger>
+                      </div>
+                    </div>
+
+                    {/* YouTube Video Link */}
+                    <div className="mt-6 flex justify-center">
+                      <DialogTrigger asChild>
+                        <Button
+                          size="lg"
+                          className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
+                        >
+                          <PlayCircle
+                            className="w-5 h-5 mr-2"
+                            strokeWidth={2.5}
+                            style={{
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                            }}
+                          />
+                          {language === "pt"
+                            ? "Ver Demonstração"
+                            : language === "en"
+                              ? "Watch demo"
+                              : "Voir la demonstration"}
+                        </Button>
+                      </DialogTrigger>
+                    </div>
+
+                    <DialogContent className="max-w-4xl w-full p-0 bg-black">
+                      <DialogTitle className="sr-only">
+                        {language === "pt"
+                          ? "Demonstração do Purple Stock"
+                          : language === "en"
+                            ? "Purple Stock Demo"
+                            : "Démo Purple Stock"}
+                      </DialogTitle>
+                      <div
+                        className="relative w-full"
+                        style={{ paddingBottom: "56.25%" }}
+                      >
+                        <iframe
+                          className="absolute top-0 left-0 w-full h-full"
+                          src="https://www.youtube.com/embed/fD4amz78t8c?autoplay=1"
+                          title="YouTube video player"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </div>
+
+              {/* Trusted By Section */}
+              <div className="pt-12 pb-8">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+                    {language === "pt"
+                      ? "Empresas que usam Purple Stock na operação"
+                      : language === "en"
+                        ? "Teams running operations with Purple Stock"
+                        : "Equipes qui operent avec Purple Stock"}
+                  </h2>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-2">
+                  {logoCases.map((logoCase) => (
+                    <div
+                      key={logoCase.name}
+                      className="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-200 hover:border-purple-200 hover:shadow-md"
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center justify-center h-14">
+                          <Image
+                            src={logoCase.logo}
+                            alt={logoCase.name}
+                            width={logoCase.width}
+                            height={logoCase.height}
+                            className={`h-full w-auto object-contain ${logoCase.maxWidth}`}
+                          />
+                        </div>
+                        <span className="rounded-full bg-purple-50 px-2 py-1 text-[11px] font-semibold text-purple-700">
+                          {language === "pt"
+                            ? "Caso rápido"
+                            : language === "en"
+                              ? "Quick case"
+                              : "Cas rapide"}
+                        </span>
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                        {logoCase.result}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* FAQ Button */}
+              <div className="flex justify-center mb-6 pt-8">
+                <button className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+                  <Sparkles
+                    className="w-4 h-4 mr-2"
+                    strokeWidth={2.5}
+                    style={{ strokeLinecap: "round", strokeLinejoin: "round" }}
+                  />
+                  {language === "pt"
+                    ? "Dúvidas comuns antes de contratar"
+                    : language === "en"
+                      ? "Frequently Asked Questions"
+                      : "Questions Fréquentes"}
+                </button>
+              </div>
+
+              {/* Question Section */}
+              <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 text-center">
+                <div className="min-h-[80px] flex items-center justify-center overflow-hidden">
+                  <h2
+                    key={currentQuestionIndex}
+                    className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 animate-in fade-in slide-in-from-top-2 duration-500"
+                  >
+                    {questions[currentQuestionIndex]}
+                  </h2>
+                </div>
+                <div className="flex justify-center gap-2 mt-4">
+                  {questions.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentQuestionIndex(index)}
+                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                        index === currentQuestionIndex
+                          ? "bg-purple-600 w-8"
+                          : "bg-purple-300 w-2 hover:bg-purple-400"
+                      }`}
+                      aria-label={`Go to question ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Main Title Section */}
+              <div className="text-center space-y-6 mb-12">
+                <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+                  <span className="text-slate-700">
+                    {language === "pt" ? (
+                      <>
+                        {"Gestão para "}
+                        <span
+                          key={`title-sector-${language}-${sectorIndex}`}
+                          className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                        >
+                          {rotatingSectorLabel}
+                        </span>
+                        {" e Inventário com QR Code"}
+                      </>
+                    ) : language === "en" ? (
+                      <>
+                        {"Management for "}
+                        <span
+                          key={`title-sector-${language}-${sectorIndex}`}
+                          className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                        >
+                          {rotatingSectorLabel}
+                        </span>
+                        {" and QR Code Inventory"}
+                      </>
+                    ) : (
+                      <>
+                        {"Gestion pour "}
+                        <span
+                          key={`title-sector-${language}-${sectorIndex}`}
+                          className="inline-block text-slate-900 animate-in fade-in slide-in-from-bottom-1 duration-500"
+                        >
+                          {rotatingSectorLabel}
+                        </span>
+                        {" et inventaire QR Code"}
+                      </>
+                    )}
+                  </span>
+                  <br />
+                  <span className="text-purple-600">
+                    {language === "pt"
+                      ? "Purple Stock"
+                      : language === "en"
+                        ? "Purple Stock"
+                        : "Purple Stock"}
+                  </span>
+                </h2>
+                <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                  {language === "pt"
+                    ? "Do cadastro ao relatório: registre entradas, saídas, ajustes, contagens e transferências com histórico auditável por time e por localização."
+                    : language === "en"
+                      ? "From setup to reporting: record inbound, outbound, adjustments, counts, and transfers with auditable history by team and location."
+                      : "Du parametrage au rapport: enregistrez entrees, sorties, ajustements, comptages et transferts avec un historique auditable par equipe et emplacement."}
+                </p>
+              </div>
+
+              {/* Feature Cards */}
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
+                {/* Card 1 - Controle Total */}
+                <div className="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-purple-200 bg-purple-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-purple-600/90 p-1.5 shadow-sm">
+                      <CheckCircle2
+                        className="h-full w-full text-white"
+                        strokeWidth={2.5}
+                        style={{
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                        }}
+                      />
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">
+                      {language === "pt"
+                        ? "Operação"
+                        : language === "en"
+                          ? "Operations"
+                          : "Operation"}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {language === "pt"
+                      ? "Visão de estoque"
+                      : language === "en"
+                        ? "Total Control"
+                        : "Contrôle Total"}
+                  </h3>
+                  <p className="text-slate-600">
+                    {language === "pt"
+                      ? "Visualize saldo e localização de cada item em tempo real."
+                      : language === "en"
+                        ? "See item balance and location in real time."
+                        : "Visualisez le solde et l'emplacement de chaque article en temps reel."}
+                  </p>
+                </div>
+
+                {/* Card 2 - Automação Inteligente */}
+                <div className="bg-white rounded-2xl shadow-lg p-6 border border-blue-100">
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-blue-600/90 p-1.5 shadow-sm">
+                      <Zap
+                        className="h-full w-full text-white"
+                        strokeWidth={2.5}
+                        style={{
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                        }}
+                      />
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-blue-700">
+                      {language === "pt"
+                        ? "Padrão"
+                        : language === "en"
+                          ? "Standard"
+                          : "Standard"}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {language === "pt"
+                      ? "Fluxo operacional padronizado"
+                      : language === "en"
+                        ? "Standardized operations flow"
+                        : "Flux operationnel standardise"}
+                  </h3>
+                  <p className="text-slate-600">
+                    {language === "pt"
+                      ? "Padronize operações com tipos claros: entrada, saída, transferência, ajuste e contagem."
+                      : language === "en"
+                        ? "Standardize operations with clear types: stock in, stock out, move, adjust, and count."
+                        : "Standardisez les operations avec des types clairs: stock in, stock out, move, adjust et count."}
+                  </p>
+                </div>
+
+                {/* Card 3 - Relatórios Avançados */}
+                <div className="bg-white rounded-2xl shadow-lg p-6 border border-emerald-100">
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2">
+                    <div className="h-7 w-7 rounded-md bg-emerald-600/90 p-1.5 shadow-sm">
+                      <BarChart3
+                        className="h-full w-full text-white"
+                        strokeWidth={2.5}
+                        style={{
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                        }}
+                      />
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
+                      {language === "pt"
+                        ? "Gestão"
+                        : language === "en"
+                          ? "Management"
+                          : "Gestion"}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {language === "pt"
+                      ? "Relatórios por time"
+                      : language === "en"
+                        ? "Reports by team"
+                        : "Rapports par equipe"}
+                  </h3>
+                  <p className="text-slate-600">
+                    {language === "pt"
+                      ? "Relatórios consolidados para reposição, perdas e desempenho por time."
+                      : language === "en"
+                        ? "Consolidated reports for replenishment, losses, and team performance."
+                        : "Rapports consolides pour le reassort, les pertes et la performance par equipe."}
+                  </p>
+                </div>
+              </div>
+
+              <section className="mb-12 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+                    {playbookContent.howItWorksTitle}
+                  </h2>
+                  <p className="mt-2 text-slate-600">
+                    {playbookContent.howItWorksSubtitle}
+                  </p>
+                </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {playbookContent.steps.map((step) => (
+                    <div
+                      key={step.title}
+                      className="rounded-2xl border border-slate-200 bg-slate-50 p-4"
+                    >
+                      <h3 className="font-semibold text-slate-900">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                        {step.body}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="mb-12 rounded-3xl border border-violet-100 bg-violet-50/40 p-6 sm:p-8 text-center">
+                <div className="inline-flex items-center gap-2 rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700">
+                  <FileCode className="h-3.5 w-3.5" />
+                  {language === "pt"
+                    ? "Recursos técnicos (opcional)"
+                    : language === "en"
+                      ? "Technical resources (optional)"
+                      : "Ressources techniques (optionnel)"}
+                </div>
+                <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl">
+                  {language === "pt"
+                    ? "Para times técnicos: funcionalidades por tópico"
+                    : language === "en"
+                      ? "For technical teams: features by topic"
+                      : "Pour les equipes techniques: fonctionnalités par thème"}
+                </h2>
+                <p className="mt-2 text-slate-600">
+                  {language === "pt"
+                    ? "Abrimos uma rota dedicada com módulos, fluxos e endpoints do Purple Stock."
+                    : language === "en"
+                      ? "We added a dedicated route with Purple Stock modules, flows, and endpoints."
+                      : "Nous avons ajouté une route dédiée avec modules, flux et endpoints Purple Stock."}
+                </p>
+                <div className="mt-5">
                   <Button
                     asChild
-                    size="lg"
-                    variant="outline"
-                    className="rounded-lg border-slate-300 bg-white px-8 py-6 text-base font-semibold text-slate-800 shadow-sm transition-colors hover:bg-slate-50"
+                    className="bg-violet-700 text-white hover:bg-violet-800"
                   >
-                    <Link
-                      href={getCalendlyUrl()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() =>
-                        trackCtaClick({
-                          cta_name: "desktop_talk_specialist_secondary",
-                          cta_target: "calendly",
-                          page_section: "secondary_cta",
-                        })
-                      }
-                    >
-                      <MessageCircle
-                        className="w-5 h-5 mr-2"
-                        strokeWidth={2.5}
-                        style={{
-                          strokeLinecap: "round",
-                          strokeLinejoin: "round",
-                        }}
-                      />
+                    <Link href="/documentacao">
                       {language === "pt"
-                        ? "Falar com especialista"
+                        ? "Abrir documentação"
                         : language === "en"
-                          ? "Talk to a specialist"
-                          : "Parler a un specialiste"}
+                          ? "Open documentation"
+                          : "Ouvrir la documentation"}
                     </Link>
                   </Button>
+                </div>
+              </section>
+
+              <section className="mb-12 rounded-3xl border border-indigo-100 bg-indigo-50/40 p-6 sm:p-8">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+                  {language === "pt"
+                    ? "Software de estoque para pequenas e médias empresas"
+                    : language === "en"
+                      ? "Inventory system for small and mid-sized businesses"
+                      : "Systeme de stock pour petites et moyennes entreprises"}
+                </h2>
+                <p className="mt-3 text-slate-600">
+                  {language === "pt"
+                    ? "Se você precisa controlar estoque, almoxarifado e inventário com QR Code, o Purple Stock organiza a operação em um fluxo único."
+                    : language === "en"
+                      ? "If you need inventory software for warehouse control and QR code inventory, Purple Stock centralizes operations and decision-making in one flow."
+                      : "Si vous cherchez un logiciel de gestion de stock, d'entrepot et d'inventaire QR code, Purple Stock centralise operation et pilotage dans un seul flux."}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3 text-sm">
+                  <Link
+                    className="text-indigo-700 underline underline-offset-2"
+                    href="/recursos/controle-de-almoxarifado"
+                  >
+                    {language === "pt"
+                      ? "Guia de controle de almoxarifado"
+                      : language === "en"
+                        ? "Warehouse control guide"
+                        : "Guide de controle d'entrepot"}
+                  </Link>
+                  <Link
+                    className="text-indigo-700 underline underline-offset-2"
+                    href="/features/qr-code-management"
+                  >
+                    {language === "pt"
+                      ? "Funcionalidade de inventário com QR Code"
+                      : language === "en"
+                        ? "QR code inventory feature"
+                        : "Fonction inventaire QR code"}
+                  </Link>
+                </div>
+              </section>
+
+              <section className="mb-12 rounded-3xl border border-emerald-100 bg-emerald-50/40 p-6 sm:p-8">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+                  {playbookContent.proofTitle}
+                </h2>
+                <div className="mt-5 grid gap-4 md:grid-cols-3">
+                  {playbookContent.proofItems.map((item) => (
+                    <div
+                      key={item.metric}
+                      className="rounded-2xl border border-emerald-100 bg-white p-4"
+                    >
+                      <p className="text-lg font-bold text-emerald-700">
+                        {item.metric}
+                      </p>
+                      <p className="mt-2 text-sm text-slate-600">
+                        {item.detail}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="mb-12 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+                  {playbookContent.compareTitle}
+                </h2>
+                <p className="mt-2 text-slate-600">
+                  {playbookContent.compareSubtitle}
+                </p>
+                <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200">
+                  <table className="min-w-full bg-white text-left text-sm">
+                    <thead className="bg-slate-50">
+                      <tr>
+                        <th className="px-4 py-3 font-semibold text-slate-600">
+                          {language === "pt"
+                            ? "Criterio"
+                            : language === "en"
+                              ? "Criteria"
+                              : "Critere"}
+                        </th>
+                        <th className="px-4 py-3 font-semibold text-purple-700">
+                          Purple Stock
+                        </th>
+                        <th className="px-4 py-3 font-semibold text-slate-600">
+                          {language === "pt"
+                            ? "ERP tradicional"
+                            : language === "en"
+                              ? "Traditional ERP"
+                              : "ERP traditionnel"}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {playbookContent.compareRows.map((row) => (
+                        <tr
+                          key={row.label}
+                          className="border-t border-slate-100"
+                        >
+                          <td className="px-4 py-3 font-medium text-slate-900">
+                            {row.label}
+                          </td>
+                          <td className="px-4 py-3 text-slate-700">
+                            {row.purple}
+                          </td>
+                          <td className="px-4 py-3 text-slate-600">
+                            {row.erp}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section className="mb-12 rounded-3xl border border-amber-100 bg-amber-50/50 p-6 sm:p-8">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+                  {playbookContent.objectionsTitle}
+                </h2>
+                <div className="mt-5 space-y-4">
+                  {playbookContent.objections.map((item) => (
+                    <div
+                      key={item.q}
+                      className="rounded-2xl border border-amber-100 bg-white p-4"
+                    >
+                      <p className="font-semibold text-slate-900">{item.q}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                        {item.a}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
+                >
+                  <Link
+                    href="https://app.purplestock.com.br/"
+                    onClick={() =>
+                      trackCtaClick({
+                        cta_name: "desktop_trial_secondary",
+                        cta_target: "app",
+                        page_section: "secondary_cta",
+                      })
+                    }
+                  >
+                    <Sparkles
+                      className="w-5 h-5 mr-2"
+                      strokeWidth={2.5}
+                      style={{
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                      }}
+                    />
+                    {language === "pt"
+                      ? "Começar teste grátis de 7 dias"
+                      : language === "en"
+                        ? "Start 7-day free trial"
+                        : "Commencer l'essai gratuit de 7 jours"}
+                    <ArrowRight
+                      className="w-5 h-5 ml-2"
+                      strokeWidth={2.5}
+                      style={{
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                      }}
+                    />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
+                >
+                  <Link
+                    href={getCalendlyUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      trackCtaClick({
+                        cta_name: "desktop_talk_specialist_secondary",
+                        cta_target: "calendly",
+                        page_section: "secondary_cta",
+                      })
+                    }
+                  >
+                    <MessageCircle
+                      className="w-5 h-5 mr-2"
+                      strokeWidth={2.5}
+                      style={{
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                      }}
+                    />
+                    {language === "pt"
+                      ? "Falar com especialista"
+                      : language === "en"
+                        ? "Talk to a specialist"
+                        : "Parler a un specialiste"}
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Status Bar */}
+            <div className="flex items-center justify-between px-4 sm:px-5 py-2 bg-gradient-to-t from-slate-50/90 to-white/70 border-t border-slate-100 flex-shrink-0">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[10px] text-slate-500">
+                    {language === "pt"
+                      ? "Sincronizado"
+                      : language === "fr"
+                        ? "Synchronisé"
+                        : "Synced"}
+                  </span>
+                </div>
+                <div className="hidden sm:flex items-center gap-1.5">
+                  <Zap className="w-3 h-3 text-amber-500" strokeWidth={2.5} />
+                  <span className="text-[10px] text-slate-500">
+                    {language === "pt"
+                      ? "99.9% uptime"
+                      : language === "fr"
+                        ? "99.9% disponibilité"
+                        : "99.9% uptime"}
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] text-slate-400">
+                  {language === "pt"
+                    ? "Última atualização: agora"
+                    : language === "fr"
+                      ? "Dernière maj: maintenant"
+                      : "Last update: now"}
+                </span>
+                <div className="flex items-center gap-1">
+                  <span className="text-[10px] text-purple-500 font-medium">
+                    Purple Stock
+                  </span>
+                  <span className="text-[9px] text-slate-400">v2.0.0</span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {openWindows.map((key, index) => {
-            const config = windowsConfig[key];
-            const Icon = config.icon;
-            const layout = WINDOW_LAYOUT[key];
-            const offset = windowOffsets[key];
-            const colorMap = {
-              blue: "from-blue-500 to-blue-600",
-              purple: "from-violet-500 to-violet-600",
-              green: "from-emerald-500 to-emerald-600",
-              yellow: "from-amber-500 to-amber-600",
-              red: "from-red-500 to-red-600",
-              orange: "from-orange-500 to-orange-600",
-            };
-            const iconGradient = colorMap[config.folderColor || "blue"];
-            return (
+        {/* Icons Right Side - Vertical (slots only) */}
+        <div className="relative z-0 hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
+          {windowApps.slice(2).map((app, index) => (
+            <div
+              key={app.key}
+              id={`folder-slot-${`window-app-right-${app.key}`}`}
+              className="absolute left-0"
+              style={{ top: `${80 + index * 180}px` }}
+            />
+          ))}
+          {shortcutLinks.slice(2).map((item, index) => (
+            <div
+              key={item.label}
+              id={`folder-slot-${`shortcut-right-${item.label}`}`}
+              className="absolute left-0"
+              style={{ top: `${440 + index * 180}px` }}
+            />
+          ))}
+        </div>
+
+        {/* macOS-style Dock */}
+        <div className="fixed bottom-3 left-1/2 -translate-x-1/2 z-[90] hidden md:block">
+          <div className="flex items-end gap-1 px-3 py-2 bg-white/60 backdrop-blur-xl rounded-2xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_0_0_1px_rgba(255,255,255,0.2)]">
+            {/* Dock Apps */}
+            <Link
+              href="https://app.purplestock.com.br/"
+              className="group relative flex flex-col items-center"
+              onClick={() =>
+                trackCtaClick({
+                  cta_name: "desktop_dock_open_app",
+                  cta_target: "app",
+                  page_section: "dock",
+                })
+              }
+            >
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-lg group-hover:shadow-purple-500/40 transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110">
+                <Box className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt"
+                  ? "Abrir App"
+                  : language === "fr"
+                    ? "Ouvrir App"
+                    : "Open App"}
+              </span>
+              <div className="w-1 h-1 rounded-full bg-slate-400 mt-1.5 opacity-100" />
+            </Link>
+
+            <button
+              onClick={() => openWindow("inventory")}
+              className="group relative flex flex-col items-center"
+            >
               <div
-                key={key}
-                style={{
-                  top: layout.top,
-                  left: layout.left,
-                  width: layout.width,
-                  zIndex: 60 + index,
-                  transform: `translate(-50%, 0) translate(${offset.x}px, ${offset.y}px)`,
-                }}
-                className="pointer-events-auto hidden rounded-xl border border-slate-200/80 bg-white/95 shadow-[0_25px_80px_-20px_rgba(0,0,0,0.25),0_10px_30px_-15px_rgba(0,0,0,0.15)] backdrop-blur-2xl transition-all animate-in fade-in zoom-in-95 slide-in-from-top-2 duration-300 md:absolute md:block overflow-hidden"
-                onMouseDown={() => openWindow(key)}
+                className={cn(
+                  "w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110",
+                  isWindowOpen("inventory")
+                    ? "shadow-blue-500/40"
+                    : "group-hover:shadow-blue-500/40"
+                )}
               >
-                {/* Window Header */}
-                <div
-                  className="flex cursor-grab select-none items-center justify-between border-b border-slate-100 bg-gradient-to-b from-slate-50 to-white/80 px-4 py-2.5 active:cursor-grabbing"
-                  onMouseDown={(event) =>
-                    handleWindowHeaderMouseDown(key, event)
-                  }
-                >
-                  <div className="flex items-center gap-3">
-                    {/* Traffic Lights */}
-                    <div className="flex items-center gap-[6px] group">
-                      <button
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          closeWindow(key);
-                        }}
-                        className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#ff6058] to-[#e4473c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:scale-110"
-                        aria-label="Close window"
-                      >
-                        <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[8px] text-[#4d0000] font-bold">
-                          ×
-                        </span>
-                      </button>
-                      <button
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          closeWindow(key);
-                        }}
-                        className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#ffbd2e] to-[#e5a319] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:scale-110"
-                        aria-label="Minimize window"
-                      >
-                        <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[8px] text-[#4d3800] font-bold">
-                          −
-                        </span>
-                      </button>
-                      <button
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          if (typeof window !== "undefined") {
-                            window.open(
-                              config.action.href,
-                              config.action.href.startsWith("http")
-                                ? "_blank"
-                                : "_self"
-                            );
-                          }
-                        }}
-                        className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#28c840] to-[#1aab2c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:scale-110"
-                        aria-label="Open action"
-                        title="Open action"
-                      >
-                        <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[6px] text-[#003d00]">
-                          ⤢
-                        </span>
-                      </button>
-                    </div>
+                <Package className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt"
+                  ? "Inventário"
+                  : language === "fr"
+                    ? "Inventaire"
+                    : "Inventory"}
+              </span>
+              {isWindowOpen("inventory") && (
+                <div className="w-1 h-1 rounded-full bg-blue-500 mt-1.5" />
+              )}
+            </button>
 
-                    {/* App Icon & Title */}
-                    <div className="flex items-center gap-2">
-                      <div
-                        className={cn(
-                          "w-5 h-5 rounded-md bg-gradient-to-br flex items-center justify-center shadow-sm",
-                          iconGradient
-                        )}
-                      >
-                        {key === "inventory" && (
-                          <Package
-                            className="w-3 h-3 text-white"
-                            strokeWidth={2.5}
-                          />
-                        )}
-                        {key === "analytics" && (
-                          <BarChart3
-                            className="w-3 h-3 text-white"
-                            strokeWidth={2.5}
-                          />
-                        )}
-                        {key === "qr" && (
-                          <ScanLine
-                            className="w-3 h-3 text-white"
-                            strokeWidth={2.5}
-                          />
-                        )}
-                        {key === "support" && (
-                          <MessageCircle
-                            className="w-3 h-3 text-white"
-                            strokeWidth={2.5}
-                          />
-                        )}
-                      </div>
-                      <span className="text-[13px] font-semibold text-slate-700">
-                        {config.title}
+            <button
+              onClick={() => openWindow("analytics")}
+              className="group relative flex flex-col items-center"
+            >
+              <div
+                className={cn(
+                  "w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center shadow-lg transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110",
+                  isWindowOpen("analytics")
+                    ? "shadow-violet-500/40"
+                    : "group-hover:shadow-violet-500/40"
+                )}
+              >
+                <BarChart3 className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt"
+                  ? "Relatórios"
+                  : language === "fr"
+                    ? "Rapports"
+                    : "Analytics"}
+              </span>
+              {isWindowOpen("analytics") && (
+                <div className="w-1 h-1 rounded-full bg-violet-500 mt-1.5" />
+              )}
+            </button>
+
+            <div className="w-px h-10 bg-slate-300/50 mx-1 self-center" />
+
+            <button
+              onClick={() => openWindow("qr")}
+              className="group relative flex flex-col items-center"
+            >
+              <div
+                className={cn(
+                  "w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110",
+                  isWindowOpen("qr")
+                    ? "shadow-emerald-500/40"
+                    : "group-hover:shadow-emerald-500/40"
+                )}
+              >
+                <ScanLine className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                QR Codes
+              </span>
+              {isWindowOpen("qr") && (
+                <div className="w-1 h-1 rounded-full bg-emerald-500 mt-1.5" />
+              )}
+            </button>
+
+            <button
+              onClick={() => openWindow("support")}
+              className="group relative flex flex-col items-center"
+            >
+              <div
+                className={cn(
+                  "w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110",
+                  isWindowOpen("support")
+                    ? "shadow-amber-500/40"
+                    : "group-hover:shadow-amber-500/40"
+                )}
+              >
+                <MessageCircle className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt"
+                  ? "Suporte"
+                  : language === "fr"
+                    ? "Support"
+                    : "Support"}
+              </span>
+              {isWindowOpen("support") && (
+                <div className="w-1 h-1 rounded-full bg-amber-500 mt-1.5" />
+              )}
+            </button>
+
+            <Link
+              href="/documentacao"
+              className="group relative flex flex-col items-center"
+            >
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-500 to-slate-700 flex items-center justify-center shadow-lg group-hover:shadow-slate-500/40 transition-all duration-200 group-hover:-translate-y-2 group-hover:scale-110">
+                <FileCode className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
+                {language === "pt"
+                  ? "Documentação"
+                  : language === "fr"
+                    ? "Documentation"
+                    : "Docs"}
+              </span>
+            </Link>
+          </div>
+        </div>
+
+        {openWindows.map((key, index) => {
+          const config = windowsConfig[key];
+          const Icon = config.icon;
+          const layout = WINDOW_LAYOUT[key];
+          const offset = windowOffsets[key];
+          const colorMap = {
+            blue: "from-blue-500 to-blue-600",
+            purple: "from-violet-500 to-violet-600",
+            green: "from-emerald-500 to-emerald-600",
+            yellow: "from-amber-500 to-amber-600",
+            red: "from-red-500 to-red-600",
+            orange: "from-orange-500 to-orange-600",
+          };
+          const iconGradient = colorMap[config.folderColor || "blue"];
+          return (
+            <div
+              key={key}
+              style={{
+                top: layout.top,
+                left: layout.left,
+                width: layout.width,
+                zIndex: 60 + index,
+                transform: `translate(-50%, 0) translate(${offset.x}px, ${offset.y}px)`,
+              }}
+              className="pointer-events-auto hidden rounded-xl border border-slate-200/80 bg-white/95 shadow-[0_25px_80px_-20px_rgba(0,0,0,0.25),0_10px_30px_-15px_rgba(0,0,0,0.15)] backdrop-blur-2xl transition-all animate-in fade-in zoom-in-95 slide-in-from-top-2 duration-300 md:absolute md:block overflow-hidden"
+              onMouseDown={() => openWindow(key)}
+            >
+              {/* Window Header */}
+              <div
+                className="flex cursor-grab select-none items-center justify-between border-b border-slate-100 bg-gradient-to-b from-slate-50 to-white/80 px-4 py-2.5 active:cursor-grabbing"
+                onMouseDown={(event) => handleWindowHeaderMouseDown(key, event)}
+              >
+                <div className="flex items-center gap-3">
+                  {/* Traffic Lights */}
+                  <div className="flex items-center gap-[6px] group">
+                    <button
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        closeWindow(key);
+                      }}
+                      className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#ff6058] to-[#e4473c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:scale-110"
+                      aria-label="Close window"
+                    >
+                      <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[8px] text-[#4d0000] font-bold">
+                        ×
                       </span>
-                    </div>
+                    </button>
+                    <button
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        closeWindow(key);
+                      }}
+                      className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#ffbd2e] to-[#e5a319] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:scale-110"
+                      aria-label="Minimize window"
+                    >
+                      <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[8px] text-[#4d3800] font-bold">
+                        −
+                      </span>
+                    </button>
+                    <button
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        if (typeof window !== "undefined") {
+                          window.open(
+                            config.action.href,
+                            config.action.href.startsWith("http")
+                              ? "_blank"
+                              : "_self"
+                          );
+                        }
+                      }}
+                      className="relative h-[12px] w-[12px] rounded-full bg-gradient-to-b from-[#28c840] to-[#1aab2c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_1px_rgba(0,0,0,0.06)] transition-all hover:scale-110"
+                      aria-label="Open action"
+                      title="Open action"
+                    >
+                      <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-[6px] text-[#003d00]">
+                        ⤢
+                      </span>
+                    </button>
                   </div>
 
-                  {/* Live Badge */}
-                  <div className="flex items-center gap-1.5 bg-emerald-50 px-2 py-0.5 rounded-full">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[10px] font-medium text-emerald-600 uppercase tracking-wide">
-                      {language === "pt"
-                        ? "Ao vivo"
-                        : language === "fr"
-                          ? "En direct"
-                          : "Live"}
+                  {/* App Icon & Title */}
+                  <div className="flex items-center gap-2">
+                    <div
+                      className={cn(
+                        "w-5 h-5 rounded-md bg-gradient-to-br flex items-center justify-center shadow-sm",
+                        iconGradient
+                      )}
+                    >
+                      {key === "inventory" && (
+                        <Package
+                          className="w-3 h-3 text-white"
+                          strokeWidth={2.5}
+                        />
+                      )}
+                      {key === "analytics" && (
+                        <BarChart3
+                          className="w-3 h-3 text-white"
+                          strokeWidth={2.5}
+                        />
+                      )}
+                      {key === "qr" && (
+                        <ScanLine
+                          className="w-3 h-3 text-white"
+                          strokeWidth={2.5}
+                        />
+                      )}
+                      {key === "support" && (
+                        <MessageCircle
+                          className="w-3 h-3 text-white"
+                          strokeWidth={2.5}
+                        />
+                      )}
+                    </div>
+                    <span className="text-[13px] font-semibold text-slate-700">
+                      {config.title}
                     </span>
                   </div>
                 </div>
 
-                {/* Window Content */}
-                <div className="space-y-4 px-5 py-5">
-                  <p className="text-sm text-slate-500 leading-relaxed">
-                    {config.subtitle}
-                  </p>
-
-                  {/* Highlights */}
-                  <ul className="space-y-2.5">
-                    {config.highlights.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2.5 text-sm text-slate-600"
-                      >
-                        <div className="mt-0.5 h-4 w-4 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                          <CheckCircle2
-                            className="h-3 w-3 text-emerald-600"
-                            strokeWidth={3}
-                          />
-                        </div>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Stats Grid */}
-                  <div className="grid grid-cols-2 gap-3 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100/50 p-4 border border-slate-100">
-                    {config.stats.map((stat) => (
-                      <div key={stat.label} className="text-center">
-                        <p className="text-2xl font-bold text-slate-800">
-                          {stat.value}
-                        </p>
-                        <p className="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">
-                          {stat.label}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Action Button */}
-                  <Button
-                    asChild
-                    className={cn(
-                      "w-full rounded-lg text-sm font-semibold shadow-lg hover:shadow-xl transition-all",
-                      "bg-gradient-to-r text-white",
-                      iconGradient
-                    )}
-                  >
-                    <Link href={config.action.href}>
-                      {config.action.label}
-                      <ArrowRight className="w-4 h-4 ml-2" strokeWidth={2.5} />
-                    </Link>
-                  </Button>
+                {/* Live Badge */}
+                <div className="flex items-center gap-1.5 bg-emerald-50 px-2 py-0.5 rounded-full">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[10px] font-medium text-emerald-600 uppercase tracking-wide">
+                    {language === "pt"
+                      ? "Ao vivo"
+                      : language === "fr"
+                        ? "En direct"
+                        : "Live"}
+                  </span>
                 </div>
               </div>
-            );
-          })}
-        </div>
-        <Footer />
-      </main>
+
+              {/* Window Content */}
+              <div className="space-y-4 px-5 py-5">
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  {config.subtitle}
+                </p>
+
+                {/* Highlights */}
+                <ul className="space-y-2.5">
+                  {config.highlights.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm text-slate-600"
+                    >
+                      <div className="mt-0.5 h-4 w-4 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                        <CheckCircle2
+                          className="h-3 w-3 text-emerald-600"
+                          strokeWidth={3}
+                        />
+                      </div>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-2 gap-3 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100/50 p-4 border border-slate-100">
+                  {config.stats.map((stat) => (
+                    <div key={stat.label} className="text-center">
+                      <p className="text-2xl font-bold text-slate-800">
+                        {stat.value}
+                      </p>
+                      <p className="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Action Button */}
+                <Button
+                  asChild
+                  className={cn(
+                    "w-full rounded-lg text-sm font-semibold shadow-lg hover:shadow-xl transition-all",
+                    "bg-gradient-to-r text-white",
+                    iconGradient
+                  )}
+                >
+                  <Link href={config.action.href}>
+                    {config.action.label}
+                    <ArrowRight className="w-4 h-4 ml-2" strokeWidth={2.5} />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <Footer />
     </div>
   );
 }

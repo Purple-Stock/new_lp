@@ -54,7 +54,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-[25px] bg-gradient-to-b from-[#3f3a46] to-[#2c2832] shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
+    <header className="fixed top-0 left-0 right-0 z-[120] h-[25px] bg-gradient-to-b from-[#3f3a46] to-[#2c2832] shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
       <div className="flex items-center justify-between h-full px-3 text-[13px] font-medium text-white/90">
         <div className="flex items-center gap-0">
           <Link

@@ -29,21 +29,23 @@ export function DraggableFolder({
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const positionRef = useRef(position);
+  positionRef.current = position;
+
   const [isDragging, setIsDragging] = useState(false);
   const [internalSelected, setInternalSelected] = useState(false);
   const isSelected =
     externalSelected !== undefined ? externalSelected : internalSelected;
-  const [dragStart, setDragStart] = useState<{
-    x: number;
-    y: number;
-    offsetX: number;
-    offsetY: number;
+  const dragOriginRef = useRef<{
+    mouseX: number;
+    mouseY: number;
+    folderX: number;
+    folderY: number;
   } | null>(null);
   const folderRef = useRef<HTMLDivElement>(null);
   const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const actuallyDraggedRef = useRef(false);
 
-  // On mount, convert initialPosition (relative to container) to fixed viewport coords
   useEffect(() => {
     const container = containerRef.current?.parentElement;
     if (!container) return;
@@ -59,7 +61,7 @@ export function DraggableFolder({
         setMounted(true);
         return;
       } catch {
-        // fall through to initial
+        // fall through
       }
     }
 
@@ -81,67 +83,62 @@ export function DraggableFolder({
       if (externalSelected === undefined) {
         setInternalSelected(true);
       }
-      const rect = folderRef.current?.getBoundingClientRect();
-      if (rect) {
-        setDragStart({
-          x: e.clientX,
-          y: e.clientY,
-          offsetX: e.clientX - rect.left,
-          offsetY: e.clientY - rect.top,
-        });
-      }
+
+      const pos = positionRef.current;
+      dragOriginRef.current = {
+        mouseX: e.clientX,
+        mouseY: e.clientY,
+        folderX: pos.x,
+        folderY: pos.y,
+      };
     },
     [externalSelected]
   );
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (!dragStart) return;
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    const origin = dragOriginRef.current;
+    if (!origin) return;
 
-      const deltaX = e.clientX - dragStart.x;
-      const deltaY = e.clientY - dragStart.y;
+    const deltaX = e.clientX - origin.mouseX;
+    const deltaY = e.clientY - origin.mouseY;
 
-      const threshold = 5;
-      const hasMoved =
-        Math.abs(deltaX) > threshold || Math.abs(deltaY) > threshold;
+    const threshold = 5;
+    const hasMoved =
+      Math.abs(deltaX) > threshold || Math.abs(deltaY) > threshold;
 
-      if (!isDragging && hasMoved) {
-        setIsDragging(true);
-        actuallyDraggedRef.current = true;
-        e.preventDefault();
-      }
+    if (hasMoved) {
+      actuallyDraggedRef.current = true;
+    }
 
-      if (isDragging || hasMoved) {
-        const newX = position.x + deltaX;
-        const newY = position.y + deltaY;
+    if (actuallyDraggedRef.current) {
+      e.preventDefault();
 
-        const maxX = window.innerWidth - 80;
-        const maxY = window.innerHeight - 100;
+      const newX = origin.folderX + deltaX;
+      const newY = origin.folderY + deltaY;
 
-        setPosition({
-          x: Math.max(0, Math.min(newX, maxX)),
-          y: Math.max(30, Math.min(newY, maxY)),
-        });
+      const maxX = window.innerWidth - 80;
+      const maxY = window.innerHeight - 100;
 
-        setDragStart({
-          x: e.clientX,
-          y: e.clientY,
-          offsetX: dragStart.offsetX,
-          offsetY: dragStart.offsetY,
-        });
-      }
-    },
-    [dragStart, isDragging, position]
-  );
+      setIsDragging(true);
+      setPosition({
+        x: Math.max(0, Math.min(newX, maxX)),
+        y: Math.max(30, Math.min(newY, maxY)),
+      });
+    }
+  }, []);
 
   const handleMouseUp = useCallback(() => {
     const wasDragging = actuallyDraggedRef.current;
 
     if (wasDragging && storageKey && typeof window !== "undefined") {
-      localStorage.setItem(`folder-${storageKey}`, JSON.stringify(position));
+      localStorage.setItem(
+        `folder-${storageKey}`,
+        JSON.stringify(positionRef.current)
+      );
     }
 
     actuallyDraggedRef.current = false;
+    dragOriginRef.current = null;
 
     if (!wasDragging) {
       if (clickTimeoutRef.current) {
@@ -157,25 +154,21 @@ export function DraggableFolder({
     }
 
     setIsDragging(false);
-    setDragStart(null);
-  }, [position, storageKey, onClick, onDoubleClick]);
+  }, [storageKey, onClick, onDoubleClick]);
 
   useEffect(() => {
-    if (dragStart !== null) {
-      const handleGlobalMouseMove = (e: MouseEvent) => handleMouseMove(e);
-      const handleGlobalMouseUp = () => handleMouseUp();
+    const onMove = (e: MouseEvent) => handleMouseMove(e);
+    const onUp = () => handleMouseUp();
 
-      window.addEventListener("mousemove", handleGlobalMouseMove);
-      window.addEventListener("mouseup", handleGlobalMouseUp);
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
 
-      return () => {
-        window.removeEventListener("mousemove", handleGlobalMouseMove);
-        window.removeEventListener("mouseup", handleGlobalMouseUp);
-      };
-    }
-  }, [dragStart, handleMouseMove, handleMouseUp]);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+    };
+  }, [handleMouseMove, handleMouseUp]);
 
-  // Hidden anchor for initial positioning
   return (
     <>
       <div ref={containerRef} className="absolute invisible" />
@@ -183,10 +176,11 @@ export function DraggableFolder({
         <div
           ref={folderRef}
           className={cn(
-            "fixed cursor-move select-none transition-all",
+            "fixed select-none",
+            !isDragging && "transition-all cursor-move",
             isDragging && "z-[110] cursor-grabbing",
             isSelected && !isDragging && "z-[105] cursor-grab",
-            !isSelected && "z-[100]"
+            !isSelected && !isDragging && "z-[100]"
           )}
           style={{
             left: `${position.x}px`,
@@ -198,7 +192,8 @@ export function DraggableFolder({
         >
           <div
             className={cn(
-              "flex flex-col items-center gap-1 p-2 rounded-lg transition-all",
+              "flex flex-col items-center gap-1 p-2 rounded-lg",
+              !isDragging && "transition-all",
               isSelected &&
                 !isDragging &&
                 "bg-blue-500/20 ring-2 ring-blue-400/50",
@@ -207,7 +202,7 @@ export function DraggableFolder({
           >
             <div
               className={cn(
-                "transition-transform",
+                !isDragging && "transition-transform",
                 isDragging && "scale-110",
                 isSelected && !isDragging && "scale-105"
               )}

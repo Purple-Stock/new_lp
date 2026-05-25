@@ -26,11 +26,9 @@ export function DraggableFolder({
   storageKey,
   isSelected: externalSelected,
 }: DraggableFolderProps) {
-  // Always start with initial position to avoid hydration mismatch
-  const [position, setPosition] = useState(
-    initialPosition || { x: 100, y: 100 }
-  );
-
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [internalSelected, setInternalSelected] = useState(false);
   const isSelected =
@@ -45,35 +43,46 @@ export function DraggableFolder({
   const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const actuallyDraggedRef = useRef(false);
 
-  // Load saved position from localStorage after mount (client-side only)
+  // On mount, convert initialPosition (relative to container) to fixed viewport coords
   useEffect(() => {
-    if (storageKey) {
-      const saved = localStorage.getItem(`folder-${storageKey}`);
-      if (saved) {
-        try {
-          const savedPosition = JSON.parse(saved);
-          setPosition(savedPosition);
-        } catch {
-          // Fallback to initial position - already set
-        }
+    const container = containerRef.current?.parentElement;
+    if (!container) return;
+
+    const saved = storageKey
+      ? localStorage.getItem(`folder-${storageKey}`)
+      : null;
+
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setPosition(parsed);
+        setMounted(true);
+        return;
+      } catch {
+        // fall through to initial
       }
     }
-  }, [storageKey]);
+
+    const containerRect = container.getBoundingClientRect();
+    const initPos = initialPosition || { x: 0, y: 0 };
+    setPosition({
+      x: containerRect.left + initPos.x,
+      y: containerRect.top + initPos.y,
+    });
+    setMounted(true);
+  }, [initialPosition, storageKey]);
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      if (e.button !== 0) return; // Only handle left mouse button
+      if (e.button !== 0) return;
 
-      // Reset drag flag
       actuallyDraggedRef.current = false;
 
       if (externalSelected === undefined) {
         setInternalSelected(true);
       }
       const rect = folderRef.current?.getBoundingClientRect();
-      const container = folderRef.current?.parentElement;
-      if (rect && container) {
-        const containerRect = container.getBoundingClientRect();
+      if (rect) {
         setDragStart({
           x: e.clientX,
           y: e.clientY,
@@ -89,14 +98,9 @@ export function DraggableFolder({
     (e: MouseEvent) => {
       if (!dragStart) return;
 
-      const container = folderRef.current?.parentElement;
-      if (!container) return;
-
-      const containerRect = container.getBoundingClientRect();
       const deltaX = e.clientX - dragStart.x;
       const deltaY = e.clientY - dragStart.y;
 
-      // Check if mouse moved enough to start dragging
       const threshold = 5;
       const hasMoved =
         Math.abs(deltaX) > threshold || Math.abs(deltaY) > threshold;
@@ -104,7 +108,6 @@ export function DraggableFolder({
       if (!isDragging && hasMoved) {
         setIsDragging(true);
         actuallyDraggedRef.current = true;
-        // Prevent text selection and default behavior when dragging starts
         e.preventDefault();
       }
 
@@ -112,13 +115,12 @@ export function DraggableFolder({
         const newX = position.x + deltaX;
         const newY = position.y + deltaY;
 
-        // Constrain to viewport bounds so folder stays reachable
         const maxX = window.innerWidth - 80;
         const maxY = window.innerHeight - 100;
 
         setPosition({
-          x: Math.max(-40, Math.min(newX, maxX)),
-          y: Math.max(-20, Math.min(newY, maxY)),
+          x: Math.max(0, Math.min(newX, maxX)),
+          y: Math.max(30, Math.min(newY, maxY)),
         });
 
         setDragStart({
@@ -135,28 +137,20 @@ export function DraggableFolder({
   const handleMouseUp = useCallback(() => {
     const wasDragging = actuallyDraggedRef.current;
 
-    if (wasDragging) {
-      // Save position to localStorage if storageKey is provided
-      if (storageKey && typeof window !== "undefined") {
-        localStorage.setItem(`folder-${storageKey}`, JSON.stringify(position));
-      }
-      // Reset drag flag
-      actuallyDraggedRef.current = false;
-    } else {
-      // Handle click (not a drag) - only if we didn't drag
+    if (wasDragging && storageKey && typeof window !== "undefined") {
+      localStorage.setItem(`folder-${storageKey}`, JSON.stringify(position));
+    }
+
+    actuallyDraggedRef.current = false;
+
+    if (!wasDragging) {
       if (clickTimeoutRef.current) {
         clearTimeout(clickTimeoutRef.current);
         clickTimeoutRef.current = null;
-        // Double click detected
-        if (onDoubleClick) {
-          onDoubleClick();
-        }
+        if (onDoubleClick) onDoubleClick();
       } else {
-        // Single click - set timeout to detect double click
         clickTimeoutRef.current = setTimeout(() => {
-          if (onClick) {
-            onClick();
-          }
+          if (onClick) onClick();
           clickTimeoutRef.current = null;
         }, 300);
       }
@@ -164,12 +158,8 @@ export function DraggableFolder({
 
     setIsDragging(false);
     setDragStart(null);
-
-    // Don't reset selection immediately - let it persist for visual feedback
-    // Selection will be reset by parent component or on next click
   }, [position, storageKey, onClick, onDoubleClick]);
 
-  // Add global mouse event listeners
   useEffect(() => {
     if (dragStart !== null) {
       const handleGlobalMouseMove = (e: MouseEvent) => handleMouseMove(e);
@@ -185,50 +175,58 @@ export function DraggableFolder({
     }
   }, [dragStart, handleMouseMove, handleMouseUp]);
 
+  // Hidden anchor for initial positioning
   return (
-    <div
-      ref={folderRef}
-      className={cn(
-        "absolute cursor-move select-none transition-all",
-        isDragging && "z-[110] cursor-grabbing",
-        isSelected && !isDragging && "z-[105] cursor-grab",
-        !isSelected && "z-[100]"
-      )}
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        transform: `${isDragging ? "scale(1.1)" : isSelected ? "scale(1.05)" : "scale(1)"} translateZ(0px)`,
-      }}
-      onMouseDown={handleMouseDown}
-      onDragStart={(e) => e.preventDefault()}
-    >
-      <div
-        className={cn(
-          "flex flex-col items-center gap-1 p-2 rounded-lg transition-all",
-          isSelected && !isDragging && "bg-blue-500/20 ring-2 ring-blue-400/50",
-          isDragging && "shadow-2xl"
-        )}
-      >
+    <>
+      <div ref={containerRef} className="absolute invisible" />
+      {mounted && (
         <div
+          ref={folderRef}
           className={cn(
-            "transition-transform",
-            isDragging && "scale-110",
-            isSelected && !isDragging && "scale-105"
+            "fixed cursor-move select-none transition-all",
+            isDragging && "z-[110] cursor-grabbing",
+            isSelected && !isDragging && "z-[105] cursor-grab",
+            !isSelected && "z-[100]"
           )}
+          style={{
+            left: `${position.x}px`,
+            top: `${position.y}px`,
+            transform: `${isDragging ? "scale(1.1)" : isSelected ? "scale(1.05)" : "scale(1)"} translateZ(0px)`,
+          }}
+          onMouseDown={handleMouseDown}
+          onDragStart={(e) => e.preventDefault()}
         >
-          <Icon color={folderColor} className="h-16 w-16" />
+          <div
+            className={cn(
+              "flex flex-col items-center gap-1 p-2 rounded-lg transition-all",
+              isSelected &&
+                !isDragging &&
+                "bg-blue-500/20 ring-2 ring-blue-400/50",
+              isDragging && "shadow-2xl"
+            )}
+          >
+            <div
+              className={cn(
+                "transition-transform",
+                isDragging && "scale-110",
+                isSelected && !isDragging && "scale-105"
+              )}
+            >
+              <Icon color={folderColor} className="h-16 w-16" />
+            </div>
+            <span
+              className={cn(
+                "text-[11px] font-medium text-slate-900 text-center px-1 py-0.5 rounded transition-all whitespace-nowrap",
+                isSelected &&
+                  !isDragging &&
+                  "bg-blue-500/40 shadow-lg ring-1 ring-blue-300/30"
+              )}
+            >
+              {label}
+            </span>
+          </div>
         </div>
-        <span
-          className={cn(
-            "text-[11px] font-medium text-slate-900 text-center px-1 py-0.5 rounded transition-all whitespace-nowrap",
-            isSelected &&
-              !isDragging &&
-              "bg-blue-500/40 shadow-lg ring-1 ring-blue-300/30"
-          )}
-        >
-          {label}
-        </span>
-      </div>
-    </div>
+      )}
+    </>
   );
 }

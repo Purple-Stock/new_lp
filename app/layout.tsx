@@ -3,7 +3,7 @@ import { WhatsAppButton } from "@/components/whatsapp-button";
 import { ScheduleButton } from "@/components/schedule-button";
 import { RouteViewTracker } from "@/components/route-view-tracker";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
-import { Poppins } from "next/font/google";
+import { Merriweather, Poppins } from "next/font/google";
 import Script from "next/script";
 import type { Metadata } from "next";
 import type React from "react";
@@ -13,6 +13,13 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
+});
+
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-editorial",
 });
 
 const siteUrl = getSiteUrl();
@@ -68,7 +75,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body suppressHydrationWarning className={poppins.className}>
+      <body
+        suppressHydrationWarning
+        className={`${poppins.className} ${merriweather.variable}`}
+      >
         {gaMeasurementId ? (
           <>
             <Script

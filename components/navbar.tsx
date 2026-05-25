@@ -54,7 +54,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-[25px] bg-gradient-to-b from-[#3d3d3d] to-[#2a2a2a] shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
+    <header className="fixed top-0 left-0 right-0 z-50 h-[25px] bg-gradient-to-b from-[#3f3a46] to-[#2c2832] shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
       <div className="flex items-center justify-between h-full px-3 text-[13px] font-medium text-white/90">
         <div className="flex items-center gap-0">
           <Link
@@ -91,7 +91,7 @@ export function Navbar() {
               </button>
 
               {featuresOpen && (
-                <div className="absolute left-0 mt-[3px] w-64 rounded-md shadow-[0_10px_40px_rgba(0,0,0,0.4)] bg-[#2d2d2d]/95 backdrop-blur-xl border border-white/10 animate-in fade-in slide-in-from-top-1 duration-150 overflow-hidden py-1">
+                <div className="absolute left-0 mt-[3px] w-64 rounded-md border border-white/10 bg-[#2f2a36]/95 py-1 shadow-[0_10px_40px_rgba(24,18,38,0.38)] backdrop-blur-xl animate-in fade-in slide-in-from-top-1 duration-150 overflow-hidden">
                   {[
                     {
                       href: "/features/inventory-control",

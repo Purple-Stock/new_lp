@@ -65,7 +65,7 @@ export function HeroVideoModal({
         </DialogTrigger>
       </div>
 
-      <DialogContent className="max-w-4xl w-full p-0 bg-black">
+      <DialogContent className="max-w-4xl w-full bg-[#18141f] p-0">
         <DialogTitle className="sr-only">
           {language === "pt"
             ? "Demonstração do Purple Stock"

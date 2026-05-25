@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-17T04:33:20Z",
+  "title": "Design System: Purple Stock",
+  "extensions": {
+    "northStar": "The Operational Control Room",
+    "colorMeta": {
+      "brand-violet": {
+        "role": "primary",
+        "displayName": "Operational Violet",
+        "canonical": "#9333e9",
+        "tonalRamp": ["#f3e8ff", "#c084fc", "#9333e9", "#7928ca", "#581c87"]
+      },
+      "ui-primary": {
+        "role": "primary",
+        "displayName": "Active Violet",
+        "canonical": "#8b5cf6",
+        "tonalRamp": ["#f5f3ff", "#c4b5fd", "#8b5cf6", "#7c3aed", "#5b21b6"]
+      },
+      "link-blue": {
+        "role": "secondary",
+        "displayName": "Technical Blue",
+        "canonical": "#1f5c99",
+        "tonalRamp": ["#f5f8fc", "#bfd4e9", "#7aa4ca", "#1f5c99", "#173f69"]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Clear Canvas",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#ffffff", "#f5f5f5", "#e5e5e5", "#a3a3a3", "#0a0a0a"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headlines and highest-priority acquisition statements."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section leads and explanatory page headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "General UI and benefit copy. Editorial prose may switch to Merriweather."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, badges, utility nav and compact statuses."
+      }
+    },
+    "shadows": [
+      {
+        "name": "surface-rest",
+        "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "purpose": "Default card and surfaced container depth."
+      },
+      {
+        "name": "action-hover",
+        "value": "0 4px 12px rgba(139, 92, 246, 0.3)",
+        "purpose": "Hover state for promotional violet actions."
+      },
+      {
+        "name": "desktop-chrome",
+        "value": "0 1px 0 rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.1)",
+        "purpose": "Top navigation chrome with desktop-bar feel."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default utility transition timing."
+      },
+      {
+        "name": "ease-out-short",
+        "value": "ease-out",
+        "purpose": "Short dropdown and hover transitions in navigation and UI controls."
+      },
+      {
+        "name": "blob-loop",
+        "value": "7s infinite",
+        "purpose": "Decorative gradient-blob animation used in legacy hero treatments."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ],
+    "rules": [
+      "Violet means action, not background saturation.",
+      "The interface stays mostly light and flat by default.",
+      "Editorial serif is for long-form reading only."
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary conversion action for trial, demo and high-priority navigation.",
+      "html": "<button class=\"ds-btn-primary\">Comece Gratuitamente</button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:40px; padding:8px 16px; border:none; border-radius:6px; background:#8b5cf6; color:#ffffff; font:500 14px/1.2 Poppins, sans-serif; transition:background-color .2s cubic-bezier(0.4,0,0.2,1), box-shadow .2s cubic-bezier(0.4,0,0.2,1), transform .2s cubic-bezier(0.4,0,0.2,1); } .ds-btn-primary:hover { background:#7928ca; box-shadow:0 4px 12px rgba(139, 92, 246, 0.3); transform:translateY(-1px); } .ds-btn-primary:focus-visible { outline:none; box-shadow:0 0 0 2px #ffffff, 0 0 0 4px #8b5cf6; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action for demos and lower-pressure exploration.",
+      "html": "<button class=\"ds-btn-outline\">Ver Demo</button>",
+      "css": ".ds-btn-outline { display:inline-flex; align-items:center; justify-content:center; height:40px; padding:8px 16px; border:1px solid #e5e5e5; border-radius:6px; background:#ffffff; color:#7928ca; font:500 14px/1.2 Poppins, sans-serif; transition:background-color .2s cubic-bezier(0.4,0,0.2,1), border-color .2s cubic-bezier(0.4,0,0.2,1); } .ds-btn-outline:hover { background:#f5f5f5; border-color:#8b5cf6; }"
+    },
+    {
+      "name": "Default Card",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "Standard informational container with light border and restrained depth.",
+      "html": "<div class=\"ds-card\"><h3>Controle em tempo real</h3><p>Tenha indicadores de estoque sempre atualizados.</p></div>",
+      "css": ".ds-card { background:#ffffff; color:#0a0a0a; border:1px solid #e5e5e5; border-radius:8px; padding:24px; box-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05); } .ds-card h3 { margin:0 0 8px; font:600 24px/1.2 Poppins, sans-serif; } .ds-card p { margin:0; font:400 16px/1.6 Poppins, sans-serif; color:#737373; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "Base text field from the shadcn layer, adapted to the Purple Stock light system.",
+      "html": "<input class=\"ds-input\" placeholder=\"Busque por SKU\" />",
+      "css": ".ds-input { width:100%; height:40px; padding:8px 12px; border:1px solid #e5e5e5; border-radius:6px; background:#ffffff; color:#0a0a0a; font:400 16px/1.6 Poppins, sans-serif; } .ds-input::placeholder { color:#737373; } .ds-input:focus-visible { outline:none; box-shadow:0 0 0 2px #ffffff, 0 0 0 4px #8b5cf6; }"
+    },
+    {
+      "name": "Desktop Chrome Nav",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Compact top chrome inspired by desktop operating systems, used as a distinctive landing motif.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-nav-brand\">Purple Stock</span><nav><a href=\"#\">Recursos</a><a href=\"#\">Setores</a><a href=\"#\">Blog</a></nav></header>",
+      "css": ".ds-nav { display:flex; align-items:center; justify-content:space-between; min-height:25px; padding:0 12px; background:linear-gradient(to bottom, #3d3d3d, #2a2a2a); color:rgba(255,255,255,0.9); box-shadow:0 1px 0 rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.1); font:500 13px/1.2 Poppins, sans-serif; } .ds-nav nav { display:flex; gap:4px; } .ds-nav a, .ds-nav-brand { padding:2px 12px; border-radius:3px; color:inherit; text-decoration:none; } .ds-nav a:hover { background:rgba(255,255,255,0.1); }"
+    }
+  ],
+  "dos": [
+    "Use white and very light neutrals as the dominant floor.",
+    "Keep purple attached to calls to action, active states and brand recall.",
+    "Use editorial blue and serif only in long-form explanatory content."
+  ],
+  "donts": [
+    "Do not turn the landing into generic SaaS marketing with flashy gradients, vague promises or decorative metrics.",
+    "Do not inherit fintech, AI-startup or neon-dashboard aesthetics.",
+    "Do not make the interface bureaucratic, enterprise-heavy or visually cold.",
+    "Do not use purple as all-over background saturation.",
+    "Do not default to glassmorphism or repetitive identical card grids."
+  ]
+}

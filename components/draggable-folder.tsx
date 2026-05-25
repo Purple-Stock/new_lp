@@ -112,13 +112,13 @@ export function DraggableFolder({
         const newX = position.x + deltaX;
         const newY = position.y + deltaY;
 
-        // Constrain to container bounds
-        const maxX = containerRect.width - 80;
-        const maxY = containerRect.height - 100;
+        // Constrain to viewport bounds so folder stays reachable
+        const maxX = window.innerWidth - 80;
+        const maxY = window.innerHeight - 100;
 
         setPosition({
-          x: Math.max(0, Math.min(newX, maxX)),
-          y: Math.max(0, Math.min(newY, maxY)),
+          x: Math.max(-40, Math.min(newX, maxX)),
+          y: Math.max(-20, Math.min(newY, maxY)),
         });
 
         setDragStart({

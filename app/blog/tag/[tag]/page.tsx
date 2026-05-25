@@ -7,6 +7,8 @@ import { getAllTagSlugs, getPostsByTagSlug, slugifyTag } from "@/lib/blog";
 import { getSiteUrl } from "@/lib/site";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { BlogCard } from "@/components/blog-card";
+import { BlogSidebar } from "@/components/blog-sidebar";
 
 type PageProps = {
   params: Promise<{ tag: string }>;
@@ -67,7 +69,7 @@ export default async function BlogTagPage({ params }: PageProps) {
           <header className="mx-auto mb-12 max-w-5xl rounded-3xl border border-white/60 bg-white/80 p-8 text-center shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl md:p-12">
             <Link
               href="/blog"
-              className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-800"
+              className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-800 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
               Voltar para o blog
@@ -85,72 +87,16 @@ export default async function BlogTagPage({ params }: PageProps) {
             </p>
           </header>
 
-          <div className="grid gap-8">
-            {posts.map((post) => {
-              const cover =
-                post.coverImage ?? "/images/hero-photo-900x600.webp";
-              return (
-                <article
-                  key={post.slug}
-                  className="overflow-hidden rounded-3xl border border-white/70 bg-white/90 shadow-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-                >
-                  <div className="grid gap-0 md:grid-cols-[320px_1fr]">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="relative block min-h-56 overflow-hidden"
-                    >
-                      <Image
-                        src={cover}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-500 hover:scale-105"
-                      />
-                    </Link>
-                    <div className="p-6 md:p-8">
-                      <div className="mb-3 flex flex-wrap items-center gap-3 text-sm text-gray-600">
-                        <span>{formatDate(post.date)}</span>
-                        <span className="h-1 w-1 rounded-full bg-gray-400" />
-                        <span className="inline-flex items-center gap-1">
-                          <Clock3 className="h-3.5 w-3.5" />
-                          {post.readingTime}
-                        </span>
-                      </div>
+          <div className="grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
+            <div className="grid gap-6 sm:grid-cols-2">
+              {posts.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </div>
 
-                      <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-                        <Link
-                          href={`/blog/${post.slug}`}
-                          className="hover:text-purple-700"
-                        >
-                          {post.title}
-                        </Link>
-                      </h2>
-                      <p className="mt-3 text-base leading-relaxed text-gray-600">
-                        {post.excerpt}
-                      </p>
-
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {post.tags.map((item) => {
-                          const itemSlug = slugifyTag(item);
-                          return (
-                            <Link
-                              key={item}
-                              href={`/blog/tag/${itemSlug}`}
-                              className={`rounded-full px-3 py-1 text-xs font-medium ${
-                                itemSlug === tag
-                                  ? "bg-purple-700 text-white"
-                                  : "bg-purple-50 text-purple-700 hover:bg-purple-100"
-                              }`}
-                            >
-                              {item}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
+            <div className="hidden lg:block lg:sticky lg:top-28">
+              <BlogSidebar />
+            </div>
           </div>
         </section>
       </main>

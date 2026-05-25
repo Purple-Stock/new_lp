@@ -16,6 +16,8 @@ interface DraggableFolderProps {
   isSelected?: boolean;
 }
 
+const STORAGE_VERSION = "v1";
+
 export function DraggableFolder({
   label,
   folderColor,
@@ -46,12 +48,16 @@ export function DraggableFolder({
   const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const actuallyDraggedRef = useRef(false);
 
+  const storageVersionedKey = storageKey
+    ? `folder-${STORAGE_VERSION}-${storageKey}`
+    : null;
+
   useEffect(() => {
     const container = containerRef.current?.parentElement;
     if (!container) return;
 
-    const saved = storageKey
-      ? localStorage.getItem(`folder-${storageKey}`)
+    const saved = storageVersionedKey
+      ? localStorage.getItem(storageVersionedKey)
       : null;
 
     if (saved) {
@@ -67,12 +73,14 @@ export function DraggableFolder({
 
     const containerRect = container.getBoundingClientRect();
     const initPos = initialPosition || { x: 0, y: 0 };
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
     setPosition({
-      x: containerRect.left + initPos.x,
-      y: containerRect.top + initPos.y,
+      x: containerRect.left + scrollLeft + initPos.x,
+      y: containerRect.top + scrollTop + initPos.y,
     });
     setMounted(true);
-  }, [initialPosition, storageKey]);
+  }, [initialPosition, storageVersionedKey]);
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -113,16 +121,21 @@ export function DraggableFolder({
     if (actuallyDraggedRef.current) {
       e.preventDefault();
 
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+
       const newX = origin.folderX + deltaX;
       const newY = origin.folderY + deltaY;
 
-      const maxX = window.innerWidth - 80;
-      const maxY = window.innerHeight - 100;
+      const minX = scrollLeft;
+      const maxX = scrollLeft + window.innerWidth - 80;
+      const minY = scrollTop + 30;
+      const maxY = scrollTop + window.innerHeight - 100;
 
       setIsDragging(true);
       setPosition({
-        x: Math.max(0, Math.min(newX, maxX)),
-        y: Math.max(30, Math.min(newY, maxY)),
+        x: Math.max(minX, Math.min(newX, maxX)),
+        y: Math.max(minY, Math.min(newY, maxY)),
       });
     }
   }, []);
@@ -130,9 +143,9 @@ export function DraggableFolder({
   const handleMouseUp = useCallback(() => {
     const wasDragging = actuallyDraggedRef.current;
 
-    if (wasDragging && storageKey && typeof window !== "undefined") {
+    if (wasDragging && storageVersionedKey && typeof window !== "undefined") {
       localStorage.setItem(
-        `folder-${storageKey}`,
+        storageVersionedKey,
         JSON.stringify(positionRef.current)
       );
     }
@@ -154,7 +167,7 @@ export function DraggableFolder({
     }
 
     setIsDragging(false);
-  }, [storageKey, onClick, onDoubleClick]);
+  }, [storageVersionedKey, onClick, onDoubleClick]);
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => handleMouseMove(e);
@@ -176,7 +189,7 @@ export function DraggableFolder({
         <div
           ref={folderRef}
           className={cn(
-            "fixed select-none",
+            "absolute select-none",
             !isDragging && "transition-all cursor-move",
             isDragging && "z-[110] cursor-grabbing",
             isSelected && !isDragging && "z-[105] cursor-grab",

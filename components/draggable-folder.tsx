@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { MacOSFolderIcon } from "@/components/macos-folder-icon";
 import type { ComponentProps, ComponentType } from "react";
@@ -73,11 +74,9 @@ export function DraggableFolder({
 
     const containerRect = container.getBoundingClientRect();
     const initPos = initialPosition || { x: 0, y: 0 };
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
     setPosition({
-      x: containerRect.left + scrollLeft + initPos.x,
-      y: containerRect.top + scrollTop + initPos.y,
+      x: containerRect.left + initPos.x,
+      y: containerRect.top + initPos.y,
     });
     setMounted(true);
   }, [initialPosition, storageVersionedKey]);
@@ -121,16 +120,13 @@ export function DraggableFolder({
     if (actuallyDraggedRef.current) {
       e.preventDefault();
 
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-
       const newX = origin.folderX + deltaX;
       const newY = origin.folderY + deltaY;
 
-      const minX = scrollLeft;
-      const maxX = scrollLeft + window.innerWidth - 80;
-      const minY = scrollTop + 30;
-      const maxY = scrollTop + window.innerHeight - 100;
+      const minX = 0;
+      const maxX = window.innerWidth - 80;
+      const minY = 30;
+      const maxY = window.innerHeight - 100;
 
       setIsDragging(true);
       setPosition({
@@ -185,56 +181,59 @@ export function DraggableFolder({
   return (
     <>
       <div ref={containerRef} className="absolute invisible" />
-      {mounted && (
-        <div
-          ref={folderRef}
-          className={cn(
-            "absolute select-none",
-            !isDragging && "transition-all cursor-move",
-            isDragging && "z-[110] cursor-grabbing",
-            isSelected && !isDragging && "z-[105] cursor-grab",
-            !isSelected && !isDragging && "z-[100]"
-          )}
-          style={{
-            left: `${position.x}px`,
-            top: `${position.y}px`,
-            transform: `${isDragging ? "scale(1.1)" : isSelected ? "scale(1.05)" : "scale(1)"} translateZ(0px)`,
-          }}
-          onMouseDown={handleMouseDown}
-          onDragStart={(e) => e.preventDefault()}
-        >
+      {mounted &&
+        typeof document !== "undefined" &&
+        createPortal(
           <div
+            ref={folderRef}
             className={cn(
-              "flex flex-col items-center gap-1 p-2 rounded-lg",
-              !isDragging && "transition-all",
-              isSelected &&
-                !isDragging &&
-                "bg-blue-500/20 ring-2 ring-blue-400/50",
-              isDragging && "shadow-2xl"
+              "absolute select-none",
+              !isDragging && "transition-all cursor-move",
+              isDragging && "z-[110] cursor-grabbing",
+              isSelected && !isDragging && "z-[105] cursor-grab",
+              !isSelected && !isDragging && "z-[100]"
             )}
+            style={{
+              left: `${position.x}px`,
+              top: `${position.y}px`,
+              transform: `${isDragging ? "scale(1.1)" : isSelected ? "scale(1.05)" : "scale(1)"} translateZ(0px)`,
+            }}
+            onMouseDown={handleMouseDown}
+            onDragStart={(e) => e.preventDefault()}
           >
             <div
               className={cn(
-                !isDragging && "transition-transform",
-                isDragging && "scale-110",
-                isSelected && !isDragging && "scale-105"
-              )}
-            >
-              <Icon color={folderColor} className="h-16 w-16" />
-            </div>
-            <span
-              className={cn(
-                "text-[11px] font-medium text-slate-900 text-center px-1 py-0.5 rounded transition-all whitespace-nowrap",
+                "flex flex-col items-center gap-1 p-2 rounded-lg",
+                !isDragging && "transition-all",
                 isSelected &&
                   !isDragging &&
-                  "bg-blue-500/40 shadow-lg ring-1 ring-blue-300/30"
+                  "bg-blue-500/20 ring-2 ring-blue-400/50",
+                isDragging && "shadow-2xl"
               )}
             >
-              {label}
-            </span>
-          </div>
-        </div>
-      )}
+              <div
+                className={cn(
+                  !isDragging && "transition-transform",
+                  isDragging && "scale-110",
+                  isSelected && !isDragging && "scale-105"
+                )}
+              >
+                <Icon color={folderColor} className="h-16 w-16" />
+              </div>
+              <span
+                className={cn(
+                  "text-[11px] font-medium text-slate-900 text-center px-1 py-0.5 rounded transition-all whitespace-nowrap",
+                  isSelected &&
+                    !isDragging &&
+                    "bg-blue-500/40 shadow-lg ring-1 ring-blue-300/30"
+                )}
+              >
+                {label}
+              </span>
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 }

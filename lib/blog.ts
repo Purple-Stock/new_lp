@@ -100,6 +100,53 @@ export async function getPostsByTagSlug(tagSlug: string): Promise<{
   };
 }
 
+export async function getRelatedPosts(
+  slug: string,
+  limit = 3
+): Promise<BlogPostMeta[]> {
+  const all = await getAllPosts();
+  const current = all.find((p) => p.slug === slug);
+  if (!current) return all.slice(0, limit);
+
+  const scored = all
+    .filter((p) => p.slug !== slug)
+    .map((p) => {
+      const shared = p.tags.filter((t) => current.tags.includes(t)).length;
+      return { post: p, score: shared };
+    })
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        new Date(b.post.date).getTime() - new Date(a.post.date).getTime()
+    );
+
+  return scored.slice(0, limit).map((s) => s.post);
+}
+
+export async function getPopularTags(
+  limit = 12
+): Promise<{ label: string; slug: string; count: number }[]> {
+  const posts = await getAllPosts();
+  const map = new Map<string, { label: string; count: number }>();
+
+  for (const post of posts) {
+    for (const tag of post.tags) {
+      const slug = slugifyTag(tag);
+      const existing = map.get(slug);
+      if (existing) {
+        existing.count++;
+      } else {
+        map.set(slug, { label: tag, count: 1 });
+      }
+    }
+  }
+
+  return [...map.entries()]
+    .map(([slug, { label, count }]) => ({ slug, label, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, limit);
+}
+
 export async function getPostBySlug(slug: string): Promise<{
   meta: BlogPostMeta;
   content: string;

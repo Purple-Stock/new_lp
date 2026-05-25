@@ -53,7 +53,7 @@ h6 {
 }
 
 .blog-content h2 {
-  margin-top: 2.2rem;
+  margin-top: 2.8rem;
   margin-bottom: 1.2rem;
   font-size: clamp(1.7rem, 2.3vw, 2.05rem);
   font-weight: 700;
@@ -77,6 +77,12 @@ h6 {
   margin: 1.1rem 0 1.45rem;
 }
 
+.blog-content strong,
+.blog-content b {
+  color: #1a1d21;
+  font-weight: 700;
+}
+
 .blog-content ul,
 .blog-content ol {
   margin: 1.2rem 0 1.7rem;
@@ -97,19 +103,138 @@ h6 {
   padding-left: 0.28rem;
 }
 
+.blog-content li::marker {
+  color: #9333e9;
+}
+
 .blog-content a {
   color: #1f5c99;
   text-decoration: underline;
   text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgba(31, 92, 153, 0.35);
+  transition: text-decoration-color 0.2s ease;
+}
+
+.blog-content a:hover {
+  text-decoration-color: rgba(31, 92, 153, 0.9);
 }
 
 .blog-content blockquote {
-  margin: 2rem 0;
-  padding: 1.05rem 1.2rem;
-  border-left: 4px solid #7aa4ca;
-  background: #f5f8fc;
-  border-radius: 0 10px 10px 0;
+  margin: 2.2rem auto;
+  padding: 1.4rem 1.6rem;
+  border-left: 4px solid #9333e9;
+  background: linear-gradient(135deg, #faf8ff 0%, #f5f3fb 100%);
+  border-radius: 0 14px 14px 0;
   font-style: italic;
+  color: #4a4f56;
+  position: relative;
+}
+
+.blog-content blockquote::before {
+  content: "\201C";
+  position: absolute;
+  top: 0.6rem;
+  left: 0.8rem;
+  font-family: Georgia, serif;
+  font-size: 3rem;
+  line-height: 1;
+  color: #9333e9;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.blog-content hr {
+  margin: 2.5rem auto;
+  border: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(147, 51, 233, 0.25),
+    transparent
+  );
+  max-width: 40ch;
+}
+
+.blog-content img {
+  display: block;
+  margin: 2rem auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px -10px rgba(59, 7, 100, 0.18);
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-content pre {
+  margin: 1.8rem auto;
+  padding: 1.2rem 1.4rem;
+  border-radius: 14px;
+  background: #1e1b24;
+  color: #e8e4f0;
+  font-family:
+    ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  overflow-x: auto;
+  max-width: 72ch;
+}
+
+.blog-content code {
+  font-family:
+    ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: rgba(147, 51, 233, 0.08);
+  color: #7928ca;
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+}
+
+.blog-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+.blog-content table {
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 72ch;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.blog-content thead {
+  background: linear-gradient(135deg, #f8f6ff 0%, #f0ecfa 100%);
+}
+
+.blog-content th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #4a3f5c;
+  border-bottom: 2px solid #e4ddf5;
+}
+
+.blog-content td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0eef5;
+  color: #4a4f56;
+}
+
+.blog-content tbody tr:nth-child(even) {
+  background: #faf9fd;
+}
+
+.blog-content tbody tr:last-child td {
+  border-bottom: none;
 }
 
 @media (max-width: 768px) {
@@ -134,5 +259,14 @@ h6 {
   .blog-content ol {
     margin: 1rem 0 1.4rem;
     padding-left: 1.35rem;
+  }
+
+  .blog-content pre {
+    padding: 1rem;
+    font-size: 0.82rem;
+  }
+
+  .blog-content blockquote {
+    padding: 1.2rem 1.2rem;
   }
 }

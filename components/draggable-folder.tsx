@@ -17,7 +17,12 @@ interface DraggableFolderProps {
   isSelected?: boolean;
 }
 
-const STORAGE_VERSION = "v1";
+const STORAGE_VERSION = "v3";
+
+// Hidden marker rendered inside the sidebar slot — used only for initial positioning
+export function FolderAnchor() {
+  return <div className="w-0 h-0 invisible" />;
+}
 
 export function DraggableFolder({
   label,
@@ -29,211 +34,164 @@ export function DraggableFolder({
   storageKey,
   isSelected: externalSelected,
 }: DraggableFolderProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const positionRef = useRef(position);
   positionRef.current = position;
-
   const [isDragging, setIsDragging] = useState(false);
   const [internalSelected, setInternalSelected] = useState(false);
   const isSelected =
     externalSelected !== undefined ? externalSelected : internalSelected;
+
   const dragOriginRef = useRef<{
-    mouseX: number;
-    mouseY: number;
-    folderX: number;
-    folderY: number;
+    mx: number;
+    my: number;
+    fx: number;
+    fy: number;
   } | null>(null);
-  const folderRef = useRef<HTMLDivElement>(null);
   const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const actuallyDraggedRef = useRef(false);
+  const [mounted, setMounted] = useState(false);
 
   const storageVersionedKey = storageKey
     ? `folder-${STORAGE_VERSION}-${storageKey}`
     : null;
 
+  // --- convert sidebar-slot coordinates to viewport on first mount ---
   useEffect(() => {
-    const container = containerRef.current?.parentElement;
-    if (!container) return;
-
     const saved = storageVersionedKey
       ? localStorage.getItem(storageVersionedKey)
       : null;
-
     if (saved) {
       try {
-        const parsed = JSON.parse(saved);
-        setPosition(parsed);
+        setPosition(JSON.parse(saved));
         setMounted(true);
         return;
       } catch {
-        // fall through
+        /* stale */
       }
     }
 
-    const containerRect = container.getBoundingClientRect();
-    const initPos = initialPosition || { x: 0, y: 0 };
-    setPosition({
-      x: containerRect.left + initPos.x,
-      y: containerRect.top + initPos.y,
-    });
+    const el = document.getElementById(`folder-slot-${storageKey}`);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    setPosition({ x: rect.left, y: rect.top });
     setMounted(true);
-  }, [initialPosition, storageVersionedKey]);
+  }, [storageKey, storageVersionedKey]);
 
+  // --- drag handlers ---
   const handleMouseDown = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
+    (e: React.MouseEvent) => {
       if (e.button !== 0) return;
-
       actuallyDraggedRef.current = false;
-
-      if (externalSelected === undefined) {
-        setInternalSelected(true);
-      }
-
-      const pos = positionRef.current;
+      if (externalSelected === undefined) setInternalSelected(true);
       dragOriginRef.current = {
-        mouseX: e.clientX,
-        mouseY: e.clientY,
-        folderX: pos.x,
-        folderY: pos.y,
+        mx: e.clientX,
+        my: e.clientY,
+        fx: positionRef.current.x,
+        fy: positionRef.current.y,
       };
     },
     [externalSelected]
   );
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    const origin = dragOriginRef.current;
-    if (!origin) return;
-
-    const deltaX = e.clientX - origin.mouseX;
-    const deltaY = e.clientY - origin.mouseY;
-
-    const threshold = 5;
-    const hasMoved =
-      Math.abs(deltaX) > threshold || Math.abs(deltaY) > threshold;
-
-    if (hasMoved) {
-      actuallyDraggedRef.current = true;
-    }
-
-    if (actuallyDraggedRef.current) {
-      e.preventDefault();
-
-      const newX = origin.folderX + deltaX;
-      const newY = origin.folderY + deltaY;
-
-      const minX = 0;
-      const maxX = window.innerWidth - 80;
-      const minY = 30;
-      const maxY = window.innerHeight - 100;
-
-      setIsDragging(true);
-      setPosition({
-        x: Math.max(minX, Math.min(newX, maxX)),
-        y: Math.max(minY, Math.min(newY, maxY)),
-      });
-    }
-  }, []);
-
-  const handleMouseUp = useCallback(() => {
-    const wasDragging = actuallyDraggedRef.current;
-
-    if (wasDragging && storageVersionedKey && typeof window !== "undefined") {
-      localStorage.setItem(
-        storageVersionedKey,
-        JSON.stringify(positionRef.current)
-      );
-    }
-
-    actuallyDraggedRef.current = false;
-    dragOriginRef.current = null;
-
-    if (!wasDragging) {
-      if (clickTimeoutRef.current) {
-        clearTimeout(clickTimeoutRef.current);
-        clickTimeoutRef.current = null;
-        if (onDoubleClick) onDoubleClick();
-      } else {
-        clickTimeoutRef.current = setTimeout(() => {
-          if (onClick) onClick();
-          clickTimeoutRef.current = null;
-        }, 300);
-      }
-    }
-
-    setIsDragging(false);
-  }, [storageVersionedKey, onClick, onDoubleClick]);
-
   useEffect(() => {
-    const onMove = (e: MouseEvent) => handleMouseMove(e);
-    const onUp = () => handleMouseUp();
-
+    const onMove = (e: MouseEvent) => {
+      const o = dragOriginRef.current;
+      if (!o) return;
+      const dx = e.clientX - o.mx;
+      const dy = e.clientY - o.my;
+      if (Math.abs(dx) > 3 || Math.abs(dy) > 3)
+        actuallyDraggedRef.current = true;
+      if (actuallyDraggedRef.current) {
+        e.preventDefault();
+        setIsDragging(true);
+        setPosition({
+          x: Math.max(0, Math.min(o.fx + dx, window.innerWidth - 80)),
+          y: Math.max(30, Math.min(o.fy + dy, window.innerHeight - 100)),
+        });
+      }
+    };
+    const onUp = () => {
+      const was = actuallyDraggedRef.current;
+      if (was && storageVersionedKey) {
+        localStorage.setItem(
+          storageVersionedKey,
+          JSON.stringify(positionRef.current)
+        );
+      }
+      actuallyDraggedRef.current = false;
+      dragOriginRef.current = null;
+      setIsDragging(false);
+      if (!was) {
+        if (clickTimeoutRef.current) {
+          clearTimeout(clickTimeoutRef.current);
+          clickTimeoutRef.current = null;
+          onDoubleClick?.();
+        } else {
+          clickTimeoutRef.current = setTimeout(() => {
+            onClick?.();
+            clickTimeoutRef.current = null;
+          }, 300);
+        }
+      }
+    };
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseup", onUp);
-
     return () => {
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseup", onUp);
     };
-  }, [handleMouseMove, handleMouseUp]);
+  }, [storageVersionedKey, onClick, onDoubleClick]);
 
-  return (
-    <>
-      <div ref={containerRef} className="absolute invisible" />
-      {mounted &&
-        typeof document !== "undefined" &&
-        createPortal(
-          <div
-            ref={folderRef}
-            className={cn(
-              "absolute select-none",
-              !isDragging && "transition-all cursor-move",
-              isDragging && "z-[110] cursor-grabbing",
-              isSelected && !isDragging && "z-[105] cursor-grab",
-              !isSelected && !isDragging && "z-[100]"
-            )}
-            style={{
-              left: `${position.x}px`,
-              top: `${position.y}px`,
-              transform: `${isDragging ? "scale(1.1)" : isSelected ? "scale(1.05)" : "scale(1)"} translateZ(0px)`,
-            }}
-            onMouseDown={handleMouseDown}
-            onDragStart={(e) => e.preventDefault()}
-          >
-            <div
-              className={cn(
-                "flex flex-col items-center gap-1 p-2 rounded-lg",
-                !isDragging && "transition-all",
-                isSelected &&
-                  !isDragging &&
-                  "bg-blue-500/20 ring-2 ring-blue-400/50",
-                isDragging && "shadow-2xl"
-              )}
-            >
-              <div
-                className={cn(
-                  !isDragging && "transition-transform",
-                  isDragging && "scale-110",
-                  isSelected && !isDragging && "scale-105"
-                )}
-              >
-                <Icon color={folderColor} className="h-16 w-16" />
-              </div>
-              <span
-                className={cn(
-                  "text-[11px] font-medium text-slate-900 text-center px-1 py-0.5 rounded transition-all whitespace-nowrap",
-                  isSelected &&
-                    !isDragging &&
-                    "bg-blue-500/40 shadow-lg ring-1 ring-blue-300/30"
-                )}
-              >
-                {label}
-              </span>
-            </div>
-          </div>,
-          document.body
+  if (!mounted) return null;
+
+  return createPortal(
+    <div
+      className={cn(
+        "fixed select-none",
+        isDragging
+          ? "z-[110] cursor-grabbing"
+          : "transition-transform duration-150 z-[100] cursor-move",
+        isSelected && !isDragging && "z-[105]"
+      )}
+      style={{
+        left: position.x,
+        top: position.y,
+        transform: isDragging
+          ? "scale(1.1)"
+          : isSelected
+            ? "scale(1.05)"
+            : "scale(1)",
+      }}
+      onMouseDown={handleMouseDown}
+    >
+      <div
+        className={cn(
+          "flex flex-col items-center gap-1 p-2 rounded-lg",
+          isSelected && !isDragging && "bg-blue-500/20 ring-2 ring-blue-400/50",
+          isDragging && "shadow-2xl"
         )}
-    </>
+      >
+        <div
+          className={cn(
+            isDragging && "scale-110",
+            isSelected && !isDragging && "scale-105"
+          )}
+        >
+          <Icon color={folderColor} className="h-16 w-16" />
+        </div>
+        <span
+          className={cn(
+            "text-[11px] font-medium text-slate-900 text-center px-1 py-0.5 rounded whitespace-nowrap",
+            isSelected &&
+              !isDragging &&
+              "bg-blue-500/40 shadow-lg ring-1 ring-blue-300/30"
+          )}
+        >
+          {label}
+        </span>
+      </div>
+    </div>,
+    document.body
   );
 }

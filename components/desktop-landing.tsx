@@ -1,6 +1,6 @@
 "use client";
 
-import {
+import React, {
   useCallback,
   useEffect,
   useMemo,
@@ -1374,50 +1374,83 @@ export function DesktopLanding() {
         />
       </div>
       <Navbar />
+
+      {/* Folders rendered via portal — slots in sidebars provide initial coords */}
+      {windowApps.map((app) => (
+        <React.Fragment key={app.key}>
+          <DraggableFolder
+            label={app.label}
+            folderColor={app.folderColor}
+            icon={app.icon}
+            storageKey={`window-app-left-${app.key}`}
+            isSelected={selectedFolder === app.key}
+            onDoubleClick={() => openWindow(app.key)}
+            onClick={() => setSelectedFolder(app.key)}
+          />
+          <DraggableFolder
+            label={app.label}
+            folderColor={app.folderColor}
+            icon={app.icon}
+            storageKey={`window-app-right-${app.key}`}
+            isSelected={selectedFolder === app.key}
+            onDoubleClick={() => openWindow(app.key)}
+            onClick={() => setSelectedFolder(app.key)}
+          />
+        </React.Fragment>
+      ))}
+      {shortcutLinks.map((item) => (
+        <React.Fragment key={item.label}>
+          <DraggableFolder
+            label={item.label}
+            folderColor={item.folderColor}
+            icon={item.icon}
+            storageKey={`shortcut-left-${item.label}`}
+            isSelected={selectedFolder === `shortcut-${item.label}`}
+            onDoubleClick={() => {
+              if (typeof window !== "undefined") {
+                window.open(
+                  item.href,
+                  item.href.startsWith("http") ? "_blank" : "_self"
+                );
+              }
+            }}
+            onClick={() => setSelectedFolder(`shortcut-${item.label}`)}
+          />
+          <DraggableFolder
+            label={item.label}
+            folderColor={item.folderColor}
+            icon={item.icon}
+            storageKey={`shortcut-right-${item.label}`}
+            isSelected={selectedFolder === `shortcut-${item.label}`}
+            onDoubleClick={() => {
+              if (typeof window !== "undefined") {
+                window.open(
+                  item.href,
+                  item.href.startsWith("http") ? "_blank" : "_self"
+                );
+              }
+            }}
+            onClick={() => setSelectedFolder(`shortcut-${item.label}`)}
+          />
+        </React.Fragment>
+      ))}
       <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-24 pb-4 md:flex-row md:gap-6 md:px-10 md:pt-24">
-        {/* Icons Left Side - Vertical */}
-        <div className="relative z-[100] hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
+        {/* Icons Left Side - Vertical (slots only) */}
+        <div className="relative z-0 hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
           {windowApps.slice(0, 2).map((app, index) => (
-            <DraggableFolder
+            <div
               key={app.key}
-              label={app.label}
-              folderColor={app.folderColor}
-              icon={app.icon}
-              initialPosition={{
-                x: 0,
-                y: 80 + index * 180,
-              }}
-              storageKey={`window-app-left-${app.key}`}
-              isSelected={selectedFolder === app.key}
-              onDoubleClick={() => openWindow(app.key)}
-              onClick={() => {
-                setSelectedFolder(app.key);
-              }}
+              id={`folder-slot-${`window-app-left-${app.key}`}`}
+              className="absolute left-0"
+              style={{ top: `${80 + index * 180}px` }}
             />
           ))}
           {shortcutLinks.slice(0, 2).map((item, index) => (
-            <DraggableFolder
+            <div
               key={item.label}
-              label={item.label}
-              folderColor={item.folderColor}
-              icon={item.icon}
-              initialPosition={{
-                x: 0,
-                y: 440 + index * 180,
-              }}
-              storageKey={`shortcut-left-${item.label}`}
-              isSelected={selectedFolder === `shortcut-${item.label}`}
-              onDoubleClick={() => {
-                if (typeof window !== "undefined") {
-                  window.open(
-                    item.href,
-                    item.href.startsWith("http") ? "_blank" : "_self"
-                  );
-                }
-              }}
-              onClick={() => {
-                setSelectedFolder(`shortcut-${item.label}`);
-              }}
+              id={`folder-slot-${`shortcut-left-${item.label}`}`}
+              className="absolute left-0"
+              style={{ top: `${440 + index * 180}px` }}
             />
           ))}
         </div>
@@ -2480,49 +2513,22 @@ export function DesktopLanding() {
           </div>
         </div>
 
-        {/* Icons Right Side - Vertical */}
-        <div className="relative z-[100] hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
+        {/* Icons Right Side - Vertical (slots only) */}
+        <div className="relative z-0 hidden md:block shrink-0 w-24 h-[calc(100vh-12rem)] min-h-[600px]">
           {windowApps.slice(2).map((app, index) => (
-            <DraggableFolder
+            <div
               key={app.key}
-              label={app.label}
-              folderColor={app.folderColor}
-              icon={app.icon}
-              initialPosition={{
-                x: 0,
-                y: 80 + index * 180,
-              }}
-              storageKey={`window-app-right-${app.key}`}
-              isSelected={selectedFolder === app.key}
-              onDoubleClick={() => openWindow(app.key)}
-              onClick={() => {
-                setSelectedFolder(app.key);
-              }}
+              id={`folder-slot-${`window-app-right-${app.key}`}`}
+              className="absolute left-0"
+              style={{ top: `${80 + index * 180}px` }}
             />
           ))}
           {shortcutLinks.slice(2).map((item, index) => (
-            <DraggableFolder
+            <div
               key={item.label}
-              label={item.label}
-              folderColor={item.folderColor}
-              icon={item.icon}
-              initialPosition={{
-                x: 0,
-                y: 440 + index * 180,
-              }}
-              storageKey={`shortcut-right-${item.label}`}
-              isSelected={selectedFolder === `shortcut-${item.label}`}
-              onDoubleClick={() => {
-                if (typeof window !== "undefined") {
-                  window.open(
-                    item.href,
-                    item.href.startsWith("http") ? "_blank" : "_self"
-                  );
-                }
-              }}
-              onClick={() => {
-                setSelectedFolder(`shortcut-${item.label}`);
-              }}
+              id={`folder-slot-${`shortcut-right-${item.label}`}`}
+              className="absolute left-0"
+              style={{ top: `${440 + index * 180}px` }}
             />
           ))}
         </div>

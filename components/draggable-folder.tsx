@@ -1,6 +1,6 @@
 "use client";
 
-import {
+import React, {
   useState,
   useRef,
   useCallback,
@@ -21,6 +21,7 @@ interface DraggableFolderProps {
   initialPosition?: { x: number; y: number };
   storageKey?: string;
   isSelected?: boolean;
+  portalContainer?: HTMLElement | null;
 }
 
 const STORAGE_VERSION = "v3";
@@ -39,8 +40,9 @@ export function DraggableFolder({
   initialPosition,
   storageKey,
   isSelected: externalSelected,
+  portalContainer,
 }: DraggableFolderProps) {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState(initialPosition ?? { x: 0, y: 0 });
   const positionRef = useRef(position);
   positionRef.current = position;
   const [isDragging, setIsDragging] = useState(false);
@@ -58,11 +60,20 @@ export function DraggableFolder({
   const actuallyDraggedRef = useRef(false);
   const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const storageVersionedKey = storageKey
     ? `folder-${STORAGE_VERSION}-${storageKey}`
     : null;
 
-  // --- convert sidebar-slot coordinates to viewport on first mount ---
+  const getContainer = useCallback(
+    () => portalContainer ?? document.body,
+    [portalContainer]
+  );
+
+  // --- convert sidebar-slot coordinates to container-relative on first mount ---
   useLayoutEffect(() => {
     const saved = storageVersionedKey
       ? localStorage.getItem(storageVersionedKey)
@@ -79,10 +90,15 @@ export function DraggableFolder({
 
     const el = document.getElementById(`folder-slot-${storageKey}`);
     if (!el) return;
+
+    const container = getContainer();
+    const containerRect = container.getBoundingClientRect();
     const rect = el.getBoundingClientRect();
-    setPosition({ x: rect.left, y: rect.top });
-    setMounted(true);
-  }, [storageKey, storageVersionedKey]);
+    setPosition({
+      x: rect.left - containerRect.left,
+      y: rect.top - containerRect.top,
+    });
+  }, [storageKey, storageVersionedKey, getContainer]);
 
   // --- drag handlers ---
   const handleMouseDown = useCallback(
@@ -90,30 +106,39 @@ export function DraggableFolder({
       if (e.button !== 0) return;
       actuallyDraggedRef.current = false;
       if (externalSelected === undefined) setInternalSelected(true);
+
+      const container = getContainer();
+      const containerRect = container.getBoundingClientRect();
       dragOriginRef.current = {
-        mx: e.clientX,
-        my: e.clientY,
+        mx: e.clientX - containerRect.left,
+        my: e.clientY - containerRect.top,
         fx: positionRef.current.x,
         fy: positionRef.current.y,
       };
     },
-    [externalSelected]
+    [externalSelected, getContainer]
   );
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
       const o = dragOriginRef.current;
       if (!o) return;
-      const dx = e.clientX - o.mx;
-      const dy = e.clientY - o.my;
+
+      const container = getContainer();
+      const containerRect = container.getBoundingClientRect();
+      const mouseX = e.clientX - containerRect.left;
+      const mouseY = e.clientY - containerRect.top;
+
+      const dx = mouseX - o.mx;
+      const dy = mouseY - o.my;
       if (Math.abs(dx) > 3 || Math.abs(dy) > 3)
         actuallyDraggedRef.current = true;
       if (actuallyDraggedRef.current) {
         e.preventDefault();
         setIsDragging(true);
         setPosition({
-          x: Math.max(0, Math.min(o.fx + dx, window.innerWidth - 80)),
-          y: Math.max(30, Math.min(o.fy + dy, window.innerHeight - 100)),
+          x: Math.max(0, Math.min(o.fx + dx, containerRect.width - 80)),
+          y: Math.max(0, Math.min(o.fy + dy, containerRect.height - 100)),
         });
       }
     };
@@ -147,14 +172,18 @@ export function DraggableFolder({
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseup", onUp);
     };
-  }, [storageVersionedKey, onClick, onDoubleClick]);
+  }, [storageVersionedKey, onClick, onDoubleClick, getContainer]);
 
-  if (typeof document === "undefined") return null;
+  if (!mounted) return null;
+
+  const isRelative = !!portalContainer;
+  const target = portalContainer ?? document.body;
 
   return createPortal(
     <div
       className={cn(
-        "fixed select-none",
+        "select-none",
+        isRelative ? "absolute" : "fixed",
         isDragging
           ? "z-[110] cursor-grabbing"
           : "transition-transform duration-150 z-[100] cursor-move",
@@ -198,6 +227,6 @@ export function DraggableFolder({
         </span>
       </div>
     </div>,
-    document.body
+    target
   );
 }

@@ -220,7 +220,7 @@ export function DraggableFolder({
         </div>
         <span
           className={cn(
-            "text-xs font-medium text-slate-900 text-center px-2 py-0.5 rounded transition-all max-w-[80px] truncate",
+            "text-[11px] font-medium text-slate-900 text-center px-1 py-0.5 rounded transition-all whitespace-nowrap",
             isSelected &&
               !isDragging &&
               "bg-blue-500/40 shadow-lg ring-1 ring-blue-300/30"

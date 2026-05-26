@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata = buildPageMetadata({
-  title: "Gestao de Fabrica e Producao",
+  title: "Gestão de Fábrica e PCP: Controle Produção e Materiais",
   description:
-    "Controle operacoes de fabrica, materiais e fluxo produtivo com mais previsibilidade, rastreabilidade e eficiencia.",
+    "Sistema de gestão de fábrica: controle ordens de produção, matérias-primas e fluxo produtivo com rastreabilidade completa. Reduza desperdícios. Comece grátis.",
   path: "/features/factory-management",
 });
 

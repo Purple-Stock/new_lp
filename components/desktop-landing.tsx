@@ -36,6 +36,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { translations } from "@/utils/translations";
 import { cn } from "@/lib/utils";
 import { trackCtaClick, trackSeoLandingView } from "@/lib/analytics";
@@ -99,6 +100,7 @@ export function DesktopLanding() {
   const [portalContainer, setPortalContainer] = useState<HTMLDivElement | null>(
     null
   );
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     trackSeoLandingView({
@@ -1379,76 +1381,80 @@ export function DesktopLanding() {
       <Navbar />
 
       {/* Folders rendered via portal — slots in sidebars provide initial coords */}
-      {windowApps.slice(0, 2).map((app, index) => (
-        <DraggableFolder
-          key={app.key}
-          label={app.label}
-          folderColor={app.folderColor}
-          icon={app.icon}
-          storageKey={`window-app-left-${app.key}`}
-          initialPosition={{ x: 20, y: 80 + index * 180 }}
-          portalContainer={portalContainer}
-          isSelected={selectedFolder === app.key}
-          onDoubleClick={() => openWindow(app.key)}
-          onClick={() => setSelectedFolder(app.key)}
-        />
-      ))}
-      {windowApps.slice(2).map((app, index) => (
-        <DraggableFolder
-          key={app.key}
-          label={app.label}
-          folderColor={app.folderColor}
-          icon={app.icon}
-          storageKey={`window-app-right-${app.key}`}
-          initialPosition={{ x: 300, y: 80 + index * 180 }}
-          portalContainer={portalContainer}
-          isSelected={selectedFolder === app.key}
-          onDoubleClick={() => openWindow(app.key)}
-          onClick={() => setSelectedFolder(app.key)}
-        />
-      ))}
-      {shortcutLinks.slice(0, 2).map((item, index) => (
-        <DraggableFolder
-          key={item.label}
-          label={item.label}
-          folderColor={item.folderColor}
-          icon={item.icon}
-          storageKey={`shortcut-left-${item.label}`}
-          initialPosition={{ x: 20, y: 440 + index * 180 }}
-          portalContainer={portalContainer}
-          isSelected={selectedFolder === `shortcut-${item.label}`}
-          onDoubleClick={() => {
-            if (typeof window !== "undefined") {
-              window.open(
-                item.href,
-                item.href.startsWith("http") ? "_blank" : "_self"
-              );
-            }
-          }}
-          onClick={() => setSelectedFolder(`shortcut-${item.label}`)}
-        />
-      ))}
-      {shortcutLinks.slice(2).map((item, index) => (
-        <DraggableFolder
-          key={item.label}
-          label={item.label}
-          folderColor={item.folderColor}
-          icon={item.icon}
-          storageKey={`shortcut-right-${item.label}`}
-          initialPosition={{ x: 300, y: 440 + index * 180 }}
-          portalContainer={portalContainer}
-          isSelected={selectedFolder === `shortcut-${item.label}`}
-          onDoubleClick={() => {
-            if (typeof window !== "undefined") {
-              window.open(
-                item.href,
-                item.href.startsWith("http") ? "_blank" : "_self"
-              );
-            }
-          }}
-          onClick={() => setSelectedFolder(`shortcut-${item.label}`)}
-        />
-      ))}
+      {!isMobile && (
+        <>
+          {windowApps.slice(0, 2).map((app, index) => (
+            <DraggableFolder
+              key={app.key}
+              label={app.label}
+              folderColor={app.folderColor}
+              icon={app.icon}
+              storageKey={`window-app-left-${app.key}`}
+              initialPosition={{ x: 20, y: 80 + index * 180 }}
+              portalContainer={portalContainer}
+              isSelected={selectedFolder === app.key}
+              onDoubleClick={() => openWindow(app.key)}
+              onClick={() => setSelectedFolder(app.key)}
+            />
+          ))}
+          {windowApps.slice(2).map((app, index) => (
+            <DraggableFolder
+              key={app.key}
+              label={app.label}
+              folderColor={app.folderColor}
+              icon={app.icon}
+              storageKey={`window-app-right-${app.key}`}
+              initialPosition={{ x: 300, y: 80 + index * 180 }}
+              portalContainer={portalContainer}
+              isSelected={selectedFolder === app.key}
+              onDoubleClick={() => openWindow(app.key)}
+              onClick={() => setSelectedFolder(app.key)}
+            />
+          ))}
+          {shortcutLinks.slice(0, 2).map((item, index) => (
+            <DraggableFolder
+              key={item.label}
+              label={item.label}
+              folderColor={item.folderColor}
+              icon={item.icon}
+              storageKey={`shortcut-left-${item.label}`}
+              initialPosition={{ x: 20, y: 440 + index * 180 }}
+              portalContainer={portalContainer}
+              isSelected={selectedFolder === `shortcut-${item.label}`}
+              onDoubleClick={() => {
+                if (typeof window !== "undefined") {
+                  window.open(
+                    item.href,
+                    item.href.startsWith("http") ? "_blank" : "_self"
+                  );
+                }
+              }}
+              onClick={() => setSelectedFolder(`shortcut-${item.label}`)}
+            />
+          ))}
+          {shortcutLinks.slice(2).map((item, index) => (
+            <DraggableFolder
+              key={item.label}
+              label={item.label}
+              folderColor={item.folderColor}
+              icon={item.icon}
+              storageKey={`shortcut-right-${item.label}`}
+              initialPosition={{ x: 300, y: 440 + index * 180 }}
+              portalContainer={portalContainer}
+              isSelected={selectedFolder === `shortcut-${item.label}`}
+              onDoubleClick={() => {
+                if (typeof window !== "undefined") {
+                  window.open(
+                    item.href,
+                    item.href.startsWith("http") ? "_blank" : "_self"
+                  );
+                }
+              }}
+              onClick={() => setSelectedFolder(`shortcut-${item.label}`)}
+            />
+          ))}
+        </>
+      )}
       <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col gap-8 px-4 pt-24 pb-4 md:flex-row md:gap-6 md:px-10 md:pt-24">
         {/* Portal target for draggable folders */}
         <div
@@ -1478,7 +1484,7 @@ export function DesktopLanding() {
         <div className="relative z-0 flex flex-1 flex-col gap-8">
           <div
             ref={mainBoxRef}
-            className="relative z-0 flex min-h-[calc(100vh-7.5rem)] flex-col overflow-hidden rounded-xl border border-slate-200/60 bg-white/95 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl transition-transform cursor-move"
+            className="relative z-0 flex min-h-[calc(100vh-7.5rem)] flex-col overflow-visible md:overflow-hidden rounded-xl border border-slate-200/60 bg-white/95 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl transition-transform md:cursor-move"
             style={{
               transform: `translate(${mainBoxPosition.x}px, ${mainBoxPosition.y}px)`,
               userSelect: "none",
@@ -1653,7 +1659,7 @@ export function DesktopLanding() {
             <div className="flex-1 space-y-8 overflow-visible px-4 py-8 sm:px-10 sm:py-10">
               {/* Top Section - Title and Description */}
               <div className="text-center space-y-6 mb-12">
-                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight">
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight">
                   {language === "pt" ? (
                     <>{"Pare de perder venda porque o estoque não bate"}</>
                   ) : language === "en" ? (
@@ -1676,7 +1682,7 @@ export function DesktopLanding() {
                       : "En quelques jours, votre equipe passe du tableur a un controle de stock simple sur mobile, avec QR code et historique des entrees, sorties et emplacements."}
                 </p>
                 <div className="mx-auto max-w-3xl rounded-2xl border border-blue-100 bg-blue-50/80 px-5 py-4 text-left">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-blue-700 break-words">
                     {playbookContent.uvpBadge}
                   </p>
                   <p className="mt-2 text-sm text-slate-700 sm:text-base">
@@ -1752,7 +1758,7 @@ export function DesktopLanding() {
                           : "Offre de lancement"}
                     </div>
                     <div className="flex items-end gap-1">
-                      <span className="text-3xl font-extrabold leading-none text-purple-700 sm:text-4xl">
+                      <span className="text-2xl font-extrabold leading-none text-purple-700 sm:text-3xl md:text-4xl">
                         R$29,90
                       </span>
                       <span className="pb-1 text-xs font-semibold text-purple-600 sm:text-sm">
@@ -1765,7 +1771,7 @@ export function DesktopLanding() {
                       </span>
                     </div>
                   </div>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-purple-700">
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-purple-700 break-words">
                     {language === "pt"
                       ? "Lote de lançamento com revisão semanal de preço"
                       : language === "en"
@@ -2050,7 +2056,7 @@ export function DesktopLanding() {
 
               {/* Main Title Section */}
               <div className="text-center space-y-6 mb-12">
-                <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                   <span className="text-slate-700">
                     {language === "pt" ? (
                       <>
@@ -2351,7 +2357,7 @@ export function DesktopLanding() {
                 <p className="mt-2 text-slate-600">
                   {playbookContent.compareSubtitle}
                 </p>
-                <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200">
+                <div className="mt-5 overflow-x-auto rounded-2xl border border-slate-200">
                   <table className="min-w-full bg-white text-left text-sm">
                     <thead className="bg-slate-50">
                       <tr>

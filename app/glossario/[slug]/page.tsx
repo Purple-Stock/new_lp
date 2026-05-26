@@ -180,6 +180,23 @@ export default async function GlossaryTermPage({ params }: PageProps) {
   const hasRelatedFeatures = (term.relatedFeatures?.length ?? 0) > 0;
   const hasRelatedIndustries = (term.relatedIndustries?.length ?? 0) > 0;
 
+  const validFaqs = term.faq.filter((f) => f.question && f.answer);
+  const faqJsonLd =
+    validFaqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: validFaqs.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: f.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
       <script
@@ -190,6 +207,12 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <Navbar />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}

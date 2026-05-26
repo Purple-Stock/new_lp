@@ -627,7 +627,13 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-    overflow: hidden;
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      overflow: hidden;
+    }
   }
 
   /* Enhanced SVG and icon rendering */

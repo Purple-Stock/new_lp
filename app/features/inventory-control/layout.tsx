@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata = buildPageMetadata({
-  title: "Controle de Estoque em Tempo Real",
+  title: "Controle de Estoque Completo: Inventário + QR Code + Relatórios",
   description:
-    "Centralize entradas, saidas, inventario e rastreabilidade com um sistema de controle de estoque em nuvem.",
+    "Sistema de controle de estoque com inventário em tempo real, QR Code, alertas de ruptura e relatórios automáticos. Ideal para PMEs. Comece grátis hoje.",
   path: "/features/inventory-control",
 });
 

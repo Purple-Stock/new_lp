@@ -544,17 +544,32 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "ponto-de-reposicao",
     term: "Ponto de Reposição",
     category: "inventory",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Ponto de reposição é a quantidade mínima de estoque que, quando atingida, dispara um novo pedido de compra ao fornecedor. Ele evita rupturas, equilibra o capital parado e garante que a operação não pare por falta de produto.",
+    definition:
+      "Ponto de reposição é o nível de estoque que aciona automaticamente um novo pedido de compra. Quando o saldo em estoque atinge esse número, é hora de fazer um pedido ao fornecedor.\n\nO cálculo considera dois fatores principais: a demanda média diária (quantas unidades são vendidas ou consumidas por dia) e o lead time do fornecedor (quantos dias ele leva para entregar). O resultado é a quantidade de produto que será consumida durante o prazo de entrega. A isso soma-se o estoque de segurança, que funciona como colchão contra variações inesperadas de demanda ou atrasos do fornecedor.\n\nExemplo: se você vende 10 unidades por dia e o fornecedor entrega em 7 dias, seu consumo durante o lead time será de 70 unidades. Se você mantém um estoque de segurança de 30 unidades, seu ponto de reposição será de 100 unidades. Toda vez que o saldo chegar a 100, você faz um novo pedido.\n\nUm ponto de reposição bem calibrado evita dois extremos: ruptura de estoque (perder vendas por falta de produto) e excesso de estoque (capital parado desnecessariamente). É um dos fundamentos mais importantes da gestão de estoque.",
+    example:
+      "Uma loja de autopeças vende em média 5 filtros de óleo por dia. O fornecedor entrega em 12 dias úteis. Durante o lead time, o consumo esperado é de 60 filtros. A loja decide manter um estoque de segurança de 20 unidades para cobrir variações de demanda.\n\nPonto de Reposição = (5 × 12) + 20 = 80 filtros.\n\nIsso significa que toda vez que o saldo do filtro de óleo chegar a 80 unidades no sistema, o time de compras deve emitir um novo pedido. Se o pedido for de 200 unidades (lote econômico), o estoque voltará a um nível confortável de 280 unidades sem risco de ruptura.",
     formula:
       "Ponto de Reposição = (Demanda Média Diária × Lead Time) + Estoque de Segurança",
     formulaExplanation:
       "Demanda Média Diária = quantidade média vendida por dia; Lead Time = dias para o fornecedor entregar; Estoque de Segurança = buffer contra variações.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Qual a diferença entre ponto de reposição e estoque mínimo?",
+        answer:
+          "Estoque mínimo é o nível abaixo do qual a operação corre risco real de ruptura. Ponto de reposição é o nível que aciona o pedido — ele é sempre maior que o estoque mínimo, pois precisa cobrir o consumo durante o lead time do fornecedor.",
+      },
+      {
+        question: "Com que frequência devo recalcular o ponto de reposição?",
+        answer:
+          "O ideal é revisar a cada 3 meses ou sempre que houver mudança significativa na demanda (sazonalidade, novo cliente, campanha) ou no lead time do fornecedor (troca de transportadora, novo contrato).",
+      },
+      {
+        question: "O que acontece se eu usar um ponto de reposição errado?",
+        answer:
+          "Se o ponto for muito baixo, você terá rupturas frequentes e perda de vendas. Se for muito alto, terá excesso de estoque, capital parado e custo de armazenagem desnecessário. Ambos os cenários afetam diretamente o lucro da operação.",
+      },
     ],
     relatedTerms: ["estoque-de-seguranca", "lead-time", "ruptura-de-estoque"],
     relatedFeatures: ["inventory-control"],
@@ -817,16 +832,31 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "quantidade-economica-pedido",
     term: "Quantidade Econômica de Pedido (EOQ)",
     category: "inventory",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "EOQ (Economic Order Quantity) é a fórmula que calcula a quantidade ideal de cada pedido ao fornecedor, equilibrando o custo de fazer pedidos com o custo de manter estoque. O resultado minimiza o custo total de inventário.",
+    definition:
+      "EOQ — Economic Order Quantity ou Quantidade Econômica de Pedido — é um modelo matemático criado em 1913 por Ford W. Harris que calcula o lote ideal de compra para minimizar o custo total de estoque.\n\nA lógica é simples: existem dois custos conflitantes na gestão de estoque. De um lado, o custo de pedido (frete, emissão, administrativo) que diminui quando você faz pedidos maiores e menos frequentes. De outro, o custo de manutenção (armazenagem, seguro, obsolescência, capital parado) que aumenta com pedidos maiores. O EOQ encontra o ponto de equilíbrio entre esses dois custos.\n\nA fórmula clássica é EOQ = √(2DS / H), onde D é a demanda anual, S é o custo de fazer um pedido, e H é o custo de manter uma unidade em estoque por ano.\n\nO EOQ é especialmente útil para indústrias e atacadistas que lidam com centenas de SKUs e precisam definir lotes de compra consistentes. Ele parte de premissas simplificadas (demanda constante, lead time fixo) que nem sempre se aplicam na prática, mas serve como base para políticas de compra mais sofisticadas.",
+    example:
+      "Um distribuidor de alimentos secos vende 12.000 pacotes de arroz por ano. Cada pedido ao fornecedor custa R$ 80,00 (transporte, emissão de nota, tempo administrativo). O custo de manter um pacote em estoque por um ano é de R$ 3,00 (armazenagem, seguro, capital).\n\nEOQ = √(2 × 12.000 × 80 / 3) = √640.000 = 800 pacotes.\n\nIsso significa que o lote ideal é de 800 pacotes por pedido. Com demanda de 12.000/ano, o distribuidor fará 15 pedidos por ano (aproximadamente 1 a cada 24 dias). Qualquer desvio desse lote — para mais ou para menos — aumentaria o custo total de estoque.",
     formula: "EOQ = √(2DS / H)",
     formulaExplanation:
       "D = demanda anual em unidades; S = custo de emissão de pedido (por pedido); H = custo de manutenção de estoque por unidade por ano.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "EOQ funciona para qualquer tipo de produto?",
+        answer:
+          "Funciona melhor para produtos com demanda relativamente estável e lead time previsível. Para produtos sazonais, perecíveis ou com alta variação de demanda, o EOQ precisa ser ajustado com modelos complementares como ponto de reposição dinâmico.",
+      },
+      {
+        question: "Qual a diferença entre EOQ e lote mínimo do fornecedor?",
+        answer:
+          "EOQ é o lote ideal calculado pela sua operação. Lote mínimo é a quantidade mínima que o fornecedor aceita vender. Se o lote mínimo for maior que o EOQ, você está sendo forçado a comprar mais do que o ideal — isso deve entrar no cálculo de custo total para avaliar se vale a pena manter esse fornecedor.",
+      },
+      {
+        question: "Preciso calcular EOQ manualmente para cada produto?",
+        answer:
+          "Não. Sistemas de gestão de estoque como o Purple Stock calculam o EOQ automaticamente com base no histórico de vendas, lead time dos fornecedores e custos cadastrados. O importante é entender o conceito e revisar os parâmetros periodicamente.",
+      },
     ],
     relatedTerms: [
       "ponto-de-reposicao",

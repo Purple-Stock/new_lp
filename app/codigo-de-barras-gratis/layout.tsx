@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata = buildPageMetadata({
-  title: "Gerador de Codigo de Barras Gratis Online",
+  title: "Gerador de Código de Barras Grátis Online — Crie e Baixe em PNG",
   description:
-    "Gere codigo de barras e QR Code gratis online, com configuracoes de tamanho, formato e download imediato.",
+    "Gere código de barras e QR Code grátis online, com configurações de tamanho, formato e download imediato. Compatível com EAN-13, Code 128, QR Code e mais.",
   path: "/codigo-de-barras-gratis",
 });
 

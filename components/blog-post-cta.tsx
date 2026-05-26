@@ -48,6 +48,24 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
       whatsappText:
         "Ol%C3%A1!%20Vim%20do%20guia%20sobre%203PL%20e%20quero%20entender%20como%20integrar%20meu%20estoque%20com%20um%20operador%20log%C3%ADstico.",
     },
+    "guia-completo-sistema-de-estoque": {
+      primaryLabel: "Testar Purple Stock grátis",
+      secondaryLabel: "Falar sobre sistema de estoque",
+      whatsappText:
+        "Ol%C3%A1!%20Vim%20do%20guia%20completo%20de%20sistema%20de%20estoque%20e%20quero%20testar%20o%20Purple%20Stock.",
+    },
+    "sistema-de-estoque-vs-planilha-excel-2026": {
+      primaryLabel: "Migrar da planilha para o Purple Stock",
+      secondaryLabel: "Tirar dúvidas sobre migração",
+      whatsappText:
+        "Ol%C3%A1!%20Vim%20do%20artigo%20de%20migra%C3%A7%C3%A3o%20planilha%20vs%20sistema%20e%20quero%20come%C3%A7ar%20a%20migrar%20com%20o%20Purple%20Stock.",
+    },
+    "como-escolher-sistema-de-estoque-2026": {
+      primaryLabel: "Ver checklist do Purple Stock",
+      secondaryLabel: "Comparar opções de sistema",
+      whatsappText:
+        "Ol%C3%A1!%20Vim%20do%20guia%20de%20como%20escolher%20sistema%20de%20estoque%20e%20quero%20avaliar%20o%20Purple%20Stock.",
+    },
   } as const;
 
   const cta = ctaBySlug[slug as keyof typeof ctaBySlug] ?? {

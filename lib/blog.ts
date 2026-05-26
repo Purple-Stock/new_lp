@@ -15,6 +15,7 @@ export type BlogPostMeta = {
   readingTime: string;
   tags: string[];
   coverImage?: string;
+  faq?: { question: string; answer: string }[];
 };
 
 type BlogFrontmatter = Omit<BlogPostMeta, "slug">;
@@ -39,6 +40,7 @@ function toBlogMeta(slug: string, data: Record<string, unknown>): BlogPostMeta {
     readingTime: String(data.readingTime ?? ""),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     coverImage: data.coverImage ? String(data.coverImage) : undefined,
+    faq: data.faq as BlogPostMeta["faq"],
   };
 }
 

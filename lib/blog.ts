@@ -1,8 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
+import { marked } from "marked";
 
 const BLOG_CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -158,12 +157,12 @@ export async function getPostBySlug(slug: string): Promise<{
   try {
     const source = await fs.readFile(filePath, "utf8");
     const { data, content } = matter(source);
-    const rendered = await remark().use(html).process(content);
+    const rendered = marked.parse(content);
     const frontmatter = data as BlogFrontmatter;
 
     return {
       meta: toBlogMeta(slug, frontmatter),
-      content: rendered.toString(),
+      content: typeof rendered === "string" ? rendered : await rendered,
     };
   } catch {
     return null;

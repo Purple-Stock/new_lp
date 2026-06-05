@@ -2,15 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ArrowLeft, Clock3, Share2 } from "lucide-react";
+import { ArrowLeft, Clock3 } from "lucide-react";
 import { getAllPosts, getPostBySlug, slugifyTag } from "@/lib/blog";
 import { getSiteUrl } from "@/lib/site";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
 import { BlogPostCta } from "@/components/blog-post-cta";
-import { BlogReadingProgress } from "@/components/blog-reading-progress";
 import { BlogSidebar } from "@/components/blog-sidebar";
 import { BlogRelatedPosts } from "@/components/blog-related-posts";
+import { BlogLayout } from "@/components/blog-layout";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -149,102 +147,97 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)]">
-      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
-      <BlogReadingProgress />
-      <Navbar />
-
-      <main className="relative pt-24 pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
-            {/* Main article */}
-            <article className="flex flex-col">
-              <div className="overflow-hidden rounded-3xl border border-white/70 bg-white/90 shadow-2xl backdrop-blur-xl">
-                <div className="p-6 md:p-10">
-                  <Link
-                    href="/blog"
-                    className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-800 transition-colors"
-                  >
-                    <ArrowLeft className="h-4 w-4" />
-                    Voltar para o blog
-                  </Link>
-
-                  <header className="mb-8 border-b border-gray-100 pb-8">
-                    <div className="mb-4 flex flex-wrap items-center gap-3 text-sm text-gray-500">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-purple-50 px-2.5 py-0.5 text-xs font-medium text-purple-700">
-                        Artigo
-                      </span>
-                      <span className="h-1 w-1 rounded-full bg-gray-300" />
-                      <span>{formatDate(post.meta.date)}</span>
-                      <span className="h-1 w-1 rounded-full bg-gray-300" />
-                      <span className="inline-flex items-center gap-1">
-                        <Clock3 className="h-3.5 w-3.5" />
-                        {post.meta.readingTime}
-                      </span>
-                      <span className="h-1 w-1 rounded-full bg-gray-300" />
-                      <span>{post.meta.author}</span>
-                    </div>
-
-                    <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-                      {post.meta.title}
-                    </h1>
-                    <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-600">
-                      {post.meta.excerpt}
-                    </p>
-                    <BlogPostCta slug={post.meta.slug} />
-
-                    {post.meta.tags.length > 0 && (
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {post.meta.tags.map((tag) => (
-                          <Link
-                            key={tag}
-                            href={`/blog/tag/${slugifyTag(tag)}`}
-                            className="rounded-full bg-purple-50 px-3 py-1 text-xs font-medium text-purple-700 transition-colors hover:bg-purple-100"
-                          >
-                            {tag}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="mt-8 overflow-hidden rounded-2xl border border-gray-100">
-                      <Image
-                        src={image}
-                        alt={post.meta.title}
-                        width={1200}
-                        height={630}
-                        className="h-auto w-full object-cover"
-                        priority
-                      />
-                    </div>
-                  </header>
-
-                  <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                      __html: JSON.stringify(schemas),
-                    }}
-                  />
-                  <div
-                    className="blog-content"
-                    dangerouslySetInnerHTML={{ __html: post.content }}
-                  />
-                </div>
+    <BlogLayout showReadingProgress>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
+          <article className="flex flex-col">
+            <div className="ps-panel overflow-hidden">
+              <div className="ps-panel-chrome flex items-center gap-2 px-4 py-2 sm:px-5">
+                <span className="text-[11px] font-medium text-slate-500">
+                  Purple Stock · Editorial
+                </span>
               </div>
 
-              {/* Related Posts */}
-              <BlogRelatedPosts slug={slug} />
-            </article>
+              <div className="p-6 md:p-10">
+                <Link
+                  href="/blog"
+                  className="ps-link-editorial mb-8 inline-flex items-center gap-2 text-sm font-semibold"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  Voltar para o blog
+                </Link>
 
-            {/* Sidebar */}
-            <div className="hidden lg:block lg:sticky lg:top-28">
-              <BlogSidebar excludeSlug={slug} />
+                <header className="mb-8 border-b border-brand-border-soft pb-8">
+                  <div className="mb-4 flex flex-wrap items-center gap-3 text-sm text-slate-500">
+                    <span className="ps-badge-violet px-2.5 py-0.5 normal-case tracking-normal">
+                      Artigo
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-slate-300" />
+                    <span>{formatDate(post.meta.date)}</span>
+                    <span className="h-1 w-1 rounded-full bg-slate-300" />
+                    <span className="inline-flex items-center gap-1">
+                      <Clock3 className="h-3.5 w-3.5" />
+                      {post.meta.readingTime}
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-slate-300" />
+                    <span>{post.meta.author}</span>
+                  </div>
+
+                  <h1 className="ps-display text-3xl md:text-4xl lg:text-5xl">
+                    {post.meta.title}
+                  </h1>
+                  <p className="ps-lead mt-4 max-w-3xl text-lg">
+                    {post.meta.excerpt}
+                  </p>
+                  <BlogPostCta slug={post.meta.slug} />
+
+                  {post.meta.tags.length > 0 && (
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {post.meta.tags.map((tag) => (
+                        <Link
+                          key={tag}
+                          href={`/blog/tag/${slugifyTag(tag)}`}
+                          className="ps-badge-violet px-3 py-1 normal-case tracking-normal transition-colors hover:bg-brand-ui-primary/15"
+                        >
+                          {tag}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="mt-8 overflow-hidden rounded-xl border border-brand-border-soft">
+                    <Image
+                      src={image}
+                      alt={post.meta.title}
+                      width={1200}
+                      height={630}
+                      className="h-auto w-full object-cover"
+                      priority
+                    />
+                  </div>
+                </header>
+
+                <script
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(schemas),
+                  }}
+                />
+                <div
+                  className="blog-content"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
+              </div>
             </div>
+
+            <BlogRelatedPosts slug={slug} />
+          </article>
+
+          <div className="hidden lg:block lg:sticky lg:top-28">
+            <BlogSidebar excludeSlug={slug} />
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </BlogLayout>
   );
 }

@@ -40,7 +40,7 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
       primaryLabel: "Testar controle de estoque em tempo real",
       secondaryLabel: "Falar sobre redução de ruptura",
       whatsappText:
-        "Ol%C3%A1!%20Vim%20do%20guia%20de%20redu%C3%A7%C3%A3o%20de%20ruptura%20e%20quero%20testar%20o%20Purple%20Stock%20para%20minha%20opera%C3%A7%C3%A3o.",
+        "Ol%C3%A1!%20Vim%20do%20artigo%20de%20redu%C3%A7%C3%A3o%20de%20ruptura%20e%20quero%20testar%20o%20Purple%20Stock%20para%20minha%20opera%C3%A7%C3%A3o.",
     },
     "estoque-terceirizado-3pl-guia-completo": {
       primaryLabel: "Ver integração com 3PL no Purple Stock",
@@ -88,7 +88,7 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
           })
         }
       >
-        <Button className="bg-purple-700 text-white hover:bg-purple-800">
+        <Button className="ps-btn-primary">
           {cta.primaryLabel}
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
@@ -104,10 +104,7 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
           })
         }
       >
-        <Button
-          variant="outline"
-          className="border-purple-300 text-purple-700 hover:bg-purple-50"
-        >
+        <Button variant="outline" className="ps-btn-outline">
           <MessageCircle className="mr-2 h-4 w-4" />
           {cta.secondaryLabel}
         </Button>

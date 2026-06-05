@@ -1,26 +1,17 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Hash, Clock3 } from "lucide-react";
-import { getAllTagSlugs, getPostsByTagSlug, slugifyTag } from "@/lib/blog";
+import { ArrowLeft, Hash } from "lucide-react";
+import { getAllTagSlugs, getPostsByTagSlug } from "@/lib/blog";
 import { getSiteUrl } from "@/lib/site";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
 import { BlogCard } from "@/components/blog-card";
 import { BlogSidebar } from "@/components/blog-sidebar";
+import { BlogLayout } from "@/components/blog-layout";
+import { BlogPageHeader } from "@/components/blog-page-header";
 
 type PageProps = {
   params: Promise<{ tag: string }>;
 };
-
-function formatDate(date: string) {
-  return new Intl.DateTimeFormat("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(date));
-}
 
 export async function generateStaticParams() {
   const tagSlugs = await getAllTagSlugs();
@@ -60,48 +51,48 @@ export default async function BlogTagPage({ params }: PageProps) {
   }
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)]">
-      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
-      <Navbar />
-
-      <main className="relative pt-24 pb-20">
-        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <header className="mx-auto mb-12 max-w-5xl rounded-3xl border border-white/60 bg-white/80 p-8 text-center shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl md:p-12">
+    <BlogLayout>
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <BlogPageHeader
+          before={
             <Link
               href="/blog"
-              className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-800 transition-colors"
+              className="ps-link-editorial inline-flex items-center gap-2 text-sm font-semibold"
             >
               <ArrowLeft className="h-4 w-4" />
               Voltar para o blog
             </Link>
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-800">
+          }
+          badge={
+            <>
               <Hash className="h-4 w-4" />
               Tag
-            </p>
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-              {label}
-            </h1>
-            <p className="mt-4 text-lg text-gray-600">
+            </>
+          }
+          title={label}
+          description={
+            <>
               {posts.length} artigo(s) relacionados a{" "}
-              <span className="font-semibold text-purple-700">{label}</span>.
-            </p>
-          </header>
+              <span className="font-semibold text-brand-ui-primary">
+                {label}
+              </span>
+              .
+            </>
+          }
+        />
 
-          <div className="grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
-            <div className="grid gap-6 sm:grid-cols-2">
-              {posts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
-              ))}
-            </div>
-
-            <div className="hidden lg:block lg:sticky lg:top-28">
-              <BlogSidebar />
-            </div>
+        <div className="grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
+          <div className="grid gap-6 sm:grid-cols-2">
+            {posts.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
           </div>
-        </section>
-      </main>
 
-      <Footer />
-    </div>
+          <div className="hidden lg:block lg:sticky lg:top-28">
+            <BlogSidebar />
+          </div>
+        </div>
+      </section>
+    </BlogLayout>
   );
 }

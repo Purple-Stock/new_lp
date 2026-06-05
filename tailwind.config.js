@@ -9,6 +9,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        brand: {
+          violet: "#9333e9",
+          "violet-deep": "#7928ca",
+          "ui-primary": "#8b5cf6",
+          ink: "#0a0a0a",
+          "muted-ink": "#737373",
+          "link-blue": "#1f5c99",
+          "editorial-wash": "#f5f8fc",
+          "editorial-rule": "#7aa4ca",
+          "chrome-graphite": "#2a2a2a",
+          "chrome-steel": "#3d3d3d",
+          canvas: "#ffffff",
+          "surface-soft": "#f5f5f5",
+          "border-soft": "#e5e5e5",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

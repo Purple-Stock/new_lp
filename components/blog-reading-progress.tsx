@@ -21,7 +21,7 @@ export function BlogReadingProgress() {
   return (
     <div className="fixed top-0 left-0 right-0 z-[130] h-[3px] bg-transparent">
       <div
-        className="h-full bg-gradient-to-r from-purple-600 via-violet-500 to-purple-400 transition-[width] duration-150 ease-out"
+        className="h-full bg-brand-ui-primary transition-[width] duration-150 ease-out"
         style={{ width: `${progress}%` }}
       />
     </div>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Hash, TrendingUp } from "lucide-react";
-import { getAllPosts, getPopularTags, slugifyTag } from "@/lib/blog";
+import { getAllPosts, getPopularTags } from "@/lib/blog";
 import { Button } from "@/components/ui/button";
 
 function formatDate(date: string) {
@@ -25,16 +25,15 @@ export async function BlogSidebar({ excludeSlug }: { excludeSlug?: string }) {
 
   return (
     <aside className="flex flex-col gap-8">
-      {/* CTA Card */}
-      <div className="rounded-2xl border border-purple-200/60 bg-gradient-to-br from-purple-700 to-violet-800 p-6 text-white shadow-lg">
-        <h3 className="text-lg font-bold">Quer testar na prática?</h3>
-        <p className="mt-2 text-sm leading-relaxed text-purple-100">
+      <div className="ps-panel border-2 border-brand-ui-primary/20 p-6">
+        <h3 className="ps-display text-lg">Quer testar na prática?</h3>
+        <p className="ps-lead mt-2 text-sm">
           Cadastre-se gratuitamente e comece a controlar seu estoque com QR Code
           em minutos.
         </p>
-        <div className="mt-4 flex flex-col gap-2">
+        <div className="mt-4">
           <Link href="https://app.purplestock.com.br/" target="_blank">
-            <Button className="w-full bg-white text-purple-700 hover:bg-purple-50">
+            <Button className="ps-btn-primary w-full">
               Criar conta grátis
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -42,10 +41,9 @@ export async function BlogSidebar({ excludeSlug }: { excludeSlug?: string }) {
         </div>
       </div>
 
-      {/* Recent Posts */}
-      <div className="rounded-2xl border border-white/70 bg-white/90 p-6 shadow-lg backdrop-blur-md">
-        <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-gray-900">
-          <TrendingUp className="h-4 w-4 text-purple-600" />
+      <div className="ps-card p-6">
+        <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-slate-900">
+          <TrendingUp className="h-4 w-4 text-brand-ui-primary" />
           Recentes
         </h3>
         <div className="mt-4 flex flex-col gap-4">
@@ -55,9 +53,9 @@ export async function BlogSidebar({ excludeSlug }: { excludeSlug?: string }) {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group flex gap-3 rounded-xl p-2 transition-colors hover:bg-purple-50/60"
+                className="group flex gap-3 rounded-lg p-2 transition-colors hover:bg-brand-surface-soft"
               >
-                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg">
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-brand-border-soft">
                   <Image
                     src={cover}
                     alt={post.title}
@@ -66,10 +64,10 @@ export async function BlogSidebar({ excludeSlug }: { excludeSlug?: string }) {
                   />
                 </div>
                 <div className="flex flex-col justify-center">
-                  <p className="line-clamp-2 text-sm font-semibold leading-snug text-gray-900 group-hover:text-purple-700 transition-colors">
+                  <p className="line-clamp-2 text-sm font-semibold leading-snug text-slate-900 transition-colors group-hover:text-brand-ui-primary">
                     {post.title}
                   </p>
-                  <span className="mt-1 text-[11px] text-gray-500">
+                  <span className="mt-1 text-[11px] text-slate-500">
                     {formatDate(post.date)}
                   </span>
                 </div>
@@ -79,11 +77,10 @@ export async function BlogSidebar({ excludeSlug }: { excludeSlug?: string }) {
         </div>
       </div>
 
-      {/* Popular Tags */}
       {popularTags.length > 0 && (
-        <div className="rounded-2xl border border-white/70 bg-white/90 p-6 shadow-lg backdrop-blur-md">
-          <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-gray-900">
-            <Hash className="h-4 w-4 text-purple-600" />
+        <div className="ps-card p-6">
+          <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-slate-900">
+            <Hash className="h-4 w-4 text-brand-ui-primary" />
             Tags populares
           </h3>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -91,10 +88,10 @@ export async function BlogSidebar({ excludeSlug }: { excludeSlug?: string }) {
               <Link
                 key={tag.slug}
                 href={`/blog/tag/${tag.slug}`}
-                className="inline-flex items-center gap-1.5 rounded-full bg-purple-50 px-3 py-1 text-xs font-medium text-purple-700 transition-colors hover:bg-purple-100"
+                className="ps-badge-violet inline-flex items-center gap-1.5 px-3 py-1 normal-case tracking-normal transition-colors hover:bg-brand-ui-primary/15"
               >
                 {tag.label}
-                <span className="rounded-full bg-purple-200/60 px-1.5 py-0.5 text-[10px] font-semibold text-purple-800">
+                <span className="rounded-full bg-brand-ui-primary/15 px-1.5 py-0.5 text-[10px] font-semibold text-brand-violet-deep">
                   {tag.count}
                 </span>
               </Link>

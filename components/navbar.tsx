@@ -54,7 +54,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[120] h-[25px] bg-gradient-to-b from-[#3f3a46] to-[#2c2832] shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
+    <header className="fixed top-0 left-0 right-0 z-[120] h-[25px] bg-gradient-to-b from-brand-chrome-steel to-brand-chrome-graphite shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
       <div className="flex items-center justify-between h-full px-3 text-[13px] font-medium text-white/90">
         <div className="flex items-center gap-0">
           <Link
@@ -91,7 +91,7 @@ export function Navbar() {
               </button>
 
               {featuresOpen && (
-                <div className="absolute left-0 mt-[3px] w-64 rounded-md border border-white/10 bg-[#2f2a36]/95 py-1 shadow-[0_10px_40px_rgba(24,18,38,0.38)] backdrop-blur-xl animate-in fade-in slide-in-from-top-1 duration-150 overflow-hidden">
+                <div className="absolute left-0 mt-[3px] w-64 rounded-md border border-white/10 bg-brand-chrome-graphite/95 py-1 shadow-[0_10px_40px_rgba(10,10,10,0.32)] backdrop-blur-xl animate-in fade-in slide-in-from-top-1 duration-150 overflow-hidden">
                   {[
                     {
                       href: "/features/inventory-control",
@@ -192,7 +192,7 @@ export function Navbar() {
             </Link>
             <Link
               href="/codigo-de-barras-gratis"
-              className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors text-purple-300"
+              className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors text-violet-300"
             >
               {t.freeBarcode}
             </Link>

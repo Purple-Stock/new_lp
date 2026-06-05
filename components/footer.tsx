@@ -77,12 +77,10 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-slate-200 bg-[radial-gradient(circle_at_20%_60%,rgba(129,117,224,0.12),transparent_45%),radial-gradient(circle_at_80%_100%,rgba(221,171,255,0.15),transparent_52%),linear-gradient(180deg,#fcfcfd_0%,#f6f2ea_100%)] text-slate-800">
-      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff08%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-60" />
-
+    <footer className="relative overflow-hidden border-t border-brand-border-soft bg-transparent text-brand-ink">
       <div className="relative mx-auto max-w-[1180px] px-4 py-16 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-2xl border border-slate-200/60 bg-white/80 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.15),0_10px_40px_-20px_rgba(0,0,0,0.08)] backdrop-blur-xl">
-          <div className="flex items-center justify-between border-b border-white/60 bg-gradient-to-r from-slate-50/95 via-white/90 to-purple-50/80 px-4 py-2.5 sm:px-5 shadow-[inset_0_-1px_0_rgba(255,255,255,0.8)]">
+        <div className="ps-panel overflow-hidden">
+          <div className="ps-panel-chrome flex items-center justify-between px-4 py-2.5 sm:px-5">
             <div className="flex items-center gap-[6px]" aria-hidden="true">
               <span className="h-[12px] w-[12px] rounded-full bg-[#e86a63] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
               <span className="h-[12px] w-[12px] rounded-full bg-[#e9b54c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
@@ -90,7 +88,7 @@ export function Footer() {
             </div>
 
             <div className="flex items-center gap-2">
-              <div className="flex h-4 w-4 items-center justify-center rounded bg-gradient-to-br from-purple-500 to-purple-600 shadow-sm">
+              <div className="flex h-4 w-4 items-center justify-center rounded bg-brand-ui-primary shadow-sm">
                 <Box className="h-2.5 w-2.5 text-white" strokeWidth={3} />
               </div>
               <span className="text-[12px] font-semibold tracking-[0.08em] text-slate-600">
@@ -123,7 +121,7 @@ export function Footer() {
                 <Link href="/" className="inline-block group">
                   <div className="flex items-center gap-3">
                     <div className="relative">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-700 shadow-sm transition-transform duration-200 group-hover:scale-[1.03]">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-ui-primary shadow-sm transition-transform duration-200 group-hover:scale-[1.03]">
                         <Sparkles className="h-5 w-5 text-white" />
                       </div>
                       <div className="absolute -right-1 -top-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-emerald-500 animate-pulse" />
@@ -244,7 +242,7 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-xl border border-purple-200/60 bg-gradient-to-r from-purple-50/90 via-white to-purple-50/90 p-6 sm:p-8">
+            <div className="ps-callout relative overflow-hidden p-6 sm:p-8">
               <div className="absolute right-6 top-6 hidden sm:block">
                 <div className="flex items-center gap-1.5 rounded-full border border-purple-200 bg-white/80 px-3 py-1 text-[10px] font-medium tracking-[0.06em] text-purple-700">
                   <div className="h-1.5 w-1.5 rounded-full bg-purple-500 animate-pulse" />
@@ -274,10 +272,7 @@ export function Footer() {
               </div>
 
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <Button
-                  asChild
-                  className="rounded-lg bg-violet-700 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-violet-800"
-                >
+                <Button asChild className="ps-btn-primary px-6 py-3 text-sm">
                   <Link
                     href="https://www.youtube.com/watch?v=fD4amz78t8c"
                     target="_blank"
@@ -315,7 +310,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between border-t border-slate-200/60 bg-gradient-to-t from-slate-50/90 to-white/70 px-4 py-2.5 sm:px-5">
+          <div className="ps-panel-chrome flex items-center justify-between border-t border-brand-border-soft px-4 py-2.5 sm:px-5">
             <div className="flex items-center gap-3">
               <Sparkles className="h-3.5 w-3.5 text-violet-500" />
               <span className="text-[11px] font-medium tracking-[0.04em] text-slate-600">

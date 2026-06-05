@@ -281,7 +281,11 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),linear-gradient(180deg,#f8f6ff,#f3ede7)]">
+    <div className="ps-landing-canvas relative min-h-screen overflow-x-hidden">
+      <div className="ps-landing-bg" aria-hidden="true">
+        <div className="ps-landing-bg-glow" />
+        <div className="ps-landing-bg-lines" />
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -292,36 +296,31 @@ export default function PricingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
       <Navbar />
 
-      <section className="relative pt-24 pb-12">
+      <section className="relative z-[1] pt-24 pb-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-white/60 bg-white/80 p-8 text-center shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl md:p-12">
-            <div className="mb-6 inline-flex items-center rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-800">
+          <div className="ps-panel p-8 text-center md:p-12">
+            <div className="ps-badge-violet mb-6 inline-flex items-center px-4 py-2 text-sm">
               <Zap className="mr-2 h-4 w-4" />
               {copy.badge}
             </div>
-            <h1 className="text-5xl font-bold leading-tight md:text-6xl">
-              <span className="bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent">
-                {copy.title}
-              </span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-xl text-gray-600">
+            <h1 className="ps-display text-5xl md:text-6xl">{copy.title}</h1>
+            <p className="ps-lead mx-auto mt-6 max-w-3xl text-xl">
               {copy.subtitle}
             </p>
             <p className="mx-auto mt-4 max-w-3xl text-sm text-gray-500">
               Compare também por cenário em{" "}
               <Link
                 href="/industrias"
-                className="font-semibold text-purple-700 hover:text-purple-800"
+                className="ps-link-editorial font-semibold"
               >
                 soluções por setor
               </Link>{" "}
               e no guia de{" "}
               <Link
                 href="/recursos/controle-de-almoxarifado"
-                className="font-semibold text-purple-700 hover:text-purple-800"
+                className="ps-link-editorial font-semibold"
               >
                 controle de almoxarifado
               </Link>
@@ -331,9 +330,9 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="relative pb-14">
+      <section className="relative z-[1] pb-14">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border-2 border-purple-200 bg-white/90 p-8 shadow-xl backdrop-blur-xl">
+          <div className="ps-panel border-2 border-brand-ui-primary/20 p-8">
             <div className="text-center">
               <h2 className="text-2xl font-bold text-gray-900">
                 {copy.cardTitle}
@@ -350,15 +349,15 @@ export default function PricingPage() {
               </div>
             </div>
 
-            <div className="mt-6 rounded-2xl border border-green-200 bg-green-50/80 p-4">
-              <h3 className="text-sm font-semibold text-green-800">
+            <div className="ps-callout mt-6 p-4">
+              <h3 className="text-sm font-semibold text-brand-link-blue">
                 {copy.guaranteeTitle}
               </h3>
               <div className="mt-3 flex flex-wrap gap-2">
                 {copy.guarantees.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full bg-white px-3 py-1 text-xs font-medium text-green-700 border border-green-200"
+                    className="rounded-full border border-brand-border-soft bg-white px-3 py-1 text-xs font-medium text-brand-ink"
                   >
                     {item}
                   </span>
@@ -373,7 +372,7 @@ export default function PricingPage() {
               <ul className="space-y-3">
                 {copy.included.map((feature) => (
                   <li key={feature} className="flex items-start">
-                    <div className="mr-3 mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-purple-600">
+                    <div className="mr-3 mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-ui-primary">
                       <Check className="h-4 w-4 text-white" />
                     </div>
                     <span className="text-gray-700">{feature}</span>
@@ -396,7 +395,7 @@ export default function PricingPage() {
                   })
                 }
               >
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-purple-700 py-6 text-lg font-semibold text-white hover:from-purple-700 hover:to-purple-800">
+                <Button className="ps-btn-primary w-full py-6 text-lg">
                   {copy.ctaPrimary}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -418,7 +417,7 @@ export default function PricingPage() {
               >
                 <Button
                   variant="outline"
-                  className="w-full border-2 border-purple-300 py-6 text-lg font-semibold text-purple-700 hover:bg-purple-50"
+                  className="ps-btn-outline w-full py-6 text-lg"
                 >
                   <MessageCircle className="mr-2 h-5 w-5" />
                   {copy.ctaSecondary}
@@ -429,7 +428,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="py-14">
+      <section className="relative z-[1] py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
             <h2 className="text-4xl font-bold text-gray-900">
@@ -440,9 +439,9 @@ export default function PricingPage() {
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-white/60 bg-white/80 p-6 text-center shadow-sm backdrop-blur-md">
-              <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
-                <Shield className="h-6 w-6 text-purple-600" />
+            <div className="ps-card p-6 text-center">
+              <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-surface-soft">
+                <Shield className="h-6 w-6 text-brand-ui-primary" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900">
                 {copy.benefits[0].title}
@@ -451,9 +450,9 @@ export default function PricingPage() {
                 {copy.benefits[0].description}
               </p>
             </div>
-            <div className="rounded-2xl border border-white/60 bg-white/80 p-6 text-center shadow-sm backdrop-blur-md">
-              <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
-                <Zap className="h-6 w-6 text-purple-600" />
+            <div className="ps-card p-6 text-center">
+              <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-surface-soft">
+                <Zap className="h-6 w-6 text-brand-ui-primary" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900">
                 {copy.benefits[1].title}
@@ -462,9 +461,9 @@ export default function PricingPage() {
                 {copy.benefits[1].description}
               </p>
             </div>
-            <div className="rounded-2xl border border-white/60 bg-white/80 p-6 text-center shadow-sm backdrop-blur-md">
-              <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
-                <Users className="h-6 w-6 text-purple-600" />
+            <div className="ps-card p-6 text-center">
+              <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-surface-soft">
+                <Users className="h-6 w-6 text-brand-ui-primary" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900">
                 {copy.benefits[2].title}
@@ -477,7 +476,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="py-14">
+      <section className="relative z-[1] py-14">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
             <h2 className="text-4xl font-bold text-gray-900">
@@ -486,10 +485,7 @@ export default function PricingPage() {
           </div>
           <div className="space-y-5">
             {copy.faqs.map((faq) => (
-              <div
-                key={faq.q}
-                className="rounded-xl border border-white/60 bg-white/85 p-6 shadow-sm backdrop-blur-md"
-              >
+              <div key={faq.q} className="ps-card p-6">
                 <h3 className="text-lg font-semibold text-gray-900">{faq.q}</h3>
                 <p className="mt-2 text-gray-600">{faq.a}</p>
               </div>
@@ -498,13 +494,9 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-600 to-blue-600 py-20">
-        <div className="absolute inset-0">
-          <div className="absolute left-20 top-20 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
-          <div className="absolute bottom-20 right-20 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
-        </div>
+      <section className="relative z-[1] overflow-hidden border-t border-brand-border-soft bg-brand-ink py-20">
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-white md:text-5xl">
+          <h2 className="text-4xl font-bold text-white md:text-5xl tracking-tight">
             {copy.finalTitle}
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-xl text-white/90">

@@ -25,10 +25,6 @@ import {
   Clock,
   Zap,
   Play,
-  Palette,
-  Scissors,
-  ShoppingBag,
-  GraduationCap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackSeoCtaClick } from "@/lib/analytics";

@@ -6,6 +6,7 @@ import React, {
   useCallback,
   useLayoutEffect,
   useEffect,
+  useSyncExternalStore,
 } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
@@ -44,7 +45,10 @@ export function DraggableFolder({
 }: DraggableFolderProps) {
   const [position, setPosition] = useState(initialPosition ?? { x: 0, y: 0 });
   const positionRef = useRef(position);
-  positionRef.current = position;
+
+  useEffect(() => {
+    positionRef.current = position;
+  }, [position]);
   const [isDragging, setIsDragging] = useState(false);
   const [internalSelected, setInternalSelected] = useState(false);
   const isSelected =
@@ -58,11 +62,11 @@ export function DraggableFolder({
   } | null>(null);
   const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const actuallyDraggedRef = useRef(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   const storageVersionedKey = storageKey
     ? `folder-${STORAGE_VERSION}-${storageKey}`
@@ -81,7 +85,7 @@ export function DraggableFolder({
     if (saved) {
       try {
         const p = JSON.parse(saved);
-        setPosition(p);
+        queueMicrotask(() => setPosition(p));
         return;
       } catch {
         /* stale */
@@ -94,10 +98,12 @@ export function DraggableFolder({
     const container = getContainer();
     const containerRect = container.getBoundingClientRect();
     const rect = el.getBoundingClientRect();
-    setPosition({
-      x: rect.left - containerRect.left,
-      y: rect.top - containerRect.top,
-    });
+    queueMicrotask(() =>
+      setPosition({
+        x: rect.left - containerRect.left,
+        y: rect.top - containerRect.top,
+      })
+    );
   }, [storageKey, storageVersionedKey, getContainer]);
 
   // --- drag handlers ---

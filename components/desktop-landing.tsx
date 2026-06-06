@@ -29,7 +29,13 @@ import {
 export function DesktopLanding() {
   const { language, setLanguage } = useLanguage();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [usePainCta, setUsePainCta] = useState(false);
+  const [usePainCta] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return new URLSearchParams(window.location.search).get("cta") === "pain";
+  });
 
   useEffect(() => {
     trackSeoLandingView({
@@ -398,30 +404,29 @@ export function DesktopLanding() {
     [language]
   );
 
-  const [sectorIndex, setSectorIndex] = useState(0);
+  const [sectorIndexes, setSectorIndexes] = useState<Record<string, number>>(
+    {}
+  );
+  const sectorIndex = sectorIndexes[language] ?? 0;
 
   useEffect(() => {
     if (rotatingSectors.length === 0) return;
     const id = window.setInterval(() => {
-      setSectorIndex((index) => (index + 1) % rotatingSectors.length);
+      setSectorIndexes((previous) => ({
+        ...previous,
+        [language]:
+          ((((previous[language] ?? 0) + 1) % rotatingSectors.length) +
+            rotatingSectors.length) %
+          rotatingSectors.length,
+      }));
     }, 2800);
     return () => window.clearInterval(id);
-  }, [rotatingSectors]);
-
-  useEffect(() => {
-    setSectorIndex(0);
-  }, [language]);
+  }, [language, rotatingSectors]);
 
   const rotatingSectorLabel = useMemo(() => {
     const sector = rotatingSectors[sectorIndex] ?? "";
     return sector.charAt(0).toUpperCase() + sector.slice(1);
   }, [rotatingSectors, sectorIndex]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const mode = new URLSearchParams(window.location.search).get("cta");
-    setUsePainCta(mode === "pain");
-  }, []);
 
   const primaryHeroCta = useMemo(() => {
     if (language === "pt") {

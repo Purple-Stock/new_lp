@@ -1,18 +1,11 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
-import { translations } from "@/utils/translations";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import {
   Zap,
-  CheckCircle,
-  ArrowRight,
-  TrendingUp,
-  Shield,
-  Clock,
-  Users,
   Play,
   Wrench,
   Settings,
@@ -23,15 +16,12 @@ import {
   FileText,
   Smartphone,
   Building2,
-  Star,
   Cpu,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function ElectricalPage() {
   const { language } = useLanguage();
-  const t = translations[language];
 
   const benefits = [
     {

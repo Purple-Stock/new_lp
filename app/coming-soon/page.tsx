@@ -3,7 +3,6 @@ import {
   ArrowLeft,
   Sparkles,
   Clock,
-  Bell,
   Calendar,
   MessageCircle,
   ArrowRight,

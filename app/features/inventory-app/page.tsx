@@ -14,8 +14,6 @@ import {
   Zap,
   Target,
   Calendar,
-  Package,
-  BarChart3 as Chart,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,14 +1,15 @@
 "use client";
 
 import { FileCode } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 export function ProductDocumentation() {
   const { language } = useLanguage();
-  const [selectedTopicIndex, setSelectedTopicIndex] = useState(0);
+  const [topicIndexes, setTopicIndexes] = useState<Record<string, number>>({});
+  const selectedTopicIndex = topicIndexes[language] ?? 0;
   const [previewOpen, setPreviewOpen] = useState(false);
 
   const documentationSection = useMemo(
@@ -385,10 +386,6 @@ export function ProductDocumentation() {
     [language]
   );
 
-  useEffect(() => {
-    setSelectedTopicIndex(0);
-  }, [language]);
-
   const selectedTopic = documentationSection.topics[selectedTopicIndex];
   const topicImage =
     selectedTopic.id === "doc-acesso" || selectedTopic.id === "doc-access"
@@ -427,7 +424,12 @@ export function ProductDocumentation() {
                 <li key={topic.id}>
                   <button
                     type="button"
-                    onClick={() => setSelectedTopicIndex(index)}
+                    onClick={() =>
+                      setTopicIndexes((previous) => ({
+                        ...previous,
+                        [language]: index,
+                      }))
+                    }
                     className={`block w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${
                       selectedTopicIndex === index
                         ? "bg-violet-100 text-violet-800"

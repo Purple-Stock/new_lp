@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import {
   Check,
   QrCode,
-  Smartphone,
   Scan,
   Shield,
   ArrowRight,

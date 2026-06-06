@@ -821,9 +821,13 @@ export default function CodigoDeBarrasGratis() {
                                     {type.description}
                                   </p>
                                   <p className="text-xs text-gray-500 mt-1">
-                                    {(t.information.formats as any)[
-                                      type.value
-                                    ] || (t.information.formats as any).default}
+                                    {(
+                                      t.information.formats as Record<
+                                        string,
+                                        string
+                                      >
+                                    )[type.value] ||
+                                      t.information.formats.default}
                                   </p>
                                 </div>
                               </div>

@@ -1,7 +1,7 @@
-import nextPlugin from "@next/eslint-plugin-next";
-import tseslint from "typescript-eslint";
+import nextConfig from "eslint-config-next";
+import nextTypeScriptConfig from "eslint-config-next/typescript";
 
-export default tseslint.config(
+export default [
   {
     ignores: [
       ".next/**",
@@ -15,14 +15,13 @@ export default tseslint.config(
       "next-env.d.ts",
     ],
   },
+  ...nextConfig,
+  ...nextTypeScriptConfig,
   {
-    plugins: {
-      "@next/next": nextPlugin,
-    },
     rules: {
-      ...nextPlugin.configs.recommended.rules,
-      ...nextPlugin.configs["core-web-vitals"].rules,
+      "react-hooks/set-state-in-effect": "warn",
+      "react-hooks/refs": "warn",
+      "react-hooks/purity": "warn",
     },
   },
-  ...tseslint.configs.recommended
-);
+];

@@ -33,6 +33,9 @@ jobs:
       - name: Prettier
         run: pnpm run format:check
 
+      - name: Dependency audit
+        run: pnpm run audit:deps
+
       - name: Tests
         run: pnpm run test:ci
 

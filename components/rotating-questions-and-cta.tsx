@@ -31,7 +31,7 @@ export function RotatingQuestionsAndCTA() {
   const questions = ROTATING_QUESTIONS[language];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {

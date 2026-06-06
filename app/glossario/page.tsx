@@ -1021,7 +1021,7 @@ export default function Glossario() {
           {filteredTerms.map((term) => {
             // Find which category this term belongs to
             const termCategory = Object.entries(categorizedTerms).find(
-              ([_, termIds]) => termIds.includes(term.id)
+              ([, termIds]) => termIds.includes(term.id)
             )?.[0];
             const categoryInfo = categories.find(
               (cat) => cat.id === termCategory

@@ -1,18 +1,11 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
-import { translations } from "@/utils/translations";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import {
   Utensils,
-  CheckCircle,
-  ArrowRight,
-  TrendingUp,
-  Shield,
-  Clock,
-  Users,
   Zap,
   Play,
   ChefHat,
@@ -25,14 +18,11 @@ import {
   FileText,
   Smartphone,
   Building2,
-  Star,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function RestaurantesPage() {
   const { language } = useLanguage();
-  const t = translations[language];
 
   const benefits = [
     {

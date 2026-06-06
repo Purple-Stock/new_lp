@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "Sistema de Controle de Estoque: Preço por Time, Teste Grátis e Implantação Rápida",
   description:
-    "Veja o preço do sistema de controle de estoque da Purple Stock: R$ 29,90 por time, 7 dias grátis, sem fidelidade e ativação rápida para PMEs.",
+    "Veja o preço do sistema de controle de estoque da Purple Stock: R$ 59,00 por time, 7 dias grátis, sem fidelidade e ativação rápida para PMEs.",
   alternates: {
     canonical: "https://www.purplestock.com.br/precos",
   },
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title:
       "Sistema de Controle de Estoque: Preço por Time, Teste Grátis e Implantação Rápida",
     description:
-      "Veja o preço do sistema de controle de estoque da Purple Stock: R$ 29,90 por time, 7 dias grátis, sem fidelidade e ativação rápida para PMEs.",
+      "Veja o preço do sistema de controle de estoque da Purple Stock: R$ 59,00 por time, 7 dias grátis, sem fidelidade e ativação rápida para PMEs.",
     url: "/precos",
   },
   twitter: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title:
       "Sistema de Controle de Estoque: Preço por Time, Teste Grátis e Implantação Rápida",
     description:
-      "Veja o preço do sistema de controle de estoque da Purple Stock: R$ 29,90 por time, 7 dias grátis, sem fidelidade e ativação rápida para PMEs.",
+      "Veja o preço do sistema de controle de estoque da Purple Stock: R$ 59,00 por time, 7 dias grátis, sem fidelidade e ativação rápida para PMEs.",
   },
 };
 

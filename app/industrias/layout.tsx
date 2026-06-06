@@ -30,5 +30,13 @@ export default function IndustriasLayout({
 }: {
   children: ReactNode;
 }) {
-  return children;
+  return (
+    <div className="ps-landing-canvas relative min-h-screen overflow-x-hidden">
+      <div className="ps-landing-bg" aria-hidden="true">
+        <div className="ps-landing-bg-glow" />
+        <div className="ps-landing-bg-lines" />
+      </div>
+      <div className="relative z-[1]">{children}</div>
+    </div>
+  );
 }

@@ -2,6 +2,7 @@
 
 import {
   ArrowRight,
+  Box,
   Check,
   MessageCircle,
   Shield,
@@ -11,12 +12,22 @@ import {
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trackSeoCtaClick } from "@/lib/analytics";
 import { buildWhatsAppUrl } from "@/lib/contact";
 
+const MONTHLY_PRICE = 59;
+
+const priceDisplay = {
+  pt: "R$ 59,00",
+  en: "R$ 59.00",
+  fr: "R$ 59,00",
+} as const;
+
 export default function PricingPage() {
   const { language } = useLanguage();
+  const formattedPrice = priceDisplay[language];
 
   const copy = {
     pt: {
@@ -24,7 +35,7 @@ export default function PricingPage() {
       title:
         "Sistema de controle de estoque com preço simples para o time inteiro",
       subtitle:
-        "Veja o preço da Purple Stock para PME: R$ 29,90 por time, 7 dias grátis e implantação rápida para sair da planilha sem travar a operação.",
+        "Veja o preço da Purple Stock para PME: R$ 59,00 por time, 7 dias grátis e implantação rápida para sair da planilha sem travar a operação.",
       priceLabel: "por time / mês",
       ctaPrimary: "Começar teste grátis de 7 dias",
       ctaSecondary: "Tirar dúvidas sobre preço",
@@ -53,7 +64,7 @@ export default function PricingPage() {
         {
           title: "Preço direto",
           description:
-            "R$ 29,90 por time, sem matriz confusa de funcionalidades.",
+            "R$ 59,00 por time, sem matriz confusa de funcionalidades.",
         },
         {
           title: "Ativação rápida",
@@ -70,7 +81,7 @@ export default function PricingPage() {
       faqs: [
         {
           q: "Esse valor é por usuário?",
-          a: "Não. O valor é por time: R$ 29,90 por mês para sua equipe operar no Purple Stock.",
+          a: "Não. O valor é por time: R$ 59,00 por mês para sua equipe operar no Purple Stock.",
         },
         {
           q: "Preciso trocar meu ERP para usar?",
@@ -96,7 +107,7 @@ export default function PricingPage() {
       title:
         "Inventory control software with simple pricing for your whole team",
       subtitle:
-        "See Purple Stock pricing for SMEs: R$ 29.90 per team, 7-day free trial, and fast setup to leave spreadsheets behind.",
+        "See Purple Stock pricing for SMEs: R$ 59.00 per team, 7-day free trial, and fast setup to leave spreadsheets behind.",
       priceLabel: "per team / month",
       ctaPrimary: "Start 7-day free trial",
       ctaSecondary: "Ask about pricing",
@@ -124,7 +135,7 @@ export default function PricingPage() {
       benefits: [
         {
           title: "Straightforward pricing",
-          description: "R$ 29.90 per team, with no confusing feature matrix.",
+          description: "R$ 59.00 per team, with no confusing feature matrix.",
         },
         {
           title: "Fast activation",
@@ -141,7 +152,7 @@ export default function PricingPage() {
       faqs: [
         {
           q: "Is this price per user?",
-          a: "No. The price is per team: R$ 29.90 per month for your team.",
+          a: "No. The price is per team: R$ 59.00 per month for your team.",
         },
         {
           q: "Do I need to replace my ERP?",
@@ -167,7 +178,7 @@ export default function PricingPage() {
       title:
         "Logiciel de gestion de stock avec tarif simple pour toute votre équipe",
       subtitle:
-        "Découvrez le prix de Purple Stock pour PME: R$ 29,90 par équipe, essai gratuit 7 jours et mise en route rapide.",
+        "Découvrez le prix de Purple Stock pour PME: R$ 59,00 par équipe, essai gratuit 7 jours et mise en route rapide.",
       priceLabel: "par équipe / mois",
       ctaPrimary: "Commencer l'essai gratuit",
       ctaSecondary: "Poser une question sur le prix",
@@ -196,7 +207,7 @@ export default function PricingPage() {
         {
           title: "Prix direct",
           description:
-            "R$ 29,90 par équipe, sans matrice de fonctionnalités complexe.",
+            "R$ 59,00 par équipe, sans matrice de fonctionnalités complexe.",
         },
         {
           title: "Activation rapide",
@@ -213,7 +224,7 @@ export default function PricingPage() {
       faqs: [
         {
           q: "Ce prix est-il par utilisateur ?",
-          a: "Non. Le prix est par équipe: R$ 29,90 par mois pour votre équipe.",
+          a: "Non. Le prix est par équipe: R$ 59,00 par mois pour votre équipe.",
         },
         {
           q: "Dois-je remplacer mon ERP ?",
@@ -246,7 +257,7 @@ export default function PricingPage() {
       "Sistema de controle de estoque com inventario, rastreabilidade, QR Code, teste gratis e operacao em tempo real para PMEs.",
     offers: {
       "@type": "Offer",
-      price: "29.90",
+      price: "59.00",
       priceCurrency: "BRL",
       availability: "https://schema.org/InStock",
       url: "https://www.purplestock.com.br/precos",
@@ -298,255 +309,313 @@ export default function PricingPage() {
       />
       <Navbar />
 
-      <section className="relative z-[1] pt-24 pb-12">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="ps-panel p-8 text-center md:p-12">
-            <div className="ps-badge-violet mb-6 inline-flex items-center px-4 py-2 text-sm">
-              <Zap className="mr-2 h-4 w-4" />
-              {copy.badge}
-            </div>
-            <h1 className="ps-display text-5xl md:text-6xl">{copy.title}</h1>
-            <p className="ps-lead mx-auto mt-6 max-w-3xl text-xl">
-              {copy.subtitle}
-            </p>
-            <p className="mx-auto mt-4 max-w-3xl text-sm text-gray-500">
-              Compare também por cenário em{" "}
-              <Link
-                href="/industrias"
-                className="ps-link-editorial font-semibold"
-              >
-                soluções por setor
-              </Link>{" "}
-              e no guia de{" "}
-              <Link
-                href="/recursos/controle-de-almoxarifado"
-                className="ps-link-editorial font-semibold"
-              >
-                controle de almoxarifado
-              </Link>
-              .
-            </p>
-          </div>
-        </div>
-      </section>
+      <main className="relative pb-20">
+        <section className="relative z-[1] pt-24 pb-12">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="ps-panel overflow-hidden">
+              <div className="ps-panel-chrome relative flex items-center justify-between px-4 py-2.5 sm:px-5">
+                <div className="flex items-center gap-[6px]" aria-hidden="true">
+                  <span className="h-[12px] w-[12px] rounded-full bg-[#e86a63] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
+                  <span className="h-[12px] w-[12px] rounded-full bg-[#e9b54c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
+                  <span className="h-[12px] w-[12px] rounded-full bg-[#4ab96a] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
+                </div>
 
-      <section className="relative z-[1] pb-14">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="ps-panel border-2 border-brand-ui-primary/20 p-8">
-            <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900">
-                {copy.cardTitle}
-              </h2>
-              <p className="mt-2 text-gray-600">{copy.cardDescription}</p>
-            </div>
-
-            <div className="mt-8 text-center">
-              <div className="flex items-baseline justify-center gap-2">
-                <span className="text-6xl font-bold text-gray-900">
-                  R$ 29,90
-                </span>
-                <span className="text-lg text-gray-500">{copy.priceLabel}</span>
-              </div>
-            </div>
-
-            <div className="ps-callout mt-6 p-4">
-              <h3 className="text-sm font-semibold text-brand-link-blue">
-                {copy.guaranteeTitle}
-              </h3>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {copy.guarantees.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-brand-border-soft bg-white px-3 py-1 text-xs font-medium text-brand-ink"
-                  >
-                    {item}
+                <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2">
+                  <div className="flex h-4 w-4 items-center justify-center rounded bg-brand-ui-primary shadow-sm">
+                    <Box className="h-2.5 w-2.5 text-white" strokeWidth={3} />
+                  </div>
+                  <span className="text-[12px] font-semibold tracking-wide text-slate-600">
+                    Purple Stock · Preços
                   </span>
-                ))}
+                </div>
+
+                <span className="text-[10px] font-medium text-slate-400">
+                  {language === "pt"
+                    ? "Plano por time"
+                    : language === "fr"
+                      ? "Plan par équipe"
+                      : "Per-team plan"}
+                </span>
+              </div>
+
+              <div className="p-8 text-center md:p-12">
+                <div className="ps-badge-violet mb-6 inline-flex items-center px-4 py-2 text-sm normal-case tracking-normal">
+                  <Zap className="mr-2 h-4 w-4" />
+                  {copy.badge}
+                </div>
+                <h1 className="ps-display text-4xl md:text-5xl lg:text-6xl">
+                  {copy.title}
+                </h1>
+                <p className="ps-lead mx-auto mt-6 max-w-3xl text-xl">
+                  {copy.subtitle}
+                </p>
+                <p className="mx-auto mt-4 max-w-3xl text-sm text-slate-500">
+                  Compare também por cenário em{" "}
+                  <Link
+                    href="/industrias"
+                    className="ps-link-editorial font-semibold"
+                  >
+                    soluções por setor
+                  </Link>{" "}
+                  e no guia de{" "}
+                  <Link
+                    href="/recursos/controle-de-almoxarifado"
+                    className="ps-link-editorial font-semibold"
+                  >
+                    controle de almoxarifado
+                  </Link>
+                  .
+                </p>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="mt-8">
-              <h3 className="mb-4 text-lg font-semibold text-gray-900">
-                {copy.includedTitle}
-              </h3>
-              <ul className="space-y-3">
-                {copy.included.map((feature) => (
-                  <li key={feature} className="flex items-start">
-                    <div className="mr-3 mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-ui-primary">
-                      <Check className="h-4 w-4 text-white" />
-                    </div>
-                    <span className="text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+        <section className="relative z-[1] pb-14">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="ps-panel overflow-hidden border-2 border-brand-ui-primary/20">
+              <div className="ps-panel-chrome flex items-center gap-2 px-4 py-2 sm:px-5">
+                <span className="text-[11px] font-medium text-slate-500">
+                  Purple Stock · Plano único
+                </span>
+              </div>
+
+              <div className="p-8">
+                <div className="text-center">
+                  <h2 className="text-2xl font-bold text-brand-ink">
+                    {copy.cardTitle}
+                  </h2>
+                  <p className="mt-2 text-slate-600">{copy.cardDescription}</p>
+                </div>
+
+                <div className="mt-8 text-center">
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-6xl font-bold text-brand-ui-primary">
+                      {formattedPrice}
+                    </span>
+                    <span className="text-lg text-slate-500">
+                      {copy.priceLabel}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="ps-callout mt-6 p-4">
+                  <h3 className="text-sm font-semibold text-brand-link-blue">
+                    {copy.guaranteeTitle}
+                  </h3>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {copy.guarantees.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-brand-border-soft bg-white px-3 py-1 text-xs font-medium text-brand-ink"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <h3 className="mb-4 text-lg font-semibold text-brand-ink">
+                    {copy.includedTitle}
+                  </h3>
+                  <ul className="space-y-3">
+                    {copy.included.map((feature) => (
+                      <li key={feature} className="flex items-start">
+                        <div className="mr-3 mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-ui-primary">
+                          <Check className="h-4 w-4 text-white" />
+                        </div>
+                        <span className="text-slate-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <Link
+                    href="https://app.purplestock.com.br/"
+                    className="flex-1"
+                    onClick={() =>
+                      trackSeoCtaClick({
+                        cta_name: "pricing_single_plan_primary",
+                        cta_target: "app",
+                        page_section: "pricing_single_card",
+                        price_value: MONTHLY_PRICE,
+                        query_cluster: "pricing",
+                      })
+                    }
+                  >
+                    <Button className="ps-btn-primary w-full py-6 text-lg">
+                      {copy.ctaPrimary}
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                  <Link
+                    href={buildWhatsAppUrl(
+                      `Olá! Quero entender o plano de ${formattedPrice} por time.`
+                    )}
+                    className="flex-1"
+                    onClick={() =>
+                      trackSeoCtaClick({
+                        cta_name: "pricing_single_plan_secondary",
+                        cta_target: "whatsapp",
+                        page_section: "pricing_single_card",
+                        price_value: MONTHLY_PRICE,
+                        query_cluster: "pricing",
+                      })
+                    }
+                  >
+                    <Button
+                      variant="outline"
+                      className="ps-btn-outline w-full py-6 text-lg"
+                    >
+                      <MessageCircle className="mr-2 h-5 w-5" />
+                      {copy.ctaSecondary}
+                    </Button>
+                  </Link>
+                </div>
+              </div>
             </div>
+          </div>
+        </section>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+        <section className="relative z-[1] py-14">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center">
+              <h2 className="ps-display text-3xl md:text-4xl">
+                {copy.benefitsTitle}
+              </h2>
+              <p className="ps-lead mx-auto mt-3 max-w-3xl text-lg">
+                {copy.benefitsSubtitle}
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="ps-card p-6 text-center">
+                <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-surface-soft">
+                  <Shield className="h-6 w-6 text-brand-ui-primary" />
+                </div>
+                <h3 className="text-lg font-semibold text-brand-ink">
+                  {copy.benefits[0].title}
+                </h3>
+                <p className="mt-2 text-slate-600">
+                  {copy.benefits[0].description}
+                </p>
+              </div>
+              <div className="ps-card p-6 text-center">
+                <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-surface-soft">
+                  <Zap className="h-6 w-6 text-brand-ui-primary" />
+                </div>
+                <h3 className="text-lg font-semibold text-brand-ink">
+                  {copy.benefits[1].title}
+                </h3>
+                <p className="mt-2 text-slate-600">
+                  {copy.benefits[1].description}
+                </p>
+              </div>
+              <div className="ps-card p-6 text-center">
+                <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-surface-soft">
+                  <Users className="h-6 w-6 text-brand-ui-primary" />
+                </div>
+                <h3 className="text-lg font-semibold text-brand-ink">
+                  {copy.benefits[2].title}
+                </h3>
+                <p className="mt-2 text-slate-600">
+                  {copy.benefits[2].description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-[1] py-14">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center">
+              <h2 className="ps-display text-3xl md:text-4xl">
+                {copy.faqTitle}
+              </h2>
+            </div>
+            <div className="space-y-5">
+              {copy.faqs.map((faq) => (
+                <div key={faq.q} className="ps-card p-6">
+                  <h3 className="text-lg font-semibold text-brand-ink">
+                    {faq.q}
+                  </h3>
+                  <p className="mt-2 text-slate-600">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden border-t border-brand-violet/15 py-20">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-br from-[#2d2248] via-brand-chrome-graphite to-[#1a2f4f]"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -left-24 top-0 h-80 w-80 rounded-full bg-brand-violet/30 blur-3xl"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-brand-link-blue/25 blur-3xl"
+          />
+
+          <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+            <h2 className="ps-display text-4xl text-white md:text-5xl">
+              {copy.finalTitle}
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-violet-100/90">
+              {copy.finalSubtitle}
+            </p>
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 href="https://app.purplestock.com.br/"
-                className="flex-1"
                 onClick={() =>
                   trackSeoCtaClick({
-                    cta_name: "pricing_single_plan_primary",
+                    cta_name: "pricing_single_bottom_primary",
                     cta_target: "app",
-                    page_section: "pricing_single_card",
-                    price_value: 29.9,
+                    page_section: "pricing_bottom_cta",
+                    price_value: MONTHLY_PRICE,
                     query_cluster: "pricing",
                   })
                 }
               >
-                <Button className="ps-btn-primary w-full py-6 text-lg">
-                  {copy.ctaPrimary}
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                <Button
+                  size="lg"
+                  className="ps-btn-primary px-8 py-4 text-lg shadow-[0_8px_28px_rgba(139,92,246,0.4)]"
+                >
+                  {copy.finalPrimary}
                 </Button>
               </Link>
               <Link
                 href={buildWhatsAppUrl(
-                  "Olá! Quero entender o plano de R$ 29,90 por time."
+                  `Olá! Quero tirar dúvidas sobre o plano de ${formattedPrice} por time.`
                 )}
-                className="flex-1"
                 onClick={() =>
                   trackSeoCtaClick({
-                    cta_name: "pricing_single_plan_secondary",
+                    cta_name: "pricing_single_bottom_secondary",
                     cta_target: "whatsapp",
-                    page_section: "pricing_single_card",
-                    price_value: 29.9,
+                    page_section: "pricing_bottom_cta",
+                    price_value: MONTHLY_PRICE,
                     query_cluster: "pricing",
                   })
                 }
               >
                 <Button
                   variant="outline"
-                  className="ps-btn-outline w-full py-6 text-lg"
+                  size="lg"
+                  className="border border-white/40 bg-white/10 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm hover:border-white/55 hover:bg-white/15"
                 >
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  {copy.ctaSecondary}
+                  {copy.finalSecondary}
                 </Button>
               </Link>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      <section className="relative z-[1] py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <h2 className="text-4xl font-bold text-gray-900">
-              {copy.benefitsTitle}
-            </h2>
-            <p className="mx-auto mt-3 max-w-3xl text-xl text-gray-600">
-              {copy.benefitsSubtitle}
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="ps-card p-6 text-center">
-              <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-surface-soft">
-                <Shield className="h-6 w-6 text-brand-ui-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900">
-                {copy.benefits[0].title}
-              </h3>
-              <p className="mt-2 text-gray-600">
-                {copy.benefits[0].description}
-              </p>
-            </div>
-            <div className="ps-card p-6 text-center">
-              <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-surface-soft">
-                <Zap className="h-6 w-6 text-brand-ui-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900">
-                {copy.benefits[1].title}
-              </h3>
-              <p className="mt-2 text-gray-600">
-                {copy.benefits[1].description}
-              </p>
-            </div>
-            <div className="ps-card p-6 text-center">
-              <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-surface-soft">
-                <Users className="h-6 w-6 text-brand-ui-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900">
-                {copy.benefits[2].title}
-              </h3>
-              <p className="mt-2 text-gray-600">
-                {copy.benefits[2].description}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-[1] py-14">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <h2 className="text-4xl font-bold text-gray-900">
-              {copy.faqTitle}
-            </h2>
-          </div>
-          <div className="space-y-5">
-            {copy.faqs.map((faq) => (
-              <div key={faq.q} className="ps-card p-6">
-                <h3 className="text-lg font-semibold text-gray-900">{faq.q}</h3>
-                <p className="mt-2 text-gray-600">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-[1] overflow-hidden border-t border-brand-border-soft bg-brand-ink py-20">
-        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-white md:text-5xl tracking-tight">
-            {copy.finalTitle}
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-xl text-white/90">
-            {copy.finalSubtitle}
-          </p>
-          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
-              href="https://app.purplestock.com.br/"
-              onClick={() =>
-                trackSeoCtaClick({
-                  cta_name: "pricing_single_bottom_primary",
-                  cta_target: "app",
-                  page_section: "pricing_bottom_cta",
-                  price_value: 29.9,
-                  query_cluster: "pricing",
-                })
-              }
-            >
-              <Button
-                size="lg"
-                className="bg-white px-8 py-4 text-lg font-semibold text-purple-700 hover:bg-gray-100"
-              >
-                {copy.finalPrimary}
-              </Button>
-            </Link>
-            <Link
-              href={buildWhatsAppUrl(
-                "Olá! Quero tirar dúvidas sobre o plano de R$ 29,90 por time."
-              )}
-              onClick={() =>
-                trackSeoCtaClick({
-                  cta_name: "pricing_single_bottom_secondary",
-                  cta_target: "whatsapp",
-                  page_section: "pricing_bottom_cta",
-                  price_value: 29.9,
-                  query_cluster: "pricing",
-                })
-              }
-            >
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-white/30 bg-transparent px-8 py-4 text-lg font-semibold text-white hover:bg-white/10"
-              >
-                {copy.finalSecondary}
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Footer />
     </div>
   );
 }

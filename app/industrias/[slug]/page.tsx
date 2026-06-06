@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
+  Box,
   Check,
   Star,
   Users,
@@ -487,275 +488,287 @@ export default async function IndustryPage({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/30">
+    <>
       <Navbar />
 
-      <div className="pt-20">
-        {/* Enhanced Hero Section */}
-        <div className="relative h-[500px] overflow-hidden">
-          <Image
-            src={industry.image || "/placeholder.svg"}
-            alt={industry.name}
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-
-          {/* Navigation and Content */}
-          <div className="absolute inset-0 flex items-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <Link
-                href="/industrias"
-                className="inline-flex items-center text-white mb-6 hover:text-purple-200 transition-colors duration-200 group"
-              >
-                <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
-                Voltar para Indústrias
-              </Link>
-
-              <div className="max-w-4xl">
-                <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-medium mb-6 border border-white/30">
-                  <Star className="w-4 h-4 mr-2" />
-                  Solução Especializada
+      <main className="relative pt-24 pb-20">
+        <section className="pb-14">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="ps-panel overflow-hidden">
+              <div className="ps-panel-chrome relative flex items-center justify-between px-4 py-2.5 sm:px-5">
+                <div className="flex items-center gap-[6px]" aria-hidden="true">
+                  <span className="h-[12px] w-[12px] rounded-full bg-[#e86a63] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
+                  <span className="h-[12px] w-[12px] rounded-full bg-[#e9b54c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
+                  <span className="h-[12px] w-[12px] rounded-full bg-[#4ab96a] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
                 </div>
 
-                <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                  {industry.name}
-                </h1>
+                <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2">
+                  <div className="flex h-4 w-4 items-center justify-center rounded bg-brand-ui-primary shadow-sm">
+                    <Box className="h-2.5 w-2.5 text-white" strokeWidth={3} />
+                  </div>
+                  <span className="text-[12px] font-semibold tracking-wide text-slate-600">
+                    Purple Stock · {industry.name}
+                  </span>
+                </div>
 
-                <p className="text-xl lg:text-2xl text-white/90 max-w-3xl leading-relaxed">
-                  {industry.description}
-                </p>
+                <span className="text-[10px] font-medium text-slate-400">
+                  Solução especializada
+                </span>
+              </div>
+
+              <div className="relative h-[420px] overflow-hidden">
+                <Image
+                  src={industry.image || "/placeholder.svg"}
+                  alt={industry.name}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/10" />
+
+                <div className="absolute inset-0 flex items-end">
+                  <div className="w-full p-6 md:p-10">
+                    <Link
+                      href="/industrias"
+                      className="group mb-6 inline-flex items-center text-sm font-semibold text-white/90 transition-colors hover:text-white"
+                    >
+                      <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+                      Voltar para Indústrias
+                    </Link>
+
+                    <div className="ps-badge-violet mb-4 inline-flex items-center border-white/20 bg-white/15 px-4 py-2 text-sm normal-case tracking-normal text-white">
+                      <Star className="mr-2 h-4 w-4" />
+                      Solução Especializada
+                    </div>
+
+                    <h1 className="ps-display max-w-4xl text-4xl text-white md:text-5xl lg:text-6xl">
+                      {industry.name}
+                    </h1>
+
+                    <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/90 md:text-xl">
+                      {industry.description}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Enhanced Content Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Benefits Section */}
-            <div className="space-y-8">
-              <div className="text-center lg:text-left">
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  Benefícios para {industry.name}
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Descubra como o Purple Stock pode transformar suas operações e
-                  impulsionar o crescimento do seu negócio.
-                </p>
-              </div>
+        <section className="pb-14">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
+              {/* Benefits Section */}
+              <div className="space-y-8">
+                <div className="text-center lg:text-left">
+                  <h2 className="ps-display mb-4 text-3xl md:text-4xl">
+                    Benefícios para {industry.name}
+                  </h2>
+                  <p className="ps-lead text-lg">
+                    Descubra como o Purple Stock pode transformar suas operações
+                    e impulsionar o crescimento do seu negócio.
+                  </p>
+                </div>
 
-              <div className="space-y-6">
-                {industry.benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start group">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0 mr-4 group-hover:scale-110 transition-transform duration-200">
-                      <Check className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-200">
+                <div className="space-y-4">
+                  {industry.benefits.map((benefit, index) => (
+                    <div
+                      key={index}
+                      className="ps-proof-card flex items-start gap-4 p-4"
+                    >
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-brand-ui-primary">
+                        <Check className="h-5 w-5 text-white" />
+                      </div>
+                      <h3 className="text-base font-semibold text-brand-ink">
                         {benefit}
                       </h3>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Features Section */}
-            <div className="space-y-8">
-              <div className="text-center lg:text-left">
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  Recursos Principais
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Funcionalidades avançadas projetadas especificamente para
-                  atender às necessidades do seu setor.
-                </p>
+                  ))}
+                </div>
               </div>
 
-              <div className="space-y-6">
-                {industry.features.map((feature, index) => (
-                  <div key={index} className="flex items-start group">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0 mr-4 group-hover:scale-110 transition-transform duration-200">
-                      <Star className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-lg text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors duration-200">
+              <div className="space-y-8">
+                <div className="text-center lg:text-left">
+                  <h2 className="ps-display mb-4 text-3xl md:text-4xl">
+                    Recursos Principais
+                  </h2>
+                  <p className="ps-lead text-lg">
+                    Funcionalidades avançadas projetadas especificamente para
+                    atender às necessidades do seu setor.
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  {industry.features.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start gap-4 rounded-lg border border-brand-border-soft bg-brand-surface-soft/50 p-4"
+                    >
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-brand-surface-soft">
+                        <Star className="h-5 w-5 text-brand-ui-primary" />
+                      </div>
+                      <p className="text-base leading-relaxed text-slate-700">
                         {feature}
                       </p>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Enhanced Stats Section */}
-        <div className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+        <section className="pb-14">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-12 text-center">
+              <h2 className="ps-display text-3xl md:text-4xl">
                 Resultados Comprovados
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="ps-lead mx-auto mt-4 max-w-3xl text-lg">
                 Empresas do setor de {industry.name} já estão transformando suas
                 operações com o Purple Stock.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-4 gap-8">
-              <div className="text-center group flex flex-col items-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <TrendingUp className="w-10 h-10 text-purple-600" />
+            <div className="grid gap-6 md:grid-cols-4">
+              {[
+                {
+                  icon: TrendingUp,
+                  value: "40%",
+                  label: "Aumento na Eficiência",
+                },
+                { icon: Shield, value: "99.9%", label: "Precisão no Controle" },
+                { icon: Clock, value: "24/7", label: "Disponibilidade" },
+                { icon: Users, value: "100%", label: "Satisfação" },
+              ].map((stat) => (
+                <div key={stat.label} className="ps-card p-6 text-center">
+                  <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-surface-soft">
+                    <stat.icon className="h-7 w-7 text-brand-ui-primary" />
+                  </div>
+                  <div className="mb-2 text-3xl font-bold text-brand-ui-primary">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-slate-600">{stat.label}</div>
                 </div>
-                <div className="text-3xl font-bold text-purple-600 mb-2">
-                  40%
-                </div>
-                <div className="text-gray-600">Aumento na Eficiência</div>
-              </div>
-
-              <div className="text-center group flex flex-col items-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Shield className="w-10 h-10 text-blue-600" />
-                </div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">
-                  99.9%
-                </div>
-                <div className="text-gray-600">Precisão no Controle</div>
-              </div>
-
-              <div className="text-center group flex flex-col items-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Clock className="w-10 h-10 text-green-600" />
-                </div>
-                <div className="text-3xl font-bold text-green-600 mb-2">
-                  24/7
-                </div>
-                <div className="text-gray-600">Disponibilidade</div>
-              </div>
-
-              <div className="text-center group flex flex-col items-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Users className="w-10 h-10 text-orange-600" />
-                </div>
-                <div className="text-3xl font-bold text-orange-600 mb-2">
-                  100%
-                </div>
-                <div className="text-gray-600">Satisfação</div>
-              </div>
+              ))}
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Enhanced Case Studies Section */}
-        <div className="py-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+        <section className="pb-14">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-12 text-center">
+              <h2 className="ps-display text-3xl md:text-4xl">
                 Casos de Sucesso
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="ps-lead mx-auto mt-4 max-w-3xl text-lg">
                 Empresas do setor de {industry.name} que transformaram suas
                 operações com o Purple Stock.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mr-4">
-                    <Star className="w-8 h-8 text-white" />
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="ps-card p-8">
+                <div className="mb-6 flex items-center">
+                  <div className="mr-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-ui-primary">
+                    <Star className="h-7 w-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900">
+                    <h3 className="text-xl font-bold text-brand-ink">
                       Empresa de {industry.name}
                     </h3>
-                    <p className="text-gray-600">Setor: {industry.name}</p>
+                    <p className="text-slate-600">Setor: {industry.name}</p>
                   </div>
                 </div>
-                <blockquote className="text-lg text-gray-700 mb-6 leading-relaxed">
+                <blockquote className="mb-6 text-lg leading-relaxed text-slate-700">
                   &ldquo;O Purple Stock revolucionou nossa gestão de estoque.
                   Conseguimos reduzir perdas em 30% e aumentar a eficiência
                   operacional significativamente.&rdquo;
                 </blockquote>
-                <div className="flex items-center text-sm text-gray-500">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                <div className="flex items-center text-sm text-slate-500">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-emerald-500" />
                   Cliente desde 2023
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center mr-4">
-                    <TrendingUp className="w-8 h-8 text-white" />
+              <div className="ps-card p-8">
+                <div className="mb-6 flex items-center">
+                  <div className="mr-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-ui-primary">
+                    <TrendingUp className="h-7 w-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900">
+                    <h3 className="text-xl font-bold text-brand-ink">
                       Empresa de {industry.name}
                     </h3>
-                    <p className="text-gray-600">Setor: {industry.name}</p>
+                    <p className="text-slate-600">Setor: {industry.name}</p>
                   </div>
                 </div>
-                <blockquote className="text-lg text-gray-700 mb-6 leading-relaxed">
+                <blockquote className="mb-6 text-lg leading-relaxed text-slate-700">
                   &ldquo;A implementação do Purple Stock foi rápida e os
                   resultados foram imediatos. Nossa equipe adorou a facilidade
                   de uso e a interface intuitiva.&rdquo;
                 </blockquote>
-                <div className="flex items-center text-sm text-gray-500">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                <div className="flex items-center text-sm text-slate-500">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-emerald-500" />
                   Cliente desde 2023
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Enhanced CTA Section */}
-        <div className="py-20 bg-gradient-to-br from-purple-600 to-blue-600 relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-20 left-20 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
-            <div className="absolute bottom-20 right-20 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          </div>
+        <section className="relative overflow-hidden border-t border-brand-violet/15 py-20">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-br from-[#2d2248] via-brand-chrome-graphite to-[#1a2f4f]"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -left-24 top-0 h-80 w-80 rounded-full bg-brand-violet/30 blur-3xl"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-brand-link-blue/25 blur-3xl"
+          />
 
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+          <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+            <h2 className="ps-display text-4xl text-white md:text-5xl">
               Transforme sua gestão de estoque hoje
             </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+            <p className="mx-auto mt-5 max-w-3xl text-lg text-violet-100/90">
               Junte-se a milhares de empresas que já otimizaram suas operações
               com o Purple Stock e descubra como podemos ajudar sua empresa do
               setor de {industry.name}.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* <Link href="/coming-soon"> */}
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
               <Link href="https://app.purplestock.com.br/">
                 <Button
                   size="lg"
-                  className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl"
+                  className="ps-btn-primary px-8 py-4 text-lg shadow-[0_8px_28px_rgba(139,92,246,0.4)]"
                 >
-                  <Zap className="w-5 h-5 mr-2" />
+                  <Zap className="mr-2 h-5 w-5" />
                   Começar Teste Gratuito
                 </Button>
               </Link>
 
               <Link href={getCalendlyUrl()}>
                 <Button
+                  variant="outline"
                   size="lg"
-                  className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl"
+                  className="border border-white/40 bg-white/10 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm hover:border-white/55 hover:bg-white/15"
                 >
-                  <MessageCircle className="w-5 h-5 mr-2" />
+                  <MessageCircle className="mr-2 h-5 w-5" />
                   Agendar Demonstração
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

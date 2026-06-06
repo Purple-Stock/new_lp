@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import {
+  Box,
   Store,
   Factory,
   Truck,
@@ -24,7 +25,6 @@ import {
   Shield,
   Clock,
   Zap,
-  Play,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackSeoCtaClick } from "@/lib/analytics";
@@ -342,332 +342,342 @@ export default function IndustriasPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(129,117,224,0.15),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(221,171,255,0.22),transparent_52%),radial-gradient(circle_at_50%_80%,rgba(147,112,219,0.1),transparent_40%),linear-gradient(180deg,#f8f6ff,#f3ede7)]">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(industriesSchema) }}
       />
-      <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M0 19h20M19 0v20%27 stroke=%27%239c88ff12%27 stroke-width=%271%27/%3E%3C/svg%3E')] opacity-70" />
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 -left-1/2 h-full w-full rounded-full bg-gradient-to-br from-purple-200/20 to-transparent blur-3xl" />
-        <div className="absolute -bottom-1/2 -right-1/2 h-full w-full rounded-full bg-gradient-to-tl from-pink-200/15 to-transparent blur-3xl" />
-      </div>
       <Navbar />
 
-      {/* Hero Section */}
-      <div className="relative pt-24 pb-16">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mx-auto max-w-5xl rounded-3xl border border-white/60 bg-white/80 p-8 shadow-[0_25px_100px_-30px_rgba(59,7,100,0.35),0_10px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl md:p-12">
-            <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-8">
-              <Star className="w-4 h-4 mr-2" />
-              {language === "pt"
-                ? "Soluções por Setor"
-                : language === "en"
-                  ? "Industry Solutions"
-                  : "Solutions par Secteur"}
+      <main className="relative pt-24 pb-20">
+        <section className="pb-14">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="ps-panel overflow-hidden">
+              <div className="ps-panel-chrome relative flex items-center justify-between px-4 py-2.5 sm:px-5">
+                <div className="flex items-center gap-[6px]" aria-hidden="true">
+                  <span className="h-[12px] w-[12px] rounded-full bg-[#e86a63] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
+                  <span className="h-[12px] w-[12px] rounded-full bg-[#e9b54c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
+                  <span className="h-[12px] w-[12px] rounded-full bg-[#4ab96a] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.12)]" />
+                </div>
+
+                <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2">
+                  <div className="flex h-4 w-4 items-center justify-center rounded bg-brand-ui-primary shadow-sm">
+                    <Box className="h-2.5 w-2.5 text-white" strokeWidth={3} />
+                  </div>
+                  <span className="text-[12px] font-semibold tracking-wide text-slate-600">
+                    Purple Stock · Setores
+                  </span>
+                </div>
+
+                <span className="text-[10px] font-medium text-slate-400">
+                  {language === "pt"
+                    ? "Soluções por setor"
+                    : language === "fr"
+                      ? "Solutions par secteur"
+                      : "Industry solutions"}
+                </span>
+              </div>
+
+              <div className="p-8 text-center md:p-12">
+                <div className="ps-badge-violet mb-6 inline-flex items-center px-4 py-2 text-sm normal-case tracking-normal">
+                  <Star className="mr-2 h-4 w-4" />
+                  {language === "pt"
+                    ? "Soluções por Setor"
+                    : language === "en"
+                      ? "Industry Solutions"
+                      : "Solutions par Secteur"}
+                </div>
+
+                <h1 className="ps-display text-4xl md:text-5xl lg:text-6xl">
+                  {t.industries.title}
+                </h1>
+
+                <p className="ps-lead mx-auto mt-6 max-w-4xl text-xl lg:text-2xl">
+                  {t.industries.description}
+                </p>
+
+                <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                  <Link
+                    href="https://app.purplestock.com.br/"
+                    onClick={() =>
+                      trackSeoCtaClick({
+                        cta_name: "industries_hero_primary",
+                        cta_target: "app",
+                        page_section: "industries_hero",
+                        query_cluster: "controle-de-estoque-por-setor",
+                      })
+                    }
+                  >
+                    <Button className="ps-btn-primary">
+                      Começar teste de 7 dias
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                  <Link
+                    href="/precos"
+                    onClick={() =>
+                      trackSeoCtaClick({
+                        cta_name: "industries_hero_secondary",
+                        cta_target: "internal_pricing",
+                        page_section: "industries_hero",
+                        query_cluster: "controle-de-estoque-por-setor",
+                      })
+                    }
+                  >
+                    <Button variant="outline" className="ps-btn-outline">
+                      Ver preço por time
+                    </Button>
+                  </Link>
+                </div>
+
+                <Link
+                  href="/recursos/controle-de-almoxarifado"
+                  onClick={() =>
+                    trackSeoCtaClick({
+                      cta_name: "industries_hero_supporting_link",
+                      cta_target: "internal_resource",
+                      page_section: "industries_hero",
+                      query_cluster: "controle-de-estoque-por-setor",
+                    })
+                  }
+                  className="ps-link-editorial mt-4 inline-block text-sm font-semibold"
+                >
+                  Ver guia de controle de almoxarifado
+                </Link>
+
+                <div className="mx-auto mt-10 grid max-w-4xl gap-6 md:grid-cols-3">
+                  <div className="ps-card p-6">
+                    <div className="mb-2 text-3xl font-bold text-brand-ui-primary">
+                      12
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      {language === "pt"
+                        ? "Setores Principais"
+                        : language === "en"
+                          ? "Main Industries"
+                          : "Secteurs Principaux"}
+                    </div>
+                  </div>
+                  <div className="ps-card p-6">
+                    <div className="mb-2 text-3xl font-bold text-brand-ui-primary">
+                      99.9%
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      {language === "pt"
+                        ? "Uptime"
+                        : language === "en"
+                          ? "Uptime"
+                          : "Disponibilité"}
+                    </div>
+                  </div>
+                  <div className="ps-card p-6">
+                    <div className="mb-2 text-3xl font-bold text-brand-ui-primary">
+                      24/7
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      {language === "pt"
+                        ? "Suporte"
+                        : language === "en"
+                          ? "Support"
+                          : "Support"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="pb-14">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-12 text-center">
+              <h2 className="ps-display text-3xl md:text-4xl">
+                {language === "pt"
+                  ? "Soluções Especializadas por Setor"
+                  : language === "en"
+                    ? "Specialized Solutions by Industry"
+                    : "Solutions Spécialisées par Secteur"}
+              </h2>
+              <p className="ps-lead mx-auto mt-4 max-w-3xl text-lg">
+                {language === "pt"
+                  ? "Cada setor tem necessidades únicas. Descubra como o Purple Stock se adapta ao seu negócio."
+                  : language === "en"
+                    ? "Each industry has unique needs. Discover how Purple Stock adapts to your business."
+                    : "Chaque secteur a des besoins uniques. Découvrez comment Purple Stock s'adapte à votre entreprise."}
+              </p>
             </div>
 
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent">
-                {t.industries.title}
-              </span>
-            </h1>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {industries.map((industry, index) => (
+                <Link
+                  key={index}
+                  href={`/industrias/${industry.id}`}
+                  className="ps-card group overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={industry.image || "/placeholder.svg"}
+                      alt={t.industries.industries[industry.translationKey]}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
-            <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
-              {t.industries.description}
+                    <div className="absolute right-4 top-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-ui-primary shadow-sm">
+                        <industry.icon className="h-6 w-6 text-white" />
+                      </div>
+                    </div>
+
+                    <div className="absolute bottom-4 left-4">
+                      <div className="rounded-lg border border-brand-border-soft bg-white/95 px-3 py-2 shadow-sm backdrop-blur-sm">
+                        <div className="text-lg font-bold text-brand-ink">
+                          {industry.stats.value}
+                        </div>
+                        <div className="text-xs text-slate-600">
+                          {industry.stats.label}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="mb-3 text-xl font-semibold text-brand-ink transition-colors duration-200 group-hover:text-brand-ui-primary">
+                      {t.industries.industries[industry.translationKey]}
+                    </h3>
+
+                    <p className="mb-4 text-sm leading-relaxed text-slate-600">
+                      {industry.description}
+                    </p>
+
+                    <div className="mb-4 space-y-2">
+                      {industry.benefits
+                        .slice(0, 2)
+                        .map((benefit, benefitIndex) => (
+                          <div
+                            key={benefitIndex}
+                            className="flex items-center text-sm text-slate-600"
+                          >
+                            <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-brand-ui-primary" />
+                            <span>{benefit}</span>
+                          </div>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-brand-ui-primary">
+                        {language === "pt"
+                          ? `Ver solução para ${t.industries.industries[industry.translationKey]}`
+                          : language === "en"
+                            ? `View solution for ${t.industries.industries[industry.translationKey]}`
+                            : `Voir la solution pour ${t.industries.industries[industry.translationKey]}`}
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-brand-ui-primary transition-transform duration-200 group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="pb-14">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-12 text-center">
+              <h2 className="ps-display text-3xl md:text-4xl">
+                {language === "pt"
+                  ? "Benefícios para Todos os Setores"
+                  : language === "en"
+                    ? "Benefits for All Industries"
+                    : "Avantages pour Tous les Secteurs"}
+              </h2>
+              <p className="ps-lead mx-auto mt-4 max-w-3xl text-lg">
+                {language === "pt"
+                  ? "Independente do seu setor, o Purple Stock oferece benefícios universais que transformam sua gestão de inventário."
+                  : language === "en"
+                    ? "Regardless of your industry, Purple Stock offers universal benefits that transform your inventory management."
+                    : "Quel que soit votre secteur, Purple Stock offre des avantages universels qui transforment votre gestion des stocks."}
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {globalBenefits.map((benefit, index) => (
+                <div key={index} className="ps-card p-6 text-center">
+                  <div className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-surface-soft">
+                    <benefit.icon className="h-8 w-8 text-brand-ui-primary" />
+                  </div>
+                  <h3 className="mb-3 text-lg font-semibold text-brand-ink">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-slate-600">
+                    {benefit.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden border-t border-brand-violet/15 py-20">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-br from-[#2d2248] via-brand-chrome-graphite to-[#1a2f4f]"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -left-24 top-0 h-80 w-80 rounded-full bg-brand-violet/30 blur-3xl"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-brand-link-blue/25 blur-3xl"
+          />
+
+          <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+            <h2 className="ps-display text-4xl text-white md:text-5xl">
+              {language === "pt"
+                ? "Pronto para transformar seu setor?"
+                : language === "en"
+                  ? "Ready to transform your industry?"
+                  : "Prêt à transformer votre secteur ?"}
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-violet-100/90">
+              {language === "pt"
+                ? "Junte-se a centenas de empresas que já otimizaram suas operações com soluções específicas para seu setor."
+                : language === "en"
+                  ? "Join hundreds of companies that have already optimized their operations with industry-specific solutions."
+                  : "Rejoignez des centaines d'entreprises qui ont déjà optimisé leurs opérations avec des solutions spécifiques à leur secteur."}
             </p>
 
-            <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="https://app.purplestock.com.br/"
-                onClick={() =>
-                  trackSeoCtaClick({
-                    cta_name: "industries_hero_primary",
-                    cta_target: "app",
-                    page_section: "industries_hero",
-                    query_cluster: "controle-de-estoque-por-setor",
-                  })
-                }
-              >
-                <Button className="bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800">
-                  Começar teste de 7 dias
-                  <ArrowRight className="ml-2 h-4 w-4" />
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+              <Link href="https://app.purplestock.com.br/">
+                <Button
+                  size="lg"
+                  className="ps-btn-primary px-8 py-4 text-lg shadow-[0_8px_28px_rgba(139,92,246,0.4)]"
+                >
+                  <Zap className="mr-2 h-5 w-5" />
+                  {language === "pt"
+                    ? "Começar Teste Gratuito"
+                    : language === "en"
+                      ? "Start Free Trial"
+                      : "Commencer l'Essai Gratuit"}
                 </Button>
               </Link>
-              <Link
-                href="/precos"
-                onClick={() =>
-                  trackSeoCtaClick({
-                    cta_name: "industries_hero_secondary",
-                    cta_target: "internal_pricing",
-                    page_section: "industries_hero",
-                    query_cluster: "controle-de-estoque-por-setor",
-                  })
-                }
-              >
+              <Link href="/precos">
                 <Button
                   variant="outline"
-                  className="border-2 border-purple-300 text-purple-700 hover:bg-purple-50"
+                  size="lg"
+                  className="border border-white/40 bg-white/10 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm hover:border-white/55 hover:bg-white/15"
                 >
                   Ver preço por time
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link
-                href="/recursos/controle-de-almoxarifado"
-                onClick={() =>
-                  trackSeoCtaClick({
-                    cta_name: "industries_hero_supporting_link",
-                    cta_target: "internal_resource",
-                    page_section: "industries_hero",
-                    query_cluster: "controle-de-estoque-por-setor",
-                  })
-                }
-                className="text-sm font-semibold text-purple-700 underline underline-offset-4 hover:text-purple-800"
-              >
-                Ver guia de controle de almoxarifado
-              </Link>
-            </div>
-
-            {/* Stats Overview */}
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="rounded-xl border border-white/60 bg-white/90 p-6 shadow-lg backdrop-blur-md">
-                <div className="text-3xl font-bold text-blue-600 mb-2">12</div>
-                <div className="text-sm text-gray-600">
-                  {language === "pt"
-                    ? "Setores Principais"
-                    : language === "en"
-                      ? "Main Industries"
-                      : "Secteurs Principaux"}
-                </div>
-              </div>
-              <div className="rounded-xl border border-white/60 bg-white/90 p-6 shadow-lg backdrop-blur-md">
-                <div className="text-3xl font-bold text-green-600 mb-2">
-                  99.9%
-                </div>
-                <div className="text-sm text-gray-600">
-                  {language === "pt"
-                    ? "Uptime"
-                    : language === "en"
-                      ? "Uptime"
-                      : "Disponibilité"}
-                </div>
-              </div>
-              <div className="rounded-xl border border-white/60 bg-white/90 p-6 shadow-lg backdrop-blur-md">
-                <div className="text-3xl font-bold text-orange-600 mb-2">
-                  24/7
-                </div>
-                <div className="text-sm text-gray-600">
-                  {language === "pt"
-                    ? "Suporte"
-                    : language === "en"
-                      ? "Support"
-                      : "Support"}
-                </div>
-              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Industries Grid */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            {language === "pt"
-              ? "Soluções Especializadas por Setor"
-              : language === "en"
-                ? "Specialized Solutions by Industry"
-                : "Solutions Spécialisées par Secteur"}
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === "pt"
-              ? "Cada setor tem necessidades únicas. Descubra como o Purple Stock se adapta ao seu negócio."
-              : language === "en"
-                ? "Each industry has unique needs. Discover how Purple Stock adapts to your business."
-                : "Chaque secteur a des besoins uniques. Découvrez comment Purple Stock s'adapte à votre entreprise."}
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industries.map((industry, index) => (
-            <Link
-              key={index}
-              href={`/industrias/${industry.id}`}
-              className="group relative rounded-2xl border border-white/70 bg-white/90 shadow-lg backdrop-blur-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
-            >
-              {/* Industry Image */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={industry.image || "/placeholder.svg"}
-                  alt={t.industries.industries[industry.translationKey]}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-
-                {/* Industry Icon */}
-                <div className="absolute top-4 right-4">
-                  <div
-                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center shadow-lg`}
-                  >
-                    <industry.icon className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-
-                {/* Stats Badge */}
-                <div className="absolute bottom-4 left-4">
-                  <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg">
-                    <div className="text-lg font-bold text-gray-900">
-                      {industry.stats.value}
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      {industry.stats.label}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Industry Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-200">
-                  {t.industries.industries[industry.translationKey]}
-                </h3>
-
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  {industry.description}
-                </p>
-
-                {/* Benefits Preview */}
-                <div className="space-y-2 mb-4">
-                  {industry.benefits
-                    .slice(0, 2)
-                    .map((benefit, benefitIndex) => (
-                      <div
-                        key={benefitIndex}
-                        className="flex items-center text-sm text-gray-600"
-                      >
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                        <span>{benefit}</span>
-                      </div>
-                    ))}
-                </div>
-
-                {/* CTA */}
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-purple-600 font-medium group-hover:text-purple-700 transition-colors duration-200">
-                    {language === "pt"
-                      ? `Ver solução para ${t.industries.industries[industry.translationKey]}`
-                      : language === "en"
-                        ? `View solution for ${t.industries.industries[industry.translationKey]}`
-                        : `Voir la solution pour ${t.industries.industries[industry.translationKey]}`}
-                  </span>
-                  <ArrowRight className="w-4 h-4 text-purple-600 group-hover:translate-x-1 transition-transform duration-200" />
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Global Benefits Section */}
-      <div className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              {language === "pt"
-                ? "Benefícios para Todos os Setores"
-                : language === "en"
-                  ? "Benefits for All Industries"
-                  : "Avantages pour Tous les Secteurs"}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {language === "pt"
-                ? "Independente do seu setor, o Purple Stock oferece benefícios universais que transformam sua gestão de inventário."
-                : language === "en"
-                  ? "Regardless of your industry, Purple Stock offers universal benefits that transform your inventory management."
-                  : "Quel que soit votre secteur, Purple Stock offre des avantages universels qui transforment votre gestion des stocks."}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {globalBenefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="group rounded-2xl border border-white/60 bg-white/80 p-6 text-center shadow-sm backdrop-blur-md"
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <benefit.icon className="w-8 h-8 text-purple-600" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="py-20 bg-gradient-to-br from-purple-600 to-blue-600 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            {language === "pt"
-              ? "Pronto para transformar seu setor?"
-              : language === "en"
-                ? "Ready to transform your industry?"
-                : "Prêt à transformer votre secteur ?"}
-          </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            {language === "pt"
-              ? "Junte-se a centenas de empresas que já otimizaram suas operações com soluções específicas para seu setor."
-              : language === "en"
-                ? "Join hundreds of companies that have already optimized their operations with industry-specific solutions."
-                : "Rejoignez des centaines d'entreprises qui ont déjà optimisé leurs opérations avec des solutions spécifiques à leur secteur."}
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* <Link href="/coming-soon"> */}
-            <Link href="https://app.purplestock.com.br/">
-              <Button
-                size="lg"
-                className="bg-white hover:bg-gray-100 text-purple-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl"
-              >
-                <Zap className="w-5 h-5 mr-2" />
-                {language === "pt"
-                  ? "Começar Teste Gratuito"
-                  : language === "en"
-                    ? "Start Free Trial"
-                    : "Commencer l'Essai Gratuit"}
-              </Button>
-            </Link>
-
-            {/* <Link href="/coming-soon"> */}
-            <Link href="https://app.purplestock.com.br/">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl"
-              >
-                <Play className="w-5 h-5 mr-2" />
-                {language === "pt"
-                  ? "Ver Demonstração"
-                  : language === "en"
-                    ? "Watch Demo"
-                    : "Voir la Démo"}
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
+        </section>
+      </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

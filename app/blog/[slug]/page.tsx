@@ -149,16 +149,16 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <BlogLayout showReadingProgress>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
-          <article className="flex flex-col">
-            <div className="ps-panel overflow-hidden">
+        <div className="grid min-w-0 gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
+          <article className="flex min-w-0 w-full flex-col">
+            <div className="ps-panel w-full min-w-0 overflow-hidden">
               <div className="ps-panel-chrome flex items-center gap-2 px-4 py-2 sm:px-5">
                 <span className="text-[11px] font-medium text-slate-500">
                   Purple Stock · Editorial
                 </span>
               </div>
 
-              <div className="p-6 md:p-10">
+              <div className="p-4 sm:p-6 md:p-10">
                 <Link
                   href="/blog"
                   className="ps-link-editorial mb-8 inline-flex items-center gap-2 text-sm font-semibold"
@@ -183,10 +183,10 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <span>{post.meta.author}</span>
                   </div>
 
-                  <h1 className="ps-display text-3xl md:text-4xl lg:text-5xl">
+                  <h1 className="ps-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
                     {post.meta.title}
                   </h1>
-                  <p className="ps-lead mt-4 max-w-3xl text-lg">
+                  <p className="ps-lead mt-4 max-w-3xl text-base sm:text-lg">
                     {post.meta.excerpt}
                   </p>
                   <BlogPostCta slug={post.meta.slug} />
@@ -233,7 +233,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <BlogRelatedPosts slug={slug} />
           </article>
 
-          <div className="hidden lg:block lg:sticky lg:top-28">
+          <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
             <BlogSidebar excludeSlug={slug} />
           </div>
         </div>

@@ -51,8 +51,8 @@ export default async function BlogPage({ searchParams }: PageProps) {
           description="Guias curtos, linguagem direta e foco em resultado para facilitar a leitura do cliente e apoiar melhorias de operação."
         />
 
-        <div className="grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
-          <div className="flex flex-col gap-8">
+        <div className="grid min-w-0 gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
+          <div className="flex min-w-0 flex-col gap-8">
             {featured && <BlogCard post={featured} featured />}
 
             {gridPosts.length > 0 && (
@@ -106,7 +106,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
             )}
           </div>
 
-          <div className="hidden lg:block lg:sticky lg:top-28">
+          <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
             <BlogSidebar />
           </div>
         </div>

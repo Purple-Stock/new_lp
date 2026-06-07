@@ -309,6 +309,9 @@ h6 {
   font-family: "Merriweather", Georgia, serif;
   font-size: 1.12rem;
   line-height: 1.86;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .blog-content > * {
@@ -517,34 +520,71 @@ h6 {
 
 @media (max-width: 768px) {
   .blog-content {
-    font-size: 1.03rem;
+    font-size: 1rem;
     line-height: 1.78;
   }
 
+  .blog-content > * {
+    max-width: 100%;
+  }
+
   .blog-content h2 {
-    margin-top: 2.7rem;
-    margin-bottom: 1rem;
-    font-size: 1.85rem;
+    margin-top: 2.2rem;
+    margin-bottom: 0.9rem;
+    font-size: 1.45rem;
   }
 
   .blog-content h3 {
-    margin-top: 2rem;
-    margin-bottom: 0.8rem;
-    font-size: 1.42rem;
+    margin-top: 1.8rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+  }
+
+  .blog-content h4 {
+    margin-top: 1.4rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.1rem;
   }
 
   .blog-content ul,
   .blog-content ol {
     margin: 1rem 0 1.4rem;
-    padding-left: 1.35rem;
+    padding-left: 1.25rem;
   }
 
   .blog-content pre {
-    padding: 1rem;
-    font-size: 0.82rem;
+    padding: 0.9rem;
+    font-size: 0.8rem;
+    max-width: 100%;
   }
 
   .blog-content blockquote {
-    padding: 1.2rem 1.2rem;
+    padding: 1rem;
+    margin: 1.6rem 0;
+  }
+
+  .blog-content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.88rem;
+  }
+
+  .blog-content thead,
+  .blog-content tbody {
+    display: table;
+    width: 100%;
+  }
+
+  .blog-content th,
+  .blog-content td {
+    padding: 0.6rem 0.7rem;
+    white-space: nowrap;
+  }
+
+  .blog-content img {
+    margin: 1.4rem auto;
+    border-radius: 10px;
   }
 }

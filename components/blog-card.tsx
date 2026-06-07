@@ -23,11 +23,11 @@ export function BlogCard({
 
   if (featured) {
     return (
-      <article className="ps-card group overflow-hidden transition-transform duration-300 hover:-translate-y-0.5">
-        <div className="grid gap-0 md:grid-cols-[1.1fr_1fr]">
+      <article className="ps-card group min-w-0 overflow-hidden transition-transform duration-300 hover:-translate-y-0.5">
+        <div className="grid min-w-0 gap-0 lg:grid-cols-[1.1fr_1fr]">
           <Link
             href={`/blog/${post.slug}`}
-            className="relative block min-h-64 overflow-hidden md:min-h-full"
+            className="relative block min-h-48 overflow-hidden sm:min-h-56 lg:min-h-full"
           >
             <Image
               src={cover}
@@ -38,7 +38,7 @@ export function BlogCard({
             />
           </Link>
 
-          <div className="flex flex-col justify-center p-6 md:p-10">
+          <div className="flex min-w-0 flex-col justify-center p-4 sm:p-6 lg:p-10">
             <div className="mb-3 flex flex-wrap items-center gap-3 text-sm text-slate-500">
               <span className="ps-badge-violet px-2.5 py-0.5 normal-case tracking-normal">
                 Em destaque
@@ -52,7 +52,7 @@ export function BlogCard({
               </span>
             </div>
 
-            <h2 className="ps-display text-2xl md:text-3xl lg:text-4xl">
+            <h2 className="ps-display text-xl sm:text-2xl lg:text-3xl xl:text-4xl">
               <Link
                 href={`/blog/${post.slug}`}
                 className="transition-colors hover:text-brand-ui-primary"
@@ -93,7 +93,7 @@ export function BlogCard({
   }
 
   return (
-    <article className="ps-card group flex flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-0.5">
+    <article className="ps-card group flex min-w-0 flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-0.5">
       <Link
         href={`/blog/${post.slug}`}
         className="relative block aspect-[16/10] overflow-hidden"

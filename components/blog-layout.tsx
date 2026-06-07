@@ -21,7 +21,9 @@ export function BlogLayout({
       {showReadingProgress && <BlogReadingProgress />}
       <Navbar />
 
-      <main className="relative z-[1] pt-24 pb-20">{children}</main>
+      <main className="relative z-[1] pt-14 pb-16 sm:pt-20 sm:pb-20">
+        {children}
+      </main>
 
       <div className="relative z-[1]">
         <Footer />

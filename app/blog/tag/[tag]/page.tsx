@@ -81,14 +81,14 @@ export default async function BlogTagPage({ params }: PageProps) {
           }
         />
 
-        <div className="grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
-          <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid min-w-0 gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
+          <div className="grid min-w-0 gap-6 sm:grid-cols-2">
             {posts.map((post) => (
               <BlogCard key={post.slug} post={post} />
             ))}
           </div>
 
-          <div className="hidden lg:block lg:sticky lg:top-28">
+          <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
             <BlogSidebar />
           </div>
         </div>

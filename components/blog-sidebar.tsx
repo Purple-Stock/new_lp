@@ -24,8 +24,8 @@ export async function BlogSidebar({ excludeSlug }: { excludeSlug?: string }) {
   const latest = filtered.slice(0, 4);
 
   return (
-    <aside className="flex flex-col gap-8">
-      <div className="ps-panel border-2 border-brand-ui-primary/20 p-6">
+    <aside className="flex min-w-0 flex-col gap-6 sm:gap-8">
+      <div className="ps-panel border-2 border-brand-ui-primary/20 p-4 sm:p-6">
         <h3 className="ps-display text-lg">Quer testar na prática?</h3>
         <p className="ps-lead mt-2 text-sm">
           Cadastre-se gratuitamente e comece a controlar seu estoque com QR Code
@@ -41,7 +41,7 @@ export async function BlogSidebar({ excludeSlug }: { excludeSlug?: string }) {
         </div>
       </div>
 
-      <div className="ps-card p-6">
+      <div className="ps-card p-4 sm:p-6">
         <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-slate-900">
           <TrendingUp className="h-4 w-4 text-brand-ui-primary" />
           Recentes
@@ -78,7 +78,7 @@ export async function BlogSidebar({ excludeSlug }: { excludeSlug?: string }) {
       </div>
 
       {popularTags.length > 0 && (
-        <div className="ps-card p-6">
+        <div className="ps-card p-4 sm:p-6">
           <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-slate-900">
             <Hash className="h-4 w-4 text-brand-ui-primary" />
             Tags populares

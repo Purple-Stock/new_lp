@@ -11,6 +11,7 @@ import {
 import { glossaryTerms, type GlossaryTerm } from "@/data/glossary";
 import { getSiteUrl } from "@/lib/site";
 import { buildWhatsAppUrl } from "@/lib/contact";
+import { getAppSignupUrl } from "@/lib/app";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
@@ -428,7 +429,7 @@ export default async function GlossaryTermPage({ params }: PageProps) {
                 total, relatórios inteligentes e alertas automáticos.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link href="https://app.purplestock.com.br/">
+                <Link href={getAppSignupUrl()}>
                   <Button className="bg-purple-700 text-white hover:bg-purple-800">
                     Testar Purple Stock grátis
                     <ArrowRight className="ml-2 h-4 w-4" />

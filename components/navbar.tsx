@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/utils/translations";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { getAppLoginUrl } from "@/lib/app";
 import { trackSeoCtaClick } from "@/lib/analytics";
 
 const PRIMARY_FEATURE_LINKS = [
@@ -376,7 +377,7 @@ export function Navbar() {
           <div className="w-px h-3 bg-white/20 mx-1" />
 
           <Link
-            href="https://app.purplestock.com.br/"
+            href={getAppLoginUrl()}
             className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
             onClick={() =>
               trackSeoCtaClick({

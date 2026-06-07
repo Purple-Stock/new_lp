@@ -1,3 +1,4 @@
+import { getAppSignupUrl } from "@/lib/app";
 import { buildWhatsAppUrl } from "@/lib/contact";
 
 export const translations = {
@@ -763,7 +764,7 @@ export const translations = {
           description: "Para começar",
           features: ["Até 10 itens", "Análises básicas", "Suporte por email"],
           buttonText: "Começar Agora",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: getAppSignupUrl(),
         },
         {
           name: "Pro",
@@ -777,7 +778,7 @@ export const translations = {
             "Suporte por email",
           ],
           buttonText: "Atualizar Agora",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: getAppSignupUrl(),
         },
         {
           name: "Empresarial",
@@ -1633,7 +1634,7 @@ export const translations = {
           description: "To get started",
           features: ["Up to 10 items", "Basic analytics", "Email support"],
           buttonText: "Get Started",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: getAppSignupUrl(),
         },
         {
           name: "Pro",
@@ -1647,7 +1648,7 @@ export const translations = {
             "Email support",
           ],
           buttonText: "Upgrade Now",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: getAppSignupUrl(),
         },
         {
           name: "Enterprise",
@@ -2524,7 +2525,7 @@ export const translations = {
             "Support par email",
           ],
           buttonText: "Commencer",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: getAppSignupUrl(),
         },
         {
           name: "Pro",
@@ -2538,7 +2539,7 @@ export const translations = {
             "Support par email",
           ],
           buttonText: "Mettre à Niveau",
-          buttonLink: "https://app.purplestock.com.br/",
+          buttonLink: getAppSignupUrl(),
         },
         {
           name: "Entreprise",

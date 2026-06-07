@@ -16,6 +16,7 @@ import { Footer } from "@/components/footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trackSeoCtaClick } from "@/lib/analytics";
 import { buildWhatsAppUrl } from "@/lib/contact";
+import { getAppSignupUrl } from "@/lib/app";
 
 const MONTHLY_PRICE = 59;
 
@@ -433,7 +434,7 @@ export default function PricingPage() {
 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                   <Link
-                    href="https://app.purplestock.com.br/"
+                    href={getAppSignupUrl()}
                     className="flex-1"
                     onClick={() =>
                       trackSeoCtaClick({
@@ -570,7 +571,7 @@ export default function PricingPage() {
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
               <Link
-                href="https://app.purplestock.com.br/"
+                href={getAppSignupUrl()}
                 onClick={() =>
                   trackSeoCtaClick({
                     cta_name: "pricing_single_bottom_primary",

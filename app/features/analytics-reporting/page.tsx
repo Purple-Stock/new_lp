@@ -19,6 +19,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getCalendlyUrl } from "@/lib/contact";
+import { getAppSignupUrl } from "@/lib/app";
 import { translations } from "@/utils/translations";
 
 export default function AnalyticsReportingPage() {
@@ -56,7 +57,7 @@ export default function AnalyticsReportingPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 {/* <Link href="/coming-soon"> */}
-                <Link href="https://app.purplestock.com.br/">
+                <Link href={getAppSignupUrl()}>
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
@@ -304,7 +305,7 @@ export default function AnalyticsReportingPage() {
                 </Button>
               </Link>
               {/* <Link href="/coming-soon"> */}
-              <Link href="https://app.purplestock.com.br/">
+              <Link href={getAppSignupUrl()}>
                 <Button
                   size="lg"
                   className="bg-transparent border-2 border-white hover:bg-white/10 text-white px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-1"

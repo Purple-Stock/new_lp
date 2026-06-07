@@ -6,6 +6,7 @@ import { translations } from "@/utils/translations";
 import { ArrowRight, CheckCircle, Star, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getAppSignupUrl } from "@/lib/app";
 
 const ROTATING_QUESTIONS = {
   pt: [
@@ -173,7 +174,7 @@ export function RotatingQuestionsAndCTA() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             {/* <Link href="/coming-soon"> */}
-            <Link href="https://app.purplestock.com.br/">
+            <Link href={getAppSignupUrl()}>
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-10 py-6 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl"
@@ -189,7 +190,7 @@ export function RotatingQuestionsAndCTA() {
             </Link>
 
             {/* <Link href="/coming-soon"> */}
-            <Link href="https://app.purplestock.com.br/">
+            <Link href={getAppSignupUrl()}>
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-6 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-xl"

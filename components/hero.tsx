@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/utils/translations";
 import Image from "next/image";
 import Link from "next/link";
+import { getAppSignupUrl } from "@/lib/app";
 
 export function Hero() {
   const { language } = useLanguage();
@@ -91,7 +92,7 @@ export function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               {/* <Link href="/coming-soon"> */}
-              <Link href="https://app.purplestock.com.br/">
+              <Link href={getAppSignupUrl()}>
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
@@ -102,7 +103,7 @@ export function Hero() {
                 </Button>
               </Link>
               {/* <Link href="/coming-soon"> */}
-              <Link href="https://app.purplestock.com.br/">
+              <Link href={getAppSignupUrl()}>
                 <Button
                   variant="outline"
                   size="lg"

@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getCalendlyUrl } from "@/lib/contact";
+import { getAppSignupUrl } from "@/lib/app";
 import {
   getRelatedIndustries,
   industryStats,
@@ -148,7 +149,7 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
                 · 7 dias grátis · sem fidelidade
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link href="https://app.purplestock.com.br/">
+                <Link href={getAppSignupUrl()}>
                   <Button size="sm" className="ps-btn-primary">
                     <Zap className="mr-2 h-4 w-4" />
                     Teste grátis
@@ -443,7 +444,7 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
           </p>
 
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <Link href="https://app.purplestock.com.br/">
+            <Link href={getAppSignupUrl()}>
               <Button
                 size="lg"
                 className="ps-btn-primary px-8 py-4 text-lg shadow-[0_8px_28px_rgba(139,92,246,0.4)]"

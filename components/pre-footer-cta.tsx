@@ -13,6 +13,7 @@ import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getAppSignupUrl } from "@/lib/app";
 
 export function PreFooterCTA() {
   const { language } = useLanguage();
@@ -114,7 +115,7 @@ export function PreFooterCTA() {
 
           <div className="mb-14">
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-              <Link href="https://app.purplestock.com.br/">
+              <Link href={getAppSignupUrl()}>
                 <Button
                   size="lg"
                   className="transform rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-10 py-6 text-xl font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:from-purple-700 hover:to-purple-800 hover:shadow-xl"
@@ -125,7 +126,7 @@ export function PreFooterCTA() {
                 </Button>
               </Link>
 
-              <Link href="https://app.purplestock.com.br/">
+              <Link href={getAppSignupUrl()}>
                 <Button
                   size="lg"
                   className="rounded-xl border-2 border-purple-600 bg-white px-10 py-6 text-xl font-semibold text-purple-700 transition-all duration-300 hover:bg-purple-50"

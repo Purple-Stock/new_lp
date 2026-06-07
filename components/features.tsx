@@ -14,6 +14,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/utils/translations";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getAppSignupUrl } from "@/lib/app";
 
 interface FeatureProps {
   title: string;
@@ -83,7 +84,7 @@ function Feature({
             {/* CTA Button */}
             <div className="pt-4">
               {/* <Link href="/coming-soon"> */}
-              <Link href="https://app.purplestock.com.br/">
+              <Link href={getAppSignupUrl()}>
                 <Button
                   size="lg"
                   className={`bg-gradient-to-r ${gradient} hover:shadow-xl text-white px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-1 rounded-xl`}

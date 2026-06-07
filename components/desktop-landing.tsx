@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+import { getAppSignupUrl } from "@/lib/app";
 import { trackCtaClick, trackSeoLandingView } from "@/lib/analytics";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -76,11 +77,7 @@ export function DesktopLanding() {
 
   const openApp = useCallback(() => {
     if (typeof window === "undefined") return;
-    window.open(
-      "https://app.purplestock.com.br/",
-      "_blank",
-      "noopener,noreferrer"
-    );
+    window.open(getAppSignupUrl(), "_blank", "noopener,noreferrer");
   }, []);
 
   const scrollLandingToTop = useCallback(() => {
@@ -778,7 +775,7 @@ export function DesktopLanding() {
                     className="ps-btn-primary px-8 py-6 text-base"
                   >
                     <Link
-                      href="https://app.purplestock.com.br/"
+                      href={getAppSignupUrl()}
                       onClick={() =>
                         trackCtaClick({
                           cta_name: "desktop_trial_primary",
@@ -1065,7 +1062,7 @@ export function DesktopLanding() {
                   className="ps-btn-primary px-8 py-6 text-base"
                 >
                   <Link
-                    href="https://app.purplestock.com.br/"
+                    href={getAppSignupUrl()}
                     onClick={() =>
                       trackCtaClick({
                         cta_name: "desktop_trial_secondary",

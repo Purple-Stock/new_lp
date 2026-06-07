@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { trackSeoCtaClick } from "@/lib/analytics";
+import { buildAppUrl } from "@/lib/app";
 import { buildWhatsAppUrl } from "@/lib/contact";
 
 const checklist = [
@@ -48,7 +49,11 @@ export default function ControleAlmoxarifadoPage() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="https://app.purplestock.com.br/?utm_source=site&utm_medium=organic&utm_campaign=controle_almoxarifado"
+              href={buildAppUrl("sign_up", {
+                utm_source: "site",
+                utm_medium: "organic",
+                utm_campaign: "controle_almoxarifado",
+              })}
               onClick={() =>
                 trackSeoCtaClick({
                   cta_name: "almoxarifado_hero_primary",

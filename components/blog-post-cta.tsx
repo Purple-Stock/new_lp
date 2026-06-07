@@ -76,9 +76,10 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
   };
 
   return (
-    <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+    <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
       <Link
         href="https://app.purplestock.com.br/"
+        className="w-full sm:w-auto"
         onClick={() =>
           trackSeoCtaClick({
             cta_name: "blog_post_primary_trial",
@@ -88,13 +89,14 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
           })
         }
       >
-        <Button className="ps-btn-primary">
+        <Button className="ps-btn-primary w-full sm:w-auto">
           {cta.primaryLabel}
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </Link>
       <Link
         href={buildWhatsAppUrl(decodeURIComponent(cta.whatsappText))}
+        className="w-full sm:w-auto"
         onClick={() =>
           trackSeoCtaClick({
             cta_name: "blog_post_secondary_whatsapp",
@@ -104,7 +106,7 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
           })
         }
       >
-        <Button variant="outline" className="ps-btn-outline">
+        <Button variant="outline" className="ps-btn-outline w-full sm:w-auto">
           <MessageCircle className="mr-2 h-4 w-4" />
           {cta.secondaryLabel}
         </Button>

@@ -17,20 +17,20 @@ export async function BlogRelatedPosts({ slug }: { slug: string }) {
   if (posts.length === 0) return null;
 
   return (
-    <section className="mt-12">
-      <div className="ps-section-surface p-6 sm:p-8">
-        <h2 className="ps-display flex items-center gap-2 text-2xl">
+    <section className="mt-8 min-w-0 sm:mt-12">
+      <div className="ps-section-surface min-w-0 p-4 sm:p-6 md:p-8">
+        <h2 className="ps-display flex items-center gap-2 text-xl sm:text-2xl">
           <span className="inline-block h-6 w-1 rounded-full bg-brand-ui-primary" />
           Leia também
         </h2>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid min-w-0 gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {posts.map((post) => {
             const cover = post.coverImage ?? "/images/hero-photo-900x600.webp";
             return (
               <article
                 key={post.slug}
-                className="ps-card group flex flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-0.5"
+                className="ps-card group flex min-w-0 flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <Link
                   href={`/blog/${post.slug}`}

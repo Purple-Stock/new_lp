@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ddd2f3"/>
+      <stop offset="28%" stop-color="#ece6f8"/>
+      <stop offset="52%" stop-color="#f5f0fc"/>
+      <stop offset="82%" stop-color="#d6e8f4"/>
+      <stop offset="100%" stop-color="#cfc0eb"/>
+    </linearGradient>
+    <radialGradient id="glow-a" cx="1" cy="0" r="0.75">
+      <stop offset="0%" stop-color="#9333e9" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#9333e9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-b" cx="0" cy="1" r="0.65">
+      <stop offset="0%" stop-color="#1f5c99" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#1f5c99" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="88" y2="88" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9333e9"/>
+      <stop offset="100%" stop-color="#7928ca"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#2a0a45" flood-opacity="0.14"/>
+    </filter>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M0 31.5h32M31.5 0v32" stroke="#9333e9" stroke-width="0.85" opacity="0.16"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow-a)"/>
+  <rect width="1200" height="630" fill="url(#glow-b)"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.45"/>
+
+  <circle cx="980" cy="110" r="180" fill="none" stroke="#9333e9" stroke-width="1.2" opacity="0.14"/>
+  <circle cx="980" cy="110" r="126" fill="none" stroke="#1f5c99" stroke-width="1.2" opacity="0.12"/>
+
+  <rect x="64" y="64" width="1072" height="502" rx="34" fill="#ffffff" fill-opacity="0.84" stroke="#e5d9f7" stroke-width="2"/>
+
+  <g transform="translate(108 118)">
+    <rect x="0" y="0" width="84" height="84" rx="22" fill="url(#brand)"/>
+    <g transform="translate(42 42) scale(0.11)">
+      <path fill="#ffffff" d="M0,-100 L86,-50 L86,50 L0,100 L-86,50 L-86,-50 Z"/>
+      <path fill="#9333e9" d="M30,-50 L-15,10 H15 L-10,55 L40,0 H15 Z"/>
+    </g>
+
+    <text x="104" y="36" font-family="Poppins, Arial, sans-serif" font-size="28" font-weight="700" fill="#0a0a0a">Purple Stock</text>
+    <text x="104" y="68" font-family="Poppins, Arial, sans-serif" font-size="19" font-weight="600" fill="#7928ca">Controle de estoque com QR Code</text>
+  </g>
+
+  <text x="108" y="300" font-family="Poppins, Arial, sans-serif" font-size="58" font-weight="700" fill="#0a0a0a">
+    <tspan x="108" dy="0">Invent&#225;rio preciso,</tspan>
+    <tspan x="108" dy="68">no celular e no almoxarifado.</tspan>
+  </text>
+
+  <text x="108" y="470" font-family="Poppins, Arial, sans-serif" font-size="26" font-weight="500" fill="#525252">
+    <tspan x="108" dy="0">Reduza erros, acompanhe movimenta&#231;&#245;es e evite perder vendas</tspan>
+    <tspan x="108" dy="36">por saldo incorreto.</tspan>
+  </text>
+
+  <g transform="translate(860 500)" filter="url(#shadow)">
+    <rect x="0" y="0" width="248" height="62" rx="16" fill="#8b5cf6"/>
+    <text x="124" y="40" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Comece gratuitamente</text>
+  </g>
+
+  <g transform="translate(900 150)" opacity="0.95">
+    <rect x="0" y="0" width="168" height="168" rx="18" fill="#f5f0fc" stroke="#d8c4f7" stroke-width="2"/>
+    <rect x="22" y="22" width="124" height="124" rx="10" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.5"/>
+    <g fill="#9333e9">
+      <rect x="34" y="34" width="18" height="18" rx="2"/>
+      <rect x="58" y="34" width="18" height="18" rx="2"/>
+      <rect x="82" y="34" width="18" height="18" rx="2"/>
+      <rect x="106" y="34" width="18" height="18" rx="2"/>
+      <rect x="34" y="58" width="18" height="18" rx="2"/>
+      <rect x="82" y="58" width="18" height="18" rx="2"/>
+      <rect x="106" y="58" width="18" height="18" rx="2"/>
+      <rect x="34" y="82" width="18" height="18" rx="2"/>
+      <rect x="58" y="82" width="18" height="18" rx="2"/>
+      <rect x="82" y="82" width="18" height="18" rx="2"/>
+      <rect x="58" y="106" width="18" height="18" rx="2"/>
+      <rect x="82" y="106" width="18" height="18" rx="2"/>
+      <rect x="106" y="106" width="18" height="18" rx="2"/>
+    </g>
+    <rect x="126" y="126" width="34" height="34" rx="8" fill="#8b5cf6"/>
+    <rect x="134" y="134" width="18" height="18" rx="2" fill="#ffffff"/>
+  </g>
+</svg>

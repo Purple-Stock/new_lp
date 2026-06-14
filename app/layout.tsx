@@ -2,6 +2,12 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { ScheduleButton } from "@/components/schedule-button";
 import { RouteViewTracker } from "@/components/route-view-tracker";
+import {
+  DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_HEIGHT,
+  DEFAULT_SOCIAL_IMAGE_WIDTH,
+} from "@/lib/metadata";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 import { Merriweather, Poppins } from "next/font/google";
 import Script from "next/script";
@@ -42,10 +48,10 @@ export const metadata: Metadata = {
       "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
     images: [
       {
-        url: "/images/hero-photo-1800x1200.webp",
-        width: 1800,
-        height: 1200,
-        alt: `${SITE_NAME} controle de estoque com QR Code`,
+        url: DEFAULT_SOCIAL_IMAGE,
+        width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+        height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+        alt: DEFAULT_SOCIAL_IMAGE_ALT,
       },
     ],
   },
@@ -54,7 +60,7 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | Controle De Estoque Com QR Code`,
     description:
       "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
-    images: ["/images/hero-photo-1800x1200.webp"],
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
   icons: {
     icon: [

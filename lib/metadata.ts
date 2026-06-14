@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { SITE_NAME } from "@/lib/site";
 
-const DEFAULT_SOCIAL_IMAGE = "/images/hero-photo-1800x1200.webp";
+export const DEFAULT_SOCIAL_IMAGE = "/og-image.png";
+export const DEFAULT_SOCIAL_IMAGE_WIDTH = 1200;
+export const DEFAULT_SOCIAL_IMAGE_HEIGHT = 630;
+export const DEFAULT_SOCIAL_IMAGE_ALT = `${SITE_NAME} controle de estoque com QR Code`;
 
 type PageMetadataInput = {
   title: string;
@@ -35,9 +38,9 @@ export function buildPageMetadata({
       images: [
         {
           url: DEFAULT_SOCIAL_IMAGE,
-          width: 1800,
-          height: 1200,
-          alt: `${SITE_NAME} controle de estoque com QR Code`,
+          width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+          height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+          alt: DEFAULT_SOCIAL_IMAGE_ALT,
         },
       ],
     },

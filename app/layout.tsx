@@ -8,6 +8,11 @@ import {
   DEFAULT_SOCIAL_IMAGE_HEIGHT,
   DEFAULT_SOCIAL_IMAGE_WIDTH,
 } from "@/lib/metadata";
+import { JsonLd } from "@/components/json-ld";
+import {
+  buildOrganizationSchema,
+  buildWebSiteSchema,
+} from "@/lib/structured-data";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 import { Merriweather, Poppins } from "next/font/google";
 import Script from "next/script";
@@ -34,7 +39,7 @@ const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${SITE_NAME} | Controle De Estoque Com QR Code`,
+    default: `${SITE_NAME} | Sistema de Controle de Estoque com QR Code`,
     template: `%s | ${SITE_NAME}`,
   },
   description:
@@ -43,7 +48,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Controle De Estoque Com QR Code`,
+    title: `${SITE_NAME} | Sistema de Controle de Estoque com QR Code`,
     description:
       "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
     images: [
@@ -57,7 +62,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Controle De Estoque Com QR Code`,
+    title: `${SITE_NAME} | Sistema de Controle de Estoque com QR Code`,
     description:
       "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
     images: [DEFAULT_SOCIAL_IMAGE],
@@ -85,6 +90,12 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${poppins.className} ${merriweather.variable}`}
       >
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [buildOrganizationSchema(), buildWebSiteSchema()],
+          }}
+        />
         {gaMeasurementId ? (
           <>
             <Script

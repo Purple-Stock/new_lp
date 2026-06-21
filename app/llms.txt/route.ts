@@ -1,6 +1,13 @@
+import { getAllPosts } from "@/lib/blog";
+
 export const dynamic = "force-static";
 
 export async function GET() {
+  const posts = await getAllPosts();
+  const blogLinks = posts
+    .map((post) => `- [${post.title}](/blog/${post.slug})`)
+    .join("\n");
+
   const content = `# PurpleStock
 
 > Plataforma avançada de gestão de estoque e controle de inventário para indústrias e empresas.
@@ -44,33 +51,43 @@ PurpleStock é uma solução completa de gestão de estoque que oferece controle
 
 ## Recursos e Ferramentas
 
-- [Códigos de Barras](/recursos/codigo-de-barras): Soluções completas de código de barras
+- [Códigos de Barras](/codigo-de-barras-gratis): Soluções completas de código de barras
 - [Controle de Almoxarifado](/recursos/controle-de-almoxarifado): Gestão de suprimentos
-- [Gestão de Equipamentos com QR Code](/recursos/gerenciamento-equipamentos-qr-code): Sistema integrado
-- [Gestão de Estoque](/recursos/gestao-de-estoque): Estratégias e melhores práticas
+- [Gestão de Estoque](/features/inventory-control): Estratégias e melhores práticas
+
+## Artigos e Conteúdo
+
+- [Blog](/blog): Artigos sobre controle de estoque, almoxarifado e QR Code
+${blogLinks}
+
+## Institucional
+
+- [Sobre](/sobre): História e proposta da Purple Stock
+- [Contato](/contato): Canais de atendimento
 
 ## Informações Técnicas
 
 - [Preços](/precos): Planos e valores dos serviços
 - [Glossário](/glossario): Termos técnicos e definições
-- [API](/api): Documentação da API para integrações
+- [Documentação](/documentacao): Guias de uso do produto
 
 ## Tecnologias
 
-- Next.js 15.1.0
-- React 18.2.0
+- Next.js 16
+- React 18
 - TypeScript
 - Tailwind CSS
 - Sistema de QR Code integrado
 - API RESTful
-- Banco de dados otimizado para performance
 
 ## Suporte e Contato
 
+- E-mail: matheus.puppe@purplestock.com.br
+- Telefone: +55 (11) 99559-7242
+- [Contato](/contato): Formulários e canais de atendimento
 - Documentação técnica completa
 - Suporte especializado para indústrias
 - Treinamento e implementação
-- Integração com sistemas existentes
 
 ## Licença
 

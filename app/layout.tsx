@@ -13,6 +13,11 @@ import {
   buildOrganizationSchema,
   buildWebSiteSchema,
 } from "@/lib/structured-data";
+import {
+  BLOG_RSS_PATH,
+  getBlogRssFeedHref,
+  getBlogRssFeedTitle,
+} from "@/lib/site-feed";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 import { Merriweather, Poppins } from "next/font/google";
 import Script from "next/script";
@@ -41,7 +46,7 @@ export const metadata: Metadata = {
   alternates: {
     types: {
       "application/rss+xml": [
-        { url: "/feed.xml", title: `${SITE_NAME} Blog RSS` },
+        { url: BLOG_RSS_PATH, title: getBlogRssFeedTitle() },
       ],
     },
   },
@@ -91,8 +96,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const blogRssFeedHref = getBlogRssFeedHref(siteUrl);
+
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={getBlogRssFeedTitle()}
+          href={blogRssFeedHref}
+        />
+      </head>
       <body
         suppressHydrationWarning
         className={`${poppins.className} ${merriweather.variable}`}

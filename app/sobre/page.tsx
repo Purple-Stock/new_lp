@@ -48,24 +48,43 @@ export default function SobrePage() {
             Falar com a equipe
           </Link>
         </div>
-        <ul className="mt-8 space-y-2 text-sm text-slate-600">
-          <li>
-            <Link
-              href="/blog/guia-completo-sistema-de-estoque"
-              className="text-violet-700 hover:underline"
-            >
-              Guia completo de sistema de estoque
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/blog/como-usar-qr-code-controle-estoque"
-              className="text-violet-700 hover:underline"
-            >
-              Como usar QR Code no controle de estoque
-            </Link>
-          </li>
-        </ul>
+        <section className="mt-10">
+          <h2 className="text-lg font-semibold text-slate-900">Leia também</h2>
+          <ul className="mt-3 space-y-2 text-sm text-slate-600">
+            <li>
+              <Link
+                href="/blog/inventario-fisico-passo-a-passo-2026"
+                className="text-violet-700 hover:underline"
+              >
+                Inventário físico passo a passo para PME [2026]
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog/abc-curva-abc-estoque-pme"
+                className="text-violet-700 hover:underline"
+              >
+                Curva ABC no estoque: como priorizar itens na PME
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog/guia-completo-sistema-de-estoque"
+                className="text-violet-700 hover:underline"
+              >
+                Guia completo de sistema de estoque
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog/como-usar-qr-code-controle-estoque"
+                className="text-violet-700 hover:underline"
+              >
+                Como usar QR Code no controle de estoque
+              </Link>
+            </li>
+          </ul>
+        </section>
       </main>
       <Footer />
     </div>

@@ -24,7 +24,27 @@ export function Footer() {
   const t = translations[language].footer;
 
   const navigation = {
-    purplestock: [{ name: t.industries, href: "/industrias" }],
+    purplestock: [
+      { name: t.industries, href: "/industrias" },
+      {
+        name:
+          language === "pt"
+            ? "Sobre"
+            : language === "fr"
+              ? "A propos"
+              : "About",
+        href: "/sobre",
+      },
+      {
+        name:
+          language === "pt"
+            ? "Contato"
+            : language === "fr"
+              ? "Contact"
+              : "Contact",
+        href: "/contato",
+      },
+    ],
     resources: [
       { name: t.blog, href: "/blog" },
       { name: t.glossary, href: "/glossario" },

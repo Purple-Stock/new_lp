@@ -1,12 +1,10 @@
 import { MetadataRoute } from "next";
-import { getAllPosts, getAllTagSlugs } from "@/lib/blog";
+import { getAllTagSlugs } from "@/lib/blog";
 import { getSiteUrl } from "@/lib/site";
 import { glossaryTerms } from "@/data/glossary";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();
-  const posts = await getAllPosts();
-  const newestPostDate = posts[0]?.date ? new Date(posts[0].date) : new Date();
   const tagSlugs = await getAllTagSlugs();
   const industrySlugs = [
     "atacado",
@@ -121,21 +119,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  const blogRoutes = [
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: newestPostDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    ...posts.map((post) => ({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.date),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
-  ];
-
   const tagRoutes = tagSlugs.map((tag) => ({
     url: `${baseUrl}/blog/tag/${tag}`,
     lastModified: new Date(),
@@ -155,7 +138,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...featureRoutes,
     ...resourceRoutes,
     ...industryRoutes,
-    ...blogRoutes,
     ...tagRoutes,
     ...glossaryRoutes,
   ];

@@ -54,6 +54,8 @@ export async function generateMetadata({
       url: articleUrl,
       title: post.meta.title,
       description: post.meta.excerpt,
+      publishedTime: post.meta.date,
+      modifiedTime: post.meta.date,
       images: [
         {
           url: imageUrl,

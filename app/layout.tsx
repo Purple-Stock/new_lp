@@ -38,6 +38,13 @@ const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        { url: "/feed.xml", title: `${SITE_NAME} Blog RSS` },
+      ],
+    },
+  },
   title: {
     default: `${SITE_NAME} | Sistema de Controle de Estoque com QR Code`,
     template: `%s | ${SITE_NAME}`,

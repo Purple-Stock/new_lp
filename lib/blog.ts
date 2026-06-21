@@ -51,6 +51,11 @@ function sortByMostRecent(posts: BlogPostMeta[]): BlogPostMeta[] {
   });
 }
 
+export async function getLatestPosts(limit = 3): Promise<BlogPostMeta[]> {
+  const posts = await getAllPosts();
+  return posts.slice(0, limit);
+}
+
 export async function getAllPosts(): Promise<BlogPostMeta[]> {
   const entries = await fs.readdir(BLOG_CONTENT_DIR, { withFileTypes: true });
   const mdxFiles = entries.filter(

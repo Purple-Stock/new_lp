@@ -6,6 +6,7 @@ import { glossaryTerms } from "@/data/glossary";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();
   const posts = await getAllPosts();
+  const newestPostDate = posts[0]?.date ? new Date(posts[0].date) : new Date();
   const tagSlugs = await getAllTagSlugs();
   const industrySlugs = [
     "atacado",
@@ -123,7 +124,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogRoutes = [
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: newestPostDate,
       changeFrequency: "weekly" as const,
       priority: 0.8,
     },

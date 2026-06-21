@@ -1,0 +1,35 @@
+name: TTFB Warmup
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+jobs:
+  warmup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.3
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Warm CloudFront cache
+        run: |
+          for path in / /blog /sobre /contato /precos; do
+            curl -sS -o /dev/null -w "%{http_code} %{time_starttransfer}s ${path}\n" \
+              "https://www.purplestock.com.br${path}"
+          done
+
+      - name: Assert homepage TTFB budget
+        run: node scripts/measure-ttfb.js
+        env:
+          TTFB_BUDGET_MS: 1500

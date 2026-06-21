@@ -48,6 +48,24 @@ export default function SobrePage() {
             Falar com a equipe
           </Link>
         </div>
+        <ul className="mt-8 space-y-2 text-sm text-slate-600">
+          <li>
+            <Link
+              href="/blog/guia-completo-sistema-de-estoque"
+              className="text-violet-700 hover:underline"
+            >
+              Guia completo de sistema de estoque
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/blog/como-usar-qr-code-controle-estoque"
+              className="text-violet-700 hover:underline"
+            >
+              Como usar QR Code no controle de estoque
+            </Link>
+          </li>
+        </ul>
       </main>
       <Footer />
     </div>

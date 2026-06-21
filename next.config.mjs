@@ -173,23 +173,63 @@ const nextConfig = {
       "upgrade-insecure-requests",
     ].join("; ");
 
+    const securityHeaders = [
+      { key: "Content-Security-Policy", value: contentSecurityPolicy },
+      {
+        key: "Permissions-Policy",
+        value: "camera=(), microphone=(), geolocation=()",
+      },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+      {
+        key: "Strict-Transport-Security",
+        value: "max-age=31536000; includeSubDomains; preload",
+      },
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "X-Frame-Options", value: "SAMEORIGIN" },
+      { key: "X-XSS-Protection", value: "1; mode=block" },
+    ];
+
     return [
       {
         source: "/:path*",
+        headers: securityHeaders,
+      },
+      {
+        source: "/",
         headers: [
-          { key: "Content-Security-Policy", value: contentSecurityPolicy },
           {
-            key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
+            key: "Cache-Control",
+            value:
+              "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
           },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        ],
+      },
+      {
+        source: "/blog/:path*",
+        headers: [
           {
-            key: "Strict-Transport-Security",
-            value: "max-age=31536000; includeSubDomains; preload",
+            key: "Cache-Control",
+            value:
+              "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
           },
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-Frame-Options", value: "SAMEORIGIN" },
-          { key: "X-XSS-Protection", value: "1; mode=block" },
+        ],
+      },
+      {
+        source: "/_next/static/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=86400",
+          },
         ],
       },
     ];

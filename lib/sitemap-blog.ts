@@ -3,7 +3,7 @@ import type { BlogPostMeta } from "@/lib/blog";
 export type SitemapEntry = {
   url: string;
   lastModified: Date;
-  changeFrequency: "weekly" | "monthly";
+  changeFrequency: "daily" | "weekly" | "monthly";
   priority: number;
 };
 
@@ -31,22 +31,4 @@ export function buildBlogSitemapEntries(
       priority: 0.7,
     })),
   ];
-}
-
-export function serializeSitemapXml(entries: SitemapEntry[]): string {
-  const urls = entries
-    .map(
-      (entry) => `  <url>
-    <loc>${entry.url}</loc>
-    <lastmod>${formatSitemapLastMod(entry.lastModified)}</lastmod>
-    <changefreq>${entry.changeFrequency}</changefreq>
-    <priority>${entry.priority}</priority>
-  </url>`
-    )
-    .join("\n");
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
-</urlset>`;
 }

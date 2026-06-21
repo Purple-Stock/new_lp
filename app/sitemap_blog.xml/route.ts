@@ -1,9 +1,7 @@
 import { getAllPosts } from "@/lib/blog";
 import { getSiteUrl } from "@/lib/site";
-import {
-  buildBlogSitemapEntries,
-  serializeSitemapXml,
-} from "@/lib/sitemap-blog";
+import { buildBlogSitemapEntries } from "@/lib/sitemap-blog";
+import { serializeSitemapXml, SITEMAP_CACHE_HEADERS } from "@/lib/sitemap-xml";
 
 export const dynamic = "force-static";
 
@@ -13,11 +11,5 @@ export async function GET() {
   const entries = buildBlogSitemapEntries(baseUrl, posts);
   const xml = serializeSitemapXml(entries);
 
-  return new Response(xml, {
-    headers: {
-      "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control":
-        "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
-    },
-  });
+  return new Response(xml, { headers: SITEMAP_CACHE_HEADERS });
 }

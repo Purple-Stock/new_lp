@@ -3,8 +3,8 @@ import assert from "node:assert/strict";
 import {
   buildBlogSitemapEntries,
   formatSitemapLastMod,
-  serializeSitemapXml,
 } from "../lib/sitemap-blog";
+import { serializeSitemapXml } from "../lib/sitemap-xml";
 
 test("formatSitemapLastMod uses YYYY-MM-DD date format", () => {
   assert.equal(

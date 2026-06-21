@@ -12,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/", "/private/"],
       },
     ],
-    sitemap: [`${baseUrl}/sitemap.xml`, `${baseUrl}/sitemap_blog.xml`],
+    sitemap: `${baseUrl}/sitemap.xml`,
     // Note: llms.txt is available at ${baseUrl}/llms.txt for AI/LLM discovery
   };
 }

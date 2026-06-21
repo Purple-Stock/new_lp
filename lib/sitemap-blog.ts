@@ -1,4 +1,6 @@
-import type { BlogPostMeta } from "@/lib/blog";
+import { getAllPosts, type BlogPostMeta } from "@/lib/blog";
+import { getSiteUrl } from "@/lib/site";
+import { serializeSitemapXml, SITEMAP_CACHE_HEADERS } from "@/lib/sitemap-xml";
 
 export type SitemapEntry = {
   url: string;
@@ -31,4 +33,13 @@ export function buildBlogSitemapEntries(
       priority: 0.7,
     })),
   ];
+}
+
+export async function buildBlogSitemapResponse(): Promise<Response> {
+  const baseUrl = getSiteUrl();
+  const posts = await getAllPosts();
+  const entries = buildBlogSitemapEntries(baseUrl, posts);
+  const xml = serializeSitemapXml(entries);
+
+  return new Response(xml, { headers: SITEMAP_CACHE_HEADERS });
 }

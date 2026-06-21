@@ -10,6 +10,7 @@ export async function GET() {
   const baseUrl = getSiteUrl();
   const xml = serializeSitemapIndexXml([
     `${baseUrl}/sitemap-pages.xml`,
+    `${baseUrl}/blog/sitemap.xml`,
     `${baseUrl}/sitemap_blog.xml`,
   ]);
 

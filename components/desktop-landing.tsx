@@ -27,7 +27,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-export function DesktopLanding() {
+export function DesktopLanding({
+  beforeFooter,
+}: {
+  beforeFooter?: React.ReactNode;
+}) {
   const { language, setLanguage } = useLanguage();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [usePainCta] = useState(() => {
@@ -1114,6 +1118,7 @@ export function DesktopLanding() {
           </div>
         </div>
       </div>
+      {beforeFooter}
       <div className="relative z-[1]">
         <Footer />
       </div>

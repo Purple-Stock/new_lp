@@ -15,7 +15,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "validate-sitemap": "node scripts/validate-sitemap.js",
-    "validate-llms": "node scripts/validate-llms-txt.js"
+    "validate-sitemap-freshness": "node scripts/validate-sitemap-freshness.js",
+    "validate-llms": "node scripts/validate-llms-txt.js",
+    "measure-ttfb": "node scripts/measure-ttfb.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

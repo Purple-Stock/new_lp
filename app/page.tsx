@@ -1,5 +1,7 @@
 import { DesktopLanding } from "@/components/desktop-landing";
+import { HomeBlogTeaser } from "@/components/home-blog-teaser";
 import { JsonLd } from "@/components/json-ld";
+import { getLatestPosts } from "@/lib/blog";
 import { HOME_FAQ_PT } from "@/lib/home-faq";
 import { buildPageMetadata } from "@/lib/metadata";
 import { buildHomePageGraph } from "@/lib/structured-data";
@@ -11,11 +13,13 @@ export const metadata = buildPageMetadata({
   path: "/",
 });
 
-export default function Home() {
+export default async function Home() {
+  const latestPosts = await getLatestPosts(3);
+
   return (
     <>
       <JsonLd data={buildHomePageGraph({ faqs: HOME_FAQ_PT })} />
-      <DesktopLanding />
+      <DesktopLanding beforeFooter={<HomeBlogTeaser posts={latestPosts} />} />
     </>
   );
 }

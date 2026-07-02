@@ -17,7 +17,8 @@
     "validate-sitemap": "node scripts/validate-sitemap.js",
     "validate-sitemap-freshness": "node scripts/validate-sitemap-freshness.js",
     "validate-llms": "node scripts/validate-llms-txt.js",
-    "measure-ttfb": "node scripts/measure-ttfb.js"
+    "measure-ttfb": "node scripts/measure-ttfb.js",
+    "og:generate": "node scripts/generate-og-image.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -76,6 +77,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "@types/jsdom": "^28.0.3",
     "@types/node": "^22",
     "@types/react": "^19",

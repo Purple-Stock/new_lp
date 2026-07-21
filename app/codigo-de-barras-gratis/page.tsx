@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -1456,6 +1457,43 @@ export default function CodigoDeBarrasGratis() {
           </div>
         </div>
       </main>
+
+      <section className="relative z-[1] border-t border-brand-border-soft bg-white/80 px-4 py-10 sm:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="ps-display mb-3 text-xl font-semibold text-brand-ink md:text-2xl">
+            {language === "pt"
+              ? "Use código de barras no estoque de verdade"
+              : language === "fr"
+                ? "Utilisez les codes-barres en stock"
+                : "Use barcodes in real inventory ops"}
+          </h2>
+          <p className="mb-5 text-sm text-slate-600 md:text-base">
+            {language === "pt"
+              ? "Gerou a etiqueta? Veja como implantar código de barras no almoxarifado e no dia a dia da operação."
+              : language === "fr"
+                ? "Étiquette prête ? Découvrez comment déployer le code-barres en entrepôt."
+                : "Label ready? See how to roll barcodes into warehouse workflows."}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-medium">
+            <Link
+              href="/blog/codigo-de-barras-no-estoque-como-implementar"
+              className="rounded-full border border-brand-border-soft bg-white px-4 py-2 text-brand-ui-primary transition hover:border-brand-ui-primary"
+            >
+              {language === "pt"
+                ? "Como implementar código de barras"
+                : "How to implement barcodes"}
+            </Link>
+            <Link
+              href="/blog/checklist-codigo-barras-pme"
+              className="rounded-full border border-brand-border-soft bg-white px-4 py-2 text-brand-ui-primary transition hover:border-brand-ui-primary"
+            >
+              {language === "pt"
+                ? "Checklist código de barras para PME"
+                : "Barcode checklist for SMBs"}
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <div className="relative z-[1]">
         <Footer />

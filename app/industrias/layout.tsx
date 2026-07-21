@@ -2,26 +2,26 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Sistema de Estoque por Setor: Indústria, Varejo e Serviços",
+  title: "Sistema de Estoque por Setor: Varejo, Indústria e Serviços",
   description:
-    "Veja como cada setor usa a Purple Stock para controlar estoque com QR Code, rastrear itens e reduzir perdas operacionais.",
+    "Controle de estoque com QR Code por setor: audiovisual, varejo, confecção, construção e mais. Menos perda e mais rastreabilidade para PME.",
   alternates: {
     canonical: "https://www.purplestock.com.br/industrias",
   },
   openGraph: {
     type: "website",
     title:
-      "Sistema de Estoque por Setor: Indústria, Varejo e Serviços | Purple Stock",
+      "Sistema de Estoque por Setor: Varejo, Indústria e Serviços | Purple Stock",
     description:
-      "Veja como cada setor usa a Purple Stock para controlar estoque com QR Code, rastrear itens e reduzir perdas operacionais.",
+      "Controle de estoque com QR Code por setor: audiovisual, varejo, confecção, construção e mais. Menos perda e mais rastreabilidade para PME.",
     url: "/industrias",
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Sistema de Estoque por Setor: Indústria, Varejo e Serviços | Purple Stock",
+      "Sistema de Estoque por Setor: Varejo, Indústria e Serviços | Purple Stock",
     description:
-      "Veja como cada setor usa a Purple Stock para controlar estoque com QR Code, rastrear itens e reduzir perdas operacionais.",
+      "Controle de estoque com QR Code por setor: audiovisual, varejo, confecção, construção e mais. Menos perda e mais rastreabilidade para PME.",
   },
 };
 

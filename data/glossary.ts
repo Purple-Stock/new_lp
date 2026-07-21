@@ -870,13 +870,32 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "quantidade-minima-pedido",
     term: "Quantidade Mínima de Pedido (MOQ)",
     category: "inventory",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "MOQ (Minimum Order Quantity) é a quantidade mínima de pedido que o fornecedor aceita vender em cada compra. Define o menor lote comercializável e impacta capital parado, estoque e negociação com a indústria.",
+    definition:
+      "Quantidade mínima de pedido (MOQ — Minimum Order Quantity) é o menor volume que um fornecedor exige para aceitar uma compra. Se o MOQ é 500 unidades e você precisa de 120, ou compra 500, ou não fecha o pedido.\n\nO MOQ existe porque o fornecedor também tem custos de setup, produção, embalagem e frete. Lotes pequenos elevam o custo unitário para ele; o MOQ protege a margem e a eficiência da linha.\n\nPara a PME compradora, o MOQ é uma restrição operacional e financeira:\n- Capital de giro: você imobiliza dinheiro em volume maior do que a demanda imediata.\n- Espaço e validade: estoque extra ocupa prateleira e aumenta risco de obsolescência.\n- Frequência de compra: MOQ alto reduz o número de pedidos, mas aumenta o pico de estoque.\n- Preço unitário: às vezes o MOQ vem com desconto que compensa o lote maior; às vezes não.\n\nMOQ não é o mesmo que EOQ (quantidade econômica de pedido). O EOQ é o lote ideal calculado pela sua operação para minimizar custo total. O MOQ é a regra do fornecedor. Na prática, o lote real de compra é o máximo entre o que você precisa, o EOQ e o MOQ — ou uma negociação entre as partes.\n\nBoas práticas: cadastrar o MOQ por fornecedor e SKU no sistema de estoque, cruzar com ponto de reposição e giro, e revisar periodicamente se o fornecedor ainda é o melhor equilíbrio entre preço e flexibilidade de lote.",
+    example:
+      "Uma loja de roupas compra camisetas básicas de um confeccionista. O MOQ do fornecedor é 200 peças por cor/tamanho. A loja estima vender 60 peças da cor preta P por mês.\n\nSe comprar o MOQ (200), terá cerca de 3 meses de cobertura só daquele SKU — capital parado e risco se a cor não girar. Alternativas comuns:\n1. Negociar MOQ misto (ex.: 200 peças no total, misturando cores/tamanhos).\n2. Aceitar o MOQ e usar promoção planejada para acelerar o giro.\n3. Trocar de fornecedor com MOQ menor e preço unitário um pouco maior, se o capital for o gargalo.\n\nNo sistema, o time cadastra MOQ = 200 no item e configura alerta de reposição considerando lead time + demanda. Assim a compra não é feita “no olho” e o comprador sabe o valor mínimo do pedido antes de emitir a OC.",
+    formula:
+      "Lote de compra efetivo ≥ max(necessidade, EOQ, MOQ do fornecedor)",
+    formulaExplanation:
+      "Necessidade = demanda no horizonte de reposição; EOQ = lote econômico da sua operação; MOQ = mínimo exigido pelo fornecedor. O pedido real precisa respeitar o MOQ mesmo quando a necessidade for menor.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "O que é MOQ e por que o fornecedor impõe quantidade mínima?",
+        answer:
+          "MOQ é a quantidade mínima de pedido. O fornecedor impõe porque setup de produção, embalagem e frete ficam caros em lotes muito pequenos. O MOQ protege o custo unitário e a eficiência dele — e vira restrição de compra para você.",
+      },
+      {
+        question: "Qual a diferença entre MOQ e EOQ?",
+        answer:
+          "MOQ é a regra do fornecedor (mínimo que ele vende). EOQ é o lote ideal da sua operação para equilibrar custo de pedido e custo de manter estoque. Se o MOQ for maior que o EOQ, você é forçado a comprar acima do ideal e deve incluir esse excesso no custo total.",
+      },
+      {
+        question: "Como negociar ou contornar um MOQ alto?",
+        answer:
+          "Peça MOQ misto entre SKUs, frete consolidado, pedido programado (blanket order) ou desconto só se o lote extra girar rápido. Compare com fornecedores de MOQ menor. No sistema de estoque, registre o MOQ por item para o comprador ver o impacto no capital antes de fechar o pedido.",
+      },
     ],
     relatedTerms: [
       "quantidade-economica-pedido",

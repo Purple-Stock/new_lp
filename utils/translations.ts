@@ -801,9 +801,9 @@ export const translations = {
       ],
     },
     barcodeGenerator: {
-      title: "Gerador de Código de Barras Grátis",
+      title: "Código de Barras Grátis Online",
       description:
-        "Crie códigos de barras profissionais para seu negócio. Suporte para múltiplos formatos, personalização completa e download gratuito.",
+        "Gere código de barras grátis: EAN-13, Code 128, QR Code e mais. Sem cadastro, personalize e baixe em PNG para estoque e etiquetas.",
       configuration: {
         title: "Configuração",
         description: "Personalize seu código de barras com as opções abaixo",

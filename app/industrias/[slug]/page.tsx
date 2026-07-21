@@ -11,19 +11,26 @@ const INDUSTRY_METADATA: Record<
   { title: string; description: string }
 > = {
   audiovisual: {
-    title: "Controle de Equipamentos Audiovisuais para Produtoras e Eventos",
+    title:
+      "Sistema para Produtoras: Controle de Equipamentos Audiovisuais com QR Code",
     description:
-      "Controle câmeras, lentes, iluminação e áudio com check-in/check-out, manutenção e rastreabilidade para produtoras e locadoras.",
+      "Check-in/check-out de câmeras, lentes, iluminação e áudio com QR Code. Menos perda e mais rastreio para produtoras e locadoras. Teste grátis.",
+  },
+  events: {
+    title:
+      "Sistema para Empresas de Eventos: Equipamentos com Check-in/Check-out",
+    description:
+      "Controle som, luz, mobiliário e materiais por evento com QR Code. Saiba o que saiu, com quem está e o que voltou. Teste grátis Purple Stock.",
   },
   restaurantes: {
-    title: "Gestao de Estoque para Restaurantes",
+    title: "Gestão de Estoque para Restaurantes",
     description:
-      "Reduza desperdicio e controle ingredientes, validade e fornecedores com um sistema de estoque para restaurantes.",
+      "Reduza desperdício e controle ingredientes, validade e fornecedores com um sistema de estoque para restaurantes.",
   },
   electrical: {
-    title: "Gestao de Estoque para Setor Eletrico",
+    title: "Gestão de Estoque para Setor Elétrico",
     description:
-      "Controle equipamentos, componentes e ferramentas do setor eletrico com mais rastreabilidade e eficiencia operacional.",
+      "Controle equipamentos, componentes e ferramentas do setor elétrico com mais rastreabilidade e eficiência operacional.",
   },
 };
 

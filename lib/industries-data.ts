@@ -383,30 +383,28 @@ export const industriesData: IndustryRecord[] = [
     slug: "audiovisual",
     image: "/images/audio-visual-1.jpg",
     description:
-      "Transforme sua gestão de equipamentos audiovisuais com o Purple Stock. Nossa solução é projetada especificamente para produtoras, estúdios de filmagem, empresas de eventos e profissionais do setor audiovisual que precisam de controle total sobre câmeras, iluminação, áudio e acessórios.",
+      "Controle câmeras, lentes, iluminação e áudio com check-in/check-out e QR Code. Feito para produtoras, locadoras e estúdios que precisam saber quem levou o quê para cada set — e o que voltou.",
     benefits: [
-      "Controle completo de equipamentos de filmagem e fotografia",
-      "Gestão eficiente de locações e projetos",
-      "Rastreamento de acessórios e consumíveis",
-      "Redução de perdas e danos em equipamentos",
-      "Otimização do uso de recursos por projeto",
-      "Controle de manutenção preventiva e corretiva",
-      "Gestão de seguros e garantias de equipamentos",
-      "Integração com sistemas de agendamento e produção",
+      "Check-in/check-out por projeto ou set",
+      "QR Code em cada equipamento e acessório crítico",
+      "Menos perda e extravio de itens caros",
+      "Histórico de quem retirou e quando",
+      "Visibilidade do que está em uso vs disponível",
+      "Base para manutenção e status de ativo",
+      "Operação no celular (estúdio, van ou set)",
+      "Mesmo fluxo usado por empresas de eventos parceiras",
     ],
     features: [
-      "Controle de equipamentos por categoria (câmeras, lentes, iluminação, áudio)",
-      "Sistema de check-in/check-out para locações e projetos",
-      "Rastreamento de acessórios com códigos QR personalizados",
-      "Gestão de baterias, cartões de memória e consumíveis",
-      "Controle de temperatura e condições de armazenamento",
-      "Alertas para manutenção preventiva de equipamentos",
-      "Relatórios de utilização por equipamento e projeto",
-      "Gestão de fornecedores e serviços técnicos",
-      "Controle de versões e atualizações de firmware",
-      "Integração com sistemas de orçamento e faturamento",
-      "Dashboard específico para equipamentos críticos",
-      "Sistema de backup para dados de equipamentos",
+      "Cadastro por categoria (câmeras, lentes, luz, áudio, grip)",
+      "Check-out com responsável e projeto",
+      "Check-in com conferência no retorno",
+      "Etiquetas QR Code para leitura rápida",
+      "Histórico completo de movimentações",
+      "Alertas e status (disponível, em uso, manutenção)",
+      "Controle de kits e itens avulsos",
+      "Relatórios de utilização por equipamento",
+      "Multi-usuário com permissões",
+      "App mobile para o dia a dia da produção",
     ],
   },
   {
@@ -414,30 +412,28 @@ export const industriesData: IndustryRecord[] = [
     slug: "events",
     image: "/images/events-2.jpg",
     description:
-      "Transforme sua gestão de eventos com o Purple Stock. Nossa solução é projetada especificamente para empresas de eventos, organizadores de festas, casamentos, conferências e profissionais do setor que precisam de controle total sobre equipamentos, materiais e recursos.",
+      "Controle som, luz, mobiliário e materiais por evento com check-in/check-out. Saiba o que saiu no caminhão, com quem está e o que faltou no retorno — sem planilha paralela.",
     benefits: [
-      "Controle completo de equipamentos de eventos (som, iluminação, mobiliário)",
-      "Gestão eficiente de materiais e decorações",
-      "Rastreamento de recursos por evento e projeto",
-      "Redução de perdas e danos em equipamentos",
-      "Otimização do uso de recursos por evento",
-      "Controle de manutenção preventiva e corretiva",
-      "Gestão de seguros e garantias de equipamentos",
-      "Integração com sistemas de agendamento e eventos",
+      "Equipamentos e materiais vinculados ao evento",
+      "Check-in/check-out rápido na carga e descarga",
+      "Menos item sumido entre montagem e desmontagem",
+      "QR Code para leitura no depósito ou no local",
+      "Histórico por festa, corporativo ou festival",
+      "Separação do que está disponível para o próximo job",
+      "Equipe freela com rastreio de retirada",
+      "Fluxo irmão do vertical audiovisual",
     ],
     features: [
-      "Controle de equipamentos por categoria (som, iluminação, mobiliário, decorações)",
-      "Sistema de check-in/check-out para eventos e projetos",
-      "Rastreamento de materiais com códigos QR personalizados",
-      "Gestão de consumíveis e acessórios",
-      "Controle de condições de armazenamento",
-      "Alertas para manutenção preventiva de equipamentos",
-      "Relatórios de utilização por equipamento e evento",
-      "Gestão de fornecedores e serviços técnicos",
-      "Controle de versões e atualizações de equipamentos",
-      "Integração com sistemas de orçamento e faturamento",
-      "Dashboard específico para equipamentos críticos",
-      "Sistema de backup para dados de equipamentos",
+      "Cadastro por categoria (som, luz, mobiliário, décor)",
+      "Check-out por evento e responsável",
+      "Check-in com conferência pós-evento",
+      "Etiquetas QR Code nos ativos e caixas",
+      "Histórico de movimentações",
+      "Status: disponível, em evento, manutenção",
+      "Controle de consumíveis vs equipamentos",
+      "Relatórios de uso por evento",
+      "Multi-usuário para depósito e técnicos",
+      "App mobile para operação em campo",
     ],
   },
 ];
@@ -446,24 +442,44 @@ export function getIndustryBySlug(slug: string): IndustryRecord | undefined {
   return industriesData.find((industry) => industry.slug === slug);
 }
 
+/** Preferred related verticals — AV and events convert together. */
+const RELATED_INDUSTRY_PREFS: Record<string, string[]> = {
+  audiovisual: ["events", "technology", "construction"],
+  events: ["audiovisual", "construction", "varejo"],
+  technology: ["audiovisual", "events", "varejo"],
+  construction: ["events", "automotivo", "manufatura"],
+};
+
 export function getRelatedIndustries(
   slug: string,
   limit = 3
 ): IndustryRecord[] {
+  const preferredSlugs = RELATED_INDUSTRY_PREFS[slug] ?? [];
+  const preferred = preferredSlugs
+    .map((preferredSlug) => getIndustryBySlug(preferredSlug))
+    .filter((industry): industry is IndustryRecord => Boolean(industry));
+
+  if (preferred.length >= limit) {
+    return preferred.slice(0, limit);
+  }
+
   const index = industriesData.findIndex((industry) => industry.slug === slug);
   if (index === -1) {
     return industriesData.slice(0, limit);
   }
 
-  const related: IndustryRecord[] = [];
+  const related = [...preferred];
+  const used = new Set([slug, ...related.map((item) => item.slug)]);
+
   for (
     let offset = 1;
     related.length < limit && offset < industriesData.length;
     offset += 1
   ) {
     const candidate = industriesData[(index + offset) % industriesData.length];
-    if (candidate.slug !== slug) {
+    if (!used.has(candidate.slug)) {
       related.push(candidate);
+      used.add(candidate.slug);
     }
   }
 

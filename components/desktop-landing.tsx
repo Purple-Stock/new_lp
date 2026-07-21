@@ -361,28 +361,28 @@ export function DesktopLanding({
     () =>
       ({
         pt: [
-          "almoxarifado",
+          "produtoras",
           "eventos",
+          "audiovisual",
+          "almoxarifado",
           "varejo",
           "indústria",
-          "escolas",
-          "clínicas",
         ],
         en: [
-          "warehouses",
+          "production houses",
           "events",
+          "audiovisual",
+          "warehouses",
           "retail",
           "manufacturing",
-          "schools",
-          "clinics",
         ],
         fr: [
-          "entrepôts",
+          "maisons de production",
           "événements",
+          "audiovisuel",
+          "entrepôts",
           "commerce",
           "industrie",
-          "écoles",
-          "cliniques",
         ],
       })[language],
     [language]

@@ -72,7 +72,42 @@ interface Industry {
   };
 }
 
+/** AV + events first: highest conversion verticals today. */
 const industries: Industry[] = [
+  {
+    id: "audiovisual",
+    translationKey: "audiovisual",
+    image: "/images/audio-visual-2.jpg",
+    icon: Video,
+    color: "text-pink-600",
+    gradient: "from-pink-500 to-pink-600",
+    description:
+      "Check-in/check-out de câmeras, lentes, iluminação e áudio com QR Code para produtoras e locadoras.",
+    benefits: [
+      "Check-in/check-out por set",
+      "QR Code em cada ativo",
+      "Menos perda de equipamento",
+      "Histórico por projeto",
+    ],
+    stats: { value: "45%", label: "Redução de perdas" },
+  },
+  {
+    id: "events",
+    translationKey: "events",
+    image: "/images/events-1.jpg",
+    icon: Star,
+    color: "text-yellow-600",
+    gradient: "from-yellow-500 to-yellow-600",
+    description:
+      "Controle de som, luz, mobiliário e materiais por evento — saiba o que saiu e o que voltou.",
+    benefits: [
+      "Equipamentos por evento",
+      "Check-in/check-out rápido",
+      "Menos item sumido",
+      "Rastreio com QR Code",
+    ],
+    stats: { value: "50%", label: "Aumento de eficiência" },
+  },
   {
     id: "varejo",
     translationKey: "retail",
@@ -207,40 +242,6 @@ const industries: Industry[] = [
       "Controle de manutenção",
     ],
     stats: { value: "40%", label: "Aumento de produtividade" },
-  },
-  {
-    id: "audiovisual",
-    translationKey: "audiovisual",
-    image: "/images/audio-visual-2.jpg",
-    icon: Video,
-    color: "text-pink-600",
-    gradient: "from-pink-500 to-pink-600",
-    description:
-      "Controle de equipamentos de filmagem, iluminação, áudio e acessórios para produção audiovisual.",
-    benefits: [
-      "Controle de equipamentos",
-      "Gestão de locações",
-      "Rastreamento de acessórios",
-      "Controle de manutenção",
-    ],
-    stats: { value: "45%", label: "Redução de perdas" },
-  },
-  {
-    id: "events",
-    translationKey: "events",
-    image: "/images/events-1.jpg",
-    icon: Star,
-    color: "text-yellow-600",
-    gradient: "from-yellow-500 to-yellow-600",
-    description:
-      "Gestão completa de equipamentos, materiais e recursos para eventos, festas e cerimônias.",
-    benefits: [
-      "Controle de equipamentos",
-      "Gestão de materiais",
-      "Rastreamento de recursos",
-      "Controle de locações",
-    ],
-    stats: { value: "50%", label: "Aumento de eficiência" },
   },
   {
     id: "restaurantes",

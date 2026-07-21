@@ -6,6 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 type IndustrySlug =
+  | "audiovisual"
+  | "events"
   | "varejo"
   | "manufatura"
   | "logistica"
@@ -13,10 +15,11 @@ type IndustrySlug =
   | "pharmaceutical"
   | "automotivo"
   | "construction"
-  | "technology"
-  | "audiovisual";
+  | "technology";
 
 type IndustryTranslationKey =
+  | "audiovisual"
+  | "events"
   | "retail"
   | "manufacturing"
   | "logistics"
@@ -24,8 +27,7 @@ type IndustryTranslationKey =
   | "pharmaceutical"
   | "automotive"
   | "construction"
-  | "technology"
-  | "audiovisual";
+  | "technology";
 
 interface Industry {
   slug: IndustrySlug;
@@ -33,7 +35,18 @@ interface Industry {
   image: string;
 }
 
+/** Order reflects conversion: AV + events lead acquisition. */
 const industries: Industry[] = [
+  {
+    slug: "audiovisual",
+    translationKey: "audiovisual",
+    image: "/images/audio-visual-2.jpg",
+  },
+  {
+    slug: "events",
+    translationKey: "events",
+    image: "/images/events-1.jpg",
+  },
   {
     slug: "varejo",
     translationKey: "retail",
@@ -73,11 +86,6 @@ const industries: Industry[] = [
     slug: "technology",
     translationKey: "technology",
     image: "/images/pexels-photo-256541.webp",
-  },
-  {
-    slug: "audiovisual",
-    translationKey: "audiovisual",
-    image: "/images/audio-visual-2.jpg",
   },
 ];
 

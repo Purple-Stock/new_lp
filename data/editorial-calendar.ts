@@ -2,11 +2,31 @@ export type EditorialItem = {
   slug: string;
   title: string;
   targetDate: string;
-  cluster: "almoxarifado" | "qr-code" | "inventario" | "comparativos";
+  cluster:
+    | "almoxarifado"
+    | "qr-code"
+    | "inventario"
+    | "comparativos"
+    | "audiovisual-eventos";
   primaryKeyword: string;
 };
 
 export const EDITORIAL_CALENDAR: EditorialItem[] = [
+  {
+    slug: "controle-equipamentos-audiovisuais-produtoras-eventos",
+    title:
+      "Controle de Equipamentos Audiovisuais: Check-in para Produtoras e Eventos",
+    targetDate: "2026-07-20",
+    cluster: "audiovisual-eventos",
+    primaryKeyword: "controle de equipamentos audiovisuais",
+  },
+  {
+    slug: "check-in-check-out-equipamentos-eventos",
+    title: "Check-in e Check-out de Equipamentos para Empresas de Eventos",
+    targetDate: "2026-08-05",
+    cluster: "audiovisual-eventos",
+    primaryKeyword: "check-in check-out equipamentos eventos",
+  },
   {
     slug: "inventario-fisico-passo-a-passo-2026",
     title: "Inventário Físico Passo a Passo para PME [2026]",

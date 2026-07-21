@@ -84,16 +84,31 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "80-20",
     term: "Regra 80/20",
     category: "management",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "A regra 80/20 (Pareto) diz que cerca de 80% dos resultados vêm de 20% das causas. No estoque, costuma significar que poucos SKUs concentram a maior parte do faturamento, giro ou problemas — base da curva ABC.",
+    definition:
+      "A regra 80/20, ou princípio de Pareto, observa que uma minoria de causas gera a maioria dos efeitos. Em inventário e vendas, a proporção não é mágica nem sempre exata, mas o padrão se repete: poucos itens dominam receita, e outros poucos dominam custos ou rupturas.\n\nAplicações práticas no estoque:\n- Curva ABC: classificar SKUs por contribuição de faturamento ou CMV\n- Priorizar inventário cíclico nos 20% críticos\n- Focar previsão e ponto de reposição nos itens que mais afetam resultado\n- Evitar tratar todos os SKUs com a mesma política de compra\n\nUsar 80/20 não significa abandonar o restante do catálogo; significa alocar tempo, capital e contagem onde o retorno é maior.",
+    example:
+      "Uma loja com 1.000 SKUs descobre que 180 itens geram 82% da receita. O time passa a contar esses 180 semanalmente, revisar lead time e safety stock com mais rigor, e reavaliar trimestralmente os 200 itens sem movimento. Em poucos meses a ruptura dos itens A cai e o capital parado nos C diminui.",
     formula: "80% dos resultados vêm de 20% das causas",
     formulaExplanation:
-      "Esta proporção ilustra que uma minoria dos esforços ou itens geralmente gera a maioria dos resultados. No contexto de estoque, significa que ~20% dos seus SKUs são responsáveis por ~80% do faturamento.",
+      "Proporção ilustrativa: no estoque, ~20% dos SKUs costumam gerar ~80% do faturamento ou dos problemas operacionais.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "A regra 80/20 é sempre 80 e 20?",
+        answer:
+          "Não. Pode ser 70/30 ou 90/10. O importante é a concentração: uma minoria de itens explica a maior parte do resultado.",
+      },
+      {
+        question: "Como usar 80/20 no inventário físico?",
+        answer:
+          "Conte com mais frequência os itens que mais vendem ou mais custam (curva A). Itens C podem ter contagem mais espaçada, sem abandonar o controle.",
+      },
+      {
+        question: "80/20 e curva ABC são a mesma coisa?",
+        answer:
+          "São conceitos irmãos. A curva ABC operacionaliza o 80/20 classificando itens em A (alto impacto), B (médio) e C (baixo).",
+      },
     ],
     relatedTerms: ["giro-de-estoque", "gestao-de-estoque"],
     relatedFeatures: ["analytics-reporting"],
@@ -103,13 +118,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "contas-a-pagar",
     term: "Contas a Pagar",
     category: "finance",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Contas a pagar são as obrigações da empresa com fornecedores e credores de curto prazo. No estoque, nascem principalmente das compras de mercadorias e materiais a prazo.",
+    definition:
+      "Contas a pagar (accounts payable) registram o que a empresa deve a terceiros, em especial fornecedores de mercadorias, insumos e serviços. Quando a compra de estoque é a prazo, o ativo (inventário) sobe junto com o passivo (conta a pagar).\n\nGestão saudável de contas a pagar equilibra:\n- Prazo negociado (DPO) sem quebrar relacionamento\n- Caixa disponível no vencimento\n- Conferência de nota, pedido e recebimento (three-way match)\n- Evitar pagar item não recebido ou divergente\n\nCompras impulsivas elevam contas a pagar e podem gerar excesso de estoque. Por isso compras, almoxarifado e financeiro precisam do mesmo saldo e do mesmo histórico de entrada.",
+    example:
+      "A PME emite pedido de R$ 40 mil com prazo de 28 dias. A mercadoria entra, o estoque sobe e a conta a pagar é programada. Se a conferência achar 5% de falta, o financeiro só libera o valor da quantidade efetiva — evitando pagar o que não entrou no inventário.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Contas a pagar é o mesmo que despesa?",
+        answer:
+          "Não. Contas a pagar é obrigação no passivo. A despesa ou o CMV só se reconhecem conforme a contabilidade do período e a saída/uso do item.",
+      },
+      {
+        question: "Como o estoque se relaciona com contas a pagar?",
+        answer:
+          "Quase toda compra a prazo de mercadoria gera (ou deveria gerar) entrada de estoque e uma obrigação a pagar. Divergência entre os dois é sinal de processo quebrado.",
+      },
+      {
+        question: "Alongar prazo de pagamento ajuda o caixa?",
+        answer:
+          "Pode ajudar o CCC, mas se vier junto de compra em excesso, o ganho de prazo vira estoque parado. Negocie prazo com disciplina de compra.",
+      },
     ],
     relatedTerms: [
       "contas-a-receber",
@@ -123,13 +153,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "contas-a-receber",
     term: "Contas a Receber",
     category: "finance",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Contas a receber são os valores que clientes devem à empresa por vendas a prazo. Junto com estoque e caixa, formam boa parte do ativo circulante e do capital de giro.",
+    definition:
+      "Contas a receber (accounts receivable) representam direitos de crédito da empresa sobre clientes. Em vendas B2B a prazo, o estoque sai, a receita é reconhecida e nasce um recebível até a liquidação.\n\nO prazo de recebimento (DSO) afeta o ciclo de conversão de caixa: quanto mais tempo para receber, mais capital a empresa precisa para financiar estoque e operação.\n\nBoas práticas: política de crédito, cobrança disciplinada, conciliação com pedidos e notas, e evitar vender a prazo para cliente de alto risco enquanto o estoque crítico está apertado.",
+    example:
+      "Um distribuidor vende R$ 20 mil a 21 dias. O estoque baixa na expedição e o caixa só entra três semanas depois. Se o DSO médio sobe para 40 dias e o estoque continua alto, o capital de giro aperta mesmo com “venda boa” no relatório.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "O que são contas a receber?",
+        answer:
+          "Valores a receber de clientes por vendas já realizadas a prazo. Ficam no ativo circulante até o pagamento.",
+      },
+      {
+        question: "Como contas a receber afetam o estoque?",
+        answer:
+          "Indiretamente via caixa: se o recebimento atrasa, sobra menos recurso para repor estoque e pagar fornecedores no prazo.",
+      },
+      {
+        question: "O que é DSO?",
+        answer:
+          "Days Sales Outstanding: dias médios para receber dos clientes. É um dos componentes do ciclo de conversão de caixa.",
+      },
     ],
     relatedTerms: ["contas-a-pagar", "capital-de-giro", "ativos-circulantes"],
     relatedFeatures: ["purchase-sales"],
@@ -170,13 +215,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "sistema-de-codigo-de-barras",
     term: "Sistema de Código de Barras",
     category: "technology",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Sistema de código de barras identifica itens por leitura óptica (EAN, Code 128 etc.), acelerando entrada, saída e inventário e reduzindo erro de digitação no controle de estoque.",
+    definition:
+      "Um sistema de código de barras combina simbologia (tipo de código), etiquetas, leitores e software de estoque para reconhecer um item sem digitar o código manualmente.\n\nFormatos comuns no Brasil: EAN-13 (varejo), Code 128 (logística e interno), QR Code (pode carregar URL, serial ou dados ricos).\n\nBenefícios: menos erro, inventário mais rápido, rastreio de movimentação e padronização do cadastro. Requisitos: SKU bem cadastrado, etiqueta legível, processo de leitura no ato da movimentação e disciplina para não “contornar” o sistema.\n\nFerramentas gratuitas de geração de código ajudam no começo; o ganho real aparece quando a leitura está ligada ao saldo em tempo real.",
+    example:
+      "Um almoxarifado que digitava SKU na saída tinha 6% de erro de item. Com etiqueta Code 128 e leitura no celular, o erro caiu para menos de 1% e o inventário cíclico de 200 itens passou a fechar no mesmo turno.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Preciso de leitor dedicado ou o celular basta?",
+        answer:
+          "Muitas PMEs começam com câmera do celular e app de estoque. Em alto volume, leitor dedicado costuma ser mais rápido e ergonômico.",
+      },
+      {
+        question: "Código de barras e QR Code são iguais?",
+        answer:
+          "Não. Código de barras linear é clássico para SKU/EAN; QR Code armazena mais dados e é comum em ativos e links. Ambos servem para identificação.",
+      },
+      {
+        question: "O que mais importa além de gerar a etiqueta?",
+        answer:
+          "Padronizar o cadastro, colar a etiqueta no item/endereço e registrar a movimentação na leitura — etiqueta sem processo não melhora o saldo.",
+      },
     ],
     relatedTerms: ["sku", "wms", "gestao-de-estoque"],
     relatedFeatures: ["barcoding", "inventory-control"],
@@ -186,13 +246,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "lista-de-materiais",
     term: "Lista de Materiais (BOM)",
     category: "management",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Lista de materiais (BOM — Bill of Materials) é a receita do produto: quais componentes, quantidades e estruturas formam um item acabado. É base do planejamento de produção e do consumo de estoque.",
+    definition:
+      "A lista de materiais (BOM) descreve a estrutura de um produto: matérias-primas, componentes, subconjuntos e quantidades necessárias para produzir uma unidade (ou lote).\n\nTipos comuns: BOM de engenharia (projeto), BOM de manufatura (chão de fábrica) e BOM multinível (produto com submontagens).\n\nSem BOM confiável, a empresa compra errado, estoura custo e não sabe quanto cada ordem deveria consumir. Com BOM no sistema, a ordem de produção pode reservar e baixar componentes automaticamente, melhorando acurácia e custo do produto.\n\nManter versão da BOM é crítico: troca de componente sem atualizar a lista gera divergência entre estoque teórico e físico.",
+    example:
+      "Para montar 1 luminária, a BOM pede 1 base, 2 parafusos especiais, 1 driver e 1 cúpula. Ao liberar ordem de 50 luminárias, o sistema reserva 50 bases, 100 parafusos, 50 drivers e 50 cúpulas. Se faltar driver, a ruptura aparece antes de começar a montagem.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "BOM e receita de produção são a mesma coisa?",
+        answer:
+          "Na prática, sim: a BOM é a lista estruturada do que entra no produto. Pode incluir também rendimento e perdas previstas.",
+      },
+      {
+        question: "Toda PME industrial precisa de BOM no sistema?",
+        answer:
+          "Se monta, transforma ou kita produtos com mais de um componente, sim. Controlar só o acabado sem a lista gera compra e custo cegos.",
+      },
+      {
+        question: "Como a BOM afeta o estoque?",
+        answer:
+          "Define o consumo esperado de componentes por ordem. Erro na BOM vira excesso de um item e falta de outro, mesmo com “boa gestão” de prateleira.",
+      },
     ],
     relatedTerms: ["gestao-de-estoque", "cadeia-de-suprimentos"],
     relatedFeatures: ["inventory-control", "factory-management"],
@@ -367,13 +442,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "ciclo-de-tempo",
     term: "Tempo de Espera (Lead Time)",
     category: "logistics",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Ciclo de tempo (ou tempo de ciclo) é o intervalo total para completar um processo — da solicitação à conclusão. Em suprimentos, aproxima-se do lead time de reposição; na produção, do tempo de atravessar a linha.",
+    definition:
+      "Ciclo de tempo mede quanto tempo um fluxo leva do início ao fim. Em logística de compras, muitos usam o termo de forma próxima a lead time: pedido → entrega → disponível no estoque.\n\nNa manufatura, o tempo de ciclo pode ser o tempo entre duas unidades concluídas ou o lead time de fabricação de um lote. O importante é definir o ponto de início e fim medidos pela operação.\n\nReduzir ciclo de tempo libera capital, encurta resposta ao cliente e diminui a necessidade de estoque de segurança. Medir só o “prazo prometido” do fornecedor sem incluir recebimento e liberação interna subestima o ciclo real.\n\nNo glossário Purple Stock, o termo detalhado de reposição de compras é lead time; ciclo de tempo cobre a ideia mais ampla de duração de processos.",
+    example:
+      "O “prazo do fornecedor” era 5 dias, mas aprovação interna (1 dia) + conferência (1 dia) elevavam o ciclo total a 7 dias. Ao medir o ciclo completo, o ponto de reposição foi ajustado e as rupturas por “atraso surpresa” caíram.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Ciclo de tempo e lead time são iguais?",
+        answer:
+          "Muitas vezes se sobrepõem na prática de compras. Lead time costuma focar reposição; ciclo de tempo pode descrever qualquer processo (produção, atendimento, picking).",
+      },
+      {
+        question: "Como medir o ciclo de tempo de compras?",
+        answer:
+          "Marque data/hora do pedido (ou da necessidade) e da disponibilidade no endereço. Use mediana e variação, não só o melhor caso.",
+      },
+      {
+        question: "Por que reduzir o ciclo de tempo?",
+        answer:
+          "Menos espera = menos estoque de proteção, resposta mais rápida e menos efeito chicote na cadeia.",
+      },
     ],
     relatedTerms: [
       "estoque-de-seguranca",
@@ -387,13 +477,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "dropshipping",
     term: "Dropshipping",
     category: "technology",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Dropshipping é o modelo em que a loja vende o produto sem manter estoque próprio: o fornecedor envia direto ao cliente. Reduz capital parado, mas exige controle de prazo, qualidade e ruptura do parceiro.",
+    definition:
+      "No dropshipping, o varejista (geralmente e-commerce) não compra o item para o próprio armazém antes da venda. Após o pedido do cliente, o fornecedor ou 3PL despacha a mercadoria.\n\nVantagens: baixo capital de estoque, catálogo amplo, setup mais leve. Riscos: menos controle de prazo e qualidade, margem pressionada, ruptura “invisível” no site e dificuldade de branding na embalagem.\n\nMesmo sem estoque próprio, a operação precisa de gestão: status de pedido, SLAs, produtos críticos que valem estocar, e política clara de atraso/cancelamento. Muitas PMEs usam modelo híbrido — dropshipping no long tail e estoque próprio nos top sellers.",
+    example:
+      "Uma loja online de utilidades mantém estoque próprio dos 50 itens que mais vendem e usa dropshipping para 800 SKUs de cauda longa. Assim preserva prazo nos bestsellers e não imobiliza capital no restante do catálogo.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Dropshipping elimina a necessidade de gestão de estoque?",
+        answer:
+          "Elimina o inventário físico próprio na maioria dos itens, mas não elimina gestão de pedido, fornecedor e nível de serviço. A ruptura passa a ser do parceiro — e o cliente cobra de você.",
+      },
+      {
+        question: "Quando não usar dropshipping?",
+        answer:
+          "Em itens de alto giro com margem apertada de prazo, produtos que exigem controle de qualidade rígido ou quando o fornecedor é instável.",
+      },
+      {
+        question: "Dropshipping e 3PL são iguais?",
+        answer:
+          "Não. No 3PL você em geral é dono do estoque armazenado no operador. No dropshipping clássico o estoque é do fornecedor até a venda.",
+      },
     ],
     relatedTerms: ["logistica", "cadeia-de-suprimentos", "gestao-de-estoque"],
     relatedFeatures: ["inventory-control"],
@@ -577,13 +682,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "financiamento-de-estoque",
     term: "Financiamento de Estoque",
     category: "finance",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Financiamento de estoque é o uso de capital (próprio ou de terceiros) para manter inventário até a venda. Inclui custo de oportunidade, juros, armazenagem e risco de obsolescência.",
+    definition:
+      "Todo estoque é financiado por alguém: caixa da empresa, fornecedor (prazo), banco ou investidor. O custo de financiar inventário não aparece só na taxa de juros — inclui capital parado, seguro, espaço e perda de valor do item.\n\nFormas comuns:\n- Capital próprio (custo de oportunidade)\n- Prazo de fornecedor (financia via contas a pagar)\n- Linhas de crédito / capital de giro\n- Financiamento atrelado a recebíveis ou a carteira\n\nA melhor “fonte” de financiamento de estoque costuma ser operacional: girar mais, reduzir excesso e acertar o ponto de reposição. Crédito barato não compensa inventário morto.",
+    example:
+      "Uma empresa mantém R$ 500 mil em estoque com custo de capital de 1,5% ao mês. Só o custo financeiro implícito é ~R$ 7,5 mil/mês. Ao cortar R$ 100 mil de itens sem giro, libera capital e reduz esse custo sem precisar de novo empréstimo.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Financiar estoque com banco é boa ideia?",
+        answer:
+          "Pode ser em sazonalidade ou compra estratégica com giro claro. É má ideia financiar excesso crônico ou itens sem demanda comprovada.",
+      },
+      {
+        question: "Como calcular o custo de carregar estoque?",
+        answer:
+          "Some custo de capital, armazenagem, seguro, obsolescência e manuseio — em geral uma % ao ano sobre o valor médio do inventário (varia por setor).",
+      },
+      {
+        question: "O que reduz a necessidade de financiar estoque?",
+        answer:
+          "Maior giro, lead time menor, previsão melhor, menos SKUs mortos e prazos de pagamento alinhados ao ciclo de venda.",
+      },
     ],
     relatedTerms: ["capital-de-giro", "excesso-de-estoque", "contas-a-pagar"],
     relatedFeatures: [],
@@ -752,13 +872,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "logistica",
     term: "Logística",
     category: "logistics",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Logística é o conjunto de processos que planejam e executam o fluxo de materiais, informações e pedidos — da origem ao cliente. Inclui armazenagem, transporte, estoques e processamento de pedidos.",
+    definition:
+      "Logística conecta suprimentos, armazém e distribuição para o produto certo chegar no lugar certo, na hora certa e ao custo adequado.\n\nComponentes típicos:\n- Gestão de estoques e armazenagem\n- Transporte e roteirização\n- Processamento de pedidos (picking, packing, expedição)\n- Informação e rastreabilidade\n- Logística reversa (devoluções)\n\nPara PMEs, logística eficiente não exige megacentro: exige processo claro, saldo confiável, prazos realistas e indicadores (on-time, custo por pedido, ruptura). Sistemas de estoque e, quando necessário, 3PL ou WMS, sustentam a operação.",
+    example:
+      "Uma marca D2C reduziu atraso de entrega não comprando mais frete caro, e sim melhorando a acurácia do estoque e o cutoff de picking. Pedidos “sumidos” caíram e o prazo médio melhorou sem mudar a transportadora.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Logística e supply chain são a mesma coisa?",
+        answer:
+          "Supply chain (cadeia de suprimentos) é o conceito mais amplo, do fornecedor do fornecedor ao cliente. Logística é o braço de fluxo físico e de pedidos dentro dessa cadeia.",
+      },
+      {
+        question: "O que a logística tem a ver com estoque?",
+        answer:
+          "Estoque é um dos amortecedores da logística. Mal dimensionado, gera ruptura ou excesso; bem gerido, estabiliza prazo e custo.",
+      },
+      {
+        question: "Quando terceirizar logística?",
+        answer:
+          "Quando volume, sazonalidade ou geografia tornam 3PL mais barato/ágil do que operar armazém próprio — com SLAs e integração de saldo claros.",
+      },
     ],
     relatedTerms: ["cadeia-de-suprimentos", "3pl", "wms"],
     relatedFeatures: ["warehouse-control"],
@@ -834,13 +969,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "logistica-reversa",
     term: "Logística Reversa",
     category: "logistics",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Logística reversa cuida do fluxo de volta: devoluções, trocas, recalls e descarte correto. Impacta estoque, custo e experiência do cliente quando o item reingressa ou é baixado.",
+    definition:
+      "Logística reversa é o processo de planejar e operar o retorno de produtos e materiais do ponto de consumo para a empresa (ou para reciclagem/descarte).\n\nMotivos comuns: arrependimento de compra, defeito, avaria no transporte, recall, embalagens retornáveis, resíduos regulados.\n\nNo estoque, a devolução precisa de fluxo claro: inspeção (revenda, recondicionamento ou perda), reentrada com motivo, e ajuste de saldo. Sem isso, o item volta fisicamente e o sistema continua “vendido”, ou o contrário.\n\nMétricas úteis: taxa de devolução, tempo de reentrada, % recuperável e custo reverso por pedido.",
+    example:
+      "Um e-commerce com 8% de devolução criou triagem em 24h: item lacrado volta para saldo vendável; item aberto vai para outlet; defeituoso gera baixa e aciona fornecedor. O saldo parou de “sumir” e o prazo de reembolso melhorou.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Logística reversa é só e-commerce?",
+        answer:
+          "Não. Indústria e varejo físico também lidam com devolução a fornecedor, vasilhames, pallets e recalls.",
+      },
+      {
+        question: "Como a reversa afeta o inventário?",
+        answer:
+          "Todo retorno deve gerar movimentação de entrada (ou perda) com motivo. Sem lançamento, a acurácia despenca.",
+      },
+      {
+        question: "Dá para reduzir devolução?",
+        answer:
+          "Sim: melhor descrição do produto, qualidade na expedição, embalagem adequada e conferência de picking. A reversa bem feita trata o que sobra.",
+      },
     ],
     relatedTerms: ["logistica", "cadeia-de-suprimentos"],
     relatedFeatures: ["warehouse-control"],
@@ -850,13 +1000,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "wms",
     term: "WMS (Warehouse Management System)",
     category: "technology",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "WMS (Warehouse Management System) é o software de gestão de armazém: endereços, recebimento, picking, inventário e expedição. É mais profundo no chão do que um ERP genérico.",
+    definition:
+      "O WMS controla a operação física do armazém com granularidade de endereço (corredor, prateleira, bin), tarefas e status de pedido.\n\nFunções típicas:\n- Recebimento e put-away\n- Endereçamento e slotting\n- Picking (ondas, zonas, batch)\n- Inventário cíclico\n- Expedição e conferência\n- Integração com ERP e transportadoras\n\nPME em crescimento muitas vezes começa com sistema de estoque/almoxarifado mais leve e evolui para WMS quando volume, multiendereço e produtividade de picking exigem. O erro comum é comprar WMS complexo antes de ter processo e cadastro maduros.",
+    example:
+      "Um CD com 3.000 SKUs e 400 pedidos/dia sofria com item “não encontrado”. Com WMS e endereço único por posição + picking por leitura, a produtividade subiu e a divergência de inventário caiu porque cada retirada atualizava o bin correto.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "WMS e ERP são a mesma coisa?",
+        answer:
+          "Não. ERP integra a empresa (financeiro, pedidos, estoque contábil). WMS especializa a execução no armazém. Podem (e costumam) se integrar.",
+      },
+      {
+        question: "Toda PME precisa de WMS?",
+        answer:
+          "Não. Operações menores podem ir bem com sistema de estoque e endereçamento simples. WMS justifica-se com volume, multiendereço e necessidade de otimizar mão de obra.",
+      },
+      {
+        question: "O que preparar antes de implantar WMS?",
+        answer:
+          "Cadastro limpo de SKU, mapa de endereços, processos de entrada/saída padronizados e disciplina de leitura — senão o WMS só digitaliza o caos.",
+      },
     ],
     relatedTerms: ["logistica", "picking", "gestao-de-estoque"],
     relatedFeatures: ["warehouse-control", "inventory-control"],
@@ -897,13 +1062,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "cadeia-de-suprimentos",
     term: "Cadeia de Suprimentos",
     category: "logistics",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Cadeia de suprimentos (supply chain) é a rede de organizações, fluxos e informações que leva o produto da matéria-prima ao cliente final — incluindo fornecedores, fábricas, armazéns e canais de distribuição.",
+    definition:
+      "A cadeia de suprimentos abrange planejamento e execução do fluxo de materiais e dados entre múltiplos elos: fornecedores, manufatura, centros de distribuição, varejo e cliente.\n\nObjetivos clássicos: nível de serviço, custo total, resiliência e velocidade. Ferramentas incluem previsão de demanda, gestão de estoques, compras, logística, VMI/CPFR e indicadores compartilhados.\n\nPara a PME, “gerir a cadeia” começa perto de casa: confiabilidade de fornecedores, lead times reais, estoque equilibrado e comunicação de demanda. Problemas em um elo (atraso, MOQ alto, efeito chicote) se espalham para o inventário e o caixa.",
+    example:
+      "Uma marca de cosméticos dependia de um único frasco importado com lead time de 90 dias. Ao dual-sourcing e elevar safety stock só desse componente crítico, a cadeia ficou mais resiliente sem inflar o estoque de todos os SKUs.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Qual a diferença entre cadeia de suprimentos e logística?",
+        answer:
+          "A cadeia é o sistema completo de elos e decisões. Logística é o fluxo físico/pedido dentro desse sistema.",
+      },
+      {
+        question: "O que é resiliência da supply chain?",
+        answer:
+          "Capacidade de absorver choques (atraso, pico, falha de fornecedor) sem quebrar serviço — via buffers seletivos, redundância e visibilidade.",
+      },
+      {
+        question: "Como a PME melhora a cadeia sem time enorme?",
+        answer:
+          "Mapeie fornecedores críticos, meça lead time real, compartilhe previsão nos top itens e elimine excesso que esconde problemas de processo.",
+      },
     ],
     relatedTerms: ["logistica", "3pl", "efeito-chicote"],
     relatedFeatures: ["inventory-control"],
@@ -913,16 +1093,31 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "capital-de-giro",
     term: "Capital de Giro",
     category: "finance",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Capital de giro é o recurso que financia a operação no curto prazo: estoque, contas a receber e despesas do dia a dia, menos as obrigações de curto prazo. Estoque alto consome capital de giro.",
+    definition:
+      "Capital de giro (working capital) representa a folga financeira para operar o ciclo curto do negócio. A forma clássica é ativos circulantes menos passivos circulantes.\n\nEstoque é frequentemente o maior consumidor de capital de giro em comércio e indústria. Receber devagar (DSO alto) e pagar rápido piora a situação; girar estoque e negociar prazos de forma equilibrada melhora.\n\nSintomas de capital de giro apertado: atraso a fornecedor, compra emergencial cara, promoção forçada de excesso e dificuldade de repor item crítico. A solução nem sempre é mais empréstimo — muitas vezes é menos inventário improdutivo e processos melhores.",
+    example:
+      "Ativos circulantes R$ 800 mil (sendo R$ 450 mil estoque) e passivos circulantes R$ 500 mil. Capital de giro = R$ 300 mil. Se R$ 120 mil do estoque estiver parado, a “folga” real é bem menor do que o número contábil sugere.",
     formula: "Capital de Giro = Ativos Circulantes - Passivos Circulantes",
     formulaExplanation:
-      "Ativos Circulantes = recursos disponíveis para curto prazo (estoque, contas a receber, caixa); Passivos Circulantes = obrigações de curto prazo (contas a pagar, empréstimos).",
+      "Ativos circulantes incluem caixa, recebíveis e estoques; passivos circulantes incluem fornecedores e demais obrigações de curto prazo.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Estoque conta no capital de giro?",
+        answer:
+          "Sim. Estoque é ativo circulante. Quanto mais capital parado em inventário de baixo giro, menos flexibilidade a empresa tem.",
+      },
+      {
+        question: "Capital de giro negativo é sempre ruim?",
+        answer:
+          "Nem sempre (modelos com recebimento rápido e pagamento alongado podem operar assim), mas em PME com estoque alto costuma sinalizar aperto e risco.",
+      },
+      {
+        question: "Como liberar capital de giro pelo estoque?",
+        answer:
+          "Reduza excesso, acelere giro, melhore acurácia (evita compra errada), ajuste MOQ/ponto de reposição e liquide itens sem movimento com critério.",
+      },
     ],
     relatedTerms: [
       "ativos-circulantes",
@@ -936,13 +1131,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "inflacao",
     term: "Inflação",
     category: "finance",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Inflação é a alta generalizada de preços ao longo do tempo. No estoque, afeta custo de reposição, valoração (PEPS/médio), margem e a decisão de antecipar ou postergar compras.",
+    definition:
+      "Inflação reduz o poder de compra da moeda e eleva, em média, os preços de insumos e mercadorias. Para quem gerencia inventário, isso muda três frentes:\n\n1) Custo de reposição sobe — repor o mesmo SKU custa mais amanhã.\n2) Valoração de estoque e CMV dependem do método (médio, PEPS).\n3) Antecipar compra demais gera excesso; comprar tarde demais pressiona margem.\n\nEm inflação alta, empresas tendem a proteger margem e disponibilidade, mas o risco é transformar “compra antecipada” em capital parado se a demanda não acompanhar. O contraponto é negociar contratos, revisar preços de venda e monitorar giro por categoria.",
+    example:
+      "O custo de um componente sobe 12% em um trimestre. A empresa revisa o preço de venda, atualiza o custo médio no sistema e evita comprar 6 meses de cobertura “por medo” — mantém 45 dias nos itens estáveis e só amplia buffer nos críticos de lead time longo.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Devo estocar mais quando há inflação?",
+        answer:
+          "Só com demanda clara, validade ok e capital disponível. Antecipar tudo vira excesso caro. Seja seletivo nos SKUs críticos.",
+      },
+      {
+        question: "Como a inflação afeta o CMV?",
+        answer:
+          "Compras mais caras elevam o custo unitário ao longo do tempo. O método de valoração define a velocidade com que isso aparece no CMV.",
+      },
+      {
+        question: "O que monitorar no estoque em cenário inflacionário?",
+        answer:
+          "Custo de reposição, margem por SKU, cobertura em dias e itens sem giro — para não financiar inventário morto a preço novo.",
+      },
     ],
     relatedTerms: ["custo-das-mercadorias-vendidas", "contas-a-pagar"],
     relatedFeatures: [],
@@ -1094,13 +1304,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "rfid",
     term: "RFID (Identificação por Radiofrequência)",
     category: "technology",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "RFID identifica itens por radiofrequência, sem linha de visão obrigatória como no código de barras. Permite contagens mais rápidas e rastreio em volume, com custo de tag e infraestrutura maior.",
+    definition:
+      "RFID (Radio-Frequency Identification) usa etiquetas (tags) e leitores que comunicam por radiofrequência. Diferente do código de barras, não exige mirar cada etiqueta individualmente com a mesma precisão ótica.\n\nVantagens: inventário em massa mais rápido, leitura de vários itens, bom para ativos e cadeias de alto volume. Desvantagens: custo da tag, interferência metálica/líquidos, projeto de antenas e integração de software.\n\nPara a maioria das PMEs, código de barras/QR resolve o dia a dia. RFID entra quando o ROI de contagem, anti-furto ou rastreio justifica o investimento — ou em setores com exigência específica de rastreabilidade.",
+    example:
+      "Uma rede de moda usa RFID em peça única para inventário de loja: a contagem que levava um turno passa a minutos com portal/leitor. A acurácia sobe e o reabastecimento da retaguarda fica mais confiável. O custo da tag é diluído no ticket do produto.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "RFID substitui código de barras?",
+        answer:
+          "Pode complementar ou substituir em alguns fluxos, mas barras/QR continuam comuns por custo e simplicidade. Muitas operações usam os dois.",
+      },
+      {
+        question: "RFID vale para PME pequena?",
+        answer:
+          "Só com caso de uso claro (inventário muito trabalhoso, alto furto, alto volume). Caso contrário, comece por código de barras e processo disciplinado.",
+      },
+      {
+        question: "Qual a diferença entre tag ativa e passiva?",
+        answer:
+          "Tags passivas são alimentadas pelo leitor e são as mais comuns em varejo/estoque. Ativas têm bateria e maior alcance, com custo bem maior.",
+      },
     ],
     relatedTerms: ["sistema-de-codigo-de-barras", "wms", "gestao-de-estoque"],
     relatedFeatures: ["barcoding", "inventory-control"],
@@ -1141,13 +1366,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     slug: "previsao-de-demanda",
     term: "Previsão de Demanda",
     category: "inventory",
-    shortDefinition: "", // TODO: ~50 palavras
-    definition: "", // TODO: ~300 palavras
-    example: "", // TODO: ~200 palavras
+    shortDefinition:
+      "Previsão de demanda estima quantidades futuras de venda ou consumo para planejar compras, produção e estoque. Boa previsão reduz ruptura e excesso; previsão ruim amplifica os dois.",
+    definition:
+      "Previsão de demanda é o processo de projetar a saída futura de produtos com base em histórico, sazonalidade, promoções, mercado e julgamento do time.\n\nMétodos vão do simples (média móvel, sazonalidade básica) ao avançado (modelos estatísticos e machine learning). Para PME, consistência e revisão batem complexidade desnecessária.\n\nA previsão alimenta ponto de reposição, compras e capacidade. Erros são normais: o sistema de estoque deve combinar forecast com safety stock e monitoramento de viés (errar sempre para cima ou para baixo).\n\nPromoção, lançamento e ruptura passada distorcem o histórico — trate esses pontos antes de “confiar cegamente no número”.",
+    example:
+      "Um item vende ~30 un/semana, com pico de 50 em datas sazonais. A PME usa média das últimas 8 semanas + calendário de campanha. Antes da campanha, eleva o ponto de reposição; depois, volta ao parâmetro normal para não ficar com excesso.",
     faq: [
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
-      { question: "", answer: "" }, // TODO
+      {
+        question: "Previsão perfeita existe?",
+        answer:
+          "Não. O objetivo é errar menos e reagir rápido. Combine forecast com inventário de segurança e revisão frequente nos itens A.",
+      },
+      {
+        question: "Qual o maior erro de previsão em PME?",
+        answer:
+          "Usar só o último mês, ignorar promoção/ruptura no histórico, ou não separar itens com demanda intermitente dos de giro estável.",
+      },
+      {
+        question: "Como ligar previsão ao estoque no dia a dia?",
+        answer:
+          "Transforme a previsão em política: ponto de reposição, cobertura alvo e alertas. Sem parâmetro operacional, a previsão vira slide, não decisão.",
+      },
     ],
     relatedTerms: [
       "estoque-de-seguranca",

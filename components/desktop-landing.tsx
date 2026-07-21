@@ -361,27 +361,27 @@ export function DesktopLanding({
     () =>
       ({
         pt: [
-          "almoxarifado",
+          "produtoras",
           "eventos",
-          "varejo",
-          "indústria",
-          "escolas",
+          "telecom",
+          "autopeças",
+          "peças de moto",
           "clínicas",
         ],
         en: [
-          "warehouses",
+          "production houses",
           "events",
-          "retail",
-          "manufacturing",
-          "schools",
+          "telecom",
+          "auto parts",
+          "motorcycle parts",
           "clinics",
         ],
         fr: [
-          "entrepôts",
+          "maisons de production",
           "événements",
-          "commerce",
-          "industrie",
-          "écoles",
+          "télécom",
+          "pièces auto",
+          "pièces moto",
           "cliniques",
         ],
       })[language],
@@ -439,7 +439,8 @@ export function DesktopLanding({
             height: 60,
             maxWidth: "max-w-[180px]",
             result:
-              '"Antes era difícil rastrear movimentação. Hoje entrada, saída e transferência ficam no mesmo histórico."',
+              '"Antes era difícil rastrear movimentação de equipamento. Hoje entrada, saída e transferência ficam no mesmo histórico — com responsável."',
+            sector: "Operação / equipamentos",
           },
           {
             name: "St. Nicholas School",
@@ -449,6 +450,7 @@ export function DesktopLanding({
             maxWidth: "max-w-[240px]",
             result:
               '"A equipe passou a conferir estoque por localização sem perder tempo procurando item."',
+            sector: "Educação",
           },
           {
             name: "Da Rua",
@@ -458,6 +460,7 @@ export function DesktopLanding({
             maxWidth: "max-w-[120px]",
             result:
               '"Parou de existir planilha paralela para controle diário de estoque."',
+            sector: "Varejo / marca",
           },
           {
             name: "DPS Brasil",
@@ -467,6 +470,7 @@ export function DesktopLanding({
             maxWidth: "max-w-[180px]",
             result:
               '"Hoje o time enxerga saldo e movimentações no mesmo painel operacional."',
+            sector: "Operações",
           },
         ],
         en: [
@@ -477,7 +481,8 @@ export function DesktopLanding({
             height: 60,
             maxWidth: "max-w-[180px]",
             result:
-              '"Inbound, outbound, and transfer are now tracked in one single movement history."',
+              '"Equipment inbound, outbound, and transfer are now tracked in one history — with an owner on each move."',
+            sector: "Operations / equipment",
           },
           {
             name: "St. Nicholas School",
@@ -487,6 +492,7 @@ export function DesktopLanding({
             maxWidth: "max-w-[240px]",
             result:
               '"The team now runs stock checks by location without wasting time searching items."',
+            sector: "Education",
           },
           {
             name: "Da Rua",
@@ -496,6 +502,7 @@ export function DesktopLanding({
             maxWidth: "max-w-[120px]",
             result:
               '"Daily stock control no longer depends on parallel spreadsheets."',
+            sector: "Retail / brand",
           },
           {
             name: "DPS Brasil",
@@ -505,6 +512,7 @@ export function DesktopLanding({
             maxWidth: "max-w-[180px]",
             result:
               '"Operations now see stock balance and movement history in one place."',
+            sector: "Operations",
           },
         ],
         fr: [
@@ -515,7 +523,8 @@ export function DesktopLanding({
             height: 60,
             maxWidth: "max-w-[180px]",
             result:
-              '"Entree, sortie et transfert sont maintenant suivis dans un historique unique."',
+              '"Entree, sortie et transfert d\'equipements sont suivis dans un historique unique — avec responsable."',
+            sector: "Operations / equipements",
           },
           {
             name: "St. Nicholas School",
@@ -525,6 +534,7 @@ export function DesktopLanding({
             maxWidth: "max-w-[240px]",
             result:
               '"L\'equipe controle le stock par emplacement sans perdre du temps a chercher les articles."',
+            sector: "Education",
           },
           {
             name: "Da Rua",
@@ -534,6 +544,7 @@ export function DesktopLanding({
             maxWidth: "max-w-[120px]",
             result:
               '"Le controle quotidien ne depend plus de tableurs paralleles."',
+            sector: "Retail / marque",
           },
           {
             name: "DPS Brasil",
@@ -543,6 +554,7 @@ export function DesktopLanding({
             maxWidth: "max-w-[180px]",
             result:
               '"Les soldes et mouvements sont visibles dans le meme panneau operationnel."',
+            sector: "Operations",
           },
         ],
       })[language],
@@ -864,21 +876,80 @@ export function DesktopLanding({
 
               {/* Trusted By Section */}
               <div className="pt-12 pb-8">
-                <div className="text-center mb-8">
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+                <div className="mb-8 text-center">
+                  <h2 className="mb-3 text-2xl font-bold text-slate-900 md:text-3xl">
                     {language === "pt"
                       ? "Empresas que usam Purple Stock na operação"
                       : language === "en"
                         ? "Teams running operations with Purple Stock"
                         : "Equipes qui operent avec Purple Stock"}
                   </h2>
+                  <p className="mx-auto max-w-2xl text-sm text-slate-600 md:text-base">
+                    {language === "pt"
+                      ? "Do estoque clássico ao check-in de equipamentos — forte em produtoras, eventos, telecom, dentário e autopeças."
+                      : language === "en"
+                        ? "From classic inventory to equipment check-in — strong for production, events, telecom, dental, and auto parts."
+                        : "Du stock classique au check-in d'equipements — fort pour productions, evenements, telecom, dentaire et pieces auto."}
+                  </p>
+                  <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                    <Link
+                      href="/industrias/audiovisual"
+                      className="ps-badge-violet px-3 py-1.5 text-xs font-semibold normal-case tracking-normal"
+                    >
+                      {language === "pt"
+                        ? "Audiovisual →"
+                        : language === "en"
+                          ? "Audiovisual →"
+                          : "Audiovisuel →"}
+                    </Link>
+                    <Link
+                      href="/industrias/events"
+                      className="ps-badge-violet px-3 py-1.5 text-xs font-semibold normal-case tracking-normal"
+                    >
+                      {language === "pt"
+                        ? "Eventos →"
+                        : language === "en"
+                          ? "Events →"
+                          : "Evenements →"}
+                    </Link>
+                    <Link
+                      href="/industrias/telecomunicacoes"
+                      className="ps-badge-violet px-3 py-1.5 text-xs font-semibold normal-case tracking-normal"
+                    >
+                      {language === "pt"
+                        ? "Telecom →"
+                        : language === "en"
+                          ? "Telecom →"
+                          : "Telecom →"}
+                    </Link>
+                    <Link
+                      href="/industrias/automotivo"
+                      className="ps-badge-violet px-3 py-1.5 text-xs font-semibold normal-case tracking-normal"
+                    >
+                      {language === "pt"
+                        ? "Autopeças →"
+                        : language === "en"
+                          ? "Auto parts →"
+                          : "Pieces auto →"}
+                    </Link>
+                    <Link
+                      href="/industrias/odontologico"
+                      className="ps-badge-violet px-3 py-1.5 text-xs font-semibold normal-case tracking-normal"
+                    >
+                      {language === "pt"
+                        ? "Odontológico →"
+                        : language === "en"
+                          ? "Dental →"
+                          : "Dentaire →"}
+                    </Link>
+                  </div>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
                   {logoCases.map((logoCase) => (
                     <div key={logoCase.name} className="ps-card group p-4">
                       <div className="flex items-center justify-between gap-4">
-                        <div className="flex items-center justify-center h-14">
+                        <div className="flex h-14 items-center justify-center">
                           <Image
                             src={logoCase.logo}
                             alt={logoCase.name}
@@ -888,11 +959,13 @@ export function DesktopLanding({
                           />
                         </div>
                         <span className="ps-badge-violet px-2 py-1">
-                          {language === "pt"
-                            ? "Caso rápido"
-                            : language === "en"
-                              ? "Quick case"
-                              : "Cas rapide"}
+                          {"sector" in logoCase && logoCase.sector
+                            ? logoCase.sector
+                            : language === "pt"
+                              ? "Caso rápido"
+                              : language === "en"
+                                ? "Quick case"
+                                : "Cas rapide"}
                         </span>
                       </div>
                       <p className="mt-3 text-sm leading-relaxed text-slate-600">

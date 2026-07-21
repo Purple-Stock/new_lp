@@ -2,11 +2,56 @@ export type EditorialItem = {
   slug: string;
   title: string;
   targetDate: string;
-  cluster: "almoxarifado" | "qr-code" | "inventario" | "comparativos";
+  cluster:
+    | "almoxarifado"
+    | "qr-code"
+    | "inventario"
+    | "comparativos"
+    | "audiovisual-eventos"
+    | "odontologico"
+    | "telecomunicacoes"
+    | "autopecas";
   primaryKeyword: string;
 };
 
 export const EDITORIAL_CALENDAR: EditorialItem[] = [
+  {
+    slug: "controle-equipamentos-audiovisuais-produtoras-eventos",
+    title:
+      "Controle de Equipamentos Audiovisuais: Check-in para Produtoras e Eventos",
+    targetDate: "2026-07-20",
+    cluster: "audiovisual-eventos",
+    primaryKeyword: "controle de equipamentos audiovisuais",
+  },
+  {
+    slug: "check-in-check-out-equipamentos-eventos",
+    title: "Check-in e Check-out de Equipamentos para Empresas de Eventos",
+    targetDate: "2026-07-21",
+    cluster: "audiovisual-eventos",
+    primaryKeyword: "check-in check-out equipamentos eventos",
+  },
+  {
+    slug: "controle-equipamentos-odontologicos-clinicas",
+    title:
+      "Controle de Equipamentos Odontológicos: Check-in para Clínicas e Labs",
+    targetDate: "2026-07-22",
+    cluster: "odontologico",
+    primaryKeyword: "controle equipamentos odontológicos",
+  },
+  {
+    slug: "controle-equipamentos-telecom-kits-campo",
+    title: "Controle de Equipamentos de Telecom: Kits de Campo e Check-in",
+    targetDate: "2026-07-22",
+    cluster: "telecomunicacoes",
+    primaryKeyword: "controle equipamentos telecom",
+  },
+  {
+    slug: "estoque-autopecas-pecas-moto-controle",
+    title: "Estoque para Autopeças e Peças de Moto: Controle no Balcão",
+    targetDate: "2026-07-22",
+    cluster: "autopecas",
+    primaryKeyword: "estoque autopeças peças de moto",
+  },
   {
     slug: "inventario-fisico-passo-a-passo-2026",
     title: "Inventário Físico Passo a Passo para PME [2026]",

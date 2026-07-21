@@ -4,9 +4,9 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
 export const metadata = buildPageMetadata({
-  title: "Documentacao do Sistema de Estoque",
+  title: "Documentação Purple Stock: Guias de Uso do Sistema de Estoque",
   description:
-    "Consulte a documentacao do Purple Stock com guias de uso, operacao e recursos do sistema de controle de estoque.",
+    "Documentação do Purple Stock: cadastro de itens, movimentação, QR Code, times e relatórios. Guias práticos para operar o sistema de estoque.",
   path: "/documentacao",
 });
 

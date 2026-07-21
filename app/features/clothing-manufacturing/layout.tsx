@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata = buildPageMetadata({
-  title: "Sistema para Confecção: Controle de Facção com Rastreabilidade",
+  title: "Sistema para Confecção e Facção: Controle de Produção",
   description:
-    "Controle de facção na confecção: rastreie etapas de produção, reduza atrasos e retrabalho. Gestão de tecidos, aviamentos e peças prontas. Teste grátis.",
+    "Controle de facção e confecção com rastreabilidade: tecidos, aviamentos, etapas de produção e peças prontas. Menos atraso e retrabalho. Teste grátis.",
   path: "/features/clothing-manufacturing",
 });
 

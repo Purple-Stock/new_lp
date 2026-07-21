@@ -6,6 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 type IndustrySlug =
+  | "audiovisual"
+  | "events"
+  | "odontologico"
+  | "telecomunicacoes"
   | "varejo"
   | "manufatura"
   | "logistica"
@@ -13,10 +17,13 @@ type IndustrySlug =
   | "pharmaceutical"
   | "automotivo"
   | "construction"
-  | "technology"
-  | "audiovisual";
+  | "technology";
 
 type IndustryTranslationKey =
+  | "audiovisual"
+  | "events"
+  | "odontologico"
+  | "telecomunicacoes"
   | "retail"
   | "manufacturing"
   | "logistics"
@@ -24,8 +31,7 @@ type IndustryTranslationKey =
   | "pharmaceutical"
   | "automotive"
   | "construction"
-  | "technology"
-  | "audiovisual";
+  | "technology";
 
 interface Industry {
   slug: IndustrySlug;
@@ -33,7 +39,33 @@ interface Industry {
   image: string;
 }
 
+/** Order reflects conversion: equipment verticals first. */
 const industries: Industry[] = [
+  {
+    slug: "audiovisual",
+    translationKey: "audiovisual",
+    image: "/images/audio-visual-2.jpg",
+  },
+  {
+    slug: "events",
+    translationKey: "events",
+    image: "/images/events-1.jpg",
+  },
+  {
+    slug: "odontologico",
+    translationKey: "odontologico",
+    image: "/images/odontologico-equipamentos.webp",
+  },
+  {
+    slug: "telecomunicacoes",
+    translationKey: "telecomunicacoes",
+    image: "/images/technology-warehouse.png",
+  },
+  {
+    slug: "automotivo",
+    translationKey: "automotive",
+    image: "/images/pexels-photo-4483610.webp",
+  },
   {
     slug: "varejo",
     translationKey: "retail",
@@ -60,11 +92,6 @@ const industries: Industry[] = [
     image: "/images/medical-appointment-doctor-healthcare-40568.webp",
   },
   {
-    slug: "automotivo",
-    translationKey: "automotive",
-    image: "/images/pexels-photo-4483610.webp",
-  },
-  {
     slug: "construction",
     translationKey: "construction",
     image: "/images/construction-site-build-construction-work-159358.jpeg",
@@ -73,11 +100,6 @@ const industries: Industry[] = [
     slug: "technology",
     translationKey: "technology",
     image: "/images/pexels-photo-256541.webp",
-  },
-  {
-    slug: "audiovisual",
-    translationKey: "audiovisual",
-    image: "/images/audio-visual-2.jpg",
   },
 ];
 

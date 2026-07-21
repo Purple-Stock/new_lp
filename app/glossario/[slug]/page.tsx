@@ -53,7 +53,7 @@ const industryLabels: Record<string, string> = {
   varejo: "Varejo",
   manufatura: "Manufatura",
   logistica: "Logística",
-  automotivo: "Automotivo",
+  automotivo: "Autopeças e Motos",
   food: "Alimentos & Bebidas",
   restaurantes: "Restaurantes",
   electrical: "Elétrico",
@@ -65,6 +65,8 @@ const industryLabels: Record<string, string> = {
   technology: "Tecnologia",
   audiovisual: "Audiovisual",
   events: "Eventos",
+  odontologico: "Odontológico",
+  telecomunicacoes: "Telecomunicações",
   fashion: "Moda",
 };
 
@@ -78,6 +80,38 @@ const categoryColors: Record<GlossaryTerm["category"], string> = {
 
 function findBySlug(slug: string): GlossaryTerm | undefined {
   return glossaryTerms.find((t) => t.slug === slug);
+}
+
+/** Truncate meta description for SERP (~150–160 chars). */
+function truncateMetaDescription(text: string, maxLength = 155): string {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  if (normalized.length <= maxLength) {
+    return normalized;
+  }
+
+  const slice = normalized.slice(0, maxLength - 1);
+  const lastSpace = slice.lastIndexOf(" ");
+  const cut = lastSpace > 80 ? slice.slice(0, lastSpace) : slice;
+  return `${cut}…`;
+}
+
+function buildGlossaryTermTitle(termName: string): string {
+  const suffix = ": o que é e quando usar | Purple Stock";
+  const maxTitleLength = 60;
+  if (termName.length + suffix.length <= maxTitleLength + 20) {
+    return `${termName}${suffix}`;
+  }
+  return `${termName} | Glossário de Estoque | Purple Stock`;
+}
+
+function buildGlossaryTermDescription(term: GlossaryTerm): string {
+  if (term.shortDefinition.trim()) {
+    return truncateMetaDescription(term.shortDefinition);
+  }
+
+  return truncateMetaDescription(
+    `O que é ${term.term}? Definição clara de estoque e almoxarifado para PME, com exemplos práticos no glossário Purple Stock.`
+  );
 }
 
 export function generateStaticParams() {
@@ -96,10 +130,12 @@ export async function generateMetadata({
   }
 
   const termUrl = `${baseUrl}/glossario/${term.slug}`;
+  const title = buildGlossaryTermTitle(term.term);
+  const description = buildGlossaryTermDescription(term);
 
   return {
-    title: `${term.term} — Glossário de Estoque | Purple Stock`,
-    description: term.shortDefinition || undefined,
+    title,
+    description,
     alternates: {
       canonical: termUrl,
     },
@@ -107,13 +143,13 @@ export async function generateMetadata({
       type: "article",
       locale: "pt_BR",
       url: termUrl,
-      title: `${term.term} — Glossário de Estoque | Purple Stock`,
-      description: term.shortDefinition || undefined,
+      title,
+      description,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${term.term} — Glossário de Estoque | Purple Stock`,
-      description: term.shortDefinition || undefined,
+      title,
+      description,
     },
   };
 }

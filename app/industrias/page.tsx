@@ -35,6 +35,8 @@ type IndustryId =
   | "logistica"
   | "food"
   | "pharmaceutical"
+  | "odontologico"
+  | "telecomunicacoes"
   | "automotivo"
   | "construction"
   | "technology"
@@ -49,6 +51,8 @@ type IndustryTranslationKey =
   | "logistics"
   | "food"
   | "pharmaceutical"
+  | "odontologico"
+  | "telecomunicacoes"
   | "automotive"
   | "construction"
   | "technology"
@@ -72,7 +76,93 @@ interface Industry {
   };
 }
 
+/** Equipment verticals first: AV, events, dental equipment convert well. */
 const industries: Industry[] = [
+  {
+    id: "audiovisual",
+    translationKey: "audiovisual",
+    image: "/images/audio-visual-2.jpg",
+    icon: Video,
+    color: "text-pink-600",
+    gradient: "from-pink-500 to-pink-600",
+    description:
+      "Check-in/check-out de câmeras, lentes, iluminação e áudio com QR Code para produtoras e locadoras.",
+    benefits: [
+      "Check-in/check-out por set",
+      "QR Code em cada ativo",
+      "Menos perda de equipamento",
+      "Histórico por projeto",
+    ],
+    stats: { value: "45%", label: "Redução de perdas" },
+  },
+  {
+    id: "events",
+    translationKey: "events",
+    image: "/images/events-1.jpg",
+    icon: Star,
+    color: "text-yellow-600",
+    gradient: "from-yellow-500 to-yellow-600",
+    description:
+      "Controle de som, luz, mobiliário e materiais por evento — saiba o que saiu e o que voltou.",
+    benefits: [
+      "Equipamentos por evento",
+      "Check-in/check-out rápido",
+      "Menos item sumido",
+      "Rastreio com QR Code",
+    ],
+    stats: { value: "50%", label: "Aumento de eficiência" },
+  },
+  {
+    id: "odontologico",
+    translationKey: "odontologico",
+    image: "/images/odontologico-equipamentos.webp",
+    icon: Pill,
+    color: "text-teal-600",
+    gradient: "from-teal-500 to-teal-600",
+    description:
+      "Equipamentos e kits odontológicos com check-in/check-out: clínicas, labs e prestadores de serviço.",
+    benefits: [
+      "Kits por sala ou técnico",
+      "Check-in/check-out",
+      "Menos extravio de ativos",
+      "QR Code no instrumental",
+    ],
+    stats: { value: "40%", label: "Menos extravio de ativos" },
+  },
+  {
+    id: "telecomunicacoes",
+    translationKey: "telecomunicacoes",
+    image: "/images/technology-warehouse.png",
+    icon: Cpu,
+    color: "text-sky-600",
+    gradient: "from-sky-500 to-sky-600",
+    description:
+      "ONT, rádio e kits de instalação com check-in/check-out: ISPs, integradoras e técnicos de campo.",
+    benefits: [
+      "Kits por técnico e OS",
+      "Check-in/check-out",
+      "Menos kit incompleto",
+      "QR Code no equipamento",
+    ],
+    stats: { value: "45%", label: "Menos kit incompleto em campo" },
+  },
+  {
+    id: "automotivo",
+    translationKey: "automotive",
+    image: "/images/pexels-photo-4483610.webp",
+    icon: Car,
+    color: "text-indigo-600",
+    gradient: "from-indigo-500 to-indigo-600",
+    description:
+      "Estoque para autopeças e peças de moto: SKU, código de barras e menos ruptura no balcão.",
+    benefits: [
+      "Peças de carro e moto",
+      "Código de barras/QR",
+      "Menos ruptura",
+      "Saldo no balcão",
+    ],
+    stats: { value: "35%", label: "Menos ruptura de peça" },
+  },
   {
     id: "varejo",
     translationKey: "retail",
@@ -159,23 +249,6 @@ const industries: Industry[] = [
     stats: { value: "45%", label: "Melhoria na precisão" },
   },
   {
-    id: "automotivo",
-    translationKey: "automotive",
-    image: "/images/pexels-photo-4483610.webp",
-    icon: Car,
-    color: "text-indigo-600",
-    gradient: "from-indigo-500 to-indigo-600",
-    description:
-      "Gestão eficiente de peças, componentes e equipamentos automotivos.",
-    benefits: [
-      "Controle de peças",
-      "Rastreamento de componentes",
-      "Gestão de fornecedores",
-      "Controle de qualidade",
-    ],
-    stats: { value: "30%", label: "Redução de tempo" },
-  },
-  {
     id: "construction",
     translationKey: "construction",
     image: "/images/construction-site-build-construction-work-159358.jpeg",
@@ -207,40 +280,6 @@ const industries: Industry[] = [
       "Controle de manutenção",
     ],
     stats: { value: "40%", label: "Aumento de produtividade" },
-  },
-  {
-    id: "audiovisual",
-    translationKey: "audiovisual",
-    image: "/images/audio-visual-2.jpg",
-    icon: Video,
-    color: "text-pink-600",
-    gradient: "from-pink-500 to-pink-600",
-    description:
-      "Controle de equipamentos de filmagem, iluminação, áudio e acessórios para produção audiovisual.",
-    benefits: [
-      "Controle de equipamentos",
-      "Gestão de locações",
-      "Rastreamento de acessórios",
-      "Controle de manutenção",
-    ],
-    stats: { value: "45%", label: "Redução de perdas" },
-  },
-  {
-    id: "events",
-    translationKey: "events",
-    image: "/images/events-1.jpg",
-    icon: Star,
-    color: "text-yellow-600",
-    gradient: "from-yellow-500 to-yellow-600",
-    description:
-      "Gestão completa de equipamentos, materiais e recursos para eventos, festas e cerimônias.",
-    benefits: [
-      "Controle de equipamentos",
-      "Gestão de materiais",
-      "Rastreamento de recursos",
-      "Controle de locações",
-    ],
-    stats: { value: "50%", label: "Aumento de eficiência" },
   },
   {
     id: "restaurantes",
@@ -284,11 +323,13 @@ const industryNames: Record<IndustryId, string> = {
   logistica: "Controle de Estoque para Logistica",
   food: "Controle de Estoque para Alimentos e Bebidas",
   pharmaceutical: "Controle de Estoque para Farmaceutico",
-  automotivo: "Controle de Estoque para Automotivo",
+  automotivo: "Estoque para Autopeças e Peças de Moto",
   construction: "Controle de Estoque para Construcao",
   technology: "Controle de Estoque para Tecnologia",
   audiovisual: "Controle de Equipamentos Audiovisuais",
   events: "Controle de Estoque para Eventos",
+  odontologico: "Controle de Equipamentos Odontológicos",
+  telecomunicacoes: "Controle de Equipamentos de Telecom",
   restaurantes: "Controle de Estoque para Restaurantes",
   electrical: "Controle de Estoque para Setor Eletrico",
 };

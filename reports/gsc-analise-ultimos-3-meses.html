@@ -1,0 +1,1841 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Análise GSC — purplestock.com.br · Últimos 3 meses</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+      :root {
+        --bg: #0b0614;
+        --bg-elevated: #140c22;
+        --bg-card: #1a102c;
+        --border: rgba(167, 139, 250, 0.18);
+        --text: #f5f0ff;
+        --text-muted: #b7a8d4;
+        --purple: #8b5cf6;
+        --purple-bright: #a78bfa;
+        --purple-dim: #6d28d9;
+        --green: #34d399;
+        --green-dim: rgba(52, 211, 153, 0.12);
+        --amber: #fbbf24;
+        --amber-dim: rgba(251, 191, 36, 0.12);
+        --red: #f87171;
+        --red-dim: rgba(248, 113, 113, 0.12);
+        --blue: #60a5fa;
+        --blue-dim: rgba(96, 165, 250, 0.12);
+        --radius: 14px;
+        --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        background:
+          radial-gradient(
+            1200px 600px at 10% -10%,
+            rgba(139, 92, 246, 0.22),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 100% 0%,
+            rgba(109, 40, 217, 0.18),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.55;
+        min-height: 100vh;
+      }
+
+      a {
+        color: var(--purple-bright);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 2rem 1.25rem 4rem;
+      }
+
+      /* Header */
+      header.hero {
+        border: 1px solid var(--border);
+        background: linear-gradient(
+          145deg,
+          rgba(139, 92, 246, 0.16),
+          rgba(26, 16, 44, 0.9) 50%,
+          rgba(20, 12, 34, 0.95)
+        );
+        border-radius: 20px;
+        padding: 2rem 2rem 1.75rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 1.75rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      header.hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -20% -40% auto;
+        width: 320px;
+        height: 320px;
+        background: radial-gradient(
+          circle,
+          rgba(167, 139, 250, 0.25),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--purple-bright);
+        background: rgba(139, 92, 246, 0.12);
+        border: 1px solid var(--border);
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 3vw, 2.15rem);
+        font-weight: 750;
+        letter-spacing: -0.03em;
+        line-height: 1.2;
+        margin-bottom: 0.6rem;
+      }
+
+      .subtitle {
+        color: var(--text-muted);
+        font-size: 1rem;
+        max-width: 62ch;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 1.25rem;
+      }
+
+      .chip {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+      }
+
+      .chip strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      /* Nav */
+      nav.toc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-bottom: 1.75rem;
+        position: sticky;
+        top: 0.5rem;
+        z-index: 20;
+        background: rgba(11, 6, 20, 0.85);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.45rem;
+      }
+
+      nav.toc a {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 0.4rem 0.75rem;
+        border-radius: 999px;
+        text-decoration: none;
+        transition: 0.15s ease;
+      }
+
+      nav.toc a:hover {
+        color: var(--text);
+        background: rgba(139, 92, 246, 0.15);
+        text-decoration: none;
+      }
+
+      /* Sections */
+      section {
+        margin-bottom: 1.75rem;
+        scroll-margin-top: 4rem;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.9rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 650;
+        margin: 1.1rem 0 0.55rem;
+        color: var(--purple-bright);
+      }
+
+      .section-note {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+
+      /* Cards / grid */
+      .grid {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 900px) {
+        .grid-4 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+        nav.toc {
+          border-radius: 16px;
+        }
+      }
+
+      .card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.15rem 1.2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+      }
+
+      .card.kpi {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card.kpi::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--purple-dim),
+          var(--purple-bright)
+        );
+      }
+
+      .kpi-label {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        font-weight: 500;
+        margin-bottom: 0.35rem;
+      }
+
+      .kpi-value {
+        font-size: 1.85rem;
+        font-weight: 750;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+      }
+
+      .kpi-sub {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        margin-top: 0.4rem;
+      }
+
+      .delta-up {
+        color: var(--green);
+      }
+      .delta-down {
+        color: var(--red);
+      }
+      .delta-flat {
+        color: var(--amber);
+      }
+
+      /* Tables */
+      .table-wrap {
+        overflow-x: auto;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+        min-width: 640px;
+      }
+
+      th,
+      td {
+        padding: 0.7rem 0.9rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(167, 139, 250, 0.1);
+      }
+
+      th {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        font-weight: 600;
+        background: rgba(139, 92, 246, 0.08);
+        position: sticky;
+        top: 0;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+      tbody tr:hover td {
+        background: rgba(139, 92, 246, 0.06);
+      }
+
+      td.num,
+      th.num {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      td.mono {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.8rem;
+      }
+
+      .url-cell {
+        max-width: 360px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* Badges */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 0.2rem 0.5rem;
+        border-radius: 6px;
+        white-space: nowrap;
+      }
+
+      .badge-green {
+        background: var(--green-dim);
+        color: var(--green);
+      }
+      .badge-amber {
+        background: var(--amber-dim);
+        color: var(--amber);
+      }
+      .badge-red {
+        background: var(--red-dim);
+        color: var(--red);
+      }
+      .badge-blue {
+        background: var(--blue-dim);
+        color: var(--blue);
+      }
+      .badge-purple {
+        background: rgba(139, 92, 246, 0.15);
+        color: var(--purple-bright);
+      }
+
+      /* Insight boxes */
+      .insight {
+        border-left: 3px solid var(--purple);
+        background: rgba(139, 92, 246, 0.08);
+        padding: 0.9rem 1rem;
+        border-radius: 0 10px 10px 0;
+        font-size: 0.92rem;
+        color: var(--text);
+        margin: 0.85rem 0;
+      }
+
+      .insight strong {
+        color: var(--purple-bright);
+      }
+
+      .callout {
+        border: 1px solid var(--border);
+        background: var(--bg-elevated);
+        border-radius: var(--radius);
+        padding: 1.1rem 1.2rem;
+        margin: 0.75rem 0;
+      }
+
+      .callout p {
+        color: var(--text-muted);
+        font-size: 0.92rem;
+      }
+      .callout p + p {
+        margin-top: 0.5rem;
+      }
+
+      /* Priority list */
+      .priority {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .priority-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.9rem;
+        align-items: start;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1rem 1.1rem;
+      }
+
+      .priority-tag {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        padding: 0.35rem 0.55rem;
+        border-radius: 8px;
+        min-width: 2.4rem;
+        text-align: center;
+      }
+
+      .p0 {
+        background: var(--red-dim);
+        color: var(--red);
+      }
+      .p1 {
+        background: var(--amber-dim);
+        color: var(--amber);
+      }
+      .p2 {
+        background: var(--blue-dim);
+        color: var(--blue);
+      }
+      .p3 {
+        background: rgba(139, 92, 246, 0.15);
+        color: var(--purple-bright);
+      }
+      .p4 {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text-muted);
+      }
+
+      .priority-item h4 {
+        font-size: 0.95rem;
+        font-weight: 650;
+        margin-bottom: 0.25rem;
+      }
+
+      .priority-item p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      /* Chart */
+      .chart-box {
+        position: relative;
+        height: 280px;
+      }
+
+      .chart-box.short {
+        height: 220px;
+      }
+
+      /* Bars */
+      .bar-list {
+        display: grid;
+        gap: 0.65rem;
+      }
+
+      .bar-row {
+        display: grid;
+        grid-template-columns: 110px 1fr 52px;
+        gap: 0.6rem;
+        align-items: center;
+        font-size: 0.82rem;
+      }
+
+      .bar-label {
+        color: var(--text-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .bar-track {
+        height: 8px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+      .bar-fill {
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(
+          90deg,
+          var(--purple-dim),
+          var(--purple-bright)
+        );
+      }
+      .bar-value {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 2.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+
+      .exec {
+        font-size: 1.05rem;
+        line-height: 1.55;
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      ul.clean {
+        margin: 0.5rem 0 0 1.1rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      ul.clean li {
+        margin-bottom: 0.35rem;
+      }
+      ul.clean li strong {
+        color: var(--text);
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.9rem;
+      }
+
+      @media (max-width: 800px) {
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+        header.hero {
+          padding: 1.4rem;
+        }
+      }
+
+      .print-btn {
+        appearance: none;
+        border: 1px solid var(--border);
+        background: rgba(139, 92, 246, 0.15);
+        color: var(--text);
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.45rem 0.85rem;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+
+      .print-btn:hover {
+        background: rgba(139, 92, 246, 0.28);
+      }
+
+      @media print {
+        body {
+          background: white;
+          color: #111;
+        }
+        .card,
+        header.hero,
+        .table-wrap,
+        .priority-item,
+        nav.toc {
+          box-shadow: none;
+          border-color: #ddd;
+          background: white;
+        }
+        nav.toc,
+        .print-btn {
+          display: none;
+        }
+        .kpi-value,
+        h1,
+        h2 {
+          color: #111;
+        }
+        .subtitle,
+        .kpi-sub,
+        .section-note,
+        .text-muted,
+        td,
+        th {
+          color: #333;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="hero">
+        <div class="eyebrow">Google Search Console · Web</div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: flex-start;
+          "
+        >
+          <div>
+            <h1>Análise de performance orgânica<br />purplestock.com.br</h1>
+            <p class="subtitle">
+              Relatório dos últimos 3 meses: crescimento de impressões e posição
+              média, com gargalo claro de CTR non-brand e dependência de marca.
+            </p>
+          </div>
+          <button class="print-btn" onclick="window.print()">
+            Imprimir / PDF
+          </button>
+        </div>
+        <div class="meta-row">
+          <span class="chip"
+            ><strong>Período:</strong> 19/04/2026 → 18/07/2026</span
+          >
+          <span class="chip"><strong>Dias:</strong> 91</span>
+          <span class="chip"><strong>Tipo:</strong> Pesquisa Web</span>
+          <span class="chip"><strong>Export:</strong> 20/07/2026</span>
+        </div>
+      </header>
+
+      <nav class="toc" aria-label="Seções">
+        <a href="#kpis">KPIs</a>
+        <a href="#evolucao">Evolução</a>
+        <a href="#paginas">Páginas</a>
+        <a href="#consultas">Consultas</a>
+        <a href="#segmentos">Segmentos</a>
+        <a href="#diagnostico">Diagnóstico</a>
+        <a href="#prioridades">Prioridades</a>
+        <a href="#metas">Metas</a>
+      </nav>
+
+      <!-- KPIs -->
+      <section id="kpis">
+        <div class="section-head">
+          <h2>1. Visão geral</h2>
+          <span class="section-note">Totais do período</span>
+        </div>
+        <div class="grid grid-4">
+          <div class="card kpi">
+            <div class="kpi-label">Cliques</div>
+            <div class="kpi-value">99</div>
+            <div class="kpi-sub">1,09 / dia · 57% dos dias com clique</div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-label">Impressões</div>
+            <div class="kpi-value">3.528</div>
+            <div class="kpi-sub">38,8 / dia</div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-label">CTR médio</div>
+            <div class="kpi-value">2,81%</div>
+            <div class="kpi-sub">Abaixo do ideal p/ pos. ~7–10</div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-label">Posição média</div>
+            <div class="kpi-value">9,6</div>
+            <div class="kpi-sub">Ponderada por impressões</div>
+          </div>
+        </div>
+
+        <div class="insight" style="margin-top: 1rem">
+          <strong>Leitura rápida:</strong> tráfego ainda baixo e volátil, mas em
+          <strong>crescimento</strong>. O site saiu de posição ~25 (abril) para
+          ~7–8 (maio–julho). O problema principal deixou de ser ranking e passou
+          a ser <strong>conversão de impressão em clique</strong> (non-brand).
+        </div>
+      </section>
+
+      <!-- Evolução -->
+      <section id="evolucao">
+        <div class="section-head">
+          <h2>2. Evolução no tempo</h2>
+          <span class="section-note">Mensal + comparativos</span>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3 style="margin-top: 0">Cliques e impressões por mês</h3>
+            <div class="chart-box">
+              <canvas id="chartMonthly"></canvas>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin-top: 0">Posição média ponderada</h3>
+            <div class="chart-box">
+              <canvas id="chartPosition"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="margin-top: 0.9rem">
+          <table>
+            <thead>
+              <tr>
+                <th>Mês</th>
+                <th class="num">Dias</th>
+                <th class="num">Cliques</th>
+                <th class="num">Impressões</th>
+                <th class="num">CTR</th>
+                <th class="num">Cliq/dia</th>
+                <th class="num">Imp/dia</th>
+                <th class="num">Pos. pond.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Abr 2026 <span class="badge badge-amber">parcial</span></td>
+                <td class="num">12</td>
+                <td class="num">9</td>
+                <td class="num">399</td>
+                <td class="num">2,3%</td>
+                <td class="num">0,75</td>
+                <td class="num">33</td>
+                <td class="num"><span class="badge badge-red">25,3</span></td>
+              </tr>
+              <tr>
+                <td>Mai 2026</td>
+                <td class="num">31</td>
+                <td class="num">30</td>
+                <td class="num">856</td>
+                <td class="num">3,5%</td>
+                <td class="num">0,97</td>
+                <td class="num">28</td>
+                <td class="num"><span class="badge badge-green">6,9</span></td>
+              </tr>
+              <tr>
+                <td>Jun 2026</td>
+                <td class="num">30</td>
+                <td class="num">34</td>
+                <td class="num">1.355</td>
+                <td class="num">2,5%</td>
+                <td class="num">1,13</td>
+                <td class="num">45</td>
+                <td class="num">8,0</td>
+              </tr>
+              <tr>
+                <td>Jul 2026 <span class="badge badge-amber">18 dias</span></td>
+                <td class="num">18</td>
+                <td class="num">26</td>
+                <td class="num">918</td>
+                <td class="num">2,8%</td>
+                <td class="num"><strong>1,44</strong></td>
+                <td class="num"><strong>51</strong></td>
+                <td class="num">7,5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid grid-3" style="margin-top: 0.9rem">
+          <div class="card">
+            <div class="kpi-label">Mai → Jun</div>
+            <div class="kpi-value" style="font-size: 1.35rem">
+              <span class="delta-up">+17%</span>
+            </div>
+            <div class="kpi-sub">
+              cliques/dia · impressões/dia <span class="delta-up">+64%</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="kpi-label">Jun → Jul</div>
+            <div class="kpi-value" style="font-size: 1.35rem">
+              <span class="delta-up">+27%</span>
+            </div>
+            <div class="kpi-sub">
+              cliques/dia · impressões/dia <span class="delta-up">+13%</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="kpi-label">Últimos 28d vs 28d anteriores</div>
+            <div class="kpi-value" style="font-size: 1.35rem">
+              <span class="delta-up">+37%</span>
+            </div>
+            <div class="kpi-sub">
+              cliques · impressões <span class="delta-up">+21%</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Dias de destaque</h3>
+        <div class="two-col">
+          <div class="table-wrap">
+            <table style="min-width: 0">
+              <thead>
+                <tr>
+                  <th>Top cliques</th>
+                  <th class="num">Cliques</th>
+                  <th class="num">Imp.</th>
+                  <th class="num">CTR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>05/05</td>
+                  <td class="num">5</td>
+                  <td class="num">30</td>
+                  <td class="num">16,7%</td>
+                </tr>
+                <tr>
+                  <td>01/07</td>
+                  <td class="num">5</td>
+                  <td class="num">74</td>
+                  <td class="num">6,8%</td>
+                </tr>
+                <tr>
+                  <td>10/06</td>
+                  <td class="num">4</td>
+                  <td class="num">68</td>
+                  <td class="num">5,9%</td>
+                </tr>
+                <tr>
+                  <td>23/06</td>
+                  <td class="num">4</td>
+                  <td class="num">72</td>
+                  <td class="num">5,6%</td>
+                </tr>
+                <tr>
+                  <td>17/07</td>
+                  <td class="num">4</td>
+                  <td class="num">55</td>
+                  <td class="num">7,3%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table style="min-width: 0">
+              <thead>
+                <tr>
+                  <th>Top impressões</th>
+                  <th class="num">Imp.</th>
+                  <th class="num">Cliques</th>
+                  <th class="num">CTR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>03/06</td>
+                  <td class="num">117</td>
+                  <td class="num">1</td>
+                  <td class="num"><span class="badge badge-red">0,9%</span></td>
+                </tr>
+                <tr>
+                  <td>28/05</td>
+                  <td class="num">79</td>
+                  <td class="num">1</td>
+                  <td class="num">1,3%</td>
+                </tr>
+                <tr>
+                  <td>02/07</td>
+                  <td class="num">75</td>
+                  <td class="num">2</td>
+                  <td class="num">2,7%</td>
+                </tr>
+                <tr>
+                  <td>01/07</td>
+                  <td class="num">74</td>
+                  <td class="num">5</td>
+                  <td class="num">6,8%</td>
+                </tr>
+                <tr>
+                  <td>23/06</td>
+                  <td class="num">72</td>
+                  <td class="num">4</td>
+                  <td class="num">5,6%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Páginas -->
+      <section id="paginas">
+        <div class="section-head">
+          <h2>3. Páginas</h2>
+          <span class="section-note">Concentração e CTR</span>
+        </div>
+
+        <div class="grid grid-3" style="margin-bottom: 0.9rem">
+          <div class="card">
+            <div class="kpi-label">Top 1 (home)</div>
+            <div class="kpi-value" style="font-size: 1.5rem">50%</div>
+            <div class="kpi-sub">dos cliques</div>
+          </div>
+          <div class="card">
+            <div class="kpi-label">Top 3 páginas</div>
+            <div class="kpi-value" style="font-size: 1.5rem">82%</div>
+            <div class="kpi-sub">dos cliques</div>
+          </div>
+          <div class="card">
+            <div class="kpi-label">Top 5 páginas</div>
+            <div class="kpi-value" style="font-size: 1.5rem">92%</div>
+            <div class="kpi-sub">dos cliques</div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Página</th>
+                <th class="num">Cliques</th>
+                <th class="num">Imp.</th>
+                <th class="num">CTR</th>
+                <th class="num">Pos.</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="url-cell mono">/</td>
+                <td class="num"><strong>50</strong></td>
+                <td class="num">347</td>
+                <td class="num">14,4%</td>
+                <td class="num">3,4</td>
+                <td><span class="badge badge-green">Brand / home</span></td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">
+                  /blog/como-usar-qr-code-controle-estoque
+                </td>
+                <td class="num"><strong>21</strong></td>
+                <td class="num">916</td>
+                <td class="num">2,3%</td>
+                <td class="num">6,4</td>
+                <td><span class="badge badge-purple">Melhor post</span></td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">/industrias/audiovisual</td>
+                <td class="num"><strong>11</strong></td>
+                <td class="num">152</td>
+                <td class="num">7,2%</td>
+                <td class="num">21,6</td>
+                <td><span class="badge badge-blue">Alta intenção</span></td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">/codigo-de-barras-gratis</td>
+                <td class="num">6</td>
+                <td class="num">308</td>
+                <td class="num">2,0%</td>
+                <td class="num">9,7</td>
+                <td><span class="badge badge-amber">Subir p/ top 5</span></td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">
+                  /blog/organizar-almoxarifado-qr-code
+                </td>
+                <td class="num">4</td>
+                <td class="num">83</td>
+                <td class="num">4,8%</td>
+                <td class="num">4,8</td>
+                <td><span class="badge badge-green">OK</span></td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">
+                  /blog/aplicativo-para-controle-de-estoque
+                </td>
+                <td class="num">2</td>
+                <td class="num"><strong>498</strong></td>
+                <td class="num"><span class="badge badge-red">0,4%</span></td>
+                <td class="num">8,5</td>
+                <td><span class="badge badge-red">CTR morto</span></td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">/industrias</td>
+                <td class="num">2</td>
+                <td class="num">142</td>
+                <td class="num">1,4%</td>
+                <td class="num">3,8</td>
+                <td><span class="badge badge-amber">Melhorar snippet</span></td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">/precos</td>
+                <td class="num">1</td>
+                <td class="num">70</td>
+                <td class="num">1,4%</td>
+                <td class="num">6,0</td>
+                <td><span class="badge badge-amber">Snippet</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Performance por tipo de conteúdo</h3>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="bar-list">
+              <div class="bar-row">
+                <span class="bar-label">Blog (imp.)</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width: 100%"></div>
+                </div>
+                <span class="bar-value">2.192</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Glossário</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width: 19%"></div>
+                </div>
+                <span class="bar-value">414</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Indústrias</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width: 17%"></div>
+                </div>
+                <span class="bar-value">369</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Features</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width: 11%"></div>
+                </div>
+                <span class="bar-value">233</span>
+              </div>
+            </div>
+            <p class="kpi-sub" style="margin-top: 0.85rem">
+              Impressões por tipo — blog domina descoberta
+            </p>
+          </div>
+          <div class="card">
+            <div class="table-wrap" style="border: none">
+              <table style="min-width: 0">
+                <thead>
+                  <tr>
+                    <th>Tipo</th>
+                    <th class="num">Págs</th>
+                    <th class="num">Cliques</th>
+                    <th class="num">CTR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Blog</td>
+                    <td class="num">29</td>
+                    <td class="num">29</td>
+                    <td class="num">1,3%</td>
+                  </tr>
+                  <tr>
+                    <td>Indústrias</td>
+                    <td class="num">14</td>
+                    <td class="num">13</td>
+                    <td class="num">3,5%</td>
+                  </tr>
+                  <tr>
+                    <td>Glossário</td>
+                    <td class="num">29</td>
+                    <td class="num"><strong>0</strong></td>
+                    <td class="num"><span class="badge badge-red">0%</span></td>
+                  </tr>
+                  <tr>
+                    <td>Features</td>
+                    <td class="num">9</td>
+                    <td class="num"><strong>0</strong></td>
+                    <td class="num"><span class="badge badge-red">0%</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <h3>Oportunidades zero-clique (já rankeiam)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>URL</th>
+                <th class="num">Imp.</th>
+                <th class="num">Pos.</th>
+                <th class="num">Cliques</th>
+                <th>Ação sugerida</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="url-cell mono">/blog/planilha-de-estoque-vs-app</td>
+                <td class="num">186</td>
+                <td class="num">4,5</td>
+                <td class="num">0</td>
+                <td>Title “planilha vs app 2026” + CTA</td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">/features/clothing-manufacturing</td>
+                <td class="num">147</td>
+                <td class="num">8,1</td>
+                <td class="num">0</td>
+                <td>Meta em PT alinhada à intenção</td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">
+                  /blog/inventario-fisico-passo-a-passo-2026
+                </td>
+                <td class="num">79</td>
+                <td class="num">6,5</td>
+                <td class="num">0</td>
+                <td>Title com ano + “passo a passo”</td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">/documentacao</td>
+                <td class="num">79</td>
+                <td class="num">8,0</td>
+                <td class="num">0</td>
+                <td>Snippet mais específico</td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">
+                  /glossario/quantidade-minima-pedido
+                </td>
+                <td class="num">64</td>
+                <td class="num">9,8</td>
+                <td class="num">0</td>
+                <td>Answer-first + definição clara</td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">/glossario/ponto-de-reposicao</td>
+                <td class="num">60</td>
+                <td class="num">7,3</td>
+                <td class="num">0</td>
+                <td>Title “o que é + fórmula”</td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">/glossario</td>
+                <td class="num">57</td>
+                <td class="num">3,2</td>
+                <td class="num">0</td>
+                <td>Hub com valor na SERP</td>
+              </tr>
+              <tr>
+                <td class="url-cell mono">
+                  /blog/indicadores-essenciais-estoque
+                </td>
+                <td class="num">47</td>
+                <td class="num">7,6</td>
+                <td class="num">0</td>
+                <td>Lista de KPIs no title</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Consultas -->
+      <section id="consultas">
+        <div class="section-head">
+          <h2>4. Consultas</h2>
+          <span class="section-note">Brand vs non-brand</span>
+        </div>
+
+        <div class="grid grid-3" style="margin-bottom: 0.9rem">
+          <div class="card">
+            <div class="kpi-label">Queries com clique (amostra)</div>
+            <div class="kpi-value" style="font-size: 1.5rem">5 / 116</div>
+            <div class="kpi-sub">quase só marca</div>
+          </div>
+          <div class="card">
+            <div class="kpi-label">Cliques brand (queries)</div>
+            <div class="kpi-value" style="font-size: 1.5rem">~98%</div>
+            <div class="kpi-sub">purple stock / purplestock</div>
+          </div>
+          <div class="card">
+            <div class="kpi-label">CTR “purple stock”</div>
+            <div class="kpi-value" style="font-size: 1.5rem">62%</div>
+            <div class="kpi-sub">36 cliques · 58 imp. · pos 4,9</div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div>
+            <h3 style="margin-top: 0">Brand — funciona</h3>
+            <div class="table-wrap">
+              <table style="min-width: 0">
+                <thead>
+                  <tr>
+                    <th>Query</th>
+                    <th class="num">Cliques</th>
+                    <th class="num">Imp.</th>
+                    <th class="num">CTR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>purple stock</td>
+                    <td class="num">36</td>
+                    <td class="num">58</td>
+                    <td class="num">62%</td>
+                  </tr>
+                  <tr>
+                    <td>purplestock</td>
+                    <td class="num">3</td>
+                    <td class="num">22</td>
+                    <td class="num">14%</td>
+                  </tr>
+                  <tr>
+                    <td>purple stocks</td>
+                    <td class="num">1</td>
+                    <td class="num">2</td>
+                    <td class="num">50%</td>
+                  </tr>
+                  <tr>
+                    <td>purple stok</td>
+                    <td class="num">1</td>
+                    <td class="num">1</td>
+                    <td class="num">100%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <h3 style="margin-top: 0">Non-brand — volume sem clique</h3>
+            <div class="table-wrap">
+              <table style="min-width: 0">
+                <thead>
+                  <tr>
+                    <th>Query</th>
+                    <th class="num">Imp.</th>
+                    <th class="num">Pos.</th>
+                    <th class="num">CTR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>estoque compare</td>
+                    <td class="num">87</td>
+                    <td class="num">3,9</td>
+                    <td class="num"><span class="badge badge-red">0%</span></td>
+                  </tr>
+                  <tr>
+                    <td>app estoque vs planilhas…</td>
+                    <td class="num">72</td>
+                    <td class="num">2,9</td>
+                    <td class="num"><span class="badge badge-red">0%</span></td>
+                  </tr>
+                  <tr>
+                    <td>quantidade mínima de pedido</td>
+                    <td class="num">46</td>
+                    <td class="num">9,8</td>
+                    <td class="num"><span class="badge badge-red">0%</span></td>
+                  </tr>
+                  <tr>
+                    <td>estoque</td>
+                    <td class="num">19</td>
+                    <td class="num">1,4</td>
+                    <td class="num"><span class="badge badge-red">0%</span></td>
+                  </tr>
+                  <tr>
+                    <td>codigo de barras gratis</td>
+                    <td class="num">15</td>
+                    <td class="num">11</td>
+                    <td class="num">
+                      <span class="badge badge-amber">0%</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <strong>Gargalo de snippet:</strong> queries como
+          <em>estoque compare</em> e <em>app vs planilhas</em> já estão em
+          posição 2–4 e <strong>não geram clique</strong>. O ranking já está
+          bom; title e meta description precisam ser reescritos com intenção
+          comparativa.
+        </div>
+
+        <h3>Temas de query (por impressões na amostra)</h3>
+        <div class="card">
+          <div class="chart-box short">
+            <canvas id="chartThemes"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Segmentos -->
+      <section id="segmentos">
+        <div class="section-head">
+          <h2>5. Dispositivos e países</h2>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3 style="margin-top: 0">Dispositivos</h3>
+            <div class="chart-box short">
+              <canvas id="chartDevices"></canvas>
+            </div>
+            <div class="table-wrap" style="margin-top: 0.75rem; border: none">
+              <table style="min-width: 0">
+                <thead>
+                  <tr>
+                    <th>Device</th>
+                    <th class="num">Cliques</th>
+                    <th class="num">Imp.</th>
+                    <th class="num">CTR</th>
+                    <th class="num">Pos.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Desktop</td>
+                    <td class="num">70 (71%)</td>
+                    <td class="num">2.496</td>
+                    <td class="num">2,8%</td>
+                    <td class="num">10,2</td>
+                  </tr>
+                  <tr>
+                    <td>Mobile</td>
+                    <td class="num">29 (29%)</td>
+                    <td class="num">1.004</td>
+                    <td class="num">2,9%</td>
+                    <td class="num">8,0</td>
+                  </tr>
+                  <tr>
+                    <td>Tablet</td>
+                    <td class="num">0</td>
+                    <td class="num">28</td>
+                    <td class="num">0%</td>
+                    <td class="num">9,5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="kpi-sub">
+              Perfil B2B/desktop esperado. Mobile tem posição melhor, menos
+              volume.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top: 0">Países</h3>
+            <div class="table-wrap" style="border: none">
+              <table style="min-width: 0">
+                <thead>
+                  <tr>
+                    <th>País</th>
+                    <th class="num">Cliques</th>
+                    <th class="num">Imp.</th>
+                    <th class="num">CTR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Brasil</td>
+                    <td class="num"><strong>96 (97%)</strong></td>
+                    <td class="num">2.547</td>
+                    <td class="num">3,8%</td>
+                  </tr>
+                  <tr>
+                    <td>Índia</td>
+                    <td class="num">2</td>
+                    <td class="num">15</td>
+                    <td class="num">13%</td>
+                  </tr>
+                  <tr>
+                    <td>Venezuela</td>
+                    <td class="num">1</td>
+                    <td class="num">1</td>
+                    <td class="num">100%</td>
+                  </tr>
+                  <tr>
+                    <td>Estados Unidos</td>
+                    <td class="num">0</td>
+                    <td class="num"><strong>630</strong></td>
+                    <td class="num"><span class="badge badge-red">0%</span></td>
+                  </tr>
+                  <tr>
+                    <td>Canadá</td>
+                    <td class="num">0</td>
+                    <td class="num">53</td>
+                    <td class="num">0%</td>
+                  </tr>
+                  <tr>
+                    <td>Portugal</td>
+                    <td class="num">0</td>
+                    <td class="num">25</td>
+                    <td class="num">0%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="insight" style="margin-top: 0.75rem; margin-bottom: 0">
+              <strong>630 imp. nos EUA com 0 cliques</strong> — ruído de
+              indexação EN ou features em inglês sem intent alinhado. Decidir se
+              o site é só BR/PT.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diagnóstico -->
+      <section id="diagnostico">
+        <div class="section-head">
+          <h2>6. Diagnóstico</h2>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3 style="margin-top: 0; color: var(--green)">O que está bem</h3>
+            <ul class="clean">
+              <li>
+                <strong>Crescimento consistente</strong> de impressões e
+                cliques/dia desde maio
+              </li>
+              <li>
+                <strong>Posição média</strong> estabilizada em 7–8 (vs ~25 em
+                abril)
+              </li>
+              <li>Home e brand com <strong>CTR forte</strong> (14–62%)</li>
+              <li>Post de QR code já é o 2º gerador de cliques</li>
+              <li>
+                Vertical <strong>audiovisual</strong> gera cliques mesmo em pos.
+                21
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 style="margin-top: 0; color: var(--red)">O que está frágil</h3>
+            <ul class="clean">
+              <li>
+                <strong>Dependência de marca:</strong> 50% cliques na home; ~98%
+                queries com clique são brand
+              </li>
+              <li>
+                <strong>CTR non-brand baixo</strong> em posições boas (2–6 com 0
+                cliques)
+              </li>
+              <li>
+                Glossário + features = <strong>0 cliques</strong> com 600+ imp.
+                combinadas
+              </li>
+              <li>
+                Páginas de alto potencial com CTR morto (app estoque, planilha
+                vs app)
+              </li>
+              <li>Só 5 queries na amostra tiveram clique</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top: 0.9rem">
+          <p class="exec">
+            Purple Stock já é encontrado; ainda não é escolhido nas buscas de
+            categoria. A alavanca imediata está em title/meta e nas páginas que
+            já estão na posição 3–10 com CTR ~0%.
+          </p>
+        </div>
+      </section>
+
+      <!-- Prioridades -->
+      <section id="prioridades">
+        <div class="section-head">
+          <h2>7. Prioridades (impacto × esforço)</h2>
+        </div>
+
+        <div class="priority">
+          <div class="priority-item">
+            <span class="priority-tag p0">P0</span>
+            <div>
+              <h4>Reescrever titles/metas das páginas que já rankeiam</h4>
+              <p>
+                Foco em zero-clique com pos ≤ 8 e ≥ 30 imp:
+                <code>planilha-de-estoque-vs-app</code>,
+                <code>aplicativo-para-controle-de-estoque</code>,
+                <code>codigo-de-barras-gratis</code>, inventário físico 2026,
+                glossários MOQ / ponto de reposição / EOQ. Estimativa:
+                <strong>+15–25 cliques/trimestre</strong> só com melhor CTR.
+              </p>
+            </div>
+          </div>
+
+          <div class="priority-item">
+            <span class="priority-tag p1">P1</span>
+            <div>
+              <h4>Converter queries “compare / vs planilha”</h4>
+              <p>
+                <em>estoque compare</em> (87 imp, pos 3,9) e
+                <em>aplicativo de estoque online vs planilhas</em> (72 imp, pos
+                2,9) já estão no topo. Problema de snippet, não de ranking.
+                Title sugerido: “Planilha de Estoque vs App: Qual Vale a Pena em
+                2026? | Purple Stock”.
+              </p>
+            </div>
+          </div>
+
+          <div class="priority-item">
+            <span class="priority-tag p2">P2</span>
+            <div>
+              <h4>Cluster código de barras</h4>
+              <p>
+                Dezenas de variantes com 1–15 imp cada. Unificar em
+                <code>/codigo-de-barras-gratis</code>, internal links, FAQ/HowTo
+                schema, mirar top 5 na head term.
+              </p>
+            </div>
+          </div>
+
+          <div class="priority-item">
+            <span class="priority-tag p3">P3</span>
+            <div>
+              <h4>Glossário answer-first</h4>
+              <p>
+                Priorizar só termos com pos ≤ 12 e demanda (MOQ, ponto de
+                reposição, EOQ, CMP). Páginas em pos 50+ precisam de
+                profundidade + links, não só meta rewrite.
+              </p>
+            </div>
+          </div>
+
+          <div class="priority-item">
+            <span class="priority-tag p4">P4</span>
+            <div>
+              <h4>Internacional (EUA 630 imp / 0 cliques)</h4>
+              <p>
+                Decidir se o site é só BR/PT. Se sim, aceitar ruído ou ajustar
+                hreflang/idioma. Se quiser US depois, features EN precisam de
+                copy e intent claros.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Metas -->
+      <section id="metas">
+        <div class="section-head">
+          <h2>8. Metas — próximos 90 dias</h2>
+          <span class="section-note">Base: ~1,4 cliq/dia em julho</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Cenário</th>
+                <th class="num">Cliques/dia</th>
+                <th class="num">Cliques/90d</th>
+                <th>Como chegar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge-blue">Inercial</span></td>
+                <td class="num">~1,6</td>
+                <td class="num">~145</td>
+                <td>Só crescimento natural</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-green">Otimista (CTR + titles)</span>
+                </td>
+                <td class="num">~2,5–3</td>
+                <td class="num"><strong>220–270</strong></td>
+                <td>P0 + P1 em 4–6 páginas</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-purple">Agressivo</span></td>
+                <td class="num">~4+</td>
+                <td class="num">360+</td>
+                <td>P0–P2 + 2–3 posts novos (app estoque / inventário)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>KPIs semanais no GSC</h3>
+        <div class="card">
+          <ul class="clean" style="margin-top: 0">
+            <li>
+              <strong>Cliques non-brand</strong> (excluir queries “purple*”)
+            </li>
+            <li><strong>CTR das 5 páginas P0</strong></li>
+            <li>
+              <strong>Posição média</strong> de “codigo de barras gratis” e
+              “aplicativo controle de estoque”
+            </li>
+            <li>
+              <strong>% cliques da home</strong> — meta: de 50% → &lt; 35%
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer>
+        <span
+          >Fonte: Google Search Console · purplestock.com.br · export
+          20/07/2026</span
+        >
+        <span>Relatório gerado a partir da análise dos últimos 3 meses</span>
+      </footer>
+    </div>
+
+    <script>
+      const purple = "#a78bfa";
+      const purpleDim = "#6d28d9";
+      const green = "#34d399";
+      const muted = "rgba(183, 168, 212, 0.7)";
+      const grid = "rgba(167, 139, 250, 0.12)";
+
+      Chart.defaults.color = muted;
+      Chart.defaults.borderColor = grid;
+      Chart.defaults.font.family = "Inter, system-ui, sans-serif";
+
+      // Monthly dual axis
+      new Chart(document.getElementById("chartMonthly"), {
+        type: "bar",
+        data: {
+          labels: ["Abr*", "Mai", "Jun", "Jul*"],
+          datasets: [
+            {
+              label: "Cliques",
+              data: [9, 30, 34, 26],
+              backgroundColor: purple,
+              borderRadius: 6,
+              yAxisID: "y",
+              order: 2,
+            },
+            {
+              label: "Impressões",
+              data: [399, 856, 1355, 918],
+              type: "line",
+              borderColor: green,
+              backgroundColor: "rgba(52, 211, 153, 0.15)",
+              pointBackgroundColor: green,
+              tension: 0.3,
+              yAxisID: "y1",
+              order: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: "index", intersect: false },
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: { boxWidth: 12, usePointStyle: true },
+            },
+            tooltip: {
+              callbacks: {
+                afterBody: (items) => {
+                  const i = items[0].dataIndex;
+                  const notes = ["12 dias", "31 dias", "30 dias", "18 dias"];
+                  return notes[i];
+                },
+              },
+            },
+          },
+          scales: {
+            y: {
+              position: "left",
+              title: { display: true, text: "Cliques" },
+              grid: { color: grid },
+            },
+            y1: {
+              position: "right",
+              title: { display: true, text: "Impressões" },
+              grid: { drawOnChartArea: false },
+            },
+            x: { grid: { display: false } },
+          },
+        },
+      });
+
+      // Position
+      new Chart(document.getElementById("chartPosition"), {
+        type: "line",
+        data: {
+          labels: ["Abr*", "Mai", "Jun", "Jul*"],
+          datasets: [
+            {
+              label: "Posição ponderada (menor = melhor)",
+              data: [25.3, 6.9, 8.0, 7.5],
+              borderColor: purple,
+              backgroundColor: "rgba(167, 139, 250, 0.15)",
+              fill: true,
+              tension: 0.35,
+              pointBackgroundColor: purple,
+              pointRadius: 5,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: { boxWidth: 12, usePointStyle: true },
+            },
+          },
+          scales: {
+            y: {
+              reverse: true,
+              min: 0,
+              max: 30,
+              title: { display: true, text: "Posição" },
+              grid: { color: grid },
+            },
+            x: { grid: { display: false } },
+          },
+        },
+      });
+
+      // Themes
+      new Chart(document.getElementById("chartThemes"), {
+        type: "bar",
+        data: {
+          labels: [
+            "Outros",
+            "Estoque geral",
+            "App/software",
+            "Brand",
+            "Código de barras",
+            "VMI",
+            "QR code",
+          ],
+          datasets: [
+            {
+              label: "Impressões (amostra queries)",
+              data: [164, 153, 109, 88, 88, 52, 11],
+              backgroundColor: [
+                "rgba(167, 139, 250, 0.45)",
+                "rgba(167, 139, 250, 0.55)",
+                "rgba(167, 139, 250, 0.65)",
+                "rgba(52, 211, 153, 0.75)",
+                "rgba(96, 165, 250, 0.7)",
+                "rgba(251, 191, 36, 0.65)",
+                "rgba(248, 113, 113, 0.55)",
+              ],
+              borderRadius: 6,
+            },
+          ],
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { color: grid } },
+            y: { grid: { display: false } },
+          },
+        },
+      });
+
+      // Devices
+      new Chart(document.getElementById("chartDevices"), {
+        type: "doughnut",
+        data: {
+          labels: ["Desktop", "Mobile", "Tablet"],
+          datasets: [
+            {
+              data: [2496, 1004, 28],
+              backgroundColor: [purple, green, "rgba(183, 168, 212, 0.35)"],
+              borderWidth: 0,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: { boxWidth: 12, usePointStyle: true },
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => {
+                  const total = 2496 + 1004 + 28;
+                  const pct = ((ctx.raw / total) * 100).toFixed(1);
+                  return ` ${ctx.label}: ${ctx.raw.toLocaleString("pt-BR")} imp. (${pct}%)`;
+                },
+              },
+            },
+          },
+          cutout: "62%",
+        },
+      });
+    </script>
+  </body>
+</html>

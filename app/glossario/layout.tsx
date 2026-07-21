@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata = buildPageMetadata({
-  title: "Glossario de Estoque e Almoxarifado para PMEs",
+  title: "Glossário de Estoque: MOQ, EOQ, Ponto de Reposição e Mais",
   description:
-    "Entenda termos de estoque, logistica e almoxarifado com definicoes diretas para aplicar no dia a dia da operacao.",
+    "Glossário de estoque e almoxarifado para PME: definições curtas, fórmulas e exemplos de MOQ, EOQ, ponto de reposição, ruptura e mais.",
   path: "/glossario",
 });
 

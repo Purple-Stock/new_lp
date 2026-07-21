@@ -4,7 +4,10 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { IndustryDetailView } from "@/components/industry-detail-view";
+import { JsonLd } from "@/components/json-ld";
 import { getIndustryBySlug } from "@/lib/industries-data";
+import { getIndustrySocialProof } from "@/data/industry-social-proof";
+import { buildFaqPageSchema } from "@/lib/structured-data";
 
 const INDUSTRY_METADATA: Record<
   string,
@@ -80,8 +83,12 @@ export default async function IndustryPage({
     notFound();
   }
 
+  const socialProof = getIndustrySocialProof(industry.slug);
+  const faqSchema = buildFaqPageSchema(socialProof.faqs);
+
   return (
     <>
+      <JsonLd data={faqSchema} />
       <Navbar />
       <IndustryDetailView industry={industry} />
       <Footer />

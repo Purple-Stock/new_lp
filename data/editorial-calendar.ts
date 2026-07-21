@@ -23,7 +23,7 @@ export const EDITORIAL_CALENDAR: EditorialItem[] = [
   {
     slug: "check-in-check-out-equipamentos-eventos",
     title: "Check-in e Check-out de Equipamentos para Empresas de Eventos",
-    targetDate: "2026-08-05",
+    targetDate: "2026-07-21",
     cluster: "audiovisual-eventos",
     primaryKeyword: "check-in check-out equipamentos eventos",
   },

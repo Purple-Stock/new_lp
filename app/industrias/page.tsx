@@ -115,7 +115,7 @@ const industries: Industry[] = [
   {
     id: "odontologico",
     translationKey: "odontologico",
-    image: "/images/medical-appointment-doctor-healthcare-40568.webp",
+    image: "/images/odontologico-equipamentos.webp",
     icon: Pill,
     color: "text-teal-600",
     gradient: "from-teal-500 to-teal-600",

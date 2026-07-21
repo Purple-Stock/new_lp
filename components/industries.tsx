@@ -54,7 +54,7 @@ const industries: Industry[] = [
   {
     slug: "odontologico",
     translationKey: "odontologico",
-    image: "/images/medical-appointment-doctor-healthcare-40568.webp",
+    image: "/images/odontologico-equipamentos.webp",
   },
   {
     slug: "telecomunicacoes",

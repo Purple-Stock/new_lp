@@ -287,7 +287,7 @@ export const industriesData: IndustryRecord[] = [
   {
     name: "Odontológico",
     slug: "odontologico",
-    image: "/images/medical-appointment-doctor-healthcare-40568.webp",
+    image: "/images/odontologico-equipamentos.webp",
     description:
       "Controle equipamentos odontológicos, instrumentais e kits por consultório, técnico ou cliente. Check-in/check-out com QR Code para clínicas, labs e empresas que prestam serviço em equipamentos dentários.",
     benefits: [

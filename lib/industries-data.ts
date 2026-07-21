@@ -19,6 +19,7 @@ export const industryStats: Record<string, { value: string; label: string }> = {
   audiovisual: { value: "45%", label: "Redução de perdas" },
   events: { value: "50%", label: "Aumento de eficiência" },
   odontologico: { value: "40%", label: "Menos extravio de ativos" },
+  telecomunicacoes: { value: "45%", label: "Menos kit incompleto em campo" },
   restaurantes: { value: "55%", label: "Redução de desperdícios" },
   electrical: { value: "45%", label: "Aumento de produtividade" },
 };
@@ -315,6 +316,35 @@ export const industriesData: IndustryRecord[] = [
     ],
   },
   {
+    name: "Telecomunicações",
+    slug: "telecomunicacoes",
+    image: "/images/technology-warehouse.png",
+    description:
+      "Controle ONTs, roteadores, rádios, ferramentas e kits de instalação com check-in/check-out. Feito para ISPs, integradoras e empresas de telecom que mandam técnico a campo e precisam saber o que saiu do depósito — e o que voltou.",
+    benefits: [
+      "Check-in/check-out de kits e equipamentos de campo",
+      "QR Code em ONTs, rádios, ferramentas e caixas",
+      "Menos extravio entre depósito e técnico",
+      "Histórico por OS, cliente ou técnico",
+      "Separação disponível vs em uso vs manutenção",
+      "Controle de sobressalentes e reposição",
+      "Operação no celular (van, POP ou depósito)",
+      "Trilha de responsabilidade por retirada",
+    ],
+    features: [
+      "Cadastro por categoria (ONT, roteador, rádio, cabo, ferramenta)",
+      "Check-out com técnico e ordem de serviço",
+      "Check-in com conferência no retorno ao depósito",
+      "Etiquetas QR Code para leitura rápida",
+      "Status: disponível, em campo, manutenção, instalado",
+      "Histórico completo de movimentações",
+      "Kits de instalação e itens avulsos",
+      "Multi-usuário com permissões",
+      "App mobile para o time de campo",
+      "Base para inventário de POP e sobressalentes",
+    ],
+  },
+  {
     name: "Beleza",
     slug: "beauty",
     image: "/images/pexels-photo-3985298.webp",
@@ -474,12 +504,14 @@ export function getIndustryBySlug(slug: string): IndustryRecord | undefined {
 
 /** Preferred related verticals — AV and events convert together. */
 const RELATED_INDUSTRY_PREFS: Record<string, string[]> = {
-  audiovisual: ["events", "odontologico", "technology"],
-  events: ["audiovisual", "odontologico", "construction"],
-  odontologico: ["pharmaceutical", "events", "technology"],
-  pharmaceutical: ["odontologico", "technology", "varejo"],
-  technology: ["audiovisual", "odontologico", "events"],
-  construction: ["events", "automotivo", "manufatura"],
+  audiovisual: ["events", "telecomunicacoes", "odontologico"],
+  events: ["audiovisual", "telecomunicacoes", "construction"],
+  odontologico: ["telecomunicacoes", "pharmaceutical", "technology"],
+  telecomunicacoes: ["technology", "electrical", "odontologico"],
+  pharmaceutical: ["odontologico", "telecomunicacoes", "technology"],
+  technology: ["telecomunicacoes", "audiovisual", "electrical"],
+  electrical: ["telecomunicacoes", "construction", "technology"],
+  construction: ["events", "telecomunicacoes", "automotivo"],
 };
 
 export function getRelatedIndustries(

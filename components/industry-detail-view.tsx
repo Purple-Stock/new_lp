@@ -42,7 +42,8 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
   const isEquipmentVertical =
     industry.slug === "audiovisual" ||
     industry.slug === "events" ||
-    industry.slug === "odontologico";
+    industry.slug === "odontologico" ||
+    industry.slug === "telecomunicacoes";
 
   return (
     <main className="relative pb-20">
@@ -129,7 +130,9 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
                   <>
                     {industry.slug === "odontologico"
                       ? "Clínicas, labs e prestadores de equipamentos dentários"
-                      : "Usado por produtoras, locadoras e eventos"}{" "}
+                      : industry.slug === "telecomunicacoes"
+                        ? "ISPs, integradoras e times de telecom em campo"
+                        : "Usado por produtoras, locadoras e eventos"}{" "}
                     · Plano{" "}
                     <Link
                       href="/precos"
@@ -376,9 +379,11 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
               <h2 className="text-xl font-bold text-brand-ink sm:text-2xl">
                 {industry.slug === "odontologico"
                   ? "Teste o fluxo na próxima retirada de kit"
-                  : isEquipmentVertical
-                    ? "Teste o fluxo no próximo set ou evento"
-                    : "Preço direto para o time inteiro"}
+                  : industry.slug === "telecomunicacoes"
+                    ? "Teste o fluxo na próxima OS de campo"
+                    : isEquipmentVertical
+                      ? "Teste o fluxo no próximo set ou evento"
+                      : "Preço direto para o time inteiro"}
               </h2>
               <p className="mt-2 max-w-xl text-slate-600">
                 R$ 59,00 por time, 7 dias grátis e implantação rápida. Sem

@@ -30,6 +30,11 @@ const INDUSTRY_METADATA: Record<
     description:
       "Gestão de equipamentos dentários, kits e instrumentais: check-in/check-out, responsável e histórico. Para clínicas, labs e prestadores de serviço. Teste grátis.",
   },
+  telecomunicacoes: {
+    title: "Controle de Equipamentos de Telecom e Kits de Campo com QR Code",
+    description:
+      "Check-in/check-out de ONT, roteador, rádio e kits de instalação. Saiba o que cada técnico levou e o que voltou ao depósito. Para ISPs e integradoras. Teste grátis.",
+  },
   pharmaceutical: {
     title: "Controle de Estoque e Equipamentos para o Setor de Saúde",
     description:

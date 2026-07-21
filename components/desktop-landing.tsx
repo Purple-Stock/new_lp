@@ -363,26 +363,26 @@ export function DesktopLanding({
         pt: [
           "produtoras",
           "eventos",
+          "telecom",
           "equipamentos dentários",
-          "audiovisual",
+          "ISPs",
           "clínicas",
-          "almoxarifado",
         ],
         en: [
           "production houses",
           "events",
+          "telecom",
           "dental equipment",
-          "audiovisual",
+          "ISPs",
           "clinics",
-          "warehouses",
         ],
         fr: [
           "maisons de production",
           "événements",
+          "télécom",
           "équipements dentaires",
-          "audiovisuel",
+          "FAI",
           "cliniques",
-          "entrepôts",
         ],
       })[language],
     [language]
@@ -886,10 +886,10 @@ export function DesktopLanding({
                   </h2>
                   <p className="mx-auto max-w-2xl text-sm text-slate-600 md:text-base">
                     {language === "pt"
-                      ? "Do estoque clássico ao check-in de equipamentos — forte em produtoras, eventos e equipamentos dentários."
+                      ? "Do estoque clássico ao check-in de equipamentos — forte em produtoras, eventos, telecom e dentário."
                       : language === "en"
-                        ? "From classic inventory to equipment check-in — strong for production, events, and dental equipment teams."
-                        : "Du stock classique au check-in d'equipements — fort pour productions, evenements et dentaire."}
+                        ? "From classic inventory to equipment check-in — strong for production, events, telecom, and dental teams."
+                        : "Du stock classique au check-in d'equipements — fort pour productions, evenements, telecom et dentaire."}
                   </p>
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
                     <Link
@@ -911,6 +911,16 @@ export function DesktopLanding({
                         : language === "en"
                           ? "Events →"
                           : "Evenements →"}
+                    </Link>
+                    <Link
+                      href="/industrias/telecomunicacoes"
+                      className="ps-badge-violet px-3 py-1.5 text-xs font-semibold normal-case tracking-normal"
+                    >
+                      {language === "pt"
+                        ? "Telecom →"
+                        : language === "en"
+                          ? "Telecom →"
+                          : "Telecom →"}
                     </Link>
                     <Link
                       href="/industrias/odontologico"

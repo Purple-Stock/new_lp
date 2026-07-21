@@ -9,6 +9,7 @@ type IndustrySlug =
   | "audiovisual"
   | "events"
   | "odontologico"
+  | "telecomunicacoes"
   | "varejo"
   | "manufatura"
   | "logistica"
@@ -22,6 +23,7 @@ type IndustryTranslationKey =
   | "audiovisual"
   | "events"
   | "odontologico"
+  | "telecomunicacoes"
   | "retail"
   | "manufacturing"
   | "logistics"
@@ -53,6 +55,11 @@ const industries: Industry[] = [
     slug: "odontologico",
     translationKey: "odontologico",
     image: "/images/medical-appointment-doctor-healthcare-40568.webp",
+  },
+  {
+    slug: "telecomunicacoes",
+    translationKey: "telecomunicacoes",
+    image: "/images/technology-warehouse.png",
   },
   {
     slug: "varejo",

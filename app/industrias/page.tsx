@@ -36,6 +36,7 @@ type IndustryId =
   | "food"
   | "pharmaceutical"
   | "odontologico"
+  | "telecomunicacoes"
   | "automotivo"
   | "construction"
   | "technology"
@@ -51,6 +52,7 @@ type IndustryTranslationKey =
   | "food"
   | "pharmaceutical"
   | "odontologico"
+  | "telecomunicacoes"
   | "automotive"
   | "construction"
   | "technology"
@@ -126,6 +128,23 @@ const industries: Industry[] = [
       "QR Code no instrumental",
     ],
     stats: { value: "40%", label: "Menos extravio de ativos" },
+  },
+  {
+    id: "telecomunicacoes",
+    translationKey: "telecomunicacoes",
+    image: "/images/technology-warehouse.png",
+    icon: Cpu,
+    color: "text-sky-600",
+    gradient: "from-sky-500 to-sky-600",
+    description:
+      "ONT, rádio e kits de instalação com check-in/check-out: ISPs, integradoras e técnicos de campo.",
+    benefits: [
+      "Kits por técnico e OS",
+      "Check-in/check-out",
+      "Menos kit incompleto",
+      "QR Code no equipamento",
+    ],
+    stats: { value: "45%", label: "Menos kit incompleto em campo" },
   },
   {
     id: "varejo",
@@ -310,6 +329,7 @@ const industryNames: Record<IndustryId, string> = {
   audiovisual: "Controle de Equipamentos Audiovisuais",
   events: "Controle de Estoque para Eventos",
   odontologico: "Controle de Equipamentos Odontológicos",
+  telecomunicacoes: "Controle de Equipamentos de Telecom",
   restaurantes: "Controle de Estoque para Restaurantes",
   electrical: "Controle de Estoque para Setor Eletrico",
 };

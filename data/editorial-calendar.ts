@@ -8,7 +8,8 @@ export type EditorialItem = {
     | "inventario"
     | "comparativos"
     | "audiovisual-eventos"
-    | "odontologico";
+    | "odontologico"
+    | "telecomunicacoes";
   primaryKeyword: string;
 };
 
@@ -35,6 +36,13 @@ export const EDITORIAL_CALENDAR: EditorialItem[] = [
     targetDate: "2026-07-22",
     cluster: "odontologico",
     primaryKeyword: "controle equipamentos odontológicos",
+  },
+  {
+    slug: "controle-equipamentos-telecom-kits-campo",
+    title: "Controle de Equipamentos de Telecom: Kits de Campo e Check-in",
+    targetDate: "2026-07-22",
+    cluster: "telecomunicacoes",
+    primaryKeyword: "controle equipamentos telecom",
   },
   {
     slug: "inventario-fisico-passo-a-passo-2026",

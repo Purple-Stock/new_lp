@@ -273,6 +273,80 @@ const PROOF_BY_SLUG: Record<string, IndustrySocialProof> = {
     relatedBlogHref: "/blog/controle-equipamentos-odontologicos-clinicas",
     relatedBlogLabel: "Também para equipamentos odontológicos",
   },
+  telecomunicacoes: {
+    proofHeadline: "Kits de campo que não “somem” na van",
+    proofSubhead:
+      "ISPs, integradoras e times de telecom usam check-in/check-out para saber o que cada técnico levou — e o que voltou ao depósito.",
+    stats: [
+      { value: "In/Out", label: "Check-in e check-out" },
+      { value: "QR", label: "Etiqueta no ativo" },
+      { value: "OS", label: "Por técnico ou OS" },
+      { value: "−", label: "Menos kit incompleto" },
+    ],
+    casesHeadline: "Padrões de quem opera equipamentos de telecom",
+    casesSubhead:
+      "Perfis de operação comuns em empresas de telecomunicações que saem da planilha.",
+    cases: [
+      {
+        role: "Depósito / almoxarifado",
+        companyType: "ISP ou provedor regional",
+        quote:
+          "Cada ONT e kit de instalação sai com técnico e OS. No retorno, o check-in mostra o que ficou no cliente e o que voltou — sem briga no grupo.",
+        outcome: "OS + responsável na retirada",
+      },
+      {
+        role: "Operações de campo",
+        companyType: "Integradora / instalação",
+        quote:
+          "Ferramentas e rádios com QR. Técnico retira no app; o estoque para de depender de quem “lembra o que estava na van”.",
+        outcome: "Campo e depósito no mesmo histórico",
+      },
+      {
+        role: "Supervisão técnica",
+        companyType: "Rede multi-equipe",
+        quote:
+          "Status disponível, em campo e manutenção evita reutilizar equipamento que ainda não voltou ou está quebrado.",
+        outcome: "Menos retrabalho e extravio",
+      },
+    ],
+    steps: [
+      {
+        title: "Etiquete ativos e kits de instalação",
+        description:
+          "Comece por ONT, roteador, rádio, ferramenta cara e kits que sobem na van todo dia.",
+      },
+      {
+        title: "Check-out por técnico e OS",
+        description:
+          "Escaneie, associe responsável e ordem de serviço. Sem retirada informal no depósito.",
+      },
+      {
+        title: "Check-in no retorno",
+        description:
+          "Conferira o que voltou, o que ficou instalado e o que foi para manutenção — no mesmo dia.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Serve para ISP e para integradora?",
+        a: "Sim. O fluxo é o mesmo: equipamento e kit saem do depósito com técnico e precisam de trilha no retorno ou na instalação no cliente.",
+      },
+      {
+        q: "Como tratar equipamento que fica no cliente?",
+        a: "No check-in/baixa, registre como instalado ou transferido para o cliente. O importante é não deixar o item “fantasma” no depósito.",
+      },
+      {
+        q: "Planilha de saída de material resolve?",
+        a: "Até poucas equipes, resolve. Com dezenas de técnicos e vans, a planilha atrasa e perde versão — e a ONT sumida custa caro.",
+      },
+      {
+        q: "Funciona no celular na rua?",
+        a: "Sim. Check-out e conferência são pensados para depósito e campo, não só desktop.",
+      },
+    ],
+    relatedBlogHref: "/blog/controle-equipamentos-telecom-kits-campo",
+    relatedBlogLabel: "Controle de equipamentos de telecom e kits de campo",
+  },
 };
 
 export function getIndustrySocialProof(slug: string): IndustrySocialProof {

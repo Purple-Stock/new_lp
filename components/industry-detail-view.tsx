@@ -40,7 +40,9 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
   const relatedIndustries = getRelatedIndustries(industry.slug);
   const proof = getIndustrySocialProof(industry.slug);
   const isEquipmentVertical =
-    industry.slug === "audiovisual" || industry.slug === "events";
+    industry.slug === "audiovisual" ||
+    industry.slug === "events" ||
+    industry.slug === "odontologico";
 
   return (
     <main className="relative pb-20">
@@ -125,7 +127,10 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
               <p className="text-sm text-slate-600">
                 {isEquipmentVertical ? (
                   <>
-                    Usado por produtoras, locadoras e eventos · Plano{" "}
+                    {industry.slug === "odontologico"
+                      ? "Clínicas, labs e prestadores de equipamentos dentários"
+                      : "Usado por produtoras, locadoras e eventos"}{" "}
+                    · Plano{" "}
                     <Link
                       href="/precos"
                       className="ps-link-editorial font-semibold"
@@ -369,9 +374,11 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
           <div className="ps-callout flex flex-col items-start justify-between gap-6 p-6 sm:flex-row sm:items-center sm:p-8">
             <div>
               <h2 className="text-xl font-bold text-brand-ink sm:text-2xl">
-                {isEquipmentVertical
-                  ? "Teste o fluxo no próximo set ou evento"
-                  : "Preço direto para o time inteiro"}
+                {industry.slug === "odontologico"
+                  ? "Teste o fluxo na próxima retirada de kit"
+                  : isEquipmentVertical
+                    ? "Teste o fluxo no próximo set ou evento"
+                    : "Preço direto para o time inteiro"}
               </h2>
               <p className="mt-2 max-w-xl text-slate-600">
                 R$ 59,00 por time, 7 dias grátis e implantação rápida. Sem

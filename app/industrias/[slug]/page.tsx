@@ -25,6 +25,16 @@ const INDUSTRY_METADATA: Record<
     description:
       "Controle som, luz, mobiliário e materiais por evento com QR Code. Saiba o que saiu, com quem está e o que voltou. Teste grátis Purple Stock.",
   },
+  odontologico: {
+    title: "Controle de Equipamentos Odontológicos com QR Code e Check-in",
+    description:
+      "Gestão de equipamentos dentários, kits e instrumentais: check-in/check-out, responsável e histórico. Para clínicas, labs e prestadores de serviço. Teste grátis.",
+  },
+  pharmaceutical: {
+    title: "Controle de Estoque e Equipamentos para o Setor de Saúde",
+    description:
+      "Rastreie medicamentos, insumos e equipamentos médicos com QR Code. Menos perda por validade e mais controle operacional. Teste grátis Purple Stock.",
+  },
   restaurantes: {
     title: "Gestão de Estoque para Restaurantes",
     description:

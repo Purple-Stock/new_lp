@@ -35,6 +35,7 @@ type IndustryId =
   | "logistica"
   | "food"
   | "pharmaceutical"
+  | "odontologico"
   | "automotivo"
   | "construction"
   | "technology"
@@ -49,6 +50,7 @@ type IndustryTranslationKey =
   | "logistics"
   | "food"
   | "pharmaceutical"
+  | "odontologico"
   | "automotive"
   | "construction"
   | "technology"
@@ -72,7 +74,7 @@ interface Industry {
   };
 }
 
-/** AV + events first: highest conversion verticals today. */
+/** Equipment verticals first: AV, events, dental equipment convert well. */
 const industries: Industry[] = [
   {
     id: "audiovisual",
@@ -107,6 +109,23 @@ const industries: Industry[] = [
       "Rastreio com QR Code",
     ],
     stats: { value: "50%", label: "Aumento de eficiência" },
+  },
+  {
+    id: "odontologico",
+    translationKey: "odontologico",
+    image: "/images/medical-appointment-doctor-healthcare-40568.webp",
+    icon: Pill,
+    color: "text-teal-600",
+    gradient: "from-teal-500 to-teal-600",
+    description:
+      "Equipamentos e kits odontológicos com check-in/check-out: clínicas, labs e prestadores de serviço.",
+    benefits: [
+      "Kits por sala ou técnico",
+      "Check-in/check-out",
+      "Menos extravio de ativos",
+      "QR Code no instrumental",
+    ],
+    stats: { value: "40%", label: "Menos extravio de ativos" },
   },
   {
     id: "varejo",
@@ -290,6 +309,7 @@ const industryNames: Record<IndustryId, string> = {
   technology: "Controle de Estoque para Tecnologia",
   audiovisual: "Controle de Equipamentos Audiovisuais",
   events: "Controle de Estoque para Eventos",
+  odontologico: "Controle de Equipamentos Odontológicos",
   restaurantes: "Controle de Estoque para Restaurantes",
   electrical: "Controle de Estoque para Setor Eletrico",
 };

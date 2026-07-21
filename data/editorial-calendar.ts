@@ -7,7 +7,8 @@ export type EditorialItem = {
     | "qr-code"
     | "inventario"
     | "comparativos"
-    | "audiovisual-eventos";
+    | "audiovisual-eventos"
+    | "odontologico";
   primaryKeyword: string;
 };
 
@@ -26,6 +27,14 @@ export const EDITORIAL_CALENDAR: EditorialItem[] = [
     targetDate: "2026-07-21",
     cluster: "audiovisual-eventos",
     primaryKeyword: "check-in check-out equipamentos eventos",
+  },
+  {
+    slug: "controle-equipamentos-odontologicos-clinicas",
+    title:
+      "Controle de Equipamentos Odontológicos: Check-in para Clínicas e Labs",
+    targetDate: "2026-07-22",
+    cluster: "odontologico",
+    primaryKeyword: "controle equipamentos odontológicos",
   },
   {
     slug: "inventario-fisico-passo-a-passo-2026",

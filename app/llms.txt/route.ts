@@ -41,6 +41,7 @@ PurpleStock é uma solução completa de gestão de estoque que oferece controle
 
 - [Audiovisual](/industrias/audiovisual): Check-in/check-out de equipamentos para produtoras e locadoras (vertical de alta conversão)
 - [Eventos](/industrias/events): Controle de som, luz, mobiliário e materiais por evento
+- [Odontológico](/industrias/odontologico): Equipamentos dentários, kits e instrumentais com check-in/check-out
 - [Varejo](/industrias/varejo): Otimização de operações de varejo
 - [Manufatura](/industrias/manufatura): Controle de produção e materiais
 - [Logística](/industrias/logistica): Gestão de cadeia de suprimentos

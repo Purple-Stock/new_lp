@@ -18,6 +18,7 @@ export const industryStats: Record<string, { value: string; label: string }> = {
   technology: { value: "40%", label: "Aumento de produtividade" },
   audiovisual: { value: "45%", label: "Redução de perdas" },
   events: { value: "50%", label: "Aumento de eficiência" },
+  odontologico: { value: "40%", label: "Menos extravio de ativos" },
   restaurantes: { value: "55%", label: "Redução de desperdícios" },
   electrical: { value: "45%", label: "Aumento de produtividade" },
 };
@@ -285,6 +286,35 @@ export const industriesData: IndustryRecord[] = [
     ],
   },
   {
+    name: "Odontológico",
+    slug: "odontologico",
+    image: "/images/medical-appointment-doctor-healthcare-40568.webp",
+    description:
+      "Controle equipamentos odontológicos, instrumentais e kits por consultório, técnico ou cliente. Check-in/check-out com QR Code para clínicas, labs e empresas que prestam serviço em equipamentos dentários.",
+    benefits: [
+      "Check-in/check-out de equipamentos e kits",
+      "QR Code em ativos e caixas de instrumental",
+      "Menos extravio entre consultórios e técnicos",
+      "Histórico de quem retirou e quando",
+      "Separação do que está em manutenção vs disponível",
+      "Controle de consumíveis e reposição",
+      "Operação no celular (clínica, lab ou campo)",
+      "Trilha para auditoria e responsabilidade",
+    ],
+    features: [
+      "Cadastro por categoria (cadeira, raio-X portátil, motores, kits)",
+      "Check-out com responsável e local/cliente",
+      "Check-in com conferência no retorno",
+      "Etiquetas QR Code para leitura rápida",
+      "Status: disponível, em uso, manutenção",
+      "Histórico completo de movimentações",
+      "Controle de kits e itens avulsos",
+      "Multi-usuário com permissões",
+      "App mobile para o dia a dia da operação",
+      "Base para manutenção preventiva de ativos",
+    ],
+  },
+  {
     name: "Beleza",
     slug: "beauty",
     image: "/images/pexels-photo-3985298.webp",
@@ -444,9 +474,11 @@ export function getIndustryBySlug(slug: string): IndustryRecord | undefined {
 
 /** Preferred related verticals — AV and events convert together. */
 const RELATED_INDUSTRY_PREFS: Record<string, string[]> = {
-  audiovisual: ["events", "technology", "construction"],
-  events: ["audiovisual", "construction", "varejo"],
-  technology: ["audiovisual", "events", "varejo"],
+  audiovisual: ["events", "odontologico", "technology"],
+  events: ["audiovisual", "odontologico", "construction"],
+  odontologico: ["pharmaceutical", "events", "technology"],
+  pharmaceutical: ["odontologico", "technology", "varejo"],
+  technology: ["audiovisual", "odontologico", "events"],
   construction: ["events", "automotivo", "manufatura"],
 };
 

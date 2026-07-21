@@ -65,6 +65,7 @@ const industryLabels: Record<string, string> = {
   technology: "Tecnologia",
   audiovisual: "Audiovisual",
   events: "Eventos",
+  odontologico: "Odontológico",
   fashion: "Moda",
 };
 

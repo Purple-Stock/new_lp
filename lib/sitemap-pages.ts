@@ -14,6 +14,7 @@ const INDUSTRY_SLUGS = [
   "electrical",
   "construction",
   "pharmaceutical",
+  "odontologico",
   "beauty",
   "commerce",
   "education",

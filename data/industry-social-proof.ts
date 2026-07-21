@@ -170,6 +170,81 @@ const EQUIPMENT_VERTICAL_PROOF: IndustrySocialProof = {
   relatedBlogLabel: "Guia: controle de equipamentos audiovisuais e eventos",
 };
 
+const DENTAL_EQUIPMENT_PROOF: IndustrySocialProof = {
+  proofHeadline: "Equipamentos dentários que não “somem” entre salas",
+  proofSubhead:
+    "Clínicas, labs e empresas que cuidam de equipamentos odontológicos usam check-in/check-out para saber quem retirou o kit — e o que voltou.",
+  stats: [
+    { value: "In/Out", label: "Check-in e check-out" },
+    { value: "QR", label: "Etiqueta no ativo" },
+    { value: "Kit", label: "Por sala ou técnico" },
+    { value: "−", label: "Menos extravio" },
+  ],
+  casesHeadline: "Padrões de quem opera equipamentos dentários",
+  casesSubhead:
+    "Perfis de operação que mais aparecem entre assinaturas do vertical de saúde/equipamentos.",
+  cases: [
+    {
+      role: "Coordenação de clínicas",
+      companyType: "Rede ou multi-consultório",
+      quote:
+        "Motor, peça e kit saem com responsável e sala. No fim do turno o check-in mostra o que não voltou — antes de virar briga no WhatsApp.",
+      outcome: "Responsável + sala/consultório",
+    },
+    {
+      role: "Operações / campo",
+      companyType: "Empresa de manutenção e equipamentos dentários",
+      quote:
+        "Técnico leva o kit para o cliente com check-out. No retorno, confere o que faltou e o que foi para manutenção. O histórico vira trilha, não memória.",
+      outcome: "Campo + depósito no mesmo fluxo",
+    },
+    {
+      role: "Lab / esterilização",
+      companyType: "Laboratório e suporte clínico",
+      quote:
+        "Caixas e instrumentais críticos com QR. Status disponível vs em processo evita reutilizar o que ainda não voltou limpo ou calibrado.",
+      outcome: "Status claro do ativo",
+    },
+  ],
+  steps: [
+    {
+      title: "Etiquete ativos e kits críticos",
+      description:
+        "Comece por equipamentos caros e kits que circulam entre salas, técnicos ou clientes.",
+    },
+    {
+      title: "Check-out com responsável",
+      description:
+        "Escaneie, associe técnico/sala/cliente. Sem retirada “só dessa vez” sem registro.",
+    },
+    {
+      title: "Check-in e status",
+      description:
+        "No retorno, confira o kit e marque manutenção quando precisar — separado do disponível.",
+    },
+  ],
+  faqs: [
+    {
+      q: "Serve para clínica odontológica e para empresa de equipamentos?",
+      a: "Sim. Clínica controla o que circula entre consultórios; prestador de serviço controla o que vai a campo e volta. O fluxo é check-in/check-out com responsável.",
+    },
+    {
+      q: "Dá para separar consumível de equipamento?",
+      a: "Sim. Materiais de uso diário podem ter reposição mais simples; ativos e kits caros merecem etiqueta, histórico e conferência no retorno.",
+    },
+    {
+      q: "Preciso de um sistema hospitalar pesado?",
+      a: "Não para o fluxo operacional de quem tirou o quê. O Purple Stock cobre movimentação, QR e histórico sem implantar ERP clínico completo no primeiro dia.",
+    },
+    {
+      q: "Funciona com vários técnicos em campo?",
+      a: "Sim, com usuário por pessoa. O ponto é trilha de retirada — não bloquear o atendimento, e sim saber onde está cada ativo.",
+    },
+  ],
+  relatedBlogHref: "/blog/controle-equipamentos-odontologicos-clinicas",
+  relatedBlogLabel: "Controle de equipamentos odontológicos com check-in",
+};
+
 const PROOF_BY_SLUG: Record<string, IndustrySocialProof> = {
   audiovisual: {
     ...EQUIPMENT_VERTICAL_PROOF,
@@ -188,6 +263,15 @@ const PROOF_BY_SLUG: Record<string, IndustrySocialProof> = {
     ],
     relatedBlogHref: "/blog/check-in-check-out-equipamentos-eventos",
     relatedBlogLabel: "Check-in e check-out de equipamentos para eventos",
+  },
+  odontologico: DENTAL_EQUIPMENT_PROOF,
+  pharmaceutical: {
+    ...DENTAL_EQUIPMENT_PROOF,
+    proofHeadline: "Saúde: insumos e equipamentos sob rastreio",
+    proofSubhead:
+      "Do consultório ao prestador de serviço — menos perda e mais histórico de movimentação.",
+    relatedBlogHref: "/blog/controle-equipamentos-odontologicos-clinicas",
+    relatedBlogLabel: "Também para equipamentos odontológicos",
   },
 };
 

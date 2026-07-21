@@ -8,6 +8,7 @@ import Image from "next/image";
 type IndustrySlug =
   | "audiovisual"
   | "events"
+  | "odontologico"
   | "varejo"
   | "manufatura"
   | "logistica"
@@ -20,6 +21,7 @@ type IndustrySlug =
 type IndustryTranslationKey =
   | "audiovisual"
   | "events"
+  | "odontologico"
   | "retail"
   | "manufacturing"
   | "logistics"
@@ -35,7 +37,7 @@ interface Industry {
   image: string;
 }
 
-/** Order reflects conversion: AV + events lead acquisition. */
+/** Order reflects conversion: equipment verticals first. */
 const industries: Industry[] = [
   {
     slug: "audiovisual",
@@ -46,6 +48,11 @@ const industries: Industry[] = [
     slug: "events",
     translationKey: "events",
     image: "/images/events-1.jpg",
+  },
+  {
+    slug: "odontologico",
+    translationKey: "odontologico",
+    image: "/images/medical-appointment-doctor-healthcare-40568.webp",
   },
   {
     slug: "varejo",

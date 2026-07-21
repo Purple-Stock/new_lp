@@ -62,6 +62,11 @@ const industries: Industry[] = [
     image: "/images/technology-warehouse.png",
   },
   {
+    slug: "automotivo",
+    translationKey: "automotive",
+    image: "/images/pexels-photo-4483610.webp",
+  },
+  {
     slug: "varejo",
     translationKey: "retail",
     image: "/images/pexels-photo-264507.jpeg",
@@ -85,11 +90,6 @@ const industries: Industry[] = [
     slug: "pharmaceutical",
     translationKey: "pharmaceutical",
     image: "/images/medical-appointment-doctor-healthcare-40568.webp",
-  },
-  {
-    slug: "automotivo",
-    translationKey: "automotive",
-    image: "/images/pexels-photo-4483610.webp",
   },
   {
     slug: "construction",

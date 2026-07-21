@@ -9,7 +9,8 @@ export type EditorialItem = {
     | "comparativos"
     | "audiovisual-eventos"
     | "odontologico"
-    | "telecomunicacoes";
+    | "telecomunicacoes"
+    | "autopecas";
   primaryKeyword: string;
 };
 
@@ -43,6 +44,13 @@ export const EDITORIAL_CALENDAR: EditorialItem[] = [
     targetDate: "2026-07-22",
     cluster: "telecomunicacoes",
     primaryKeyword: "controle equipamentos telecom",
+  },
+  {
+    slug: "estoque-autopecas-pecas-moto-controle",
+    title: "Estoque para Autopeças e Peças de Moto: Controle no Balcão",
+    targetDate: "2026-07-22",
+    cluster: "autopecas",
+    primaryKeyword: "estoque autopeças peças de moto",
   },
   {
     slug: "inventario-fisico-passo-a-passo-2026",

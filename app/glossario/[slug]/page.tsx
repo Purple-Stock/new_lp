@@ -53,7 +53,7 @@ const industryLabels: Record<string, string> = {
   varejo: "Varejo",
   manufatura: "Manufatura",
   logistica: "Logística",
-  automotivo: "Automotivo",
+  automotivo: "Autopeças e Motos",
   food: "Alimentos & Bebidas",
   restaurantes: "Restaurantes",
   electrical: "Elétrico",

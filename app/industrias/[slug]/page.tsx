@@ -40,6 +40,12 @@ const INDUSTRY_METADATA: Record<
     description:
       "Rastreie medicamentos, insumos e equipamentos médicos com QR Code. Menos perda por validade e mais controle operacional. Teste grátis Purple Stock.",
   },
+  automotivo: {
+    title:
+      "Estoque para Autopeças e Peças de Moto: Controle com Código de Barras",
+    description:
+      "Sistema de estoque para lojas de peças de carro e moto. SKU, código de barras/QR, reposição e menos ruptura no balcão. Teste grátis Purple Stock.",
+  },
   restaurantes: {
     title: "Gestão de Estoque para Restaurantes",
     description:

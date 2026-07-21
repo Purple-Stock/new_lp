@@ -273,6 +273,80 @@ const PROOF_BY_SLUG: Record<string, IndustrySocialProof> = {
     relatedBlogHref: "/blog/controle-equipamentos-odontologicos-clinicas",
     relatedBlogLabel: "Também para equipamentos odontológicos",
   },
+  automotivo: {
+    proofHeadline: "Peça certa no balcão — sem planilha paralela",
+    proofSubhead:
+      "Autopeças e lojas de peças de moto usam saldo confiável, código de barras e alerta de reposição para não perder venda por ruptura.",
+    stats: [
+      { value: "SKU", label: "Cadastro estável" },
+      { value: "CB", label: "Código de barras" },
+      { value: "−", label: "Menos ruptura" },
+      { value: "7d", label: "Teste grátis" },
+    ],
+    casesHeadline: "Padrões de quem vende peças de carro e moto",
+    casesSubhead:
+      "Perfis de operação comuns em autopeças, moto peças e distribuidores.",
+    cases: [
+      {
+        role: "Balcão / vendas",
+        companyType: "Autopeças multi-marca",
+        quote:
+          "Antes o sistema dizia que tinha e a prateleira não. Com leitura e saldo único, o vendedor confia no número e para de “ir olhar no fundo”.",
+        outcome: "Menos venda perdida por saldo errado",
+      },
+      {
+        role: "Depósito",
+        companyType: "Loja de peças de moto",
+        quote:
+          "Entrada com código de barras e inventário nos itens de maior giro. O freio e o kit de transmissão param de zerar sem aviso.",
+        outcome: "Reposição no tempo certo",
+      },
+      {
+        role: "Gestão",
+        companyType: "Distribuidor regional",
+        quote:
+          "Várias pessoas no estoque sem planilha paralela. Histórico por SKU mostra quem moveu e o giro real por categoria.",
+        outcome: "Uma fonte de verdade",
+      },
+    ],
+    steps: [
+      {
+        title: "Padronize o cadastro de peças",
+        description:
+          "SKU estável, marca, aplicação (carro/moto) e código de barras. Sem cadastro duplicado no balcão.",
+      },
+      {
+        title: "Leitura na entrada e na saída",
+        description:
+          "Escaneie no recebimento e na venda. O saldo deixa de depender de digitação.",
+      },
+      {
+        title: "Alerte e inventarie o que mais gira",
+        description:
+          "Estoque mínimo nos top sellers e contagem cíclica nos 20% que mais vendem.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Serve para autopeças e para loja de peças de moto?",
+        a: "Sim. O fluxo é o mesmo: muitos SKUs, balcão rápido e necessidade de saldo confiável. A diferença é o catálogo (carro vs moto), não o processo.",
+      },
+      {
+        q: "Preciso de integração com catálogo de montadora?",
+        a: "No começo o que mais resolve é cadastro limpo, barras e movimentação. Integrações avançadas podem vir depois; o ganho imediato é parar a planilha e a ruptura surpresa.",
+      },
+      {
+        q: "E se eu tenho loja + depósito?",
+        a: "Use locais e transferência entre eles. O balcão vê o que está na loja; o depósito controla o fundo de estoque.",
+      },
+      {
+        q: "Código de barras ou QR Code?",
+        a: "Ambos funcionam. Barras é clássico em peça; QR também serve. O importante é ler no ato da movimentação.",
+      },
+    ],
+    relatedBlogHref: "/blog/estoque-autopecas-pecas-moto-controle",
+    relatedBlogLabel: "Estoque para autopeças e peças de moto",
+  },
   telecomunicacoes: {
     proofHeadline: "Kits de campo que não “somem” na van",
     proofSubhead:

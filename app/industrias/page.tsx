@@ -147,6 +147,23 @@ const industries: Industry[] = [
     stats: { value: "45%", label: "Menos kit incompleto em campo" },
   },
   {
+    id: "automotivo",
+    translationKey: "automotive",
+    image: "/images/pexels-photo-4483610.webp",
+    icon: Car,
+    color: "text-indigo-600",
+    gradient: "from-indigo-500 to-indigo-600",
+    description:
+      "Estoque para autopeças e peças de moto: SKU, código de barras e menos ruptura no balcão.",
+    benefits: [
+      "Peças de carro e moto",
+      "Código de barras/QR",
+      "Menos ruptura",
+      "Saldo no balcão",
+    ],
+    stats: { value: "35%", label: "Menos ruptura de peça" },
+  },
+  {
     id: "varejo",
     translationKey: "retail",
     image: "/images/pexels-photo-264507.jpeg",
@@ -232,23 +249,6 @@ const industries: Industry[] = [
     stats: { value: "45%", label: "Melhoria na precisão" },
   },
   {
-    id: "automotivo",
-    translationKey: "automotive",
-    image: "/images/pexels-photo-4483610.webp",
-    icon: Car,
-    color: "text-indigo-600",
-    gradient: "from-indigo-500 to-indigo-600",
-    description:
-      "Gestão eficiente de peças, componentes e equipamentos automotivos.",
-    benefits: [
-      "Controle de peças",
-      "Rastreamento de componentes",
-      "Gestão de fornecedores",
-      "Controle de qualidade",
-    ],
-    stats: { value: "30%", label: "Redução de tempo" },
-  },
-  {
     id: "construction",
     translationKey: "construction",
     image: "/images/construction-site-build-construction-work-159358.jpeg",
@@ -323,7 +323,7 @@ const industryNames: Record<IndustryId, string> = {
   logistica: "Controle de Estoque para Logistica",
   food: "Controle de Estoque para Alimentos e Bebidas",
   pharmaceutical: "Controle de Estoque para Farmaceutico",
-  automotivo: "Controle de Estoque para Automotivo",
+  automotivo: "Estoque para Autopeças e Peças de Moto",
   construction: "Controle de Estoque para Construcao",
   technology: "Controle de Estoque para Tecnologia",
   audiovisual: "Controle de Equipamentos Audiovisuais",

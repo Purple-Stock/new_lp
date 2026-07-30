@@ -26,14 +26,14 @@ export const translations = {
       },
     },
     hero: {
-      title: "Controle de Estoque Inteligente",
+      title: "Pare de perder venda porque o estoque não bate",
       description:
-        "Transforme sua gestão de inventário com o Purple Stock. Projetado para empresas inovadoras que buscam eficiência e precisão em suas operações.",
-      cta: "Comece Gratuitamente",
+        "Organize entrada, saída e inventário com QR Code no celular. Menos erro de saldo, rastreio por item e operação que o time realmente usa.",
+      cta: "Começar teste grátis de 7 dias",
       subtitle: "Começa Com",
       subtitleHighlight: "Purple Stock",
       description2:
-        "Centralize seu inventário em uma plataforma poderosa e intuitiva. Com Purple Stock, tenha visibilidade total e controle preciso do seu estoque em qualquer dispositivo, a qualquer momento.",
+        "Centralize o inventário com fluxo rastreável: quem mexeu, quando e onde. Saia da planilha sem virar um projeto gigante de sistema.",
     },
     industries: {
       title: "Software de Inventário para Sua Indústria",
@@ -803,9 +803,9 @@ export const translations = {
       ],
     },
     barcodeGenerator: {
-      title: "Código de Barras Grátis Online",
+      title: "Gerador de Código de Barras Grátis Online",
       description:
-        "Gere código de barras grátis: EAN-13, Code 128, QR Code e mais. Sem cadastro, personalize e baixe em PNG para estoque e etiquetas.",
+        "Gere código de barras grátis: EAN-13, Code 128 e QR. Sem cadastro, personalize e baixe em PNG para estoque e etiquetas.",
       configuration: {
         title: "Configuração",
         description: "Personalize seu código de barras com as opções abaixo",
@@ -918,14 +918,14 @@ export const translations = {
       },
     },
     hero: {
-      title: "Smart Inventory Control",
+      title: "Stop losing sales because stock records do not match",
       description:
-        "Transform your inventory management with Purple Stock. Designed for innovative companies seeking efficiency and precision in their operations.",
-      cta: "Start for Free",
+        "Organize inbound, outbound and counts with QR Code on mobile. Fewer balance errors, item-level traceability and a workflow teams actually use.",
+      cta: "Start 7-day free trial",
       subtitle: "Starts With",
       subtitleHighlight: "Purple Stock",
       description2:
-        "Centralize your inventory on a powerful and intuitive platform. With Purple Stock, have total visibility and precise control of your stock on any device, at any time.",
+        "Centralize inventory with a traceable flow: who moved it, when and where. Leave spreadsheets without a giant system project.",
     },
     industries: {
       title: "Inventory Software for Your Industry",
@@ -1787,14 +1787,15 @@ export const translations = {
       },
     },
     hero: {
-      title: "Contrôle des Stocks Intelligent",
+      title:
+        "Arretez de perdre des ventes parce que le stock ne correspond pas",
       description:
-        "Transformez votre gestion des stocks avec Purple Stock. Conçu pour les entreprises innovantes recherchant efficacité et précision dans leurs opérations.",
-      cta: "Commencer Gratuitement",
+        "Organisez entrees, sorties et inventaires avec QR Code sur mobile. Moins d'erreurs de solde, tracabilite par article et un flux que l'equipe utilise vraiment.",
+      cta: "Essai gratuit de 7 jours",
       subtitle: "Commence Avec",
       subtitleHighlight: "Purple Stock",
       description2:
-        "Centralisez votre inventaire sur une plateforme puissante et intuitive. Avec Purple Stock, ayez une visibilité totale et un contrôle précis de votre stock sur n'importe quel appareil, à tout moment.",
+        "Centralisez l'inventaire avec un flux tracable: qui a bouge, quand et ou. Quittez les tableurs sans un gros projet systeme.",
     },
     industries: {
       title: "Logiciel d'Inventaire pour Votre Industrie",

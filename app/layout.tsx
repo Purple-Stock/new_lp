@@ -18,6 +18,10 @@ import {
   getBlogRssFeedHref,
   getBlogRssFeedTitle,
 } from "@/lib/site-feed";
+import {
+  HOME_PAGE_DESCRIPTION,
+  HOME_PAGE_DOCUMENT_TITLE,
+} from "@/lib/seo-page-copy";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 import { Merriweather, Poppins } from "next/font/google";
 import Script from "next/script";
@@ -51,18 +55,16 @@ export const metadata: Metadata = {
     },
   },
   title: {
-    default: `${SITE_NAME} | Sistema de Controle de Estoque com QR Code`,
+    default: HOME_PAGE_DOCUMENT_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
+  description: HOME_PAGE_DESCRIPTION,
   openGraph: {
     type: "website",
     locale: "pt_BR",
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Sistema de Controle de Estoque com QR Code`,
-    description:
-      "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
+    title: HOME_PAGE_DOCUMENT_TITLE,
+    description: HOME_PAGE_DESCRIPTION,
     images: [
       {
         url: DEFAULT_SOCIAL_IMAGE,
@@ -74,9 +76,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Sistema de Controle de Estoque com QR Code`,
-    description:
-      "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
+    title: HOME_PAGE_DOCUMENT_TITLE,
+    description: HOME_PAGE_DESCRIPTION,
     images: [DEFAULT_SOCIAL_IMAGE],
   },
   icons: {

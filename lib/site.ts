@@ -24,7 +24,7 @@ export function getSiteUrl(): string {
 export const SITE_NAME = "Purple Stock";
 
 export const SITE_DESCRIPTION =
-  "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.";
+  "Controle estoque e almoxarifado com QR Code no celular. Menos erro de saldo, rastreio por item e teste grátis de 7 dias para PME.";
 
 export const SITE_LOGO_PATH = "/og-image.png";
 

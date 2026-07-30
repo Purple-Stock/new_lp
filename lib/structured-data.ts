@@ -1,3 +1,10 @@
+import { TEAM_PLAN_MONTHLY_PRICE_SCHEMA } from "@/lib/pricing";
+import {
+  BARCODE_TOOL_PAGE_DESCRIPTION,
+  BARCODE_TOOL_PAGE_TITLE,
+  BARCODE_TOOL_PATH,
+  HOME_PAGE_DOCUMENT_TITLE,
+} from "@/lib/seo-page-copy";
 import {
   getSiteUrl,
   SITE_CONTACT,
@@ -74,7 +81,7 @@ export function buildHomePageGraph({ faqs }: { faqs: FaqItem[] }) {
         "@type": "WebPage",
         "@id": `${url}/#webpage`,
         url,
-        name: `${SITE_NAME} | Sistema de Controle de Estoque com QR Code`,
+        name: HOME_PAGE_DOCUMENT_TITLE,
         description: SITE_DESCRIPTION,
         isPartOf: { "@id": `${url}/#website` },
         about: { "@id": `${url}/#organization` },
@@ -90,7 +97,7 @@ export function buildHomePageGraph({ faqs }: { faqs: FaqItem[] }) {
         url,
         offers: {
           "@type": "Offer",
-          price: "59.00",
+          price: TEAM_PLAN_MONTHLY_PRICE_SCHEMA,
           priceCurrency: "BRL",
           url: `${url}/precos`,
         },
@@ -98,6 +105,29 @@ export function buildHomePageGraph({ faqs }: { faqs: FaqItem[] }) {
       },
       buildFaqPageSchema(faqs),
     ],
+  };
+}
+
+export function buildBarcodeToolSchema() {
+  const url = `${getSiteUrl()}${BARCODE_TOOL_PATH}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "@id": `${url}/#webapp`,
+    name: BARCODE_TOOL_PAGE_TITLE,
+    url,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    browserRequirements: "Requires JavaScript",
+    inLanguage: "pt-BR",
+    description: BARCODE_TOOL_PAGE_DESCRIPTION,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "BRL",
+    },
+    provider: { "@id": `${getSiteUrl()}/#organization` },
+    isPartOf: { "@id": `${getSiteUrl()}/#website` },
   };
 }
 

@@ -60,6 +60,12 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
       whatsappText:
         "Ol%C3%A1!%20Vim%20do%20artigo%20de%20migra%C3%A7%C3%A3o%20planilha%20vs%20sistema%20e%20quero%20come%C3%A7ar%20a%20migrar%20com%20o%20Purple%20Stock.",
     },
+    "planilha-de-estoque-vs-app": {
+      primaryLabel: "Trocar a planilha pelo app",
+      secondaryLabel: "Falar sobre migração",
+      whatsappText:
+        "Ol%C3%A1!%20Vim%20do%20comparativo%20planilha%20vs%20app%20e%20quero%20avaliar%20o%20Purple%20Stock%20para%20minha%20opera%C3%A7%C3%A3o.",
+    },
     "como-escolher-sistema-de-estoque-2026": {
       primaryLabel: "Ver checklist do Purple Stock",
       secondaryLabel: "Comparar opções de sistema",

@@ -21,6 +21,10 @@ import { Footer } from "@/components/footer";
 import { getCalendlyUrl } from "@/lib/contact";
 import { HOME_FAQ_PT } from "@/lib/home-faq";
 import {
+  formatTeamPlanPriceFaqEn,
+  formatTeamPlanPriceFaqFr,
+} from "@/lib/pricing";
+import {
   Dialog,
   DialogContent,
   DialogTrigger,
@@ -257,7 +261,7 @@ export function DesktopLanding({
             },
             {
               q: "What is the starting cost?",
-              a: "Entry pricing currently starts at R$29.90/month, with review as operations grow.",
+              a: formatTeamPlanPriceFaqEn(),
             },
           ],
         },
@@ -349,7 +353,7 @@ export function DesktopLanding({
             },
             {
               q: "Quel est le cout de depart?",
-              a: "Le plan d'entree commence actuellement a R$29,90/mois, avec revision selon l'evolution de l'operation.",
+              a: formatTeamPlanPriceFaqFr(),
             },
           ],
         },

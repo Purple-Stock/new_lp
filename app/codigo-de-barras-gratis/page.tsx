@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -35,6 +34,8 @@ import { translations } from "@/utils/translations";
 import JsBarcode from "jsbarcode";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { BarcodeToolHeroChips } from "@/components/barcode-tool-hero-chips";
+import { BarcodeToolSeoFooter } from "@/components/barcode-tool-seo-footer";
 import type { QRCodeErrorCorrectionLevel } from "qrcode";
 import {
   BARCODE_SIZE_OPTIONS,
@@ -50,6 +51,10 @@ import {
   type QrPreset,
   type QrPresetInput,
 } from "@/lib/barcode-generator";
+import {
+  getBarcodeToolSeoCopy,
+  resolveBarcodeToolLocale,
+} from "@/lib/barcode-tool-seo-content";
 
 const BARCODE_TYPES = [
   {
@@ -103,6 +108,7 @@ export default function CodigoDeBarrasGratis() {
   const t =
     translations[language]?.barcodeGenerator ||
     translations.pt.barcodeGenerator;
+  const seoCopy = getBarcodeToolSeoCopy(resolveBarcodeToolLocale(language));
 
   const [generatorType, setGeneratorType] = useState<"barcode" | "qr">(
     "barcode"
@@ -471,30 +477,11 @@ export default function CodigoDeBarrasGratis() {
             </div>
 
             <div className="p-6 md:p-10">
-              <div className="mb-12 text-center">
-                <div className="ps-badge-violet mb-4 inline-flex items-center px-4 py-2 text-sm normal-case tracking-normal">
-                  {generatorType === "barcode" ? (
-                    <BarChart3 className="mr-2 h-4 w-4" />
-                  ) : (
-                    <QrCode className="mr-2 h-4 w-4" />
-                  )}
-                  {language === "pt"
-                    ? "Ferramenta gratuita"
-                    : language === "fr"
-                      ? "Outil gratuit"
-                      : "Free tool"}
-                </div>
-                <h1 className="ps-display mb-4 text-4xl md:text-5xl">
-                  {generatorType === "barcode"
-                    ? t.title
-                    : "Gerador de QR Code Grátis"}
-                </h1>
-                <p className="ps-lead mx-auto max-w-3xl text-xl">
-                  {generatorType === "barcode"
-                    ? t.description
-                    : "Crie QR codes profissionais para seu negócio. Suporte para URLs, texto, contatos e mais."}
-                </p>
-              </div>
+              <BarcodeToolHeroChips
+                copy={seoCopy}
+                title={t.title}
+                description={t.description}
+              />
 
               <div className="mb-8 flex justify-center">
                 <div className="ps-section-surface inline-flex rounded-lg p-1">
@@ -1458,42 +1445,7 @@ export default function CodigoDeBarrasGratis() {
         </div>
       </main>
 
-      <section className="relative z-[1] border-t border-brand-border-soft bg-white/80 px-4 py-10 sm:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="ps-display mb-3 text-xl font-semibold text-brand-ink md:text-2xl">
-            {language === "pt"
-              ? "Use código de barras no estoque de verdade"
-              : language === "fr"
-                ? "Utilisez les codes-barres en stock"
-                : "Use barcodes in real inventory ops"}
-          </h2>
-          <p className="mb-5 text-sm text-slate-600 md:text-base">
-            {language === "pt"
-              ? "Gerou a etiqueta? Veja como implantar código de barras no almoxarifado e no dia a dia da operação."
-              : language === "fr"
-                ? "Étiquette prête ? Découvrez comment déployer le code-barres en entrepôt."
-                : "Label ready? See how to roll barcodes into warehouse workflows."}
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-medium">
-            <Link
-              href="/blog/codigo-de-barras-no-estoque-como-implementar"
-              className="rounded-full border border-brand-border-soft bg-white px-4 py-2 text-brand-ui-primary transition hover:border-brand-ui-primary"
-            >
-              {language === "pt"
-                ? "Como implementar código de barras"
-                : "How to implement barcodes"}
-            </Link>
-            <Link
-              href="/blog/checklist-codigo-barras-pme"
-              className="rounded-full border border-brand-border-soft bg-white px-4 py-2 text-brand-ui-primary transition hover:border-brand-ui-primary"
-            >
-              {language === "pt"
-                ? "Checklist código de barras para PME"
-                : "Barcode checklist for SMBs"}
-            </Link>
-          </div>
-        </div>
-      </section>
+      <BarcodeToolSeoFooter copy={seoCopy} />
 
       <div className="relative z-[1]">
         <Footer />

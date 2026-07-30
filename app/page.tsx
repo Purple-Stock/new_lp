@@ -4,12 +4,12 @@ import { JsonLd } from "@/components/json-ld";
 import { getLatestPosts } from "@/lib/blog";
 import { HOME_FAQ_PT } from "@/lib/home-faq";
 import { buildPageMetadata } from "@/lib/metadata";
+import { HOME_PAGE_DESCRIPTION, HOME_PAGE_TITLE } from "@/lib/seo-page-copy";
 import { buildHomePageGraph } from "@/lib/structured-data";
 
 export const metadata = buildPageMetadata({
-  title: "Purple Stock | Sistema de Controle de Estoque com QR Code",
-  description:
-    "Controle estoque, almoxarifado e inventario com QR Code no celular. Reduza erros, acompanhe movimentacoes e evite perder vendas por saldo incorreto.",
+  title: HOME_PAGE_TITLE,
+  description: HOME_PAGE_DESCRIPTION,
   path: "/",
 });
 

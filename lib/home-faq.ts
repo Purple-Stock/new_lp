@@ -1,3 +1,5 @@
+import { formatTeamPlanPriceFaqPt } from "@/lib/pricing";
+
 export type HomeFaqItem = { q: string; a: string };
 
 export const HOME_FAQ_PT: HomeFaqItem[] = [
@@ -19,6 +21,6 @@ export const HOME_FAQ_PT: HomeFaqItem[] = [
   },
   {
     q: "Quanto custa para começar?",
-    a: "O plano de entrada começa em R$29,90/mês na oferta atual, com revisão de preço conforme evolução da operação.",
+    a: formatTeamPlanPriceFaqPt(),
   },
 ];

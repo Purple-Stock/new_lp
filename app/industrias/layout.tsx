@@ -1,28 +1,26 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import {
+  INDUSTRIES_PAGE_DESCRIPTION,
+  INDUSTRIES_PAGE_TITLE,
+} from "@/lib/seo-page-copy";
 
 export const metadata: Metadata = {
-  title:
-    "Sistema de Estoque por Setor: Audiovisual, Eventos, Telecom e Odontológico",
-  description:
-    "Controle de equipamentos com QR Code: produtoras, eventos, telecom, dentário e indústria. Check-in/check-out, menos perda e rastreio em tempo real.",
+  title: INDUSTRIES_PAGE_TITLE,
+  description: INDUSTRIES_PAGE_DESCRIPTION,
   alternates: {
     canonical: "https://www.purplestock.com.br/industrias",
   },
   openGraph: {
     type: "website",
-    title:
-      "Sistema de Estoque por Setor: Audiovisual, Eventos, Telecom | Purple Stock",
-    description:
-      "Controle de equipamentos com QR Code: produtoras, eventos, telecom, dentário e indústria. Check-in/check-out, menos perda e rastreio em tempo real.",
+    title: INDUSTRIES_PAGE_TITLE,
+    description: INDUSTRIES_PAGE_DESCRIPTION,
     url: "/industrias",
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Sistema de Estoque por Setor: Audiovisual, Eventos, Telecom | Purple Stock",
-    description:
-      "Controle de equipamentos com QR Code: produtoras, eventos, telecom, dentário e indústria. Check-in/check-out, menos perda e rastreio em tempo real.",
+    title: INDUSTRIES_PAGE_TITLE,
+    description: INDUSTRIES_PAGE_DESCRIPTION,
   },
 };
 

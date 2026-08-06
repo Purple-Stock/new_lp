@@ -72,7 +72,12 @@ export function buildFaqPageSchema(faqs: FaqItem[]) {
   };
 }
 
-export function buildHomePageGraph({ faqs }: { faqs: FaqItem[] }) {
+/**
+ * Home graph without FAQPage JSON-LD.
+ * Visible FAQ stays in the UI; Google limits FAQ rich results to a few site types,
+ * so we keep markup lean (WebPage + SoftwareApplication + Offer).
+ */
+export function buildHomePageGraph() {
   const url = getSiteUrl();
   return {
     "@context": "https://schema.org",
@@ -103,7 +108,6 @@ export function buildHomePageGraph({ faqs }: { faqs: FaqItem[] }) {
         },
         provider: { "@id": `${url}/#organization` },
       },
-      buildFaqPageSchema(faqs),
     ],
   };
 }

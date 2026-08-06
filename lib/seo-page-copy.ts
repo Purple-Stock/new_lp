@@ -12,18 +12,20 @@ import {
   TEAM_PLAN_TRIAL_DAYS,
 } from "@/lib/pricing";
 
-export const HOME_PAGE_TITLE =
-  "Sistema de Estoque com QR Code | Pare de Errar o Saldo";
+export const HOME_PAGE_TITLE = "Sistema de Estoque com QR Code | R$ 59/time";
 
 export const HOME_PAGE_DESCRIPTION = SITE_DESCRIPTION;
 
 export const HOME_PAGE_DOCUMENT_TITLE = `${HOME_PAGE_TITLE} | ${SITE_NAME}`;
 
+export const HOME_PAGE_H1_PT =
+  "Sistema de estoque com QR Code: pare de errar o saldo";
+
 export const BARCODE_TOOL_PAGE_TITLE =
   "Gerador de Código de Barras Grátis (EAN, Code 128, QR)";
 
 export const BARCODE_TOOL_PAGE_DESCRIPTION =
-  "Gere código de barras grátis online: EAN-13, Code 128 e QR. Sem cadastro, baixe em PNG e use no estoque ou etiquetas.";
+  "Gerador de código de barras grátis online: EAN-13, Code 128 e QR. Sem cadastro, baixe PNG e use no estoque ou etiquetas.";
 
 export const BARCODE_TOOL_PATH = "/codigo-de-barras-gratis";
 

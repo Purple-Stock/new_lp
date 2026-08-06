@@ -8,7 +8,15 @@ import {
   MessageCircle,
   ArrowRight,
 } from "lucide-react";
-import { glossaryTerms, type GlossaryTerm } from "@/data/glossary";
+import {
+  findGlossaryTermBySlug,
+  glossaryTerms,
+  type GlossaryTerm,
+} from "@/data/glossary";
+import {
+  buildGlossaryTermDescription,
+  buildGlossaryTermTitle,
+} from "@/lib/glossary-term-seo";
 import { getSiteUrl } from "@/lib/site";
 import { buildWhatsAppUrl } from "@/lib/contact";
 import { Navbar } from "@/components/navbar";
@@ -78,42 +86,6 @@ const categoryColors: Record<GlossaryTerm["category"], string> = {
   technology: "bg-red-100 text-red-700",
 };
 
-function findBySlug(slug: string): GlossaryTerm | undefined {
-  return glossaryTerms.find((t) => t.slug === slug);
-}
-
-/** Truncate meta description for SERP (~150–160 chars). */
-function truncateMetaDescription(text: string, maxLength = 155): string {
-  const normalized = text.replace(/\s+/g, " ").trim();
-  if (normalized.length <= maxLength) {
-    return normalized;
-  }
-
-  const slice = normalized.slice(0, maxLength - 1);
-  const lastSpace = slice.lastIndexOf(" ");
-  const cut = lastSpace > 80 ? slice.slice(0, lastSpace) : slice;
-  return `${cut}…`;
-}
-
-function buildGlossaryTermTitle(termName: string): string {
-  const suffix = ": o que é e quando usar | Purple Stock";
-  const maxTitleLength = 60;
-  if (termName.length + suffix.length <= maxTitleLength + 20) {
-    return `${termName}${suffix}`;
-  }
-  return `${termName} | Glossário de Estoque | Purple Stock`;
-}
-
-function buildGlossaryTermDescription(term: GlossaryTerm): string {
-  if (term.shortDefinition.trim()) {
-    return truncateMetaDescription(term.shortDefinition);
-  }
-
-  return truncateMetaDescription(
-    `O que é ${term.term}? Definição clara de estoque e almoxarifado para PME, com exemplos práticos no glossário Purple Stock.`
-  );
-}
-
 export function generateStaticParams() {
   return glossaryTerms.map((term) => ({ slug: term.slug }));
 }
@@ -122,7 +94,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const term = findBySlug(slug);
+  const term = findGlossaryTermBySlug(slug);
   const baseUrl = getSiteUrl();
 
   if (!term) {
@@ -130,7 +102,7 @@ export async function generateMetadata({
   }
 
   const termUrl = `${baseUrl}/glossario/${term.slug}`;
-  const title = buildGlossaryTermTitle(term.term);
+  const title = buildGlossaryTermTitle(term.term, term.slug);
   const description = buildGlossaryTermDescription(term);
 
   return {
@@ -156,14 +128,14 @@ export async function generateMetadata({
 
 export default async function GlossaryTermPage({ params }: PageProps) {
   const { slug } = await params;
-  const term = findBySlug(slug);
+  const term = findGlossaryTermBySlug(slug);
 
   if (!term) {
     notFound();
   }
 
   const relatedTermsData = term.relatedTerms
-    .map((s) => findBySlug(s))
+    .map((s) => findGlossaryTermBySlug(s))
     .filter(Boolean) as GlossaryTerm[];
 
   const baseUrl = getSiteUrl();
@@ -216,22 +188,8 @@ export default async function GlossaryTermPage({ params }: PageProps) {
   const hasRelatedFeatures = (term.relatedFeatures?.length ?? 0) > 0;
   const hasRelatedIndustries = (term.relatedIndustries?.length ?? 0) > 0;
 
-  const validFaqs = term.faq.filter((f) => f.question && f.answer);
-  const faqJsonLd =
-    validFaqs.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: validFaqs.map((f) => ({
-            "@type": "Question",
-            name: f.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: f.answer,
-            },
-          })),
-        }
-      : null;
+  // FAQ stays visible in the page body; FAQPage JSON-LD is omitted
+  // (rich results largely limited outside gov/health).
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
@@ -243,12 +201,6 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermJsonLd) }}
       />
-      {faqJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
-      )}
       <Navbar />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}

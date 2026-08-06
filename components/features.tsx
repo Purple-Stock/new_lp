@@ -18,7 +18,8 @@ import Link from "next/link";
 interface FeatureProps {
   title: string;
   subtitle: string;
-  description: string[];
+  /** Accept readonly arrays from `as const` translation modules. */
+  description: readonly string[];
   image: string;
   bgColor: string;
   textColor: string;

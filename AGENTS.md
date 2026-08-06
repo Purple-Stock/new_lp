@@ -7,12 +7,15 @@ Landing SEO-first da Purple Stock (Next.js App Router).
 ```bash
 pnpm install
 pnpm dev          # http://localhost:3000
-pnpm test         # headless unit tests (tsx --test)
+pnpm test         # headless unit tests (tsx --test) — one command
 pnpm lint
 pnpm format:check
+pnpm format
 pnpm validate-sitemap
 pnpm validate-llms
 ```
+
+Pre-commit runs: `format:check` → `audit:deps` → `test` → `lint`.
 
 ## Layout (grep before inventing paths)
 
@@ -22,7 +25,9 @@ pnpm validate-llms
 | `components/` | UI (one concern per file; split >500 lines) |
 | `content/blog/` | MDX posts (`title`/`excerpt` = SERP) |
 | `lib/site.ts` | Site URL, name, default description |
-| `lib/seo-page-copy.ts` | High-impression page titles/descriptions |
+| `lib/seo-page-copy.ts` | High-impression page titles/descriptions + home H1 |
+| `lib/glossary-term-seo.ts` | Glossary term SERP title/description |
+| `lib/industry-page-seo.ts` | Per-industry SERP overrides |
 | `lib/pricing.ts` | Team plan price (schema + FAQ) |
 | `lib/structured-data.ts` | JSON-LD builders |
 | `lib/barcode-tool-seo-content.ts` | Free barcode tool SEO copy |
@@ -33,26 +38,38 @@ pnpm validate-llms
 - Functions: 4–20 lines. Files: under 500 lines; split by SRP.
 - Names: unique and greppable. Avoid `data`, `handler`, `Manager`, `utils`.
 - Types: explicit. No `any` on public surfaces.
-- DRY: SERP titles → `lib/seo-page-copy.ts`; price → `lib/pricing.ts`.
+- DRY: SERP titles → `lib/seo-page-copy.ts` / `lib/*-seo.ts`; price → `lib/pricing.ts`; home H1 PT → `HOME_PAGE_H1_PT` only.
 - Early returns; max 2 control-flow indent levels.
 - Errors: include received value and expected shape.
 - WHY comments only; keep provenance on non-obvious constraints.
+- Do not strip intent comments on refactor.
 
 ## SEO edit map
 
 | Change | Edit |
 |--------|------|
 | Home title/meta | `lib/seo-page-copy.ts` + `lib/site.ts` (`SITE_DESCRIPTION`) |
-| Home H1 (PT) | `utils/translations.ts` + `components/desktop-landing.tsx` |
+| Home H1 (PT) | `HOME_PAGE_H1_PT` in `lib/seo-page-copy.ts` only |
 | Barcode tool SERP | `lib/seo-page-copy.ts` + layout `app/codigo-de-barras-gratis/` |
 | Barcode tool body copy | `lib/barcode-tool-seo-content.ts` |
 | Public price | `lib/pricing.ts` only |
 | Blog SERP | MDX frontmatter `title` / `excerpt` |
-| Industry SERP/H1 | `app/industrias/[slug]/page.tsx` + optional `seoHeadline` in `lib/industries-data.ts` |
-| Glossary MOQ SERP | `data/glossary.ts` + special-case in `app/glossario/[slug]/page.tsx` |
+| Industry SERP | `lib/industry-page-seo.ts` |
+| Industry page H1 | optional `seoHeadline` in `lib/industries-data.ts` |
+| Glossary term SERP | `lib/glossary-term-seo.ts` (+ content in `data/glossary.ts`) |
 | Sitemap index | `app/sitemap.xml/route.ts` (blog child only once; legacy alias keeps route) |
 
 Do **not** emit FAQPage JSON-LD for marketing pages (Google limits FAQ rich results). Keep FAQ visible in HTML.
+
+## God files — do not grow (split before adding)
+
+| File | ~lines | Next split |
+|------|-------:|------------|
+| `utils/translations.ts` | 2600+ | per-locale modules or feature slices |
+| `components/desktop-landing.tsx` | 1200+ | hero / sections / chrome |
+| `data/glossary.ts` | 1400+ | by category or term batches |
+| `components/industry-detail-view.tsx` | ~480 | sections components |
+| `app/glossario/[slug]/page.tsx` | ~440 after SEO extract | keep SERP in `lib/` |
 
 ## Tests
 

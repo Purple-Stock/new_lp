@@ -1,4 +1,5 @@
 import { buildWhatsAppUrl } from "@/lib/contact";
+import { HOME_PAGE_H1_PT } from "@/lib/seo-page-copy";
 
 export const translations = {
   pt: {
@@ -26,7 +27,7 @@ export const translations = {
       },
     },
     hero: {
-      title: "Sistema de estoque com QR Code: pare de errar o saldo",
+      title: HOME_PAGE_H1_PT,
       description:
         "Organize entrada, saída e inventário com QR Code no celular. Menos erro de saldo, rastreio por item e operação que o time realmente usa.",
       cta: "Começar teste grátis de 7 dias",

@@ -5,54 +5,10 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { IndustryDetailView } from "@/components/industry-detail-view";
 import { getIndustryBySlug } from "@/lib/industries-data";
-
-const INDUSTRY_METADATA: Record<
-  string,
-  { title: string; description: string }
-> = {
-  audiovisual: {
-    title: "Equipamentos Audiovisuais e Cinema: Check-in com QR Code",
-    description:
-      "Controle de equipamentos audiovisuais para produtoras, cinema e locadoras: check-in/check-out com QR Code, menos perda e rastreio por set. Teste grátis.",
-  },
-  events: {
-    title:
-      "Sistema para Empresas de Eventos: Equipamentos com Check-in/Check-out",
-    description:
-      "Controle som, luz, mobiliário e materiais por evento com QR Code. Saiba o que saiu, com quem está e o que voltou. Teste grátis Purple Stock.",
-  },
-  odontologico: {
-    title: "Controle de Equipamentos Odontológicos com QR Code e Check-in",
-    description:
-      "Gestão de equipamentos dentários, kits e instrumentais: check-in/check-out, responsável e histórico. Para clínicas, labs e prestadores de serviço. Teste grátis.",
-  },
-  telecomunicacoes: {
-    title: "Controle de Equipamentos de Telecom e Kits de Campo com QR Code",
-    description:
-      "Check-in/check-out de ONT, roteador, rádio e kits de instalação. Saiba o que cada técnico levou e o que voltou ao depósito. Para ISPs e integradoras. Teste grátis.",
-  },
-  pharmaceutical: {
-    title: "Controle de Estoque e Equipamentos para o Setor de Saúde",
-    description:
-      "Rastreie medicamentos, insumos e equipamentos médicos com QR Code. Menos perda por validade e mais controle operacional. Teste grátis Purple Stock.",
-  },
-  automotivo: {
-    title:
-      "Estoque para Autopeças e Peças de Moto: Controle com Código de Barras",
-    description:
-      "Sistema de estoque para lojas de peças de carro e moto. SKU, código de barras/QR, reposição e menos ruptura no balcão. Teste grátis Purple Stock.",
-  },
-  restaurantes: {
-    title: "Gestão de Estoque para Restaurantes",
-    description:
-      "Reduza desperdício e controle ingredientes, validade e fornecedores com um sistema de estoque para restaurantes.",
-  },
-  electrical: {
-    title: "Gestão de Estoque para Setor Elétrico",
-    description:
-      "Controle equipamentos, componentes e ferramentas do setor elétrico com mais rastreabilidade e eficiência operacional.",
-  },
-};
+import {
+  buildDefaultIndustrySerpCopy,
+  getIndustrySerpCopy,
+} from "@/lib/industry-page-seo";
 
 export async function generateMetadata({
   params,
@@ -71,7 +27,7 @@ export async function generateMetadata({
     });
   }
 
-  const customMetadata = INDUSTRY_METADATA[industry.slug];
+  const customMetadata = getIndustrySerpCopy(industry.slug);
 
   if (customMetadata) {
     return buildPageMetadata({
@@ -82,7 +38,7 @@ export async function generateMetadata({
   }
 
   return buildPageMetadata({
-    title: `Gestao de Estoque para ${industry.name}`,
+    title: buildDefaultIndustrySerpCopy(industry.name).title,
     description: industry.description,
     path: `/industrias/${industry.slug}`,
   });

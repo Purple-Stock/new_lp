@@ -24,6 +24,7 @@ import {
   formatTeamPlanPriceFaqEn,
   formatTeamPlanPriceFaqFr,
 } from "@/lib/pricing";
+import { HOME_PAGE_H1_PT } from "@/lib/seo-page-copy";
 import {
   Dialog,
   DialogContent,
@@ -716,9 +717,7 @@ export function DesktopLanding({
               <div className="text-center space-y-6 mb-12">
                 <h1 className="ps-display text-balance text-2xl sm:text-4xl lg:text-5xl xl:text-[3.25rem]">
                   {language === "pt" ? (
-                    <>
-                      {"Sistema de estoque com QR Code: pare de errar o saldo"}
-                    </>
+                    <>{HOME_PAGE_H1_PT}</>
                   ) : language === "en" ? (
                     <>
                       {

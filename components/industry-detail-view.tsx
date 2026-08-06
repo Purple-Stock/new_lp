@@ -31,6 +31,20 @@ const DEFAULT_STAT = { value: "40%", label: "Aumento na eficiência" };
 
 const STEP_ICONS = [ScanLine, QrCode, TrendingUp] as const;
 
+const EQUIPMENT_VERTICAL_AUDIENCE: Record<string, string> = {
+  odontologico: "Clínicas, labs e prestadores de equipamentos dentários",
+  telecomunicacoes: "ISPs, integradoras e times de telecom em campo",
+  audiovisual: "Usado por produtoras, locadoras e eventos",
+  events: "Usado por produtoras, locadoras e eventos",
+};
+
+function resolveEquipmentAudience(slug: string): string {
+  return (
+    EQUIPMENT_VERTICAL_AUDIENCE[slug] ??
+    "Usado por produtoras, locadoras e eventos"
+  );
+}
+
 type IndustryDetailViewProps = {
   industry: IndustryRecord;
 };
@@ -128,12 +142,7 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
               <p className="text-sm text-slate-600">
                 {isEquipmentVertical ? (
                   <>
-                    {industry.slug === "odontologico"
-                      ? "Clínicas, labs e prestadores de equipamentos dentários"
-                      : industry.slug === "telecomunicacoes"
-                        ? "ISPs, integradoras e times de telecom em campo"
-                        : "Usado por produtoras, locadoras e eventos"}{" "}
-                    · Plano{" "}
+                    {resolveEquipmentAudience(industry.slug)} · Plano{" "}
                     <Link
                       href="/precos"
                       className="ps-link-editorial font-semibold"

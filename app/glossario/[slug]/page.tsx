@@ -8,7 +8,11 @@ import {
   MessageCircle,
   ArrowRight,
 } from "lucide-react";
-import { glossaryTerms, type GlossaryTerm } from "@/data/glossary";
+import {
+  findGlossaryTermBySlug,
+  glossaryTerms,
+  type GlossaryTerm,
+} from "@/data/glossary";
 import {
   buildGlossaryTermDescription,
   buildGlossaryTermTitle,
@@ -82,10 +86,6 @@ const categoryColors: Record<GlossaryTerm["category"], string> = {
   technology: "bg-red-100 text-red-700",
 };
 
-function findBySlug(slug: string): GlossaryTerm | undefined {
-  return glossaryTerms.find((t) => t.slug === slug);
-}
-
 export function generateStaticParams() {
   return glossaryTerms.map((term) => ({ slug: term.slug }));
 }
@@ -94,7 +94,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const term = findBySlug(slug);
+  const term = findGlossaryTermBySlug(slug);
   const baseUrl = getSiteUrl();
 
   if (!term) {
@@ -128,14 +128,14 @@ export async function generateMetadata({
 
 export default async function GlossaryTermPage({ params }: PageProps) {
   const { slug } = await params;
-  const term = findBySlug(slug);
+  const term = findGlossaryTermBySlug(slug);
 
   if (!term) {
     notFound();
   }
 
   const relatedTermsData = term.relatedTerms
-    .map((s) => findBySlug(s))
+    .map((s) => findGlossaryTermBySlug(s))
     .filter(Boolean) as GlossaryTerm[];
 
   const baseUrl = getSiteUrl();

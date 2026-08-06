@@ -68,11 +68,12 @@ Do **not** emit FAQPage JSON-LD for marketing pages (Google limits FAQ rich resu
 | `utils/translations/*` | **Split** (core + feature-pages + barcode) | keep feature pages per file |
 | `components/desktop-landing*.tsx` | **Split** (orchestrator + chrome/hero/social/playbook) | keep sections thin |
 | `lib/desktop-landing-playbook.ts` | ~310 | ok under 500; avoid more locales bulk |
-| `data/glossary.ts` | ~1400 | by category or term batches |
-| `components/industry-detail-view.tsx` | ~480 | section components |
+| `data/glossary/*` | **Split** by category (`inventory`…`technology`) | edit category file only |
+| `components/industry-detail-*.tsx` | **Split** (view + hero/body/footer) | helpers in `lib/industry-detail-helpers.ts` |
 | `app/glossario/[slug]/page.tsx` | ~440 | keep SERP in `lib/glossary-term-seo.ts` |
 
-Import i18n from `@/utils/translations` (barrel). Edit copy under `utils/translations/`.
+Import i18n from `@/utils/translations` (barrel). Edit copy under `utils/translations/`.  
+Import glossary from `@/data/glossary` (barrel). Edit terms under `data/glossary/{category}.ts`.
 
 ## Tests
 

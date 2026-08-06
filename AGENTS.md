@@ -43,10 +43,16 @@ pnpm validate-llms
 | Change | Edit |
 |--------|------|
 | Home title/meta | `lib/seo-page-copy.ts` + `lib/site.ts` (`SITE_DESCRIPTION`) |
+| Home H1 (PT) | `utils/translations.ts` + `components/desktop-landing.tsx` |
 | Barcode tool SERP | `lib/seo-page-copy.ts` + layout `app/codigo-de-barras-gratis/` |
 | Barcode tool body copy | `lib/barcode-tool-seo-content.ts` |
 | Public price | `lib/pricing.ts` only |
 | Blog SERP | MDX frontmatter `title` / `excerpt` |
+| Industry SERP/H1 | `app/industrias/[slug]/page.tsx` + optional `seoHeadline` in `lib/industries-data.ts` |
+| Glossary MOQ SERP | `data/glossary.ts` + special-case in `app/glossario/[slug]/page.tsx` |
+| Sitemap index | `app/sitemap.xml/route.ts` (blog child only once; legacy alias keeps route) |
+
+Do **not** emit FAQPage JSON-LD for marketing pages (Google limits FAQ rich results). Keep FAQ visible in HTML.
 
 ## Tests
 

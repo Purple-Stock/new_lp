@@ -716,15 +716,19 @@ export function DesktopLanding({
               <div className="text-center space-y-6 mb-12">
                 <h1 className="ps-display text-balance text-2xl sm:text-4xl lg:text-5xl xl:text-[3.25rem]">
                   {language === "pt" ? (
-                    <>{"Pare de perder venda porque o estoque não bate"}</>
+                    <>
+                      {"Sistema de estoque com QR Code: pare de errar o saldo"}
+                    </>
                   ) : language === "en" ? (
                     <>
-                      {"Stop losing sales because stock records do not match"}
+                      {
+                        "QR inventory system: stop losing sales to stock mismatches"
+                      }
                     </>
                   ) : (
                     <>
                       {
-                        "Arretez de perdre des ventes parce que le stock ne correspond pas"
+                        "Systeme de stock avec QR Code: arretez les ecarts de stock"
                       }
                     </>
                   )}

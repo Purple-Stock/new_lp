@@ -26,7 +26,7 @@ export const translations = {
       },
     },
     hero: {
-      title: "Pare de perder venda porque o estoque não bate",
+      title: "Sistema de estoque com QR Code: pare de errar o saldo",
       description:
         "Organize entrada, saída e inventário com QR Code no celular. Menos erro de saldo, rastreio por item e operação que o time realmente usa.",
       cta: "Começar teste grátis de 7 dias",

@@ -95,7 +95,12 @@ function truncateMetaDescription(text: string, maxLength = 155): string {
   return `${cut}…`;
 }
 
-function buildGlossaryTermTitle(termName: string): string {
+function buildGlossaryTermTitle(termName: string, slug: string): string {
+  // High-impression GSC query: "quantidade mínima de pedido"
+  if (slug === "quantidade-minima-pedido") {
+    return "Quantidade Mínima de Pedido (MOQ): o que é | Purple Stock";
+  }
+
   const suffix = ": o que é e quando usar | Purple Stock";
   const maxTitleLength = 60;
   if (termName.length + suffix.length <= maxTitleLength + 20) {
@@ -105,6 +110,12 @@ function buildGlossaryTermTitle(termName: string): string {
 }
 
 function buildGlossaryTermDescription(term: GlossaryTerm): string {
+  if (term.slug === "quantidade-minima-pedido") {
+    return truncateMetaDescription(
+      "O que é quantidade mínima de pedido (MOQ)? Definição, diferença para EOQ e como cadastrar no estoque para não imobilizar capital."
+    );
+  }
+
   if (term.shortDefinition.trim()) {
     return truncateMetaDescription(term.shortDefinition);
   }
@@ -130,7 +141,7 @@ export async function generateMetadata({
   }
 
   const termUrl = `${baseUrl}/glossario/${term.slug}`;
-  const title = buildGlossaryTermTitle(term.term);
+  const title = buildGlossaryTermTitle(term.term, term.slug);
   const description = buildGlossaryTermDescription(term);
 
   return {
@@ -216,22 +227,8 @@ export default async function GlossaryTermPage({ params }: PageProps) {
   const hasRelatedFeatures = (term.relatedFeatures?.length ?? 0) > 0;
   const hasRelatedIndustries = (term.relatedIndustries?.length ?? 0) > 0;
 
-  const validFaqs = term.faq.filter((f) => f.question && f.answer);
-  const faqJsonLd =
-    validFaqs.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: validFaqs.map((f) => ({
-            "@type": "Question",
-            name: f.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: f.answer,
-            },
-          })),
-        }
-      : null;
+  // FAQ stays visible in the page body; FAQPage JSON-LD is omitted
+  // (rich results largely limited outside gov/health).
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
@@ -243,12 +240,6 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermJsonLd) }}
       />
-      {faqJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
-      )}
       <Navbar />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}

@@ -133,20 +133,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     articleSchema,
   ];
 
-  if (post.meta.faq && post.meta.faq.length > 0) {
-    schemas.push({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: post.meta.faq.map(({ question, answer }) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: answer,
-        },
-      })),
-    });
-  }
+  // Visible FAQ stays in the article body; FAQPage JSON-LD omitted
+  // (rich results largely limited outside gov/health).
 
   return (
     <BlogLayout showReadingProgress>

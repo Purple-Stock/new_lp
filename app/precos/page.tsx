@@ -278,18 +278,8 @@ export default function PricingPage() {
     },
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: copy.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.a,
-      },
-    })),
-  };
+  // Visible FAQ stays on the page; FAQPage JSON-LD omitted
+  // (rich results largely limited outside gov/health).
 
   return (
     <div className="ps-landing-canvas relative min-h-screen overflow-x-hidden">
@@ -302,10 +292,6 @@ export default function PricingPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(softwareApplicationSchema),
         }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
 

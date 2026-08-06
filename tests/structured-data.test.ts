@@ -25,14 +25,12 @@ test("buildWebSiteSchema includes SearchAction", () => {
   assert.equal(schema.potentialAction?.["@type"], "SearchAction");
 });
 
-test("buildHomePageGraph returns WebPage, SoftwareApplication and FAQPage", () => {
-  const graph = buildHomePageGraph({
-    faqs: [{ q: "Test?", a: "Yes." }],
-  });
+test("buildHomePageGraph returns WebPage and SoftwareApplication without FAQPage", () => {
+  const graph = buildHomePageGraph();
   const types = graph["@graph"].map((node) => node["@type"]);
   assert.ok(types.includes("WebPage"));
   assert.ok(types.includes("SoftwareApplication"));
-  assert.ok(types.includes("FAQPage"));
+  assert.ok(!types.includes("FAQPage"));
 
   const software = graph["@graph"].find(
     (node) => node["@type"] === "SoftwareApplication"

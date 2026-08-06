@@ -4,20 +4,16 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { IndustryDetailView } from "@/components/industry-detail-view";
-import { JsonLd } from "@/components/json-ld";
 import { getIndustryBySlug } from "@/lib/industries-data";
-import { getIndustrySocialProof } from "@/data/industry-social-proof";
-import { buildFaqPageSchema } from "@/lib/structured-data";
 
 const INDUSTRY_METADATA: Record<
   string,
   { title: string; description: string }
 > = {
   audiovisual: {
-    title:
-      "Sistema para Produtoras: Controle de Equipamentos Audiovisuais com QR Code",
+    title: "Equipamentos Audiovisuais e Cinema: Check-in com QR Code",
     description:
-      "Check-in/check-out de câmeras, lentes, iluminação e áudio com QR Code. Menos perda e mais rastreio para produtoras e locadoras. Teste grátis.",
+      "Controle de equipamentos audiovisuais para produtoras, cinema e locadoras: check-in/check-out com QR Code, menos perda e rastreio por set. Teste grátis.",
   },
   events: {
     title:
@@ -104,12 +100,11 @@ export default async function IndustryPage({
     notFound();
   }
 
-  const socialProof = getIndustrySocialProof(industry.slug);
-  const faqSchema = buildFaqPageSchema(socialProof.faqs);
+  // FAQ accordion stays in IndustryDetailView; FAQPage JSON-LD omitted
+  // (rich results largely limited outside gov/health).
 
   return (
     <>
-      <JsonLd data={faqSchema} />
       <Navbar />
       <IndustryDetailView industry={industry} />
       <Footer />

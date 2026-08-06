@@ -3,6 +3,8 @@ export type IndustryRecord = {
   slug: string;
   image: string;
   description: string;
+  /** Optional SERP/page H1 when name is too short for long-tail queries. */
+  seoHeadline?: string;
   benefits: string[];
   features: string[];
 };
@@ -440,17 +442,19 @@ export const industriesData: IndustryRecord[] = [
     name: "Produção Audiovisual",
     slug: "audiovisual",
     image: "/images/audio-visual-1.jpg",
+    seoHeadline:
+      "Controle de equipamentos audiovisuais com QR Code para produtoras e cinema",
     description:
-      "Controle câmeras, lentes, iluminação e áudio com check-in/check-out e QR Code. Feito para produtoras, locadoras e estúdios que precisam saber quem levou o quê para cada set — e o que voltou.",
+      "Controle câmeras, lentes, iluminação e áudio com check-in/check-out e QR Code. Feito para produtoras, locadoras, estúdios e equipes de cinema que precisam saber quem levou o quê para cada set — e o que voltou.",
     benefits: [
-      "Check-in/check-out por projeto ou set",
+      "Check-in/check-out por projeto, set ou diária de cinema",
       "QR Code em cada equipamento e acessório crítico",
-      "Menos perda e extravio de itens caros",
-      "Histórico de quem retirou e quando",
+      "Menos perda e extravio de itens caros (corpo, lente, áudio)",
+      "Histórico de quem retirou e quando — freela incluso",
       "Visibilidade do que está em uso vs disponível",
-      "Base para manutenção e status de ativo",
-      "Operação no celular (estúdio, van ou set)",
-      "Mesmo fluxo usado por empresas de eventos parceiras",
+      "Base para manutenção, avaria e status de ativo",
+      "Operação no celular (estúdio, van, set ou caminhão)",
+      "Mesmo fluxo usado por empresas de eventos e rental AV",
     ],
     features: [
       "Cadastro por categoria (câmeras, lentes, luz, áudio, grip)",

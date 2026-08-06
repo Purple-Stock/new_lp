@@ -149,8 +149,12 @@ const EQUIPMENT_VERTICAL_PROOF: IndustrySocialProof = {
   ],
   faqs: [
     {
-      q: "Serve para produtora e para empresa de eventos?",
-      a: "Sim. O fluxo é o mesmo: equipamento sai, precisa voltar completo, com responsável. Muda só o nome do job (set vs festa/corporativo).",
+      q: "Serve para produtora, cinema e empresa de eventos?",
+      a: "Sim. O fluxo é o mesmo: equipamento sai, precisa voltar completo, com responsável. Muda só o nome do job (set de cinema, diária, festa ou corporativo).",
+    },
+    {
+      q: "Como controlar equipamentos audiovisuais para empresas de cinema?",
+      a: "Etiquete corpos, lentes e áudio críticos, faça check-out por set/diária com responsável e check-in no retorno. O histórico mostra o que ficou no caminhão ou no set.",
     },
     {
       q: "Freela consegue retirar equipamento?",
@@ -163,6 +167,10 @@ const EQUIPMENT_VERTICAL_PROOF: IndustrySocialProof = {
     {
       q: "Preciso cadastrar cada cabo e cada case?",
       a: "Cadastre o que dói perder ou o que define o kit. Consumíveis podem ir em controle mais simples; ativos críticos merecem etiqueta e histórico.",
+    },
+    {
+      q: "O sistema ajuda nos cuidados e na operação dos equipamentos?",
+      a: "Sim: status (disponível, em uso, manutenção), histórico de quem usou e conferência no retorno reduzem extravio e empurram manutenção antes do próximo job.",
     },
   ],
   relatedBlogHref:

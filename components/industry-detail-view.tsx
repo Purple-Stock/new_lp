@@ -112,7 +112,7 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
                   </div>
 
                   <h1 className="ps-display max-w-4xl text-3xl text-white sm:text-4xl md:text-5xl lg:text-6xl">
-                    {industry.name}
+                    {industry.seoHeadline ?? industry.name}
                   </h1>
 
                   <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/90 sm:text-lg md:text-xl">

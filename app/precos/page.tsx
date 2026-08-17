@@ -16,13 +16,18 @@ import { Footer } from "@/components/footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trackSeoCtaClick } from "@/lib/analytics";
 import { buildWhatsAppUrl } from "@/lib/contact";
-
-const MONTHLY_PRICE = 59;
+import {
+  TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN,
+  TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
+  TEAM_PLAN_MONTHLY_PRICE_NUMBER,
+  TEAM_PLAN_TRIAL_DAYS,
+} from "@/lib/pricing";
+import { buildMonthlyOffer } from "@/lib/structured-data";
 
 const priceDisplay = {
-  pt: "R$ 59,00",
-  en: "R$ 59.00",
-  fr: "R$ 59,00",
+  pt: TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
+  en: TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN,
+  fr: TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
 } as const;
 
 export default function PricingPage() {
@@ -32,8 +37,7 @@ export default function PricingPage() {
   const copy = {
     pt: {
       badge: "Plano único",
-      title:
-        "Sistema de controle de estoque com preço simples para o time inteiro",
+      title: `Preço Purple Stock: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por time`,
       subtitle:
         "Veja o preço da Purple Stock para PME: R$ 59,00 por time, 7 dias grátis e implantação rápida para sair da planilha sem travar a operação.",
       priceLabel: "por time / mês",
@@ -256,20 +260,8 @@ export default function PricingPage() {
     description:
       "Sistema de controle de estoque com inventario, rastreabilidade, QR Code, teste gratis e operacao em tempo real para PMEs.",
     offers: {
-      "@type": "Offer",
-      price: "59.00",
-      priceCurrency: "BRL",
-      availability: "https://schema.org/InStock",
-      url: "https://www.purplestock.com.br/precos",
-      description:
-        "Plano unico por time com 7 dias gratis, sem fidelidade e ativacao rapida.",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "127",
-      bestRating: "5",
-      worstRating: "1",
+      ...buildMonthlyOffer("https://www.purplestock.com.br/precos"),
+      description: `Plano unico por time com ${TEAM_PLAN_TRIAL_DAYS} dias gratis, sem fidelidade e ativacao rapida.`,
     },
     provider: {
       "@type": "Organization",
@@ -335,6 +327,36 @@ export default function PricingPage() {
                 <p className="ps-lead mx-auto mt-6 max-w-3xl text-xl">
                   {copy.subtitle}
                 </p>
+                <p className="mt-4 text-3xl font-bold text-brand-ui-primary">
+                  {formattedPrice}
+                  <span className="ml-2 text-base font-medium text-slate-500">
+                    {copy.priceLabel}
+                  </span>
+                </p>
+                <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                  <Link
+                    href="https://app.purplestock.com.br/"
+                    className="ps-btn-primary inline-flex px-6 py-3 text-sm font-semibold"
+                    onClick={() =>
+                      trackSeoCtaClick({
+                        cta_name: "pricing_hero_primary",
+                        cta_target: "app",
+                        page_section: "pricing_hero",
+                        price_value: TEAM_PLAN_MONTHLY_PRICE_NUMBER,
+                      })
+                    }
+                  >
+                    {copy.ctaPrimary}
+                  </Link>
+                  <Link
+                    href={buildWhatsAppUrl(
+                      "Olá! Quero tirar dúvidas sobre o preço do Purple Stock."
+                    )}
+                    className="rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-800"
+                  >
+                    {copy.ctaSecondary}
+                  </Link>
+                </div>
                 <p className="mx-auto mt-4 max-w-3xl text-sm text-slate-500">
                   Compare também por cenário em{" "}
                   <Link
@@ -426,7 +448,7 @@ export default function PricingPage() {
                         cta_name: "pricing_single_plan_primary",
                         cta_target: "app",
                         page_section: "pricing_single_card",
-                        price_value: MONTHLY_PRICE,
+                        price_value: TEAM_PLAN_MONTHLY_PRICE_NUMBER,
                         query_cluster: "pricing",
                       })
                     }
@@ -446,7 +468,7 @@ export default function PricingPage() {
                         cta_name: "pricing_single_plan_secondary",
                         cta_target: "whatsapp",
                         page_section: "pricing_single_card",
-                        price_value: MONTHLY_PRICE,
+                        price_value: TEAM_PLAN_MONTHLY_PRICE_NUMBER,
                         query_cluster: "pricing",
                       })
                     }
@@ -562,7 +584,7 @@ export default function PricingPage() {
                     cta_name: "pricing_single_bottom_primary",
                     cta_target: "app",
                     page_section: "pricing_bottom_cta",
-                    price_value: MONTHLY_PRICE,
+                    price_value: TEAM_PLAN_MONTHLY_PRICE_NUMBER,
                     query_cluster: "pricing",
                   })
                 }
@@ -583,7 +605,7 @@ export default function PricingPage() {
                     cta_name: "pricing_single_bottom_secondary",
                     cta_target: "whatsapp",
                     page_section: "pricing_bottom_cta",
-                    price_value: MONTHLY_PRICE,
+                    price_value: TEAM_PLAN_MONTHLY_PRICE_NUMBER,
                     query_cluster: "pricing",
                   })
                 }

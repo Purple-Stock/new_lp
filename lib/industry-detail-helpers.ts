@@ -19,7 +19,7 @@ const EQUIPMENT_VERTICAL_AUDIENCE: Record<string, string> = {
   odontologico: "Clínicas, labs e prestadores de equipamentos dentários",
   telecomunicacoes: "ISPs, integradoras e times de telecom em campo",
   audiovisual: "Usado por produtoras, locadoras e eventos",
-  events: "Usado por produtoras, locadoras e eventos",
+  events: "Usado por casas de festa, montadoras e locadoras de evento",
 };
 
 export function isEquipmentIndustry(slug: string): boolean {

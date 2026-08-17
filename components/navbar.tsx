@@ -150,7 +150,7 @@ export function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[120] h-[25px] bg-gradient-to-b from-brand-chrome-steel to-brand-chrome-graphite shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)]">
+    <header className="fixed top-0 left-0 right-0 z-[120] h-11 bg-gradient-to-b from-brand-chrome-steel to-brand-chrome-graphite shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)] md:h-[25px]">
       <div className="flex items-center justify-between h-full px-3 text-[13px] font-medium text-white/90">
         <div className="flex items-center gap-0">
           <Link
@@ -175,7 +175,7 @@ export function Navbar() {
             <button
               type="button"
               className={cn(
-                "flex items-center justify-center w-8 h-full transition-colors",
+                "flex items-center justify-center min-h-11 min-w-11 h-full transition-colors",
                 mobileMenuOpen ? "bg-[#0058d0] text-white" : "hover:bg-white/10"
               )}
               onClick={() => setMobileMenuOpen((open) => !open)}
@@ -271,6 +271,13 @@ export function Navbar() {
             )}
           </div>
 
+          <nav aria-label="Recursos" className="sr-only">
+            {[...primaryFeatureLinks, ...secondaryFeatureLinks].map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
           <nav aria-label={navLabel} className="hidden md:flex items-center">
             <div className="relative" ref={featuresRef}>
               <button

@@ -11,6 +11,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { trackCtaClick } from "@/lib/analytics";
+import {
+  TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN,
+  TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
+  TEAM_PLAN_TRIAL_DAYS,
+} from "@/lib/pricing";
 import { HOME_PAGE_H1_PT } from "@/lib/seo-page-copy";
 import type { LandingLanguage } from "@/lib/desktop-landing-copy";
 
@@ -117,6 +122,14 @@ export function DesktopLandingHero({
             </Link>
           </Button>
         </div>
+        <p className="text-sm font-semibold text-slate-700">
+          {pick(
+            language,
+            `A partir de ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por time / mês · ${TEAM_PLAN_TRIAL_DAYS} dias grátis`,
+            `From ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN} per team / month · ${TEAM_PLAN_TRIAL_DAYS}-day trial`,
+            `A partir de ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} par equipe / mois · ${TEAM_PLAN_TRIAL_DAYS} jours d'essai`
+          )}
+        </p>
         <p className="text-sm text-slate-500">
           {pick(
             language,
@@ -164,6 +177,7 @@ export function DesktopLandingHero({
                   height={800}
                   className="w-full h-auto object-contain rounded-2xl"
                   priority
+                  fetchPriority="high"
                 />
                 <DialogTrigger asChild>
                   <button className="absolute inset-0 flex items-center justify-center group cursor-pointer rounded-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-ui-primary/40 focus:ring-offset-2">

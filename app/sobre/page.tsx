@@ -23,16 +23,32 @@ export default function SobrePage() {
           Sobre a Purple Stock
         </h1>
         <p className="mt-4 leading-relaxed text-slate-600">
-          A Purple Stock nasceu para resolver um problema prático: equipes de
-          estoque que ainda dependem de planilhas e não conseguem rastrear quem
-          moveu o quê, quando e onde. Oferecemos controle de estoque,
-          almoxarifado e inventário com QR Code no celular, com implantação leve
-          e operação em tempo real.
+          A Purple Stock nasceu em São Paulo para um problema prático: o time
+          ainda depende de planilha e não consegue dizer quem moveu o quê,
+          quando e onde. O produto é um sistema brasileiro de estoque,
+          almoxarifado e equipamentos com QR Code no celular — implantação leve,
+          sem projeto de ERP no primeiro dia.
         </p>
         <p className="mt-4 leading-relaxed text-slate-600">
-          Atendemos PMEs de varejo, manufatura, logística, alimentação e outros
-          segmentos que precisam de saldo confiável antes de assumir um ERP
-          completo.
+          O recorte que mais usamos no dia a dia é operação de equipamentos e
+          saldo confiável: produtoras e locadoras audiovisuais, empresas de
+          eventos, ISPs e integradoras de telecom, clínicas e prestadores
+          odontológicos, e lojas de autopeças e peças de moto. Também atendemos
+          PME que só precisa sair da planilha antes de assumir um ERP completo.
+        </p>
+        <p className="mt-4 leading-relaxed text-slate-600">
+          Quem constrói o produto é Matheus Puppe. O suporte fala português, o
+          preço público é um plano por time e o teste de 7 dias pode pedir
+          cartão. Empresas como VHS, St. Nicholas School, Da Rua e DPS Brasil já
+          aparecem na operação com o mesmo fluxo de entrada, saída e
+          transferência.
+        </p>
+        <p className="mt-4 leading-relaxed text-slate-600">
+          Não vendemos um ERP fiscal nem um WMS de galpão. Vendemos
+          rastreabilidade para o time que está no set, no caminhão, no
+          consultório ou no balcão — com histórico por item e responsável. Se
+          quiser validar na sua operação, fale com a equipe ou veja o preço
+          antes de assumir um projeto maior.
         </p>
         <div className="mt-8 flex gap-3">
           <Link

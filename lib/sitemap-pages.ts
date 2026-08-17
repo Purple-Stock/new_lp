@@ -1,4 +1,3 @@
-import { getAllTagSlugs } from "@/lib/blog";
 import type { SitemapEntry } from "@/lib/sitemap-blog";
 import { glossaryTerms } from "@/data/glossary";
 
@@ -41,7 +40,6 @@ export async function buildPagesSitemapEntries(
   baseUrl: string
 ): Promise<SitemapEntry[]> {
   const now = new Date();
-  const tagSlugs = await getAllTagSlugs();
 
   const staticRoutes: SitemapEntry[] = [
     {
@@ -93,10 +91,16 @@ export async function buildPagesSitemapEntries(
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/politica-de-privacidade`,
       lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/termos-de-uso`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.3,
     },
   ];
 
@@ -121,13 +125,6 @@ export async function buildPagesSitemapEntries(
     priority: 0.7,
   }));
 
-  const tagRoutes = tagSlugs.map((tag) => ({
-    url: `${baseUrl}/blog/tag/${tag}`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: 0.5,
-  }));
-
   const glossaryRoutes = glossaryTerms.map((term) => ({
     url: `${baseUrl}/glossario/${term.slug}`,
     lastModified: new Date("2026-04-07"),
@@ -140,7 +137,6 @@ export async function buildPagesSitemapEntries(
     ...featureRoutes,
     ...resourceRoutes,
     ...industryRoutes,
-    ...tagRoutes,
     ...glossaryRoutes,
   ];
 }

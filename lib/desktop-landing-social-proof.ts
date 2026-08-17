@@ -49,7 +49,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 60,
       maxWidth: "max-w-[180px]",
       result:
-        '"Antes era difícil rastrear movimentação de equipamento. Hoje entrada, saída e transferência ficam no mesmo histórico — com responsável."',
+        "VHS: entrada, saída e transferência de equipamento ficam no mesmo histórico — com responsável.",
       sector: "Operação / equipamentos",
     },
     {
@@ -59,7 +59,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 55,
       maxWidth: "max-w-[240px]",
       result:
-        '"A equipe passou a conferir estoque por localização sem perder tempo procurando item."',
+        "St. Nicholas School: a equipe confere estoque por localização sem perder tempo procurando item.",
       sector: "Educação",
     },
     {
@@ -69,7 +69,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 40,
       maxWidth: "max-w-[120px]",
       result:
-        '"Parou de existir planilha paralela para controle diário de estoque."',
+        "Da Rua: o controle diário de estoque deixou a planilha paralela.",
       sector: "Varejo / marca",
     },
     {
@@ -79,7 +79,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 60,
       maxWidth: "max-w-[180px]",
       result:
-        '"Hoje o time enxerga saldo e movimentações no mesmo painel operacional."',
+        "DPS Brasil: o time enxerga saldo e movimentações no mesmo painel.",
       sector: "Operações",
     },
   ],
@@ -91,7 +91,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 60,
       maxWidth: "max-w-[180px]",
       result:
-        '"Equipment inbound, outbound, and transfer are now tracked in one history — with an owner on each move."',
+        "VHS: equipment inbound, outbound, and transfer stay in one history — with an owner on each move.",
       sector: "Operations / equipment",
     },
     {
@@ -101,7 +101,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 55,
       maxWidth: "max-w-[240px]",
       result:
-        '"The team now runs stock checks by location without wasting time searching items."',
+        "St. Nicholas School: the team runs stock checks by location without wasting time searching items.",
       sector: "Education",
     },
     {
@@ -111,7 +111,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 40,
       maxWidth: "max-w-[120px]",
       result:
-        '"Daily stock control no longer depends on parallel spreadsheets."',
+        "Da Rua: daily stock control no longer depends on parallel spreadsheets.",
       sector: "Retail / brand",
     },
     {
@@ -121,7 +121,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 60,
       maxWidth: "max-w-[180px]",
       result:
-        '"Operations now see stock balance and movement history in one place."',
+        "DPS Brasil: operations now see stock balance and movement history in one place.",
       sector: "Operations",
     },
   ],
@@ -133,7 +133,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 60,
       maxWidth: "max-w-[180px]",
       result:
-        '"Entree, sortie et transfert d\'equipements sont suivis dans un historique unique — avec responsable."',
+        "VHS: entree, sortie et transfert d'equipements restent dans un historique unique — avec responsable.",
       sector: "Operations / equipements",
     },
     {
@@ -143,7 +143,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 55,
       maxWidth: "max-w-[240px]",
       result:
-        '"L\'equipe controle le stock par emplacement sans perdre du temps a chercher les articles."',
+        "St. Nicholas School: l'equipe controle le stock par emplacement sans perdre du temps a chercher les articles.",
       sector: "Education",
     },
     {
@@ -152,7 +152,8 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       width: 120,
       height: 40,
       maxWidth: "max-w-[120px]",
-      result: '"Le controle quotidien ne depend plus de tableurs paralleles."',
+      result:
+        "Da Rua: le controle quotidien ne depend plus de tableurs paralleles.",
       sector: "Retail / marque",
     },
     {
@@ -162,7 +163,7 @@ const LOGO_CASES_BY_LANGUAGE: Record<LandingLanguage, LandingLogoCase[]> = {
       height: 60,
       maxWidth: "max-w-[180px]",
       result:
-        '"Les soldes et mouvements sont visibles dans le meme panneau operationnel."',
+        "DPS Brasil: les soldes et mouvements sont visibles dans le meme panneau.",
       sector: "Operations",
     },
   ],

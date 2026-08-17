@@ -262,12 +262,79 @@ const PROOF_BY_SLUG: Record<string, IndustrySocialProof> = {
     relatedBlogLabel: "Como montar check-in/check-out na produtora",
   },
   events: {
-    ...EQUIPMENT_VERTICAL_PROOF,
     proofHeadline: "Eventos: carga, festa e descarga sob controle",
+    proofSubhead:
+      "Casas de festa, montadoras e locadoras usam check-in na carga e na descarga para saber o que saiu no caminhão — e o que voltou depois da desmontagem.",
+    stats: [
+      { value: "Carga", label: "Check-out no caminhão" },
+      { value: "QR", label: "Ativo e caixa" },
+      { value: "Job", label: "Por festa ou corporativo" },
+      { value: "−", label: "Menos item sumido" },
+    ],
+    casesHeadline: "Padrões de quem opera evento de verdade",
+    casesSubhead:
+      "Perfis de depósito, montagem e locação — sem copiar o fluxo de produtora.",
     cases: [
-      EQUIPMENT_VERTICAL_PROOF.cases[1],
-      EQUIPMENT_VERTICAL_PROOF.cases[0],
-      EQUIPMENT_VERTICAL_PROOF.cases[2],
+      {
+        role: "Operações / depósito",
+        companyType: "Empresa de eventos",
+        quote:
+          "Na carga do caminhão e na descarga, o time escaneia som, luz e mobiliário. O inventário pós-festa deixa de ser conferência de memória.",
+        outcome: "Conferência na entrada e na saída",
+      },
+      {
+        role: "Produção / montagem",
+        companyType: "Casa de festa e corporativo",
+        quote:
+          "Cada job leva um kit fechado. No retorno, o check-in mostra o que ficou no salão, o que quebrou e o que já pode ir para o próximo evento.",
+        outcome: "Kit por evento, não por palpite",
+      },
+      {
+        role: "Locação de mobiliário e décor",
+        companyType: "Locadora de eventos",
+        quote:
+          "Mesa, cadeira e peça de décor saem com responsável. Consumível fica em controle simples; ativo caro leva etiqueta e histórico.",
+        outcome: "Separar consumível de ativo",
+      },
+    ],
+    steps: [
+      {
+        title: "Separe ativo de consumível",
+        description:
+          "Etiquete som, luz, mobiliário e décor que dói perder. Descartável e copo ficam em contagem simples.",
+      },
+      {
+        title: "Check-out na carga do caminhão",
+        description:
+          "Escaneie o que sobe na van, associe evento e responsável. Sem lista paralela no WhatsApp.",
+      },
+      {
+        title: "Check-in na descarga",
+        description:
+          "No retorno, compare com a saída e marque avaria ou item faltante antes do próximo job.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Serve para casa de festa, corporativo e locadora?",
+        a: "Sim. O fluxo é carga, evento e descarga com responsável. Muda o nome do job (festa, stand, formatura), não o processo.",
+      },
+      {
+        q: "Como controlar o que saiu no caminhão?",
+        a: "Faça check-out no depósito ou na rampa, item a item ou por caixa. No retorno, o check-in mostra o que não voltou antes de guardar o caminhão.",
+      },
+      {
+        q: "Freela de montagem consegue retirar equipamento?",
+        a: "Sim, com usuário e permissão. O ponto é registrar quem retirou — não travar a montagem.",
+      },
+      {
+        q: "Planilha resolve a conferência pós-festa?",
+        a: "Até um evento por fim de semana, resolve. Com dois jobs no mesmo sábado e dezenas de itens, a planilha perde versão e o item some.",
+      },
+      {
+        q: "Preciso cadastrar cada toalha e cada cabo?",
+        a: "Cadastre o que dói perder ou o que define o kit. Consumíveis podem ir em controle mais simples; ativos críticos merecem etiqueta e histórico.",
+      },
     ],
     relatedBlogHref: "/blog/check-in-check-out-equipamentos-eventos",
     relatedBlogLabel: "Check-in e check-out de equipamentos para eventos",

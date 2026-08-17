@@ -66,6 +66,6 @@ export function buildDefaultIndustrySerpCopy(industryName: string): {
   title: string;
 } {
   return {
-    title: `Gestao de Estoque para ${industryName}`,
+    title: `Gestão de Estoque para ${industryName}`,
   };
 }

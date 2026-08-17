@@ -29,4 +29,8 @@ test("getLandingLogoCases has named logos with results", () => {
   const cases = getLandingLogoCases("pt");
   assert.ok(cases.length >= 3);
   assert.ok(cases.every((item) => item.name && item.result && item.logo));
+  assert.ok(
+    cases.every((item) => item.result.includes(item.name)),
+    "quotes must name the company"
+  );
 });

@@ -46,17 +46,18 @@ export function IndustryDetailHero({
             </span>
           </div>
 
-          <div className="relative h-[300px] overflow-hidden sm:h-[360px] lg:h-[420px]">
+          <div className="relative aspect-[4/3] overflow-hidden sm:aspect-auto sm:h-[360px] lg:h-[420px]">
             <Image
               src={industry.image || "/placeholder.svg"}
               alt={industry.name}
               fill
+              sizes="(max-width: 640px) 100vw, 1152px"
               className="object-cover"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/15" />
 
-            <div className="absolute right-4 top-4 sm:right-6 sm:top-6">
+            <div className="absolute right-4 top-12 sm:right-6 sm:top-6">
               <div className="rounded-xl border border-white/20 bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm">
                 <div className="text-2xl font-bold text-brand-ui-primary">
                   {heroStat.value}
@@ -68,32 +69,35 @@ export function IndustryDetailHero({
             </div>
 
             <div className="absolute inset-0 flex items-end">
-              <div className="w-full p-6 md:p-10">
+              <div className="w-full p-6 pt-16 md:p-10">
                 <Link
                   href="/industrias"
-                  className="group mb-5 inline-flex items-center text-sm font-semibold text-white/90 transition-colors hover:text-white"
+                  className="group mb-3 hidden items-center text-sm font-semibold text-white/90 transition-colors hover:text-white sm:inline-flex"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
                   Voltar para setores
                 </Link>
 
-                <div className="ps-badge-violet mb-4 inline-flex items-center border-white/20 bg-white/15 px-4 py-2 text-sm normal-case tracking-normal text-white">
+                <div className="ps-badge-violet mb-3 hidden items-center border-white/20 bg-white/15 px-4 py-2 text-sm normal-case tracking-normal text-white sm:inline-flex">
                   <Star className="mr-2 h-4 w-4" />
                   {isEquipmentVertical
                     ? "Check-in / check-out com QR Code"
                     : "Solução especializada"}
                 </div>
 
-                <h1 className="ps-display max-w-4xl text-3xl text-white sm:text-4xl md:text-5xl lg:text-6xl">
+                <h1 className="ps-display max-w-4xl text-2xl leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                   {industry.seoHeadline ?? industry.name}
                 </h1>
 
-                <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/90 sm:text-lg md:text-xl">
+                <p className="mt-3 hidden max-w-3xl text-base leading-relaxed text-white/90 sm:block sm:text-lg md:text-xl">
                   {industry.description}
                 </p>
               </div>
             </div>
           </div>
+          <p className="px-6 py-4 text-sm leading-relaxed text-slate-600 sm:hidden">
+            {industry.description}
+          </p>
         </div>
 
         <div className="ps-panel mt-6 overflow-hidden">

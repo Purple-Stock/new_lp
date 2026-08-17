@@ -9,7 +9,9 @@ import {
   getSiteUrl,
   SITE_CONTACT,
   SITE_DESCRIPTION,
+  SITE_LOGO_HEIGHT,
   SITE_LOGO_PATH,
+  SITE_LOGO_WIDTH,
   SITE_NAME,
   SITE_SAME_AS,
 } from "@/lib/site";
@@ -29,7 +31,12 @@ export function buildOrganizationSchema() {
     "@id": `${url}/#organization`,
     name: SITE_NAME,
     url,
-    logo: absoluteUrl(SITE_LOGO_PATH),
+    logo: {
+      "@type": "ImageObject",
+      url: absoluteUrl(SITE_LOGO_PATH),
+      width: SITE_LOGO_WIDTH,
+      height: SITE_LOGO_HEIGHT,
+    },
     description: SITE_DESCRIPTION,
     email: SITE_CONTACT.email,
     telephone: SITE_CONTACT.phone,
@@ -52,10 +59,21 @@ export function buildWebSiteSchema() {
     url,
     publisher: { "@id": `${url}/#organization` },
     inLanguage: "pt-BR",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${url}/blog?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
+  };
+}
+
+export function buildMonthlyOffer(url = `${getSiteUrl()}/precos`) {
+  return {
+    "@type": "Offer",
+    price: TEAM_PLAN_MONTHLY_PRICE_SCHEMA,
+    priceCurrency: "BRL",
+    url,
+    availability: "https://schema.org/InStock",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: TEAM_PLAN_MONTHLY_PRICE_SCHEMA,
+      priceCurrency: "BRL",
+      billingDuration: "P1M",
     },
   };
 }
@@ -100,12 +118,7 @@ export function buildHomePageGraph() {
         operatingSystem: "Web",
         description: SITE_DESCRIPTION,
         url,
-        offers: {
-          "@type": "Offer",
-          price: TEAM_PLAN_MONTHLY_PRICE_SCHEMA,
-          priceCurrency: "BRL",
-          url: `${url}/precos`,
-        },
+        offers: buildMonthlyOffer(`${url}/precos`),
         provider: { "@id": `${url}/#organization` },
       },
     ],
@@ -169,7 +182,7 @@ export function buildContactPageSchema() {
           contactType: "customer support",
           email: SITE_CONTACT.email,
           telephone: SITE_CONTACT.phone,
-          availableLanguage: ["Portuguese", "English"],
+          availableLanguage: ["Portuguese"],
           areaServed: "BR",
         },
       },

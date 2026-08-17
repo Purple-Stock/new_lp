@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata = buildPageMetadata({
-  title: "Controle de Almoxarifado: Reduza Ruptura em 70% com QR Code",
+  title: "Controle de Almoxarifado com QR Code e Inventário Rotativo",
   description:
-    "Sistema de controle de almoxarifado com QR Code, inventário rotativo e alertas automáticos. Reduza erros de separação e ruptura em até 70%. Teste grátis.",
+    "Sistema de controle de almoxarifado com QR Code, inventário rotativo e alertas automáticos. Menos erro de separação e saldo que o time confia. Teste grátis.",
   path: "/features/warehouse-control",
 });
 

@@ -26,7 +26,9 @@ export const SITE_NAME = "Purple Stock";
 export const SITE_DESCRIPTION =
   "Sistema de estoque com QR Code no celular: menos erro de saldo, rastreio por item. Teste 7 dias · a partir de R$ 59/time para PME.";
 
-export const SITE_LOGO_PATH = "/og-image.png";
+export const SITE_LOGO_PATH = "/placeholder-logo.png";
+export const SITE_LOGO_WIDTH = 512;
+export const SITE_LOGO_HEIGHT = 512;
 
 export const SITE_CONTACT = {
   email: "matheus.puppe@purplestock.com.br",

@@ -48,6 +48,24 @@ export function Footer() {
     resources: [
       { name: t.blog, href: "/blog" },
       { name: t.glossary, href: "/glossario" },
+      {
+        name:
+          language === "pt"
+            ? "Política de Privacidade"
+            : language === "fr"
+              ? "Politique de confidentialite"
+              : "Privacy Policy",
+        href: "/politica-de-privacidade",
+      },
+      {
+        name:
+          language === "pt"
+            ? "Termos de Uso"
+            : language === "fr"
+              ? "Conditions d'utilisation"
+              : "Terms of Use",
+        href: "/termos-de-uso",
+      },
     ],
     social: [
       {

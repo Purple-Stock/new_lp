@@ -19,4 +19,5 @@ test("getIndustrySerpCopy returns undefined for unknown slug", () => {
 test("buildDefaultIndustrySerpCopy names the industry", () => {
   const copy = buildDefaultIndustrySerpCopy("Varejo");
   assert.match(copy.title, /Varejo/);
+  assert.match(copy.title, /Gestão/);
 });

@@ -10,11 +10,14 @@ export async function GET() {
 
   const content = `# PurpleStock
 
-> Plataforma avançada de gestão de estoque e controle de inventário para indústrias e empresas.
+> Plataforma avançada de gestão de estoque e controle de inventário para indústrias e empresas. Sistema de estoque com QR Code: pare de errar o saldo.
 
 ## Sobre
 
-PurpleStock é uma solução completa de gestão de estoque que oferece controle em tempo real, rastreamento de produtos, gestão de equipamentos com QR Code, e análise avançada de dados para otimizar operações empresariais.
+- [Início](/): Sistema de estoque com QR Code no celular, a partir de R$ 59/time.
+- [Indústrias](/industrias): Verticais de equipamentos e saldo para PME.
+
+PurpleStock é uma solução de gestão de estoque que oferece controle em tempo real, rastreamento de produtos, gestão de equipamentos com QR Code e histórico de movimentação.
 
 ## Funcionalidades Principais
 

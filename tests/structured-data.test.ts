@@ -8,7 +8,7 @@ import {
   buildBarcodeToolSchema,
 } from "../lib/structured-data";
 
-test("buildOrganizationSchema includes sameAs and logo", () => {
+test("buildOrganizationSchema includes sameAs and ImageObject logo", () => {
   const schema = buildOrganizationSchema();
   assert.equal(schema["@type"], "Organization");
   assert.equal(schema.name, "Purple Stock");
@@ -16,13 +16,16 @@ test("buildOrganizationSchema includes sameAs and logo", () => {
   assert.ok(
     schema.sameAs.includes("https://www.linkedin.com/company/purple-stock")
   );
-  assert.ok(schema.logo?.startsWith("https://"));
+  assert.equal(schema.logo["@type"], "ImageObject");
+  assert.ok(String(schema.logo.url).startsWith("https://"));
+  assert.ok(Number(schema.logo.width) >= 112);
+  assert.ok(Number(schema.logo.height) >= 112);
 });
 
-test("buildWebSiteSchema includes SearchAction", () => {
+test("buildWebSiteSchema does not advertise a fake SearchAction", () => {
   const schema = buildWebSiteSchema();
   assert.equal(schema["@type"], "WebSite");
-  assert.equal(schema.potentialAction?.["@type"], "SearchAction");
+  assert.equal(schema.potentialAction, undefined);
 });
 
 test("buildHomePageGraph returns WebPage and SoftwareApplication without FAQPage", () => {
@@ -34,8 +37,16 @@ test("buildHomePageGraph returns WebPage and SoftwareApplication without FAQPage
 
   const software = graph["@graph"].find(
     (node) => node["@type"] === "SoftwareApplication"
-  ) as { offers?: { price?: string } };
+  ) as {
+    offers?: {
+      price?: string;
+      priceSpecification?: { billingDuration?: string };
+    };
+    aggregateRating?: unknown;
+  };
   assert.equal(software?.offers?.price, TEAM_PLAN_MONTHLY_PRICE_SCHEMA);
+  assert.equal(software?.offers?.priceSpecification?.billingDuration, "P1M");
+  assert.equal(software?.aggregateRating, undefined);
 });
 
 test("buildBarcodeToolSchema exposes free WebApplication", () => {

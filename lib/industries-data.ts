@@ -18,8 +18,8 @@ export const industryStats: Record<string, { value: string; label: string }> = {
   automotivo: { value: "35%", label: "Menos ruptura de peça" },
   construction: { value: "55%", label: "Redução de desperdícios" },
   technology: { value: "40%", label: "Aumento de produtividade" },
-  audiovisual: { value: "45%", label: "Redução de perdas" },
-  events: { value: "50%", label: "Aumento de eficiência" },
+  audiovisual: { value: "QR", label: "Check-in no set" },
+  events: { value: "Carga", label: "Conferência na descarga" },
   odontologico: { value: "40%", label: "Menos extravio de ativos" },
   telecomunicacoes: { value: "45%", label: "Menos kit incompleto em campo" },
   restaurantes: { value: "55%", label: "Redução de desperdícios" },
@@ -473,6 +473,8 @@ export const industriesData: IndustryRecord[] = [
     name: "Eventos",
     slug: "events",
     image: "/images/events-2.jpg",
+    seoHeadline:
+      "Controle de equipamentos para eventos com check-in na carga e descarga",
     description:
       "Controle som, luz, mobiliário e materiais por evento com check-in/check-out. Saiba o que saiu no caminhão, com quem está e o que faltou no retorno — sem planilha paralela.",
     benefits: [

@@ -61,7 +61,7 @@ const PT: BarcodeToolSeoCopy = {
   ],
   longTailTitle: "EAN, Code 128 e QR no mesmo gerador online",
   longTailBody:
-    "Procura gerador de código de barras grátis, gerador Code 128 ou EAN grátis sem cadastro? Esta página gera EAN-13, Code 128 e QR Code em PNG para etiquetas, inventário e almoxarifado. Depois de gerar, use o mesmo padrão no fluxo de entrada, saída e contagem com o Purple Stock.",
+    "Gere EAN-13, Code 128 e QR em PNG para etiquetas internas, inventário e almoxarifado. Isto não cria um GTIN registrado na GS1: um EAN-13 gerado aqui não substitui código oficial de produto. Depois de gerar, use o mesmo padrão no fluxo de entrada, saída e contagem com o Purple Stock.",
   faqTitle: "Perguntas frequentes sobre código de barras grátis",
   faqItems: [
     {

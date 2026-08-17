@@ -5,10 +5,10 @@ import { Navbar } from "@/components/navbar";
 import { buildWhatsAppUrl, getCalendlyUrl } from "@/lib/contact";
 import { buildPageMetadata } from "@/lib/metadata";
 import { buildContactPageSchema } from "@/lib/structured-data";
-import { SITE_CONTACT, SITE_NAME } from "@/lib/site";
+import { SITE_CONTACT } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
-  title: `Contato | ${SITE_NAME}`,
+  title: "Contato",
   description:
     "Entre em contato com a Purple Stock por e-mail, telefone, WhatsApp ou agendamento. Suporte em português para operações de estoque.",
   path: "/contato",

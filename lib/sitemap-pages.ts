@@ -93,13 +93,13 @@ export async function buildPagesSitemapEntries(
     {
       url: `${baseUrl}/politica-de-privacidade`,
       lastModified: now,
-      changeFrequency: "yearly",
+      changeFrequency: "monthly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/termos-de-uso`,
       lastModified: now,
-      changeFrequency: "yearly",
+      changeFrequency: "monthly",
       priority: 0.3,
     },
   ];

@@ -3,14 +3,10 @@ import { formatSitemapLastMod } from "@/lib/sitemap-blog";
 
 export function serializeSitemapXml(entries: SitemapEntry[]): string {
   const urls = entries
-    .map(
-      (entry) => `  <url>
-    <loc>${entry.url}</loc>
-    <lastmod>${formatSitemapLastMod(entry.lastModified)}</lastmod>
-    <changefreq>${entry.changeFrequency}</changefreq>
-    <priority>${entry.priority}</priority>
-  </url>`
-    )
+    .map((entry) => {
+      const lastmod = formatSitemapLastMod(entry.lastModified);
+      return `  <url>\n    <loc>${entry.url}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
+    })
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -19,9 +15,15 @@ ${urls}
 </urlset>`;
 }
 
-export function serializeSitemapIndexXml(sitemapUrls: string[]): string {
+export function serializeSitemapIndexXml(
+  sitemapUrls: string[],
+  lastmod = formatSitemapLastMod(new Date())
+): string {
   const items = sitemapUrls
-    .map((url) => `  <sitemap>\n    <loc>${url}</loc>\n  </sitemap>`)
+    .map(
+      (url) =>
+        `  <sitemap>\n    <loc>${url}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`
+    )
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>

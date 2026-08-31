@@ -21,3 +21,10 @@ test("buildDefaultIndustrySerpCopy names the industry", () => {
   assert.match(copy.title, /Varejo/);
   assert.match(copy.title, /Gestão/);
 });
+
+test("only equipment verticals with unique workflows stay indexable", async () => {
+  const { isIndexableIndustry } = await import("../lib/industries-data");
+  assert.equal(isIndexableIndustry("audiovisual"), true);
+  assert.equal(isIndexableIndustry("beauty"), false);
+  assert.equal(isIndexableIndustry("food"), false);
+});

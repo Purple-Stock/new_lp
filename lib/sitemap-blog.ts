@@ -5,8 +5,8 @@ import { serializeSitemapXml, SITEMAP_CACHE_HEADERS } from "@/lib/sitemap-xml";
 export type SitemapEntry = {
   url: string;
   lastModified: Date;
-  changeFrequency: "daily" | "weekly" | "monthly";
-  priority: number;
+  changeFrequency?: "daily" | "weekly" | "monthly";
+  priority?: number;
 };
 
 export function formatSitemapLastMod(date: Date): string {
@@ -26,12 +26,14 @@ export function buildBlogSitemapEntries(
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    ...posts.map((post) => ({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.date),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
+    ...posts
+      .filter((post) => post.slug !== "como-reduzir-ruptura-de-estoque")
+      .map((post) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: new Date(post.date),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      })),
   ];
 }
 

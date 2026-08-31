@@ -57,7 +57,7 @@ export function DesktopLandingHero({
   return (
     <>
       <div className="text-center space-y-6 mb-12">
-        <h1 className="ps-display text-balance text-2xl sm:text-4xl lg:text-5xl xl:text-[3.25rem]">
+        <h1 className="ps-display text-2xl sm:text-4xl lg:text-5xl xl:text-[3.25rem]">
           {h1}
         </h1>
         <p className="ps-lead mx-auto max-w-3xl text-lg lg:text-xl">
@@ -105,7 +105,7 @@ export function DesktopLandingHero({
           <Button
             asChild
             size="lg"
-            className="ps-btn-primary px-8 py-6 text-base"
+            className="ps-btn-primary w-full whitespace-normal px-8 py-6 text-base sm:w-auto"
           >
             <Link
               href="https://app.purplestock.com.br/"
@@ -125,7 +125,7 @@ export function DesktopLandingHero({
         <p className="text-sm font-semibold text-slate-700">
           {pick(
             language,
-            `A partir de ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por time / mês · ${TEAM_PLAN_TRIAL_DAYS} dias grátis`,
+            `A partir de ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe / mês · ${TEAM_PLAN_TRIAL_DAYS} dias grátis`,
             `From ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN} per team / month · ${TEAM_PLAN_TRIAL_DAYS}-day trial`,
             `A partir de ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} par equipe / mois · ${TEAM_PLAN_TRIAL_DAYS} jours d'essai`
           )}
@@ -166,7 +166,7 @@ export function DesktopLandingHero({
             <div className="relative overflow-visible rounded-2xl border border-brand-border-soft bg-brand-canvas p-2 shadow-[0_1px_2px_0_rgb(0_0_0_/_0.05),0_20px_40px_-24px_rgba(10,10,10,0.12)]">
               <div className="relative w-full h-auto">
                 <Image
-                  src="/images/app-items-list.png"
+                  src="/images/app-items-list-1200.webp"
                   alt={pick(
                     language,
                     "Interface do Purple Stock - Lista de Itens",
@@ -174,7 +174,8 @@ export function DesktopLandingHero({
                     "Interface Purple Stock - Liste des Articles"
                   )}
                   width={1200}
-                  height={800}
+                  height={673}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 720px"
                   className="w-full h-auto object-contain rounded-2xl"
                   priority
                   fetchPriority="high"

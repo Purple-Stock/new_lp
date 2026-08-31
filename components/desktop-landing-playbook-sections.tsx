@@ -92,6 +92,18 @@ export function DesktopLandingPlaybookSections({
           {pick(language, "Leia também: ", "Also read: ", "Lire aussi : ")}
           <Link
             className="ps-link-editorial font-semibold"
+            href="/codigo-de-barras-gratis"
+          >
+            {pick(
+              language,
+              "gerador de código de barras grátis",
+              "free barcode generator",
+              "generateur de code-barres gratuit"
+            )}
+          </Link>
+          {", "}
+          <Link
+            className="ps-link-editorial font-semibold"
             href="/recursos/controle-de-almoxarifado"
           >
             {pick(

@@ -11,5 +11,8 @@ test("home hero shows the advertised team price", () => {
   );
 
   assert.match(source, /TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT|R\$ 59/);
+  assert.match(source, /por equipe/);
+  assert.match(source, /app-items-list-1200\.webp/);
+  assert.match(source, /sizes=/);
   assert.ok(TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT.includes("59"));
 });

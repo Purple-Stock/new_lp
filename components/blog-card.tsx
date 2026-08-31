@@ -33,6 +33,7 @@ export function BlogCard({
               src={cover}
               alt={post.title}
               fill
+              sizes="(max-width: 1024px) 100vw, 560px"
               className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
               priority
             />
@@ -102,6 +103,7 @@ export function BlogCard({
           src={cover}
           alt={post.title}
           fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 345px"
           className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
         />
       </Link>

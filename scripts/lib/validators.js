@@ -42,21 +42,16 @@ const REQUIRED_FEATURE_LINKS = [
   "barcoding",
   "equipment-management",
   "factory-management",
-  "warehouse-control",
   "analytics-reporting",
   "purchase-sales",
 ];
 
 const REQUIRED_INDUSTRY_LINKS = [
-  "retail",
-  "manufacturing",
-  "logistics",
-  "food",
-  "pharmaceutical",
-  "automotive",
-  "construction",
-  "technology",
   "audiovisual",
+  "events",
+  "telecomunicacoes",
+  "odontologico",
+  "automotivo",
 ];
 
 function unique(values) {

@@ -14,7 +14,7 @@ export async function GET() {
 
 ## Sobre
 
-- [Início](/): Sistema de estoque com QR Code no celular, a partir de R$ 59/time.
+- [Início](/): Sistema de estoque com QR Code no celular, a partir de R$ 59 por equipe.
 - [Indústrias](/industrias): Verticais de equipamentos e saldo para PME.
 
 PurpleStock é uma solução de gestão de estoque que oferece controle em tempo real, rastreamento de produtos, gestão de equipamentos com QR Code e histórico de movimentação.
@@ -34,7 +34,7 @@ PurpleStock é uma solução de gestão de estoque que oferece controle em tempo
 ### Gestão de Equipamentos
 - [Gestão de Equipamentos](/features/equipment-management): Controle e manutenção de máquinas
 - [Gestão de Fábrica](/features/factory-management): Administração completa de operações fabris
-- [Controle de Armazém](/features/warehouse-control): Otimização de armazenamento e logística
+- [Controle de Armazém](/recursos/controle-de-almoxarifado): Otimização de armazenamento e logística
 
 ### Análise e Relatórios
 - [Analytics e Relatórios](/features/analytics-reporting): Dashboards e métricas de performance
@@ -42,18 +42,11 @@ PurpleStock é uma solução de gestão de estoque que oferece controle em tempo
 
 ## Indústrias Atendidas
 
-- [Audiovisual](/industrias/audiovisual): Check-in/check-out de equipamentos para produtoras e locadoras (vertical de alta conversão)
+- [Audiovisual](/industrias/audiovisual): Check-in/check-out de equipamentos para produtoras e locadoras
 - [Eventos](/industrias/events): Controle de som, luz, mobiliário e materiais por evento
 - [Odontológico](/industrias/odontologico): Equipamentos dentários, kits e instrumentais com check-in/check-out
 - [Telecomunicações](/industrias/telecomunicacoes): ONT, rádio e kits de campo com check-in/check-out para ISPs
-- [Varejo](/industrias/varejo): Otimização de operações de varejo
-- [Manufatura](/industrias/manufatura): Controle de produção e materiais
-- [Logística](/industrias/logistica): Gestão de cadeia de suprimentos
-- [Alimentação](/industrias/food): Controle de validade e rastreabilidade
-- [Farmacêutica](/industrias/pharmaceutical): Gestão de medicamentos e equipamentos
 - [Autopeças e Motos](/industrias/automotivo): Estoque para lojas de peças de carro e moto
-- [Construção](/industrias/construction): Gestão de materiais de construção
-- [Tecnologia](/industrias/technology): Controle de equipamentos tecnológicos
 
 ## Recursos e Ferramentas
 

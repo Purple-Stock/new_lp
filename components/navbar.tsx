@@ -30,7 +30,7 @@ const PRIMARY_FEATURE_LINKS = [
     shortcut: "⌘R",
   },
   {
-    href: "/features/warehouse-control",
+    href: "/recursos/controle-de-almoxarifado",
     key: "warehouseControl" as const,
     shortcut: "⌘W",
   },
@@ -150,7 +150,7 @@ export function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[120] h-11 bg-gradient-to-b from-brand-chrome-steel to-brand-chrome-graphite shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)] md:h-[25px]">
+    <header className="fixed top-0 left-0 right-0 z-[120] h-12 bg-gradient-to-b from-brand-chrome-steel to-brand-chrome-graphite shadow-[0_1px_0_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)] md:h-10">
       <div className="flex items-center justify-between h-full px-3 text-[13px] font-medium text-white/90">
         <div className="flex items-center gap-0">
           <Link
@@ -360,7 +360,14 @@ export function Navbar() {
 
           <button
             type="button"
-            className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
+            className="flex min-h-10 min-w-10 items-center gap-1 rounded-[3px] px-2 py-1 hover:bg-white/10 transition-colors"
+            aria-label={
+              language === "pt"
+                ? "Trocar idioma da interface"
+                : language === "fr"
+                  ? "Changer la langue de l'interface"
+                  : "Change interface language"
+            }
             onClick={() => {
               if (language === "pt") setLanguage("en");
               else if (language === "en") setLanguage("fr");

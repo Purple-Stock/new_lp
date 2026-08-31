@@ -45,6 +45,12 @@ export function buildOrganizationSchema() {
       addressLocality: SITE_CONTACT.addressLocality,
       addressCountry: SITE_CONTACT.addressCountry,
     },
+    founder: {
+      "@type": "Person",
+      "@id": `${url}/#founder`,
+      name: "Matheus Puppe",
+      url: `${url}/sobre`,
+    },
     sameAs: [...SITE_SAME_AS],
   };
 }
@@ -69,11 +75,13 @@ export function buildMonthlyOffer(url = `${getSiteUrl()}/precos`) {
     priceCurrency: "BRL",
     url,
     availability: "https://schema.org/InStock",
+    name: "Plano único por equipe",
     priceSpecification: {
       "@type": "UnitPriceSpecification",
       price: TEAM_PLAN_MONTHLY_PRICE_SCHEMA,
       priceCurrency: "BRL",
       billingDuration: "P1M",
+      unitText: "equipe",
     },
   };
 }
@@ -107,7 +115,13 @@ export function buildHomePageGraph() {
         name: HOME_PAGE_DOCUMENT_TITLE,
         description: SITE_DESCRIPTION,
         isPartOf: { "@id": `${url}/#website` },
-        about: { "@id": `${url}/#organization` },
+        about: { "@id": `${url}/#software` },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: absoluteUrl("/og-image.png"),
+          width: 1200,
+          height: 630,
+        },
         inLanguage: "pt-BR",
       },
       {
@@ -115,9 +129,21 @@ export function buildHomePageGraph() {
         "@id": `${url}/#software`,
         name: SITE_NAME,
         applicationCategory: "BusinessApplication",
-        operatingSystem: "Web",
+        operatingSystem: "Web, iOS, Android",
+        softwareVersion: "2.0",
+        inLanguage: "pt-BR",
         description: SITE_DESCRIPTION,
         url,
+        installUrl: "https://app.purplestock.com.br/",
+        image: absoluteUrl("/og-image.png"),
+        screenshot: absoluteUrl("/images/app-items-list-1200.webp"),
+        featureList: [
+          "Controle de entrada, saída, transferência e ajuste",
+          "Inventário e rastreabilidade por item",
+          "QR Code e código de barras no celular",
+          "Times, localizações e permissões por usuário",
+          "Dashboard e relatórios de estoque",
+        ],
         offers: buildMonthlyOffer(`${url}/precos`),
         provider: { "@id": `${url}/#organization` },
       },
@@ -137,6 +163,7 @@ export function buildBarcodeToolSchema() {
     operatingSystem: "Web",
     browserRequirements: "Requires JavaScript",
     inLanguage: "pt-BR",
+    isAccessibleForFree: true,
     description: BARCODE_TOOL_PAGE_DESCRIPTION,
     offers: {
       "@type": "Offer",

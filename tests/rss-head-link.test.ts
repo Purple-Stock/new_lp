@@ -9,4 +9,7 @@ test("root layout renders explicit RSS alternate link in head", () => {
   assert.match(source, /rel="alternate"/);
   assert.match(source, /type="application\/rss\+xml"/);
   assert.match(source, /getBlogRssFeedHref/);
+  assert.doesNotMatch(source, /v0\.dev/);
+  assert.match(source, /strategy="lazyOnload"/);
+  assert.doesNotMatch(source, /beforeInteractive/);
 });

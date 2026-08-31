@@ -87,7 +87,7 @@ const PT: BarcodeToolSeoCopy = {
   ],
   ctaTitle: "Use código de barras no estoque de verdade",
   ctaBody:
-    "Gerou a etiqueta? No Purple Stock você imprime, lê no celular e registra entrada, saída e inventário com histórico por item — a partir de R$ 59/time, com 7 dias grátis.",
+    "Gerou a etiqueta? No Purple Stock você imprime, lê no celular e registra entrada, saída e inventário com histórico por item — a partir de R$ 59 por equipe, com 7 dias grátis.",
   trialLabel: "Testar Purple Stock grátis",
   pricingLabel: "Ver preços",
   implementLabel: "Como implementar no estoque",

@@ -40,7 +40,7 @@ const DEFAULT_PROOF: IndustrySocialProof = {
     { value: "QR", label: "Leitura no celular" },
     { value: "7d", label: "Teste grátis" },
     { value: "1", label: "Histórico único" },
-    { value: "R$59", label: "Por time / mês" },
+    { value: "R$59", label: "Por equipe / mês" },
   ],
   casesHeadline: "Como times usam o Purple Stock",
   casesSubhead:
@@ -89,7 +89,7 @@ const DEFAULT_PROOF: IndustrySocialProof = {
     },
     {
       q: "Preciso de fidelidade?",
-      a: "Não. O plano é por time, com teste de 7 dias e sem fidelidade.",
+      a: "Não. O plano é por equipe, com teste de 7 dias e sem fidelidade.",
     },
   ],
 };

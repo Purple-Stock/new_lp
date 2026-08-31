@@ -37,10 +37,10 @@ export default function PricingPage() {
   const copy = {
     pt: {
       badge: "Plano único",
-      title: `Preço Purple Stock: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por time`,
+      title: `Preço Purple Stock: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe`,
       subtitle:
-        "Veja o preço da Purple Stock para PME: R$ 59,00 por time, 7 dias grátis e implantação rápida para sair da planilha sem travar a operação.",
-      priceLabel: "por time / mês",
+        "Veja o preço da Purple Stock para PME: R$ 59,00 por equipe (todos os usuários da operação, sem cobrança por assento), 7 dias grátis e implantação rápida para sair da planilha sem travar a operação.",
+      priceLabel: "por equipe / mês",
       ctaPrimary: "Começar teste grátis de 7 dias",
       ctaSecondary: "Tirar dúvidas sobre preço",
       cardTitle: "Purple Stock",
@@ -68,7 +68,7 @@ export default function PricingPage() {
         {
           title: "Preço direto",
           description:
-            "R$ 59,00 por time, sem matriz confusa de funcionalidades.",
+            "R$ 59,00 por equipe, sem matriz confusa de funcionalidades.",
         },
         {
           title: "Ativação rápida",
@@ -85,7 +85,7 @@ export default function PricingPage() {
       faqs: [
         {
           q: "Esse valor é por usuário?",
-          a: "Não. O valor é por time: R$ 59,00 por mês para sua equipe operar no Purple Stock.",
+          a: "Não. O valor é por equipe: R$ 59,00 por mês para todos os usuários da operação, sem cobrança por assento. Não inclui NFC-e, PDV nem WMS de galpão.",
         },
         {
           q: "Preciso trocar meu ERP para usar?",
@@ -256,12 +256,12 @@ export default function PricingPage() {
     "@type": "SoftwareApplication",
     name: "Purple Stock",
     applicationCategory: "BusinessApplication",
-    operatingSystem: "Web",
+    operatingSystem: "Web, iOS, Android",
     description:
       "Sistema de controle de estoque com inventario, rastreabilidade, QR Code, teste gratis e operacao em tempo real para PMEs.",
     offers: {
       ...buildMonthlyOffer("https://www.purplestock.com.br/precos"),
-      description: `Plano unico por time com ${TEAM_PLAN_TRIAL_DAYS} dias gratis, sem fidelidade e ativacao rapida.`,
+      description: `Plano unico por equipe com ${TEAM_PLAN_TRIAL_DAYS} dias gratis, sem fidelidade e ativacao rapida.`,
     },
     provider: {
       "@type": "Organization",
@@ -309,7 +309,7 @@ export default function PricingPage() {
 
                 <span className="text-[10px] font-medium text-slate-400">
                   {language === "pt"
-                    ? "Plano por time"
+                    ? "Plano por equipe"
                     : language === "fr"
                       ? "Plan par équipe"
                       : "Per-team plan"}
@@ -460,7 +460,7 @@ export default function PricingPage() {
                   </Link>
                   <Link
                     href={buildWhatsAppUrl(
-                      `Olá! Quero entender o plano de ${formattedPrice} por time.`
+                      `Olá! Quero entender o plano de ${formattedPrice} por equipe.`
                     )}
                     className="flex-1"
                     onClick={() =>
@@ -598,7 +598,7 @@ export default function PricingPage() {
               </Link>
               <Link
                 href={buildWhatsAppUrl(
-                  `Olá! Quero tirar dúvidas sobre o plano de ${formattedPrice} por time.`
+                  `Olá! Quero tirar dúvidas sobre o plano de ${formattedPrice} por equipe.`
                 )}
                 onClick={() =>
                   trackSeoCtaClick({

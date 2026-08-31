@@ -16,7 +16,7 @@ import {
 export const metadata = buildPageMetadata({
   title: TERMS_PAGE_TITLE,
   description:
-    "Condições de uso do site e do plano Purple Stock: teste, preço por time e cancelamento.",
+    "Condições de uso do site e do plano Purple Stock: teste, preço por equipe e cancelamento.",
   path: TERMS_PATH,
 });
 
@@ -35,8 +35,8 @@ export default function TermosDeUsoPage() {
         <h2 className="mt-8 text-xl font-semibold text-slate-900">O serviço</h2>
         <p className="mt-3 leading-relaxed text-slate-600">
           A Purple Stock é um sistema de controle de estoque e equipamentos com
-          QR Code, oferecido em plano único por time. O preço público atual é{" "}
-          {TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por time ao mês, com teste de{" "}
+          QR Code, oferecido em plano único por equipe. O preço público atual é{" "}
+          {TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe ao mês, com teste de{" "}
           {TEAM_PLAN_TRIAL_DAYS} dias. O teste pode exigir cartão. Não há
           fidelidade: você pode cancelar quando quiser.
         </p>

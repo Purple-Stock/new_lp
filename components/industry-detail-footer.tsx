@@ -31,7 +31,7 @@ export function IndustryDetailFooter({
                 {ctaHeadline}
               </h2>
               <p className="mt-2 max-w-xl text-slate-600">
-                R$ 59,00 por time, 7 dias grátis e implantação rápida. Sem
+                R$ 59,00 por equipe, 7 dias grátis e implantação rápida. Sem
                 matriz confusa de funcionalidades.
               </p>
             </div>

@@ -110,7 +110,7 @@ export function IndustryDetailHero({
                     href="/precos"
                     className="ps-link-editorial font-semibold"
                   >
-                    R$ 59,00 por time
+                    R$ 59,00 por equipe
                   </Link>{" "}
                   · 7 dias grátis
                 </>
@@ -121,7 +121,7 @@ export function IndustryDetailHero({
                     href="/precos"
                     className="ps-link-editorial font-semibold"
                   >
-                    R$ 59,00 por time
+                    R$ 59,00 por equipe
                   </Link>{" "}
                   · 7 dias grátis · sem fidelidade
                 </>

@@ -37,11 +37,17 @@ export default function SobrePage() {
           PME que só precisa sair da planilha antes de assumir um ERP completo.
         </p>
         <p className="mt-4 leading-relaxed text-slate-600">
-          Quem constrói o produto é Matheus Puppe. O suporte fala português, o
-          preço público é um plano por time e o teste de 7 dias pode pedir
-          cartão. Empresas como VHS, St. Nicholas School, Da Rua e DPS Brasil já
-          aparecem na operação com o mesmo fluxo de entrada, saída e
-          transferência.
+          Quem constrói o produto é{" "}
+          <a
+            href="https://www.linkedin.com/company/purple-stock"
+            className="text-violet-700 hover:underline"
+          >
+            Matheus Puppe
+          </a>
+          . O suporte fala português, o preço público é um plano por equipe e o
+          teste de 7 dias pode pedir cartão. Empresas como VHS, St. Nicholas
+          School, Da Rua e DPS Brasil já aparecem na operação com o mesmo fluxo
+          de entrada, saída e transferência.
         </p>
         <p className="mt-4 leading-relaxed text-slate-600">
           Não vendemos um ERP fiscal nem um WMS de galpão. Vendemos

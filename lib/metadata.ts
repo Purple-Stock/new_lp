@@ -22,15 +22,17 @@ export function buildPageMetadata({
   const socialTitle = title.includes(SITE_NAME)
     ? title
     : `${title} | ${SITE_NAME}`;
+  const documentTitle = title.includes(SITE_NAME) ? { absolute: title } : title;
 
   return {
-    title,
+    title: documentTitle,
     description,
     alternates: {
       canonical: path,
     },
     openGraph: {
       type: "website",
+      locale: "pt_BR",
       siteName: SITE_NAME,
       url: path,
       title: socialTitle,

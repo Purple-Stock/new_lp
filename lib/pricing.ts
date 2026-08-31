@@ -11,8 +11,12 @@ export const TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT = "R$ 59,00";
 export const TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN = "R$ 59.00";
 export const TEAM_PLAN_TRIAL_DAYS = 7;
 
+export const TEAM_PLAN_UNIT_LABEL_PT = "equipe";
+export const TEAM_PLAN_UNIT_LABEL_EN = "team";
+export const TEAM_PLAN_UNIT_LABEL_FR = "equipe";
+
 export function formatTeamPlanPriceFaqPt(): string {
-  return `O plano de entrada é ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por time/mês, com teste grátis de ${TEAM_PLAN_TRIAL_DAYS} dias e sem fidelidade.`;
+  return `O plano de entrada é ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por ${TEAM_PLAN_UNIT_LABEL_PT}/mês, com teste grátis de ${TEAM_PLAN_TRIAL_DAYS} dias e sem fidelidade.`;
 }
 
 export function formatTeamPlanPriceFaqEn(): string {

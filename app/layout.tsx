@@ -40,6 +40,7 @@ const merriweather = Merriweather({
   weight: ["400", "700"],
   display: "swap",
   variable: "--font-editorial",
+  preload: false,
 });
 
 const siteUrl = getSiteUrl();
@@ -83,13 +84,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><g transform='translate(16, 16) scale(0.12)'><path fill='%237D3C98' d='M0,-100 L86,-50 L86,50 L0,100 L-86,50 L-86,-50 Z'/><path fill='white' d='M30,-50 L-15,10 H15 L-10,55 L40,0 H15 Z'/></g></svg>",
-        sizes: "32x32",
-        type: "image/svg+xml",
+        url: "/logo.png",
+        sizes: "512x512",
+        type: "image/png",
       },
     ],
   },
-  generator: "v0.dev",
 };
 
 export default function RootLayout({
@@ -122,23 +122,19 @@ export default function RootLayout({
         {gaMeasurementId ? (
           <>
             <Script
-              id="ga4-init"
-              strategy="beforeInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  window.gtag = gtag;
-                  gtag('js', new Date());
-                  gtag('config', '${gaMeasurementId}', { send_page_view: false });
-                `,
-              }}
-            />
-            <Script
               id="ga4-src"
               src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
               strategy="lazyOnload"
             />
+            <Script id="ga4-init" strategy="lazyOnload">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', '${gaMeasurementId}', { send_page_view: false });
+              `}
+            </Script>
           </>
         ) : null}
         <LanguageProvider>

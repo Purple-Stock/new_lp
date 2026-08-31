@@ -506,6 +506,19 @@ export function getIndustryBySlug(slug: string): IndustryRecord | undefined {
   return industriesData.find((industry) => industry.slug === slug);
 }
 
+/** Verticals with unique workflows — keep these in the sitemap and indexable. */
+export const INDEXABLE_INDUSTRY_SLUGS = [
+  "audiovisual",
+  "events",
+  "telecomunicacoes",
+  "odontologico",
+  "automotivo",
+] as const;
+
+export function isIndexableIndustry(slug: string): boolean {
+  return (INDEXABLE_INDUSTRY_SLUGS as readonly string[]).includes(slug);
+}
+
 /** Preferred related verticals — AV and events convert together. */
 const RELATED_INDUSTRY_PREFS: Record<string, string[]> = {
   audiovisual: ["events", "telecomunicacoes", "odontologico"],

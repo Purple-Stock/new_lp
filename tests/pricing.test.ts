@@ -15,4 +15,6 @@ test("FAQ price copy mentions R$ 59 and 7-day trial", () => {
   const faq = formatTeamPlanPriceFaqPt();
   assert.match(faq, /R\$ 59/);
   assert.match(faq, /7 dias/);
+  assert.match(faq, /equipe/);
+  assert.doesNotMatch(faq, /\/time/);
 });

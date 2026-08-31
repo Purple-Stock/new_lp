@@ -38,20 +38,36 @@ test("buildHomePageGraph returns WebPage and SoftwareApplication without FAQPage
   const software = graph["@graph"].find(
     (node) => node["@type"] === "SoftwareApplication"
   ) as {
+    operatingSystem?: string;
+    screenshot?: string;
+    installUrl?: string;
     offers?: {
       price?: string;
-      priceSpecification?: { billingDuration?: string };
+      priceSpecification?: { billingDuration?: string; unitText?: string };
     };
     aggregateRating?: unknown;
   };
   assert.equal(software?.offers?.price, TEAM_PLAN_MONTHLY_PRICE_SCHEMA);
   assert.equal(software?.offers?.priceSpecification?.billingDuration, "P1M");
+  assert.equal(software?.offers?.priceSpecification?.unitText, "equipe");
+  assert.match(String(software?.operatingSystem), /iOS/);
+  assert.match(String(software?.operatingSystem), /Android/);
+  assert.ok(software?.screenshot);
+  assert.ok(String(software?.installUrl).includes("app.purplestock.com.br"));
   assert.equal(software?.aggregateRating, undefined);
+});
+
+test("organization logo is a real square asset, not the placeholder", () => {
+  const schema = buildOrganizationSchema();
+  assert.doesNotMatch(String(schema.logo.url), /placeholder-logo/);
+  assert.match(String(schema.logo.url), /logo\.png/);
+  assert.ok("founder" in schema);
 });
 
 test("buildBarcodeToolSchema exposes free WebApplication", () => {
   const schema = buildBarcodeToolSchema();
   assert.equal(schema["@type"], "WebApplication");
   assert.equal(schema.offers?.price, "0");
+  assert.equal(schema.isAccessibleForFree, true);
   assert.ok(String(schema.url).includes("/codigo-de-barras-gratis"));
 });

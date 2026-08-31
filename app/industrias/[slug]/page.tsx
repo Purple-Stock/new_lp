@@ -4,7 +4,11 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { IndustryDetailView } from "@/components/industry-detail-view";
-import { getIndustryBySlug } from "@/lib/industries-data";
+import {
+  getIndustryBySlug,
+  industriesData,
+  isIndexableIndustry,
+} from "@/lib/industries-data";
 import {
   buildDefaultIndustrySerpCopy,
   getIndustrySerpCopy,
@@ -29,11 +33,16 @@ export async function generateMetadata({
 
   const customMetadata = getIndustrySerpCopy(industry.slug);
 
+  const robots = isIndexableIndustry(industry.slug)
+    ? undefined
+    : { index: false, follow: true };
+
   if (customMetadata) {
     return buildPageMetadata({
       title: customMetadata.title,
       description: customMetadata.description,
       path: `/industrias/${industry.slug}`,
+      robots,
     });
   }
 
@@ -41,7 +50,12 @@ export async function generateMetadata({
     title: buildDefaultIndustrySerpCopy(industry.name).title,
     description: industry.description,
     path: `/industrias/${industry.slug}`,
+    robots,
   });
+}
+
+export function generateStaticParams() {
+  return industriesData.map((industry) => ({ slug: industry.slug }));
 }
 
 export default async function IndustryPage({

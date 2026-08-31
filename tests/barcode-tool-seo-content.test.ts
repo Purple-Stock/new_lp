@@ -23,4 +23,5 @@ test("PT barcode SEO copy includes free no-signup intent", () => {
   assert.match(copy.longTailBody, /EAN/i);
   assert.match(copy.inventoryAppLabel, /estoque/i);
   assert.match(copy.longTailBody, /GS1|GTIN/i);
+  assert.match(copy.ctaBody, /equipe/);
 });

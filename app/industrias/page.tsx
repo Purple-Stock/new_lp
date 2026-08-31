@@ -466,7 +466,7 @@ export default function IndustriasPage() {
                     }
                   >
                     <Button variant="outline" className="ps-btn-outline">
-                      Ver preço por time
+                      Ver preço por equipe
                     </Button>
                   </Link>
                 </div>
@@ -709,7 +709,7 @@ export default function IndustriasPage() {
                   size="lg"
                   className="border border-white/40 bg-white/10 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm hover:border-white/55 hover:bg-white/15"
                 >
-                  Ver preço por time
+                  Ver preço por equipe
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>

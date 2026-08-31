@@ -512,7 +512,7 @@ export default function CodigoDeBarrasGratis() {
 
               <div className="grid gap-8 lg:grid-cols-3">
                 {/* Configuration Panel */}
-                <div className="lg:col-span-1">
+                <div className="order-2 lg:order-1 lg:col-span-1">
                   <Card className="ps-card sticky top-24 border-brand-border-soft shadow-none">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2 text-lg font-semibold text-brand-ink">
@@ -1123,7 +1123,7 @@ export default function CodigoDeBarrasGratis() {
                 </div>
 
                 {/* Preview and Information */}
-                <div className="lg:col-span-2 space-y-8">
+                <div className="order-1 space-y-8 lg:order-2 lg:col-span-2">
                   {/* Code Preview */}
                   <Card className="ps-card border-brand-border-soft shadow-none">
                     <CardHeader>
@@ -1207,6 +1207,13 @@ export default function CodigoDeBarrasGratis() {
                                 }
                               </p>
                             )}
+                            <Button
+                              onClick={downloadCode}
+                              className="ps-btn-primary w-full sm:w-auto"
+                            >
+                              <Download className="mr-2 h-4 w-4" />
+                              {t.actions.download}
+                            </Button>
                           </div>
                         )}
                       </div>

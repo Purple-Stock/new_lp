@@ -1,27 +1,6 @@
 import type { SitemapEntry } from "@/lib/sitemap-blog";
 import { glossaryTerms } from "@/data/glossary";
-
-const INDUSTRY_SLUGS = [
-  "atacado",
-  "varejo",
-  "manufatura",
-  "logistica",
-  "automotivo",
-  "fashion",
-  "food",
-  "restaurantes",
-  "electrical",
-  "construction",
-  "pharmaceutical",
-  "odontologico",
-  "telecomunicacoes",
-  "beauty",
-  "commerce",
-  "education",
-  "technology",
-  "audiovisual",
-  "events",
-] as const;
+import { INDEXABLE_INDUSTRY_SLUGS } from "@/lib/industries-data";
 
 const FEATURE_SLUGS = [
   "analytics-reporting",
@@ -33,7 +12,6 @@ const FEATURE_SLUGS = [
   "inventory-control",
   "purchase-sales",
   "qr-code-management",
-  "warehouse-control",
 ] as const;
 
 export async function buildPagesSitemapEntries(
@@ -71,6 +49,18 @@ export async function buildPagesSitemapEntries(
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/features`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/recursos`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.6,
     },
     {
       url: `${baseUrl}/documentacao`,
@@ -118,19 +108,21 @@ export async function buildPagesSitemapEntries(
     priority: 0.7,
   }));
 
-  const industryRoutes = INDUSTRY_SLUGS.map((industry) => ({
+  const industryRoutes = INDEXABLE_INDUSTRY_SLUGS.map((industry) => ({
     url: `${baseUrl}/industrias/${industry}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
-  const glossaryRoutes = glossaryTerms.map((term) => ({
-    url: `${baseUrl}/glossario/${term.slug}`,
-    lastModified: new Date("2026-04-07"),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
+  const glossaryRoutes = glossaryTerms
+    .filter((term) => term.slug !== "lead-time")
+    .map((term) => ({
+      url: `${baseUrl}/glossario/${term.slug}`,
+      lastModified: new Date("2026-04-07"),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
 
   return [
     ...staticRoutes,

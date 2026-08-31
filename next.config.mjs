@@ -80,6 +80,21 @@ const nextConfig = {
       },
     ];
 
+    const duplicateContentRedirects = [
+      {
+        source: "/features/warehouse-control",
+        destination: "/recursos/controle-de-almoxarifado",
+      },
+      {
+        source: "/blog/como-reduzir-ruptura-de-estoque",
+        destination: "/blog/reducao-ruptura-estoque",
+      },
+      {
+        source: "/glossario/lead-time",
+        destination: "/glossario/ciclo-de-tempo",
+      },
+    ];
+
     const legacyResourceRedirects = [
       {
         source: "/recursos/codigo-de-barras",
@@ -118,6 +133,11 @@ const nextConfig = {
         destination: redirect.destination,
         permanent: true,
       })),
+      ...duplicateContentRedirects.map((redirect) => ({
+        source: redirect.source,
+        destination: redirect.destination,
+        permanent: true,
+      })),
       ...legacyBlogSlugRedirects.map((redirect) => ({
         source: redirect.source,
         destination: `https://www.purplestock.com.br${redirect.destination}`,
@@ -139,7 +159,7 @@ const nextConfig = {
         source: "/:path*",
         has: [{ type: "host", value: "purplestock.com.br" }],
         destination: "https://www.purplestock.com.br/:path*",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/blog/:path*",
@@ -186,7 +206,6 @@ const nextConfig = {
       },
       { key: "X-Content-Type-Options", value: "nosniff" },
       { key: "X-Frame-Options", value: "SAMEORIGIN" },
-      { key: "X-XSS-Protection", value: "1; mode=block" },
     ];
 
     return [

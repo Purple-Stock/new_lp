@@ -65,5 +65,5 @@ Plataforma avançada de gestão de estoque com Next.js e React.
   assert.equal(result.missingSections.length, 1);
   assert.deepEqual(result.missingSections, ["Recursos e Ferramentas"]);
   assert.equal(result.missingFeatures.includes("qr-code-management"), true);
-  assert.equal(result.missingIndustries.includes("retail"), true);
+  assert.equal(result.missingIndustries.includes("audiovisual"), true);
 });

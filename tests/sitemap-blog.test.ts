@@ -46,6 +46,8 @@ test("serializeSitemapXml emits valid urlset with lastmod dates", () => {
 
   assert.match(xml, /<urlset/);
   assert.match(xml, /<lastmod>2026-06-21<\/lastmod>/);
+  assert.doesNotMatch(xml, /<priority>/);
+  assert.doesNotMatch(xml, /<changefreq>/);
 });
 
 test("sitemap_blog route returns blog-only XML", async () => {

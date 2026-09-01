@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { IndustryDetailView } from "@/components/industry-detail-view";
+import { JsonLd } from "@/components/json-ld";
 import {
   getIndustryBySlug,
   industriesData,
@@ -13,6 +14,11 @@ import {
   buildDefaultIndustrySerpCopy,
   getIndustrySerpCopy,
 } from "@/lib/industry-page-seo";
+import { buildIndustryPageGraph } from "@/lib/structured-data";
+
+export function generateStaticParams() {
+  return industriesData.map((industry) => ({ slug: industry.slug }));
+}
 
 export async function generateMetadata({
   params,
@@ -54,10 +60,6 @@ export async function generateMetadata({
   });
 }
 
-export function generateStaticParams() {
-  return industriesData.map((industry) => ({ slug: industry.slug }));
-}
-
 export default async function IndustryPage({
   params,
 }: {
@@ -72,9 +74,17 @@ export default async function IndustryPage({
 
   // FAQ accordion stays in IndustryDetailView; FAQPage JSON-LD omitted
   // (rich results largely limited outside gov/health).
+  const serp = getIndustrySerpCopy(industry.slug);
+  const pageGraph = buildIndustryPageGraph({
+    slug: industry.slug,
+    name: industry.name,
+    headline: serp?.title ?? buildDefaultIndustrySerpCopy(industry.name).title,
+    description: serp?.description ?? industry.description,
+  });
 
   return (
     <>
+      <JsonLd data={pageGraph} />
       <Navbar />
       <IndustryDetailView industry={industry} />
       <Footer />

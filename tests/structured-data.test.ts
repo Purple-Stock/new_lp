@@ -6,6 +6,7 @@ import {
   buildWebSiteSchema,
   buildHomePageGraph,
   buildBarcodeToolSchema,
+  buildIndustryPageGraph,
 } from "../lib/structured-data";
 
 test("buildOrganizationSchema includes sameAs and ImageObject logo", () => {
@@ -62,6 +63,26 @@ test("organization logo is a real square asset, not the placeholder", () => {
   assert.doesNotMatch(String(schema.logo.url), /placeholder-logo/);
   assert.match(String(schema.logo.url), /logo\.png/);
   assert.ok("founder" in schema);
+});
+
+test("buildIndustryPageGraph includes WebPage, BreadcrumbList and SoftwareApplication", () => {
+  const graph = buildIndustryPageGraph({
+    slug: "construction",
+    name: "Construção",
+    headline: "Almoxarifado de Obra: Materiais e Ferramentas com QR Code",
+    description:
+      "Controle de materiais de construção por obra e canteiro. QR Code no celular.",
+  });
+  const types = graph["@graph"].map((node) => node["@type"]);
+  assert.ok(types.includes("WebPage"));
+  assert.ok(types.includes("BreadcrumbList"));
+  assert.ok(types.includes("SoftwareApplication"));
+  assert.ok(!types.includes("FAQPage"));
+
+  const page = graph["@graph"].find((node) => node["@type"] === "WebPage") as {
+    url?: string;
+  };
+  assert.ok(String(page?.url).includes("/industrias/construction"));
 });
 
 test("buildBarcodeToolSchema exposes free WebApplication", () => {

@@ -15,4 +15,5 @@ export interface GlossaryTerm {
   relatedTerms: string[]; // slugs de outros termos no glossário
   relatedFeatures?: string[]; // ex: ['inventory-control', 'barcoding']
   relatedIndustries?: string[]; // ex: ['varejo', 'logistica']
+  relatedPosts?: { slug: string; label: string }[];
 }

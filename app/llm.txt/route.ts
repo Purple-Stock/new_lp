@@ -38,7 +38,7 @@ PurpleStock é uma solução completa de gestão de estoque que oferece controle
 - [Alimentação](/industrias/food): Controle de validade e rastreabilidade
 - [Farmacêutica](/industrias/pharmaceutical): Gestão de medicamentos e equipamentos
 - [Autopeças e Motos](/industrias/automotivo): Estoque para peças de carro e moto
-- [Construção](/industrias/construction): Gestão de materiais de construção
+- [Construção](/industrias/construction): Almoxarifado de obra — materiais, ferramentas e EPI por canteiro com QR Code
 - [Tecnologia](/industrias/technology): Controle de equipamentos tecnológicos
 - [Audiovisual](/industrias/audiovisual): Check-in/check-out de equipamentos para produtoras e locadoras
 - [Eventos](/industrias/events): Controle de equipamentos e materiais por evento

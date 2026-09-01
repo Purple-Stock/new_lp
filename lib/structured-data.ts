@@ -175,6 +175,66 @@ export function buildBarcodeToolSchema() {
   };
 }
 
+export function buildIndustryPageGraph(params: {
+  slug: string;
+  name: string;
+  headline: string;
+  description: string;
+}) {
+  const url = `${getSiteUrl()}/industrias/${params.slug}`;
+  const siteUrl = getSiteUrl();
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${url}/#webpage`,
+        url,
+        name: params.headline,
+        description: params.description,
+        isPartOf: { "@id": `${siteUrl}/#website` },
+        about: { "@id": `${siteUrl}/#organization` },
+        inLanguage: "pt-BR",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Início",
+            item: siteUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Indústrias",
+            item: `${siteUrl}/industrias`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: params.name,
+            item: url,
+          },
+        ],
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": `${url}/#software`,
+        name: `${SITE_NAME} para ${params.name}`,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: params.description,
+        url,
+        offers: buildMonthlyOffer(`${siteUrl}/precos`),
+        provider: { "@id": `${siteUrl}/#organization` },
+      },
+    ],
+  };
+}
+
 export function buildAboutPageSchema() {
   const url = `${getSiteUrl()}/sobre`;
   return {

@@ -1,0 +1,120 @@
+---
+title: "Transferência de Materiais entre Canteiros de Obra"
+excerpt: "Obra A empresta aço para obra B e o saldo some. Como transferir materiais entre canteiros com histórico, sem kombi e planilha paralela."
+date: "2026-09-03"
+author: "Time Purple Stock"
+readingTime: "7 min"
+coverImage: "/images/building-800x600.webp"
+tags:
+  - "Construção"
+  - "Almoxarifado"
+  - "Canteiro"
+  - "Transferência"
+faq:
+  - question: "Como transferir materiais entre canteiros sem perder o saldo?"
+    answer: "Trate cada obra como um local. A saída da obra A e a entrada da obra B são a mesma movimentação: transferência, não ‘o fulano levou na kombi’."
+  - question: "Empréstimo entre obras pode ir no WhatsApp?"
+    answer: "Pode, e é assim que o custo some. O engenheiro da obra A ainda vê o aço no Excel; a obra B já consumiu. Histórico de transferência evita estoque fantasma."
+  - question: "Central de materiais e canteiro são a mesma coisa?"
+    answer: "Não. A central é um local; cada canteiro é outro. O que sai da central para a obra é transferência, não consumo — consumo só acontece na frente de serviço."
+---
+
+**Transferência de materiais entre canteiros** é mover saldo de uma obra para outra (ou da central para o canteiro) com histórico. Sem isso, a obra A fica com estoque fantasma, a obra B com custo escondido, e a kombi vira o sistema.
+
+O padrão é conhecido em construtora pequena e empreiteira:
+
+- Aço “estava” na casa 1 e apareceu na casa 2
+- Cimento da central saiu sem destino
+- O engenheiro cobra um saldo que o almoxarife já emprestou
+- Compra emergencial na obra B porque o Excel da obra A não avisou
+- No fechamento, ninguém sabe quem consumiu o quê
+
+Este guia fecha **só o movimento entre locais**. O mapa do almoxarifado está em [almoxarifado de obra](/blog/almoxarifado-de-obra-controle-materiais-canteiro). Vertical: [construção](/industrias/construction).
+
+## Três movimentos que a planilha mistura
+
+| Movimento          | O que é                                      | Erro clássico                |
+| ------------------ | -------------------------------------------- | ---------------------------- |
+| Entrada            | Fornecedor entrega no canteiro ou na central | Lançar depois, nota ≠ físico |
+| Consumo / retirada | Frente de serviço usa o material             | “Pega e anota depois”        |
+| Transferência      | Obra A → obra B, ou central → canteiro       | Kombi + WhatsApp             |
+
+Transferência **não é consumo**. O material ainda existe — só mudou de obra. Se você baixar como saída na A e não entrar na B, as duas contas ficam erradas.
+
+## Fluxo que funciona
+
+```
+Obra A (ou central)
+  → Transferência (item + quantidade + destino)
+  → Obra B recebe
+  → Conferência no canteiro de destino
+  → Saldo A desce, saldo B sobe
+```
+
+### 1. Cada obra é um local
+
+Casa 1, casa 2, reforma do cliente C, depósito central: quatro locais. O [almoxarifado de obra](/glossario/almoxarifado-de-obra) só fecha se o saldo não se mistura.
+
+### 2. Transfira no ato, não no grupo
+
+Quem carrega o aço registra origem, destino e quantidade. QR ou código de barras no fardo acelera. Sem “depois eu lanço no Excel da outra obra”.
+
+### 3. Confira na chegada
+
+A obra B confirma o que chegou. Divergência (saiu 20, chegaram 14) vira tarefa no mesmo dia — não surpresa no fechamento.
+
+### 4. Central não é consumo
+
+O que sai da central para o canteiro ainda é estoque da empresa. Consumo é a retirada para a frente de serviço. Misturar os dois infla o custo da obra errada.
+
+## Checklist de transferência
+
+- [ ] Cada canteiro (e a central) tem local próprio
+- [ ] Empréstimo entre obras vira transferência, não recado
+- [ ] Destino e quantidade no mesmo lançamento
+- [ ] Conferência na obra que recebe
+- [ ] Ferramenta que muda de canteiro também transfere — ver [controle de ferramentas](/blog/controle-ferramentas-obra-check-in-canteiro)
+- [ ] Almoxarife opera no celular, não só no escritório
+
+## Erros caros
+
+### “É tudo da construtora”
+
+Juridicamente, talvez. No custo da obra, não. Sem destino, o orçamento da casa 1 paga o aço da casa 2.
+
+### Baixar como saída e esquecer a entrada
+
+A obra A zera. A obra B ganha material “de graça”. Os dois relatórios mentem.
+
+### Transferir ferramenta como se fosse saco de cimento
+
+Aço consome. Furadeira tem que voltar. Movimento entre canteiros + check-in são coisas diferentes — os dois precisam existir.
+
+## Purple Stock nesse fluxo
+
+- Locais por obra e central
+- Transferência com histórico
+- Saldo por canteiro depois da movimentação
+- Vertical: [construção](/industrias/construction)
+- Irmão: [ferramentas de obra](/blog/controle-ferramentas-obra-check-in-canteiro)
+- Pilar: [almoxarifado de obra](/blog/almoxarifado-de-obra-controle-materiais-canteiro)
+
+## Quando a kombi deixa de servir
+
+- Duas obras ao mesmo tempo
+- Central abastecendo mais de um canteiro
+- Empréstimo semanal de aço, bloco ou tubo
+- Fechamento de obra com saldo que não existe
+- Engenheiro e almoxarife com números diferentes
+
+## Leituras complementares
+
+- [Almoxarifado de obra no canteiro](/blog/almoxarifado-de-obra-controle-materiais-canteiro)
+- [Controle de ferramentas de obra](/blog/controle-ferramentas-obra-check-in-canteiro)
+- [O que é almoxarifado de obra](/glossario/almoxarifado-de-obra)
+- [Erros comuns no almoxarifado](/blog/erros-comuns-no-almoxarifado)
+- [Planilha vs app de estoque](/blog/planilha-de-estoque-vs-app)
+
+## Conclusão
+
+Transferência entre canteiros ganha com **origem, destino e conferência**, não com recado na kombi. Comece pelo empréstimo que mais dói no fechamento: lance a movimentação no ato. O primeiro saldo da obra B que bate com o que chegou já paga o hábito.

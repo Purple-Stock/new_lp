@@ -22,7 +22,7 @@ import {
   HOME_PAGE_DESCRIPTION,
   HOME_PAGE_DOCUMENT_TITLE,
 } from "@/lib/seo-page-copy";
-import { getSiteUrl, SITE_NAME } from "@/lib/site";
+import { getSiteUrl, SITE_FAVICON_SVG_DATA_URL, SITE_NAME } from "@/lib/site";
 import { Merriweather, Poppins } from "next/font/google";
 import Script from "next/script";
 import type { Metadata } from "next";
@@ -84,9 +84,14 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/logo.png",
-        sizes: "512x512",
-        type: "image/png",
+        url: SITE_FAVICON_SVG_DATA_URL,
+        sizes: "32x32",
+        type: "image/svg+xml",
+      },
+      {
+        url: "/favicon.ico",
+        sizes: "32x32",
+        type: "image/x-icon",
       },
     ],
   },

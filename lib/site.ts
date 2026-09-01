@@ -30,6 +30,10 @@ export const SITE_LOGO_PATH = "/logo.png";
 export const SITE_LOGO_WIDTH = 512;
 export const SITE_LOGO_HEIGHT = 512;
 
+/** Same hexagon mark as the Purple Stock app favicon — not the rounded-square logo.png. */
+export const SITE_FAVICON_SVG_DATA_URL =
+  "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(16,16) scale(0.12)'%3E%3Cpath fill='%237D3C98' d='M0,-100 L86,-50 L86,50 L0,100 L-86,50 L-86,-50 Z'/%3E%3Cpath fill='white' d='M30,-50 L-15,10 H15 L-10,55 L40,0 H15 Z'/%3E%3C/g%3E%3C/svg%3E";
+
 export const SITE_CONTACT = {
   email: "matheus.puppe@purplestock.com.br",
   phone: "+55-11-99559-7242",

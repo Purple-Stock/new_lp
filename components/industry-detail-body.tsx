@@ -2,7 +2,12 @@ import Link from "next/link";
 import { Check, QrCode, ScanLine, Star, TrendingUp } from "lucide-react";
 import type { IndustryRecord } from "@/lib/industries-data";
 import type { IndustrySocialProof } from "@/data/industry-social-proof";
-import { isEquipmentIndustry } from "@/lib/industry-detail-helpers";
+import {
+  isEquipmentIndustry,
+  resolveImplantHeadline,
+  resolveImplantSubhead,
+  resolveIndustryRelatedPosts,
+} from "@/lib/industry-detail-helpers";
 import {
   Accordion,
   AccordionContent,
@@ -22,6 +27,7 @@ export function IndustryDetailBody({
   proof,
 }: IndustryDetailBodyProps) {
   const isEquipmentVertical = isEquipmentIndustry(industry.slug);
+  const relatedPosts = resolveIndustryRelatedPosts(proof);
 
   return (
     <>
@@ -81,12 +87,10 @@ export function IndustryDetailBody({
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
             <h2 className="ps-display text-3xl md:text-4xl">
-              Como implantar em {industry.name}
+              {resolveImplantHeadline(industry)}
             </h2>
             <p className="ps-lead mx-auto mt-3 max-w-2xl text-lg">
-              {isEquipmentVertical
-                ? "Fluxo de check-in/check-out sem travar o fim de semana de jobs."
-                : "Um fluxo simples para sair da planilha sem travar a operação."}
+              {resolveImplantSubhead(industry.slug, isEquipmentVertical)}
             </p>
           </div>
 
@@ -114,16 +118,35 @@ export function IndustryDetailBody({
             })}
           </div>
 
-          {proof.relatedBlogHref && proof.relatedBlogLabel ? (
+          {relatedPosts.length === 1 ? (
             <p className="mt-8 text-center text-sm text-slate-600">
               Guia completo:{" "}
               <Link
-                href={proof.relatedBlogHref}
+                href={relatedPosts[0].href}
                 className="ps-link-editorial font-semibold"
               >
-                {proof.relatedBlogLabel}
+                {relatedPosts[0].label}
               </Link>
             </p>
+          ) : null}
+          {relatedPosts.length > 1 ? (
+            <div className="mt-8 text-center">
+              <p className="text-sm font-semibold text-brand-ink">
+                Guias deste setor
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-slate-600">
+                {relatedPosts.map((post) => (
+                  <li key={post.href}>
+                    <Link
+                      href={post.href}
+                      className="ps-link-editorial font-semibold"
+                    >
+                      {post.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ) : null}
         </div>
       </section>

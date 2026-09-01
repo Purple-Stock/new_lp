@@ -5,6 +5,8 @@ export type IndustryRecord = {
   description: string;
   /** Optional SERP/page H1 when name is too short for long-tail queries. */
   seoHeadline?: string;
+  /** Descriptive alt for the hero image; falls back to name. */
+  imageAlt?: string;
   benefits: string[];
   features: string[];
 };
@@ -16,7 +18,7 @@ export const industryStats: Record<string, { value: string; label: string }> = {
   food: { value: "60%", label: "Redução de perdas" },
   pharmaceutical: { value: "45%", label: "Melhoria na precisão" },
   automotivo: { value: "35%", label: "Menos ruptura de peça" },
-  construction: { value: "55%", label: "Redução de desperdícios" },
+  construction: { value: "Obra", label: "Saldo por canteiro" },
   technology: { value: "40%", label: "Aumento de produtividade" },
   audiovisual: { value: "QR", label: "Check-in no set" },
   events: { value: "Carga", label: "Conferência na descarga" },
@@ -248,21 +250,31 @@ export const industriesData: IndustryRecord[] = [
     name: "Construção",
     slug: "construction",
     image: "/images/building-800x600.webp",
+    imageAlt: "Canteiro de obras com materiais de construção no almoxarifado",
+    seoHeadline: "Almoxarifado de obra: materiais e ferramentas com QR Code",
     description:
-      "Gerencie materiais de construção, ferramentas e equipamentos com o Purple Stock. Nossa solução é ideal para construtoras e empresas do setor.",
+      "Almoxarifado de obra é o estoque do canteiro: materiais, ferramentas e EPI ligados a uma obra, não a uma loja. Construtoras e empreiteiras usam o Purple Stock para registrar entrada, retirada com responsável e conferência no celular — e parar de perder item na planilha.",
     benefits: [
-      "Controle de materiais por obra ou projeto",
-      "Rastreamento de ferramentas e equipamentos",
-      "Redução de perdas e desperdícios",
-      "Planejamento eficiente de compras",
-      "Gestão de fornecedores e entregas",
+      "Saldo de materiais por obra e canteiro",
+      "Ferramentas e equipamentos com responsável",
+      "Menos desperdício, sobra e compra emergencial",
+      "Transferência entre obras sem sumiço",
+      "Conferência da entrega do fornecedor",
+      "EPI e itens críticos com histórico",
+      "Operação no celular no canteiro",
+      "Trilha de quem retirou o quê",
     ],
     features: [
-      "Alocação de materiais por projeto",
-      "Controle de empréstimo de ferramentas",
-      "Gestão de estoque em canteiros de obras",
-      "Relatórios de consumo por fase da obra",
-      "Integração com sistemas de orçamento",
+      "Cadastro por categoria (cimento, aço, hidráulica, ferramenta, EPI)",
+      "Locais separados: central e cada canteiro",
+      "Entrada com leitura de QR Code ou código de barras",
+      "Retirada de material com responsável",
+      "Check-in de ferramenta no retorno ao almoxarifado",
+      "Transferência de saldo entre obras",
+      "Alertas de estoque baixo no canteiro",
+      "Histórico completo de movimentações",
+      "Multi-usuário para almoxarife, engenheiro e encarregado",
+      "App mobile para o dia a dia da obra",
     ],
   },
   {
@@ -513,6 +525,7 @@ export const INDEXABLE_INDUSTRY_SLUGS = [
   "telecomunicacoes",
   "odontologico",
   "automotivo",
+  "construction",
 ] as const;
 
 export function isIndexableIndustry(slug: string): boolean {
@@ -528,7 +541,7 @@ const RELATED_INDUSTRY_PREFS: Record<string, string[]> = {
   pharmaceutical: ["odontologico", "telecomunicacoes", "technology"],
   technology: ["telecomunicacoes", "audiovisual", "electrical"],
   electrical: ["telecomunicacoes", "construction", "technology"],
-  construction: ["events", "telecomunicacoes", "automotivo"],
+  construction: ["electrical", "manufatura", "events"],
   automotivo: ["varejo", "commerce", "electrical"],
   varejo: ["automotivo", "commerce", "food"],
   commerce: ["automotivo", "varejo", "technology"],

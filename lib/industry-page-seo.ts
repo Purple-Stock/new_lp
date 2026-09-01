@@ -54,6 +54,11 @@ export const INDUSTRY_SERP_COPY_BY_SLUG: Record<string, IndustrySerpCopy> = {
     description:
       "Controle equipamentos, componentes e ferramentas do setor elétrico com mais rastreabilidade e eficiência operacional.",
   },
+  construction: {
+    title: "Almoxarifado de Obra: Materiais e Ferramentas com QR Code",
+    description:
+      "Controle de materiais de construção por obra e canteiro. QR Code no celular: entrada, retirada e conferência sem planilha. Teste grátis Purple Stock.",
+  },
 };
 
 export function getIndustrySerpCopy(

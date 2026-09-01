@@ -47,6 +47,7 @@ PurpleStock é uma solução de gestão de estoque que oferece controle em tempo
 - [Odontológico](/industrias/odontologico): Equipamentos dentários, kits e instrumentais com check-in/check-out
 - [Telecomunicações](/industrias/telecomunicacoes): ONT, rádio e kits de campo com check-in/check-out para ISPs
 - [Autopeças e Motos](/industrias/automotivo): Estoque para lojas de peças de carro e moto
+- [Construção](/industrias/construction): Almoxarifado de obra — materiais, ferramentas e EPI por canteiro com QR Code
 
 ## Recursos e Ferramentas
 

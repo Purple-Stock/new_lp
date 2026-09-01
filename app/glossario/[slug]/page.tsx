@@ -30,6 +30,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { GlossaryRelatedPosts } from "@/components/glossary-related-posts";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -187,6 +188,7 @@ export default async function GlossaryTermPage({ params }: PageProps) {
   const hasRelatedTerms = relatedTermsData.length > 0;
   const hasRelatedFeatures = (term.relatedFeatures?.length ?? 0) > 0;
   const hasRelatedIndustries = (term.relatedIndustries?.length ?? 0) > 0;
+  const relatedPosts = term.relatedPosts ?? [];
 
   // FAQ stays visible in the page body; FAQPage JSON-LD is omitted
   // (rich results largely limited outside gov/health).
@@ -359,6 +361,8 @@ export default async function GlossaryTermPage({ params }: PageProps) {
             </div>
           </section>
         )}
+
+        <GlossaryRelatedPosts posts={relatedPosts} />
 
         {/* Indústrias relacionadas */}
         {hasRelatedIndustries && (

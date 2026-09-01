@@ -29,6 +29,10 @@ export function buildGlossaryTermTitle(termName: string, slug: string): string {
     return "Quantidade Mínima de Pedido (MOQ): o que é | Purple Stock";
   }
 
+  if (slug === "almoxarifado-de-obra") {
+    return "Almoxarifado de Obra: o que é | Purple Stock";
+  }
+
   const suffix = ": o que é e quando usar | Purple Stock";
   const maxTitleLength = 60;
   if (termName.length + suffix.length <= maxTitleLength + 20) {
@@ -41,6 +45,12 @@ export function buildGlossaryTermDescription(term: GlossaryTerm): string {
   if (term.slug === "quantidade-minima-pedido") {
     return truncateMetaDescription(
       "O que é quantidade mínima de pedido (MOQ)? Definição, diferença para EOQ e como cadastrar no estoque para não imobilizar capital."
+    );
+  }
+
+  if (term.slug === "almoxarifado-de-obra") {
+    return truncateMetaDescription(
+      "O que é almoxarifado de obra? Estoque do canteiro: materiais, ferramentas e EPI por obra, com entrada, retirada e conferência no celular."
     );
   }
 

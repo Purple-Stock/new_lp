@@ -1,3 +1,5 @@
+import { CONSTRUCTION_PROOF } from "@/data/industry-proof-construction";
+
 export type IndustryCaseStudy = {
   role: string;
   companyType: string;
@@ -31,6 +33,7 @@ export type IndustrySocialProof = {
   faqs: IndustryFaqItem[];
   relatedBlogHref?: string;
   relatedBlogLabel?: string;
+  relatedPosts?: { href: string; label: string }[];
 };
 
 const DEFAULT_PROOF: IndustrySocialProof = {
@@ -254,6 +257,7 @@ const DENTAL_EQUIPMENT_PROOF: IndustrySocialProof = {
 };
 
 const PROOF_BY_SLUG: Record<string, IndustrySocialProof> = {
+  construction: CONSTRUCTION_PROOF,
   audiovisual: {
     ...EQUIPMENT_VERTICAL_PROOF,
     proofHeadline: "Produtoras e locadoras no mesmo fluxo",

@@ -10,7 +10,8 @@ export type EditorialItem = {
     | "audiovisual-eventos"
     | "odontologico"
     | "telecomunicacoes"
-    | "autopecas";
+    | "autopecas"
+    | "construcao";
   primaryKeyword: string;
 };
 
@@ -51,6 +52,27 @@ export const EDITORIAL_CALENDAR: EditorialItem[] = [
     targetDate: "2026-07-22",
     cluster: "autopecas",
     primaryKeyword: "estoque autopeças peças de moto",
+  },
+  {
+    slug: "almoxarifado-de-obra-controle-materiais-canteiro",
+    title: "Almoxarifado de Obra: Controle de Materiais no Canteiro",
+    targetDate: "2026-09-01",
+    cluster: "construcao",
+    primaryKeyword: "almoxarifado de obra",
+  },
+  {
+    slug: "controle-ferramentas-obra-check-in-canteiro",
+    title: "Controle de Ferramentas de Obra com Check-in no Canteiro",
+    targetDate: "2026-09-02",
+    cluster: "construcao",
+    primaryKeyword: "controle de ferramentas de obra",
+  },
+  {
+    slug: "transferencia-materiais-entre-canteiros",
+    title: "Transferência de Materiais entre Canteiros de Obra",
+    targetDate: "2026-09-03",
+    cluster: "construcao",
+    primaryKeyword: "transferência de materiais entre canteiros",
   },
   {
     slug: "inventario-fisico-passo-a-passo-2026",

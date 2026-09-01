@@ -1,4 +1,5 @@
 import type { GlossaryTerm } from "./types";
+import { CONSTRUCTION_CLUSTER_POSTS } from "@/lib/construction-cluster";
 
 /** Glossary terms — category `inventory`. */
 export const glossaryTermsInventory: GlossaryTerm[] = [
@@ -452,5 +453,40 @@ export const glossaryTermsInventory: GlossaryTerm[] = [
     ],
     relatedFeatures: ["purchase-sales", "inventory-control"],
     relatedIndustries: ["manufatura", "varejo", "atacado"],
+  },
+  {
+    slug: "almoxarifado-de-obra",
+    term: "Almoxarifado de Obra",
+    category: "inventory",
+    shortDefinition:
+      "Almoxarifado de obra é o estoque do canteiro: materiais, ferramentas e EPI ligados a uma obra, com entrada da entrega, retirada com responsável e conferência do que sobrou ou sumiu.",
+    definition:
+      "Almoxarifado de obra é o ponto de controle físico do canteiro. Diferente do estoque de uma loja — onde o item espera na prateleira até a venda — na construção o material entra na entrega do fornecedor, sai para a frente de serviço e, no caso de ferramenta, precisa voltar.\n\nO almoxarifado de obra responde três perguntas o tempo todo: o que tem neste canteiro, quem retirou e para qual frente, e o que faltou ou mudou de obra. Sem isso, o engenheiro opera com saldo de planilha, o almoxarife com caderno e o encarregado com memória.\n\nNa prática, cada obra (ou centro de custo) funciona como um local. Pode existir ainda um depósito central que transfere para os canteiros. Entrada confere nota × físico. Saída registra responsável. Ferramenta cara ganha etiqueta e check-in no retorno. Material de consumo (cimento, bloco, tubo) baixa na retirada e não “volta” — a menos que sobre e retorne à central.\n\nO erro clássico é tratar o canteiro como loja ou como ERP de construtora no dia um. O fluxo operacional cabe em um sistema de estoque com QR Code no celular: local por obra, leitura na entrada, responsável na saída. Orçamento, medição e fiscal podem continuar no sistema que a empresa já usa.",
+    example:
+      "Uma construtora pequena tocava duas casas ao mesmo tempo. O cimento “tinha na planilha” da obra A, mas a saca tinha ido para a obra B na kombi, sem lançamento. A frente parou, o encarregado comprou emergencial no depósito da esquina e o custo sumiu do orçamento. Depois de cadastrar cada casa como local, ler a entrega e exigir responsável na retirada, a transferência entre obras apareceu no histórico. A compra emergencial caiu e a furadeira deixou de “sumir” no fim do expediente.",
+    faq: [
+      {
+        question: "Almoxarifado de obra é a mesma coisa que estoque de loja?",
+        answer:
+          "Não. Na loja o item espera a venda. No canteiro ele circula: entra na entrega, sai para a frente de serviço e a ferramenta precisa voltar. O controle é por obra e por responsável, não só por SKU.",
+      },
+      {
+        question: "Por onde começar o almoxarifado de uma construtora pequena?",
+        answer:
+          "Separe cada obra como local, cadastre o que para o serviço e o que dói perder, leia a entrada do fornecedor e registre a retirada com nome. Ferramenta cara ganha etiqueta; consumível ganha quantidade e mínimo.",
+      },
+      {
+        question: "Preciso de um ERP de construtora para controlar o canteiro?",
+        answer:
+          "Não no primeiro dia. O canteiro precisa de saldo por obra, histórico de quem retirou e conferência no celular. ERP cobre orçamento, medição e fiscal — outra camada, outro momento.",
+      },
+    ],
+    relatedTerms: ["inventario-fisico", "sku", "ruptura-de-estoque"],
+    relatedFeatures: ["inventory-control", "qr-code-management"],
+    relatedIndustries: ["construction", "electrical"],
+    relatedPosts: CONSTRUCTION_CLUSTER_POSTS.map((post) => ({
+      slug: post.slug,
+      label: post.label,
+    })),
   },
 ];

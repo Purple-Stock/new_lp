@@ -85,7 +85,7 @@ export function IndustryDetailFooter({
                 <div className="relative h-36 w-full">
                   <Image
                     src={related.image}
-                    alt={related.name}
+                    alt={related.imageAlt ?? related.name}
                     fill
                     className="object-cover transition group-hover:scale-105"
                   />

@@ -4,8 +4,9 @@ import { ArrowLeft, ArrowRight, Box, Star, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { IndustryRecord } from "@/lib/industries-data";
 import {
-  isEquipmentIndustry,
-  resolveEquipmentAudience,
+  resolveHeroAudienceLine,
+  resolveHeroBadge,
+  resolveHeroChromeLabel,
 } from "@/lib/industry-detail-helpers";
 
 type IndustryDetailHeroProps = {
@@ -17,7 +18,9 @@ export function IndustryDetailHero({
   industry,
   heroStat,
 }: IndustryDetailHeroProps) {
-  const isEquipmentVertical = isEquipmentIndustry(industry.slug);
+  const audienceLine = resolveHeroAudienceLine(industry.slug);
+  const heroBadge = resolveHeroBadge(industry.slug);
+  const chromeLabel = resolveHeroChromeLabel(industry.slug);
 
   return (
     <section className="pb-8">
@@ -40,16 +43,14 @@ export function IndustryDetailHero({
             </div>
 
             <span className="text-[10px] font-medium text-slate-400">
-              {isEquipmentVertical
-                ? "Vertical de alta conversão"
-                : "Solução especializada"}
+              {chromeLabel}
             </span>
           </div>
 
           <div className="relative aspect-[4/3] overflow-hidden sm:aspect-auto sm:h-[360px] lg:h-[420px]">
             <Image
               src={industry.image || "/placeholder.svg"}
-              alt={industry.name}
+              alt={industry.imageAlt ?? industry.name}
               fill
               sizes="(max-width: 640px) 100vw, 1152px"
               className="object-cover"
@@ -80,9 +81,7 @@ export function IndustryDetailHero({
 
                 <div className="ps-badge-violet mb-3 hidden items-center border-white/20 bg-white/15 px-4 py-2 text-sm normal-case tracking-normal text-white sm:inline-flex">
                   <Star className="mr-2 h-4 w-4" />
-                  {isEquipmentVertical
-                    ? "Check-in / check-out com QR Code"
-                    : "Solução especializada"}
+                  {heroBadge}
                 </div>
 
                 <h1 className="ps-display max-w-4xl text-2xl leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
@@ -103,9 +102,9 @@ export function IndustryDetailHero({
         <div className="ps-panel mt-6 overflow-hidden">
           <div className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <p className="text-sm text-slate-600">
-              {isEquipmentVertical ? (
+              {audienceLine ? (
                 <>
-                  {resolveEquipmentAudience(industry.slug)} · Plano{" "}
+                  {audienceLine} · Plano{" "}
                   <Link
                     href="/precos"
                     className="ps-link-editorial font-semibold"

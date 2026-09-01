@@ -33,7 +33,7 @@ export const INDUSTRIES_PAGE_TITLE =
   "Sistema de Estoque por Setor | Fluxos por Indústria";
 
 export const INDUSTRIES_PAGE_DESCRIPTION =
-  "Controle de estoque e equipamentos com QR Code por setor: audiovisual, eventos, telecom, odontologia e indústria. Check-in/check-out e menos perda.";
+  "Controle de estoque com QR Code por setor: construção civil, audiovisual, eventos e telecom. Almoxarifado de obra no canteiro, check-in e menos perda.";
 
 export const PRICING_PAGE_TITLE = `Preço: R$ 59 por equipe · ${TEAM_PLAN_TRIAL_DAYS} dias grátis`;
 

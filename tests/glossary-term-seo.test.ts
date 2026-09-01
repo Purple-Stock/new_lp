@@ -51,6 +51,15 @@ test("buildGlossaryTermTitle special-cases quantidade-minima-pedido for GSC", ()
   assert.match(title, /o que é/i);
 });
 
+test("buildGlossaryTermTitle special-cases almoxarifado-de-obra", () => {
+  const title = buildGlossaryTermTitle(
+    "Almoxarifado de Obra",
+    "almoxarifado-de-obra"
+  );
+  assert.match(title, /Almoxarifado de Obra/i);
+  assert.match(title, /o que é/i);
+});
+
 test("buildGlossaryTermTitle uses default suffix for other terms", () => {
   const title = buildGlossaryTermTitle("SKU", "sku");
   assert.equal(title, "SKU: o que é e quando usar | Purple Stock");
@@ -66,6 +75,18 @@ test("buildGlossaryTermDescription prefers MOQ SERP copy", () => {
   );
   assert.match(description, /quantidade mínima de pedido/i);
   assert.match(description, /EOQ/i);
+});
+
+test("buildGlossaryTermDescription prefers almoxarifado de obra SERP copy", () => {
+  const description = buildGlossaryTermDescription(
+    stubTerm({
+      slug: "almoxarifado-de-obra",
+      term: "Almoxarifado de Obra",
+      shortDefinition: "should not win for this slug",
+    })
+  );
+  assert.match(description, /almoxarifado de obra/i);
+  assert.match(description, /canteiro/i);
 });
 
 test("buildGlossaryTermDescription falls back to shortDefinition", () => {

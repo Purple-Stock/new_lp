@@ -7,6 +7,10 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { trackSeoCtaClick } from "@/lib/analytics";
 import { buildWhatsAppUrl } from "@/lib/contact";
+import {
+  CONSTRUCTION_CLUSTER_POSTS,
+  CONSTRUCTION_INDUSTRY_HREF,
+} from "@/lib/construction-cluster";
 
 const checklist = [
   "Padronizar cadastro de itens com SKU, unidade e localização",
@@ -28,6 +32,10 @@ const faqs = [
   {
     q: "Em quanto tempo dá para ver resultado?",
     a: "As primeiras semanas já mostram ganho em acuracidade de saldo e redução de perdas por ruptura.",
+  },
+  {
+    q: "Serve para almoxarifado de obra e canteiro?",
+    a: "Sim. Construtora e empreiteira tratam cada obra como um local: entrada da entrega, retirada com responsável e transferência entre canteiros. Veja a vertical de construção e o guia de almoxarifado de obra.",
   },
 ];
 
@@ -89,6 +97,13 @@ export default function ControleAlmoxarifadoPage() {
             Também pode comparar opções por setor em{" "}
             <Link href="/industrias" className="font-semibold underline">
               /industrias
+            </Link>
+            , o fluxo de{" "}
+            <Link
+              href={CONSTRUCTION_INDUSTRY_HREF}
+              className="font-semibold underline"
+            >
+              almoxarifado de obra
             </Link>{" "}
             e preço em{" "}
             <Link href="/precos" className="font-semibold underline">
@@ -143,6 +158,13 @@ export default function ControleAlmoxarifadoPage() {
                   >
                     /industrias
                   </Link>
+                  , inclusive{" "}
+                  <Link
+                    href={CONSTRUCTION_INDUSTRY_HREF}
+                    className="font-semibold text-purple-700"
+                  >
+                    almoxarifado de obra
+                  </Link>
                 </li>
                 <li>
                   2. Validar custo de implantação em{" "}
@@ -175,6 +197,21 @@ export default function ControleAlmoxarifadoPage() {
             </article>
           ))}
         </div>
+        <p className="mt-8 text-sm text-gray-600">
+          Guias de canteiro:{" "}
+          {CONSTRUCTION_CLUSTER_POSTS.map((post, index) => (
+            <span key={post.slug}>
+              {index > 0 ? " · " : null}
+              <Link
+                href={post.href}
+                className="font-semibold text-purple-700 hover:underline"
+              >
+                {post.label}
+              </Link>
+            </span>
+          ))}
+          .
+        </p>
       </section>
 
       <Footer />

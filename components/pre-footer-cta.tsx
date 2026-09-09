@@ -142,10 +142,10 @@ export function PreFooterCTA() {
 
             <p className="mt-4 text-sm text-slate-500">
               {language === "pt"
-                ? "Sem cartão de crédito • Cancelamento a qualquer momento • Suporte completo incluído"
+                ? "Sem fidelidade • Cancele quando quiser • Conversa em português"
                 : language === "en"
-                  ? "No credit card • Cancel anytime • Full support included"
-                  : "Pas de carte de crédit • Annulation à tout moment • Support complet inclus"}
+                  ? "No lock-in • Cancel anytime • Talk to the team first"
+                  : "Sans engagement • Annulation à tout moment • Parlez d'abord à l'équipe"}
             </p>
           </div>
 

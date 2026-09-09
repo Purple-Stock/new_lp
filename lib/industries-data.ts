@@ -58,7 +58,7 @@ export const industriesData: IndustryRecord[] = [
       "Transforme sua operação de varejo com o Purple Stock. Nossa plataforma oferece as ferramentas necessárias para gerenciar seu estoque com precisão e atender seus clientes com eficiência.",
     benefits: [
       "Controle de estoque em tempo real",
-      "Integração com PDV e e-commerce",
+      "Saldo no celular para o time da loja",
       "Gestão de promoções e descontos",
       "Análise de tendências de vendas",
       "Experiência de compra aprimorada para clientes",
@@ -153,7 +153,7 @@ export const industriesData: IndustryRecord[] = [
       "Gestão de coleções sazonais",
       "Rastreamento de tendências de vendas",
       "Redução de sobras de estoque",
-      "Integração com e-commerce de moda",
+      "Controle de variação (tamanho e cor) no estoque",
     ],
     features: [
       "Matriz de tamanhos e cores",
@@ -395,7 +395,7 @@ export const industriesData: IndustryRecord[] = [
       "Escaneamento rápido de produtos",
       "Gestão de preços e promoções",
       "Relatórios de vendas e estoque",
-      "Integração com sistemas de PDV",
+      "Leitura de código no recebimento e na saída",
     ],
   },
   {

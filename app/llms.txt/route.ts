@@ -14,8 +14,8 @@ export async function GET() {
 
 ## Sobre
 
-- [Início](/): Sistema de estoque com QR Code no celular, a partir de R$ 59 por equipe.
-- [Indústrias](/industrias): Verticais de equipamentos e saldo para PME.
+- [Início](/): Controle de estoque e equipamentos com QR no celular, a partir de R$ 59 por equipe.
+- [Indústrias](/industrias): Audiovisual, eventos, telecom, odontológico, autopeças e almoxarifado de obra.
 
 PurpleStock é uma solução de gestão de estoque que oferece controle em tempo real, rastreamento de produtos, gestão de equipamentos com QR Code e histórico de movimentação.
 

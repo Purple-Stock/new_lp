@@ -247,6 +247,13 @@ export function Navbar() {
                   {t.industries}
                 </Link>
                 <Link
+                  href="/precos"
+                  className="flex items-center px-3 py-2 text-[13px] text-white/90 hover:bg-[#0058d0] hover:text-white transition-colors mx-1 rounded-[3px]"
+                  onClick={closeMobileMenu}
+                >
+                  {t.pricing}
+                </Link>
+                <Link
                   href="/blog"
                   className="flex items-center px-3 py-2 text-[13px] text-white/90 hover:bg-[#0058d0] hover:text-white transition-colors mx-1 rounded-[3px]"
                   onClick={closeMobileMenu}
@@ -262,7 +269,7 @@ export function Navbar() {
                 </Link>
                 <Link
                   href="/codigo-de-barras-gratis"
-                  className="flex items-center px-3 py-2 text-[13px] text-violet-300 hover:bg-[#0058d0] hover:text-white transition-colors mx-1 rounded-[3px]"
+                  className="flex items-center px-3 py-2 text-[13px] text-white/90 hover:bg-[#0058d0] hover:text-white transition-colors mx-1 rounded-[3px]"
                   onClick={closeMobileMenu}
                 >
                   {t.freeBarcode}
@@ -319,6 +326,14 @@ export function Navbar() {
                       {item.label}
                     </Link>
                   ))}
+                  <div className="h-px bg-white/10 my-1 mx-3" />
+                  <Link
+                    href="/codigo-de-barras-gratis"
+                    className="flex items-center px-3 py-1 text-[13px] text-white/90 hover:bg-[#0058d0] hover:text-white transition-colors mx-1 rounded-[3px]"
+                    onClick={() => setFeaturesOpen(false)}
+                  >
+                    {t.freeBarcode}
+                  </Link>
                 </div>
               )}
             </div>
@@ -328,6 +343,12 @@ export function Navbar() {
               className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
             >
               {t.industries}
+            </Link>
+            <Link
+              href="/precos"
+              className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
+            >
+              {t.pricing}
             </Link>
             <Link
               href="/blog"
@@ -340,12 +361,6 @@ export function Navbar() {
               className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
             >
               {documentationLabel}
-            </Link>
-            <Link
-              href="/codigo-de-barras-gratis"
-              className="px-3 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors text-violet-300"
-            >
-              {t.freeBarcode}
             </Link>
           </nav>
         </div>

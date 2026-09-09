@@ -24,7 +24,7 @@ export function getSiteUrl(): string {
 export const SITE_NAME = "Purple Stock";
 
 export const SITE_DESCRIPTION =
-  "Sistema de estoque com QR Code no celular: menos erro de saldo, rastreio por item. Teste 7 dias · a partir de R$ 59 por equipe para PME.";
+  "Controle de estoque e equipamentos com QR no celular: check-in, almoxarifado e saldo por item. 7 dias grátis · a partir de R$ 59 por equipe.";
 
 export const SITE_LOGO_PATH = "/logo.png";
 export const SITE_LOGO_WIDTH = 512;

@@ -15,8 +15,8 @@ test("getLandingPlaybook returns PT how-it-works content", () => {
 });
 
 test("getLandingPrimaryHeroCta switches pain vs default", () => {
-  assert.match(getLandingPrimaryHeroCta("pt", false), /teste grátis/i);
-  assert.match(getLandingPrimaryHeroCta("pt", true), /perder vendas/i);
+  assert.match(getLandingPrimaryHeroCta("pt", false), /encaixa/i);
+  assert.match(getLandingPrimaryHeroCta("pt", true), /perder item/i);
 });
 
 test("getLandingRotatingSectors includes audiovisual-adjacent sectors", () => {

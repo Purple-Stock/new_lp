@@ -26,7 +26,7 @@ test("buildOrganizationSchema includes sameAs and ImageObject logo", () => {
 test("buildWebSiteSchema does not advertise a fake SearchAction", () => {
   const schema = buildWebSiteSchema();
   assert.equal(schema["@type"], "WebSite");
-  assert.equal(schema.potentialAction, undefined);
+  assert.equal("potentialAction" in schema, false);
 });
 
 test("buildHomePageGraph returns WebPage and SoftwareApplication without FAQPage", () => {

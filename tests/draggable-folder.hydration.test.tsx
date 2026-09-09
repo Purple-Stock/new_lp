@@ -28,11 +28,8 @@ function setupDom(serverHtml: string) {
     `<!DOCTYPE html><html><body><div id="root">${serverHtml}</div></body></html>`,
     { url: "http://localhost" }
   );
-  // @ts-expect-error assigning jsdom globals
   global.document = dom.window.document;
-  // @ts-expect-error assigning jsdom globals
-  global.window = dom.window;
-  // @ts-expect-error assigning jsdom globals
+  global.window = dom.window as unknown as typeof global.window;
   global.localStorage = dom.window.localStorage;
   return dom;
 }

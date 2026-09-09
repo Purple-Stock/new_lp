@@ -292,15 +292,15 @@ export function getLandingPrimaryHeroCta(
 ): string {
   if (language === "pt") {
     return usePainCta
-      ? "Quero parar de perder vendas agora"
-      : "Começar teste grátis de 7 dias";
+      ? "Quero parar de perder item agora"
+      : "Ver se encaixa na minha operação";
   }
   if (language === "fr") {
     return usePainCta
-      ? "Je veux arreter de perdre des ventes maintenant"
-      : "Commencer l'essai gratuit de 7 jours";
+      ? "Je veux arreter de perdre du materiel maintenant"
+      : "Voir si ca convient a mon operation";
   }
   return usePainCta
-    ? "I want to stop losing sales now"
-    : "Start 7-day free trial";
+    ? "I want to stop losing gear now"
+    : "See if it fits my operation";
 }

@@ -11,6 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { trackCtaClick } from "@/lib/analytics";
+import { buildWhatsAppUrl } from "@/lib/contact";
 import {
   TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN,
   TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
@@ -107,18 +108,50 @@ export function DesktopLandingHero({
             size="lg"
             className="ps-btn-primary w-full whitespace-normal px-8 py-6 text-base sm:w-auto"
           >
-            <Link
-              href="https://app.purplestock.com.br/"
+            <a
+              href={buildWhatsAppUrl(
+                pick(
+                  language,
+                  "Olá! Quero entender se o Purple Stock serve para minha operação.",
+                  "Hi! I want to see if Purple Stock fits my operation.",
+                  "Bonjour! Je veux voir si Purple Stock convient a mon operation."
+                )
+              )}
               onClick={() =>
                 trackCtaClick({
-                  cta_name: "desktop_trial_primary",
-                  cta_target: "app",
+                  cta_name: "desktop_whatsapp_primary",
+                  cta_target: "whatsapp",
                   page_section: "hero_cta",
                   cta_variant: usePainCta ? "pain" : "default",
                 })
               }
             >
               {primaryHeroCta}
+            </a>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="ps-btn-outline w-full whitespace-normal px-8 py-6 text-base sm:w-auto"
+          >
+            <Link
+              href="https://app.purplestock.com.br/"
+              onClick={() =>
+                trackCtaClick({
+                  cta_name: "desktop_trial_secondary",
+                  cta_target: "app",
+                  page_section: "hero_cta",
+                  cta_variant: usePainCta ? "pain" : "default",
+                })
+              }
+            >
+              {pick(
+                language,
+                `Testar ${TEAM_PLAN_TRIAL_DAYS} dias`,
+                `Try ${TEAM_PLAN_TRIAL_DAYS} days`,
+                `Essayer ${TEAM_PLAN_TRIAL_DAYS} jours`
+              )}
             </Link>
           </Button>
         </div>
@@ -133,9 +166,9 @@ export function DesktopLandingHero({
         <p className="text-sm text-slate-500">
           {pick(
             language,
-            "Teste com cartão de crédito • Cancele quando quiser • Setup guiado",
-            "Trial with credit card • Cancel anytime • Guided setup",
-            "Essai avec carte bancaire • Annulation a tout moment • Setup guide"
+            "Sem fidelidade • Cancele quando quiser • Conversa em português",
+            "No lock-in • Cancel anytime • Talk to the team first",
+            "Sans engagement • Annulation a tout moment • Parlez d'abord a l'equipe"
           )}
         </p>
         <div className="mx-auto mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
@@ -169,9 +202,9 @@ export function DesktopLandingHero({
                   src="/images/app-items-list-1200.webp"
                   alt={pick(
                     language,
-                    "Interface do Purple Stock - Lista de Itens",
-                    "Purple Stock Interface - Items List",
-                    "Interface Purple Stock - Liste des Articles"
+                    "Tela do Purple Stock com lista de itens, QR Code, SKU e saldo",
+                    "Purple Stock item list with QR code, SKU and on-hand quantity",
+                    "Liste d'articles Purple Stock avec QR code, SKU et stock"
                   )}
                   width={1200}
                   height={673}

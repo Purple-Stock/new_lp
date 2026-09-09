@@ -22,6 +22,10 @@ test("pages sitemap omits noindex tags and the blog hub", async () => {
     urls.includes("https://www.purplestock.com.br/industrias/audiovisual")
   );
   assert.ok(!urls.includes("https://www.purplestock.com.br/industrias/beauty"));
+  assert.ok(!urls.includes("https://www.purplestock.com.br/industrias/varejo"));
+  assert.ok(
+    !urls.includes("https://www.purplestock.com.br/industrias/restaurantes")
+  );
   assert.ok(
     !urls.includes("https://www.purplestock.com.br/features/warehouse-control")
   );

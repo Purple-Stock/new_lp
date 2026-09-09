@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackSeoCtaClick } from "@/lib/analytics";
+import { isIndexableIndustry } from "@/lib/industries-data";
 
 type IndustryId =
   | "varejo"
@@ -171,10 +172,10 @@ const industries: Industry[] = [
     color: "text-blue-600",
     gradient: "from-blue-500 to-blue-600",
     description:
-      "Otimize suas operações de varejo com controle de estoque em tempo real e integração com PDV.",
+      "Otimize suas operações de varejo com controle de estoque em tempo real no celular.",
     benefits: [
       "Controle em tempo real",
-      "Integração PDV",
+      "Saldo no celular",
       "Gestão de promoções",
       "Análise de vendas",
     ],
@@ -317,6 +318,10 @@ const industries: Industry[] = [
   },
 ];
 
+const featuredIndustries = industries.filter((industry) =>
+  isIndexableIndustry(industry.id)
+);
+
 const industryNames: Record<IndustryId, string> = {
   varejo: "Controle de Estoque para Varejo",
   manufatura: "Controle de Estoque para Manufatura",
@@ -369,11 +374,11 @@ export default function IndustriasPage() {
     "@type": "CollectionPage",
     name: "Solucoes por Setor | Purple Stock",
     description:
-      "Pagina com solucoes de controle de estoque por setor, incluindo industria, varejo, logistica, restaurantes e audiovisual.",
+      "Pagina com solucoes de controle de estoque por setor: audiovisual, eventos, telecom, odontologico, autopecas e almoxarifado de obra.",
     url: "https://www.purplestock.com.br/industrias",
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: industries.map((industry, index) => ({
+      itemListElement: featuredIndustries.map((industry, index) => ({
         "@type": "ListItem",
         position: index + 1,
         url: `https://www.purplestock.com.br/industrias/${industry.id}`,
@@ -489,7 +494,7 @@ export default function IndustriasPage() {
                 <div className="mx-auto mt-10 grid max-w-4xl gap-6 md:grid-cols-3">
                   <div className="ps-card p-6">
                     <div className="mb-2 text-3xl font-bold text-brand-ui-primary">
-                      12
+                      {featuredIndustries.length}
                     </div>
                     <div className="text-sm text-slate-600">
                       {language === "pt"
@@ -549,7 +554,7 @@ export default function IndustriasPage() {
             </div>
 
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {industries.map((industry, index) => (
+              {featuredIndustries.map((industry, index) => (
                 <Link
                   key={index}
                   href={`/industrias/${industry.id}`}

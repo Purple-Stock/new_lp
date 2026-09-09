@@ -98,6 +98,8 @@ Já existia (não refeito aqui): `INDEXABLE_INDUSTRY_SLUGS` + `noindex` nas pág
 
 FAQ do trial **continua** dizendo que o app pode pedir cartão. Só saiu do hero.
 
+CI (`audit:deps`) obrigou bump **Next 16.2.11 → 16.3.3** (RCE no image optimizer) e overrides de `js-yaml` / `sharp` / `browserslist`. Não é SEO; sem isso o PR não mergeia.
+
 ---
 
 ## 4. Decisões travadas (não reabrir sem dado novo)

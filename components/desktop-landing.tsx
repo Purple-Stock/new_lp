@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -35,6 +36,7 @@ export function DesktopLanding({
 }) {
   const { language: rawLanguage, setLanguage } = useLanguage();
   const language = asLandingLanguage(rawLanguage);
+  const router = useRouter();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [usePainCta] = useState(() => {
     if (typeof window === "undefined") {
@@ -76,9 +78,8 @@ export function DesktopLanding({
   }, []);
 
   const openPricing = useCallback(() => {
-    if (typeof window === "undefined") return;
-    window.location.href = "/precos";
-  }, []);
+    router.push("/precos");
+  }, [router]);
 
   const openApp = useCallback(() => {
     if (typeof window === "undefined") return;

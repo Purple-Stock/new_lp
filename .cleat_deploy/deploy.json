@@ -2,6 +2,6 @@
   "runtime": "node",
   "node_version": "22",
   "memory_max_mb": 768,
-  "build_command": "export NEXT_PUBLIC_BASE_URL=\"https://www.purplestock.com.br\" NEXT_PUBLIC_CALENDLY_URL=\"https://calendly.com/matheus-puppe/purple-stock\" NEXT_PUBLIC_GA_MEASUREMENT_ID=\"G-WVRC6077Y6\" NEXT_PUBLIC_WHATSAPP_URL=\"https://wa.me/5511995597242\" && corepack enable && corepack prepare pnpm@9.15.3 --activate && HUSKY=0 pnpm install --frozen-lockfile && pnpm run build",
+  "build_command": "export NEXT_PUBLIC_BASE_URL=\"https://www.purplestock.com.br\" NEXT_PUBLIC_CALENDLY_URL=\"https://calendly.com/matheus-puppe/purple-stock\" NEXT_PUBLIC_GA_MEASUREMENT_ID=\"G-WVRC6077Y6\" NEXT_PUBLIC_WHATSAPP_URL=\"https://wa.me/5511995597242\" && HUSKY=0 npm run build",
   "start_command": "npx next start --hostname 127.0.0.1 --port ${PORT}"
 }

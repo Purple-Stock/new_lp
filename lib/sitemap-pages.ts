@@ -8,7 +8,6 @@ const FEATURE_SLUGS = [
   "clothing-manufacturing",
   "equipment-management",
   "factory-management",
-  "inventory-app",
   "inventory-control",
   "purchase-sales",
   "qr-code-management",
@@ -101,12 +100,24 @@ export async function buildPagesSitemapEntries(
     priority: 0.7,
   }));
 
-  const resourceRoutes = ["controle-de-almoxarifado"].map((resource) => ({
+  const resourceRoutes = [
+    "controle-de-almoxarifado",
+    "aplicativo-de-estoque",
+  ].map((resource) => ({
     url: `${baseUrl}/recursos/${resource}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
-    priority: 0.7,
+    priority: 0.8,
   }));
+
+  const compareRoutes = [
+    {
+      url: `${baseUrl}/purple-stock-vs-planilha`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+  ];
 
   const industryRoutes = INDEXABLE_INDUSTRY_SLUGS.map((industry) => ({
     url: `${baseUrl}/industrias/${industry}`,
@@ -128,6 +139,7 @@ export async function buildPagesSitemapEntries(
     ...staticRoutes,
     ...featureRoutes,
     ...resourceRoutes,
+    ...compareRoutes,
     ...industryRoutes,
     ...glossaryRoutes,
   ];

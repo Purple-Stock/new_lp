@@ -46,6 +46,17 @@ const REQUIRED_FEATURE_LINKS = [
   "purchase-sales",
 ];
 
+const FEATURE_LINK_ALIASES = {
+  "inventory-app": [
+    "/features/inventory-app",
+    "/recursos/aplicativo-de-estoque",
+  ],
+  "warehouse-control": [
+    "/features/warehouse-control",
+    "/recursos/controle-de-almoxarifado",
+  ],
+};
+
 const REQUIRED_INDUSTRY_LINKS = [
   "audiovisual",
   "events",
@@ -115,9 +126,10 @@ function analyzeLlmsContent(content) {
   const missingSections = REQUIRED_LLMS_SECTIONS.filter(
     (section) => !content.includes(`## ${section}`)
   );
-  const missingFeatures = REQUIRED_FEATURE_LINKS.filter(
-    (feature) => !content.includes(`/features/${feature}`)
-  );
+  const missingFeatures = REQUIRED_FEATURE_LINKS.filter((feature) => {
+    const aliases = FEATURE_LINK_ALIASES[feature] ?? [`/features/${feature}`];
+    return !aliases.some((href) => content.includes(href));
+  });
   const missingIndustries = REQUIRED_INDUSTRY_LINKS.filter(
     (industry) => !content.includes(`/industrias/${industry}`)
   );

@@ -86,6 +86,10 @@ const nextConfig = {
         destination: "/recursos/controle-de-almoxarifado",
       },
       {
+        source: "/features/inventory-app",
+        destination: "/recursos/aplicativo-de-estoque",
+      },
+      {
         source: "/blog/como-reduzir-ruptura-de-estoque",
         destination: "/blog/reducao-ruptura-estoque",
       },

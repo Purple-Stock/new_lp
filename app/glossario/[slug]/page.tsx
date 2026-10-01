@@ -16,7 +16,9 @@ import {
 import {
   buildGlossaryTermDescription,
   buildGlossaryTermTitle,
+  getGlossaryTermCta,
 } from "@/lib/glossary-term-seo";
+import { featureHref } from "@/lib/feature-paths";
 import { getSiteUrl } from "@/lib/site";
 import { buildWhatsAppUrl } from "@/lib/contact";
 import { Navbar } from "@/components/navbar";
@@ -141,6 +143,7 @@ export default async function GlossaryTermPage({ params }: PageProps) {
 
   const baseUrl = getSiteUrl();
   const termUrl = `${baseUrl}/glossario/${term.slug}`;
+  const termCta = getGlossaryTermCta(term.slug);
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -351,7 +354,7 @@ export default async function GlossaryTermPage({ params }: PageProps) {
               {term.relatedFeatures!.map((feature) => (
                 <Link
                   key={feature}
-                  href={`/features/${feature}`}
+                  href={featureHref(feature)}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 hover:bg-purple-200 transition-colors"
                 >
                   <BookOpen className="w-4 h-4" />
@@ -413,11 +416,10 @@ export default async function GlossaryTermPage({ params }: PageProps) {
             <CardContent className="py-8 text-center">
               <BookOpen className="w-12 h-12 text-purple-600 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Quer aplicar esse conhecimento na prática?
+                {termCta.title}
               </h3>
               <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-                O Purple Stock ajuda sua equipe a dominar o estoque com controle
-                total, relatórios inteligentes e alertas automáticos.
+                {termCta.body}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="https://app.purplestock.com.br/">
@@ -426,11 +428,7 @@ export default async function GlossaryTermPage({ params }: PageProps) {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Link
-                  href={buildWhatsAppUrl(
-                    "Olá! Vim do glossário e quero entender como implantar o Purple Stock."
-                  )}
-                >
+                <Link href={buildWhatsAppUrl(termCta.whatsappText)}>
                   <Button
                     variant="outline"
                     className="border-purple-300 text-purple-700 hover:bg-purple-50"

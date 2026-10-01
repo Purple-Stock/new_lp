@@ -9,7 +9,7 @@ const FEATURE_LINKS = [
     body: "Saldo, localização e histórico de movimentação.",
   },
   {
-    href: "/features/inventory-app",
+    href: "/recursos/aplicativo-de-estoque",
     title: "App de estoque",
     body: "Entrada, saída e contagem no celular.",
   },

@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   buildGlossaryTermDescription,
   buildGlossaryTermTitle,
+  getGlossaryTermCta,
   truncateMetaDescription,
 } from "../lib/glossary-term-seo";
 import type { GlossaryTerm } from "../data/glossary";
@@ -57,7 +58,8 @@ test("buildGlossaryTermTitle special-cases almoxarifado-de-obra", () => {
     "almoxarifado-de-obra"
   );
   assert.match(title, /Almoxarifado de Obra/i);
-  assert.match(title, /o que é/i);
+  assert.match(title, /canteiro/i);
+  assert.doesNotMatch(title, /o que é/i);
 });
 
 test("buildGlossaryTermTitle uses default suffix for other terms", () => {
@@ -75,6 +77,12 @@ test("buildGlossaryTermDescription prefers MOQ SERP copy", () => {
   );
   assert.match(description, /quantidade mínima de pedido/i);
   assert.match(description, /EOQ/i);
+});
+
+test("getGlossaryTermCta special-cases almoxarifado de obra", () => {
+  const cta = getGlossaryTermCta("almoxarifado-de-obra");
+  assert.match(cta.title, /obra|canteiro/i);
+  assert.match(cta.body, /local/i);
 });
 
 test("buildGlossaryTermDescription prefers almoxarifado de obra SERP copy", () => {

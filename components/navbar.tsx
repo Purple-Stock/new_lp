@@ -15,9 +15,9 @@ const PRIMARY_FEATURE_LINKS = [
     shortcut: "⌘I",
   },
   {
-    href: "/features/barcoding",
-    key: "barcoding" as const,
-    shortcut: "⌘B",
+    href: "/recursos/aplicativo-de-estoque",
+    key: "inventoryApp" as const,
+    shortcut: "⌘A",
   },
   {
     href: "/features/purchase-sales",
@@ -55,8 +55,8 @@ const SECONDARY_FEATURE_LINKS = [
     key: "factoryManagement" as const,
   },
   {
-    href: "/features/inventory-app",
-    key: "inventoryApp" as const,
+    href: "/features/barcoding",
+    key: "barcoding" as const,
   },
 ] as const;
 

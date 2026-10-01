@@ -126,13 +126,14 @@ test("glossary almoxarifado-de-obra title is clickable, not only a definition", 
   assertSerpDescription(description);
 });
 
-test("audiovisual SERP matches empresas de cinema", () => {
+test("audiovisual SERP sells locação, not a gear catalog", () => {
   const copy = getIndustrySerpCopy("audiovisual");
   assert.ok(copy);
-  assert.match(copy.title, /audiovisuais/i);
-  assert.match(copy.title, /cinema/i);
+  assert.match(copy.title, /[Ll]oca/i);
+  assert.doesNotMatch(copy.title, /^Equipamentos audiovisuais para cinema$/i);
   assertSerpTitle(copy.title.replace(/\s*\|\s*Purple Stock$/, ""));
-  assert.match(copy.description, /empresas de cinema/i);
+  assert.match(copy.description, /locadora|produtora/i);
+  assert.match(copy.description, /avaria|prazo|responsável|voltou/i);
   assertSerpDescription(copy.description);
 });
 

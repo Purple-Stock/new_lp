@@ -152,12 +152,12 @@ const EQUIPMENT_VERTICAL_PROOF: IndustrySocialProof = {
   ],
   faqs: [
     {
-      q: "Serve para produtora, cinema e empresa de eventos?",
-      a: "Sim. O fluxo é o mesmo: equipamento sai, precisa voltar completo, com responsável. Muda só o nome do job (set de cinema, diária, festa ou corporativo).",
+      q: "Serve para locadora, produtora e cinema?",
+      a: "Sim. O fluxo é locação: check-out com responsável e prazo, conferência na volta. Muda só o nome do job (set, diária ou locação de câmera).",
     },
     {
-      q: "Como controlar equipamentos audiovisuais para empresas de cinema?",
-      a: "Etiquete corpos, lentes e áudio críticos, faça check-out por set/diária com responsável e check-in no retorno. O histórico mostra o que ficou no caminhão ou no set.",
+      q: "Como controlar locação audiovisual no cinema?",
+      a: "Etiquete corpos, lentes e áudio, faça check-out com responsável e prazo, e check-in na volta. Marque avaria no celular no mesmo dia.",
     },
     {
       q: "Freela consegue retirar equipamento?",
@@ -260,13 +260,15 @@ const PROOF_BY_SLUG: Record<string, IndustrySocialProof> = {
   construction: CONSTRUCTION_PROOF,
   audiovisual: {
     ...EQUIPMENT_VERTICAL_PROOF,
-    proofHeadline: "Produtoras e locadoras no mesmo fluxo",
+    proofHeadline: "Locação: quem levou e o que voltou",
+    proofSubhead:
+      "Locadoras, produtoras e cinema usam check-out com responsável, prazo e conferência na volta — avaria e item faltante no mesmo dia.",
     relatedBlogHref:
       "/blog/controle-equipamentos-audiovisuais-produtoras-eventos",
     relatedBlogLabel: "Como montar check-in/check-out na produtora",
   },
   events: {
-    proofHeadline: "Eventos: carga, festa e descarga sob controle",
+    proofHeadline: "Locação de evento: carga, descarga e volta",
     proofSubhead:
       "Casas de festa, montadoras e locadoras usam check-in na carga e na descarga para saber o que saiu no caminhão — e o que voltou depois da desmontagem.",
     stats: [

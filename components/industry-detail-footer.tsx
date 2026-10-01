@@ -2,11 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getCalendlyUrl } from "@/lib/contact";
+import { buildWhatsAppUrl, getCalendlyUrl } from "@/lib/contact";
 import type { IndustryRecord } from "@/lib/industries-data";
 import {
   isEquipmentIndustry,
+  resolveIndustryHeroCta,
   resolveMidCtaHeadline,
+  resolveRentalWhatsAppText,
 } from "@/lib/industry-detail-helpers";
 
 type IndustryDetailFooterProps = {
@@ -20,6 +22,15 @@ export function IndustryDetailFooter({
 }: IndustryDetailFooterProps) {
   const isEquipmentVertical = isEquipmentIndustry(industry.slug);
   const ctaHeadline = resolveMidCtaHeadline(industry, isEquipmentVertical);
+  const cta = resolveIndustryHeroCta(industry.slug);
+  const primaryHref =
+    cta.primaryTarget === "whatsapp"
+      ? buildWhatsAppUrl(resolveRentalWhatsAppText(industry.slug))
+      : "https://app.purplestock.com.br/";
+  const secondaryHref =
+    cta.primaryTarget === "whatsapp"
+      ? "https://app.purplestock.com.br/"
+      : "/precos";
 
   return (
     <>
@@ -31,23 +42,28 @@ export function IndustryDetailFooter({
                 {ctaHeadline}
               </h2>
               <p className="mt-2 max-w-xl text-slate-600">
-                R$ 59,00 por equipe, 7 dias grátis e implantação rápida. Sem
-                matriz confusa de funcionalidades.
+                {cta.leadWithPublicPrice
+                  ? "R$ 59,00 por equipe, 7 dias grátis e implantação rápida. Sem matriz confusa de funcionalidades."
+                  : "Check-out com responsável, prazo e conferência na volta. Locadora com fluxo próprio fala no WhatsApp."}
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link href="https://app.purplestock.com.br/">
+              <Link href={primaryHref}>
                 <Button className="ps-btn-primary whitespace-nowrap">
-                  Começar teste grátis
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  {cta.primaryLabel}
+                  {cta.primaryTarget === "whatsapp" ? (
+                    <MessageCircle className="ml-2 h-4 w-4" />
+                  ) : (
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  )}
                 </Button>
               </Link>
-              <Link href="/precos">
+              <Link href={secondaryHref}>
                 <Button
                   variant="outline"
                   className="ps-btn-outline whitespace-nowrap"
                 >
-                  Ver plano
+                  {cta.secondaryLabel}
                 </Button>
               </Link>
             </div>

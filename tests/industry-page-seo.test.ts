@@ -5,12 +5,34 @@ import {
   getIndustrySerpCopy,
 } from "../lib/industry-page-seo";
 
-test("getIndustrySerpCopy returns audiovisual cinema SERP", () => {
+test("getIndustrySerpCopy returns audiovisual rental SERP", () => {
   const copy = getIndustrySerpCopy("audiovisual");
   assert.ok(copy);
-  assert.match(copy.title, /Cinema/i);
-  assert.match(copy.title, /audiovisuais/i);
-  assert.match(copy.description, /empresas de cinema/i);
+  assert.match(copy.title, /[Ll]oca/i);
+  assert.match(copy.title, /QR|check-in/i);
+  assert.ok(copy.title.length >= 30, copy.title);
+  assert.ok(copy.title.length <= 45, copy.title);
+  assert.match(copy.description, /locadora/i);
+  assert.match(copy.description, /avaria|prazo|voltou/i);
+  assert.match(copy.description, /WhatsApp/i);
+  assert.doesNotMatch(copy.description, /R\$\s*59/);
+  assert.ok(copy.description.length >= 120, copy.description);
+  assert.ok(copy.description.length <= 160, copy.description);
+});
+
+test("getIndustrySerpCopy returns events rental SERP", () => {
+  const copy = getIndustrySerpCopy("events");
+  assert.ok(copy);
+  assert.match(copy.title, /[Ll]oca|evento/i);
+  assert.match(copy.title, /carga|volta|check-in/i);
+  assert.ok(copy.title.length >= 30, copy.title);
+  assert.ok(copy.title.length <= 45, copy.title);
+  assert.match(copy.description, /locadora/i);
+  assert.match(copy.description, /caminh[aã]o|carga|descarga/i);
+  assert.match(copy.description, /WhatsApp/i);
+  assert.doesNotMatch(copy.description, /R\$\s*59/);
+  assert.ok(copy.description.length >= 120, copy.description);
+  assert.ok(copy.description.length <= 160, copy.description);
 });
 
 test("getIndustrySerpCopy returns undefined for unknown slug", () => {

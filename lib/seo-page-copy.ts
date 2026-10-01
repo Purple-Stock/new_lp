@@ -38,3 +38,23 @@ export const INDUSTRIES_PAGE_DESCRIPTION =
 export const PRICING_PAGE_TITLE = `Preço: R$ 59 por equipe · ${TEAM_PLAN_TRIAL_DAYS} dias grátis`;
 
 export const PRICING_PAGE_DESCRIPTION = `Preço do sistema de estoque Purple Stock: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe/mês, ${TEAM_PLAN_TRIAL_DAYS} dias grátis, sem fidelidade e ativação rápida para PME.`;
+
+export const APLICATIVO_DE_ESTOQUE_PATH = "/recursos/aplicativo-de-estoque";
+
+export const APLICATIVO_DE_ESTOQUE_PAGE_TITLE =
+  "Aplicativo para Controle de Estoque com QR";
+
+export const APLICATIVO_DE_ESTOQUE_PAGE_DESCRIPTION = `Aplicativo para controle de estoque no celular: QR Code, entrada, saída e saldo por local. ${TEAM_PLAN_TRIAL_DAYS} dias grátis, ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;
+
+export const VS_PLANILHA_PATH = "/purple-stock-vs-planilha";
+
+export const VS_PLANILHA_PAGE_TITLE =
+  "Purple Stock vs Planilha: quando migrar o estoque";
+
+export const VS_PLANILHA_PAGE_DESCRIPTION = `Planilha vs sistema de estoque: quando o Excel deixa de bater o saldo. Compare multi-usuário, QR no celular e custo. ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;
+
+export const ALMOXARIFADO_RECURSO_PAGE_TITLE =
+  "Controle de Almoxarifado com QR no celular";
+
+export const ALMOXARIFADO_RECURSO_PAGE_DESCRIPTION =
+  "Controle de almoxarifado com QR Code: entrada, saída, inventário cíclico e rastreio por responsável. Para PME e canteiro. Teste 7 dias grátis.";

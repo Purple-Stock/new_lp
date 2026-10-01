@@ -9,7 +9,8 @@ test("getIndustrySerpCopy returns audiovisual cinema SERP", () => {
   const copy = getIndustrySerpCopy("audiovisual");
   assert.ok(copy);
   assert.match(copy.title, /Cinema/i);
-  assert.match(copy.description, /audiovisuais/i);
+  assert.match(copy.title, /audiovisuais/i);
+  assert.match(copy.description, /empresas de cinema/i);
 });
 
 test("getIndustrySerpCopy returns undefined for unknown slug", () => {
@@ -36,9 +37,9 @@ test("getIndustrySerpCopy returns construction canteiro SERP", () => {
   assert.match(copy.title, /Almoxarifado de Obra/i);
   assert.match(copy.title, /QR Code/i);
   assert.ok(copy.title.length >= 30);
-  assert.ok(copy.title.length <= 60);
+  assert.ok(copy.title.length <= 45);
   assert.match(copy.description, /canteiro/i);
-  assert.match(copy.description, /materiais de construção/i);
+  assert.match(copy.description, /obra/i);
   assert.ok(copy.description.length >= 120);
   assert.ok(copy.description.length <= 160);
 });

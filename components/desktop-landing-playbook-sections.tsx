@@ -92,13 +92,25 @@ export function DesktopLandingPlaybookSections({
           {pick(language, "Leia também: ", "Also read: ", "Lire aussi : ")}
           <Link
             className="ps-link-editorial font-semibold"
-            href="/codigo-de-barras-gratis"
+            href="/recursos/aplicativo-de-estoque"
           >
             {pick(
               language,
-              "gerador de código de barras grátis",
-              "free barcode generator",
-              "generateur de code-barres gratuit"
+              "aplicativo para controle de estoque",
+              "inventory control app",
+              "application de stock"
+            )}
+          </Link>
+          {", "}
+          <Link
+            className="ps-link-editorial font-semibold"
+            href="/purple-stock-vs-planilha"
+          >
+            {pick(
+              language,
+              "planilha vs sistema",
+              "spreadsheet vs software",
+              "tableur vs logiciel"
             )}
           </Link>
           {", "}
@@ -112,13 +124,6 @@ export function DesktopLandingPlaybookSections({
               "warehouse control",
               "controle d'entrepot"
             )}
-          </Link>
-          {", "}
-          <Link
-            className="ps-link-editorial font-semibold"
-            href="/documentacao"
-          >
-            {pick(language, "documentação", "documentation", "documentation")}
           </Link>
           {pick(language, " e ", " and ", " et ")}
           <Link className="ps-link-editorial font-semibold" href="/precos">

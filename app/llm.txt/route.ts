@@ -13,7 +13,7 @@ PurpleStock é uma solução completa de gestão de estoque que oferece controle
 
 ### Gestão de Estoque
 - [Controle de Inventário](/features/inventory-control): Gestão completa de produtos e materiais
-- [App de Inventário](/features/inventory-app): Aplicativo móvel para contagem e verificação
+- [Aplicativo para controle de estoque](/recursos/aplicativo-de-estoque): QR Code, entrada e saída no celular
 - [Controle de Almoxarifado](/recursos/controle-de-almoxarifado): Gestão de suprimentos e materiais
 
 ### Códigos e Rastreamento

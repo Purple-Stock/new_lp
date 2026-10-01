@@ -175,6 +175,61 @@ export function buildBarcodeToolSchema() {
   };
 }
 
+export function buildSoftwareLandingGraph(params: {
+  path: string;
+  name: string;
+  description: string;
+  breadcrumbName: string;
+}) {
+  const siteUrl = getSiteUrl();
+  const url = `${siteUrl}${params.path}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${url}/#webpage`,
+        url,
+        name: params.name,
+        description: params.description,
+        isPartOf: { "@id": `${siteUrl}/#website` },
+        about: { "@id": `${siteUrl}/#organization` },
+        inLanguage: "pt-BR",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Início",
+            item: siteUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: params.breadcrumbName,
+            item: url,
+          },
+        ],
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": `${url}/#software`,
+        name: params.name,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web, iOS, Android",
+        description: params.description,
+        url,
+        installUrl: "https://app.purplestock.com.br/",
+        offers: buildMonthlyOffer(`${siteUrl}/precos`),
+        provider: { "@id": `${siteUrl}/#organization` },
+      },
+    ],
+  };
+}
+
 export function buildIndustryPageGraph(params: {
   slug: string;
   name: string;

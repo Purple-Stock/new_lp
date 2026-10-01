@@ -13,9 +13,9 @@ export type IndustrySerpCopy = {
 
 export const INDUSTRY_SERP_COPY_BY_SLUG: Record<string, IndustrySerpCopy> = {
   audiovisual: {
-    title: "Equipamentos Audiovisuais e Cinema: Check-in com QR Code",
+    title: "Equipamentos audiovisuais para cinema",
     description:
-      "Controle de equipamentos audiovisuais para produtoras, cinema e locadoras: check-in/check-out com QR Code, menos perda e rastreio por set. Teste grátis.",
+      "Equipamentos audiovisuais para empresas de cinema, produtoras e locadoras: check-in com QR Code no set. 7 dias grátis, R$ 59 por equipe.",
   },
   events: {
     title:
@@ -55,9 +55,9 @@ export const INDUSTRY_SERP_COPY_BY_SLUG: Record<string, IndustrySerpCopy> = {
       "Controle equipamentos, componentes e ferramentas do setor elétrico com mais rastreabilidade e eficiência operacional.",
   },
   construction: {
-    title: "Almoxarifado de Obra: Materiais e Ferramentas com QR Code",
+    title: "Almoxarifado de Obra: QR Code no canteiro",
     description:
-      "Controle de materiais de construção por obra e canteiro. QR Code no celular: entrada, retirada e conferência sem planilha. Teste grátis Purple Stock.",
+      "Almoxarifado de obra com QR Code no canteiro: saldo por obra, retirada com responsável e menos compra emergencial. Teste 7 dias, R$ 59 por equipe.",
   },
 };
 

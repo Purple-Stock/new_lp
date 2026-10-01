@@ -30,7 +30,7 @@ export function buildGlossaryTermTitle(termName: string, slug: string): string {
   }
 
   if (slug === "almoxarifado-de-obra") {
-    return "Almoxarifado de Obra: o que é | Purple Stock";
+    return "Almoxarifado de Obra: estoque do canteiro";
   }
 
   const suffix = ": o que é e quando usar | Purple Stock";
@@ -39,6 +39,28 @@ export function buildGlossaryTermTitle(termName: string, slug: string): string {
     return `${termName}${suffix}`;
   }
   return `${termName} | Glossário de Estoque | Purple Stock`;
+}
+
+export function getGlossaryTermCta(slug: string): {
+  title: string;
+  body: string;
+  whatsappText: string;
+} {
+  if (slug === "almoxarifado-de-obra") {
+    return {
+      title: "Quer saldo por obra no canteiro?",
+      body: "O Purple Stock trata cada obra como um local: entrada da entrega, retirada com responsável e QR no celular. Sem ERP de construtora no dia um.",
+      whatsappText:
+        "Olá! Vim do glossário de almoxarifado de obra e quero ver o fluxo no canteiro.",
+    };
+  }
+
+  return {
+    title: "Quer aplicar esse conhecimento na prática?",
+    body: "O Purple Stock ajuda sua equipe a controlar estoque com QR no celular, histórico por item e saldo por local.",
+    whatsappText:
+      "Olá! Vim do glossário e quero entender como implantar o Purple Stock.",
+  };
 }
 
 export function buildGlossaryTermDescription(term: GlossaryTerm): string {
@@ -50,7 +72,7 @@ export function buildGlossaryTermDescription(term: GlossaryTerm): string {
 
   if (term.slug === "almoxarifado-de-obra") {
     return truncateMetaDescription(
-      "O que é almoxarifado de obra? Estoque do canteiro: materiais, ferramentas e EPI por obra, com entrada, retirada e conferência no celular."
+      "Almoxarifado de obra com QR no canteiro: saldo por obra, retirada com responsável e conferência no celular. Teste o controle 7 dias grátis."
     );
   }
 

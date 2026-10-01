@@ -30,6 +30,12 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
       whatsappText:
         "Ol%C3%A1!%20Vim%20do%20artigo%20sobre%20aplicativo%20de%20estoque%20e%20quero%20comparar%20o%20Purple%20Stock%20com%20minha%20opera%C3%A7%C3%A3o.",
     },
+    "almoxarifado-de-obra-controle-materiais-canteiro": {
+      primaryLabel: "Ver almoxarifado de obra no app",
+      secondaryLabel: "Falar sobre o canteiro",
+      whatsappText:
+        "Ol%C3%A1!%20Vim%20do%20guia%20de%20almoxarifado%20de%20obra%20e%20quero%20ver%20o%20fluxo%20por%20canteiro.",
+    },
     "vmi-vs-estoque-proprio-comparativo": {
       primaryLabel: "Ver como o Purple Stock gerencia VMI",
       secondaryLabel: "Falar sobre modelo de estoque",

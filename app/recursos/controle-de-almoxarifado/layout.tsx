@@ -1,31 +1,15 @@
-import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { buildPageMetadata } from "@/lib/metadata";
+import {
+  ALMOXARIFADO_RECURSO_PAGE_DESCRIPTION,
+  ALMOXARIFADO_RECURSO_PAGE_TITLE,
+} from "@/lib/seo-page-copy";
 
-export const metadata: Metadata = {
-  title:
-    "Controle de Almoxarifado: Como Organizar Entradas, Saídas e Inventário",
-  description:
-    "Aprenda como organizar o almoxarifado com entrada e saída, inventário cíclico e rastreabilidade para reduzir perdas e rupturas.",
-  alternates: {
-    canonical:
-      "https://www.purplestock.com.br/recursos/controle-de-almoxarifado",
-  },
-  openGraph: {
-    type: "website",
-    title:
-      "Controle de Almoxarifado: Como Organizar Entradas, Saídas e Inventário | Purple Stock",
-    description:
-      "Aprenda como organizar o almoxarifado com entrada e saída, inventário cíclico e rastreabilidade para reduzir perdas e rupturas.",
-    url: "/recursos/controle-de-almoxarifado",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "Controle de Almoxarifado: Como Organizar Entradas, Saídas e Inventário | Purple Stock",
-    description:
-      "Aprenda como organizar o almoxarifado com entrada e saída, inventário cíclico e rastreabilidade para reduzir perdas e rupturas.",
-  },
-};
+export const metadata = buildPageMetadata({
+  title: ALMOXARIFADO_RECURSO_PAGE_TITLE,
+  description: ALMOXARIFADO_RECURSO_PAGE_DESCRIPTION,
+  path: "/recursos/controle-de-almoxarifado",
+});
 
 export default function ControleAlmoxarifadoLayout({
   children,

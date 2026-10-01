@@ -454,10 +454,9 @@ export const industriesData: IndustryRecord[] = [
     name: "Produção Audiovisual",
     slug: "audiovisual",
     image: "/images/audio-visual-1.jpg",
-    seoHeadline:
-      "Controle de equipamentos audiovisuais com QR Code para produtoras e cinema",
+    seoHeadline: "Locação audiovisual: quem levou, o prazo e o que voltou",
     description:
-      "Controle câmeras, lentes, iluminação e áudio com check-in/check-out e QR Code. Feito para produtoras, locadoras, estúdios e equipes de cinema que precisam saber quem levou o quê para cada set — e o que voltou.",
+      "Check-out com responsável, prazo e conferência na volta. Locadoras, produtoras e cinema marcam avaria no celular — sem planilha paralela.",
     benefits: [
       "Check-in/check-out por projeto, set ou diária de cinema",
       "QR Code em cada equipamento e acessório crítico",
@@ -485,10 +484,9 @@ export const industriesData: IndustryRecord[] = [
     name: "Eventos",
     slug: "events",
     image: "/images/events-2.jpg",
-    seoHeadline:
-      "Controle de equipamentos para eventos com check-in na carga e descarga",
+    seoHeadline: "Locação de evento: o que saiu no caminhão e o que voltou",
     description:
-      "Controle som, luz, mobiliário e materiais por evento com check-in/check-out. Saiba o que saiu no caminhão, com quem está e o que faltou no retorno — sem planilha paralela.",
+      "Carga, festa e descarga com responsável. Locadoras, casas de festa e montadoras veem o que faltou e o que avariou no retorno.",
     benefits: [
       "Equipamentos e materiais vinculados ao evento",
       "Check-in/check-out rápido na carga e descarga",

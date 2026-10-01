@@ -1,18 +1,60 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Box, Star, Zap } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Box,
+  MessageCircle,
+  Star,
+  Zap,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { IndustryRecord } from "@/lib/industries-data";
+import { buildWhatsAppUrl } from "@/lib/contact";
 import {
   resolveHeroAudienceLine,
   resolveHeroBadge,
   resolveHeroChromeLabel,
+  resolveIndustryHeroCta,
+  resolveRentalWhatsAppText,
 } from "@/lib/industry-detail-helpers";
 
 type IndustryDetailHeroProps = {
   industry: IndustryRecord;
   heroStat: { value: string; label: string };
 };
+
+function PublicPriceLink() {
+  return (
+    <Link href="/precos" className="ps-link-editorial font-semibold">
+      R$ 59,00 por equipe
+    </Link>
+  );
+}
+
+function HeroOfferLine({
+  leadWithPublicPrice,
+  audienceLine,
+}: {
+  leadWithPublicPrice: boolean;
+  audienceLine: string | undefined;
+}) {
+  if (!leadWithPublicPrice) {
+    return <>{audienceLine} · Fale no WhatsApp para implantar</>;
+  }
+  if (audienceLine) {
+    return (
+      <>
+        {audienceLine} · Plano <PublicPriceLink /> · 7 dias grátis
+      </>
+    );
+  }
+  return (
+    <>
+      Plano único <PublicPriceLink /> · 7 dias grátis · sem fidelidade
+    </>
+  );
+}
 
 export function IndustryDetailHero({
   industry,
@@ -21,6 +63,15 @@ export function IndustryDetailHero({
   const audienceLine = resolveHeroAudienceLine(industry.slug);
   const heroBadge = resolveHeroBadge(industry.slug);
   const chromeLabel = resolveHeroChromeLabel(industry.slug);
+  const cta = resolveIndustryHeroCta(industry.slug);
+  const primaryHref =
+    cta.primaryTarget === "whatsapp"
+      ? buildWhatsAppUrl(resolveRentalWhatsAppText(industry.slug))
+      : "https://app.purplestock.com.br/";
+  const secondaryHref =
+    cta.primaryTarget === "whatsapp"
+      ? "https://app.purplestock.com.br/"
+      : "/precos";
 
   return (
     <section className="pb-8">
@@ -102,40 +153,25 @@ export function IndustryDetailHero({
         <div className="ps-panel mt-6 overflow-hidden">
           <div className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <p className="text-sm text-slate-600">
-              {audienceLine ? (
-                <>
-                  {audienceLine} · Plano{" "}
-                  <Link
-                    href="/precos"
-                    className="ps-link-editorial font-semibold"
-                  >
-                    R$ 59,00 por equipe
-                  </Link>{" "}
-                  · 7 dias grátis
-                </>
-              ) : (
-                <>
-                  Plano único{" "}
-                  <Link
-                    href="/precos"
-                    className="ps-link-editorial font-semibold"
-                  >
-                    R$ 59,00 por equipe
-                  </Link>{" "}
-                  · 7 dias grátis · sem fidelidade
-                </>
-              )}
+              <HeroOfferLine
+                leadWithPublicPrice={cta.leadWithPublicPrice}
+                audienceLine={audienceLine}
+              />
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="https://app.purplestock.com.br/">
+              <Link href={primaryHref}>
                 <Button size="sm" className="ps-btn-primary">
-                  <Zap className="mr-2 h-4 w-4" />
-                  Teste grátis
+                  {cta.primaryTarget === "whatsapp" ? (
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                  ) : (
+                    <Zap className="mr-2 h-4 w-4" />
+                  )}
+                  {cta.primaryLabel}
                 </Button>
               </Link>
-              <Link href="/precos">
+              <Link href={secondaryHref}>
                 <Button size="sm" variant="outline" className="ps-btn-outline">
-                  Ver preços
+                  {cta.secondaryLabel}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>

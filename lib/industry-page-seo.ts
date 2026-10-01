@@ -13,15 +13,14 @@ export type IndustrySerpCopy = {
 
 export const INDUSTRY_SERP_COPY_BY_SLUG: Record<string, IndustrySerpCopy> = {
   audiovisual: {
-    title: "Equipamentos audiovisuais para cinema",
+    title: "Locação de AV para cinema: check-in com QR",
     description:
-      "Equipamentos audiovisuais para empresas de cinema, produtoras e locadoras: check-in com QR Code no set. 7 dias grátis, R$ 59 por equipe.",
+      "Locadoras e produtoras de cinema: check-out com responsável, prazo e conferência na volta. Marca avaria no celular. Fale no WhatsApp.",
   },
   events: {
-    title:
-      "Sistema para Empresas de Eventos: Equipamentos com Check-in/Check-out",
+    title: "Locação de evento: carga, descarga e volta",
     description:
-      "Controle som, luz, mobiliário e materiais por evento com QR Code. Saiba o que saiu, com quem está e o que voltou. Teste grátis Purple Stock.",
+      "Locadoras, casas de festa e montadoras: o que saiu no caminhão, com quem está e o que voltou com avaria. QR no celular. Fale no WhatsApp.",
   },
   odontologico: {
     title: "Controle de Equipamentos Odontológicos com QR Code e Check-in",

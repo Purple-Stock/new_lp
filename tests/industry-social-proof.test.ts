@@ -22,7 +22,27 @@ test("events industry has a long-tail headline", () => {
   const industry = getIndustryBySlug("events");
   assert.ok(industry?.seoHeadline);
   assert.match(String(industry?.seoHeadline), /evento/i);
+  assert.match(String(industry?.seoHeadline), /[Ll]oca|caminh[aã]o|voltou/i);
   assert.notEqual(industry?.seoHeadline, industry?.name);
+});
+
+test("audiovisual proof FAQ sells locação, not a gear catalog", () => {
+  const audiovisual = getIndustrySocialProof("audiovisual");
+  const questions = audiovisual.faqs.map((item) => item.q).join(" ");
+  assert.match(questions, /[Ll]oca/);
+  assert.doesNotMatch(
+    questions,
+    /Como controlar equipamentos audiovisuais para empresas de cinema/
+  );
+});
+
+test("audiovisual and events H1 sell locação check-out", () => {
+  const audiovisual = getIndustryBySlug("audiovisual");
+  const events = getIndustryBySlug("events");
+  assert.match(String(audiovisual?.seoHeadline), /[Ll]oca/i);
+  assert.match(String(audiovisual?.description), /prazo|avaria|voltou/i);
+  assert.match(String(events?.seoHeadline), /[Ll]oca|caminh[aã]o/i);
+  assert.match(String(events?.description), /avaria|voltou|responsável/i);
 });
 
 test("construction proof uses canteiro language and not default copy", () => {

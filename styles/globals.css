@@ -588,3 +588,7 @@ h6 {
     border-radius: 10px;
   }
 }
+
+html:has([data-purple-docs]) {
+  scroll-padding-top: 8.5rem;
+}

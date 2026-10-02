@@ -1,3 +1,8 @@
+import {
+  TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
+  TEAM_PLAN_TRIAL_DAYS,
+} from "@/lib/pricing";
+
 const PRODUCTION_SITE_URL = "https://www.purplestock.com.br";
 
 function normalizeUrl(url: string): string {
@@ -23,8 +28,7 @@ export function getSiteUrl(): string {
 
 export const SITE_NAME = "Purple Stock";
 
-export const SITE_DESCRIPTION =
-  "Controle de estoque e equipamentos com QR no celular: check-in, almoxarifado e saldo por item. 7 dias grátis · a partir de R$ 59 por equipe.";
+export const SITE_DESCRIPTION = `Controle de estoque e equipamentos com QR no celular: check-in, almoxarifado e saldo por item. ${TEAM_PLAN_TRIAL_DAYS} dias grátis · a partir de ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;
 
 export const SITE_LOGO_PATH = "/logo.png";
 export const SITE_LOGO_WIDTH = 512;

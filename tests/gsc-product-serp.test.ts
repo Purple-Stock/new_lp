@@ -42,7 +42,7 @@ test("aplicativo money page SERP matches the GSC query", () => {
   assert.match(APLICATIVO_DE_ESTOQUE_PAGE_TITLE, /QR/i);
   assertSerpTitle(APLICATIVO_DE_ESTOQUE_PAGE_TITLE);
   assert.match(APLICATIVO_DE_ESTOQUE_PAGE_DESCRIPTION, /celular/i);
-  assert.match(APLICATIVO_DE_ESTOQUE_PAGE_DESCRIPTION, /59/);
+  assert.match(APLICATIVO_DE_ESTOQUE_PAGE_DESCRIPTION, /99/);
   assertSerpDescription(APLICATIVO_DE_ESTOQUE_PAGE_DESCRIPTION);
 });
 
@@ -52,7 +52,7 @@ test("vs planilha money page SERP is a migration query", () => {
   assert.match(VS_PLANILHA_PAGE_TITLE, /migrar/i);
   assertSerpTitle(VS_PLANILHA_PAGE_TITLE);
   assert.match(VS_PLANILHA_PAGE_DESCRIPTION, /planilha/i);
-  assert.match(VS_PLANILHA_PAGE_DESCRIPTION, /59/);
+  assert.match(VS_PLANILHA_PAGE_DESCRIPTION, /99/);
   assertSerpDescription(VS_PLANILHA_PAGE_DESCRIPTION);
 });
 

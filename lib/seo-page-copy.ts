@@ -35,7 +35,7 @@ export const INDUSTRIES_PAGE_TITLE =
 export const INDUSTRIES_PAGE_DESCRIPTION =
   "Controle de estoque com QR Code por setor: construção civil, audiovisual, eventos e telecom. Almoxarifado de obra no canteiro, check-in e menos perda.";
 
-export const PRICING_PAGE_TITLE = `Preço: R$ 59 por equipe · ${TEAM_PLAN_TRIAL_DAYS} dias grátis`;
+export const PRICING_PAGE_TITLE = `Preço: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe · ${TEAM_PLAN_TRIAL_DAYS} dias grátis`;
 
 export const PRICING_PAGE_DESCRIPTION = `Preço do sistema de estoque Purple Stock: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe/mês, ${TEAM_PLAN_TRIAL_DAYS} dias grátis, sem fidelidade e ativação rápida para PME.`;
 

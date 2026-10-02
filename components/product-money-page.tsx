@@ -9,6 +9,7 @@ import type {
   MoneyPageFaq,
   MoneyPageSection,
 } from "@/lib/product-money-pages";
+import { TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT } from "@/lib/pricing";
 
 type RelatedLink = {
   href: string;
@@ -149,8 +150,8 @@ export function ProductMoneyPage({
             Teste 7 dias na sua operação
           </h2>
           <p className="mt-4 text-white/90">
-            R$ 59,00 por equipe, sem fidelidade. Comece pelo que some ou pelo
-            que precisa voltar com responsável.
+            {TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe, sem fidelidade.
+            Comece pelo que some ou pelo que precisa voltar com responsável.
           </p>
           <ProductMoneyCta
             queryCluster={queryCluster}

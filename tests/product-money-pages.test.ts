@@ -32,7 +32,7 @@ test("aplicativo money page copy is unique, operational and long enough", () => 
   assert.match(blob, /QR Code/i);
   assert.match(blob, /entrada/i);
   assert.match(blob, /saída|saida/i);
-  assert.match(blob, /R\$ 59/);
+  assert.match(blob, /R\$ 99/);
   assert.doesNotMatch(blob.toLowerCase(), /pdv/);
   assert.doesNotMatch(blob.toLowerCase(), /nfc-e/);
   assert.doesNotMatch(blob.toLowerCase(), /wms de galpão|wms de galpao/);

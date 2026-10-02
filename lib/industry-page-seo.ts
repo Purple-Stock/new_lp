@@ -6,6 +6,11 @@
  * getIndustrySerpCopy("audiovisual")?.title
  */
 
+import {
+  TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
+  TEAM_PLAN_TRIAL_DAYS,
+} from "@/lib/pricing";
+
 export type IndustrySerpCopy = {
   title: string;
   description: string;
@@ -55,8 +60,7 @@ export const INDUSTRY_SERP_COPY_BY_SLUG: Record<string, IndustrySerpCopy> = {
   },
   construction: {
     title: "Almoxarifado de Obra: QR Code no canteiro",
-    description:
-      "Almoxarifado de obra com QR Code no canteiro: saldo por obra, retirada com responsável e menos compra emergencial. Teste 7 dias, R$ 59 por equipe.",
+    description: `Almoxarifado de obra com QR Code no canteiro: saldo por obra, retirada com responsável e menos compra emergencial. Teste ${TEAM_PLAN_TRIAL_DAYS} dias, ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`,
   },
 };
 

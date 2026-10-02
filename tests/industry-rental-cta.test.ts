@@ -15,7 +15,7 @@ test("audiovisual and events are rental LPs; construction stays public plan", ()
   assert.equal(isRentalIndustry("telecomunicacoes"), false);
 });
 
-test("rental hero CTA leads with WhatsApp, not R$ 59", () => {
+test("rental hero CTA leads with WhatsApp, not the public team price", () => {
   const audiovisual = resolveIndustryHeroCta("audiovisual");
   const events = resolveIndustryHeroCta("events");
   const construction = resolveIndustryHeroCta("construction");

@@ -38,8 +38,7 @@ export default function PricingPage() {
     pt: {
       badge: "Plano único",
       title: `Preço Purple Stock: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe`,
-      subtitle:
-        "Veja o preço da Purple Stock para PME: R$ 59,00 por equipe (todos os usuários da operação, sem cobrança por assento), 7 dias grátis e implantação rápida para sair da planilha sem travar a operação.",
+      subtitle: `Veja o preço da Purple Stock para PME: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe (todos os usuários da operação, sem cobrança por assento), ${TEAM_PLAN_TRIAL_DAYS} dias grátis e implantação rápida para sair da planilha sem travar a operação.`,
       priceLabel: "por equipe / mês",
       ctaPrimary: "Começar teste grátis de 7 dias",
       ctaSecondary: "Tirar dúvidas sobre preço",
@@ -67,8 +66,7 @@ export default function PricingPage() {
       benefits: [
         {
           title: "Preço direto",
-          description:
-            "R$ 59,00 por equipe, sem matriz confusa de funcionalidades.",
+          description: `${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe, sem matriz confusa de funcionalidades.`,
         },
         {
           title: "Ativação rápida",
@@ -85,7 +83,7 @@ export default function PricingPage() {
       faqs: [
         {
           q: "Esse valor é por usuário?",
-          a: "Não. O valor é por equipe: R$ 59,00 por mês para todos os usuários da operação, sem cobrança por assento. Não inclui NFC-e, PDV nem WMS de galpão.",
+          a: `Não. O valor é por equipe: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por mês para todos os usuários da operação, sem cobrança por assento. Não inclui NFC-e, PDV nem WMS de galpão.`,
         },
         {
           q: "Preciso trocar meu ERP para usar?",
@@ -110,8 +108,7 @@ export default function PricingPage() {
       badge: "Single plan",
       title:
         "Inventory control software with simple pricing for your whole team",
-      subtitle:
-        "See Purple Stock pricing for SMEs: R$ 59.00 per team, 7-day free trial, and fast setup to leave spreadsheets behind.",
+      subtitle: `See Purple Stock pricing for SMEs: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN} per team, 7-day free trial, and fast setup to leave spreadsheets behind.`,
       priceLabel: "per team / month",
       ctaPrimary: "Start 7-day free trial",
       ctaSecondary: "Ask about pricing",
@@ -139,7 +136,7 @@ export default function PricingPage() {
       benefits: [
         {
           title: "Straightforward pricing",
-          description: "R$ 59.00 per team, with no confusing feature matrix.",
+          description: `${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN} per team, with no confusing feature matrix.`,
         },
         {
           title: "Fast activation",
@@ -156,7 +153,7 @@ export default function PricingPage() {
       faqs: [
         {
           q: "Is this price per user?",
-          a: "No. The price is per team: R$ 59.00 per month for your team.",
+          a: `No. The price is per team: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN} per month for your team.`,
         },
         {
           q: "Do I need to replace my ERP?",
@@ -181,8 +178,7 @@ export default function PricingPage() {
       badge: "Plan unique",
       title:
         "Logiciel de gestion de stock avec tarif simple pour toute votre équipe",
-      subtitle:
-        "Découvrez le prix de Purple Stock pour PME: R$ 59,00 par équipe, essai gratuit 7 jours et mise en route rapide.",
+      subtitle: `Découvrez le prix de Purple Stock pour PME: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} par équipe, essai gratuit 7 jours et mise en route rapide.`,
       priceLabel: "par équipe / mois",
       ctaPrimary: "Commencer l'essai gratuit",
       ctaSecondary: "Poser une question sur le prix",
@@ -210,8 +206,7 @@ export default function PricingPage() {
       benefits: [
         {
           title: "Prix direct",
-          description:
-            "R$ 59,00 par équipe, sans matrice de fonctionnalités complexe.",
+          description: `${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} par équipe, sans matrice de fonctionnalités complexe.`,
         },
         {
           title: "Activation rapide",
@@ -228,7 +223,7 @@ export default function PricingPage() {
       faqs: [
         {
           q: "Ce prix est-il par utilisateur ?",
-          a: "Non. Le prix est par équipe: R$ 59,00 par mois pour votre équipe.",
+          a: `Non. Le prix est par équipe: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} par mois pour votre équipe.`,
         },
         {
           q: "Dois-je remplacer mon ERP ?",

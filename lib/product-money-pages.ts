@@ -78,7 +78,7 @@ export const APLICATIVO_ESTOQUE_SECTIONS: MoneyPageSection[] = [
     paragraphs: [
       "Produtora, evento, telecom e clínica usam o mesmo aplicativo para controle de estoque quando o item precisa voltar. Check-out associa responsável e job. Check-in compara o que saiu com o que voltou. Avaria e item faltante entram no histórico no mesmo dia, não dois dias depois no WhatsApp.",
       "Relatório deixa de ser exportar aba. Você vê movimentação por local, por pessoa e por período. Isso alimenta a conversa de reposição e de 'quem ficou com o kit' sem montar planilha paralela.",
-      "Preço público: R$ 59,00 por equipe, 7 dias grátis, sem fidelidade. Fale no WhatsApp se a operação for white-label ou fluxo próprio — o plano do site é o genérico.",
+      `Preço público: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe, ${TEAM_PLAN_TRIAL_DAYS} dias grátis, sem fidelidade. Fale no WhatsApp se a operação for white-label ou fluxo próprio — o plano do site é o genérico.`,
     ],
   },
 ];

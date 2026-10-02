@@ -10,6 +10,10 @@ import {
   resolveMidCtaHeadline,
   resolveRentalWhatsAppText,
 } from "@/lib/industry-detail-helpers";
+import {
+  TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
+  TEAM_PLAN_TRIAL_DAYS,
+} from "@/lib/pricing";
 
 type IndustryDetailFooterProps = {
   industry: IndustryRecord;
@@ -43,7 +47,7 @@ export function IndustryDetailFooter({
               </h2>
               <p className="mt-2 max-w-xl text-slate-600">
                 {cta.leadWithPublicPrice
-                  ? "R$ 59,00 por equipe, 7 dias grátis e implantação rápida. Sem matriz confusa de funcionalidades."
+                  ? `${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe, ${TEAM_PLAN_TRIAL_DAYS} dias grátis e implantação rápida. Sem matriz confusa de funcionalidades.`
                   : "Check-out com responsável, prazo e conferência na volta. Locadora com fluxo próprio fala no WhatsApp."}
               </p>
             </div>

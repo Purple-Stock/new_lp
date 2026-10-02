@@ -3,6 +3,11 @@
  * Kept out of the 1.5k-line client page so agents can edit SEO without paging the generator UI.
  */
 
+import {
+  TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
+  TEAM_PLAN_TRIAL_DAYS,
+} from "@/lib/pricing";
+
 export type BarcodeToolLocale = "pt" | "en" | "fr";
 
 export type BarcodeFormatCard = {
@@ -86,8 +91,7 @@ const PT: BarcodeToolSeoCopy = {
     },
   ],
   ctaTitle: "Use código de barras no estoque de verdade",
-  ctaBody:
-    "Gerou a etiqueta? No Purple Stock você imprime, lê no celular e registra entrada, saída e inventário com histórico por item — a partir de R$ 59 por equipe, com 7 dias grátis.",
+  ctaBody: `Gerou a etiqueta? No Purple Stock você imprime, lê no celular e registra entrada, saída e inventário com histórico por item — a partir de ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe, com ${TEAM_PLAN_TRIAL_DAYS} dias grátis.`,
   trialLabel: "Testar Purple Stock grátis",
   pricingLabel: "Ver preços",
   implementLabel: "Como implementar no estoque",

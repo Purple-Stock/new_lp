@@ -18,6 +18,7 @@ import {
   resolveIndustryHeroCta,
   resolveRentalWhatsAppText,
 } from "@/lib/industry-detail-helpers";
+import { TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT } from "@/lib/pricing";
 
 type IndustryDetailHeroProps = {
   industry: IndustryRecord;
@@ -27,7 +28,7 @@ type IndustryDetailHeroProps = {
 function PublicPriceLink() {
   return (
     <Link href="/precos" className="ps-link-editorial font-semibold">
-      R$ 59,00 por equipe
+      {TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe
     </Link>
   );
 }

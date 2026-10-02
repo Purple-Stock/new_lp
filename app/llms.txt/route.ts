@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/lib/blog";
+import { TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT } from "@/lib/pricing";
 
 export const dynamic = "force-static";
 
@@ -14,7 +15,7 @@ export async function GET() {
 
 ## Sobre
 
-- [Início](/): Controle de estoque e equipamentos com QR no celular, a partir de R$ 59 por equipe.
+- [Início](/): Controle de estoque e equipamentos com QR no celular, a partir de ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.
 - [Indústrias](/industrias): Audiovisual, eventos, telecom, odontológico, autopeças e almoxarifado de obra.
 
 PurpleStock é uma solução de gestão de estoque que oferece controle em tempo real, rastreamento de produtos, gestão de equipamentos com QR Code e histórico de movimentação.

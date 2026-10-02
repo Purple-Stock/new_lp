@@ -1,4 +1,5 @@
 import { CONSTRUCTION_PROOF } from "@/data/industry-proof-construction";
+import { TEAM_PLAN_MONTHLY_PRICE_NUMBER } from "@/lib/pricing";
 
 export type IndustryCaseStudy = {
   role: string;
@@ -43,7 +44,7 @@ const DEFAULT_PROOF: IndustrySocialProof = {
     { value: "QR", label: "Leitura no celular" },
     { value: "7d", label: "Teste grátis" },
     { value: "1", label: "Histórico único" },
-    { value: "R$59", label: "Por equipe / mês" },
+    { value: `R$${TEAM_PLAN_MONTHLY_PRICE_NUMBER}`, label: "Por equipe / mês" },
   ],
   casesHeadline: "Como times usam o Purple Stock",
   casesSubhead:

@@ -1,14 +1,15 @@
 /**
  * Public team-plan pricing — single source of truth for SERP, schema, FAQ and CTAs.
- * Why centralized: GSC/FAQ/schema drift (R$29.90 vs R$59) tanks trust and CTR.
+ * Why centralized: GSC/FAQ/schema drift (R$29.90 vs R$59 vs R$99) tanks trust and CTR.
+ * Existing Stripe subscribers stay on their Price ID; this is checkout + marketing only.
  *
  * @example
  * schema.offers.price = TEAM_PLAN_MONTHLY_PRICE_SCHEMA
  */
-export const TEAM_PLAN_MONTHLY_PRICE_NUMBER = 59;
-export const TEAM_PLAN_MONTHLY_PRICE_SCHEMA = "59.00";
-export const TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT = "R$ 59,00";
-export const TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN = "R$ 59.00";
+export const TEAM_PLAN_MONTHLY_PRICE_NUMBER = 99;
+export const TEAM_PLAN_MONTHLY_PRICE_SCHEMA = "99.00";
+export const TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT = "R$ 99,00";
+export const TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN = "R$ 99.00";
 export const TEAM_PLAN_TRIAL_DAYS = 7;
 
 export const TEAM_PLAN_UNIT_LABEL_PT = "equipe";

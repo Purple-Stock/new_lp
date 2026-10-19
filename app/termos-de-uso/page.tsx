@@ -37,8 +37,9 @@ export default function TermosDeUsoPage() {
           A Purple Stock é um sistema de controle de estoque e equipamentos com
           QR Code, oferecido em plano único por equipe. O preço público atual é{" "}
           {TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe ao mês, com teste de{" "}
-          {TEAM_PLAN_TRIAL_DAYS} dias. O teste pode exigir cartão. Não há
-          fidelidade: você pode cancelar quando quiser.
+          {TEAM_PLAN_TRIAL_DAYS} dias, sem cartão. O cartão entra só na
+          conversão da assinatura. Não há fidelidade: você pode cancelar quando
+          quiser.
         </p>
         <h2 className="mt-8 text-xl font-semibold text-slate-900">
           Uso aceitável

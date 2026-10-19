@@ -6,7 +6,11 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { trackCtaClick, trackSeoLandingView } from "@/lib/analytics";
+import {
+  trackCtaClick,
+  trackSeoLandingView,
+  trackSignupStarted,
+} from "@/lib/analytics";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { getCalendlyUrl } from "@/lib/contact";
@@ -21,6 +25,7 @@ import { DesktopLandingWindowChrome } from "@/components/desktop-landing-window-
 import { DesktopLandingHero } from "@/components/desktop-landing-hero";
 import { DesktopLandingSocialProof } from "@/components/desktop-landing-social-proof";
 import { DesktopLandingPlaybookSections } from "@/components/desktop-landing-playbook-sections";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 
 function asLandingLanguage(language: string): LandingLanguage {
   if (language === "en" || language === "fr" || language === "pt") {
@@ -83,11 +88,7 @@ export function DesktopLanding({
 
   const openApp = useCallback(() => {
     if (typeof window === "undefined") return;
-    window.open(
-      "https://app.purplestock.com.br/",
-      "_blank",
-      "noopener,noreferrer"
-    );
+    window.open(APP_SIGNUP_URL, "_blank", "noopener,noreferrer");
   }, []);
 
   const scrollLandingToTop = useCallback(() => {
@@ -195,14 +196,18 @@ export function DesktopLanding({
                   className="ps-btn-primary px-8 py-6 text-base"
                 >
                   <Link
-                    href="https://app.purplestock.com.br/"
-                    onClick={() =>
+                    href={APP_SIGNUP_URL}
+                    onClick={() => {
                       trackCtaClick({
                         cta_name: "desktop_trial_secondary",
                         cta_target: "app",
                         page_section: "secondary_cta",
-                      })
-                    }
+                      });
+                      trackSignupStarted({
+                        cta_name: "desktop_trial_secondary",
+                        page_section: "secondary_cta",
+                      });
+                    }}
                   >
                     <Sparkles className="w-5 h-5 mr-2" strokeWidth={2.5} />
                     {secondaryTrialLabel}

@@ -40,16 +40,16 @@ export type BarcodeToolSeoCopy = {
 };
 
 const PT: BarcodeToolSeoCopy = {
-  badge: "Sem cadastro · PNG · EAN / Code 128 / QR",
+  badge: "PNG grátis · EAN / Code 128 / QR · teste 7 dias",
   benefitChips: [
-    "Sem cadastro",
-    "Download em PNG",
+    "PNG grátis",
     "EAN-13 e Code 128",
     "QR Code incluso",
+    "Teste 7 dias no estoque",
   ],
   howToTitle: "Como usar o gerador de código de barras grátis",
   howToBody:
-    "Escolha o formato (EAN-13, Code 128 ou QR), digite o valor, personalize tamanho e cores e baixe em PNG. Não precisa criar conta.",
+    "Escolha o formato (EAN-13, Code 128 ou QR), digite o valor, personalize tamanho e cores e baixe em PNG. Depois, teste o Purple Stock 7 dias para controlar o estoque com essas etiquetas.",
   formatCards: [
     {
       title: "EAN-13 grátis",
@@ -70,9 +70,9 @@ const PT: BarcodeToolSeoCopy = {
   faqTitle: "Perguntas frequentes sobre código de barras grátis",
   faqItems: [
     {
-      question: "O gerador de código de barras é grátis e sem cadastro?",
+      question: "O gerador de código de barras é grátis?",
       answer:
-        "Sim. Você gera EAN-13, Code 128 e QR Code online, baixa em PNG e usa em etiquetas sem criar conta.",
+        "Sim. Você gera EAN-13, Code 128 e QR Code online e baixa em PNG. Para controlar entrada, saída e inventário com essas etiquetas, teste o Purple Stock 7 dias.",
     },
     {
       question: "Quando usar Code 128 em vez de EAN-13?",
@@ -100,16 +100,16 @@ const PT: BarcodeToolSeoCopy = {
 };
 
 const EN: BarcodeToolSeoCopy = {
-  badge: "No signup · PNG · EAN / Code 128 / QR",
+  badge: "Free PNG · EAN / Code 128 / QR · 7-day trial",
   benefitChips: [
-    "No signup",
-    "PNG download",
+    "Free PNG",
     "EAN-13 and Code 128",
     "QR Code included",
+    "7-day inventory trial",
   ],
   howToTitle: "How to use the free barcode generator",
   howToBody:
-    "Pick a format, enter the value, customize size and colors, then download PNG. No account required.",
+    "Pick a format, enter the value, customize size and colors, then download PNG. After that, try Purple Stock for 7 days to control stock with those labels.",
   formatCards: [
     {
       title: "Free EAN-13",
@@ -126,13 +126,13 @@ const EN: BarcodeToolSeoCopy = {
   ],
   longTailTitle: "EAN, Code 128 and QR in one free generator",
   longTailBody:
-    "Need a free barcode generator, Code 128 generator or free EAN without signup? Generate EAN-13, Code 128 and QR as PNG for labels and inventory counts.",
+    "Need a free barcode generator, Code 128 generator or free EAN? Generate EAN-13, Code 128 and QR as PNG for labels and inventory counts.",
   faqTitle: "Free barcode generator FAQ",
   faqItems: [
     {
-      question: "Is the barcode generator free with no signup?",
+      question: "Is the barcode generator free?",
       answer:
-        "Yes. Generate EAN-13, Code 128 and QR Code online, download PNG, and use it on labels without creating an account.",
+        "Yes. Generate EAN-13, Code 128 and QR Code online and download PNG. To track inbound, outbound and counts with those labels, try Purple Stock for 7 days.",
     },
     {
       question: "When should I use Code 128 instead of EAN-13?",
@@ -161,16 +161,16 @@ const EN: BarcodeToolSeoCopy = {
 };
 
 const FR: BarcodeToolSeoCopy = {
-  badge: "Sans compte · PNG · EAN / Code 128 / QR",
+  badge: "PNG gratuit · EAN / Code 128 / QR · essai 7 jours",
   benefitChips: [
-    "Sans inscription",
-    "Téléchargement PNG",
+    "PNG gratuit",
     "EAN-13 et Code 128",
     "QR Code inclus",
+    "Essai stock 7 jours",
   ],
   howToTitle: "Comment utiliser le générateur gratuit",
   howToBody:
-    "Choisissez le format, saisissez la valeur, personnalisez et téléchargez en PNG. Aucun compte requis.",
+    "Choisissez le format, saisissez la valeur, personnalisez et téléchargez en PNG. Ensuite, essayez Purple Stock 7 jours pour gérer le stock avec ces étiquettes.",
   formatCards: EN.formatCards,
   longTailTitle: EN.longTailTitle,
   longTailBody: EN.longTailBody,

@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, Globe, Box, ArrowRight, Menu } from "lucide-react";
+import { ChevronDown, Globe, Box, Menu } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/utils/translations";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { trackSeoCtaClick } from "@/lib/analytics";
+import { trackSeoCtaClick, trackSignupStarted } from "@/lib/analytics";
+import { APP_LOGIN_URL, APP_SIGNUP_URL } from "@/lib/app-urls";
+import { TEAM_PLAN_TRIAL_DAYS } from "@/lib/pricing";
 
 const PRIMARY_FEATURE_LINKS = [
   {
@@ -75,6 +77,12 @@ export function Navbar() {
       : language === "en"
         ? "Documentation"
         : "Documentation";
+  const trialLabel =
+    language === "pt"
+      ? `Testar ${TEAM_PLAN_TRIAL_DAYS} dias`
+      : language === "en"
+        ? `Try ${TEAM_PLAN_TRIAL_DAYS} days`
+        : `Essayer ${TEAM_PLAN_TRIAL_DAYS} jours`;
   const navLabel =
     language === "pt"
       ? "Navegação principal"
@@ -274,6 +282,25 @@ export function Navbar() {
                 >
                   {t.freeBarcode}
                 </Link>
+                <div className="h-px bg-white/10 my-1 mx-3" />
+                <Link
+                  href={APP_SIGNUP_URL}
+                  className="flex items-center px-3 py-2 text-[13px] font-semibold text-white hover:bg-[#0058d0] transition-colors mx-1 rounded-[3px]"
+                  onClick={() => {
+                    closeMobileMenu();
+                    trackSeoCtaClick({
+                      cta_name: "navbar_trial",
+                      cta_target: "app",
+                      page_section: "navbar_mobile",
+                    });
+                    trackSignupStarted({
+                      cta_name: "navbar_trial",
+                      page_section: "navbar_mobile",
+                    });
+                  }}
+                >
+                  {trialLabel}
+                </Link>
               </div>
             )}
           </div>
@@ -405,7 +432,25 @@ export function Navbar() {
           <div className="w-px h-3 bg-white/20 mx-1" />
 
           <Link
-            href="https://app.purplestock.com.br/"
+            href={APP_SIGNUP_URL}
+            className="flex items-center px-2 py-0.5 rounded-[3px] bg-white/15 text-white hover:bg-white/25 transition-colors"
+            onClick={() => {
+              trackSeoCtaClick({
+                cta_name: "navbar_trial",
+                cta_target: "app",
+                page_section: "navbar",
+              });
+              trackSignupStarted({
+                cta_name: "navbar_trial",
+                page_section: "navbar",
+              });
+            }}
+          >
+            <span className="text-[11px] font-semibold">{trialLabel}</span>
+          </Link>
+
+          <Link
+            href={APP_LOGIN_URL}
             className="flex items-center gap-1 px-2 py-0.5 hover:bg-white/10 rounded-[3px] transition-colors"
             onClick={() =>
               trackSeoCtaClick({
@@ -416,7 +461,6 @@ export function Navbar() {
             }
           >
             <span className="text-[11px]">{t.login}</span>
-            <ArrowRight className="w-3 h-3" strokeWidth={2.5} />
           </Link>
         </div>
       </div>

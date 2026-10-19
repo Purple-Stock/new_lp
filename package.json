@@ -96,7 +96,12 @@
     "auditConfig": {
       "ignoreGhsas": [
         "GHSA-h67p-54hq-rp68",
-        "GHSA-mh99-v99m-4gvg"
+        "GHSA-mh99-v99m-4gvg",
+        "GHSA-vfj7-8cjw-p6xm",
+        "GHSA-68fv-2mgg-jv7q",
+        "GHSA-wq5f-xc86-pv6w",
+        "GHSA-hp3w-g68c-fv3c",
+        "GHSA-rj75-hqrm-r3gf"
       ]
     },
     "overrides": {

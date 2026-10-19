@@ -10,7 +10,8 @@ import {
   DialogTrigger,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { trackCtaClick } from "@/lib/analytics";
+import { trackCtaClick, trackSignupStarted } from "@/lib/analytics";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 import { buildWhatsAppUrl } from "@/lib/contact";
 import {
   TEAM_PLAN_MONTHLY_PRICE_DISPLAY_EN,
@@ -136,15 +137,19 @@ export function DesktopLandingHero({
             className="ps-btn-outline w-full whitespace-normal px-8 py-6 text-base sm:w-auto"
           >
             <Link
-              href="https://app.purplestock.com.br/"
-              onClick={() =>
+              href={APP_SIGNUP_URL}
+              onClick={() => {
                 trackCtaClick({
                   cta_name: "desktop_trial_secondary",
                   cta_target: "app",
                   page_section: "hero_cta",
                   cta_variant: usePainCta ? "pain" : "default",
-                })
-              }
+                });
+                trackSignupStarted({
+                  cta_name: "desktop_trial_secondary",
+                  page_section: "hero_cta",
+                });
+              }}
             >
               {pick(
                 language,

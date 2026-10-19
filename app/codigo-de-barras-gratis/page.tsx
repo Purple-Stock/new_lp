@@ -34,6 +34,7 @@ import { translations } from "@/utils/translations";
 import JsBarcode from "jsbarcode";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { BarcodeDownloadBridge } from "@/components/barcode-download-bridge";
 import { BarcodeToolHeroChips } from "@/components/barcode-tool-hero-chips";
 import { BarcodeToolSeoFooter } from "@/components/barcode-tool-seo-footer";
 import type { QRCodeErrorCorrectionLevel } from "qrcode";
@@ -138,6 +139,7 @@ export default function CodigoDeBarrasGratis() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationError, setGenerationError] = useState<string | null>(null);
   const [copyFeedback, setCopyFeedback] = useState<string | null>(null);
+  const [bridgeOpen, setBridgeOpen] = useState(false);
 
   const barcodeValidation = useMemo(
     () => validateBarcodeData(barcodeType as BarcodeFormat, barcodeData),
@@ -379,6 +381,7 @@ export default function CodigoDeBarrasGratis() {
       link.download = buildDownloadFilename(type, data);
       link.href = canvas.toDataURL();
       link.click();
+      setBridgeOpen(true);
     } catch (error) {
       console.error("Erro ao baixar código:", error);
     }
@@ -1454,9 +1457,11 @@ export default function CodigoDeBarrasGratis() {
 
       <BarcodeToolSeoFooter copy={seoCopy} />
 
-      <div className="relative z-[1]">
+      <div className="relative z-[1] pb-24">
         <Footer />
       </div>
+
+      <BarcodeDownloadBridge open={bridgeOpen} onOpenChange={setBridgeOpen} />
     </div>
   );
 }

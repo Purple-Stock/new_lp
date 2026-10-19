@@ -45,7 +45,7 @@ export default function SobrePage() {
             Matheus Puppe
           </a>
           . O suporte fala português, o preço público é um plano por equipe e o
-          teste de 7 dias pode pedir cartão. Empresas como VHS, St. Nicholas
+          teste de 7 dias começa sem cartão. Empresas como VHS, St. Nicholas
           School, Da Rua e DPS Brasil já aparecem na operação com o mesmo fluxo
           de entrada, saída e transferência.
         </p>

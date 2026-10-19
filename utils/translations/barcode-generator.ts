@@ -2,7 +2,7 @@
 export const barcodeGeneratorPt = {
   title: "Gerador de Código de Barras Grátis Online",
   description:
-    "Gere código de barras grátis: EAN-13, Code 128 e QR. Sem cadastro, personalize e baixe em PNG para estoque e etiquetas.",
+    "Gere código de barras grátis: EAN-13, Code 128 e QR. Personalize, baixe em PNG e teste o estoque 7 dias.",
   configuration: {
     title: "Configuração",
     description: "Personalize seu código de barras com as opções abaixo",

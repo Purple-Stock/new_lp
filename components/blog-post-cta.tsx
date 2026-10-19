@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trackSeoCtaClick } from "@/lib/analytics";
+import { trackSeoCtaClick, trackSignupStarted } from "@/lib/analytics";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 import { buildWhatsAppUrl } from "@/lib/contact";
 
 type BlogPostCtaProps = {
@@ -90,16 +91,21 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
   return (
     <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
       <Link
-        href="https://app.purplestock.com.br/"
+        href={APP_SIGNUP_URL}
         className="w-full sm:w-auto"
-        onClick={() =>
+        onClick={() => {
           trackSeoCtaClick({
             cta_name: "blog_post_primary_trial",
             cta_target: "app",
             page_section: "blog_header",
             query_cluster: slug,
-          })
-        }
+          });
+          trackSignupStarted({
+            cta_name: "blog_post_primary_trial",
+            page_section: "blog_header",
+            query_cluster: slug,
+          });
+        }}
       >
         <Button className="ps-btn-primary w-full sm:w-auto">
           {cta.primaryLabel}

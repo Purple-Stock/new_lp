@@ -20,6 +20,7 @@ import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getCalendlyUrl } from "@/lib/contact";
 import { translations } from "@/utils/translations";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 
 export default function InventoryAppPage() {
   const { language } = useLanguage();
@@ -56,7 +57,7 @@ export default function InventoryAppPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 {/* <Link href="/coming-soon"> */}
-                <Link href="https://app.purplestock.com.br/">
+                <Link href={APP_SIGNUP_URL}>
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-violet-600 to-violet-700 hover:from-violet-700 hover:to-violet-800 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
@@ -301,7 +302,7 @@ export default function InventoryAppPage() {
                 </Button>
               </Link>
               {/* <Link href="/coming-soon"> */}
-              <Link href="https://app.purplestock.com.br/">
+              <Link href={APP_SIGNUP_URL}>
                 <Button
                   size="lg"
                   className="bg-transparent border-2 border-white hover:bg-white/10 text-white px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-1"

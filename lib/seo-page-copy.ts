@@ -25,7 +25,7 @@ export const BARCODE_TOOL_PAGE_TITLE =
   "Gerador de código de barras grátis | EAN e QR";
 
 export const BARCODE_TOOL_PAGE_DESCRIPTION =
-  "Gerador de código de barras grátis online: EAN-13, Code 128 e QR. Sem cadastro, baixe PNG e use no estoque ou etiquetas.";
+  "Gerador de código de barras grátis online: EAN-13, Code 128 e QR. Baixe PNG e teste 7 dias no estoque com o Purple Stock.";
 
 export const BARCODE_TOOL_PATH = "/codigo-de-barras-gratis";
 

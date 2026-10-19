@@ -11,6 +11,7 @@ import {
   CONSTRUCTION_CLUSTER_POSTS,
   CONSTRUCTION_INDUSTRY_HREF,
 } from "@/lib/construction-cluster";
+import { buildAppSignupUrl } from "@/lib/app-urls";
 
 const checklist = [
   "Padronizar cadastro de itens com SKU, unidade e localização",
@@ -56,7 +57,11 @@ export default function ControleAlmoxarifadoPage() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="https://app.purplestock.com.br/?utm_source=site&utm_medium=organic&utm_campaign=controle_almoxarifado"
+              href={buildAppSignupUrl({
+                utm_source: "site",
+                utm_medium: "organic",
+                utm_campaign: "controle_almoxarifado",
+              })}
               onClick={() =>
                 trackSeoCtaClick({
                   cta_name: "almoxarifado_hero_primary",

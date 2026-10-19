@@ -33,6 +33,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { GlossaryRelatedPosts } from "@/components/glossary-related-posts";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -422,7 +423,7 @@ export default async function GlossaryTermPage({ params }: PageProps) {
                 {termCta.body}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link href="https://app.purplestock.com.br/">
+                <Link href={APP_SIGNUP_URL}>
                   <Button className="bg-purple-700 text-white hover:bg-purple-800">
                     Testar Purple Stock grátis
                     <ArrowRight className="ml-2 h-4 w-4" />

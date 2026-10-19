@@ -1,5 +1,6 @@
 import { buildWhatsAppUrl } from "@/lib/contact";
 import { HOME_PAGE_H1_PT } from "@/lib/seo-page-copy";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 
 /** Core landing/i18n strings for pt (nav, hero, features list, pricing, etc.). */
 export const corePt = {
@@ -154,7 +155,7 @@ export const corePt = {
         description: "Para começar",
         features: ["Até 10 itens", "Análises básicas", "Suporte por email"],
         buttonText: "Começar Agora",
-        buttonLink: "https://app.purplestock.com.br/",
+        buttonLink: APP_SIGNUP_URL,
       },
       {
         name: "Pro",
@@ -168,7 +169,7 @@ export const corePt = {
           "Suporte por email",
         ],
         buttonText: "Atualizar Agora",
-        buttonLink: "https://app.purplestock.com.br/",
+        buttonLink: APP_SIGNUP_URL,
       },
       {
         name: "Empresarial",

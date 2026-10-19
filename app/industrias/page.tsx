@@ -29,6 +29,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { trackSeoCtaClick } from "@/lib/analytics";
 import { isIndexableIndustry } from "@/lib/industries-data";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 
 type IndustryId =
   | "varejo"
@@ -444,7 +445,7 @@ export default function IndustriasPage() {
 
                 <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <Link
-                    href="https://app.purplestock.com.br/"
+                    href={APP_SIGNUP_URL}
                     onClick={() =>
                       trackSeoCtaClick({
                         cta_name: "industries_hero_primary",
@@ -695,7 +696,7 @@ export default function IndustriasPage() {
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Link href="https://app.purplestock.com.br/">
+              <Link href={APP_SIGNUP_URL}>
                 <Button
                   size="lg"
                   className="ps-btn-primary px-8 py-4 text-lg shadow-[0_8px_28px_rgba(139,92,246,0.4)]"

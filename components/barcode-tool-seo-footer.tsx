@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 import type { BarcodeToolSeoCopy } from "@/lib/barcode-tool-seo-content";
 
 type BarcodeToolSeoFooterProps = {
@@ -75,7 +76,7 @@ export function BarcodeToolSeoFooter({ copy }: BarcodeToolSeoFooterProps) {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-medium">
             <Link
-              href="https://app.purplestock.com.br/"
+              href={APP_SIGNUP_URL}
               className="rounded-full bg-brand-ui-primary px-4 py-2 text-white transition hover:opacity-90"
             >
               {copy.trialLabel}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackSeoCtaClick } from "@/lib/analytics";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 import { buildWhatsAppUrl } from "@/lib/contact";
 
 type BlogPostCtaProps = {
@@ -90,7 +91,7 @@ export function BlogPostCta({ slug }: BlogPostCtaProps) {
   return (
     <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
       <Link
-        href="https://app.purplestock.com.br/"
+        href={APP_SIGNUP_URL}
         className="w-full sm:w-auto"
         onClick={() =>
           trackSeoCtaClick({

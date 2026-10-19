@@ -21,6 +21,7 @@ import { DesktopLandingWindowChrome } from "@/components/desktop-landing-window-
 import { DesktopLandingHero } from "@/components/desktop-landing-hero";
 import { DesktopLandingSocialProof } from "@/components/desktop-landing-social-proof";
 import { DesktopLandingPlaybookSections } from "@/components/desktop-landing-playbook-sections";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 
 function asLandingLanguage(language: string): LandingLanguage {
   if (language === "en" || language === "fr" || language === "pt") {
@@ -84,7 +85,7 @@ export function DesktopLanding({
   const openApp = useCallback(() => {
     if (typeof window === "undefined") return;
     window.open(
-      "https://app.purplestock.com.br/",
+      APP_SIGNUP_URL,
       "_blank",
       "noopener,noreferrer"
     );
@@ -195,7 +196,7 @@ export function DesktopLanding({
                   className="ps-btn-primary px-8 py-6 text-base"
                 >
                   <Link
-                    href="https://app.purplestock.com.br/"
+                    href={APP_SIGNUP_URL}
                     onClick={() =>
                       trackCtaClick({
                         cta_name: "desktop_trial_secondary",

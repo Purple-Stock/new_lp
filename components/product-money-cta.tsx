@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackSeoCtaClick } from "@/lib/analytics";
+import { buildAppSignupUrl } from "@/lib/app-urls";
 import { buildWhatsAppUrl } from "@/lib/contact";
 
 type ProductMoneyCtaProps = {
@@ -26,7 +27,11 @@ export function ProductMoneyCta({
   return (
     <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
       <Link
-        href="https://app.purplestock.com.br/?utm_source=site&utm_medium=organic&utm_campaign=product_money"
+        href={buildAppSignupUrl({
+          utm_source: "site",
+          utm_medium: "organic",
+          utm_campaign: "product_money",
+        })}
         onClick={() =>
           trackSeoCtaClick({
             cta_name: `${queryCluster}_${ctaSlot}_primary`,

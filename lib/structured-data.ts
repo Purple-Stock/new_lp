@@ -15,6 +15,7 @@ import {
   SITE_NAME,
   SITE_SAME_AS,
 } from "@/lib/site";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 
 type FaqItem = { q: string; a: string };
 
@@ -134,7 +135,7 @@ export function buildHomePageGraph() {
         inLanguage: "pt-BR",
         description: SITE_DESCRIPTION,
         url,
-        installUrl: "https://app.purplestock.com.br/",
+        installUrl: APP_SIGNUP_URL,
         image: absoluteUrl("/og-image.png"),
         screenshot: absoluteUrl("/images/app-items-list-1200.webp"),
         featureList: [
@@ -222,7 +223,7 @@ export function buildSoftwareLandingGraph(params: {
         operatingSystem: "Web, iOS, Android",
         description: params.description,
         url,
-        installUrl: "https://app.purplestock.com.br/",
+        installUrl: APP_SIGNUP_URL,
         offers: buildMonthlyOffer(`${siteUrl}/precos`),
         provider: { "@id": `${siteUrl}/#organization` },
       },

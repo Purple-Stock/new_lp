@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 import { buildWhatsAppUrl, getCalendlyUrl } from "@/lib/contact";
 import type { IndustryRecord } from "@/lib/industries-data";
 import {
@@ -30,11 +31,9 @@ export function IndustryDetailFooter({
   const primaryHref =
     cta.primaryTarget === "whatsapp"
       ? buildWhatsAppUrl(resolveRentalWhatsAppText(industry.slug))
-      : "https://app.purplestock.com.br/";
+      : APP_SIGNUP_URL;
   const secondaryHref =
-    cta.primaryTarget === "whatsapp"
-      ? "https://app.purplestock.com.br/"
-      : "/precos";
+    cta.primaryTarget === "whatsapp" ? APP_SIGNUP_URL : "/precos";
 
   return (
     <>

@@ -1,4 +1,5 @@
 import { buildWhatsAppUrl } from "@/lib/contact";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 
 /** Core landing/i18n strings for en (nav, hero, features list, pricing, etc.). */
 export const coreEn = {
@@ -152,7 +153,7 @@ export const coreEn = {
         description: "To get started",
         features: ["Up to 10 items", "Basic analytics", "Email support"],
         buttonText: "Get Started",
-        buttonLink: "https://app.purplestock.com.br/",
+        buttonLink: APP_SIGNUP_URL,
       },
       {
         name: "Pro",
@@ -166,7 +167,7 @@ export const coreEn = {
           "Email support",
         ],
         buttonText: "Upgrade Now",
-        buttonLink: "https://app.purplestock.com.br/",
+        buttonLink: APP_SIGNUP_URL,
       },
       {
         name: "Enterprise",

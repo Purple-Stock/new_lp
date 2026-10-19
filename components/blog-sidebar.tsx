@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Hash, TrendingUp } from "lucide-react";
 import { getAllPosts, getPopularTags } from "@/lib/blog";
 import { Button } from "@/components/ui/button";
+import { APP_SIGNUP_URL } from "@/lib/app-urls";
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("pt-BR", {
@@ -32,7 +33,7 @@ export async function BlogSidebar({ excludeSlug }: { excludeSlug?: string }) {
           em minutos.
         </p>
         <div className="mt-4">
-          <Link href="https://app.purplestock.com.br/" target="_blank">
+          <Link href={APP_SIGNUP_URL} target="_blank">
             <Button className="ps-btn-primary w-full">
               Criar conta grátis
               <ArrowRight className="ml-2 h-4 w-4" />

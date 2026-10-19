@@ -23,7 +23,10 @@ test("barcode download bridge component points at signup", () => {
   assert.match(component, /BARCODE_DOWNLOAD_BRIDGE/);
   assert.match(component, /barcode_download_modal/);
   assert.match(component, /barcode_sticky_cta/);
-  assert.doesNotMatch(component, /href="https:\/\/app\.purplestock\.com\.br\/"/);
+  assert.doesNotMatch(
+    component,
+    /href="https:\/\/app\.purplestock\.com\.br\/"/
+  );
 });
 
 test("barcode generator page opens the bridge after PNG download", () => {

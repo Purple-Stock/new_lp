@@ -88,11 +88,7 @@ export function DesktopLanding({
 
   const openApp = useCallback(() => {
     if (typeof window === "undefined") return;
-    window.open(
-      APP_SIGNUP_URL,
-      "_blank",
-      "noopener,noreferrer"
-    );
+    window.open(APP_SIGNUP_URL, "_blank", "noopener,noreferrer");
   }, []);
 
   const scrollLandingToTop = useCallback(() => {

@@ -8,9 +8,7 @@ export const APP_ORIGIN = "https://app.purplestock.com.br";
 export const APP_LOGIN_URL = `${APP_ORIGIN}/`;
 export const APP_SIGNUP_URL = `${APP_ORIGIN}/signup`;
 
-export function buildAppSignupUrl(
-  query?: Record<string, string>
-): string {
+export function buildAppSignupUrl(query?: Record<string, string>): string {
   if (!query) return APP_SIGNUP_URL;
 
   const url = new URL(APP_SIGNUP_URL);

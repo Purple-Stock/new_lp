@@ -180,7 +180,7 @@ const PLAYBOOK_BY_LANGUAGE: Record<LandingLanguage, LandingPlaybook> = {
       },
       {
         q: "Can we test without long-term lock-in?",
-        a: "Yes. The trial requires a credit card, and you can cancel anytime during the trial period.",
+        a: "Yes. The 7-day trial starts without a credit card, and you can cancel anytime during the trial period.",
       },
       {
         q: "What is the starting cost?",
@@ -272,7 +272,7 @@ const PLAYBOOK_BY_LANGUAGE: Record<LandingLanguage, LandingPlaybook> = {
       },
       {
         q: "Peut-on tester sans engagement long?",
-        a: "Oui. L'essai demande une carte bancaire et vous pouvez annuler a tout moment pendant la periode d'essai.",
+        a: "Oui. L'essai de 7 jours commence sans carte bancaire et vous pouvez annuler a tout moment pendant la periode d'essai.",
       },
       {
         q: "Quel est le cout de depart?",

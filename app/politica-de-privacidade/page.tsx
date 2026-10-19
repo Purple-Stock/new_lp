@@ -37,9 +37,9 @@ export default function PoliticaDePrivacidadePage() {
           No site, podemos tratar dados de navegação (páginas visitadas, origem
           e identificadores técnicos) para analytics. No formulário de contato e
           no WhatsApp, tratamos nome, e-mail, telefone e a mensagem que você
-          envia. No teste de 7 dias, o app pode pedir dados de conta e cartão
-          para ativar a assinatura — o processamento do cartão é feito pelo
-          provedor de pagamento, não fica armazenado neste site.
+          envia. No teste de 7 dias o app pede dados de conta; o cartão só
+          entra depois, no checkout da assinatura. O processamento do cartão é
+          feito pelo provedor de pagamento e não fica armazenado neste site.
         </p>
         <h2 className="mt-8 text-xl font-semibold text-slate-900">
           Finalidade e base legal

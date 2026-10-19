@@ -17,7 +17,7 @@ export const HOME_FAQ_PT: HomeFaqItem[] = [
   },
   {
     q: "Posso testar sem ficar preso?",
-    a: "Sim. O teste utiliza cartão de crédito e você pode cancelar quando quiser dentro do período de avaliação.",
+    a: "Sim. O teste de 7 dias começa sem cartão. Você pode cancelar quando quiser dentro do período de avaliação.",
   },
   {
     q: "Quanto custa para começar?",

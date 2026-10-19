@@ -6,7 +6,11 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { trackCtaClick, trackSeoLandingView } from "@/lib/analytics";
+import {
+  trackCtaClick,
+  trackSeoLandingView,
+  trackSignupStarted,
+} from "@/lib/analytics";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { getCalendlyUrl } from "@/lib/contact";
@@ -197,13 +201,17 @@ export function DesktopLanding({
                 >
                   <Link
                     href={APP_SIGNUP_URL}
-                    onClick={() =>
+                    onClick={() => {
                       trackCtaClick({
                         cta_name: "desktop_trial_secondary",
                         cta_target: "app",
                         page_section: "secondary_cta",
-                      })
-                    }
+                      });
+                      trackSignupStarted({
+                        cta_name: "desktop_trial_secondary",
+                        page_section: "secondary_cta",
+                      });
+                    }}
                   >
                     <Sparkles className="w-5 h-5 mr-2" strokeWidth={2.5} />
                     {secondaryTrialLabel}

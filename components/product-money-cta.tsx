@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trackSeoCtaClick } from "@/lib/analytics";
+import { trackSeoCtaClick, trackSignupStarted } from "@/lib/analytics";
 import { buildAppSignupUrl } from "@/lib/app-urls";
 import { buildWhatsAppUrl } from "@/lib/contact";
 
@@ -32,14 +32,19 @@ export function ProductMoneyCta({
           utm_medium: "organic",
           utm_campaign: "product_money",
         })}
-        onClick={() =>
+        onClick={() => {
           trackSeoCtaClick({
             cta_name: `${queryCluster}_${ctaSlot}_primary`,
             cta_target: "app",
             page_section: pageSection,
             query_cluster: queryCluster,
-          })
-        }
+          });
+          trackSignupStarted({
+            cta_name: `${queryCluster}_${ctaSlot}_primary`,
+            page_section: pageSection,
+            query_cluster: queryCluster,
+          });
+        }}
       >
         <Button className="bg-white text-purple-700 hover:bg-gray-100">
           {primaryLabel}

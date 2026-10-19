@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/utils/translations";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { trackSeoCtaClick } from "@/lib/analytics";
+import { trackSeoCtaClick, trackSignupStarted } from "@/lib/analytics";
 import { APP_LOGIN_URL, APP_SIGNUP_URL } from "@/lib/app-urls";
 import { TEAM_PLAN_TRIAL_DAYS } from "@/lib/pricing";
 
@@ -293,6 +293,10 @@ export function Navbar() {
                       cta_target: "app",
                       page_section: "navbar_mobile",
                     });
+                    trackSignupStarted({
+                      cta_name: "navbar_trial",
+                      page_section: "navbar_mobile",
+                    });
                   }}
                 >
                   {trialLabel}
@@ -430,13 +434,17 @@ export function Navbar() {
           <Link
             href={APP_SIGNUP_URL}
             className="flex items-center px-2 py-0.5 rounded-[3px] bg-white/15 text-white hover:bg-white/25 transition-colors"
-            onClick={() =>
+            onClick={() => {
               trackSeoCtaClick({
                 cta_name: "navbar_trial",
                 cta_target: "app",
                 page_section: "navbar",
-              })
-            }
+              });
+              trackSignupStarted({
+                cta_name: "navbar_trial",
+                page_section: "navbar",
+              });
+            }}
           >
             <span className="text-[11px] font-semibold">{trialLabel}</span>
           </Link>

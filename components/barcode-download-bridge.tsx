@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { trackSeoCtaClick } from "@/lib/analytics";
+import { trackSeoCtaClick, trackSignupStarted } from "@/lib/analytics";
 import { APP_SIGNUP_URL } from "@/lib/app-urls";
 import { BARCODE_DOWNLOAD_BRIDGE } from "@/lib/barcode-download-bridge";
 
@@ -40,14 +40,18 @@ export function BarcodeDownloadBridge({
             <Button asChild className="ps-btn-primary">
               <Link
                 href={APP_SIGNUP_URL}
-                onClick={() =>
+                onClick={() => {
                   trackSeoCtaClick({
                     cta_name: "barcode_download_modal",
                     cta_target: "app",
                     page_section: "barcode_download",
                     query_cluster: "codigo-de-barras-gratis",
-                  })
-                }
+                  });
+                  trackSignupStarted({
+                    cta_name: "barcode_download_modal",
+                    page_section: "barcode_download",
+                  });
+                }}
               >
                 {BARCODE_DOWNLOAD_BRIDGE.trialLabel}
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -73,14 +77,18 @@ export function BarcodeDownloadBridge({
           <Link
             href={APP_SIGNUP_URL}
             className="ps-btn-primary inline-flex px-4 py-2 text-sm"
-            onClick={() =>
+            onClick={() => {
               trackSeoCtaClick({
                 cta_name: "barcode_sticky_cta",
                 cta_target: "app",
                 page_section: "barcode_sticky",
                 query_cluster: "codigo-de-barras-gratis",
-              })
-            }
+              });
+              trackSignupStarted({
+                cta_name: "barcode_sticky_cta",
+                page_section: "barcode_sticky",
+              });
+            }}
           >
             {BARCODE_DOWNLOAD_BRIDGE.trialLabel}
             <ArrowRight className="ml-2 h-4 w-4" />

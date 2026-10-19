@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { trackSeoCtaClick, trackSignupStarted } from "@/lib/analytics";
 import { APP_SIGNUP_URL } from "@/lib/app-urls";
 import type { BarcodeToolSeoCopy } from "@/lib/barcode-tool-seo-content";
 
@@ -78,6 +81,18 @@ export function BarcodeToolSeoFooter({ copy }: BarcodeToolSeoFooterProps) {
             <Link
               href={APP_SIGNUP_URL}
               className="rounded-full bg-brand-ui-primary px-4 py-2 text-white transition hover:opacity-90"
+              onClick={() => {
+                trackSeoCtaClick({
+                  cta_name: "barcode_seo_footer_trial",
+                  cta_target: "app",
+                  page_section: "barcode_seo_footer",
+                  query_cluster: "codigo-de-barras-gratis",
+                });
+                trackSignupStarted({
+                  cta_name: "barcode_seo_footer_trial",
+                  page_section: "barcode_seo_footer",
+                });
+              }}
             >
               {copy.trialLabel}
             </Link>

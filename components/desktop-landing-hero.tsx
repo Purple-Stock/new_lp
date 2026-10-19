@@ -10,7 +10,7 @@ import {
   DialogTrigger,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { trackCtaClick } from "@/lib/analytics";
+import { trackCtaClick, trackSignupStarted } from "@/lib/analytics";
 import { APP_SIGNUP_URL } from "@/lib/app-urls";
 import { buildWhatsAppUrl } from "@/lib/contact";
 import {
@@ -138,14 +138,18 @@ export function DesktopLandingHero({
           >
             <Link
               href={APP_SIGNUP_URL}
-              onClick={() =>
+              onClick={() => {
                 trackCtaClick({
                   cta_name: "desktop_trial_secondary",
                   cta_target: "app",
                   page_section: "hero_cta",
                   cta_variant: usePainCta ? "pain" : "default",
-                })
-              }
+                });
+                trackSignupStarted({
+                  cta_name: "desktop_trial_secondary",
+                  page_section: "hero_cta",
+                });
+              }}
             >
               {pick(
                 language,

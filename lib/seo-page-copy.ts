@@ -37,7 +37,14 @@ export const INDUSTRIES_PAGE_DESCRIPTION =
 
 export const PRICING_PAGE_TITLE = `Preço: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe · ${TEAM_PLAN_TRIAL_DAYS} dias grátis`;
 
-export const PRICING_PAGE_DESCRIPTION = `Preço do sistema de estoque Purple Stock: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe/mês, ${TEAM_PLAN_TRIAL_DAYS} dias grátis, sem fidelidade e ativação rápida para PME.`;
+export const PRICING_PAGE_DESCRIPTION = `Preço do estoque com QR: ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe/mês, ${TEAM_PLAN_TRIAL_DAYS} dias grátis. Almoxarifado, check-in e saldo no celular, sem fidelidade.`;
+
+export const GLOSSARIO_PATH = "/glossario";
+
+export const GLOSSARIO_PAGE_TITLE =
+  "Glossário de Estoque para PME: almoxarifado e QR";
+
+export const GLOSSARIO_PAGE_DESCRIPTION = `Glossário de estoque e almoxarifado para PME: MOQ, EOQ, ponto de reposição e QR no celular. Teste ${TEAM_PLAN_TRIAL_DAYS} dias, ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;
 
 export const APLICATIVO_DE_ESTOQUE_PATH = "/recursos/aplicativo-de-estoque";
 

@@ -7,6 +7,10 @@ import {
   APLICATIVO_DE_ESTOQUE_PAGE_DESCRIPTION,
   APLICATIVO_DE_ESTOQUE_PAGE_TITLE,
   APLICATIVO_DE_ESTOQUE_PATH,
+  GLOSSARIO_PAGE_DESCRIPTION,
+  GLOSSARIO_PAGE_TITLE,
+  GLOSSARIO_PATH,
+  PRICING_PAGE_DESCRIPTION,
   VS_PLANILHA_PAGE_DESCRIPTION,
   VS_PLANILHA_PAGE_TITLE,
   VS_PLANILHA_PATH,
@@ -93,6 +97,9 @@ test("blog organizar almoxarifado title fits the SERP", async () => {
   assert.match(post.meta.title, /QR Code/i);
   assertSerpTitle(post.meta.title);
   assertSerpDescription(post.meta.excerpt);
+  assert.match(post.meta.excerpt, /celular/i);
+  assert.match(post.meta.excerpt, /7 dias/i);
+  assert.match(post.meta.excerpt, /99/);
 });
 
 test("glossary almoxarifado-de-obra title is clickable, not only a definition", () => {
@@ -102,6 +109,7 @@ test("glossary almoxarifado-de-obra title is clickable, not only a definition", 
   );
   assert.match(title, /Almoxarifado de Obra/i);
   assert.match(title, /canteiro/i);
+  assert.match(title, /QR/i);
   assert.doesNotMatch(title, /o que é/i);
   assertSerpTitle(title.replace(/\s*\|\s*Purple Stock$/, ""));
   const description = buildGlossaryTermDescription({
@@ -168,4 +176,43 @@ test("nav and home playbook send product queries, not the barcode magnet", () =>
   assert.ok(aplicativoAt > 0);
   assert.ok(vsPlanilhaAt > 0);
   assert.equal(barcodeAt, -1);
+});
+
+test("barcode SEO footer sends generator traffic to money pages, not the blog", () => {
+  const footer = readFileSync(
+    join(process.cwd(), "components/barcode-tool-seo-footer.tsx"),
+    "utf8"
+  );
+  assert.match(footer, /APLICATIVO_DE_ESTOQUE_PATH/);
+  assert.match(footer, /VS_PLANILHA_PATH/);
+  assert.doesNotMatch(footer, /\/blog\/aplicativo-para-controle-de-estoque/);
+});
+
+test("glossario hub SERP is a PME snippet, not a MOQ dump", () => {
+  assert.equal(GLOSSARIO_PATH, "/glossario");
+  assert.match(GLOSSARIO_PAGE_TITLE, /Glossário de Estoque/i);
+  assert.match(GLOSSARIO_PAGE_TITLE, /PME|almoxarifado/i);
+  assertSerpTitle(GLOSSARIO_PAGE_TITLE);
+  assert.match(GLOSSARIO_PAGE_DESCRIPTION, /almoxarifado/i);
+  assert.match(GLOSSARIO_PAGE_DESCRIPTION, /QR/i);
+  assertSerpDescription(GLOSSARIO_PAGE_DESCRIPTION);
+
+  const layout = readFileSync(
+    join(process.cwd(), "app/glossario/layout.tsx"),
+    "utf8"
+  );
+  assert.match(layout, /GLOSSARIO_PAGE_TITLE/);
+  assert.match(layout, /GLOSSARIO_PAGE_DESCRIPTION/);
+  assert.match(layout, /GLOSSARIO_PATH/);
+});
+
+test("pricing SERP leads with QR and almoxarifado, not generic sistema", () => {
+  assert.match(PRICING_PAGE_DESCRIPTION, /QR/i);
+  assert.match(PRICING_PAGE_DESCRIPTION, /almoxarifado/i);
+  assert.match(PRICING_PAGE_DESCRIPTION, /check-in/i);
+  assert.doesNotMatch(
+    PRICING_PAGE_DESCRIPTION,
+    /sistema de estoque Purple Stock/i
+  );
+  assertSerpDescription(PRICING_PAGE_DESCRIPTION);
 });

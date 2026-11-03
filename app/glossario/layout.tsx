@@ -1,11 +1,15 @@
 import type { ReactNode } from "react";
 import { buildPageMetadata } from "@/lib/metadata";
+import {
+  GLOSSARIO_PAGE_DESCRIPTION,
+  GLOSSARIO_PAGE_TITLE,
+  GLOSSARIO_PATH,
+} from "@/lib/seo-page-copy";
 
 export const metadata = buildPageMetadata({
-  title: "Glossário de Estoque: MOQ, EOQ, Ponto de Reposição e Mais",
-  description:
-    "Glossário de estoque e almoxarifado para PME: definições curtas, fórmulas e exemplos de MOQ, EOQ, ponto de reposição, ruptura e mais.",
-  path: "/glossario",
+  title: GLOSSARIO_PAGE_TITLE,
+  description: GLOSSARIO_PAGE_DESCRIPTION,
+  path: GLOSSARIO_PATH,
 });
 
 export default function GlossarioLayout({ children }: { children: ReactNode }) {

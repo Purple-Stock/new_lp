@@ -3,6 +3,9 @@ import assert from "node:assert/strict";
 import {
   BARCODE_TOOL_PAGE_DESCRIPTION,
   BARCODE_TOOL_PAGE_TITLE,
+  GLOSSARIO_PAGE_DESCRIPTION,
+  GLOSSARIO_PAGE_TITLE,
+  GLOSSARIO_PATH,
   HOME_PAGE_DESCRIPTION,
   HOME_PAGE_DOCUMENT_TITLE,
   HOME_PAGE_TITLE,
@@ -27,6 +30,22 @@ test("home and pricing copy say equipe instead of SERP jargon /time", () => {
   assert.doesNotMatch(PRICING_PAGE_TITLE, /Purple Stock/);
   assert.doesNotMatch(PRICING_PAGE_TITLE, /\/time/);
   assert.match(PRICING_PAGE_DESCRIPTION, /equipe/);
+});
+
+test("pricing description names the product recorte, not only the brand", () => {
+  assert.match(PRICING_PAGE_DESCRIPTION, /QR/i);
+  assert.match(PRICING_PAGE_DESCRIPTION, /almoxarifado/i);
+  assert.match(PRICING_PAGE_DESCRIPTION, /99/);
+  assert.ok(PRICING_PAGE_DESCRIPTION.length >= 120);
+  assert.ok(PRICING_PAGE_DESCRIPTION.length <= 160);
+});
+
+test("glossario hub copy lives next to the other high-impression SERP strings", () => {
+  assert.equal(GLOSSARIO_PATH, "/glossario");
+  assert.match(GLOSSARIO_PAGE_TITLE, /Glossário de Estoque/i);
+  assert.ok(GLOSSARIO_PAGE_TITLE.length <= 60);
+  assert.ok(GLOSSARIO_PAGE_DESCRIPTION.length >= 120);
+  assert.ok(GLOSSARIO_PAGE_DESCRIPTION.length <= 160);
 });
 
 test("barcode tool title puts EAN/QR before the brand suffix", () => {

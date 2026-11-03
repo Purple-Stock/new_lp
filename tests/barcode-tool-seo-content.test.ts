@@ -25,6 +25,7 @@ test("PT barcode SEO copy leads with formats and trial, not no-signup", () => {
   assert.match(copy.longTailBody, /Code 128/i);
   assert.match(copy.longTailBody, /EAN/i);
   assert.match(copy.inventoryAppLabel, /estoque/i);
+  assert.match(copy.vsPlanilhaLabel, /planilha/i);
   assert.match(copy.longTailBody, /GS1|GTIN/i);
   assert.match(copy.ctaBody, /equipe/);
 });

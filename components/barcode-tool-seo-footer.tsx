@@ -4,6 +4,10 @@ import Link from "next/link";
 import { trackSeoCtaClick, trackSignupStarted } from "@/lib/analytics";
 import { APP_SIGNUP_URL } from "@/lib/app-urls";
 import type { BarcodeToolSeoCopy } from "@/lib/barcode-tool-seo-content";
+import {
+  APLICATIVO_DE_ESTOQUE_PATH,
+  VS_PLANILHA_PATH,
+} from "@/lib/seo-page-copy";
 
 type BarcodeToolSeoFooterProps = {
   copy: BarcodeToolSeoCopy;
@@ -115,10 +119,16 @@ export function BarcodeToolSeoFooter({ copy }: BarcodeToolSeoFooterProps) {
               {copy.checklistLabel}
             </Link>
             <Link
-              href="/blog/aplicativo-para-controle-de-estoque"
+              href={APLICATIVO_DE_ESTOQUE_PATH}
               className="rounded-full border border-brand-border-soft bg-white px-4 py-2 text-brand-ui-primary transition hover:border-brand-ui-primary"
             >
               {copy.inventoryAppLabel}
+            </Link>
+            <Link
+              href={VS_PLANILHA_PATH}
+              className="rounded-full border border-brand-border-soft bg-white px-4 py-2 text-brand-ui-primary transition hover:border-brand-ui-primary"
+            >
+              {copy.vsPlanilhaLabel}
             </Link>
           </div>
         </div>

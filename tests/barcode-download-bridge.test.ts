@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { BARCODE_DOWNLOAD_BRIDGE } from "../lib/barcode-download-bridge";
 import { APP_SIGNUP_URL } from "../lib/app-urls";
+import { APLICATIVO_DE_ESTOQUE_PATH } from "../lib/seo-page-copy";
 
 function source(relativePath: string): string {
   return readFileSync(join(process.cwd(), relativePath), "utf8");
@@ -27,6 +28,18 @@ test("barcode download bridge component points at signup", () => {
     component,
     /href="https:\/\/app\.purplestock\.com\.br\/"/
   );
+});
+
+test("post-download modal also offers the inventory money page", () => {
+  assert.equal(BARCODE_DOWNLOAD_BRIDGE.productHref, APLICATIVO_DE_ESTOQUE_PATH);
+  assert.match(BARCODE_DOWNLOAD_BRIDGE.productLabel, /estoque/i);
+  const component = source("components/barcode-download-bridge.tsx");
+  assert.match(component, /productHref/);
+  assert.match(component, /productLabel/);
+  assert.match(component, /bg-white/);
+  assert.match(component, /flex flex-col/);
+  assert.doesNotMatch(component, /DialogFooter/);
+  assert.doesNotMatch(component, /flex-col-reverse/);
 });
 
 test("barcode generator page opens the bridge after PNG download", () => {

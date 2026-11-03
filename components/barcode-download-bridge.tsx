@@ -7,7 +7,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -27,7 +26,7 @@ export function BarcodeDownloadBridge({
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="bg-white sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="ps-display text-xl text-brand-ink">
               {BARCODE_DOWNLOAD_BRIDGE.title}
@@ -36,8 +35,8 @@ export function BarcodeDownloadBridge({
               {BARCODE_DOWNLOAD_BRIDGE.body}
             </DialogDescription>
           </DialogHeader>
-          <DialogFooter className="gap-2 sm:justify-start">
-            <Button asChild className="ps-btn-primary">
+          <div className="flex flex-col gap-2 sm:flex-row sm:justify-start">
+            <Button asChild className="ps-btn-primary w-full sm:w-auto">
               <Link
                 href={APP_SIGNUP_URL}
                 onClick={() => {
@@ -58,14 +57,33 @@ export function BarcodeDownloadBridge({
               </Link>
             </Button>
             <Button
-              type="button"
+              asChild
               variant="outline"
-              className="ps-btn-outline"
+              className="ps-btn-outline w-full sm:w-auto"
+            >
+              <Link
+                href={BARCODE_DOWNLOAD_BRIDGE.productHref}
+                onClick={() => {
+                  trackSeoCtaClick({
+                    cta_name: "barcode_download_modal_product",
+                    cta_target: "product",
+                    page_section: "barcode_download",
+                    query_cluster: "codigo-de-barras-gratis",
+                  });
+                }}
+              >
+                {BARCODE_DOWNLOAD_BRIDGE.productLabel}
+              </Link>
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              className="w-full sm:w-auto"
               onClick={() => onOpenChange(false)}
             >
               {BARCODE_DOWNLOAD_BRIDGE.dismissLabel}
             </Button>
-          </DialogFooter>
+          </div>
         </DialogContent>
       </Dialog>
 

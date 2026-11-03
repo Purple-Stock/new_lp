@@ -30,7 +30,7 @@ export function buildGlossaryTermTitle(termName: string, slug: string): string {
   }
 
   if (slug === "almoxarifado-de-obra") {
-    return "Almoxarifado de Obra: estoque do canteiro";
+    return "Almoxarifado de Obra: saldo no canteiro com QR";
   }
 
   const suffix = ": o que é e quando usar | Purple Stock";

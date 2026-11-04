@@ -31,6 +31,8 @@ Pre-commit runs: `format:check` → `audit:deps` → `test` → `lint`.
 | `lib/pricing.ts` | Team plan price (schema + FAQ) |
 | `lib/structured-data.ts` | JSON-LD builders |
 | `lib/barcode-tool-seo-content.ts` | Free barcode tool SEO copy |
+| `lib/geo-answer-blocks.ts` | AI Overview citation passages (home + gerador) |
+| `lib/llms-txt.ts` | `/llms.txt` and `/llm.txt` body |
 | `tests/` | Mirrors lib concerns (`*.test.ts`) |
 
 ## Code style (agents)
@@ -58,6 +60,7 @@ Pre-commit runs: `format:check` → `audit:deps` → `test` → `lint`.
 | Industry page H1 | optional `seoHeadline` in `lib/industries-data.ts` |
 | Glossary term SERP | `lib/glossary-term-seo.ts` (+ content in `data/glossary.ts`) |
 | Sitemap index | `app/sitemap.xml/route.ts` (blog child only once; legacy alias keeps route) |
+| AI/LLM citation | `lib/geo-answer-blocks.ts` + `lib/llms-txt.ts` + `app/robots.ts` |
 
 Do **not** emit FAQPage JSON-LD for marketing pages (Google limits FAQ rich results). Keep FAQ visible in HTML.
 

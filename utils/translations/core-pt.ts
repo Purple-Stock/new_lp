@@ -137,7 +137,7 @@ export const corePt = {
   glossary: {
     title: "Glossario de Gestao de Estoque para PMEs",
     description:
-      "Este glossario reune os termos mais usados em estoque, almoxarifado e operacao para ajudar sua equipe a falar a mesma lingua e decidir mais rapido.",
+      "Glossário de estoque é o dicionário operacional de almoxarifado, inventário e QR Code para PME: MOQ, EOQ, ponto de reposição, ruptura e os termos que o time usa no canteiro e no depósito.",
     learnMore: {
       title:
         "Quer aprender mais sobre estratégias de crescimento e melhores práticas de gestão de estoque?",

@@ -5,6 +5,11 @@ import type {
   LandingLanguage,
   LandingPlaybook,
 } from "@/lib/desktop-landing-copy";
+import {
+  HOME_WHAT_IS_BODY,
+  HOME_WHAT_IS_TITLE,
+  splitPassageParagraphs,
+} from "@/lib/geo-answer-blocks";
 
 type DesktopLandingPlaybookSectionsProps = {
   language: LandingLanguage;
@@ -28,6 +33,22 @@ export function DesktopLandingPlaybookSections({
 }: DesktopLandingPlaybookSectionsProps) {
   return (
     <>
+      {language === "pt" ? (
+        <section className="ps-card mb-12 p-6 sm:p-8">
+          <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+            {HOME_WHAT_IS_TITLE}
+          </h2>
+          {splitPassageParagraphs(HOME_WHAT_IS_BODY).map((paragraph) => (
+            <p
+              key={paragraph.slice(0, 48)}
+              className="mt-3 text-sm leading-relaxed text-slate-600 md:text-base"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </section>
+      ) : null}
+
       <section className="ps-card mb-12 p-6 sm:p-8">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">

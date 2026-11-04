@@ -143,9 +143,7 @@ function analyzeLlmsContent(content) {
     missingSections,
     missingFeatures,
     missingIndustries,
-    hasDescription: content.includes(
-      "Plataforma avançada de gestão de estoque"
-    ),
+    hasDescription: /Purple Stock é um sistema de estoque/i.test(content),
     hasTechInfo: content.includes("Next.js") && content.includes("React"),
     hasIndustryContext: content.includes("Indústrias Atendidas"),
   };

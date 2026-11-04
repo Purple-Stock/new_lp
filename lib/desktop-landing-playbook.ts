@@ -30,8 +30,7 @@ const PLAYBOOK_BY_LANGUAGE: Record<LandingLanguage, LandingPlaybook> = {
       "Para empresas que já cansaram de perder venda por falta de produto, erro de contagem ou estoque sumido no almoxarifado.",
     uvpText:
       "Purple Stock organiza entrada, saída, transferência, ajuste e inventário em um único fluxo rastreável, para qualquer pessoa do time saber o que tem, onde está e quem mexeu, sem virar um projeto gigante de sistema.",
-    howItWorksTitle:
-      "Como funciona o sistema de controle de estoque na prática",
+    howItWorksTitle: "Como funciona o sistema de estoque com QR Code?",
     howItWorksSubtitle:
       "Do cadastro ao relatório, em um fluxo único e rastreável.",
     steps: [

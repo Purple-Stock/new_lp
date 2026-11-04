@@ -7,6 +7,10 @@ import {
   TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
   TEAM_PLAN_TRIAL_DAYS,
 } from "@/lib/pricing";
+import {
+  BARCODE_WHAT_IS_BODY,
+  BARCODE_WHAT_IS_TITLE,
+} from "@/lib/geo-answer-blocks";
 
 export type BarcodeToolLocale = "pt" | "en" | "fr";
 
@@ -23,6 +27,8 @@ export type BarcodeToolFaqItem = {
 export type BarcodeToolSeoCopy = {
   badge: string;
   benefitChips: string[];
+  definitionTitle: string;
+  definitionBody: string;
   howToTitle: string;
   howToBody: string;
   formatCards: BarcodeFormatCard[];
@@ -48,6 +54,8 @@ const PT: BarcodeToolSeoCopy = {
     "QR Code incluso",
     "Teste 7 dias no estoque",
   ],
+  definitionTitle: BARCODE_WHAT_IS_TITLE,
+  definitionBody: BARCODE_WHAT_IS_BODY,
   howToTitle: "Como usar o gerador de código de barras grátis",
   howToBody:
     "Escolha o formato (EAN-13, Code 128 ou QR), digite o valor, personalize tamanho e cores e baixe em PNG. Depois, teste o Purple Stock 7 dias para controlar o estoque com essas etiquetas.",
@@ -70,6 +78,11 @@ const PT: BarcodeToolSeoCopy = {
     "Gere EAN-13, Code 128 e QR em PNG para etiquetas internas, inventário e almoxarifado. Isto não cria um GTIN registrado na GS1: um EAN-13 gerado aqui não substitui código oficial de produto. Depois de gerar, use o mesmo padrão no fluxo de entrada, saída e contagem com o Purple Stock.",
   faqTitle: "Perguntas frequentes sobre código de barras grátis",
   faqItems: [
+    {
+      question: "O que é um gerador de código de barras grátis?",
+      answer:
+        "É uma ferramenta online que transforma número, SKU ou texto em imagem EAN-13, Code 128 ou QR Code para imprimir em etiqueta. O da Purple Stock baixa PNG e não registra GTIN na GS1.",
+    },
     {
       question: "O gerador de código de barras é grátis?",
       answer:
@@ -109,6 +122,9 @@ const EN: BarcodeToolSeoCopy = {
     "QR Code included",
     "7-day inventory trial",
   ],
+  definitionTitle: "What is a free barcode generator?",
+  definitionBody:
+    "A free barcode generator turns a number, SKU or short text into an EAN-13, Code 128 or QR image you can print. Purple Stock's generator downloads PNG in the browser and does not register a GS1 GTIN.",
   howToTitle: "How to use the free barcode generator",
   howToBody:
     "Pick a format, enter the value, customize size and colors, then download PNG. After that, try Purple Stock for 7 days to control stock with those labels.",
@@ -171,6 +187,9 @@ const FR: BarcodeToolSeoCopy = {
     "QR Code inclus",
     "Essai stock 7 jours",
   ],
+  definitionTitle: "Qu'est-ce qu'un générateur de code-barres gratuit ?",
+  definitionBody:
+    "Un générateur de code-barres gratuit transforme un numéro, un SKU ou un texte en image EAN-13, Code 128 ou QR à imprimer. Celui de Purple Stock télécharge un PNG et n'enregistre pas de GTIN GS1.",
   howToTitle: "Comment utiliser le générateur gratuit",
   howToBody:
     "Choisissez le format, saisissez la valeur, personnalisez et téléchargez en PNG. Ensuite, essayez Purple Stock 7 jours pour gérer le stock avec ces étiquettes.",

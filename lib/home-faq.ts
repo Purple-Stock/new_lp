@@ -1,8 +1,16 @@
-import { formatTeamPlanPriceFaqPt } from "@/lib/pricing";
+import {
+  formatTeamPlanPriceFaqPt,
+  TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT,
+  TEAM_PLAN_TRIAL_DAYS,
+} from "@/lib/pricing";
 
 export type HomeFaqItem = { q: string; a: string };
 
 export const HOME_FAQ_PT: HomeFaqItem[] = [
+  {
+    q: "O que é Purple Stock?",
+    a: `Purple Stock é um sistema de estoque com QR Code para PME: entrada, saída, check-in e almoxarifado no celular. ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe, ${TEAM_PLAN_TRIAL_DAYS} dias grátis, sem fidelidade.`,
+  },
   {
     q: "Dá para começar sem migração complexa?",
     a: "Sim. Você pode iniciar com o cadastro essencial e evoluir por etapas, sem parar a operação.",

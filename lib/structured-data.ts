@@ -1,3 +1,4 @@
+import { GEO_CONTENT_UPDATED_AT } from "@/lib/geo-answer-blocks";
 import { TEAM_PLAN_MONTHLY_PRICE_SCHEMA } from "@/lib/pricing";
 import {
   BARCODE_TOOL_PAGE_DESCRIPTION,
@@ -115,6 +116,7 @@ export function buildHomePageGraph() {
         url,
         name: HOME_PAGE_DOCUMENT_TITLE,
         description: SITE_DESCRIPTION,
+        dateModified: GEO_CONTENT_UPDATED_AT,
         isPartOf: { "@id": `${url}/#website` },
         about: { "@id": `${url}/#software` },
         primaryImageOfPage: {
@@ -165,6 +167,7 @@ export function buildBarcodeToolSchema() {
     browserRequirements: "Requires JavaScript",
     inLanguage: "pt-BR",
     isAccessibleForFree: true,
+    dateModified: GEO_CONTENT_UPDATED_AT,
     description: BARCODE_TOOL_PAGE_DESCRIPTION,
     offers: {
       "@type": "Offer",

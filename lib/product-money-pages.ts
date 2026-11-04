@@ -85,6 +85,10 @@ export const APLICATIVO_ESTOQUE_SECTIONS: MoneyPageSection[] = [
 
 export const APLICATIVO_ESTOQUE_FAQS: MoneyPageFaq[] = [
   {
+    q: "O que é um aplicativo para controle de estoque?",
+    a: "É o sistema no celular que registra entrada, saída, transferência e inventário com QR Code, para o time ver o mesmo saldo. No Purple Stock cada movimento vira histórico por item e local.",
+  },
+  {
     q: "Aplicativo para controle de estoque funciona offline?",
     a: "A rotina principal é online no celular, para o saldo aparecer na hora para o resto do time. Se a sua operação tem trecho sem rede, fale no WhatsApp para ver o que cabe no fluxo atual — não prometemos milagre de galpão sem sinal.",
   },

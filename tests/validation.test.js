@@ -39,7 +39,7 @@ test("analyzeLlmsContent checks required sections, features and industries", () 
   const content = `# Purple Stock
 
 ## Sobre
-Plataforma avançada de gestão de estoque com Next.js e React.
+Purple Stock é um sistema de estoque com Next.js e React.
 
 ## Funcionalidades Principais
 - [Controle](https://example.com/features/inventory-control)

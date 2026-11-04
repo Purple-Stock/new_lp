@@ -1,87 +1,9 @@
+import { buildLlmsTxtMarkdown } from "@/lib/llms-txt";
+
 export const dynamic = "force-static";
 
 export async function GET() {
-  const content = `# PurpleStock
-
-> Plataforma avançada de gestão de estoque e controle de inventário para indústrias e empresas.
-
-## Sobre
-
-PurpleStock é uma solução completa de gestão de estoque que oferece controle em tempo real, rastreamento de produtos, gestão de equipamentos com QR Code, e análise avançada de dados para otimizar operações empresariais.
-
-## Funcionalidades Principais
-
-### Gestão de Estoque
-- [Controle de Inventário](/features/inventory-control): Gestão completa de produtos e materiais
-- [Aplicativo para controle de estoque](/recursos/aplicativo-de-estoque): QR Code, entrada e saída no celular
-- [Controle de Almoxarifado](/recursos/controle-de-almoxarifado): Gestão de suprimentos e materiais
-
-### Códigos e Rastreamento
-- [Gestão de QR Code](/features/qr-code-management): Sistema completo de QR Codes para equipamentos
-- [Códigos de Barras](/features/barcoding): Soluções de código de barras para produtos
-- [Código de Barras Gratuito](/codigo-de-barras-gratis): Ferramentas gratuitas de código de barras
-
-### Gestão de Equipamentos
-- [Gestão de Equipamentos](/features/equipment-management): Controle e manutenção de máquinas
-- [Gestão de Fábrica](/features/factory-management): Administração completa de operações fabris
-- [Controle de Armazém](/features/warehouse-control): Otimização de armazenamento e logística
-
-### Análise e Relatórios
-- [Analytics e Relatórios](/features/analytics-reporting): Dashboards e métricas de performance
-- [Compra e Venda](/features/purchase-sales): Gestão de transações comerciais
-
-## Indústrias Atendidas
-
-- [Varejo](/industrias/varejo): Otimização de operações de varejo
-- [Manufatura](/industrias/manufatura): Controle de produção e materiais
-- [Logística](/industrias/logistica): Gestão de cadeia de suprimentos
-- [Alimentação](/industrias/food): Controle de validade e rastreabilidade
-- [Farmacêutica](/industrias/pharmaceutical): Gestão de medicamentos e equipamentos
-- [Autopeças e Motos](/industrias/automotivo): Estoque para peças de carro e moto
-- [Construção](/industrias/construction): Almoxarifado de obra — materiais, ferramentas e EPI por canteiro com QR Code
-- [Tecnologia](/industrias/technology): Controle de equipamentos tecnológicos
-- [Audiovisual](/industrias/audiovisual): Check-in/check-out de equipamentos para produtoras e locadoras
-- [Eventos](/industrias/events): Controle de equipamentos e materiais por evento
-- [Odontológico](/industrias/odontologico): Equipamentos dentários e kits com check-in/check-out
-- [Telecomunicações](/industrias/telecomunicacoes): Equipamentos e kits de campo para ISPs e integradoras
-
-## Recursos e Ferramentas
-
-- [Códigos de Barras](/recursos/codigo-de-barras): Soluções completas de código de barras
-- [Controle de Almoxarifado](/recursos/controle-de-almoxarifado): Gestão de suprimentos
-- [Gestão de Equipamentos com QR Code](/recursos/gerenciamento-equipamentos-qr-code): Sistema integrado
-- [Gestão de Estoque](/recursos/gestao-de-estoque): Estratégias e melhores práticas
-
-## Informações Técnicas
-
-- [Preços](/precos): Planos e valores dos serviços
-- [Glossário](/glossario): Termos técnicos e definições
-- [API](/api): Documentação da API para integrações
-
-## Tecnologias
-
-- Next.js 15.1.0
-- React 18.2.0
-- TypeScript
-- Tailwind CSS
-- Sistema de QR Code integrado
-- API RESTful
-- Banco de dados otimizado para performance
-
-## Suporte e Contato
-
-- Documentação técnica completa
-- Suporte especializado para indústrias
-- Treinamento e implementação
-- Integração com sistemas existentes
-
-## Licença
-
-Solução proprietária da PurpleStock para gestão empresarial.
-
----
-
-*Este arquivo é otimizado para LLMs e sistemas de IA para compreensão da estrutura e funcionalidades da plataforma PurpleStock.*`;
+  const content = await buildLlmsTxtMarkdown();
 
   return new Response(content, {
     headers: {

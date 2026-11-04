@@ -4,6 +4,7 @@ import Link from "next/link";
 import { trackSeoCtaClick, trackSignupStarted } from "@/lib/analytics";
 import { APP_SIGNUP_URL } from "@/lib/app-urls";
 import type { BarcodeToolSeoCopy } from "@/lib/barcode-tool-seo-content";
+import { splitPassageParagraphs } from "@/lib/geo-answer-blocks";
 import {
   APLICATIVO_DE_ESTOQUE_PATH,
   VS_PLANILHA_PATH,
@@ -21,6 +22,20 @@ export function BarcodeToolSeoFooter({ copy }: BarcodeToolSeoFooterProps) {
   return (
     <section className="relative z-[1] border-t border-brand-border-soft bg-white/90 px-4 py-12 sm:px-8">
       <div className="mx-auto max-w-3xl space-y-10">
+        <div className="text-left">
+          <h2 className="ps-display mb-3 text-xl font-semibold text-brand-ink md:text-2xl">
+            {copy.definitionTitle}
+          </h2>
+          {splitPassageParagraphs(copy.definitionBody).map((paragraph) => (
+            <p
+              key={paragraph.slice(0, 48)}
+              className="mt-3 text-sm leading-relaxed text-slate-600 md:text-base first:mt-0"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
+
         <div className="text-center">
           <h2 className="ps-display mb-3 text-xl font-semibold text-brand-ink md:text-2xl">
             {copy.howToTitle}

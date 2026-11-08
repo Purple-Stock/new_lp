@@ -1,8 +1,8 @@
 /** Free barcode tool UI strings (pt/en/fr). */
 export const barcodeGeneratorPt = {
-  title: "Gerador de Código de Barras Grátis Online",
+  title: "Gerador de Código de Barras Grátis para Imprimir",
   description:
-    "Gere código de barras grátis: EAN-13, Code 128 e QR. Personalize, baixe em PNG e teste o estoque 7 dias.",
+    "Gere e imprima código de barras grátis: EAN-13, Code 128 e QR. Folha A4, térmica e PNG. Teste o estoque 7 dias.",
   configuration: {
     title: "Configuração",
     description: "Personalize seu código de barras com as opções abaixo",

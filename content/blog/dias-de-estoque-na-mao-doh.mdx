@@ -1,0 +1,82 @@
+---
+title: "Dias de Estoque na Mão (DOH): fórmula com CMV"
+excerpt: "Dias de estoque na mão (DOH) = estoque médio × 365 ÷ CMV. Calcule cobertura, evite compra às cegas e imprima a etiqueta no gerador grátis."
+date: "2026-11-08"
+author: "Time Purple Stock"
+readingTime: "9 min"
+coverImage: "/images/blog/covers/indicadores-essenciais-estoque.webp"
+tags:
+  - "KPIs"
+  - "Controle de Estoque"
+  - "Almoxarifado"
+---
+
+Dias de estoque na mão, ou DOH (days on hand), responde uma pergunta só: por quantos dias o que está na prateleira aguenta o consumo atual. Sem esse número, a compra vira feeling. Com ele, o almoxarife sabe se está carregando dois meses de cabo XLR ou três dias de fita.
+
+A fórmula clássica usa estoque médio e CMV:
+
+**DOH = (estoque médio ÷ CMV) × 365**
+
+Estoque médio é a média do saldo valorizado no período (início + fim, ou média mensal). CMV é o custo da mercadoria vendida — ou, na locação e no almoxarifado, o custo do que saiu de fato. O 365 anualiza. Se você trabalha o mês, use CMV do mês e tire o 365: cobertura em dias = estoque médio ÷ (CMV do mês ÷ 30).
+
+## Por que PME erra o DOH
+
+O erro mais comum é usar saldo de ontem e venda de doze meses atrás. DOH pede o mesmo recorte de tempo nos dois lados. Se o CMV é dos últimos 90 dias, o estoque médio também é dos últimos 90 dias.
+
+O segundo erro é misturar peça de giro com peça parada. Um par de LED que aluga toda semana e uma lente que saiu duas vezes no ano não compartilham o mesmo DOH. Calcule por família, ou pelos 20% de SKU que carregam 80% do valor.
+
+O terceiro erro é valorizar pelo preço de venda. CMV é custo. Na locação, use custo de reposição ou valor de aquisição. Inflar o denominador encolhe o DOH e a compra de pânico aparece.
+
+## Como montar os números na prática
+
+Pegue o saldo valorizado no primeiro dia do período e no último. Some e divida por dois. Esse é o estoque médio. Some o custo de tudo que saiu no mesmo período. Esse é o CMV. Aplique a fórmula.
+
+Exemplo de almoxarifado: estoque médio R$ 80 mil, CMV anual R$ 320 mil. DOH = (80.000 ÷ 320.000) × 365 ≈ 91 dias. Três meses na mão. Se o lead time do fornecedor é 15 dias, sobra folga — e capital parado.
+
+Exemplo de locadora: estoque médio R$ 400 mil em corpos e lentes, “CMV” de depreciação e peça de reposição R$ 120 mil no ano. DOH alto. Aqui o indicador vira outro recado: o ativo circula pouco. O problema pode ser mix, não compra.
+
+Para consumível (fita, cabo genérico, parafuso), DOH baixo demais vira ruptura. Para ativo caro, DOH alto demais vira dinheiro na prateleira. Separe as duas contas.
+
+## DOH, giro e cobertura
+
+Giro de estoque é CMV ÷ estoque médio. DOH é o inverso anualizado: 365 ÷ giro. Quem já calcula giro já tem DOH. Cobertura em dias é o primo operacional: saldo atual ÷ consumo médio diário. Cobertura olha o agora; DOH olha o período.
+
+Use os três juntos. Giro conta quantas vezes o estoque virou. DOH traduz isso em dias. Cobertura diz se a próxima semana aguenta. PME que olha só ruptura compra demais. PME que olha só giro corta demais.
+
+No canteiro, cobertura por obra importa mais que DOH da empresa. Cimento da obra A não cobre a obra B. Calcule por local. No set, o “CMV” da semana é o que saiu nas maletas. Se o DOH do cabo XLR caiu para quatro dias, a próxima semana de evento chega vazia.
+
+## O que fazer com o número
+
+DOH acima da meta: pare de repor aquele SKU, devolva fornecedor se der, empurre locação interna, ou marque para venda. DOH abaixo da meta e lead time longo: suba o ponto de pedido. DOH instável: o CMV está sujo — saída sem lançamento, entrada atrasada, item sem etiqueta.
+
+A etiqueta entra aqui. Sem código estável, o CMV mente. Você acha que saíram 40 unidades e saíram 28, ou o contrário. Imprima o lote no [gerador de código de barras grátis](/codigo-de-barras-gratis), cole no item, leia na saída. O denominador da fórmula passa a ser movimento, não palpite.
+
+SKU, QR e código de barras são camadas diferentes. O DOH usa o SKU (tipo). A leitura no chão usa o código. A unidade que volta usa o QR. O artigo [SKU vs QR vs código de barras](/blog/sku-vs-qr-vs-codigo-de-barras) detalha cada camada.
+
+## Periodicidade e meta
+
+Calcule DOH uma vez por mês no começo. Famílias críticas, toda semana. Meta depende do lead time e da criticidade. Consumível importado: 45–60 dias. Parafuso local: 15–20. Ativo de locação: o DOH sozinho não manda comprar; manda olhar taxa de ocupação.
+
+Anote a meta ao lado do SKU. Quando o DOH sair da faixa, o sistema precisa mostrar saldo, local e última saída. Sem histórico, você discute o número. Com histórico, você discute o movimento.
+
+## Ligação com o celular
+
+A fórmula cabe numa planilha. O problema é alimentar a planilha. Quem lança saída no papel no fim do dia atrasa o CMV. Quem lê QR na porta alimenta o denominador na hora.
+
+Purple Stock registra entrada, saída, transferência e check-in com o mesmo código da etiqueta. O relatório por período vira o CMV operacional. O saldo valorizado vira o estoque médio. DOH deixa de ser exercício de fechamento.
+
+Teste 7 dias, R$ 99,00 por equipe. Comece pelos SKUs que mais somem ou que mais param a frente de serviço. Imprima a folha A4 no gerador, cole, leia. No fim da semana você tem estoque médio e CMV daqueles itens — o suficiente para o primeiro DOH honesto.
+
+## Checklist rápido
+
+1. Escolha o período (30 ou 90 dias).
+2. Calcule estoque médio valorizado.
+3. Some o CMV (custo do que saiu) no mesmo período.
+4. DOH = (estoque médio ÷ CMV) × 365.
+5. Separe giro de ativo e giro de consumível.
+6. Compare com lead time e meta.
+7. Se o número oscilar, conserte etiqueta e lançamento antes de mexer na compra.
+
+Etiqueta que não lê também suja o CMV. Quiet zone, contraste e térmica estão em [etiqueta que não lê](/blog/etiqueta-que-nao-le). Gere o lote em [/codigo-de-barras-gratis](/codigo-de-barras-gratis) e imprima A4 ou térmica 60×40.
+
+DOH não substitui conversa com o chão. Ele traduz a conversa em dias. Com estoque médio, CMV e 365 no mesmo recorte, a próxima compra deixa de ser um palpite de sexta-feira.

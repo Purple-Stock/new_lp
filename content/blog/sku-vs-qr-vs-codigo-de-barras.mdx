@@ -1,0 +1,84 @@
+---
+title: "SKU vs QR vs Código de Barras no estoque"
+excerpt: "SKU identifica o tipo, código de barras o produto na GS1, QR a unidade e o local. Veja quando usar cada um no almoxarifado e na locação."
+date: "2026-11-08"
+author: "Time Purple Stock"
+readingTime: "9 min"
+coverImage: "/images/blog/covers/codigo-de-barras-no-estoque-como-implementar.webp"
+tags:
+  - "Código de Barras"
+  - "QR Code"
+  - "Controle de Estoque"
+---
+
+SKU, código de barras e QR Code aparecem na mesma conversa de estoque e viram a mesma coisa na cabeça de quem está com pressa. Não são. SKU nomeia o tipo. Código de barras (EAN, Code 128) carrega um identificador linear. QR Code carrega texto maior: URL, local, serial, ficha. Misturar os três no mesmo campo é o que faz a locadora contar quantidade quando precisava contar peça.
+
+## SKU: o nome interno do tipo
+
+SKU (stock keeping unit) é o código que a operação inventou para o tipo. LED-50 é o par de LED de 50. CAM-A7 é o corpo A7. O SKU não precisa ser EAN. Precisa ser único, estável e falável no rádio. “Pega o LED-50” funciona. “Pega o 7891234567895” não funciona.
+
+Regras curtas: um SKU por tipo, sem reciclar código de item morto, sem espaço no meio, sem depender de descrição. A descrição muda; o SKU não muda. Unidade de medida fica no cadastro (un, cx, m), não colada no código.
+
+Na loja, SKU e EAN muitas vezes andam juntos. Na locação, dez LED-50 são dez unidades do mesmo SKU e dez peças com vida própria. O SKU responde “que tipo”. A unidade responde “qual peça”.
+
+## Código de barras: EAN da GS1 e Code 128 interno
+
+EAN-13 é o padrão de varejo. Doze dígitos + verificador. GTIN registrado na GS1 identifica o produto no comércio. Um gerador online que completa o dígito verificador **não** registra GTIN. Para vender em grande varejo, o código oficial continua sendo o da GS1.
+
+Code 128 aceita letra e número. É o formato certo para SKU interno, lote e etiqueta de almoxarifado. Cabe em folha A4 e em térmica 60×40. A câmera do celular lê. Coletor dedicado só entra se a operação já tiver um.
+
+ITF-14, UPC e os primos existem. PME de locação e canteiro quase sempre vive de Code 128 + QR. EAN entra quando o item também vende no balcão.
+
+Gere EAN-13, Code 128 e QR no [gerador de código de barras grátis](/codigo-de-barras-gratis). Baixe PNG ou imprima o lote. O mesmo valor do SKU pode ir no Code 128. O QR pode ir além: URL da ficha, local, serial.
+
+## QR Code: unidade, local e ficha
+
+QR Code guarda mais texto. Por isso serve para:
+
+- serial da peça (CAM-A7-03);
+- local (VAN-02, PALCO, CANTEIRO-A);
+- URL da ficha no sistema;
+- check-in de maleta.
+
+Na locação, o QR na case é o atalho. O técnico lê e vê o conteúdo esperado. Faltou um rádio, o histórico mostra. No canteiro, o QR na caixa de ferramenta liga responsável e horário.
+
+QR também funciona como etiqueta de endereço. A prateleira tem um código. A contagem lê o endereço e depois os itens. Sem endereço, inventário vira lista solta.
+
+Quiet zone do QR é a margem branca ao redor. Sem ela, a câmera falha. O artigo [etiqueta que não lê](/blog/etiqueta-que-nao-le) cobre margem, contraste e térmica.
+
+## Quando usar cada um
+
+Use SKU sempre. É o idioma do cadastro, da compra e do DOH. Dias de estoque na mão nascem no SKU, não no serial. Veja a fórmula em [dias de estoque na mão (DOH)](/blog/dias-de-estoque-na-mao-doh).
+
+Use Code 128 quando a etiqueta precisa ser linear, barata e rápida de ler em item pequeno. Use EAN-13 quando o produto entra no varejo com GTIN de verdade.
+
+Use QR quando a unidade importa: locação, maleta, palco, ferramenta cara, kit de telecom. Quantidade do SKU não diz qual A7 saiu. O QR da peça diz.
+
+Dá para colar os dois: Code 128 com o SKU em cima, QR com o serial embaixo. Folha A4 2×7 aguenta. Térmica 60×40 também, se o texto for curto.
+
+## Locação versus loja
+
+Loja vende quantidade. Locação devolve unidade. Contar “10 LED-50” fecha a loja e abre um buraco na locadora: um dos dez está no set, um está avariado, um está na van. Três saldos, um SKU.
+
+O sistema de estoque com QR por unidade registra check-out e check-in. O SKU continua existindo para compra e DOH. A peça ganha identidade. Bling e apps de loja otimizam o primeiro recorte. Purple Stock otimiza o segundo. Os comparativos [Bling vs Purple Stock](/compare/bling-vs-purple-stock) e [ContaEstoque vs Purple Stock](/compare/contaestoque-vs-purple-stock) abrem essa diferença.
+
+## Como implantar sem travar a operação
+
+1. Liste os SKUs que doem perder ou que param a frente.
+2. Decida o formato da etiqueta: Code 128 do SKU, QR da unidade, ou os dois.
+3. Imprima o lote no gerador (CSV sku, nome).
+4. Cole na peça ou na maleta, não só na caixa do fornecedor.
+5. Leia na primeira saída. Se não ler, ajuste quiet zone e tamanho.
+6. Só então convide o resto do time.
+
+Não comece pelos três mil SKUs do orçamento. Comece por trinta peças. O hábito de ler vale mais que o catálogo perfeito.
+
+## O que o gerador faz e o que o app faz
+
+O gerador cria a imagem e a folha. PNG para uma peça. CSV para lote. A4 ou térmica. Isso é grátis e abre no navegador.
+
+O app grava o movimento. Entrada, saída, transferência, inventário, check-in. O mesmo código da etiqueta vira histórico. Teste 7 dias, R$ 99,00 por equipe.
+
+Sem gerador, o cadastro existe e a prateleira não. Sem app, a prateleira tem código e o saldo continua no WhatsApp. Os dois se completam.
+
+Imprima agora em [/codigo-de-barras-gratis](/codigo-de-barras-gratis). SKU no cadastro, barras na etiqueta, QR na unidade. Cada camada com um trabalho. Quando as três batem, a maleta fecha certo e o DOH deixa de mentir.

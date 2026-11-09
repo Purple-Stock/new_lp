@@ -26,6 +26,9 @@ type ProductMoneyPageProps = {
   faqs: MoneyPageFaq[];
   relatedLinks: RelatedLink[];
   compareRows?: CompareRow[];
+  compareTitle?: string;
+  compareLeftLabel?: string;
+  compareRightLabel?: string;
   schemaName: string;
   schemaDescription: string;
   breadcrumbName: string;
@@ -41,6 +44,9 @@ export function ProductMoneyPage({
   faqs,
   relatedLinks,
   compareRows,
+  compareTitle = "Planilha vs Purple Stock",
+  compareLeftLabel = "Planilha",
+  compareRightLabel = "Purple Stock",
   schemaName,
   schemaDescription,
   breadcrumbName,
@@ -100,15 +106,13 @@ export function ProductMoneyPage({
 
         {compareRows ? (
           <section className="mb-12 overflow-x-auto">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Planilha vs Purple Stock
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900">{compareTitle}</h2>
             <table className="mt-6 min-w-full divide-y divide-gray-200 text-left text-sm">
               <thead>
                 <tr className="text-gray-600">
                   <th className="py-3 pr-4">Critério</th>
-                  <th className="py-3 pr-4">Planilha</th>
-                  <th className="py-3">Purple Stock</th>
+                  <th className="py-3 pr-4">{compareLeftLabel}</th>
+                  <th className="py-3">{compareRightLabel}</th>
                 </tr>
               </thead>
               <tbody>

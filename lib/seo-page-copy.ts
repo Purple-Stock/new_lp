@@ -25,9 +25,11 @@ export const BARCODE_TOOL_PAGE_TITLE =
   "Gerador de código de barras grátis | EAN e QR";
 
 export const BARCODE_TOOL_PAGE_DESCRIPTION =
-  "Gerador de código de barras grátis online: EAN-13, Code 128 e QR. Baixe PNG e teste 7 dias no estoque com o Purple Stock.";
+  "Gere e imprima código de barras grátis: EAN-13, Code 128 e QR. Folha A4 ou térmica, CSV em lote. Teste 7 dias no estoque Purple.";
 
 export const BARCODE_TOOL_PATH = "/codigo-de-barras-gratis";
+
+export const BARCODE_PRINT_PATH = "/print";
 
 export const INDUSTRIES_PAGE_TITLE =
   "Sistema de Estoque por Setor | Fluxos por Indústria";
@@ -59,6 +61,21 @@ export const VS_PLANILHA_PAGE_TITLE =
   "Purple Stock vs Planilha: quando migrar o estoque";
 
 export const VS_PLANILHA_PAGE_DESCRIPTION = `Planilha vs sistema de estoque: quando o Excel deixa de bater o saldo. Compare multi-usuário, QR no celular e custo. ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;
+
+export const BLING_COMPARE_PATH = "/compare/bling-vs-purple-stock";
+
+export const BLING_COMPARE_PAGE_TITLE =
+  "Bling vs Purple Stock para locação e estoque";
+
+export const BLING_COMPARE_PAGE_DESCRIPTION = `Bling cobre loja e nota. Purple Stock cobre QR por unidade em locação e almoxarifado. Compare o recorte e teste 7 dias, ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;
+
+export const CONTAESTOQUE_COMPARE_PATH =
+  "/compare/contaestoque-vs-purple-stock";
+
+export const CONTAESTOQUE_COMPARE_PAGE_TITLE =
+  "ContaEstoque vs Purple Stock na locação";
+
+export const CONTAESTOQUE_COMPARE_PAGE_DESCRIPTION = `ContaEstoque é app de estoque para loja. Purple Stock é QR, check-in e maleta na locação. Compare o recorte e teste 7 dias, ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;
 
 export const ALMOXARIFADO_RECURSO_PAGE_TITLE =
   "Controle de Almoxarifado com QR no celular";

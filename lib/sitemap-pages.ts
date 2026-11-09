@@ -117,6 +117,18 @@ export async function buildPagesSitemapEntries(
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/compare/bling-vs-purple-stock`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/compare/contaestoque-vs-purple-stock`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
   ];
 
   const industryRoutes = INDEXABLE_INDUSTRY_SLUGS.map((industry) => ({

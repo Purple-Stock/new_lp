@@ -665,3 +665,22 @@ body {
     -webkit-backface-visibility: hidden;
   }
 }
+
+@media print {
+  nav,
+  footer,
+  .barcode-print-controls {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .barcode-print-page {
+    break-after: page;
+    page-break-after: always;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}

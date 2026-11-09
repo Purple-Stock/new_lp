@@ -47,18 +47,19 @@ export type BarcodeToolSeoCopy = {
 };
 
 const PT: BarcodeToolSeoCopy = {
-  badge: "PNG grátis · EAN / Code 128 / QR · teste 7 dias",
+  badge: "PNG e impressão · EAN / Code 128 / QR · teste 7 dias",
   benefitChips: [
     "PNG grátis",
     "EAN-13 e Code 128",
     "QR Code incluso",
+    "Imprimir A4 e térmica",
     "Teste 7 dias no estoque",
   ],
   definitionTitle: BARCODE_WHAT_IS_TITLE,
   definitionBody: BARCODE_WHAT_IS_BODY,
   howToTitle: "Como usar o gerador de código de barras grátis",
   howToBody:
-    "Escolha o formato (EAN-13, Code 128 ou QR), digite o valor, personalize tamanho e cores e baixe em PNG. Depois, teste o Purple Stock 7 dias para controlar o estoque com essas etiquetas.",
+    "Escolha o formato (EAN-13, Code 128 ou QR), digite o valor e baixe em PNG. Para lote, cole o CSV (sku, nome), escolha folha A4 ou térmica e imprima. Depois, teste o Purple Stock 7 dias com essas etiquetas.",
   formatCards: [
     {
       title: "EAN-13 grátis",
@@ -102,6 +103,11 @@ const PT: BarcodeToolSeoCopy = {
       question: "O gerador cria código de barras 128 e QR Code?",
       answer:
         "Sim. Há formatos Code 128 e QR Code além de EAN-13. Escolha o tipo, digite o valor e baixe a imagem.",
+    },
+    {
+      question: "Consigo imprimir em folha A4 e em térmica Zebra?",
+      answer:
+        "Sim. Cole um CSV ou Excel (sku, nome), escolha A4 2×7, A4 3×8 ou térmica 60×40 e imprima o lote no navegador. A folha sai na mesma página do gerador.",
     },
   ],
   ctaTitle: "Use código de barras no estoque de verdade",

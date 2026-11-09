@@ -51,6 +51,23 @@ export function Footer() {
       {
         name:
           language === "pt"
+            ? "Código de barras grátis"
+            : language === "fr"
+              ? "Code-barres gratuit"
+              : "Free barcode generator",
+        href: "/codigo-de-barras-gratis",
+      },
+      {
+        name: "Bling vs Purple Stock",
+        href: "/compare/bling-vs-purple-stock",
+      },
+      {
+        name: "ContaEstoque vs Purple Stock",
+        href: "/compare/contaestoque-vs-purple-stock",
+      },
+      {
+        name:
+          language === "pt"
             ? "Política de Privacidade"
             : language === "fr"
               ? "Politique de confidentialite"

@@ -1,0 +1,75 @@
+---
+title: "Etiqueta que não lê: quiet zone na impressão"
+excerpt: "Etiqueta que não lê quase sempre é quiet zone curta, contraste fraco ou térmica suja. Ajuste a folha A4 e o lote no gerador grátis."
+date: "2026-11-08"
+author: "Time Purple Stock"
+readingTime: "9 min"
+coverImage: "/images/blog/covers/checklist-codigo-barras-pme.webp"
+tags:
+  - "Código de Barras"
+  - "Almoxarifado"
+  - "QR Code"
+---
+
+Etiqueta que não lê para a fila na porta do almoxarifado. A câmera tenta, falha, a pessoa digita o SKU com luva e o hábito morre. Na maior parte dos casos o código está certo e a folha está errada: quiet zone curta, contraste baixo, térmica suja ou etiqueta no raio da peça.
+
+## Quiet zone: a margem que o leitor exige
+
+Quiet zone é a faixa clara nas duas pontas do código de barras (e ao redor do QR). Sem ela, o leitor não acha o começo do símbolo. A regra prática da GS1 para EAN-13 é da ordem de 10 vezes a largura da barra mais estreita (o X-dimension) em cada lado. Em etiqueta estreita, o operador corta essa margem para “caber o nome” e o código morre.
+
+No QR Code a margem é um bloco de módulos claros ao redor. Recortar o QR até a borda da case é o jeito mais rápido de gerar etiqueta que não lê no set.
+
+Antes de culpar o celular, olhe a etiqueta: tem branco de verdade nas pontas? Ou o texto, a logo e a borda preta encostam no símbolo?
+
+## Contraste, tamanho e substrato
+
+Barras pretas em fundo branco. Fundo kraft, fundo preto, fundo holográfico e fundo da cor da maleta reduzem contraste. A câmera do telefone perdoa menos que o coletor laser.
+
+Tamanho: Code 128 de SKU curto cabe em 60×40 mm. SKU longo precisa de barra mais larga ou de QR. Encolher o PNG no Word até caber na fita é o segundo jeito de matar a leitura.
+
+Substrato: papel A4 comum funciona para teste e para prateleira seca. Obra, set e van pedem adesivo ou térmica. Folha laminada brilha e estoura o flash do celular. Fosco lê melhor.
+
+Térmica 60×40 (Zebra e primas) é o padrão de almoxarifado. Cabeça suja, ribbon no fim e densidade baixa geram barras cinzas. Limpe a cabeça, suba a densidade, imprima de novo. Não aumente o SKU.
+
+## Curva, canto e plástico
+
+Colar o código no raio do tubo, no canto da maleta ou por cima do fecho deforma as barras. O leitor vê um código torto. Cole no plano: tampa da case, placa da prateleira, corpo plano da ferramenta.
+
+Plástico transparente sobre a etiqueta vira reflexo. Se precisar de capa, use fosco. Na locação, a etiqueta vive na case, não na lente.
+
+## Como testar em dois minutos
+
+Imprima uma folha no [gerador de código de barras grátis](/codigo-de-barras-gratis). Cole numa peça. Abra a câmera do celular a 20 cm, sem flash, luz de teto. Se ler, cole nas outras. Se falhar, nesta ordem:
+
+1. Aumente a quiet zone (menos texto colado no símbolo).
+2. Aumente o tamanho do código.
+3. Troque fundo escuro por branco.
+4. Troque brilho por fosco.
+5. Mude de A4 jato para térmica, ou limpe a Zebra.
+6. Só então mude o formato (Code 128 → QR, ou o contrário).
+
+Gere de novo. Não edite o PNG no slide até ficar “bonito”. Bonito sem margem é etiqueta que não lê.
+
+## Lote, CSV e folha
+
+Uma etiqueta isolada mente. O lote mostra se a folha A4 2×7 está alinhada com o adesivo Pimaco, se a 3×8 cabe no texto, se a térmica 60×40 corta o SKU. Cole o CSV (sku, nome) no gerador, escolha o template, imprima duas páginas de teste, cole, leia as vinte primeiras.
+
+Se metade falhar, o problema é template, não o SKU. Se uma falhar, é aquela peça: curva, sujeira, cola por cima.
+
+Excel exporta CSV. Ponto-e-vírgula do Excel brasileiro também entra. O parser do gerador aceita vírgula, ponto-e-vírgula e tab. Cabeçalho `sku,nome` é opcional.
+
+## SKU, QR e o que vai na etiqueta
+
+A etiqueta precisa do identificador que o time vai ler. SKU em Code 128 para tipo. QR para serial e local. Os dois cabem em 60×40 se o texto for curto. O artigo [SKU vs QR vs código de barras](/blog/sku-vs-qr-vs-codigo-de-barras) separa as camadas.
+
+Não coloque três logos e um manifesto na etiqueta de ferramenta. Quiet zone primeiro, código segundo, nome terceiro. O resto vai na ficha do sistema.
+
+DOH e compra dependem de leitura honesta. Saída que vira digitação suja o CMV. Veja [dias de estoque na mão (DOH)](/blog/dias-de-estoque-na-mao-doh).
+
+## Operação no celular
+
+Quando a etiqueta lê, o hábito pega. Check-out na porta, check-in na volta, contagem no endereço. Purple Stock usa a câmera do telefone. Teste 7 dias, R$ 99,00 por equipe. A etiqueta sai grátis no gerador; o histórico de quem levou a peça sai no app.
+
+Se a leitura falhar no primeiro dia do teste, conserte a folha antes de treinar o time. Treinar em cima de etiqueta que não lê ensina a digitar. Digitar ensina a pular o lançamento.
+
+Imprima o lote em [/codigo-de-barras-gratis](/codigo-de-barras-gratis). A4 2×7, A4 3×8 ou térmica 60×40. Quiet zone visível, contraste alto, plano da peça. A câmera agradece e a fila na porta anda.

@@ -34,8 +34,10 @@ export async function buildLlmsTxtMarkdown(): Promise<string> {
 - [Início](/): ${SITE_NAME} é um sistema de estoque com QR Code no celular, a partir de ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.
 - [O que é o aplicativo](/recursos/aplicativo-de-estoque): QR, entrada, saída e saldo no celular.
 - [Purple Stock vs planilha](/purple-stock-vs-planilha): quando sair do Excel.
+- [Bling vs Purple Stock](/compare/bling-vs-purple-stock): alternativa a Bling para locação e QR por unidade.
+- [ContaEstoque vs Purple Stock](/compare/contaestoque-vs-purple-stock): locação, maleta e palco.
 - [Indústrias](/industrias): audiovisual, eventos, telecom, odontológico, autopeças e almoxarifado de obra.
-- [Gerador de código de barras grátis](/codigo-de-barras-gratis): EAN-13, Code 128 e QR em PNG.
+- [Gerador de código de barras grátis](/codigo-de-barras-gratis): EAN-13, Code 128 e QR; imprimir lote em A4 ou térmica.
 
 ## Funcionalidades Principais
 
@@ -43,12 +45,14 @@ export async function buildLlmsTxtMarkdown(): Promise<string> {
 - [Controle de Inventário](/features/inventory-control): produtos, materiais e saldo
 - [Aplicativo para controle de estoque](/recursos/aplicativo-de-estoque): QR Code, entrada, saída e saldo no celular
 - [Purple Stock vs planilha](/purple-stock-vs-planilha): quando sair do Excel
+- [Bling vs Purple Stock](/compare/bling-vs-purple-stock): locação vs ERP de loja
+- [ContaEstoque vs Purple Stock](/compare/contaestoque-vs-purple-stock): locação vs app de loja
 - [Controle de Almoxarifado](/recursos/controle-de-almoxarifado): suprimentos e materiais
 
 ### Códigos e Rastreamento
 - [Gestão de QR Code](/features/qr-code-management): QR em equipamento e localização
 - [Códigos de Barras](/features/barcoding): EAN e Code 128 no cadastro
-- [Código de Barras Gratuito](/codigo-de-barras-gratis): gerador EAN-13, Code 128 e QR
+- [Código de Barras Gratuito](/codigo-de-barras-gratis): gerador EAN-13, Code 128 e QR; impressão A4 e térmica
 
 ### Gestão de Equipamentos
 - [Gestão de Equipamentos](/features/equipment-management): check-in e check-out
@@ -71,7 +75,7 @@ export async function buildLlmsTxtMarkdown(): Promise<string> {
 - [Purple Stock vs planilha](/purple-stock-vs-planilha): migração do Excel
 - [Controle de Almoxarifado](/recursos/controle-de-almoxarifado): suprimentos
 - [Glossário de almoxarifado de obra](/glossario/almoxarifado-de-obra): o que é o estoque do canteiro
-- [Gerador de código de barras grátis](/codigo-de-barras-gratis): etiqueta em PNG
+- [Gerador de código de barras grátis](/codigo-de-barras-gratis): PNG, lote A4 e térmica
 
 ## Artigos e Conteúdo
 

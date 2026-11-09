@@ -101,6 +101,16 @@ const nextConfig = {
 
     const legacyResourceRedirects = [
       {
+        source: "/print",
+        destination: "/codigo-de-barras-gratis#imprimir",
+        permanent: true,
+      },
+      {
+        source: "/imprimir-codigo-de-barras",
+        destination: "/codigo-de-barras-gratis#imprimir",
+        permanent: true,
+      },
+      {
         source: "/recursos/codigo-de-barras",
         destination: "/codigo-de-barras-gratis",
       },

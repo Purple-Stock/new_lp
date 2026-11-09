@@ -37,6 +37,7 @@ import { Footer } from "@/components/footer";
 import { BarcodeDownloadBridge } from "@/components/barcode-download-bridge";
 import { BarcodeToolHeroChips } from "@/components/barcode-tool-hero-chips";
 import { BarcodeToolSeoFooter } from "@/components/barcode-tool-seo-footer";
+import { BarcodeLabelPrintPanel } from "@/components/barcode-label-print-panel";
 import type { QRCodeErrorCorrectionLevel } from "qrcode";
 import {
   BARCODE_SIZE_OPTIONS,
@@ -1454,6 +1455,8 @@ export default function CodigoDeBarrasGratis() {
           </div>
         </div>
       </main>
+
+      <BarcodeLabelPrintPanel />
 
       <BarcodeToolSeoFooter copy={seoCopy} />
 

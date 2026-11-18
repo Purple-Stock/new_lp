@@ -25,6 +25,58 @@ export default function RecursosIndexPage() {
         <ul className="mt-8 space-y-4">
           <li>
             <Link
+              href="/recursos/sistema-de-controle-de-estoque"
+              className="block rounded-lg border border-slate-200 bg-white p-4 hover:border-violet-300"
+            >
+              <h2 className="font-semibold text-slate-900">
+                Sistema de controle de estoque online
+              </h2>
+              <p className="mt-1 text-sm text-slate-600">
+                Saldo ao vivo, QR no celular, entrada e saída no time.
+              </p>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/recursos/controle-de-estoque-com-codigo-de-barras"
+              className="block rounded-lg border border-slate-200 bg-white p-4 hover:border-violet-300"
+            >
+              <h2 className="font-semibold text-slate-900">
+                Controle de estoque com código de barras
+              </h2>
+              <p className="mt-1 text-sm text-slate-600">
+                Cadastro, etiqueta e leitura na entrada e na saída.
+              </p>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/recursos/controle-de-ferramentas"
+              className="block rounded-lg border border-slate-200 bg-white p-4 hover:border-violet-300"
+            >
+              <h2 className="font-semibold text-slate-900">
+                Controle de ferramentas
+              </h2>
+              <p className="mt-1 text-sm text-slate-600">
+                Ferramental, empréstimo e check-in com responsável.
+              </p>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/recursos/sistema-de-estoque-para-loja"
+              className="block rounded-lg border border-slate-200 bg-white p-4 hover:border-violet-300"
+            >
+              <h2 className="font-semibold text-slate-900">
+                Sistema de estoque para loja
+              </h2>
+              <p className="mt-1 text-sm text-slate-600">
+                Saldo de trás, SKU e conferência no celular, sem caixa.
+              </p>
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/recursos/aplicativo-de-estoque"
               className="block rounded-lg border border-slate-200 bg-white p-4 hover:border-violet-300"
             >

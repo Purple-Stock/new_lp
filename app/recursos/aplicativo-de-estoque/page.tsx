@@ -9,6 +9,7 @@ import {
   APLICATIVO_DE_ESTOQUE_PAGE_DESCRIPTION,
   APLICATIVO_DE_ESTOQUE_PAGE_TITLE,
   APLICATIVO_DE_ESTOQUE_PATH,
+  SISTEMA_CONTROLE_ESTOQUE_PATH,
   VS_PLANILHA_PATH,
 } from "@/lib/seo-page-copy";
 
@@ -25,7 +26,10 @@ export default function AplicativoDeEstoquePage() {
       relatedLinks={[
         { href: "/precos", label: "preços" },
         { href: VS_PLANILHA_PATH, label: "planilha vs sistema" },
-        { href: "/industrias", label: "setores" },
+        {
+          href: SISTEMA_CONTROLE_ESTOQUE_PATH,
+          label: "sistema online",
+        },
         {
           href: "/blog/aplicativo-para-controle-de-estoque",
           label: "guia de escolha",

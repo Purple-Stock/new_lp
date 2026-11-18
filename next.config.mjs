@@ -90,6 +90,10 @@ const nextConfig = {
         destination: "/recursos/aplicativo-de-estoque",
       },
       {
+        source: "/features/barcoding",
+        destination: "/recursos/controle-de-estoque-com-codigo-de-barras",
+      },
+      {
         source: "/blog/como-reduzir-ruptura-de-estoque",
         destination: "/blog/reducao-ruptura-estoque",
       },

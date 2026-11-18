@@ -7,6 +7,7 @@ import type { BarcodeToolSeoCopy } from "@/lib/barcode-tool-seo-content";
 import { splitPassageParagraphs } from "@/lib/geo-answer-blocks";
 import {
   APLICATIVO_DE_ESTOQUE_PATH,
+  CONTROLE_CODIGO_BARRAS_PATH,
   VS_PLANILHA_PATH,
 } from "@/lib/seo-page-copy";
 
@@ -132,6 +133,12 @@ export function BarcodeToolSeoFooter({ copy }: BarcodeToolSeoFooterProps) {
               className="rounded-full border border-brand-border-soft bg-white px-4 py-2 text-brand-ui-primary transition hover:border-brand-ui-primary"
             >
               {copy.checklistLabel}
+            </Link>
+            <Link
+              href={CONTROLE_CODIGO_BARRAS_PATH}
+              className="rounded-full border border-brand-border-soft bg-white px-4 py-2 text-brand-ui-primary transition hover:border-brand-ui-primary"
+            >
+              {copy.barcodeStockLabel}
             </Link>
             <Link
               href={APLICATIVO_DE_ESTOQUE_PATH}

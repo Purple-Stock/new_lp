@@ -14,7 +14,7 @@ const FEATURE_LINKS = [
     body: "Entrada, saída e contagem no celular.",
   },
   {
-    href: "/features/barcoding",
+    href: "/recursos/controle-de-estoque-com-codigo-de-barras",
     title: "Código de barras",
     body: "EAN, Code 128 e etiquetas no fluxo de estoque.",
   },

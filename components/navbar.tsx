@@ -57,7 +57,7 @@ const SECONDARY_FEATURE_LINKS = [
     key: "factoryManagement" as const,
   },
   {
-    href: "/features/barcoding",
+    href: "/recursos/controle-de-estoque-com-codigo-de-barras",
     key: "barcoding" as const,
   },
 ] as const;

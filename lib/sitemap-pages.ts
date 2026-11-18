@@ -4,7 +4,6 @@ import { INDEXABLE_INDUSTRY_SLUGS } from "@/lib/industries-data";
 
 const FEATURE_SLUGS = [
   "analytics-reporting",
-  "barcoding",
   "clothing-manufacturing",
   "equipment-management",
   "factory-management",
@@ -103,6 +102,10 @@ export async function buildPagesSitemapEntries(
   const resourceRoutes = [
     "controle-de-almoxarifado",
     "aplicativo-de-estoque",
+    "controle-de-estoque-com-codigo-de-barras",
+    "controle-de-ferramentas",
+    "sistema-de-controle-de-estoque",
+    "sistema-de-estoque-para-loja",
   ].map((resource) => ({
     url: `${baseUrl}/recursos/${resource}`,
     lastModified: now,

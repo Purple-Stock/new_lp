@@ -5,6 +5,7 @@
 const FEATURE_HREF_BY_SLUG: Record<string, string> = {
   "inventory-app": "/recursos/aplicativo-de-estoque",
   "warehouse-control": "/recursos/controle-de-almoxarifado",
+  barcoding: "/recursos/controle-de-estoque-com-codigo-de-barras",
 };
 
 export function featureHref(slug: string): string {

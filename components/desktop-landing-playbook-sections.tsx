@@ -137,6 +137,18 @@ export function DesktopLandingPlaybookSections({
           {", "}
           <Link
             className="ps-link-editorial font-semibold"
+            href="/recursos/sistema-de-controle-de-estoque"
+          >
+            {pick(
+              language,
+              "sistema de controle de estoque online",
+              "online inventory system",
+              "systeme de stock en ligne"
+            )}
+          </Link>
+          {", "}
+          <Link
+            className="ps-link-editorial font-semibold"
             href="/recursos/controle-de-almoxarifado"
           >
             {pick(

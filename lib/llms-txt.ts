@@ -33,6 +33,10 @@ export async function buildLlmsTxtMarkdown(): Promise<string> {
 
 - [Início](/): ${SITE_NAME} é um sistema de estoque com QR Code no celular, a partir de ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.
 - [O que é o aplicativo](/recursos/aplicativo-de-estoque): QR, entrada, saída e saldo no celular.
+- [Sistema de controle de estoque online](/recursos/sistema-de-controle-de-estoque): saldo ao vivo no celular.
+- [Controle de estoque com código de barras](/recursos/controle-de-estoque-com-codigo-de-barras): cadastro, etiqueta e leitura.
+- [Controle de ferramentas](/recursos/controle-de-ferramentas): empréstimo com check-in.
+- [Sistema de estoque para loja](/recursos/sistema-de-estoque-para-loja): saldo de trás, sem caixa.
 - [Purple Stock vs planilha](/purple-stock-vs-planilha): quando sair do Excel.
 - [Bling vs Purple Stock](/compare/bling-vs-purple-stock): alternativa a Bling para locação e QR por unidade.
 - [ContaEstoque vs Purple Stock](/compare/contaestoque-vs-purple-stock): locação, maleta e palco.
@@ -51,7 +55,7 @@ export async function buildLlmsTxtMarkdown(): Promise<string> {
 
 ### Códigos e Rastreamento
 - [Gestão de QR Code](/features/qr-code-management): QR em equipamento e localização
-- [Códigos de Barras](/features/barcoding): EAN e Code 128 no cadastro
+- [Controle de estoque com código de barras](/recursos/controle-de-estoque-com-codigo-de-barras): EAN, QR e leitura no celular
 - [Código de Barras Gratuito](/codigo-de-barras-gratis): gerador EAN-13, Code 128 e QR; impressão A4 e térmica
 
 ### Gestão de Equipamentos
@@ -72,6 +76,10 @@ export async function buildLlmsTxtMarkdown(): Promise<string> {
 ## Recursos e Ferramentas
 
 - [Aplicativo para controle de estoque](/recursos/aplicativo-de-estoque): operação no celular
+- [Sistema de controle de estoque online](/recursos/sistema-de-controle-de-estoque): saldo ao vivo
+- [Controle de estoque com código de barras](/recursos/controle-de-estoque-com-codigo-de-barras): etiqueta e leitura
+- [Controle de ferramentas](/recursos/controle-de-ferramentas): check-in de ferramental
+- [Sistema de estoque para loja](/recursos/sistema-de-estoque-para-loja): SKU no depósito de trás
 - [Purple Stock vs planilha](/purple-stock-vs-planilha): migração do Excel
 - [Controle de Almoxarifado](/recursos/controle-de-almoxarifado): suprimentos
 - [Glossário de almoxarifado de obra](/glossario/almoxarifado-de-obra): o que é o estoque do canteiro

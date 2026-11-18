@@ -82,3 +82,34 @@ export const ALMOXARIFADO_RECURSO_PAGE_TITLE =
 
 export const ALMOXARIFADO_RECURSO_PAGE_DESCRIPTION =
   "Controle de almoxarifado com QR Code: entrada, saída, inventário cíclico e rastreio por responsável. Para PME e canteiro. Teste 7 dias grátis.";
+
+export const CONTROLE_CODIGO_BARRAS_PATH =
+  "/recursos/controle-de-estoque-com-codigo-de-barras";
+
+export const CONTROLE_CODIGO_BARRAS_PAGE_TITLE =
+  "Controle de Estoque com Código de Barras";
+
+export const CONTROLE_CODIGO_BARRAS_PAGE_DESCRIPTION = `Controle de estoque com código de barras no celular: cadastro, etiqueta e leitura na entrada e saída. ${TEAM_PLAN_TRIAL_DAYS} dias grátis, ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;
+
+export const CONTROLE_FERRAMENTAS_PATH = "/recursos/controle-de-ferramentas";
+
+export const CONTROLE_FERRAMENTAS_PAGE_TITLE =
+  "Controle de Ferramentas com Check-in e QR";
+
+export const CONTROLE_FERRAMENTAS_PAGE_DESCRIPTION = `Controle ferramental com check-in, QR e responsável: furadeira, serra e empréstimo na oficina ou canteiro. ${TEAM_PLAN_TRIAL_DAYS} dias grátis, ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;
+
+export const SISTEMA_CONTROLE_ESTOQUE_PATH =
+  "/recursos/sistema-de-controle-de-estoque";
+
+export const SISTEMA_CONTROLE_ESTOQUE_PAGE_TITLE =
+  "Sistema de Controle de Estoque Online";
+
+export const SISTEMA_CONTROLE_ESTOQUE_PAGE_DESCRIPTION = `Sistema de controle de estoque online com QR no celular: saldo ao vivo, entrada e saída na equipe. ${TEAM_PLAN_TRIAL_DAYS} dias grátis, ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;
+
+export const SISTEMA_ESTOQUE_LOJA_PATH =
+  "/recursos/sistema-de-estoque-para-loja";
+
+export const SISTEMA_ESTOQUE_LOJA_PAGE_TITLE =
+  "Sistema de Estoque para Loja com QR";
+
+export const SISTEMA_ESTOQUE_LOJA_PAGE_DESCRIPTION = `Sistema de estoque para loja com QR: saldo de trás, SKU e conferência no celular. Sem caixa. ${TEAM_PLAN_TRIAL_DAYS} dias grátis, ${TEAM_PLAN_MONTHLY_PRICE_DISPLAY_PT} por equipe.`;

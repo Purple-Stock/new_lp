@@ -44,6 +44,7 @@ export type BarcodeToolSeoCopy = {
   checklistLabel: string;
   inventoryAppLabel: string;
   vsPlanilhaLabel: string;
+  barcodeStockLabel: string;
 };
 
 const PT: BarcodeToolSeoCopy = {
@@ -118,6 +119,7 @@ const PT: BarcodeToolSeoCopy = {
   checklistLabel: "Checklist para PME",
   inventoryAppLabel: "App de controle de estoque",
   vsPlanilhaLabel: "Planilha vs sistema",
+  barcodeStockLabel: "Controle com código de barras",
 };
 
 const EN: BarcodeToolSeoCopy = {
@@ -183,6 +185,7 @@ const EN: BarcodeToolSeoCopy = {
   checklistLabel: "Barcode checklist for SMBs",
   inventoryAppLabel: "Inventory control app",
   vsPlanilhaLabel: "Spreadsheet vs system",
+  barcodeStockLabel: "Barcode inventory control",
 };
 
 const FR: BarcodeToolSeoCopy = {
@@ -213,6 +216,7 @@ const FR: BarcodeToolSeoCopy = {
   checklistLabel: "Barcode checklist for SMBs",
   inventoryAppLabel: "Application de stock",
   vsPlanilhaLabel: "Tableur vs système",
+  barcodeStockLabel: "Stock avec code-barres",
 };
 
 export function getBarcodeToolSeoCopy(

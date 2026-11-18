@@ -67,6 +67,22 @@ export const APLICATIVO_ESTOQUE_SECTIONS: MoneyPageSection[] = [
     ],
   },
   {
+    title: "Aplicativo para gestão de estoque",
+    paragraphs: [
+      "Aplicativo para gestão de estoque é o mesmo produto com a palavra que o comprador usa quando já passou do “app de contagem”. Gestão aqui é saldo por local, histórico por pessoa e o time inteiro no mesmo número — não um ERP.",
+      "Quem busca gestão no celular quer ver o agora: o que entrou hoje, o que saiu com quem, o que está parado no segundo endereço. O aplicativo da Purple Stock entrega isso com QR Code, sem projeto de implantação de seis meses.",
+      "Papéis no mesmo time: admin configura, operator lança, viewer consulta. O preço continua por equipe. Gestão de estoque, neste recorte, é operação com responsável — não dashboard de diretoria.",
+    ],
+  },
+  {
+    title: "Sistema de entrada e saída de mercadoria",
+    paragraphs: [
+      "Sistema de entrada e saída de mercadoria é o fluxo que o aplicativo executa todo dia: entrada na entrega, saída com responsável, transferência entre locais, ajuste e contagem.",
+      "Sem esses lançamentos, gestão de estoque vira lista. Com eles, o relatório mostra o que moveu de verdade. Mercadoria, material, peça e kit usam o mesmo movimento; ferramenta que precisa voltar ganha check-in no mesmo app.",
+      "Comece pela curva A. Treine só entrada e saída desses itens. O restante do cadastro entra quando o hábito já existe.",
+    ],
+  },
+  {
     title: "O que o aplicativo não promete",
     paragraphs: [
       "Não emite nota, não substitui o caixa e não opera galpão de operador logístico. Se a dor é conferência, saldo por local e check-in de equipamento, o recorte é este.",

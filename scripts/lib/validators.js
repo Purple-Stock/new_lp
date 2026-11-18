@@ -55,6 +55,10 @@ const FEATURE_LINK_ALIASES = {
     "/features/warehouse-control",
     "/recursos/controle-de-almoxarifado",
   ],
+  barcoding: [
+    "/features/barcoding",
+    "/recursos/controle-de-estoque-com-codigo-de-barras",
+  ],
 };
 
 const REQUIRED_INDUSTRY_LINKS = [
